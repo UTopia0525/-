@@ -60,3 +60,5 @@
 - [소림](factions/shaolin.md): 자비·계율·구휼, 권장과 봉 중심. [방장·계율 장로·젊은 제자·태상방장 창작 초안](characters/shaolin.md).
 
 - [무당파](factions/wudang.md): 청회색·백색, 조화와 수양, 태극 계열 무학과 장삼봉 전승. [무당검선 운허·젊은 제자 청윤](characters/wudang.md).
+
+- [화산파](factions/huashan.md): 백색·짙은 적색, 절개와 명예, 아십사수매화검법. [장문인 진목·젊은 제자 소운](characters/huashan.md).

@@ -91,3 +91,11 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | 장문인 · 무당검선 운허 | 젊은 제자 · 청윤 |
 |---|---|
 | ![운허](assets/portraits/wudang/unheo.png) | ![청윤](assets/portraits/wudang/cheongyun.png) |
+
+## 화산파
+
+[문파 설정과 무학](docs/factions/huashan.md) · [장문인·제자 설정](docs/characters/huashan.md)
+
+| 장문인 · 진목 | 젊은 제자 · 소운 |
+|---|---|
+| ![진목](assets/portraits/huashan/jinmok.png) | ![소운](assets/portraits/huashan/soun.png) |
