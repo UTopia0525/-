@@ -184,7 +184,7 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 
 ![위중량](assets/portraits/blackguild/wijungnyang.png)
 
-추가 세력 제안: [무영각·적월문·하오문](docs/factions/heterodox-candidates.md). 적월문은 채택 후 별도 제작했고, 무영각·하오문은 채택 전 후보이다.
+추가 세력 제안: [무영각·적월문·하오문](docs/factions/heterodox-candidates.md). 적월문·중립 하오문은 채택했고, 무영각은 채택 전 후보이다.
 
 ## 적월문
 
@@ -195,3 +195,13 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | 문주 · 한무진 | 문주의 아들 · 한승재 |
 |---|---|
 | ![한무진](assets/portraits/redmoon/hanmujin.png) | ![한승재](assets/portraits/redmoon/hanseungjae.png) |
+
+## 하오문
+
+[중립 생활·정보 문파 설정](docs/factions/haomun.md). 공개 가능한 조직 정보만 기록한다. 위치와 구체적인 운영 규칙은 미정이다.
+
+## 예인 인물
+
+[중원제일미 은소월 — 공개 소개](docs/characters/eunsowol.md)
+
+![은소월](assets/portraits/performers/eunsowol.png)

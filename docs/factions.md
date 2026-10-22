@@ -88,3 +88,7 @@
 - [추가 사파 후보](factions/heterodox-candidates.md): 무영각·적월문·하오문. 아직 채택되지 않은 제안이다.
 
 - [적월문](factions/redmoon.md): 민초를 해치지 않고 강함을 추구하는 독립 사파 도법 명문. [문주 한무진·아들 한승재](characters/redmoon.md). 거점 미정.
+
+## 중립 세력
+
+- [하오문](factions/haomun.md): 다양한 생업 종사자의 생활·정보 연결망. 정파·사파 어느 쪽에도 종속되지 않는 중립 문파이며 문주의 신분은 평소 비공개다.
