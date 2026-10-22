@@ -107,3 +107,11 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | 장문인 · 정허 | 젊은 제자 · 담진 |
 |---|---|
 | ![정허](assets/portraits/zhongnan/jeongheo.png) | ![담진](assets/portraits/zhongnan/damjin.png) |
+
+## 아미파
+
+[문파 설정과 청련유장](docs/factions/emei.md) · [장문인·제자 설정](docs/characters/emei.md)
+
+| 장문인 · 정연 사태 | 젊은 제자 · 묘은 |
+|---|---|
+| ![정연 사태](assets/portraits/emei/jeongyeon.png) | ![묘은](assets/portraits/emei/myoeun.png) |

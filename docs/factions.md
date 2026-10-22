@@ -64,3 +64,5 @@
 - [화산파](factions/huashan.md): 백색·짙은 적색, 절개와 명예, 아십사수매화검법. [장문인 진목·젊은 제자 소운](characters/huashan.md).
 
 - [종남파](factions/zhongnan.md): 짙은 청색·흰색, 천하삼십육검과 후발제인, 전진교의 영향을 받은 별도 문파이며 화산과 앙숙. [정허·담진](characters/zhongnan.md).
+
+- [아미파](factions/emei.md): 여성 문파, 옅은 회색·연보라색, 청련유장과 자립·자비. [정연 사태·묘은](characters/emei.md).
