@@ -2,6 +2,10 @@ extends Node2D
 
 const UI = preload("res://scripts/ui.gd")
 const PLAYER_SCENE = preload("res://scenes/player.tscn")
+const FOLLOW_CAMERA = preload("res://scripts/follow_camera.gd")
+@export var map_bounds: Rect2 = Rect2(0, 0, 1280, 720)
+@export_range(1.0, 3.0, 0.25) var camera_zoom: float = 1.5
+var camera: Camera2D
 var area_name: String = "dock"
 var player
 var background: Sprite2D
@@ -24,6 +28,10 @@ func _ready() -> void:
 	add_child(decorations)
 	player = PLAYER_SCENE.instantiate()
 	decorations.add_child(player)
+	camera = FOLLOW_CAMERA.new()
+	camera.name = "FollowCamera"
+	camera.exploration_zoom = camera_zoom
+	player.add_child(camera)
 	collision_root = Node2D.new()
 	add_child(collision_root)
 	hint = UI.label(self, "E  대화", Rect2(0, 0, 150, 30), 15, UI.GOLD)
@@ -58,8 +66,11 @@ func load_area(value: String) -> void:
 		player.position = Vector2(585, 535)
 		_add_npc("deck-captain", "서문길", Vector2(715, 350), 4)
 		_add_npc("deck-sailor", "허만복", Vector2(540, 320), 6)
-	background.scale = Vector2(1280.0 / background.texture.get_width(), 720.0 / background.texture.get_height())
+	background.position = map_bounds.position
+	background.scale = map_bounds.size / background.texture.get_size()
 	_build_collision_and_navigation()
+	camera.set_map_bounds(map_bounds)
+	camera.snap_to_player()
 
 func _add_npc(id: String, title: String, point: Vector2, frame: int) -> void:
 	var body = Area2D.new()
@@ -97,13 +108,15 @@ func point_is_walkable(point: Vector2) -> bool:
 	return inside
 
 func _build_collision_and_navigation() -> void:
-	astar.region = Rect2i(0, 0, 64, 36)
+	var origin = Vector2i(floori(map_bounds.position.x / 20.0), floori(map_bounds.position.y / 20.0))
+	var end = Vector2i(ceili(map_bounds.end.x / 20.0), ceili(map_bounds.end.y / 20.0))
+	astar.region = Rect2i(origin, end - origin)
 	astar.cell_size = Vector2(20, 20)
 	astar.offset = Vector2(10, 10)
 	astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	astar.update()
-	for y in range(36):
-		for x in range(64):
+	for y in range(astar.region.position.y, astar.region.end.y):
+		for x in range(astar.region.position.x, astar.region.end.x):
 			var point = Vector2(x * 20 + 10, y * 20 + 10)
 			astar.set_point_solid(Vector2i(x, y), not point_is_walkable(point))
 	# Native Godot physics bodies along the perimeter of the walkable cells.
@@ -111,8 +124,8 @@ func _build_collision_and_navigation() -> void:
 	wall_body.collision_layer = 2
 	wall_body.collision_mask = 1
 	collision_root.add_child(wall_body)
-	for y in range(36):
-		for x in range(64):
+	for y in range(astar.region.position.y, astar.region.end.y):
+		for x in range(astar.region.position.x, astar.region.end.x):
 			var cell = Vector2i(x, y)
 			if astar.is_point_solid(cell):
 				continue

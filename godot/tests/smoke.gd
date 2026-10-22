@@ -55,7 +55,7 @@ func _run() -> void:
 	check(not game.exploration.astar.get_point_path(origin, Vector2i(40, 20)).is_empty(), "dock to boarding is reachable")
 	var before_click = game.exploration.player.position
 	var click = InputEventMouseButton.new()
-	click.position = Vector2(490, 510)
+	click.position = game.exploration.get_global_transform_with_canvas() * Vector2(490, 510)
 	click.global_position = click.position
 	click.button_index = MOUSE_BUTTON_LEFT
 	click.pressed = true
@@ -115,6 +115,11 @@ func _run() -> void:
 		if voice.playing:
 			active_voices += 1
 	check(active_voices == 1, "crossfade stops previous track")
+	# Allow the audio mixing thread to release its last loop before test exit.
+	for voice in game.music.players:
+		voice.stop()
+		voice.stream = null
+	await create_timer(0.15).timeout
 	game.queue_free()
 	await process_frame
 	print("GODOT_SMOKE: " + ("FAIL" if failed else "PASS — animation, BGM contexts/loops/mute, story, navigation, physics, combat, reset, realms"))

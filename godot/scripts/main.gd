@@ -7,6 +7,8 @@ const MUSIC = preload("res://scripts/music.gd")
 var exploration
 var battle
 var music
+var ui_layer: CanvasLayer
+var ui_root: Control
 var dialogue_music_cues: Dictionary = {}
 var state: String = "title"
 var talked_captain: bool = false
@@ -36,10 +38,20 @@ func _ready() -> void:
 	music = MUSIC.new()
 	music.name = "SituationMusic"
 	add_child(music)
+	ui_layer = CanvasLayer.new()
+	ui_layer.name = "ScreenUI"
+	ui_layer.layer = 10
+	add_child(ui_layer)
+	ui_root = Control.new()
+	ui_root.name = "FixedInterface"
+	ui_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	ui_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	ui_root.theme = theme
+	ui_layer.add_child(ui_root)
 	exploration = EXPLORATION.instantiate()
 	add_child(exploration)
 	battle = BATTLE.instantiate()
-	add_child(battle)
+	ui_root.add_child(battle)
 	battle.hide()
 	battle.victory.connect(_on_victory)
 	_build_hud()
@@ -61,20 +73,20 @@ func _setup_input() -> void:
 func _build_hud() -> void:
 	top_hud = Control.new()
 	top_hud.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(top_hud)
+	ui_root.add_child(top_hud)
 	var place_panel = UI.panel(top_hud, Rect2(24, 24, 360, 66), Color("13231edb"))
 	UI.label(place_panel, "序章 · 가라앉은 약속", Rect2(16, 7, 325, 22), 13, UI.GOLD)
 	location = UI.label(place_panel, "동정호 남쪽 · 청류진 나루", Rect2(16, 31, 325, 25), 18)
 	var mission_panel = UI.panel(top_hud, Rect2(822, 24, 432, 66), Color("13231edb"))
 	UI.label(mission_panel, "지금 할 일", Rect2(16, 7, 400, 20), 12, UI.GOLD)
 	objective = UI.label(mission_panel, "", Rect2(16, 30, 400, 27), 16)
-	bottom_hint = UI.label(self, "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     E  대화     ·     M  음악     ·     F1  처음부터", Rect2(24, 680, 1230, 27), 14, Color("f1dfb4"))
+	bottom_hint = UI.label(ui_root, "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     E  대화     ·     M  음악     ·     F1  처음부터", Rect2(24, 680, 1230, 27), 14, Color("f1dfb4"))
 	bottom_hint.add_theme_color_override("font_shadow_color", Color("11211a"))
 	bottom_hint.add_theme_constant_override("shadow_offset_x", 2)
 	bottom_hint.add_theme_constant_override("shadow_offset_y", 2)
 
 func _build_dialogue() -> void:
-	dialogue_panel = UI.panel(self, Rect2(24, 535, 1232, 160))
+	dialogue_panel = UI.panel(ui_root, Rect2(24, 535, 1232, 160))
 	dialogue_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	dialogue_portrait = TextureRect.new()
 	dialogue_portrait.position = Vector2(5, 4)
@@ -97,7 +109,7 @@ func _full_overlay(color: Color) -> Control:
 	shade.color = color
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	overlay.add_child(shade)
-	add_child(overlay)
+	ui_root.add_child(overlay)
 	return overlay
 
 func _build_title() -> void:
@@ -228,6 +240,7 @@ func start_battle() -> void:
 	bottom_hint.hide()
 	exploration.set_active(false)
 	exploration.hide()
+	exploration.camera.enabled = false
 	battle.begin()
 
 func _on_victory(hp: int) -> void:
