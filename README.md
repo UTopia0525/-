@@ -83,3 +83,11 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | 젊은 제자 · 혜담 | 태상방장 · 현진 |
 |---|---|
 | ![혜담](assets/portraits/shaolin/hyedam.png) | ![현진](assets/portraits/shaolin/hyeonjin.png) |
+
+## 무당파
+
+[문파 설정·장삼봉 전승·무학](docs/factions/wudang.md) · [주요 인물 설정](docs/characters/wudang.md)
+
+| 장문인 · 무당검선 운허 | 젊은 제자 · 청윤 |
+|---|---|
+| ![운허](assets/portraits/wudang/unheo.png) | ![청윤](assets/portraits/wudang/cheongyun.png) |
