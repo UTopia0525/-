@@ -63,3 +63,11 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | 가주 · 당겸 | 장녀 · 당서령 | 소가주 · 당윤재 |
 |---|---|---|
 | ![당겸](assets/portraits/tang/gyeom.png) | ![당서령](assets/portraits/tang/seoryeong.png) | ![당윤재](assets/portraits/tang/yunjae.png) |
+
+## 모용세가
+
+[가문 설정과 무공](docs/factions/murong.md) · [가주·소가주 소개](docs/characters/murong-family.md)
+
+| 가주 · 모용경원 | 소가주 · 모용유안 |
+|---|---|
+| ![모용경원](assets/portraits/murong/gyeongwon.png) | ![모용유안](assets/portraits/murong/yuan.png) |
