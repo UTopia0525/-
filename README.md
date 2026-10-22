@@ -147,3 +147,11 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | 장문인 · 명담 | 젊은 제자 · 윤서 |
 |---|---|
 | ![명담](assets/portraits/diancang/myeongdam.png) | ![윤서](assets/portraits/diancang/yunseo.png) |
+
+## 개방
+
+[방회 설정·결개 계급·무학](docs/factions/beggars.md) · [방주·방도 설정](docs/characters/beggars.md)
+
+| 방주 · 구만복 | 젊은 방도 · 이소칠 |
+|---|---|
+| ![구만복](assets/portraits/beggars/gumanbok.png) | ![이소칠](assets/portraits/beggars/leesochil.png) |

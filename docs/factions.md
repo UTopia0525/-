@@ -74,3 +74,5 @@
 - [곤륜파](factions/kunlun.md): 마교와 오랜 대치, 운룡검법·경신법 운룡십팔식, 거칠지만 정 많고 손님을 환대하는 문파. [도겸·연하](characters/kunlun.md).
 
 - [점창파](factions/diancang.md): 흰색·짙은 주황색, 사일검법과 집중·결단. [장문인 명담·자신감 부족한 제자 윤서](characters/diancang.md).
+
+- [개방](factions/beggars.md): 결개 계급, 방주·직전제자 전용 향룡십팔장과 일반 방도의 타구봉법. [구만복·이소칠](characters/beggars.md).
