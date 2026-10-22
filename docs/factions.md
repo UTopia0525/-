@@ -50,3 +50,5 @@
 - [남궁세가 주요 인물 창작 초안](characters/namgung-family.md): 가주·소가주·차남·막내딸. 사용자 확정 전 제안.
 
 - [하북팽가](factions/peng.md): 짙은 청색, 발달한 근육, 대도, 강함에 대한 집착. [가주·소가주 창작 초안](characters/peng-family.md).
+
+- [제갈세가](factions/zhuge.md): 백색 복식과 지략, 판관필·철선. [가주·소가주·정파제일화 창작 초안](characters/zhuge-family.md).
