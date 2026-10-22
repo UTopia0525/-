@@ -66,3 +66,5 @@
 - [종남파](factions/zhongnan.md): 짙은 청색·흰색, 천하삼십육검과 후발제인, 전진교의 영향을 받은 별도 문파이며 화산과 앙숙. [정허·담진](characters/zhongnan.md).
 
 - [아미파](factions/emei.md): 여성 문파, 옅은 회색·연보라색, 청련유장과 자립·자비. [정연 사태·묘은](characters/emei.md).
+
+- [청성파](factions/qingcheng.md): 청람검법 채택, 청록·옅은 회색의 지역 도가 문파 초안. [통현·지온](characters/qingcheng.md).

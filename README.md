@@ -115,3 +115,11 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | 장문인 · 정연 사태 | 젊은 제자 · 묘은 |
 |---|---|
 | ![정연 사태](assets/portraits/emei/jeongyeon.png) | ![묘은](assets/portraits/emei/myoeun.png) |
+
+## 청성파
+
+[문파 초안과 청람검법](docs/factions/qingcheng.md) · [장문인·제자 설정](docs/characters/qingcheng.md)
+
+| 장문인 · 통현 | 젊은 제자 · 지온 |
+|---|---|
+| ![통현](assets/portraits/qingcheng/tonghyeon.png) | ![지온](assets/portraits/qingcheng/jion.png) |
