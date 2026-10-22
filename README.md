@@ -155,3 +155,5 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | 방주 · 구만복 | 젊은 방도 · 이소칠 |
 |---|---|
 | ![구만복](assets/portraits/beggars/gumanbok.png) | ![이소칠](assets/portraits/beggars/leesochil.png) |
+
+전체 세력과 주요 인물 요약: [구파일방·오대세가 통합 설정집](docs/factions-overview.md).
