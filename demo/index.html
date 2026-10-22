@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111918">
+  <title>가라앉은 약속 · 0장 플레이 데모</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%231b2c23%27/%3E%3Cpath d=%27M7 25L24 8M19 6l7 7M6 21l5 5%27 stroke=%27%23d9b879%27 stroke-width=%273%27/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="masthead">
+      <a class="wordmark" href="../README.md" aria-label="프로젝트 안내"><span class="seal">江湖</span><span>강호의 첫걸음<small>명초 무협 RPG · 플레이 데모</small></span></a>
+      <div class="header-actions"><span class="version">CHAPTER 00 / DEMO 0.1</span><button id="restart" class="quiet">처음부터</button></div>
+    </header>
+
+    <div class="play-layout">
+      <section class="game-column" aria-label="게임">
+        <div id="game" class="game-frame">
+          <canvas id="world" width="960" height="540" tabindex="0" aria-label="탐험 화면. 방향키 또는 WASD로 이동하고 E로 대화합니다."></canvas>
+          <div id="location" class="location"><span class="location-symbol">◇</span><span id="location-label">동정호 남쪽 · 청류진 나루</span></div>
+          <div id="interaction" class="interaction" hidden><kbd>E</kbd><span>대화하기</span></div>
+
+          <section id="battle" class="battle" aria-label="턴제 전투" hidden>
+            <div id="battle-scene" class="battle-scene">
+              <div class="battle-vignette"></div>
+              <div class="hp-panel enemy-panel"><span class="eyebrow">흑린채 · 일반 수적</span><h2>흑린채 수적</h2><div class="hp-line"><span>체력</span><strong id="enemy-hp-text">150 / 150</strong></div><div class="hp-track"><div id="enemy-hp-bar" class="hp-fill enemy-fill"></div></div></div>
+              <div class="hp-panel player-panel"><span class="eyebrow">첫 표행의 신참 표사</span><h2>주인공</h2><div class="hp-line"><span>체력</span><strong id="player-hp-text">300 / 300</strong></div><div class="hp-track"><div id="player-hp-bar" class="hp-fill"></div></div></div>
+              <div id="damage-float" class="damage-float" hidden></div>
+              <div class="round-label" id="round-label">첫 번째 교전</div>
+            </div>
+            <div class="battle-controls">
+              <div class="skill-description"><span class="eyebrow" id="detail-eyebrow">내 차례</span><h3 id="skill-title">무공을 살펴보세요</h3><p id="skill-description">오른쪽 무공을 선택하면 설명을 확인할 수 있습니다.</p><div class="detail-bottom"><span id="skill-note">선택만으로는 턴을 소모하지 않습니다.</span><button id="use-skill" class="gold small" disabled>사용 <span>↵</span></button></div></div>
+              <div class="skill-selection"><div class="selection-heading"><span>편성 무공</span><span>1 / 4</span></div><div class="skill-grid"><button id="skill-samjae" class="skill-slot" aria-pressed="false"><span class="skill-index">01</span><span>삼재검법</span><span class="skill-type">검법</span></button><button class="skill-slot empty" disabled aria-label="빈 무공 슬롯 2"><span>—</span></button><button class="skill-slot empty" disabled aria-label="빈 무공 슬롯 3"><span>—</span></button><button class="skill-slot empty" disabled aria-label="빈 무공 슬롯 4"><span>—</span></button></div></div>
+            </div>
+          </section>
+
+          <section id="dialogue" class="dialogue" aria-label="대화" hidden><div class="dialogue-portrait"><canvas id="portrait" width="48" height="56" aria-hidden="true"></canvas></div><div class="dialogue-copy"><span id="speaker" class="speaker"></span><p id="dialogue-text"></p></div><button id="next-dialogue" aria-label="다음 대화">다음 <span>▾</span></button></section>
+
+          <section id="title-screen" class="screen-overlay title-screen"><div class="chapter-label">序章 · 첫 표행</div><h1>가라앉은<br><span>약속</span></h1><div class="title-line"></div><p>출항을 기다리는 작은 나루.<br>당신의 첫 표행이 시작됩니다.</p><div class="title-actions"><button id="start-game" class="gold">표행 시작 <span>→</span></button><button id="quick-battle" class="outline">전투만 체험</button></div><small>이동과 대화, 첫 번째 전투까지 플레이할 수 있습니다.</small></section>
+
+          <section id="ending" class="screen-overlay ending" hidden><span class="chapter-label">첫 번째 교전 · 완료</span><h2>통로를 확보했다</h2><p>수적을 물리쳤습니다.<br>갑판 너머에서는 아직 소란이 이어집니다.</p><div class="result-row"><div><small>사용한 무공</small><strong>삼재검법</strong></div><div><small>남은 체력</small><strong id="result-hp">219 / 300</strong></div></div><p class="ending-note">이번 데모는 첫 전투에서 끝납니다.<br>침몰과 귀물·구조 선택은 다음 제작 범위입니다.</p><div class="ending-buttons"><button id="retry-battle" class="gold">전투 다시 하기</button><button id="end-restart" class="outline">나루터부터 다시</button></div></section>
+          <div id="transition" class="transition" hidden></div>
+        </div>
+        <div class="control-strip"><span><kbd>W A S D</kbd> / <kbd>방향키</kbd> 이동</span><span><kbd>E</kbd> 대화 · 조사</span><span><kbd>Enter</kbd> 진행 · 사용</span><span class="click-hint">바닥 클릭으로 이동 가능</span></div>
+        <div class="touch-controls" aria-label="터치 이동 조작"><div class="dpad"><button data-dir="up" aria-label="위로 이동">↑</button><button data-dir="left" aria-label="왼쪽 이동">←</button><button data-dir="down" aria-label="아래로 이동">↓</button><button data-dir="right" aria-label="오른쪽 이동">→</button></div><button id="touch-interact">대화 / 진행</button></div>
+      </section>
+
+      <aside class="journal"><div class="journal-top"><span class="eyebrow">현재 여정</span><h2>첫 번째 표행</h2><p>이름 없는 신참 표사의<br>강호 첫걸음.</p></div><div class="objective-box"><span class="eyebrow">지금 할 일</span><p id="objective">표행을 시작하세요.</p></div><ol id="journey"><li data-step="0"><span>01</span><div>나루터<small>표국 사람들과 인사</small></div></li><li data-step="1"><span>02</span><div>승선<small>호송선에 오르기</small></div></li><li data-step="2"><span>03</span><div>갑판<small>표두에게 출항 보고</small></div></li><li data-step="3"><span>04</span><div>첫 전투<small>흑린채 수적과 대치</small></div></li></ol><div id="event-log" class="event-log" aria-live="polite" aria-atomic="true">물결이 선착장을 두드립니다.</div><details class="demo-notes"><summary>데모 안내</summary><p>대화와 나루 이름은 임시 연출입니다. 출항 전 준비로 능력치나 보상이 달라지지 않습니다.</p><p>전투용 임시 규칙: 주인공 선공, 적 전체 피해 40, 명중 확정, 피해 소수점 버림. 미정인 무공 효과는 추가하지 않았습니다.</p><p>진행은 저장되지 않습니다. 새로 열면 처음부터 시작합니다.</p></details></aside>
+    </div>
+    <footer class="footer"><span>강호의 이야기는, 한 번의 선택에서.</span><a href="README.md">실행 안내 · 구현 범위 ↗</a></footer>
+    <div id="announcement" class="sr-only" aria-live="polite"></div>
+  </main>
+</body>
+</html>

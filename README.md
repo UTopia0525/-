@@ -1,4 +1,6 @@
-# 명초 무협 RPG — 세계 지도 초안
+# 명초 무협 RPG
+
+**[0장 플레이 데모 실행 안내](demo/README.md)** — 저장소를 내려받은 뒤 `demo/index.html`을 브라우저에서 열면 된다. GitHub 파일 미리보기에서는 실행되지 않는다.
 
 `world-map/index.html`을 브라우저에서 열면 된다. 외부 라이브러리·설치·서버 없이 작동한다.
 
@@ -10,7 +12,7 @@
 - 남궁세가 확정 컨셉: `docs/factions/namgung.md`
 - 시대 설정·고증 한계: `docs/world-setting.md`
 
-현재는 전체 지도 설계이며, 실제 도트 탐험·전투·스토리는 미구현이다.
+전체 지도 설계와 함께, 출항 전 대화·도트 탐험·승선·첫 턴제 전투까지 플레이하는 [0장 데모](demo/README.md)가 구현되어 있다. 전체 게임과 이후 스토리는 아직 미구현이다.
 
 남궁세가 주요 인물과 대사 초안: [인물 설정](docs/characters/namgung-family.md). 초상화 원본은 `assets/portraits/namgung/`에 보관한다.
 
