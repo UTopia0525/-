@@ -62,3 +62,5 @@
 - [무당파](factions/wudang.md): 청회색·백색, 조화와 수양, 태극 계열 무학과 장삼봉 전승. [무당검선 운허·젊은 제자 청윤](characters/wudang.md).
 
 - [화산파](factions/huashan.md): 백색·짙은 적색, 절개와 명예, 아십사수매화검법. [장문인 진목·젊은 제자 소운](characters/huashan.md).
+
+- [종남파](factions/zhongnan.md): 짙은 청색·흰색, 천하삼십육검과 후발제인, 전진교의 영향을 받은 별도 문파이며 화산과 앙숙. [정허·담진](characters/zhongnan.md).

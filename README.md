@@ -99,3 +99,11 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | 장문인 · 진목 | 젊은 제자 · 소운 |
 |---|---|
 | ![진목](assets/portraits/huashan/jinmok.png) | ![소운](assets/portraits/huashan/soun.png) |
+
+## 종남파
+
+[문파 설정과 천하삼십육검](docs/factions/zhongnan.md) · [장문인·제자 설정](docs/characters/zhongnan.md)
+
+| 장문인 · 정허 | 젊은 제자 · 담진 |
+|---|---|
+| ![정허](assets/portraits/zhongnan/jeongheo.png) | ![담진](assets/portraits/zhongnan/damjin.png) |
