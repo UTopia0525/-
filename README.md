@@ -123,3 +123,11 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | 장문인 · 통현 | 젊은 제자 · 지온 |
 |---|---|
 | ![통현](assets/portraits/qingcheng/tonghyeon.png) | ![지온](assets/portraits/qingcheng/jion.png) |
+
+## 공동파
+
+[문파 설정과 복마검법](docs/factions/kongtong.md) · [장문인·제자 설정](docs/characters/kongtong.md)
+
+| 장문인 · 현석 | 젊은 제자 · 담호 |
+|---|---|
+| ![현석](assets/portraits/kongtong/hyeonseok.png) | ![담호](assets/portraits/kongtong/damho.png) |
