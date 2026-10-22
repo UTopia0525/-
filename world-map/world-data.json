@@ -1,0 +1,508 @@
+{
+  "period": "홍무 23년 전후 · 1390년경",
+  "cities": [
+    {
+      "id": "nanjing",
+      "name": "남경",
+      "historic": "應天府",
+      "lon": 118.8,
+      "lat": 32.06,
+      "region": "수도",
+      "history": "명 조정의 수도. 궁성과 관청, 군수·수운의 중심.",
+      "game": "황실·관료·상인·강호인이 교차하는 중앙 거점."
+    },
+    {
+      "id": "beiping",
+      "name": "북평",
+      "historic": "北平府",
+      "lon": 116.41,
+      "lat": 39.9,
+      "region": "북방",
+      "history": "1390년에는 북평. 연왕 주체의 번왕 거점이며, 1403년 북경으로 개칭되고 1421년 수도가 된다.",
+      "game": "북방 군사 세력과 변경으로 통하는 관문."
+    },
+    {
+      "id": "xian",
+      "name": "서안",
+      "historic": "西安府",
+      "lon": 108.94,
+      "lat": 34.34,
+      "region": "서북",
+      "history": "관중의 중심이자 진왕의 번왕 거점.",
+      "game": "관중 평야와 서북 지역을 잇는 무림 거점."
+    },
+    {
+      "id": "kaifeng",
+      "name": "개봉",
+      "historic": "開封府",
+      "lon": 114.31,
+      "lat": 34.8,
+      "region": "중원",
+      "history": "하남의 중심이며 주왕의 번왕 거점. 송대 수도였지만 명의 수도는 아니다.",
+      "game": "하남의 문파와 상단이 모이는 중원 거점."
+    },
+    {
+      "id": "luoyang",
+      "name": "낙양",
+      "historic": "河南府",
+      "lon": 112.45,
+      "lat": 34.62,
+      "region": "중원",
+      "history": "하남부의 중심. 숭산·용문과 인접한 내륙 도시.",
+      "game": "숭산 산길과 고도 탐험의 출입구."
+    },
+    {
+      "id": "jinan",
+      "name": "제남",
+      "historic": "濟南府",
+      "lon": 117.12,
+      "lat": 36.65,
+      "region": "산동",
+      "history": "산동 지역의 행정 중심. 대운하 본류에 직접 놓인 도시는 아니다.",
+      "game": "태산과 산동 내륙을 연결하는 거점."
+    },
+    {
+      "id": "jining",
+      "name": "제녕",
+      "historic": "濟寧州",
+      "lon": 116.59,
+      "lat": 35.41,
+      "region": "운하",
+      "history": "명초 제녕주. 대운하 수운망의 중요한 거점.",
+      "game": "운하 나루·창고·호송 의뢰의 무대."
+    },
+    {
+      "id": "yangzhou",
+      "name": "양주",
+      "historic": "揚州府",
+      "lon": 119.42,
+      "lat": 32.39,
+      "region": "운하",
+      "history": "장강 북안과 대운하를 연결하는 수운·염업 거점.",
+      "game": "나루와 염상 세력이 얽히는 상업 도시."
+    },
+    {
+      "id": "suzhou",
+      "name": "소주",
+      "historic": "蘇州府",
+      "lon": 120.59,
+      "lat": 31.3,
+      "region": "강남",
+      "history": "강남의 농업·수공업·직물 생산 중심.",
+      "game": "수로 마을과 공방, 부유한 상단의 도시."
+    },
+    {
+      "id": "hangzhou",
+      "name": "항주",
+      "historic": "杭州府",
+      "lon": 120.16,
+      "lat": 30.27,
+      "region": "강남",
+      "history": "절강의 중심이며 대운하 남단의 주요 도시.",
+      "game": "서호와 강남 무림을 탐험하는 남쪽 거점."
+    },
+    {
+      "id": "wuchang",
+      "name": "무창",
+      "historic": "武昌府",
+      "lon": 114.31,
+      "lat": 30.55,
+      "region": "장강",
+      "history": "장강 중류의 주요 거점이자 초왕의 번왕 거점. 당시 현대 통합도시 명칭인 ‘무한’은 쓰지 않는다.",
+      "game": "수로 세력과 내륙 문파가 교차하는 도시."
+    },
+    {
+      "id": "jingzhou",
+      "name": "형주",
+      "historic": "荊州府",
+      "lon": 112.24,
+      "lat": 30.34,
+      "region": "장강",
+      "history": "장강 중류의 군사·교통 거점.",
+      "game": "강변 요새와 호송로의 거점."
+    },
+    {
+      "id": "chengdu",
+      "name": "성도",
+      "historic": "成都府",
+      "lon": 104.07,
+      "lat": 30.57,
+      "region": "서남",
+      "history": "사천 분지의 중심이며 촉왕의 번왕 거점.",
+      "game": "분지 안의 도시와 험준한 산길을 탐험."
+    },
+    {
+      "id": "chongqing",
+      "name": "중경",
+      "historic": "重慶府",
+      "lon": 106.55,
+      "lat": 29.56,
+      "region": "서남",
+      "history": "장강·가릉강 합류부의 도시. 사천과 장강 중류 사이의 수로 거점.",
+      "game": "협곡과 강변 취락으로 이어지는 출발점."
+    },
+    {
+      "id": "guangzhou",
+      "name": "광주",
+      "historic": "廣州府",
+      "lon": 113.26,
+      "lat": 23.13,
+      "region": "남부",
+      "history": "광동의 중심. 명초 해금 정책 아래 해상 교역을 자유무역으로 묘사하지 않도록 주의.",
+      "game": "남방 상단과 해안 지역의 거점."
+    },
+    {
+      "id": "fuzhou",
+      "name": "복주",
+      "historic": "福州府",
+      "lon": 119.3,
+      "lat": 26.08,
+      "region": "동남",
+      "history": "복건의 행정 중심. 민강 하구권에 위치.",
+      "game": "산지와 해안 사이의 동남부 도시."
+    },
+    {
+      "id": "nanchang",
+      "name": "남창",
+      "historic": "南昌府",
+      "lon": 115.86,
+      "lat": 28.68,
+      "region": "강서",
+      "history": "강서의 중심. 감강과 파양호를 통해 장강 수운권에 연결.",
+      "game": "호수와 강을 따라 이동하는 내륙 거점."
+    },
+    {
+      "id": "changsha",
+      "name": "장사",
+      "historic": "長沙府",
+      "lon": 112.94,
+      "lat": 28.23,
+      "region": "호남",
+      "history": "상강 유역의 주요 도시. 동정호를 통해 장강과 연결.",
+      "game": "남악 형산 방면의 탐험 거점."
+    },
+    {
+      "id": "datong",
+      "name": "대동",
+      "historic": "大同府",
+      "lon": 113.3,
+      "lat": 40.08,
+      "region": "북방",
+      "history": "북방 방어의 주요 군사 거점.",
+      "game": "변경의 군사 긴장과 호송로를 표현."
+    },
+    {
+      "id": "taiyuan",
+      "name": "태원",
+      "historic": "太原府",
+      "lon": 112.55,
+      "lat": 37.87,
+      "region": "북방",
+      "history": "산서의 중심이자 진왕(晉王)의 번왕 거점. 서안의 진왕(秦王)과 구별.",
+      "game": "산서 산길과 북방 내륙을 연결."
+    }
+  ],
+  "roads": [
+    [
+      "beiping",
+      "datong",
+      "taiyuan",
+      "xian"
+    ],
+    [
+      "beiping",
+      "jinan",
+      "jining",
+      "kaifeng",
+      "luoyang",
+      "xian"
+    ],
+    [
+      "luoyang",
+      "wuchang"
+    ],
+    [
+      "xian",
+      "chengdu",
+      "chongqing"
+    ],
+    [
+      "wuchang",
+      "changsha",
+      "guangzhou"
+    ],
+    [
+      "wuchang",
+      "nanchang",
+      "fuzhou"
+    ],
+    [
+      "hangzhou",
+      "fuzhou"
+    ],
+    [
+      "nanchang",
+      "hangzhou"
+    ]
+  ],
+  "waterRoutes": [
+    [
+      "chongqing",
+      "jingzhou",
+      "wuchang",
+      "nanjing",
+      "yangzhou"
+    ],
+    [
+      "hangzhou",
+      "suzhou",
+      "yangzhou",
+      "jining"
+    ]
+  ],
+  "note": "지형·하천·노선은 게임용 개략도. 행정 경계 및 정밀 역참 경로를 나타내지 않음.",
+  "factions": [
+    {
+      "id": "shaolin",
+      "name": "소림사",
+      "historic": "少林寺",
+      "kind": "구파일방",
+      "lon": 112.94,
+      "lat": 34.51,
+      "base": "하남 · 숭산 소실산",
+      "gateway": "낙양",
+      "basis": "숭산 소실산의 소림사를 본산으로 삼는 무협 관습. 실제 사찰과 무협 조직 설정은 구별한다.",
+      "labelOffset": [
+        -5,
+        -40
+      ],
+      "locationType": "실제 산악·사찰 기반의 무협 본산"
+    },
+    {
+      "id": "wudang",
+      "name": "무당파",
+      "historic": "武當派",
+      "kind": "구파일방",
+      "lon": 111.0,
+      "lat": 32.4,
+      "base": "호광 · 무당산",
+      "gateway": "무창 / 형주",
+      "basis": "무당산을 본산으로 설정. 영락제 때의 대규모 조영을 1390년에 완성된 모습으로 소급하지 않는다.",
+      "labelOffset": [
+        -90,
+        -10
+      ],
+      "locationType": "실제 산악·사찰 기반의 무협 본산"
+    },
+    {
+      "id": "huashan",
+      "name": "화산파",
+      "historic": "華山派",
+      "kind": "구파일방",
+      "lon": 110.09,
+      "lat": 34.48,
+      "base": "섬서 · 화산",
+      "gateway": "서안",
+      "basis": "서악 화산을 본산으로 삼는 무협 관습.",
+      "labelOffset": [
+        -35,
+        -48
+      ],
+      "locationType": "실제 산악·사찰 기반의 무협 본산"
+    },
+    {
+      "id": "emei",
+      "name": "아미파",
+      "historic": "峨嵋派",
+      "kind": "구파일방",
+      "lon": 103.33,
+      "lat": 29.52,
+      "base": "사천 · 아미산",
+      "gateway": "성도",
+      "basis": "아미산을 본산으로 설정. 무협에서의 구성원·계율은 실제 불교 사찰의 역사와 별도다.",
+      "labelOffset": [
+        -75,
+        25
+      ],
+      "locationType": "실제 산악·사찰 기반의 무협 본산"
+    },
+    {
+      "id": "qingcheng",
+      "name": "청성파",
+      "historic": "靑城派",
+      "kind": "구파일방",
+      "lon": 103.57,
+      "lat": 30.9,
+      "base": "사천 · 청성산",
+      "gateway": "성도",
+      "basis": "성도 서북쪽 청성산을 본산으로 설정.",
+      "labelOffset": [
+        -85,
+        -25
+      ],
+      "locationType": "실제 산악·사찰 기반의 무협 본산"
+    },
+    {
+      "id": "kongtong",
+      "name": "공동파",
+      "historic": "崆峒派",
+      "kind": "구파일방",
+      "lon": 106.52,
+      "lat": 35.55,
+      "base": "감숙 · 평량 공동산",
+      "gateway": "서안",
+      "basis": "평량 부근 공동산을 본산으로 삼는 무협 관습.",
+      "labelOffset": [
+        -60,
+        -15
+      ],
+      "locationType": "실제 산악·사찰 기반의 무협 본산"
+    },
+    {
+      "id": "kunlun",
+      "name": "곤륜파",
+      "historic": "崑崙派",
+      "kind": "구파일방",
+      "lon": 94.8,
+      "lat": 36.1,
+      "base": "서역 · 곤륜산맥 동부권",
+      "gateway": "서안 → 서북 확장 지역",
+      "basis": "곤륜산맥은 광범위하여 단일한 정설 본산 좌표가 없다. 동부권에 가상 본산을 두며 지도에서는 서북 별도 영역에 표시한다.",
+      "labelOffset": [
+        12,
+        4
+      ],
+      "locationType": "게임용 가상 거점",
+      "mapLon": 101.4,
+      "mapLat": 39.1
+    },
+    {
+      "id": "zhongnan",
+      "name": "종남파",
+      "historic": "終南派",
+      "kind": "구파일방",
+      "lon": 108.8,
+      "lat": 33.95,
+      "base": "섬서 · 종남산",
+      "gateway": "서안",
+      "basis": "서안 남쪽 종남산을 본산으로 설정. 전진교와의 관계는 추후 창작 설정으로 결정한다.",
+      "labelOffset": [
+        -65,
+        28
+      ],
+      "locationType": "실제 산악·사찰 기반의 무협 본산"
+    },
+    {
+      "id": "diancang",
+      "name": "점창파",
+      "historic": "點蒼派",
+      "kind": "구파일방",
+      "lon": 100.15,
+      "lat": 25.7,
+      "base": "운남 · 대리 점창산",
+      "gateway": "성도 → 운남 확장 지역",
+      "basis": "대리 서쪽 창산(점창산)을 본산으로 설정. 점창·종남 대신 해남 등을 넣는 작품도 있다.",
+      "labelOffset": [
+        12,
+        4
+      ],
+      "locationType": "실제 산악·사찰 기반의 무협 본산"
+    },
+    {
+      "id": "beggars",
+      "name": "개방",
+      "historic": "丐幫",
+      "kind": "구파일방",
+      "lon": 113.75,
+      "lat": 34.8,
+      "base": "하남 · 개봉 외곽의 가상 총타",
+      "gateway": "개봉",
+      "basis": "개방은 전국적인 방회다. 총타 위치는 작품마다 달라 이번 게임에서는 개봉 외곽을 임시 총타로 지정한다.",
+      "labelOffset": [
+        10,
+        -45
+      ],
+      "locationType": "게임용 가상 거점"
+    },
+    {
+      "id": "namgung",
+      "name": "남궁세가",
+      "historic": "南宮世家",
+      "kind": "오대세가",
+      "lon": 117.23,
+      "lat": 31.82,
+      "base": "남직례 · 합비 일대",
+      "gateway": "남경",
+      "basis": "안휘권이라는 무협 관습을 채택하고 합비 부근에 가상 장원을 배치. 1390년에는 안휘성이 존재하지 않으므로 당시 지역은 남직례로 표기한다.",
+      "labelOffset": [
+        -95,
+        28
+      ],
+      "locationType": "게임용 가상 거점"
+    },
+    {
+      "id": "murong",
+      "name": "모용세가",
+      "historic": "慕容世家",
+      "kind": "오대세가",
+      "lon": 120.35,
+      "lat": 31.16,
+      "base": "남직례 · 소주 태호권",
+      "gateway": "소주",
+      "basis": "소주·태호권을 채택하되 특정 작품의 장원·인물·서사는 사용하지 않는다.",
+      "labelOffset": [
+        22,
+        18
+      ],
+      "locationType": "게임용 가상 거점"
+    },
+    {
+      "id": "tang",
+      "name": "사천당가",
+      "historic": "四川唐家",
+      "kind": "오대세가",
+      "lon": 104.35,
+      "lat": 30.65,
+      "base": "사천 · 성도 외곽",
+      "gateway": "성도",
+      "basis": "사천·성도권이라는 관습을 채택. 실제 장원의 위치가 아닌 게임용 가상 거점이다.",
+      "labelOffset": [
+        15,
+        -30
+      ],
+      "locationType": "게임용 가상 거점"
+    },
+    {
+      "id": "zhuge",
+      "name": "제갈세가",
+      "historic": "諸葛世家",
+      "kind": "오대세가",
+      "lon": 112.1,
+      "lat": 32.0,
+      "base": "호광 · 양양 일대",
+      "gateway": "형주 / 무창",
+      "basis": "호북·양양권을 채택. 제갈량 관련 지리적 연상을 바탕으로 한 무협 창작 관습이며 실제 명대 무림 가문의 사료가 아니다.",
+      "labelOffset": [
+        15,
+        18
+      ],
+      "locationType": "게임용 가상 거점"
+    },
+    {
+      "id": "peng",
+      "name": "하북팽가",
+      "historic": "河北彭家",
+      "kind": "오대세가",
+      "lon": 115.48,
+      "lat": 38.85,
+      "base": "하북 · 보정 일대 (당시 북평 관할권)",
+      "gateway": "북평",
+      "basis": "사용자 지정에 따라 하북팽가를 채택. 하북 지역의 보정 일대에 가상 장원을 둔다. 현대 하북성의 행정구역을 1390년에 소급한 설정은 아니다.",
+      "labelOffset": [
+        -90,
+        -12
+      ],
+      "locationType": "게임용 가상 거점"
+    }
+  ]
+}

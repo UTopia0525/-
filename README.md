@@ -1,0 +1,39 @@
+# 명초 무협 RPG — 세계 지도 초안
+
+`world-map/index.html`을 브라우저에서 열면 된다. 외부 라이브러리·설치·서버 없이 작동한다.
+
+- 1390년경 주요 도시 20곳과 구파일방·오대세가 거점 15곳
+- 도시·문파·세가 선택 시 위치와 설정 근거 표시
+- 육로·수로·구파일방·오대세가 표시 전환, 확대·축소, 드래그 이동
+- 데이터: `world-map/world-data.json` (수정 후 `python world-map/sync-data.py` 실행)
+- 무협 세력 선정 및 개별 컨셉 색인: `docs/factions.md`
+- 남궁세가 확정 컨셉: `docs/factions/namgung.md`
+- 시대 설정·고증 한계: `docs/world-setting.md`
+
+현재는 전체 지도 설계이며, 실제 도트 탐험·전투·스토리는 미구현이다.
+
+남궁세가 주요 인물과 대사·수치 초안: [인물 설정](docs/characters/namgung-family.md). 초상화 원본은 `assets/portraits/namgung/`에 보관한다.
+
+## 이미지 보기
+
+GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 수 있다.
+
+- [전체 지도](docs/world-map-preview.png)
+- [남궁정천 — 가주](assets/portraits/namgung/jeongcheon.png)
+- [남궁서진 — 소가주](assets/portraits/namgung/seojin.png)
+- [남궁도윤 — 차남](assets/portraits/namgung/doyun.png)
+- [남궁연서 — 막내딸](assets/portraits/namgung/yeonseo.png)
+
+### 전체 지도
+
+![명초 강호도](docs/world-map-preview.png)
+
+### 남궁세가
+
+| 가주 · 남궁정천 | 소가주 · 남궁서진 |
+|---|---|
+| ![남궁정천](assets/portraits/namgung/jeongcheon.png) | ![남궁서진](assets/portraits/namgung/seojin.png) |
+
+| 차남 · 남궁도윤 | 막내딸 · 남궁연서 |
+|---|---|
+| ![남궁도윤](assets/portraits/namgung/doyun.png) | ![남궁연서](assets/portraits/namgung/yeonseo.png) |
