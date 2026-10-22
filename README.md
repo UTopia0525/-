@@ -39,3 +39,11 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | ![남궁도윤](assets/portraits/namgung/doyun.png) | ![남궁연서](assets/portraits/namgung/yeonseo.png) |
 
 세력별 인물·초상화 제작 기준: [제작 원칙](docs/characters/creation-guidelines.md). 전투 스탯은 전투 시스템 확정 이후 일괄 부여한다.
+
+## 하북팽가
+
+[가문 설정](docs/factions/peng.md) · [가주·소가주 설정](docs/characters/peng-family.md)
+
+| 가주 · 팽진산 | 소가주 · 팽무열 |
+|---|---|
+| ![팽진산](assets/portraits/peng/jinsan.png) | ![팽무열](assets/portraits/peng/muyeol.png) |
