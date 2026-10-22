@@ -61,7 +61,7 @@
 
 - [무당파](factions/wudang.md): 청회색·백색, 조화와 수양, 태극 계열 무학과 장삼봉 전승. [무당검선 운허·젊은 제자 청윤](characters/wudang.md).
 
-- [화산파](factions/huashan.md): 백색·짙은 적색, 절개와 명예, 아십사수매화검법. [장문인 진목·젊은 제자 소운](characters/huashan.md).
+- [화산파](factions/huashan.md): 백색·짙은 적색, 절개와 명예, 이십사수매화검법. [장문인 진목·젊은 제자 소운](characters/huashan.md).
 
 - [종남파](factions/zhongnan.md): 짙은 청색·흰색, 천하삼십육검과 후발제인, 전진교의 영향을 받은 별도 문파이며 화산과 앙숙. [정허·담진](characters/zhongnan.md).
 
@@ -75,4 +75,4 @@
 
 - [점창파](factions/diancang.md): 흰색·짙은 주황색, 사일검법과 집중·결단. [장문인 명담·자신감 부족한 제자 윤서](characters/diancang.md).
 
-- [개방](factions/beggars.md): 결개 계급, 방주·직전제자 전용 향룡십팔장과 일반 방도의 타구봉법. [구만복·이소칠](characters/beggars.md).
+- [개방](factions/beggars.md): 결개 계급, 방주·직전제자 전용 항룡십팔장과 일반 방도의 타구봉법. [구만복·이소칠](characters/beggars.md).
