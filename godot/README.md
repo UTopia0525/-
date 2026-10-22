@@ -130,3 +130,9 @@ godot --path godot --script res://tests/capture.gd
 ```
 
 `.godot/`는 로컬 생성 캐시이므로 Git에 포함하지 않습니다. 공개되지 않은 제작자 메모도 포함하지 않습니다.
+
+## 공용 대화 일러스트와 발언자 표시
+
+[엑스트라 일러스트 6종](assets/portraits/extras/README.md)은 성별·연령별 투명 배경 반신 초상화이다. 대화 참여자를 모두 화면에 남기고 발언자만 원래 밝기, 청자는 어둡게 표시한다. 전용 초상화가 있으면 우선 사용하며, 0장 인물들은 현재 공용 초상화를 임시 사용한다. 인물 등록·교체는 `scripts/dialogue_portraits.gd`를 따른다.
+
+검증: `godot --headless --path godot --script res://tests/dialogue.gd`

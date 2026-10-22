@@ -3,6 +3,7 @@ extends Control
 const UI = preload("res://scripts/ui.gd")
 const EXPLORATION = preload("res://scenes/exploration.tscn")
 const BATTLE = preload("res://scenes/battle.tscn")
+const PORTRAITS = preload("res://scripts/dialogue_portraits.gd")
 const MUSIC = preload("res://scripts/music.gd")
 var exploration
 var battle
@@ -20,7 +21,7 @@ var title_screen: Control
 var dialogue_panel: Panel
 var dialogue_name: Label
 var dialogue_text: Label
-var dialogue_portrait: TextureRect
+var dialogue_cast
 var dialogue_lines: Array = []
 var dialogue_index: int = 0
 var dialogue_done: Callable
@@ -86,21 +87,17 @@ func _build_hud() -> void:
 	bottom_hint.add_theme_constant_override("shadow_offset_y", 2)
 
 func _build_dialogue() -> void:
+	dialogue_cast = PORTRAITS.new()
+	ui_root.add_child(dialogue_cast)
 	dialogue_panel = UI.panel(ui_root, Rect2(24, 535, 1232, 160))
 	dialogue_panel.mouse_filter = Control.MOUSE_FILTER_STOP
-	dialogue_portrait = TextureRect.new()
-	dialogue_portrait.position = Vector2(5, 4)
-	dialogue_portrait.size = Vector2(120, 150)
-	dialogue_portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	dialogue_portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	dialogue_portrait.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	dialogue_panel.add_child(dialogue_portrait)
-	dialogue_name = UI.label(dialogue_panel, "", Rect2(138, 14, 1045, 30), 22, UI.GOLD)
-	dialogue_text = UI.label(dialogue_panel, "", Rect2(138, 55, 980, 83), 20)
+	dialogue_name = UI.label(dialogue_panel, "", Rect2(24, 14, 1045, 30), 22, UI.GOLD)
+	dialogue_text = UI.label(dialogue_panel, "", Rect2(24, 55, 1065, 83), 20)
 	dialogue_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	var next = UI.button(dialogue_panel, "다음 ▾", Rect2(1125, 106, 90, 38))
 	next.pressed.connect(advance_dialogue)
 	dialogue_panel.hide()
+	dialogue_cast.clear()
 
 func _full_overlay(color: Color) -> Control:
 	var overlay = Control.new()
@@ -142,6 +139,7 @@ func reset() -> void:
 	talked_captain = false
 	dialogue_lines.clear()
 	dialogue_panel.hide()
+	dialogue_cast.clear()
 	ending.hide()
 	battle.cancel()
 	exploration.show()
@@ -159,14 +157,27 @@ func start_story() -> void:
 	state = "explore"
 	bottom_hint.show()
 	objective.text = "나루 끝의 표두 서문길과 대화하기"
-	say([["주인공", "오늘은 나의 첫 정식 표행이다. 출항 전에 표두님을 찾아뵙자.", 0]])
+	say([["hero", "오늘은 나의 첫 정식 표행이다. 출항 전에 표두님을 찾아뵙자."]])
 
-func say(lines: Array, done: Callable = Callable()) -> void:
+func say(lines: Array, done: Callable = Callable(), listeners: Array = ["hero"]) -> void:
+	if lines.is_empty():
+		return
 	exploration.set_active(false)
 	dialogue_lines = lines
 	dialogue_music_cues = {}
 	dialogue_index = 0
 	dialogue_done = done
+	# Include listeners as well as every speaker, in a stable order.
+	var ids: Array = listeners.duplicate()
+	for line in lines:
+		if not ids.has(line[0]):
+			ids.append(line[0])
+	var participants: Array = []
+	for id in ids:
+		var actor: Dictionary = PORTRAITS.ACTORS[id].duplicate()
+		actor["id"] = id
+		participants.append(actor)
+	dialogue_cast.set_participants(participants)
 	dialogue_panel.show()
 	_show_line()
 
@@ -174,9 +185,9 @@ func _show_line() -> void:
 	if dialogue_music_cues.has(dialogue_index):
 		music.play_track(dialogue_music_cues[dialogue_index])
 	var line = dialogue_lines[dialogue_index]
-	dialogue_name.text = line[0]
+	dialogue_name.text = PORTRAITS.ACTORS[line[0]].name
 	dialogue_text.text = line[1]
-	dialogue_portrait.texture = UI.character_texture(line[2])
+	dialogue_cast.set_speaker(line[0])
 
 func advance_dialogue() -> void:
 	if dialogue_lines.is_empty():
@@ -187,6 +198,7 @@ func advance_dialogue() -> void:
 	else:
 		dialogue_lines = []
 		dialogue_panel.hide()
+		dialogue_cast.clear()
 		var done = dialogue_done
 		dialogue_done = Callable()
 		if done.is_valid():
@@ -205,28 +217,28 @@ func interact() -> void:
 		return
 	match npc.id:
 		"captain":
-			say([["서문길", "오늘부터 너도 정식 표행에 나서는 거다. 긴장했느냐?", 4], ["서문길", "저 배에는 우리 식구들이 함께 탄다. 화물을 살피되 동료가 어디 있는지도 잊지 마라.", 4], ["서문길", "준비가 되면 오른쪽 널빤지를 건너 배에 올라라. 갑판에서 다시 보자.", 4]], func():
+			say([["captain", "오늘부터 너도 정식 표행에 나서는 거다. 긴장했느냐?"], ["captain", "저 배에는 우리 식구들이 함께 탄다. 화물을 살피되 동료가 어디 있는지도 잊지 마라."], ["captain", "준비가 되면 오른쪽 널빤지를 건너 배에 올라라. 갑판에서 다시 보자."]], func():
 				talked_captain = true
 				objective.text = "오른쪽 널빤지를 건너 호송선에 오르기")
 		"apothecary":
-			say([["진소옥", "그 상자는 약재예요. 쌀가마처럼 던졌다가는 제가 먼저 화낼 거예요.", 5], ["진소옥", "이번에는 늦지 않게 도착했으면 좋겠네요. 기다리는 사람들이 있거든요.", 5]])
+			say([["apothecary", "그 상자는 약재예요. 쌀가마처럼 던졌다가는 제가 먼저 화낼 거예요."], ["apothecary", "이번에는 늦지 않게 도착했으면 좋겠네요. 기다리는 사람들이 있거든요."]])
 		"sailor":
-			say([["허만복", "첫 표행이라고? 어깨 힘 좀 빼게. 그렇게 굳어 있으면 배가 흔들릴 때 바로 넘어진다네.", 6], ["허만복", "배에서는 발밑도 살피고, 사람 말도 잘 들어야 해. 자, 이 매듭부터 한번 봐.", 6]])
+			say([["sailor", "첫 표행이라고? 어깨 힘 좀 빼게. 그렇게 굳어 있으면 배가 흔들릴 때 바로 넘어진다네."], ["sailor", "배에서는 발밑도 살피고, 사람 말도 잘 들어야 해. 자, 이 매듭부터 한번 봐."]])
 		"clerk":
-			say([["육승", "수량 확인은 끝났습니다. 따로 봉한 귀물도 빠짐없이 실었고요.", 7], ["육승", "귀물을 전달하면 약정된 보수를 받습니다. 인도할 때까지 조심해 주세요.", 7]])
+			say([["clerk", "수량 확인은 끝났습니다. 따로 봉한 귀물도 빠짐없이 실었고요."], ["clerk", "귀물을 전달하면 약정된 보수를 받습니다. 인도할 때까지 조심해 주세요."]])
 		"boarding":
 			if not talked_captain:
-				say([["주인공", "먼저 표두님께 인사하자.", 0]])
+				say([["hero", "먼저 표두님께 인사하자."]])
 			else:
-				say([["주인공", "배에 오르자. 첫 표행을 시작할 시간이다.", 0]], func():
+				say([["hero", "배에 오르자. 첫 표행을 시작할 시간이다."]], func():
 					exploration.load_area("deck")
 					music.play_track("voyage")
 					location.text = "호송선 · 동정호 수로"
 					objective.text = "갑판의 표두에게 출항 보고하기")
 		"deck-sailor":
-			say([["허만복", "물살은 괜찮군. 저 좁은 수로만 지나면 한동안 편할 거야.", 6]])
+			say([["sailor", "물살은 괜찮군. 저 좁은 수로만 지나면 한동안 편할 거야."]])
 		"deck-captain":
-			say([["주인공", "표두님, 갑판에 올라왔습니다.", 0], ["서문길", "좋다. 처음에는 내가 보이는 곳에 있어라. 무슨 일이 나면—", 4], ["허만복", "작은 배가 붙습니다! 저 표식은…… 흑린채입니다!", 6], ["서문길", "모두 화물에서 떨어져라! 너는 이쪽 통로를 지켜. 무리해서 쫓지는 마라!", 4]], start_battle)
+			say([["hero", "표두님, 갑판에 올라왔습니다."], ["captain", "좋다. 처음에는 내가 보이는 곳에 있어라. 무슨 일이 나면—"], ["sailor", "작은 배가 붙습니다! 저 표식은…… 흑린채입니다!"], ["captain", "모두 화물에서 떨어져라! 너는 이쪽 통로를 지켜. 무리해서 쫓지는 마라!"]], start_battle)
 			dialogue_music_cues = {2: "ambush"}
 
 func start_battle() -> void:
@@ -234,6 +246,7 @@ func start_battle() -> void:
 	state = "battle"
 	dialogue_lines = []
 	dialogue_panel.hide()
+	dialogue_cast.clear()
 	title_screen.hide()
 	ending.hide()
 	top_hud.hide()
