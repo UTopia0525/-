@@ -131,3 +131,11 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | 장문인 · 현석 | 젊은 제자 · 담호 |
 |---|---|
 | ![현석](assets/portraits/kongtong/hyeonseok.png) | ![담호](assets/portraits/kongtong/damho.png) |
+
+## 곤륜파
+
+[문파 설정·운룡검법·운룡십팔식](docs/factions/kunlun.md) · [장문인·여제자 설정](docs/characters/kunlun.md)
+
+| 장문인 · 도겸 | 젊은 여제자 · 연하 |
+|---|---|
+| ![도겸](assets/portraits/kunlun/dogyeom.png) | ![연하](assets/portraits/kunlun/yeonha.png) |

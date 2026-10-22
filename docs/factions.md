@@ -70,3 +70,5 @@
 - [청성파](factions/qingcheng.md): 청람검법 채택, 청록·옅은 회색의 지역 도가 문파 초안. [통현·지온](characters/qingcheng.md).
 
 - [공동파](factions/kongtong.md): 복마검법, 실전성과 짙은 살기에 대한 도가 문파 일부의 비판, 현실적이고 시원한 기풍. [현석·담호](characters/kongtong.md).
+
+- [곤륜파](factions/kunlun.md): 마교와 오랜 대치, 운룡검법·경신법 운룡십팔식, 거칠지만 정 많고 손님을 환대하는 문파. [도겸·연하](characters/kunlun.md).
