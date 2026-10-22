@@ -12,7 +12,7 @@
 
 현재는 전체 지도 설계이며, 실제 도트 탐험·전투·스토리는 미구현이다.
 
-남궁세가 주요 인물과 대사·수치 초안: [인물 설정](docs/characters/namgung-family.md). 초상화 원본은 `assets/portraits/namgung/`에 보관한다.
+남궁세가 주요 인물과 대사 초안: [인물 설정](docs/characters/namgung-family.md). 초상화 원본은 `assets/portraits/namgung/`에 보관한다.
 
 ## 이미지 보기
 
@@ -37,3 +37,5 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | 차남 · 남궁도윤 | 막내딸 · 남궁연서 |
 |---|---|
 | ![남궁도윤](assets/portraits/namgung/doyun.png) | ![남궁연서](assets/portraits/namgung/yeonseo.png) |
+
+세력별 인물·초상화 제작 기준: [제작 원칙](docs/characters/creation-guidelines.md). 전투 스탯은 전투 시스템 확정 이후 일괄 부여한다.
