@@ -55,3 +55,11 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | 가주 · 제갈문겸 | 소가주 · 제갈윤 | 정파제일화 · 제갈설하 |
 |---|---|---|
 | ![제갈문겸](assets/portraits/zhuge/mungyeom.png) | ![제갈윤](assets/portraits/zhuge/yun.png) | ![제갈설하](assets/portraits/zhuge/seolha.png) |
+
+## 사천당가
+
+[가문 설정과 무공](docs/factions/tang.md) · [가주·장녀·소가주 설정](docs/characters/tang-family.md)
+
+| 가주 · 당겸 | 장녀 · 당서령 | 소가주 · 당윤재 |
+|---|---|---|
+| ![당겸](assets/portraits/tang/gyeom.png) | ![당서령](assets/portraits/tang/seoryeong.png) | ![당윤재](assets/portraits/tang/yunjae.png) |

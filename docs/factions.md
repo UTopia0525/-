@@ -52,3 +52,5 @@
 - [하북팽가](factions/peng.md): 짙은 청색, 발달한 근육, 대도, 강함에 대한 집착. [가주·소가주 창작 초안](characters/peng-family.md).
 
 - [제갈세가](factions/zhuge.md): 백색 복식과 지략, 판관필·철선. [가주·소가주·정파제일화 창작 초안](characters/zhuge-family.md).
+
+- [사천당가](factions/tang.md): 독공·독장·암기술과 해독술, 암녹색·검정. 만천화우는 소실, 천라지망은 제외. [가주·장녀·소가주 창작 초안](characters/tang-family.md).
