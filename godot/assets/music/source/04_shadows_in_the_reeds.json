@@ -3,14 +3,16 @@
     "id": "ambush",
     "file": "04_shadows_in_the_reeds.ogg",
     "title": "갈대 속의 그림자",
-    "context": "습격 전 긴장",
+    "context": "긴장·위기 시",
     "bpm": 96,
     "bars": 24,
     "root": 62,
     "minor": true,
     "lead": "erhu",
     "density": 0.5,
-    "seed": 41
+    "seed": 41,
+    "subtitle": "긴장·위기 시",
+    "display_title": "갈대 속의 그림자 — 긴장·위기 시"
   },
   "notes": [
     {

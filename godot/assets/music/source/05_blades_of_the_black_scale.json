@@ -3,14 +3,16 @@
     "id": "battle",
     "file": "05_blades_of_the_black_scale.ogg",
     "title": "흑린의 칼끝",
-    "context": "일반 전투",
+    "context": "일반 전투 시",
     "bpm": 128,
     "bars": 32,
     "root": 62,
     "minor": true,
     "lead": "pipa",
     "density": 2,
-    "seed": 59
+    "seed": 59,
+    "subtitle": "일반 전투 시",
+    "display_title": "흑린의 칼끝 — 일반 전투 시"
   },
   "notes": [
     {

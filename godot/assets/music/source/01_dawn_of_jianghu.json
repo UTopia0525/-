@@ -3,14 +3,16 @@
     "id": "title",
     "file": "01_dawn_of_jianghu.ogg",
     "title": "강호의 여명",
-    "context": "타이틀·회상",
+    "context": "타이틀·회상 시",
     "bpm": 64,
     "bars": 16,
     "root": 62,
     "minor": false,
     "lead": "xiao",
     "density": 0.5,
-    "seed": 11
+    "seed": 11,
+    "subtitle": "타이틀·회상 시",
+    "display_title": "강호의 여명 — 타이틀·회상 시"
   },
   "notes": [
     {

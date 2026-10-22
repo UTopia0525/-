@@ -2,15 +2,19 @@
 
 각 곡은 **정확히 60초 · 44.1kHz · 스테레오 OGG Vorbis**입니다. 상황에 따라 한 곡을 반복하며, 상황이 바뀔 때는 짧게 교차 페이드합니다. 곡 시작/끝의 무음을 붙이는 대신 잔향을 다음 반복의 처음으로 이어 제작했습니다.
 
-| 파일 | 곡명 | 사용 상황 | 분위기 |
+| 파일 | 곡명 | 부제 (공통 용도) | 분위기 |
 | --- | --- | --- | --- |
-| [01_dawn_of_jianghu.ogg](01_dawn_of_jianghu.ogg) | 강호의 여명 | 타이틀·회상 | 느린 소/피리 계열 선율과 고쟁 계열 반주 |
-| [02_morning_at_the_dock.ogg](02_morning_at_the_dock.ogg) | 나루의 아침 | 마을·나루터 탐험 | 밝고 경쾌한 오음계 현악 선율 |
-| [03_escort_on_the_water.ogg](03_escort_on_the_water.ogg) | 물결 위의 표행 | 항해·갑판 탐험 | 길게 흐르는 관악 선율과 잔잔한 현악 |
-| [04_shadows_in_the_reeds.ogg](04_shadows_in_the_reeds.ogg) | 갈대 속의 그림자 | 습격 전 긴장 | 낮은 지속음·찰현 계열 음색·절제한 타악 |
-| [05_blades_of_the_black_scale.ogg](05_blades_of_the_black_scale.ogg) | 흑린의 칼끝 | 일반 전투 | 빠른 발현 선율과 북·목질 타악 |
+| [01_dawn_of_jianghu.ogg](01_dawn_of_jianghu.ogg) | 강호의 여명 | 타이틀·회상 시 | 느린 소/피리 계열 선율과 고쟁 계열 반주 |
+| [02_morning_at_the_dock.ogg](02_morning_at_the_dock.ogg) | 나루의 아침 | 일반 맵 이동 시 | 밝고 경쾌한 오음계 현악 선율 |
+| [03_escort_on_the_water.ogg](03_escort_on_the_water.ogg) | 물결 위의 표행 | 평온한 대화·휴식 시 | 길게 흐르는 관악 선율과 잔잔한 현악 |
+| [04_shadows_in_the_reeds.ogg](04_shadows_in_the_reeds.ogg) | 갈대 속의 그림자 | 긴장·위기 시 | 낮은 지속음·찰현 계열 음색·절제한 타악 |
+| [05_blades_of_the_black_scale.ogg](05_blades_of_the_black_scale.ogg) | 흑린의 칼끝 | 일반 전투 시 | 빠른 발현 선율과 북·목질 타악 |
 
 음색은 **직접 합성한 전통악기풍 음색**입니다. 실제 고쟁·비파·소·이호 연주를 녹음한 음원은 아닙니다. 외부 음원·샘플·사운드폰트나 기존 곡을 사용하지 않고, 오리지널 선율과 편곡을 코드로 작성했습니다. 최종 음악 방향은 이후 청취 의견에 맞춰 조정할 수 있습니다.
+
+각 곡은 특정 장소의 전용 음악이 아닌 **상황별 공용 음악**으로 사용합니다. 예를 들어 ‘나루의 아침 — 일반 맵 이동 시’는 나루터 외의 다른 일반 맵에도 배치할 수 있고, ‘흑린의 칼끝 — 일반 전투 시’는 흑린채 외의 적과 싸울 때도 사용할 수 있습니다. 아래 프로젝트 연결은 현재 0장의 배치 예시입니다.
+
+음악 플레이어의 제목에도 **‘기존 곡명 — 용도 부제’**가 표시되도록 OGG 태그를 저장했습니다. 파일명은 프로젝트에서 참조하는 기존 이름을 사용합니다.
 
 ## 별도로 듣기
 
@@ -29,7 +33,7 @@ PC의 `godot/assets/music/`에서 OGG 파일을 음악 플레이어로 열면 �
 
 ## 원본과 수정
 
-- `manifest.json`: 곡별 용도·박자 속도·길이·형식.
+- `manifest.json`: 기존 곡명(`title`)·용도 부제(`subtitle`)·표시 제목(`display_title`)·박자 속도·길이·형식.
 - `source/*.json`: 악기·음높이·시작 박·음 길이·음량·좌우 배치가 담긴 편집 데이터.
 - `source/*.mid`: 외부 작곡 프로그램에서 편집할 수 있는 MIDI. MIDI의 GM 대체 악기는 OGG의 합성 음색과 다릅니다.
 - 저장소의 `tools/compose_bgm.py`: 결정적인 시드로 5곡을 다시 합성하는 제작 스크립트.

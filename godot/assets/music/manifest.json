@@ -3,7 +3,7 @@
     "id": "title",
     "file": "01_dawn_of_jianghu.ogg",
     "title": "강호의 여명",
-    "context": "타이틀·회상",
+    "context": "타이틀·회상 시",
     "bpm": 64,
     "bars": 16,
     "root": 62,
@@ -15,13 +15,15 @@
     "sample_rate": 44100,
     "channels": 2,
     "loop": true,
-    "instruments": "synthetic guzheng/pipa/xiao/erhu/sheng and percussion"
+    "instruments": "synthetic guzheng/pipa/xiao/erhu/sheng and percussion",
+    "subtitle": "타이틀·회상 시",
+    "display_title": "강호의 여명 — 타이틀·회상 시"
   },
   {
     "id": "dock",
     "file": "02_morning_at_the_dock.ogg",
     "title": "나루의 아침",
-    "context": "마을·나루터 탐험",
+    "context": "일반 맵 이동 시",
     "bpm": 96,
     "bars": 24,
     "root": 67,
@@ -33,13 +35,15 @@
     "sample_rate": 44100,
     "channels": 2,
     "loop": true,
-    "instruments": "synthetic guzheng/pipa/xiao/erhu/sheng and percussion"
+    "instruments": "synthetic guzheng/pipa/xiao/erhu/sheng and percussion",
+    "subtitle": "일반 맵 이동 시",
+    "display_title": "나루의 아침 — 일반 맵 이동 시"
   },
   {
     "id": "voyage",
     "file": "03_escort_on_the_water.ogg",
     "title": "물결 위의 표행",
-    "context": "항해·갑판 탐험",
+    "context": "평온한 대화·휴식 시",
     "bpm": 80,
     "bars": 20,
     "root": 62,
@@ -51,13 +55,15 @@
     "sample_rate": 44100,
     "channels": 2,
     "loop": true,
-    "instruments": "synthetic guzheng/pipa/xiao/erhu/sheng and percussion"
+    "instruments": "synthetic guzheng/pipa/xiao/erhu/sheng and percussion",
+    "subtitle": "평온한 대화·휴식 시",
+    "display_title": "물결 위의 표행 — 평온한 대화·휴식 시"
   },
   {
     "id": "ambush",
     "file": "04_shadows_in_the_reeds.ogg",
     "title": "갈대 속의 그림자",
-    "context": "습격 전 긴장",
+    "context": "긴장·위기 시",
     "bpm": 96,
     "bars": 24,
     "root": 62,
@@ -69,13 +75,15 @@
     "sample_rate": 44100,
     "channels": 2,
     "loop": true,
-    "instruments": "synthetic guzheng/pipa/xiao/erhu/sheng and percussion"
+    "instruments": "synthetic guzheng/pipa/xiao/erhu/sheng and percussion",
+    "subtitle": "긴장·위기 시",
+    "display_title": "갈대 속의 그림자 — 긴장·위기 시"
   },
   {
     "id": "battle",
     "file": "05_blades_of_the_black_scale.ogg",
     "title": "흑린의 칼끝",
-    "context": "일반 전투",
+    "context": "일반 전투 시",
     "bpm": 128,
     "bars": 32,
     "root": 62,
@@ -87,6 +95,8 @@
     "sample_rate": 44100,
     "channels": 2,
     "loop": true,
-    "instruments": "synthetic guzheng/pipa/xiao/erhu/sheng and percussion"
+    "instruments": "synthetic guzheng/pipa/xiao/erhu/sheng and percussion",
+    "subtitle": "일반 전투 시",
+    "display_title": "흑린의 칼끝 — 일반 전투 시"
   }
 ]

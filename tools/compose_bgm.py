@@ -83,11 +83,11 @@ THEMES = {
 }
 
 TRACKS = [
-    dict(id="title", file="01_dawn_of_jianghu.ogg", title="강호의 여명", context="타이틀·회상", bpm=64, bars=16, root=62, minor=False, lead="xiao", density=.5, seed=11),
-    dict(id="dock", file="02_morning_at_the_dock.ogg", title="나루의 아침", context="마을·나루터 탐험", bpm=96, bars=24, root=67, minor=False, lead="pipa", density=1, seed=23),
-    dict(id="voyage", file="03_escort_on_the_water.ogg", title="물결 위의 표행", context="항해·갑판 탐험", bpm=80, bars=20, root=62, minor=False, lead="xiao", density=1, seed=37),
-    dict(id="ambush", file="04_shadows_in_the_reeds.ogg", title="갈대 속의 그림자", context="습격 전 긴장", bpm=96, bars=24, root=62, minor=True, lead="erhu", density=.5, seed=41),
-    dict(id="battle", file="05_blades_of_the_black_scale.ogg", title="흑린의 칼끝", context="일반 전투", bpm=128, bars=32, root=62, minor=True, lead="pipa", density=2, seed=59),
+    dict(id="title", file="01_dawn_of_jianghu.ogg", title="강호의 여명", subtitle="타이틀·회상 시", context="타이틀·회상 시", bpm=64, bars=16, root=62, minor=False, lead="xiao", density=.5, seed=11),
+    dict(id="dock", file="02_morning_at_the_dock.ogg", title="나루의 아침", subtitle="일반 맵 이동 시", context="일반 맵 이동 시", bpm=96, bars=24, root=67, minor=False, lead="pipa", density=1, seed=23),
+    dict(id="voyage", file="03_escort_on_the_water.ogg", title="물결 위의 표행", subtitle="평온한 대화·휴식 시", context="평온한 대화·휴식 시", bpm=80, bars=20, root=62, minor=False, lead="xiao", density=1, seed=37),
+    dict(id="ambush", file="04_shadows_in_the_reeds.ogg", title="갈대 속의 그림자", subtitle="긴장·위기 시", context="긴장·위기 시", bpm=96, bars=24, root=62, minor=True, lead="erhu", density=.5, seed=41),
+    dict(id="battle", file="05_blades_of_the_black_scale.ogg", title="흑린의 칼끝", subtitle="일반 전투 시", context="일반 전투 시", bpm=128, bars=32, root=62, minor=True, lead="pipa", density=2, seed=59),
 ]
 
 
@@ -276,6 +276,8 @@ def write_midi(path: Path, config: dict, notes: list[dict]) -> None:
     programs = {"guzheng":107,"pipa":24,"xiao":75,"erhu":110,"sheng":20,"drum":116,"wood":115,"gong":14,"bell":14}
     instruments = list(programs)
     events = []
+    name = f'{config["title"]} — {config["subtitle"]}'.encode('utf-8')
+    events.append((0,b'\xff\x03'+varlen(len(name))+name))
     tempo = round(60_000_000/config["bpm"])
     events.append((0,b'\xff\x51\x03'+tempo.to_bytes(3,"big")))
     events.append((0,b'\xff\x58\x04\x04\x02\x18\x08'))
@@ -308,7 +310,7 @@ def main() -> None:
     manifest=[]
     for config in TRACKS:
         assert config['bars']*4*60/config['bpm']==SECONDS
-        manifest.append({**config,'seconds':SECONDS,'sample_rate':SR,'channels':2,'loop':True,'instruments':'synthetic guzheng/pipa/xiao/erhu/sheng and percussion'})
+        manifest.append({**config,'display_title':f'{config["title"]} — {config["subtitle"]}','seconds':SECONDS,'sample_rate':SR,'channels':2,'loop':True,'instruments':'synthetic guzheng/pipa/xiao/erhu/sheng and percussion'})
         if args.track and config['id']!=args.track:
             continue
         notes=score(config)
@@ -317,9 +319,10 @@ def main() -> None:
             wav=Path(temporary)/'master.wav'
             wavfile.write(wav,SR,np.round(np.clip(music,-1,1)*32767).astype(np.int16))
             subprocess.run(['ffmpeg','-v','error','-y','-i',str(wav),'-c:a','libvorbis','-q:a','5',
-                            '-metadata',f'title={config["title"]}','-metadata','artist=Murim RPG original synthesized score',
+                            '-metadata',f'title={config["title"]} — {config["subtitle"]}','-metadata',f'subtitle={config["subtitle"]}',
+                            '-metadata','album=명초 무협 RPG · 공통 상황별 BGM','-metadata','artist=Murim RPG original synthesized score',
                             '-metadata','LOOPSTART=0','-metadata',f'LOOPEND={N}',str(OUT/config['file'])],check=True)
-        (sources/(Path(config['file']).stem+'.json')).write_text(json.dumps({'track':config,'notes':notes},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+        (sources/(Path(config['file']).stem+'.json')).write_text(json.dumps({'track':{**config,'display_title':f'{config["title"]} — {config["subtitle"]}'},'notes':notes},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
         write_midi(sources/(Path(config['file']).stem+'.mid'),config,notes)
         print(f'{config["id"]}: {len(notes)} events; 60.000s; peak={np.max(np.abs(music)):.3f}; RMS={np.sqrt(np.mean(music**2)):.3f}',flush=True)
     (OUT/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')

@@ -3,14 +3,16 @@
     "id": "dock",
     "file": "02_morning_at_the_dock.ogg",
     "title": "나루의 아침",
-    "context": "마을·나루터 탐험",
+    "context": "일반 맵 이동 시",
     "bpm": 96,
     "bars": 24,
     "root": 67,
     "minor": false,
     "lead": "pipa",
     "density": 1,
-    "seed": 23
+    "seed": 23,
+    "subtitle": "일반 맵 이동 시",
+    "display_title": "나루의 아침 — 일반 맵 이동 시"
   },
   "notes": [
     {
