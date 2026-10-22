@@ -71,3 +71,15 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | 가주 · 모용경원 | 소가주 · 모용유안 |
 |---|---|
 | ![모용경원](assets/portraits/murong/gyeongwon.png) | ![모용유안](assets/portraits/murong/yuan.png) |
+
+## 소림
+
+[문파 설정과 무학](docs/factions/shaolin.md) · [주요 인물 설정](docs/characters/shaolin.md)
+
+| 방장 · 법연 | 계율 장로 · 법엄 |
+|---|---|
+| ![법연](assets/portraits/shaolin/beopyeon.png) | ![법엄](assets/portraits/shaolin/beobeom.png) |
+
+| 젊은 제자 · 혜담 | 태상방장 · 현진 |
+|---|---|
+| ![혜담](assets/portraits/shaolin/hyedam.png) | ![현진](assets/portraits/shaolin/hyeonjin.png) |

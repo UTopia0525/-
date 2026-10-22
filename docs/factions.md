@@ -56,3 +56,5 @@
 - [사천당가](factions/tang.md): 독공·독장·암기술과 해독술, 암녹색·검정. 만천화우는 소실, 천라지망은 제외. [가주·장녀·소가주 창작 초안](characters/tang-family.md).
 
 - [모용세가](factions/murong.md): 자색·은회색 복식, 교류와 무학 연구, 반격과 분석 검술. [가주·소가주 창작 초안](characters/murong-family.md).
+
+- [소림](factions/shaolin.md): 자비·계율·구휼, 권장과 봉 중심. [방장·계율 장로·젊은 제자·태상방장 창작 초안](characters/shaolin.md).
