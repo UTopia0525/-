@@ -83,4 +83,6 @@
 
 - [장강수로십팔채](factions/waterbandits.md): 동정호 인근 흑린채 한 곳만 지도에 배치. [대도와 수공을 쓰는 채주 염문악](characters/waterbandits.md).
 
-- [흑도방](factions/blackguild.md): 각지 작은 흑도 조직을 총괄하고 금전적 이익을 최우선으로 삼는 조직. [잔혹한 조법 고수 방주 위중량](characters/blackguild.md). 추가 운영 설정은 미확정 제안.
+- [흑도방](factions/blackguild.md): 각지 작은 흑도 조직을 총괄하고 금전적 이익을 최우선으로 삼는 조직. [잔혹한 조법 고수 방주 위중량](characters/blackguild.md). 총본부는 항주. 추가 운영 설정은 미확정 제안.
+
+- [추가 사파 후보](factions/heterodox-candidates.md): 무영각·적월문·하오문. 아직 채택되지 않은 제안이다.
