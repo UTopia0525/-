@@ -175,3 +175,11 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 세계관에는 18채가 있지만 지도에는 동정호 인근 흑린채 한 곳만 배치했다. ‘장강 핵심 수채’ 버튼과 청색 마름모로 구별한다.
 
 ![염문악](assets/portraits/waterbandits/yeommunak.png)
+
+## 흑도방
+
+[조직 설정과 추가 채택 후보](docs/factions/blackguild.md) · [방주 위중량](docs/characters/blackguild.md)
+
+전국의 여러 작은 흑도 조직을 총괄하고 금전적 이득을 최우선으로 삼는 조직. 총본부 위치와 추가 운영 설정은 미정이다.
+
+![위중량](assets/portraits/blackguild/wijungnyang.png)

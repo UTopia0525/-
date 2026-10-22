@@ -82,3 +82,5 @@
 - [녹림삼십육채](factions/greenwood.md): 지도에는 핵심 산채 3곳만 배치. 외공 강자 세 채주가 총채주 자리를 두고 경쟁한다. [곽철산·연적하·마운표](characters/greenwood.md).
 
 - [장강수로십팔채](factions/waterbandits.md): 동정호 인근 흑린채 한 곳만 지도에 배치. [대도와 수공을 쓰는 채주 염문악](characters/waterbandits.md).
+
+- [흑도방](factions/blackguild.md): 각지 작은 흑도 조직을 총괄하고 금전적 이익을 최우선으로 삼는 조직. [잔혹한 조법 고수 방주 위중량](characters/blackguild.md). 추가 운영 설정은 미확정 제안.
