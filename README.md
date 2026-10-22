@@ -1,5 +1,7 @@
 # 명초 무협 RPG
 
+**[Godot 4 프로젝트 · 실행 안내와 실제 화면](godot/README.md)** — 탐험 미술을 개선한 0장 버전. `godot/project.godot`을 Godot에서 열고 F5로 실행한다.
+
 **[0장 플레이 데모 실행 안내](demo/README.md)** — 저장소를 내려받은 뒤 `demo/index.html`을 브라우저에서 열면 된다. GitHub 파일 미리보기에서는 실행되지 않는다.
 
 `world-map/index.html`을 브라우저에서 열면 된다. 외부 라이브러리·설치·서버 없이 작동한다.
