@@ -139,3 +139,11 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | 장문인 · 도겸 | 젊은 여제자 · 연하 |
 |---|---|
 | ![도겸](assets/portraits/kunlun/dogyeom.png) | ![연하](assets/portraits/kunlun/yeonha.png) |
+
+## 점창파
+
+[문파 설정과 사일검법](docs/factions/diancang.md) · [장문인·제자 설정](docs/characters/diancang.md)
+
+| 장문인 · 명담 | 젊은 제자 · 윤서 |
+|---|---|
+| ![명담](assets/portraits/diancang/myeongdam.png) | ![윤서](assets/portraits/diancang/yunseo.png) |
