@@ -2,9 +2,9 @@
 
 `world-map/index.html`을 브라우저에서 열면 된다. 외부 라이브러리·설치·서버 없이 작동한다.
 
-- 1390년경 주요 도시 20곳과 구파일방·오대세가 거점 15곳
+- 1390년경 주요 도시 20곳과 구파일방·오대세가 거점 15곳, 녹림 핵심 산채 3곳
 - 도시·문파·세가 선택 시 위치와 설정 근거 표시
-- 육로·수로·구파일방·오대세가 표시 전환, 확대·축소, 드래그 이동
+- 육로·수로·구파일방·오대세가·녹림 산채 표시 전환, 확대·축소, 드래그 이동
 - 데이터: `world-map/world-data.json` (수정 후 `python world-map/sync-data.py` 실행)
 - 무협 세력 선정 및 개별 컨셉 색인: `docs/factions.md`
 - 남궁세가 확정 컨셉: `docs/factions/namgung.md`
@@ -157,3 +157,13 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | ![구만복](assets/portraits/beggars/gumanbok.png) | ![이소칠](assets/portraits/beggars/leesochil.png) |
 
 전체 세력과 주요 인물 요약: [구파일방·오대세가 통합 설정집](docs/factions-overview.md).
+
+## 녹림삼십육채
+
+[연합 설정·세 산채 위치·독문 외공](docs/factions/greenwood.md) · [총채주 후보 세 명](docs/characters/greenwood.md)
+
+세계관에는 36채가 존재하지만 지도에는 흑석채·적송채·청애채 세 곳만 배치했다. 지도에서 ‘녹림 핵심 산채’ 버튼으로 표시를 전환하고 산채를 선택하면 채주와 무공을 볼 수 있다.
+
+| 흑석채 · 곽철산 | 적송채 · 연적하 | 청애채 · 마운표 |
+|---|---|---|
+| ![곽철산](assets/portraits/greenwood/gwatcheolsan.png) | ![연적하](assets/portraits/greenwood/yeonjeokha.png) | ![마운표](assets/portraits/greenwood/maunpyo.png) |

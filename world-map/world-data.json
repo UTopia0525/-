@@ -435,8 +435,8 @@
       "gateway": "남경",
       "basis": "안휘권이라는 무협 관습을 채택하고 합비 부근에 가상 장원을 배치. 1390년에는 안휘성이 존재하지 않으므로 당시 지역은 남직례로 표기한다.",
       "labelOffset": [
-        -95,
-        28
+        -35,
+        -26
       ],
       "locationType": "게임용 가상 거점"
     },
@@ -503,6 +503,56 @@
         -12
       ],
       "locationType": "게임용 가상 거점"
+    }
+  ],
+  "camps": [
+    {
+      "id": "heishi",
+      "name": "흑석채",
+      "lon": 113.6,
+      "lat": 36.9,
+      "region": "태행산 남부 산길권",
+      "gateway": "태원",
+      "gatewayId": "taiyuan",
+      "leader": "곽철산 · 총채주 후보",
+      "martialArt": "철등쇄악공",
+      "description": "거대한 등·어깨의 외공을 지닌 채주. 결속과 공동 살림을 앞세워 총채주 자리를 노린다.",
+      "labelOffset": [
+        14,
+        -12
+      ]
+    },
+    {
+      "id": "chisong",
+      "name": "적송채",
+      "lon": 112.0,
+      "lat": 33.6,
+      "region": "하남 복우산 산길권",
+      "gateway": "낙양",
+      "gatewayId": "luoyang",
+      "leader": "연적하 · 총채주 후보",
+      "martialArt": "적송철조공",
+      "description": "손과 전완의 외공을 지닌 채주. 분배 규칙과 약속을 앞세워 총채주 자리를 노린다.",
+      "labelOffset": [
+        12,
+        -10
+      ]
+    },
+    {
+      "id": "qingya",
+      "name": "청애채",
+      "lon": 115.5,
+      "lat": 31.2,
+      "region": "호광 대별산 산길권",
+      "gateway": "무창",
+      "gatewayId": "wuchang",
+      "leader": "마운표 · 총채주 후보",
+      "martialArt": "반석진각공",
+      "description": "하체와 허리의 외공을 지닌 채주. 행동과 성과로 지지를 모아 총채주 자리를 노린다.",
+      "labelOffset": [
+        10,
+        -14
+      ]
     }
   ]
 }

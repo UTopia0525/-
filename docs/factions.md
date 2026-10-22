@@ -76,3 +76,7 @@
 - [점창파](factions/diancang.md): 흰색·짙은 주황색, 사일검법과 집중·결단. [장문인 명담·자신감 부족한 제자 윤서](characters/diancang.md).
 
 - [개방](factions/beggars.md): 결개 계급, 방주·직전제자 전용 항룡십팔장과 일반 방도의 타구봉법. [구만복·이소칠](characters/beggars.md).
+
+## 사파
+
+- [녹림삼십육채](factions/greenwood.md): 지도에는 핵심 산채 3곳만 배치. 외공 강자 세 채주가 총채주 자리를 두고 경쟁한다. [곽철산·연적하·마운표](characters/greenwood.md).
