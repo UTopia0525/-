@@ -86,3 +86,5 @@
 - [흑도방](factions/blackguild.md): 각지 작은 흑도 조직을 총괄하고 금전적 이익을 최우선으로 삼는 조직. [잔혹한 조법 고수 방주 위중량](characters/blackguild.md). 총본부는 항주. 추가 운영 설정은 미확정 제안.
 
 - [추가 사파 후보](factions/heterodox-candidates.md): 무영각·적월문·하오문. 아직 채택되지 않은 제안이다.
+
+- [적월문](factions/redmoon.md): 민초를 해치지 않고 강함을 추구하는 독립 사파 도법 명문. [문주 한무진·아들 한승재](characters/redmoon.md). 거점 미정.

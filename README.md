@@ -184,4 +184,14 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 
 ![위중량](assets/portraits/blackguild/wijungnyang.png)
 
-추가 세력 제안: [무영각·적월문·하오문](docs/factions/heterodox-candidates.md). 채택 전 후보이며 인물·거점은 미확정이다.
+추가 세력 제안: [무영각·적월문·하오문](docs/factions/heterodox-candidates.md). 적월문은 채택 후 별도 제작했고, 무영각·하오문은 채택 전 후보이다.
+
+## 적월문
+
+[문파 설정과 적월연환도](docs/factions/redmoon.md) · [문주·아들 설정](docs/characters/redmoon.md)
+
+민초를 해치지 않고 강함을 추구하는 독립 사파 도법 명문. 아들의 후계 지위와 거점 위치는 미정이다.
+
+| 문주 · 한무진 | 문주의 아들 · 한승재 |
+|---|---|
+| ![한무진](assets/portraits/redmoon/hanmujin.png) | ![한승재](assets/portraits/redmoon/hanseungjae.png) |
