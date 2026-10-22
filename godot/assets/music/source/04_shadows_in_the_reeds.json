@@ -1,0 +1,2528 @@
+{
+  "track": {
+    "id": "ambush",
+    "file": "04_shadows_in_the_reeds.ogg",
+    "title": "갈대 속의 그림자",
+    "context": "습격 전 긴장",
+    "bpm": 96,
+    "bars": 24,
+    "root": 62,
+    "minor": true,
+    "lead": "erhu",
+    "density": 0.5,
+    "seed": 41
+  },
+  "notes": [
+    {
+      "beat": 0.0,
+      "duration": 1.32,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 0.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.13684634294160972,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 0.0,
+      "duration": 3.65,
+      "note": 38,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 0.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 0.04,
+      "duration": 5.8,
+      "note": 57,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 1.5,
+      "duration": 0.85,
+      "note": 57,
+      "instrument": "guzheng",
+      "gain": 0.1329729874852205,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 1.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 2.0,
+      "duration": 0.88,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 2.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.11962019153319461,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 3.0,
+      "duration": 0.88,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 3.5,
+      "duration": 0.85,
+      "note": 55,
+      "instrument": "guzheng",
+      "gain": 0.13420135218735949,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 3.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 4.0,
+      "duration": 0.88,
+      "note": 69,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 4.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.1346606991273689,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 4.0,
+      "duration": 3.65,
+      "note": 38,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 4.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 5.0,
+      "duration": 0.88,
+      "note": 67,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 5.5,
+      "duration": 0.85,
+      "note": 57,
+      "instrument": "guzheng",
+      "gain": 0.12427548300262314,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 5.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 6.0,
+      "duration": 1.76,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 6.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.12763731208208157,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 7.5,
+      "duration": 0.85,
+      "note": 55,
+      "instrument": "guzheng",
+      "gain": 0.12953199809673016,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 7.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 8.0,
+      "duration": 0.88,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 8.0,
+      "duration": 0.85,
+      "note": 45,
+      "instrument": "guzheng",
+      "gain": 0.12404778699534268,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 8.0,
+      "duration": 3.65,
+      "note": 33,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 8.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 8.04,
+      "duration": 5.8,
+      "note": 53,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 9.0,
+      "duration": 0.88,
+      "note": 72,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 9.5,
+      "duration": 0.85,
+      "note": 53,
+      "instrument": "guzheng",
+      "gain": 0.12993357313964782,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 9.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 10.0,
+      "duration": 1.32,
+      "note": 69,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 10.0,
+      "duration": 0.85,
+      "note": 45,
+      "instrument": "guzheng",
+      "gain": 0.13223568122082321,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 11.5,
+      "duration": 0.44,
+      "note": 67,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 11.5,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.13491063623255717,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 11.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 12.0,
+      "duration": 1.76,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 12.0,
+      "duration": 0.85,
+      "note": 45,
+      "instrument": "guzheng",
+      "gain": 0.12402674737776977,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 12.0,
+      "duration": 3.65,
+      "note": 33,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 12.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 13.5,
+      "duration": 0.85,
+      "note": 53,
+      "instrument": "guzheng",
+      "gain": 0.12592921628745984,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 13.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 14.0,
+      "duration": 0.85,
+      "note": 45,
+      "instrument": "guzheng",
+      "gain": 0.12935897189634235,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 15.0,
+      "duration": 0.88,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 15.5,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.13729410102579315,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 15.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 16.0,
+      "duration": 1.32,
+      "note": 74,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 16.0,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.13629967882020397,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 16.0,
+      "duration": 3.65,
+      "note": 36,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 16.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 16.04,
+      "duration": 5.8,
+      "note": 55,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 17.5,
+      "duration": 0.44,
+      "note": 72,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 17.5,
+      "duration": 0.85,
+      "note": 55,
+      "instrument": "guzheng",
+      "gain": 0.11821643550624981,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 17.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 18.0,
+      "duration": 0.88,
+      "note": 69,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 18.0,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.1329124538567349,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 19.0,
+      "duration": 0.88,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 19.5,
+      "duration": 0.85,
+      "note": 53,
+      "instrument": "guzheng",
+      "gain": 0.12027693810702168,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 19.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 20.0,
+      "duration": 0.88,
+      "note": 67,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 20.0,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.12277287901007651,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 20.0,
+      "duration": 3.65,
+      "note": 36,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 20.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 21.0,
+      "duration": 0.88,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 21.5,
+      "duration": 0.85,
+      "note": 55,
+      "instrument": "guzheng",
+      "gain": 0.1291397186216014,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 21.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 22.0,
+      "duration": 1.76,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 22.0,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.13321145534357842,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 23.5,
+      "duration": 0.85,
+      "note": 53,
+      "instrument": "guzheng",
+      "gain": 0.1206068458932295,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 23.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 24.0,
+      "duration": 0.44,
+      "note": 69,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 24.0,
+      "duration": 0.85,
+      "note": 43,
+      "instrument": "guzheng",
+      "gain": 0.13627505148404281,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 24.0,
+      "duration": 3.65,
+      "note": 31,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 24.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 24.04,
+      "duration": 5.8,
+      "note": 50,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 24.5,
+      "duration": 0.44,
+      "note": 67,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 25.0,
+      "duration": 0.88,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 25.5,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.12424703369075198,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 25.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 26.0,
+      "duration": 0.88,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 26.0,
+      "duration": 0.85,
+      "note": 43,
+      "instrument": "guzheng",
+      "gain": 0.1344192827104208,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 27.5,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.13565785077700598,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 27.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 28.0,
+      "duration": 0.88,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 28.0,
+      "duration": 0.85,
+      "note": 43,
+      "instrument": "guzheng",
+      "gain": 0.12174051281485924,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 28.0,
+      "duration": 3.65,
+      "note": 31,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 28.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 29.0,
+      "duration": 1.76,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 29.5,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.12040438070989348,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 29.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 30.0,
+      "duration": 0.85,
+      "note": 43,
+      "instrument": "guzheng",
+      "gain": 0.13526954685058584,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 31.5,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.12004626299370402,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 31.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 32.0,
+      "duration": 1.32,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 32.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.13342353821857078,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 32.0,
+      "duration": 3.65,
+      "note": 38,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 32.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 32.04,
+      "duration": 5.8,
+      "note": 57,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 33.5,
+      "duration": 0.85,
+      "note": 57,
+      "instrument": "guzheng",
+      "gain": 0.13768131910420484,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 33.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 34.0,
+      "duration": 0.88,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 34.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.11869589160297649,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 35.0,
+      "duration": 0.88,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 35.5,
+      "duration": 0.85,
+      "note": 55,
+      "instrument": "guzheng",
+      "gain": 0.12878613285192103,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 35.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 36.0,
+      "duration": 0.88,
+      "note": 69,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 36.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.12432001776884512,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 36.0,
+      "duration": 3.65,
+      "note": 38,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 36.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 37.0,
+      "duration": 0.88,
+      "note": 67,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 37.5,
+      "duration": 0.85,
+      "note": 57,
+      "instrument": "guzheng",
+      "gain": 0.1317508399937064,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 37.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 38.0,
+      "duration": 1.76,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 38.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.1353020828464017,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 39.5,
+      "duration": 0.85,
+      "note": 55,
+      "instrument": "guzheng",
+      "gain": 0.1236997974120578,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 39.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 40.0,
+      "duration": 0.88,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 40.0,
+      "duration": 0.85,
+      "note": 45,
+      "instrument": "guzheng",
+      "gain": 0.12381944128224118,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 40.0,
+      "duration": 3.65,
+      "note": 33,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 40.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 40.04,
+      "duration": 5.8,
+      "note": 53,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 41.0,
+      "duration": 0.88,
+      "note": 72,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 41.5,
+      "duration": 0.85,
+      "note": 53,
+      "instrument": "guzheng",
+      "gain": 0.12220594310024407,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 41.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 42.0,
+      "duration": 1.32,
+      "note": 69,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 42.0,
+      "duration": 0.85,
+      "note": 45,
+      "instrument": "guzheng",
+      "gain": 0.1347013375568185,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 43.5,
+      "duration": 0.44,
+      "note": 67,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 43.5,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.1329093310297766,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 43.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 44.0,
+      "duration": 1.76,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 44.0,
+      "duration": 0.85,
+      "note": 45,
+      "instrument": "guzheng",
+      "gain": 0.134922833016227,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 44.0,
+      "duration": 3.65,
+      "note": 33,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 44.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 45.5,
+      "duration": 0.85,
+      "note": 53,
+      "instrument": "guzheng",
+      "gain": 0.12858907137104522,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 45.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 46.0,
+      "duration": 0.85,
+      "note": 45,
+      "instrument": "guzheng",
+      "gain": 0.13547827652615993,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 47.0,
+      "duration": 0.88,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 47.5,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.11970245783758379,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 47.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 48.0,
+      "duration": 1.32,
+      "note": 74,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 48.0,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.13535266540415677,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 48.0,
+      "duration": 3.65,
+      "note": 36,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 48.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 48.04,
+      "duration": 5.8,
+      "note": 55,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 49.5,
+      "duration": 0.44,
+      "note": 72,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 49.5,
+      "duration": 0.85,
+      "note": 55,
+      "instrument": "guzheng",
+      "gain": 0.1247144914650604,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 49.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 50.0,
+      "duration": 0.88,
+      "note": 69,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 50.0,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.12561800033264212,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 51.0,
+      "duration": 0.88,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 51.5,
+      "duration": 0.85,
+      "note": 53,
+      "instrument": "guzheng",
+      "gain": 0.1343104359460889,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 51.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 52.0,
+      "duration": 0.88,
+      "note": 67,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 52.0,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.13212583973823633,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 52.0,
+      "duration": 3.65,
+      "note": 36,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 52.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 53.0,
+      "duration": 0.88,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 53.5,
+      "duration": 0.85,
+      "note": 55,
+      "instrument": "guzheng",
+      "gain": 0.11809591560618268,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 53.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 54.0,
+      "duration": 1.76,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 54.0,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.12225663372332164,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 55.5,
+      "duration": 0.85,
+      "note": 53,
+      "instrument": "guzheng",
+      "gain": 0.13617978869589292,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 55.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 56.0,
+      "duration": 0.44,
+      "note": 69,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 56.0,
+      "duration": 0.85,
+      "note": 43,
+      "instrument": "guzheng",
+      "gain": 0.11918504562771415,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 56.0,
+      "duration": 3.65,
+      "note": 31,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 56.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 56.04,
+      "duration": 5.8,
+      "note": 50,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 56.5,
+      "duration": 0.44,
+      "note": 67,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 57.0,
+      "duration": 0.88,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 57.5,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.13202928289404503,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 57.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 58.0,
+      "duration": 0.88,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 58.0,
+      "duration": 0.85,
+      "note": 43,
+      "instrument": "guzheng",
+      "gain": 0.12303370356524893,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 59.5,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.12518011993630931,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 59.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 60.0,
+      "duration": 0.88,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 60.0,
+      "duration": 0.85,
+      "note": 43,
+      "instrument": "guzheng",
+      "gain": 0.13430706118329214,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 60.0,
+      "duration": 3.65,
+      "note": 31,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 60.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 61.0,
+      "duration": 1.76,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 61.5,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.13381275095414197,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 61.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 62.0,
+      "duration": 0.85,
+      "note": 43,
+      "instrument": "guzheng",
+      "gain": 0.11794922806710796,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 63.5,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.1355124876469699,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 63.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 64.0,
+      "duration": 1.32,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 64.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.11770457440469745,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 64.0,
+      "duration": 3.65,
+      "note": 38,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 64.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 64.04,
+      "duration": 5.8,
+      "note": 57,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 65.5,
+      "duration": 0.85,
+      "note": 57,
+      "instrument": "guzheng",
+      "gain": 0.12995537099985666,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 65.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 66.0,
+      "duration": 0.88,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 66.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.12846987762500706,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 67.0,
+      "duration": 0.88,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 67.5,
+      "duration": 0.85,
+      "note": 55,
+      "instrument": "guzheng",
+      "gain": 0.11900892702714566,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 67.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 68.0,
+      "duration": 0.88,
+      "note": 69,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 68.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.13730092147867798,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 68.0,
+      "duration": 3.65,
+      "note": 38,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 68.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 69.0,
+      "duration": 0.88,
+      "note": 67,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 69.5,
+      "duration": 0.85,
+      "note": 57,
+      "instrument": "guzheng",
+      "gain": 0.13043186060683376,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 69.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 70.0,
+      "duration": 1.76,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 70.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.13680969691746395,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 71.5,
+      "duration": 0.85,
+      "note": 55,
+      "instrument": "guzheng",
+      "gain": 0.13148204982826212,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 71.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 72.0,
+      "duration": 0.88,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 72.0,
+      "duration": 0.85,
+      "note": 45,
+      "instrument": "guzheng",
+      "gain": 0.13069893685368994,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 72.0,
+      "duration": 3.65,
+      "note": 33,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 72.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 72.04,
+      "duration": 5.8,
+      "note": 53,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 73.0,
+      "duration": 0.88,
+      "note": 72,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 73.5,
+      "duration": 0.85,
+      "note": 53,
+      "instrument": "guzheng",
+      "gain": 0.11978830976921945,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 73.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 74.0,
+      "duration": 1.32,
+      "note": 69,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 74.0,
+      "duration": 0.85,
+      "note": 45,
+      "instrument": "guzheng",
+      "gain": 0.125403627206396,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 75.5,
+      "duration": 0.44,
+      "note": 67,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 75.5,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.1290714183150787,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 75.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 76.0,
+      "duration": 1.76,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 76.0,
+      "duration": 0.85,
+      "note": 45,
+      "instrument": "guzheng",
+      "gain": 0.11846248789576432,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 76.0,
+      "duration": 3.65,
+      "note": 33,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 76.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 77.5,
+      "duration": 0.85,
+      "note": 53,
+      "instrument": "guzheng",
+      "gain": 0.11965420806098007,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 77.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 78.0,
+      "duration": 0.85,
+      "note": 45,
+      "instrument": "guzheng",
+      "gain": 0.13058545870931637,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 79.0,
+      "duration": 0.88,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 79.5,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.12927318817116137,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 79.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 80.0,
+      "duration": 1.32,
+      "note": 74,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 80.0,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.12673627608031152,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 80.0,
+      "duration": 3.65,
+      "note": 36,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 80.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 80.04,
+      "duration": 5.8,
+      "note": 55,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 81.5,
+      "duration": 0.44,
+      "note": 72,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 81.5,
+      "duration": 0.85,
+      "note": 55,
+      "instrument": "guzheng",
+      "gain": 0.13503105694705683,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 81.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 82.0,
+      "duration": 0.88,
+      "note": 69,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 82.0,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.1277026096174494,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 83.0,
+      "duration": 0.88,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 83.5,
+      "duration": 0.85,
+      "note": 53,
+      "instrument": "guzheng",
+      "gain": 0.13181308877613787,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 83.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 84.0,
+      "duration": 0.88,
+      "note": 67,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 84.0,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.12052890652665187,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 84.0,
+      "duration": 3.65,
+      "note": 36,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 84.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 85.0,
+      "duration": 0.88,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 85.5,
+      "duration": 0.85,
+      "note": 55,
+      "instrument": "guzheng",
+      "gain": 0.13268997931159154,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 85.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 86.0,
+      "duration": 1.76,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 86.0,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.13709747570220723,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 87.5,
+      "duration": 0.85,
+      "note": 53,
+      "instrument": "guzheng",
+      "gain": 0.1303343964707027,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 87.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 88.0,
+      "duration": 0.44,
+      "note": 69,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 88.0,
+      "duration": 0.85,
+      "note": 43,
+      "instrument": "guzheng",
+      "gain": 0.12639824432892188,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 88.0,
+      "duration": 3.65,
+      "note": 31,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 88.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 88.04,
+      "duration": 5.8,
+      "note": 50,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 88.5,
+      "duration": 0.44,
+      "note": 67,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 89.0,
+      "duration": 0.88,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 89.5,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.13185050885389332,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 89.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 90.0,
+      "duration": 0.88,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 90.0,
+      "duration": 0.85,
+      "note": 43,
+      "instrument": "guzheng",
+      "gain": 0.11842772534787684,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 91.5,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.1341907205917474,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 91.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 92.0,
+      "duration": 0.88,
+      "note": 65,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 92.0,
+      "duration": 0.85,
+      "note": 43,
+      "instrument": "guzheng",
+      "gain": 0.12734533380009647,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 92.0,
+      "duration": 3.65,
+      "note": 31,
+      "instrument": "sheng",
+      "gain": 0.075,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 92.0,
+      "duration": 1,
+      "note": 42,
+      "instrument": "drum",
+      "gain": 0.105,
+      "pan": -0.1,
+      "role": "percussion"
+    },
+    {
+      "beat": 93.0,
+      "duration": 1.76,
+      "note": 62,
+      "instrument": "erhu",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 93.5,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.12453451356227585,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 93.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 94.0,
+      "duration": 0.85,
+      "note": 43,
+      "instrument": "guzheng",
+      "gain": 0.1277634971153989,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 95.5,
+      "duration": 0.85,
+      "note": 48,
+      "instrument": "guzheng",
+      "gain": 0.12154031879938376,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 95.5,
+      "duration": 0.18,
+      "note": 71,
+      "instrument": "wood",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    }
+  ]
+}

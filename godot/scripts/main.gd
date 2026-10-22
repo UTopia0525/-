@@ -3,8 +3,11 @@ extends Control
 const UI = preload("res://scripts/ui.gd")
 const EXPLORATION = preload("res://scenes/exploration.tscn")
 const BATTLE = preload("res://scenes/battle.tscn")
+const MUSIC = preload("res://scripts/music.gd")
 var exploration
 var battle
+var music
+var dialogue_music_cues: Dictionary = {}
 var state: String = "title"
 var talked_captain: bool = false
 var objective: Label
@@ -30,6 +33,9 @@ func _ready() -> void:
 	theme = Theme.new()
 	theme.default_font = system_font
 	theme.default_font_size = 18
+	music = MUSIC.new()
+	music.name = "SituationMusic"
+	add_child(music)
 	exploration = EXPLORATION.instantiate()
 	add_child(exploration)
 	battle = BATTLE.instantiate()
@@ -62,7 +68,7 @@ func _build_hud() -> void:
 	var mission_panel = UI.panel(top_hud, Rect2(822, 24, 432, 66), Color("13231edb"))
 	UI.label(mission_panel, "지금 할 일", Rect2(16, 7, 400, 20), 12, UI.GOLD)
 	objective = UI.label(mission_panel, "", Rect2(16, 30, 400, 27), 16)
-	bottom_hint = UI.label(self, "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     E  대화     ·     F1  처음부터", Rect2(24, 680, 1230, 27), 14, Color("f1dfb4"))
+	bottom_hint = UI.label(self, "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     E  대화     ·     M  음악     ·     F1  처음부터", Rect2(24, 680, 1230, 27), 14, Color("f1dfb4"))
 	bottom_hint.add_theme_color_override("font_shadow_color", Color("11211a"))
 	bottom_hint.add_theme_constant_override("shadow_offset_x", 2)
 	bottom_hint.add_theme_constant_override("shadow_offset_y", 2)
@@ -120,6 +126,7 @@ func _build_ending() -> void:
 
 func reset() -> void:
 	state = "title"
+	music.play_track("title")
 	talked_captain = false
 	dialogue_lines.clear()
 	dialogue_panel.hide()
@@ -135,6 +142,7 @@ func reset() -> void:
 	title_screen.show()
 
 func start_story() -> void:
+	music.play_track("dock")
 	title_screen.hide()
 	state = "explore"
 	bottom_hint.show()
@@ -144,12 +152,15 @@ func start_story() -> void:
 func say(lines: Array, done: Callable = Callable()) -> void:
 	exploration.set_active(false)
 	dialogue_lines = lines
+	dialogue_music_cues = {}
 	dialogue_index = 0
 	dialogue_done = done
 	dialogue_panel.show()
 	_show_line()
 
 func _show_line() -> void:
+	if dialogue_music_cues.has(dialogue_index):
+		music.play_track(dialogue_music_cues[dialogue_index])
 	var line = dialogue_lines[dialogue_index]
 	dialogue_name.text = line[0]
 	dialogue_text.text = line[1]
@@ -197,14 +208,17 @@ func interact() -> void:
 			else:
 				say([["주인공", "배에 오르자. 첫 표행을 시작할 시간이다.", 0]], func():
 					exploration.load_area("deck")
+					music.play_track("voyage")
 					location.text = "호송선 · 동정호 수로"
 					objective.text = "갑판의 표두에게 출항 보고하기")
 		"deck-sailor":
 			say([["허만복", "물살은 괜찮군. 저 좁은 수로만 지나면 한동안 편할 거야.", 6]])
 		"deck-captain":
 			say([["주인공", "표두님, 갑판에 올라왔습니다.", 0], ["서문길", "좋다. 처음에는 내가 보이는 곳에 있어라. 무슨 일이 나면—", 4], ["허만복", "작은 배가 붙습니다! 저 표식은…… 흑린채입니다!", 6], ["서문길", "모두 화물에서 떨어져라! 너는 이쪽 통로를 지켜. 무리해서 쫓지는 마라!", 4]], start_battle)
+			dialogue_music_cues = {2: "ambush"}
 
 func start_battle() -> void:
+	music.play_track("battle")
 	state = "battle"
 	dialogue_lines = []
 	dialogue_panel.hide()
@@ -217,13 +231,17 @@ func start_battle() -> void:
 	battle.begin()
 
 func _on_victory(hp: int) -> void:
+	music.play_track("title")
 	state = "end"
 	ending_hp.text = "남은 체력   %d / 300" % hp
 	ending.show()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
-		if event.keycode == KEY_F1:
+		if event.keycode == KEY_M:
+			music.toggle()
+			get_viewport().set_input_as_handled()
+		elif event.keycode == KEY_F1:
 			reset()
 			get_viewport().set_input_as_handled()
 		elif event.keycode == KEY_E or event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER:

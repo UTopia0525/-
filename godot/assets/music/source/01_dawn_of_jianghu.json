@@ -1,0 +1,1079 @@
+{
+  "track": {
+    "id": "title",
+    "file": "01_dawn_of_jianghu.ogg",
+    "title": "강호의 여명",
+    "context": "타이틀·회상",
+    "bpm": 64,
+    "bars": 16,
+    "root": 62,
+    "minor": false,
+    "lead": "xiao",
+    "density": 0.5,
+    "seed": 11
+  },
+  "notes": [
+    {
+      "beat": 0.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.11967426021759936,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 0.0,
+      "duration": 3.65,
+      "note": 38,
+      "instrument": "sheng",
+      "gain": 0.11,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 0.0,
+      "duration": 2,
+      "note": 74,
+      "instrument": "bell",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 0.04,
+      "duration": 5.8,
+      "note": 57,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 0.12,
+      "duration": 0.88,
+      "note": 62,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 1.12,
+      "duration": 0.44,
+      "note": 66,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 1.62,
+      "duration": 0.44,
+      "note": 69,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 2.0,
+      "duration": 0.85,
+      "note": 54,
+      "instrument": "guzheng",
+      "gain": 0.1273849795387544,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 2.12,
+      "duration": 0.88,
+      "note": 71,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 3.12,
+      "duration": 0.88,
+      "note": 69,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 4.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.12951116583856584,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 4.0,
+      "duration": 3.65,
+      "note": 38,
+      "instrument": "sheng",
+      "gain": 0.11,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 4.12,
+      "duration": 1.32,
+      "note": 66,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 5.62,
+      "duration": 0.44,
+      "note": 64,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 6.0,
+      "duration": 0.85,
+      "note": 54,
+      "instrument": "guzheng",
+      "gain": 0.11759673137413645,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 6.12,
+      "duration": 1.76,
+      "note": 62,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 8.0,
+      "duration": 0.85,
+      "note": 45,
+      "instrument": "guzheng",
+      "gain": 0.12007686255921109,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 8.0,
+      "duration": 3.65,
+      "note": 33,
+      "instrument": "sheng",
+      "gain": 0.11,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 8.04,
+      "duration": 5.8,
+      "note": 52,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 8.12,
+      "duration": 0.88,
+      "note": 69,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 9.120000000000001,
+      "duration": 0.44,
+      "note": 71,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 9.620000000000001,
+      "duration": 0.44,
+      "note": 74,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 10.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.1363067892775757,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 10.120000000000001,
+      "duration": 0.88,
+      "note": 71,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 11.120000000000001,
+      "duration": 0.88,
+      "note": 66,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 12.0,
+      "duration": 0.85,
+      "note": 45,
+      "instrument": "guzheng",
+      "gain": 0.1184647479840073,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 12.0,
+      "duration": 3.65,
+      "note": 33,
+      "instrument": "sheng",
+      "gain": 0.11,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 14.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.1196992981475054,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 16.0,
+      "duration": 0.85,
+      "note": 47,
+      "instrument": "guzheng",
+      "gain": 0.13672523182846893,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 16.0,
+      "duration": 3.65,
+      "note": 35,
+      "instrument": "sheng",
+      "gain": 0.11,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 16.0,
+      "duration": 2,
+      "note": 74,
+      "instrument": "bell",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 16.04,
+      "duration": 5.8,
+      "note": 54,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 16.12,
+      "duration": 1.32,
+      "note": 74,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 17.62,
+      "duration": 0.44,
+      "note": 71,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 18.0,
+      "duration": 0.85,
+      "note": 52,
+      "instrument": "guzheng",
+      "gain": 0.12993517873016477,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 18.12,
+      "duration": 0.88,
+      "note": 69,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 19.12,
+      "duration": 0.88,
+      "note": 66,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 20.0,
+      "duration": 0.85,
+      "note": 47,
+      "instrument": "guzheng",
+      "gain": 0.12467505697357967,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 20.0,
+      "duration": 3.65,
+      "note": 35,
+      "instrument": "sheng",
+      "gain": 0.11,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 20.12,
+      "duration": 0.44,
+      "note": 64,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 20.62,
+      "duration": 0.44,
+      "note": 66,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 21.12,
+      "duration": 0.88,
+      "note": 69,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 22.0,
+      "duration": 0.85,
+      "note": 52,
+      "instrument": "guzheng",
+      "gain": 0.12763691245350786,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 22.12,
+      "duration": 1.76,
+      "note": 64,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 24.0,
+      "duration": 0.85,
+      "note": 42,
+      "instrument": "guzheng",
+      "gain": 0.13078713341234943,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 24.0,
+      "duration": 3.65,
+      "note": 30,
+      "instrument": "sheng",
+      "gain": 0.11,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 24.04,
+      "duration": 5.8,
+      "note": 50,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 24.12,
+      "duration": 0.88,
+      "note": 62,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 25.12,
+      "duration": 0.44,
+      "note": 66,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 25.62,
+      "duration": 0.44,
+      "note": 69,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 26.0,
+      "duration": 0.85,
+      "note": 47,
+      "instrument": "guzheng",
+      "gain": 0.1227264233678315,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 26.12,
+      "duration": 0.88,
+      "note": 71,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 27.12,
+      "duration": 0.88,
+      "note": 64,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 28.0,
+      "duration": 0.85,
+      "note": 42,
+      "instrument": "guzheng",
+      "gain": 0.11986973591563269,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 28.0,
+      "duration": 3.65,
+      "note": 30,
+      "instrument": "sheng",
+      "gain": 0.11,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 28.12,
+      "duration": 0.88,
+      "note": 66,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 29.12,
+      "duration": 0.88,
+      "note": 64,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 30.0,
+      "duration": 0.85,
+      "note": 47,
+      "instrument": "guzheng",
+      "gain": 0.13339122356568303,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 30.12,
+      "duration": 1.76,
+      "note": 62,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 32.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.13094350014933168,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 32.0,
+      "duration": 3.65,
+      "note": 38,
+      "instrument": "sheng",
+      "gain": 0.11,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 32.0,
+      "duration": 2,
+      "note": 74,
+      "instrument": "bell",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 32.04,
+      "duration": 5.8,
+      "note": 57,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 32.12,
+      "duration": 0.88,
+      "note": 62,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 33.12,
+      "duration": 0.44,
+      "note": 66,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 33.62,
+      "duration": 0.44,
+      "note": 69,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 34.0,
+      "duration": 0.85,
+      "note": 54,
+      "instrument": "guzheng",
+      "gain": 0.12765755212044974,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 34.12,
+      "duration": 0.88,
+      "note": 71,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 35.12,
+      "duration": 0.88,
+      "note": 69,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 36.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.1339881178681689,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 36.0,
+      "duration": 3.65,
+      "note": 38,
+      "instrument": "sheng",
+      "gain": 0.11,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 36.12,
+      "duration": 1.32,
+      "note": 66,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 37.62,
+      "duration": 0.44,
+      "note": 64,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 38.0,
+      "duration": 0.85,
+      "note": 54,
+      "instrument": "guzheng",
+      "gain": 0.12842076559249657,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 38.12,
+      "duration": 1.76,
+      "note": 62,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 40.0,
+      "duration": 0.85,
+      "note": 45,
+      "instrument": "guzheng",
+      "gain": 0.13740300369738398,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 40.0,
+      "duration": 3.65,
+      "note": 33,
+      "instrument": "sheng",
+      "gain": 0.11,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 40.04,
+      "duration": 5.8,
+      "note": 52,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 40.12,
+      "duration": 0.88,
+      "note": 69,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 41.12,
+      "duration": 0.44,
+      "note": 71,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 41.62,
+      "duration": 0.44,
+      "note": 74,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 42.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.12125379679566495,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 42.12,
+      "duration": 0.88,
+      "note": 71,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 43.12,
+      "duration": 0.88,
+      "note": 66,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 44.0,
+      "duration": 0.85,
+      "note": 45,
+      "instrument": "guzheng",
+      "gain": 0.12851759154759673,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 44.0,
+      "duration": 3.65,
+      "note": 33,
+      "instrument": "sheng",
+      "gain": 0.11,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 46.0,
+      "duration": 0.85,
+      "note": 50,
+      "instrument": "guzheng",
+      "gain": 0.12705939369600647,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 48.0,
+      "duration": 0.85,
+      "note": 47,
+      "instrument": "guzheng",
+      "gain": 0.12434811698525733,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 48.0,
+      "duration": 3.65,
+      "note": 35,
+      "instrument": "sheng",
+      "gain": 0.11,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 48.0,
+      "duration": 2,
+      "note": 74,
+      "instrument": "bell",
+      "gain": 0.045,
+      "pan": 0.35,
+      "role": "percussion"
+    },
+    {
+      "beat": 48.04,
+      "duration": 5.8,
+      "note": 54,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 48.12,
+      "duration": 1.32,
+      "note": 74,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 49.62,
+      "duration": 0.44,
+      "note": 71,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 50.0,
+      "duration": 0.85,
+      "note": 52,
+      "instrument": "guzheng",
+      "gain": 0.1293051823221401,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 50.12,
+      "duration": 0.88,
+      "note": 69,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 51.12,
+      "duration": 0.88,
+      "note": 66,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 52.0,
+      "duration": 0.85,
+      "note": 47,
+      "instrument": "guzheng",
+      "gain": 0.12189426561868569,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 52.0,
+      "duration": 3.65,
+      "note": 35,
+      "instrument": "sheng",
+      "gain": 0.11,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 52.12,
+      "duration": 0.44,
+      "note": 64,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 52.62,
+      "duration": 0.44,
+      "note": 66,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 53.12,
+      "duration": 0.88,
+      "note": 69,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 54.0,
+      "duration": 0.85,
+      "note": 52,
+      "instrument": "guzheng",
+      "gain": 0.13368581582259248,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 54.12,
+      "duration": 1.76,
+      "note": 64,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 56.0,
+      "duration": 0.85,
+      "note": 42,
+      "instrument": "guzheng",
+      "gain": 0.13504053787832224,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 56.0,
+      "duration": 3.65,
+      "note": 30,
+      "instrument": "sheng",
+      "gain": 0.11,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 56.04,
+      "duration": 5.8,
+      "note": 50,
+      "instrument": "sheng",
+      "gain": 0.04,
+      "pan": 0.4,
+      "role": "drone"
+    },
+    {
+      "beat": 56.12,
+      "duration": 0.88,
+      "note": 62,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 57.12,
+      "duration": 0.44,
+      "note": 66,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 57.62,
+      "duration": 0.44,
+      "note": 69,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 58.0,
+      "duration": 0.85,
+      "note": 47,
+      "instrument": "guzheng",
+      "gain": 0.11967820116153931,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 58.12,
+      "duration": 0.88,
+      "note": 71,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 59.12,
+      "duration": 0.88,
+      "note": 64,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 60.0,
+      "duration": 0.85,
+      "note": 42,
+      "instrument": "guzheng",
+      "gain": 0.12671512270015606,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 60.0,
+      "duration": 3.65,
+      "note": 30,
+      "instrument": "sheng",
+      "gain": 0.11,
+      "pan": 0.03,
+      "role": "drone"
+    },
+    {
+      "beat": 60.12,
+      "duration": 0.88,
+      "note": 66,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 61.12,
+      "duration": 0.88,
+      "note": 64,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    },
+    {
+      "beat": 62.0,
+      "duration": 0.85,
+      "note": 47,
+      "instrument": "guzheng",
+      "gain": 0.12276461376470106,
+      "pan": -0.3,
+      "role": "arpeggio"
+    },
+    {
+      "beat": 62.12,
+      "duration": 1.76,
+      "note": 62,
+      "instrument": "xiao",
+      "gain": 0.24,
+      "pan": 0.08,
+      "role": "melody"
+    }
+  ]
+}

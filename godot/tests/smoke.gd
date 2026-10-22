@@ -22,9 +22,34 @@ func _run() -> void:
 	root.add_child(game)
 	await process_frame
 	check(game.state == "title", "title state")
+	check(game.music.current_track == "title", "title music")
+	check(game.music.TRACKS.size() == 5, "five original BGM tracks")
+	for stream in game.music.TRACKS.values():
+		check(absf(stream.get_length() - 60.0) < 0.01, "60-second BGM length")
+	check(game.music.players[game.music.current_index].stream.loop, "native music looping")
+	game.music.set_enabled(false)
+	check(game.music.players[game.music.current_index].stream_paused, "music mute")
+	game.music.set_enabled(true)
 	game.start_story()
 	game.advance_dialogue()
 	check(game.exploration.active, "movement enabled after dialogue")
+	check(game.music.current_track == "dock", "dock music")
+	var player = game.exploration.player
+	check(player.sprite is AnimatedSprite2D, "native frame animation")
+	for direction in ["down", "left", "right", "up"]:
+		check(player.sprite.sprite_frames.get_frame_count("walk_" + direction) == 4, "four registered poses per direction")
+		player.position = Vector2(420, 460)
+		player.stop()
+		Input.action_press("move_" + direction)
+		await create_timer(0.18).timeout
+		check(player.sprite.animation == "walk_" + direction, "walk animation follows direction")
+		var frame_before = player.sprite.frame
+		await create_timer(0.18).timeout
+		check(player.sprite.frame != frame_before, "walking advances frames")
+		Input.action_release("move_" + direction)
+		await create_timer(0.04).timeout
+		check(player.sprite.animation == "idle_" + direction, "release returns to directional idle")
+	player.position = Vector2(370, 510)
 	check(not game.top_hud.get_children().is_empty(), "exploration HUD")
 	var origin = Vector2i(game.exploration.player.position / 20.0)
 	check(not game.exploration.astar.get_point_path(origin, Vector2i(40, 20)).is_empty(), "dock to boarding is reachable")
@@ -48,16 +73,21 @@ func _run() -> void:
 	for index in range(3):
 		game.advance_dialogue()
 	check(game.talked_captain, "captain dialogue")
+	check(String(player.sprite.animation).begins_with("idle_"), "dialogue stops walking animation")
 	game.exploration.player.position = Vector2(810, 410)
 	game.interact()
 	game.advance_dialogue()
 	check(game.exploration.area_name == "deck", "boarding changes map")
+	check(game.music.current_track == "voyage", "voyage music")
 	check(game.exploration.active, "deck movement")
 	check(not game.exploration.astar.get_point_path(Vector2i(game.exploration.player.position / 20.0), Vector2i(35, 18)).is_empty(), "deck captain is reachable")
 	game.exploration.player.position = Vector2(715, 365)
 	game.interact()
 	for index in range(4):
 		game.advance_dialogue()
+		if index == 1:
+			check(game.music.current_track == "ambush", "tension music on pirate warning")
+	check(game.music.current_track == "battle", "battle music")
 	check(game.state == "battle", "ambush transitions into battle")
 	check(game.battle.player_hp == 300 and game.battle.enemy_hp == 150, "fresh battle HP")
 	game.battle.select_samjae()
@@ -79,9 +109,15 @@ func _run() -> void:
 	game.reset()
 	await create_timer(1.4).timeout
 	check(game.state == "title", "reset cancels pending attack")
+	check(game.music.current_track == "title", "reset restores title music")
+	var active_voices = 0
+	for voice in game.music.players:
+		if voice.playing:
+			active_voices += 1
+	check(active_voices == 1, "crossfade stops previous track")
 	game.queue_free()
 	await process_frame
-	print("GODOT_SMOKE: " + ("FAIL" if failed else "PASS — story, navigation, physics, preview, combat, retry, reset, realms"))
+	print("GODOT_SMOKE: " + ("FAIL" if failed else "PASS — animation, BGM contexts/loops/mute, story, navigation, physics, combat, reset, realms"))
 	quit(1 if failed else 0)
 
 func _wait_for_turn() -> void:
