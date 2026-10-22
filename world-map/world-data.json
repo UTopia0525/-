@@ -554,5 +554,23 @@
         -14
       ]
     }
+  ],
+  "waterCamps": [
+    {
+      "id": "heilin",
+      "name": "흑린채",
+      "lon": 113.0,
+      "lat": 29.3,
+      "region": "호광 동정호 동쪽 호안권",
+      "gateway": "장사",
+      "gatewayId": "changsha",
+      "leader": "염문악 · 흑린채 채주",
+      "martialArt": "단랑패도 · 잠룡유수공",
+      "description": "큰 외날 도와 수공에 능한 잔악하고 교활한 채주. 동정호 수운권에서 공포와 거래로 영향력을 행사한다.",
+      "labelOffset": [
+        14,
+        -5
+      ]
+    }
   ]
 }

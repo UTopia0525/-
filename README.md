@@ -2,9 +2,9 @@
 
 `world-map/index.html`을 브라우저에서 열면 된다. 외부 라이브러리·설치·서버 없이 작동한다.
 
-- 1390년경 주요 도시 20곳과 구파일방·오대세가 거점 15곳, 녹림 핵심 산채 3곳
+- 1390년경 주요 도시 20곳과 구파일방·오대세가 거점 15곳, 녹림 핵심 산채 3곳과 장강 핵심 수채 1곳
 - 도시·문파·세가 선택 시 위치와 설정 근거 표시
-- 육로·수로·구파일방·오대세가·녹림 산채 표시 전환, 확대·축소, 드래그 이동
+- 육로·수로·구파일방·오대세가·녹림 산채·장강 수채 표시 전환, 확대·축소, 드래그 이동
 - 데이터: `world-map/world-data.json` (수정 후 `python world-map/sync-data.py` 실행)
 - 무협 세력 선정 및 개별 컨셉 색인: `docs/factions.md`
 - 남궁세가 확정 컨셉: `docs/factions/namgung.md`
@@ -167,3 +167,11 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 | 흑석채 · 곽철산 | 적송채 · 연적하 | 청애채 · 마운표 |
 |---|---|---|
 | ![곽철산](assets/portraits/greenwood/gwatcheolsan.png) | ![연적하](assets/portraits/greenwood/yeonjeokha.png) | ![마운표](assets/portraits/greenwood/maunpyo.png) |
+
+## 장강수로십팔채
+
+[수로채 설정과 무학](docs/factions/waterbandits.md) · [흑린채 채주 염문악](docs/characters/waterbandits.md)
+
+세계관에는 18채가 있지만 지도에는 동정호 인근 흑린채 한 곳만 배치했다. ‘장강 핵심 수채’ 버튼과 청색 마름모로 구별한다.
+
+![염문악](assets/portraits/waterbandits/yeommunak.png)
