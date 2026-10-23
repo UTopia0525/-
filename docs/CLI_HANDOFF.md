@@ -239,3 +239,11 @@ scripts/bandit_story.gd가 진행·목표 추적과 복원·보상/재도전을 
 현재 게임에서 쓰는11종의 얼굴 크기/눈높이/상반신 표시 범위를 주인공 기준으로 맞췄다. 원본PNG는 유지하며 data/portrait_framing.json의 얼굴 기준점과 shaders/dialogue_portrait.gdshader로 화면 표시를 조정한다. 포졸은 무릎 대신 허리 부근까지 보인다. 거래창에도 같은 기준을 적용한다. 새 그림은 비율 프로필을 추가한다.
 
 두 사람은 서로, 여러 사람의 청자는 발언자, 발언자는 주인공을 기본적으로 향한다. 주인공 답변은 직전 상대를 향한다. 대사의3번째Dictionary로 {"to":"배우ID","facing":{"배우ID":"left 또는 right"}}를 줄 수 있다. 기존3번째String 부제와 함께 쓰면4번째Dictionary로 지정한다. 저장검증/복원도 호환하며 과거대사 형식은 유지한다. 모집 장면 농민→포졸에 상대지정 예를 적용했다. docs/systems/dialogue-portraits.md와 tests/dialogue.gd, tests/capture_portrait_layout.gd 참고. 원본 주인공 그림과 전투규칙은 유지한다.
+
+## 장사 배경·충돌·NPC 배치 재정비
+
+세부 배경4장을 흙길·제한적 문턱/배수로 판석·성긴 수목·낡은 목재와 회색 기와로 바꿨다. 코블스톤 대로와 규칙적인 가로수/화단을 크게 줄였으며 도시 규모/구역/이동 방식은 유지했다. layout.json의 기본blockers를 보정하고 scenery_objects에 담장/나무/짐/우물/연못/바위 등을 추가한다. 제거한 나무의 빈자리 충돌은 없앴다. visual_occluders는 문루 지붕용이며 물리 통로와 구별한다.
+
+exploration의 NPC루트는 Sprite2D에서 발 반경12의 CharacterBody2D로 바꾸고 실제 그림은 자식Sprite2D로 유지했다. 플레이어 반경11과 같은 장애물에 충돌한다. NPC32명은 몸 전체의 여유/다른 주민/대로중앙/시설구역을 검사하며 교관/장인/창고지기 등의 위치를 조정했다. 경로는 발 반경과 NPC 점유를 반영하고 path_to(point,true)는 목표 NPC옆의 대화 거리로 접근한다. 포함된 셀 중심이 막혀도 현재 발은 안전하면 인접 빈 셀로 클릭 이동을 시작한다. nearest는 담장 너머 상호작용을 차단한다. save_system은 이전 장사 저장 위치가 새 장애물/NPC와 겹칠 때만 safe_player_position으로 보정한다. 원고의 장부조각 안내좌표도 옮겼으며 퀘스트 완료기능은 확장하지 않았다.
+
+docs/cities/changsha-redesign.md 참고. tests/city_collision.gd 추가, changsha/quest_navigation의 도달 검사는 점유된 NPC발좌표 대신 대화거리 접근으로 바꿨다. city_services/saves/prologue/bandit_story도 회귀검증한다. tests/capture_city.gd로 최신 전체 지도/실제 탐험/시설 화면을 갱신한다. 별도배포본은 만들지 않는다.

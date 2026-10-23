@@ -3,6 +3,8 @@ extends Node2D
 const UI = preload("res://scripts/ui.gd")
 const PLAYER_SCENE = preload("res://scenes/player.tscn")
 const FOLLOW_CAMERA = preload("res://scripts/follow_camera.gd")
+const FOOT_RADIUS = 11.0
+const CITIZEN_RADIUS = 12.0
 @export var map_bounds: Rect2 = Rect2(0, 0, 1280, 720)
 @export_range(1.0, 3.0, 0.25) var camera_zoom: float = 1.5
 var camera: Camera2D
@@ -96,6 +98,8 @@ func _load_changsha() -> void:
 	map_bounds = Rect2(0, 0, city_data.world_size[0], city_data.world_size[1])
 	camera.exploration_zoom = 1.0
 	background.texture = load("res://assets/maps/changsha/city.png")
+	for obstacle in city_data.get("scenery_objects", []):
+		city_data.blockers.append(obstacle.bounds)
 	walk_regions.clear()
 	blockers.clear()
 	for rectangle in city_data.walk_regions:
@@ -106,15 +110,25 @@ func _load_changsha() -> void:
 	_build_city_occlusion()
 	player.position = city_point(city_data.spawn)
 	for entry in city_data.residents:
-		var citizen = Sprite2D.new()
+		var citizen = CharacterBody2D.new()
+		citizen.collision_layer = 2
+		citizen.collision_mask = 3
+		var feet = CollisionShape2D.new()
+		var foot_shape = CircleShape2D.new()
+		foot_shape.radius = CITIZEN_RADIUS
+		feet.shape = foot_shape
+		citizen.add_child(feet)
+		var sprite = Sprite2D.new()
 		var sprite_atlas = AtlasTexture.new()
 		sprite_atlas.atlas = preload("res://assets/characters.png")
 		sprite_atlas.region = CITIZEN_REGIONS[int(entry.frame)]
-		citizen.texture = sprite_atlas
-		citizen.centered = false
-		citizen.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		citizen.scale = Vector2.ONE * (82.0 / citizen.texture.get_height())
-		citizen.position = city_point(entry.point)
+		sprite.texture = sprite_atlas
+		sprite.centered = false
+		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		sprite.scale = Vector2.ONE * (82.0 / sprite.texture.get_height())
+		sprite.offset = Vector2(-sprite.texture.get_width() / 2.0, -sprite.texture.get_height())
+		citizen.add_child(sprite)
+		citizen.position = _clear_citizen_position(city_point(entry.point), entry)
 		citizen.name = entry.id
 		citizen.set_meta("npc_id", entry.id)
 		citizen.set_meta("display_name", entry.name)
@@ -124,7 +138,6 @@ func _load_changsha() -> void:
 		citizen.set_meta("service_id", entry.get("service_id", ""))
 		citizen.set_meta("story_actor", entry.get("story_actor", false))
 		# Use the same foot baseline as the player for Y sorting.
-		citizen.offset = Vector2(-citizen.texture.get_width() / 2.0, -citizen.texture.get_height())
 		decorations.add_child(citizen)
 		ambient_nodes.append(citizen)
 		if entry.has("service_id") or entry.get("story_actor", false):
@@ -136,6 +149,7 @@ func _load_changsha() -> void:
 			tag.add_theme_constant_override("outline_size", 5)
 			decorations.add_child(marker)
 			occlusion_roots.append(marker)
+	player.position = safe_player_position(player.position)
 	# Identify the new martial hall in the existing courtyard building.
 	var hall = Node2D.new()
 	hall.z_index = 1
@@ -165,7 +179,9 @@ func _build_city_art() -> void:
 
 func _build_city_occlusion() -> void:
 	# Redraw actual roof/stall pixels in Y order at their lower edge.
-	for rectangle in city_data.blockers:
+	var regions: Array = city_data.blockers.duplicate()
+	regions.append_array(city_data.get("visual_occluders", []))
+	for rectangle in regions:
 		var obstacle = Rect2(rectangle[0], rectangle[1], rectangle[2], rectangle[3])
 		var layer = Node2D.new()
 		layer.position = city_point([0, obstacle.end.y])
@@ -234,6 +250,97 @@ func point_is_walkable(point: Vector2) -> bool:
 			return false
 	return inside
 
+func _inside_walk_regions(point: Vector2) -> bool:
+	for region in walk_regions:
+		if region.has_point(point): return true
+	return false
+
+func can_stand(point: Vector2, radius: float = FOOT_RADIUS, residents: bool = true) -> bool:
+	# A free center alone does not guarantee that the character's feet fit.
+	if not _inside_walk_regions(point): return false
+	for direction in [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN, Vector2(-0.707, -0.707), Vector2(0.707, -0.707), Vector2(-0.707, 0.707), Vector2(0.707, 0.707)]:
+		if not _inside_walk_regions(point + direction * radius): return false
+	for block in blockers:
+		if point.distance_squared_to(point.clamp(block.position, block.end)) <= radius * radius: return false
+	if residents:
+		for citizen in ambient_nodes:
+			if point.distance_to(citizen.position) <= radius + CITIZEN_RADIUS: return false
+	return true
+
+func _citizen_fits(point: Vector2, entry: Dictionary) -> bool:
+	if not can_stand(point, CITIZEN_RADIUS): return false
+	var visual := Rect2(point - Vector2(28, 96), Vector2(56, 96))
+	for block in blockers:
+		if visual.grow(6).intersects(block): return false
+	for other in ambient_nodes:
+		if visual.grow(8).intersects(Rect2(other.position - Vector2(28, 96), Vector2(56, 96))): return false
+	var art_point := point / (map_bounds.size / Vector2(city_data.art_size[0], city_data.art_size[1]))
+	for road in city_data.road_centers:
+		if Rect2(road[0], road[1], road[2], road[3]).has_point(art_point): return false
+	# Keep shop staff in their assigned district when moving them away from scenery.
+	if entry.has("service_id"):
+		var categories = {"city_merchant":"market", "city_artisan":"workshops", "city_instructor":"martial_hall"}
+		for district in city_data.districts:
+			if district.category == categories[entry.service_id] and not _city_rect(district.bounds).has_point(point): return false
+	return true
+
+func _clear_citizen_position(preferred: Vector2, entry: Dictionary) -> Vector2:
+	if _citizen_fits(preferred, entry): return preferred
+	# Deterministic local search; art revisions cannot silently put NPCs on roofs.
+	for ring in range(1, 49):
+		for y in range(-ring, ring + 1):
+			for x in range(-ring, ring + 1):
+				if absi(x) != ring and absi(y) != ring: continue
+				var candidate := preferred + Vector2(x, y) * 8.0
+				if _citizen_fits(candidate, entry): return candidate
+	push_error("No clear position for city NPC: " + str(entry.id))
+	return preferred
+
+func safe_player_position(preferred: Vector2) -> Vector2:
+	if can_stand(preferred): return preferred
+	for ring in range(1, 65):
+		for y in range(-ring, ring + 1):
+			for x in range(-ring, ring + 1):
+				if absi(x) != ring and absi(y) != ring: continue
+				var candidate := preferred + Vector2(x, y) * 20.0
+				if can_stand(candidate): return candidate
+	return city_point(city_data.spawn) if area_name == "changsha" else preferred
+
+func path_to(point: Vector2, interaction: bool = false) -> PackedVector2Array:
+	var origin := Vector2i(player.position / 20.0)
+	var destination := Vector2i(point / 20.0)
+	if not astar.region.has_point(origin): return []
+	if astar.is_point_solid(origin):
+		# The feet can fit even when the containing cell's center is too close to a wall.
+		var neighbors: Array[Vector2i] = []
+		for y in range(-2, 3):
+			for x in range(-2, 3):
+				var cell := origin + Vector2i(x, y)
+				if not astar.region.has_point(cell) or astar.is_point_solid(cell): continue
+				var target := astar.get_point_position(cell)
+				var clear := true
+				for step in range(1, 9):
+					if not can_stand(player.position.lerp(target, step / 8.0)): clear = false; break
+				if clear: neighbors.append(cell)
+		if neighbors.is_empty(): return []
+		neighbors.sort_custom(func(a, b): return astar.get_point_position(a).distance_squared_to(player.position) < astar.get_point_position(b).distance_squared_to(player.position))
+		origin = neighbors[0]
+	if astar.region.has_point(destination) and not astar.is_point_solid(destination):
+		return astar.get_point_path(origin, destination)
+	if not interaction: return []
+	# Stop beside an occupied NPC instead of pathing into their collision body.
+	var candidates: Array[Vector2i] = []
+	for y in range(-3, 4):
+		for x in range(-3, 4):
+			var cell := destination + Vector2i(x, y)
+			if astar.region.has_point(cell) and not astar.is_point_solid(cell) and astar.get_point_position(cell).distance_to(point) < 70:
+				candidates.append(cell)
+	candidates.sort_custom(func(a, b): return astar.get_point_position(a).distance_squared_to(player.position) < astar.get_point_position(b).distance_squared_to(player.position))
+	for cell in candidates:
+		var path := astar.get_point_path(origin, cell)
+		if not path.is_empty(): return path
+	return []
+
 func _build_collision_and_navigation() -> void:
 	var origin = Vector2i(floori(map_bounds.position.x / 20.0), floori(map_bounds.position.y / 20.0))
 	var end = Vector2i(ceili(map_bounds.end.x / 20.0), ceili(map_bounds.end.y / 20.0))
@@ -244,23 +351,28 @@ func _build_collision_and_navigation() -> void:
 	astar.update()
 	for y in range(astar.region.position.y, astar.region.end.y):
 		for x in range(astar.region.position.x, astar.region.end.x):
-			var point = Vector2(x * 20 + 10, y * 20 + 10)
-			astar.set_point_solid(Vector2i(x, y), not point_is_walkable(point))
-	# Native Godot physics bodies along the perimeter of the walkable cells.
+			astar.set_point_solid(Vector2i(x, y), not can_stand(Vector2(x * 20 + 10, y * 20 + 10)))
 	var wall_body = StaticBody2D.new()
+	wall_body.name = "SceneryCollision"
 	wall_body.collision_layer = 2
-	wall_body.collision_mask = 1
+	wall_body.collision_mask = 3
 	collision_root.add_child(wall_body)
+	# Exact scenery shapes serve both keyboard movement and moving NPC bodies.
+	for block in blockers:
+		var shape = RectangleShape2D.new()
+		shape.size = block.size
+		var collision = CollisionShape2D.new()
+		collision.position = block.get_center()
+		collision.shape = shape
+		wall_body.add_child(collision)
+	# Only the outer walk-region boundary uses cells; scenery is never grid-rounded.
 	for y in range(astar.region.position.y, astar.region.end.y):
 		for x in range(astar.region.position.x, astar.region.end.x):
-			var cell = Vector2i(x, y)
-			if astar.is_point_solid(cell):
-				continue
+			var point := Vector2(x * 20 + 10, y * 20 + 10)
+			if not _inside_walk_regions(point): continue
 			for direction in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
-				var neighbor = cell + direction
-				if astar.region.has_point(neighbor) and not astar.is_point_solid(neighbor):
-					continue
-				var center = Vector2(x * 20 + 10, y * 20 + 10) + Vector2(direction) * 10.0
+				if _inside_walk_regions(point + Vector2(direction) * 20.0): continue
+				var center = point + Vector2(direction) * 10.0
 				var shape = SegmentShape2D.new()
 				var tangent = Vector2(-direction.y, direction.x) * 10
 				shape.a = center - tangent
@@ -274,7 +386,7 @@ func nearest() -> Dictionary:
 	var distance = 78.0
 	for entry in npcs:
 		var candidate = player.position.distance_to(entry.position)
-		if candidate < distance:
+		if candidate < distance and _clear_interaction(entry.position, entry.node):
 			distance = candidate
 			found = entry
 	for citizen in ambient_nodes:
@@ -282,11 +394,16 @@ func nearest() -> Dictionary:
 		if service_id.is_empty() and not citizen.get_meta("story_actor", false):
 			continue
 		var candidate = player.position.distance_to(citizen.position)
-		if candidate < distance:
+		if candidate < distance and _clear_interaction(citizen.position, citizen):
 			distance = candidate
 			found = {"id": citizen.get_meta("npc_id"), "name": citizen.get_meta("display_name"), "position": citizen.position, "node": citizen, "frame": citizen.get_meta("frame")}
 			if not service_id.is_empty(): found["service_id"] = service_id
 	return found
+
+func _clear_interaction(point: Vector2, target: Node2D) -> bool:
+	var query := PhysicsRayQueryParameters2D.create(player.global_position, to_global(point), 2)
+	if target is CollisionObject2D: query.exclude = [target.get_rid()]
+	return get_world_2d().direct_space_state.intersect_ray(query).is_empty()
 
 func set_active(value: bool) -> void:
 	active = value
@@ -307,7 +424,11 @@ func _input(event: InputEvent) -> void:
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var local_point = get_global_transform_with_canvas().affine_inverse() * event.position
-		var destination = Vector2i(local_point / 20.0)
-		var origin = Vector2i(player.position / 20.0)
-		if astar.region.has_point(destination) and not astar.is_point_solid(destination):
-			player.click_path = astar.get_point_path(origin, destination)
+		var target: Vector2 = local_point
+		var interaction := false
+		for citizen in ambient_nodes:
+			if Rect2(citizen.position - Vector2(28, 82), Vector2(56, 94)).has_point(local_point):
+				target = citizen.position
+				interaction = true
+				break
+		player.click_path = path_to(target, interaction)

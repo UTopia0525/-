@@ -24,20 +24,18 @@ func _run() -> void:
 	check(city.active and game.state == "explore", "city starts as free exploration")
 	check(city.point_is_walkable(city.player.position), "spawn on street")
 	check(city.ambient_nodes.size() == 32 and city.npcs.is_empty(), "thirty residents and two campaign NPCs share the city")
-	var origin = Vector2i(city.player.position / 20.0)
 	for landmark in city.city_data.landmarks:
 		var point = city.city_point(landmark.point)
-		var destination = Vector2i(point / 20.0)
 		check(city.point_is_walkable(point), "walkable landmark: " + landmark.name)
-		check(not city.astar.get_point_path(origin, destination).is_empty(), "reachable landmark: " + landmark.name)
+		check(not city.path_to(point, true).is_empty(), "reachable landmark: " + landmark.name)
 	check(city.art_tiles.size() == 4, "four detailed city districts")
 	check(city.occlusion_roots.size() > 0, "roof/stall occlusion layers exist")
 	for citizen in city.ambient_nodes:
 		check(city.point_is_walkable(citizen.position), "residents stand on ground")
-		check(not city.astar.get_point_path(origin, Vector2i(citizen.position / 20.0)).is_empty(), "residents on reachable ground")
+		check(not city.path_to(citizen.position, true).is_empty(), "residents on reachable ground: " + str(citizen.name))
 		var body_bounds = Rect2(citizen.position - Vector2(28, 96), Vector2(56, 96))
 		for block in city.blockers:
-			check(not body_bounds.intersects(block), "full resident sprite stays clear of roofs and stalls")
+			check(not body_bounds.intersects(block), "full resident sprite stays clear of roofs and stalls: " + str(citizen.name))
 	game.minimap.refresh()
 	check(city.map_bounds.encloses(game.minimap.world_window), "local map stays within map bounds")
 	check(Rect2(Vector2.ZERO, game.minimap.VIEW_SIZE).has_point(game.minimap.player_marker), "player marker inside minimap")

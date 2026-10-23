@@ -23,7 +23,6 @@ func run() -> void:
 			check(not Rect2(road[0], road[1], road[2], road[3]).has_point(npc.position / 4), "resident avoids road center")
 	check(actors == 14, "all fourteen quest roles placed")
 	check(nav.definitions.size() == 10, "nine side quests and the bandit campaign have destinations")
-	var origin = Vector2i(city.player.position / 20)
 	for id in nav.definitions:
 		for stage in nav.definitions[id].stages:
 			check(nav.track(id, stage), "valid quest stage")
@@ -33,7 +32,7 @@ func run() -> void:
 				var point: Vector2 = goal.position
 				if item.has("point"): point = city.city_point(item.point)
 				check(city.point_is_walkable(point), "walkable target: " + str(item.id))
-				check(not city.astar.get_point_path(origin, Vector2i(point / 20)).is_empty(), "reachable target: " + str(item.id))
+				check(not city.path_to(point, true).is_empty(), "reachable target: " + str(item.id))
 	nav.track("changsha_cloth", "deliver")
 	var inn
 	for npc in city.ambient_nodes:

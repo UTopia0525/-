@@ -196,6 +196,8 @@ func load_slot(slot: int) -> bool:
 	game.talked_captain = d.talked_captain
 	game.exploration.load_area(d.world.area)
 	game.exploration.player.position = Vector2(d.world.position[0], d.world.position[1])
+	if d.world.area == "changsha":
+		game.exploration.player.position = game.exploration.safe_player_position(game.exploration.player.position)
 	game.exploration.player.facing = d.world.facing
 	game.exploration.player.stop()
 	game.exploration.camera.snap_to_player()
