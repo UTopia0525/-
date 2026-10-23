@@ -5,11 +5,16 @@ signal victory(remaining_hp: int)
 const UI = preload("res://scripts/ui.gd")
 const Rules = preload("res://scripts/rules.gd")
 var qi = preload("res://scripts/inner_qi.gd").new()
+var weapon_label: Label
 var qi_text: Label
 var qi_bar: ProgressBar
 var martial_arts = preload("res://scripts/martial_arts.gd").new()
 # Overrides are available for balancing tests; the catalogue supplies the default costs.
 var skill_qi_costs: Dictionary = {}
+# Starter sword is unmodified; item identity determines equipment category.
+var weapons = preload("res://scripts/weapons.gd").new()
+var equipped_weapon_id := "plain_iron_sword"
+var equipped_weapon_type := "sword"
 var player_hp: int = Rules.PLAYER_MAX_HP
 var enemy_hp: int = Rules.ENEMY_MAX_HP
 var selected: bool = false
@@ -46,7 +51,7 @@ func _ready() -> void:
 	enemy_text = UI.label(enemy_panel, "", Rect2(18, 71, 285, 22), 16)
 	enemy_bar = _health_bar(enemy_panel, Rect2(18, 103, 284, 9), Rules.ENEMY_MAX_HP)
 	var player_panel = UI.panel(self, Rect2(925, 293, 330, 200))
-	UI.label(player_panel, "첫 표행의 신참 표사", Rect2(18, 10, 295, 24), 13, UI.GOLD)
+	weapon_label = UI.label(player_panel, "장착 무기 · 무문철검", Rect2(18, 10, 295, 24), 13, UI.GOLD)
 	UI.label(player_panel, "주인공", Rect2(18, 34, 295, 32), 24)
 	player_text = UI.label(player_panel, "", Rect2(18, 71, 295, 22), 16)
 	player_bar = _health_bar(player_panel, Rect2(18, 103, 294, 9), Rules.PLAYER_MAX_HP)
@@ -133,14 +138,17 @@ func select_samjae() -> void:
 	selected = true
 	select_button.button_pressed = true
 	heading.text = "삼재검법"
-	detail.text = "근력 × 3 + 기민 × 2\n현재 방어 전 피해: %d" % int(martial_arts.raw_damage("samjae", Rules.STARTING_STATS))
-	note.text = "내기 소모: %d" % int(skill_qi_costs.get("samjae", martial_arts.qi_cost("samjae")))
-	use_button.disabled = false
+	detail.text = "근력 × 3 + 기민 × 2\n현재 방어 전 피해: %s" % str(weapons.attack_damage(martial_arts.raw_damage("samjae", Rules.STARTING_STATS), equipped_weapon_id, martial_arts.get_skill("samjae")))
+	note.text = "내기 소모: %d · %s" % [current_qi_cost("samjae"), martial_arts.weapon_requirement("samjae")]
+	use_button.disabled = not martial_arts.can_use_with_weapon("samjae", equipped_weapon_type)
 
 func use_selected() -> void:
 	if not running or not selected or busy:
 		return
-	var cost: int = int(skill_qi_costs.get("samjae", martial_arts.qi_cost("samjae")))
+	if not martial_arts.can_use_with_weapon("samjae", equipped_weapon_type):
+		note.text = "검을 장착해야 사용할 수 있습니다."
+		return
+	var cost: int = current_qi_cost("samjae")
 	if not try_spend_qi(cost):
 		note.text = "내기가 부족합니다. 필요 %d / 현재 %d" % [cost, qi.amount] if cost >= 0 else "기술의 내기 비용을 확인해 주세요."
 		return
@@ -154,7 +162,7 @@ func use_selected() -> void:
 	await get_tree().create_timer(Rules.DEMO_ATTACK_DELAY, false).timeout
 	if token != generation:
 		return
-	var hit = Rules.damage(martial_arts.raw_damage("samjae", Rules.STARTING_STATS), Rules.ENEMY_CONSTITUTION)
+	var hit = Rules.damage(weapons.attack_damage(martial_arts.raw_damage("samjae", Rules.STARTING_STATS), equipped_weapon_id, martial_arts.get_skill("samjae")), Rules.ENEMY_CONSTITUTION)
 	enemy_hp = maxi(0, enemy_hp - hit)
 	_update_hp()
 	_float_damage(hit, false)
@@ -174,7 +182,7 @@ func use_selected() -> void:
 	await get_tree().create_timer(Rules.DEMO_ATTACK_DELAY, false).timeout
 	if token != generation:
 		return
-	var counter = Rules.damage(Rules.DEMO_ENEMY_RAW_DAMAGE, Rules.STARTING_STATS.constitution)
+	var counter = weapons.received_damage(Rules.DEMO_ENEMY_RAW_DAMAGE, Rules.STARTING_STATS.constitution, equipped_weapon_id)
 	player_hp = maxi(0, player_hp - counter)
 	_update_hp()
 	_float_damage(counter, true)
@@ -215,3 +223,19 @@ func try_spend_qi(cost: int) -> bool:
 func _update_qi() -> void:
 	qi_text.text = "내기   %d / %d    (+%d/턴)" % [qi.amount, qi.MAXIMUM, qi.inner_power]
 	qi_bar.value = qi.amount
+
+func equip_weapon(type: String) -> bool:
+	if not weapons.DEFAULT_BY_TYPE.has(type): return false
+	return equip_weapon_item(weapons.DEFAULT_BY_TYPE[type])
+
+func equip_weapon_item(id: String) -> bool:
+	if busy or not weapons.exists(id): return false
+	equipped_weapon_id = id
+	equipped_weapon_type = weapons.weapon_type(id)
+	if is_instance_valid(weapon_label): weapon_label.text = "장착 무기 · " + str(weapons.get_weapon(id).get("name", "맨손"))
+	if running and selected: select_samjae()
+	return true
+
+func current_qi_cost(skill_id: String) -> int:
+	var base: int = int(skill_qi_costs.get(skill_id, martial_arts.qi_cost(skill_id)))
+	return weapons.qi_cost(base, equipped_weapon_id, martial_arts.get_skill(skill_id))

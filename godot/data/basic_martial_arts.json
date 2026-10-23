@@ -14,7 +14,8 @@
     },
     "acquisition": null,
     "description": "세 기본 자세로 중심을 잡아 베고 찌르는 입문 검법.",
-    "status": "user_confirmed"
+    "status": "user_confirmed",
+    "required_weapon_type": "sword"
   },
   "cheongpung": {
     "name": "청풍검법",
@@ -36,7 +37,8 @@
     },
     "acquisition": null,
     "description": "검 끝의 흔들림을 줄이고 빠르게 한 선을 그어 베는 검법.",
-    "status": "proposal"
+    "status": "proposal",
+    "required_weapon_type": "sword"
   },
   "yusu": {
     "name": "유수검법",
@@ -58,7 +60,8 @@
     },
     "acquisition": null,
     "description": "힘을 억지로 멈추지 않고 몸의 흐름과 내기를 검 끝에 잇는 검법.",
-    "status": "proposal"
+    "status": "proposal",
+    "required_weapon_type": "sword"
   },
   "swaeam": {
     "name": "쇄암검법",
@@ -79,7 +82,8 @@
     },
     "acquisition": null,
     "description": "단단히 버틴 하체를 바탕으로 무거운 일격을 내려치는 검법.",
-    "status": "proposal"
+    "status": "proposal",
+    "required_weapon_type": "sword"
   },
   "danseok": {
     "name": "단석도법",
@@ -100,7 +104,8 @@
     },
     "acquisition": null,
     "description": "도의 무게를 실어 짧고 깊게 내려베는 도법.",
-    "status": "proposal"
+    "status": "proposal",
+    "required_weapon_type": "saber"
   },
   "hoepung": {
     "name": "회풍도법",
@@ -121,7 +126,8 @@
     },
     "acquisition": null,
     "description": "몸을 돌려 모은 힘을 넓은 베기 한 번으로 풀어내는 도법.",
-    "status": "proposal"
+    "status": "proposal",
+    "required_weapon_type": "saber"
   },
   "gwanpung": {
     "name": "관풍창법",
@@ -144,7 +150,8 @@
     },
     "acquisition": null,
     "description": "상대의 움직임을 읽고 창 끝을 곧게 뻗어 찌르는 창법.",
-    "status": "proposal"
+    "status": "proposal",
+    "required_weapon_type": "spear"
   },
   "yeonhwan": {
     "name": "연환창법",
@@ -166,7 +173,8 @@
     },
     "acquisition": null,
     "description": "허초와 실초를 이어 마지막 찌르기에 내기를 집중하는 창법.",
-    "status": "proposal"
+    "status": "proposal",
+    "required_weapon_type": "spear"
   },
   "cheolsan": {
     "name": "철산권법",
@@ -187,7 +195,8 @@
     },
     "acquisition": null,
     "description": "굳게 선 몸 전체의 힘을 짧은 주먹에 싣는 권법.",
-    "status": "proposal"
+    "status": "proposal",
+    "required_weapon_type": null
   },
   "jingak": {
     "name": "진각권법",
@@ -209,7 +218,8 @@
     },
     "acquisition": null,
     "description": "발을 굳게 디뎌 얻은 힘과 내기를 한 주먹으로 뻗는 권법.",
-    "status": "proposal"
+    "status": "proposal",
+    "required_weapon_type": null
   },
   "ungi": {
     "name": "운기장법",
@@ -230,6 +240,7 @@
     },
     "acquisition": null,
     "description": "호흡으로 모은 내기를 손바닥에 집중해 밀어내는 장법.",
-    "status": "proposal"
+    "status": "proposal",
+    "required_weapon_type": null
   }
 }

@@ -1,5 +1,6 @@
 extends RefCounted
-## Catalogue and numeric rules only. Meeting requirements does not grant a skill.
+## Learning, damage, costs and equipment conditions. Eligibility does not grant a skill.
+const WEAPON_NAMES = {"none":"맨손", "sword":"검", "saber":"도", "spear":"창"}
 const RULES = preload("res://scripts/rules.gd")
 var definitions: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/basic_martial_arts.json"))
 
@@ -28,3 +29,13 @@ func raw_damage(id: String, stats: Dictionary) -> float:
 
 func qi_cost(id: String) -> int:
 	return int(definitions[id].qi_cost) if definitions.has(id) else -1
+
+func can_use_with_weapon(id: String, equipped_type: String) -> bool:
+	if not definitions.has(id) or not WEAPON_NAMES.has(equipped_type): return false
+	var required = definitions[id].required_weapon_type
+	return required == null or required == equipped_type
+
+func weapon_requirement(id: String) -> String:
+	if not definitions.has(id): return "사용할 수 없는 무공입니다."
+	var required = definitions[id].required_weapon_type
+	return "필요 무기: 없음" if required == null else "필요 무기: " + str(WEAPON_NAMES[required])

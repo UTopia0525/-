@@ -48,7 +48,7 @@ func capture() -> Dictionary:
 		"ui":{"visible":visibility, "location":game.location.text, "objective":game.objective.text, "hint":game.bottom_hint.text, "caption":game.story_caption.text, "ending_hp":game.ending_hp.text},
 		"visual":{"mode":game.story_visual.mode, "phase":game.story_visual.phase, "paused":game.story_visual.paused},
 		"choice":game.pending_choice, "service":game.city_service.service.duplicate(true), "service_tab":game.city_service.selected_tab, "pending_service":game.pending_service_id,
-		"battle":{"inner_power":game.battle.qi.inner_power, "qi":game.battle.qi.amount, "player_hp":game.battle.player_hp, "enemy_hp":game.battle.enemy_hp, "turn":game.battle.turn, "selected":game.battle.selected},
+		"battle":{"weapon_id":game.battle.equipped_weapon_id, "weapon_type":game.battle.equipped_weapon_type, "inner_power":game.battle.qi.inner_power, "qi":game.battle.qi.amount, "player_hp":game.battle.player_hp, "enemy_hp":game.battle.enemy_hp, "turn":game.battle.turn, "selected":game.battle.selected},
 		"music":{"track":game.music.current_track, "enabled":game.music.enabled}}
 
 func path(slot: int) -> String: return ROOT + "/slot_%02d.json" % slot
@@ -146,6 +146,10 @@ func validate(d) -> bool:
 	if not d.service.is_empty() and d.service.get("id") not in ["city_merchant", "city_artisan", "city_instructor"]: return false
 	if d.state == "service" and d.service.is_empty(): return false
 	if not is_number(d.battle.get("player_hp"), 0, 300) or not is_number(d.battle.get("enemy_hp"), 0, 150) or not is_number(d.battle.get("turn"), 1, 10000) or not d.battle.get("selected") is bool: return false
+	if d.battle.has("weapon_id"):
+		if not d.battle.weapon_id is String or not game.battle.weapons.exists(d.battle.weapon_id): return false
+		if d.battle.has("weapon_type") and game.battle.weapons.weapon_type(d.battle.weapon_id) != d.battle.weapon_type: return false
+	if d.battle.has("weapon_type") and not game.battle.martial_arts.WEAPON_NAMES.has(d.battle.weapon_type): return false
 	if d.schema == 2:
 		if not is_number(d.battle.get("inner_power"), 0, 100) or not is_number(d.battle.get("qi"), 0, 500): return false
 	return game.music.TRACKS.has(d.music.get("track")) and d.music.get("enabled") is bool
@@ -162,6 +166,8 @@ func load_slot(slot: int) -> bool:
 	game.state = d.state
 	game.chapter_number = int(d.chapter)
 	game.money = int(d.money)
+	if d.battle.has("weapon_id"): game.battle.equip_weapon_item(d.battle.weapon_id)
+	else: game.battle.equip_weapon(d.battle.get("weapon_type", "sword"))
 	game.talked_captain = d.talked_captain
 	game.exploration.load_area(d.world.area)
 	game.exploration.player.position = Vector2(d.world.position[0], d.world.position[1])

@@ -218,6 +218,7 @@ func reset() -> void:
 	dialogue_cast.clear()
 	ending.hide()
 	battle.cancel()
+	battle.equip_weapon("sword")
 	exploration.show()
 	exploration.load_area("dock")
 	exploration.set_active(false)

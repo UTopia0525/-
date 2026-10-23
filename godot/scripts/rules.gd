@@ -12,7 +12,10 @@ const DEMO_ATTACK_DELAY = 0.45
 const DEMO_TURN_DELAY = 0.65
 
 static func damage(raw: float, constitution: float) -> int:
-	return floori(maxf(0.0, raw - constitution) * 100.0 / (100.0 + constitution))
+	return floori(damage_before_rounding(raw, constitution))
+
+static func damage_before_rounding(raw: float, constitution: float) -> float:
+	return maxf(0.0, raw - constitution) * 100.0 / (100.0 + constitution)
 
 static func samjae_damage() -> float:
 	return STARTING_STATS.strength * 3.0 + STARTING_STATS.agility * 2.0

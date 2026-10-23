@@ -17,6 +17,13 @@ func _initialize() -> void:
 		check(not names.has(skill.name), "unique skill names")
 		names.append(skill.name)
 		check(skill.acquisition == null, "acquisition intentionally unspecified")
+		var required = skill.required_weapon_type
+		if required != null:
+			check(arts.can_use_with_weapon(id, required), "matching weapon accepted: " + id)
+			for wrong in ["none", "sword", "saber", "spear"]:
+				if wrong != required: check(not arts.can_use_with_weapon(id, wrong), "wrong or unequipped weapon blocked: " + id)
+		else:
+			check(arts.can_use_with_weapon(id, "none") and arts.can_use_with_weapon(id, "sword"), "unrestricted hand arts do not invent equipment bans")
 		if id == "samjae": continue
 		check(not arts.can_learn(id, RULES.STARTING_STATS), "starting stats do not qualify: " + id)
 		check(arts.raw_damage(id, RULES.STARTING_STATS) > 50, "higher baseline formula than Samjae: " + id)
