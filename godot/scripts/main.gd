@@ -79,10 +79,11 @@ func _ready() -> void:
 	reset()
 
 func _setup_input() -> void:
-	var definitions = {"move_left": [KEY_A, KEY_LEFT], "move_right": [KEY_D, KEY_RIGHT], "move_up": [KEY_W, KEY_UP], "move_down": [KEY_S, KEY_DOWN], "interact": [KEY_E]}
+	var definitions = {"move_left": [KEY_A, KEY_LEFT], "move_right": [KEY_D, KEY_RIGHT], "move_up": [KEY_W, KEY_UP], "move_down": [KEY_S, KEY_DOWN], "interact": [KEY_F]}
 	for action in definitions:
 		if not InputMap.has_action(action):
 			InputMap.add_action(action)
+		InputMap.action_erase_events(action)
 		for code in definitions[action]:
 			var event = InputEventKey.new()
 			event.physical_keycode = code
@@ -101,7 +102,7 @@ func _build_hud() -> void:
 	UI.label(mission_panel, "지금 할 일", Rect2(16, 7, 400, 20), 12, UI.GOLD)
 	objective = UI.label(mission_panel, "", Rect2(16, 30, 400, 27), 16)
 	objective.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	bottom_hint = UI.label(ui_root, "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     E  대화     ·     M  음악     ·     F1  처음부터", Rect2(24, 680, 1230, 27), 14, Color("f1dfb4"))
+	bottom_hint = UI.label(ui_root, "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     F  대화     ·     M  음악     ·     F1  처음부터", Rect2(24, 680, 1230, 27), 14, Color("f1dfb4"))
 	bottom_hint.add_theme_color_override("font_shadow_color", Color("11211a"))
 	bottom_hint.add_theme_constant_override("shadow_offset_x", 2)
 	bottom_hint.add_theme_constant_override("shadow_offset_y", 2)
@@ -159,7 +160,7 @@ func reset() -> void:
 	city_service.dismiss()
 	quest_navigation.clear()
 	city_overview.hide()
-	bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     E  대화     ·     M  음악     ·     F1  처음부터"
+	bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     F  대화     ·     M  음악     ·     F1  처음부터"
 	state = "title"
 	music.play_track("title")
 	talked_captain = false
@@ -204,7 +205,7 @@ func start_city() -> void:
 	top_hud.show()
 	location.text = "장사 · " + exploration.district_at_player()
 	objective.text = "시장·골목·나루·성밖 농촌 둘러보기"
-	bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     E  거래     ·     TAB  전체 지도     ·     M  음악     ·     F1  타이틀"
+	bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     F  거래     ·     TAB  전체 지도     ·     M  음악     ·     F1  타이틀"
 	bottom_hint.show()
 
 func _process(_delta: float) -> void:
@@ -360,7 +361,7 @@ func _input(event: InputEvent) -> void:
 		elif event.keycode == KEY_F1:
 			reset()
 			get_viewport().set_input_as_handled()
-		elif event.keycode == KEY_E or event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER:
+		elif event.is_action_pressed("interact") or (state == "battle" and event.keycode in [KEY_ENTER, KEY_KP_ENTER]):
 			if state == "explore":
 				interact()
 				get_viewport().set_input_as_handled()

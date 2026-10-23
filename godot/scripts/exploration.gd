@@ -39,7 +39,7 @@ func _ready() -> void:
 	player.add_child(camera)
 	collision_root = Node2D.new()
 	add_child(collision_root)
-	hint = UI.label(self, "E  대화", Rect2(0, 0, 150, 30), 15, UI.GOLD)
+	hint = UI.label(self, "F  대화", Rect2(0, 0, 150, 30), 15, UI.GOLD)
 	hint.add_theme_color_override("font_shadow_color", Color("102019"))
 	hint.add_theme_constant_override("shadow_offset_x", 2)
 	hint.add_theme_constant_override("shadow_offset_y", 2)
@@ -298,7 +298,7 @@ func _process(_delta: float) -> void:
 	hint.visible = not target.is_empty()
 	if not target.is_empty():
 		hint.position = target.position + Vector2(-75, -142 if target.frame >= 0 else -65)
-		hint.text = "E  승선" if target.id == "boarding" else ("E  거래" if target.has("service_id") else "E  대화")
+		hint.text = "F  승선" if target.id == "boarding" else ("F  거래" if target.has("service_id") else "F  대화")
 
 func _input(event: InputEvent) -> void:
 	if not active:
