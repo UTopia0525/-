@@ -4,6 +4,13 @@ const UI = preload("res://scripts/ui.gd")
 const VIEW_SIZE = Vector2(240, 150)
 const WORLD_WIDTH = 1920.0
 var exploration
+var quest_navigation
+var quest_label: Label
+var quest_active := false
+var quest_offscreen := false
+var quest_marker := Vector2.ZERO
+var quest_direction := Vector2.ZERO
+const QUEST_COLOR = Color("ff9863")
 var place_label: Label
 var map_view: Control
 var world_window: Rect2
@@ -18,7 +25,7 @@ class MapView extends Control:
 
 func _ready() -> void:
 	position = Vector2(24, 24)
-	size = Vector2(264, 230)
+	size = Vector2(264, 262)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_theme_stylebox_override("panel", UI.box(Color("12221bf5")))
 	place_label = UI.label(self, "", Rect2(12, 9, 240, 26), 16, UI.TEXT)
@@ -33,7 +40,12 @@ func _ready() -> void:
 	add_child(map_view)
 	UI.label(self, "▲ 나", Rect2(12, 198, 55, 22), 13, UI.GOLD)
 	UI.label(self, "● 주민", Rect2(73, 198, 70, 22), 13, Color("81f0cf"))
-	UI.label(self, "북쪽 ↑", Rect2(179, 198, 70, 22), 13, UI.TEXT)
+	UI.label(self, "◆ 목표", Rect2(164, 198, 80, 22), 13, QUEST_COLOR)
+	var north = UI.label(map_view, "N ↑", Rect2(106, 2, 28, 20), 12, UI.TEXT)
+	north.add_theme_color_override("font_outline_color", Color.BLACK)
+	north.add_theme_constant_override("outline_size", 4)
+	quest_label = UI.label(self, "추적 중인 퀘스트 없음", Rect2(12, 228, 240, 22), 13, UI.MUTED)
+	quest_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 
 func bind_world(world) -> void:
 	exploration = world
@@ -60,7 +72,40 @@ func refresh() -> void:
 	for npc in exploration.npcs:
 		if npc.frame >= 0 and world_window.has_point(npc.position):
 			npc_markers.append(project_point(npc.position))
+	_refresh_quest()
 	map_view.queue_redraw()
+
+func _refresh_quest() -> void:
+	var goal: Dictionary = quest_navigation.get_goal(exploration) if is_instance_valid(quest_navigation) else {}
+	quest_active = not goal.is_empty()
+	quest_offscreen = false
+	quest_marker = Vector2.ZERO
+	quest_direction = Vector2.ZERO
+	if not quest_active:
+		quest_label.text = "추적 중인 퀘스트 없음"
+		quest_label.tooltip_text = ""
+		return
+	quest_label.text = "목표 · " + goal.label
+	quest_label.tooltip_text = goal.quest_title + " · " + goal.label
+	var projected = project_point(goal.position)
+	quest_offscreen = not world_window.has_point(goal.position)
+	var lower = Vector2(12, 12)
+	var upper = VIEW_SIZE - lower
+	quest_direction = (projected - player_marker).normalized()
+	if not quest_offscreen:
+		quest_marker = projected.clamp(lower, upper)
+		return
+	var start = player_marker.clamp(lower, upper)
+	var distance := INF
+	if quest_direction.x > 0.0001:
+		distance = minf(distance, (upper.x - start.x) / quest_direction.x)
+	elif quest_direction.x < -0.0001:
+		distance = minf(distance, (lower.x - start.x) / quest_direction.x)
+	if quest_direction.y > 0.0001:
+		distance = minf(distance, (upper.y - start.y) / quest_direction.y)
+	elif quest_direction.y < -0.0001:
+		distance = minf(distance, (lower.y - start.y) / quest_direction.y)
+	quest_marker = start + quest_direction * distance
 
 func project_point(point: Vector2) -> Vector2:
 	return (point - world_window.position) / world_window.size * VIEW_SIZE
@@ -83,6 +128,15 @@ func draw_map(canvas: Control) -> void:
 	for point in npc_markers:
 		canvas.draw_circle(point, 4.0, Color("10251e"))
 		canvas.draw_circle(point, 2.8, Color("81f0cf"))
+	if quest_active:
+		if quest_offscreen:
+			var tangent = Vector2(-quest_direction.y, quest_direction.x)
+			canvas.draw_circle(quest_marker, 9, Color("14251e"))
+			canvas.draw_colored_polygon(PackedVector2Array([quest_marker + quest_direction * 7, quest_marker - quest_direction * 5 + tangent * 5, quest_marker - quest_direction * 5 - tangent * 5]), QUEST_COLOR)
+		else:
+			var diamond = PackedVector2Array([quest_marker + Vector2(-7, 0), quest_marker + Vector2(0, -7), quest_marker + Vector2(7, 0), quest_marker + Vector2(0, 7), quest_marker + Vector2(-7, 0)])
+			canvas.draw_polyline(diamond, Color("14251e"), 5)
+			canvas.draw_polyline(diamond, QUEST_COLOR, 2)
 	canvas.draw_circle(player_marker, 7, Color("10251e"))
 	var angle: float = {"down": 0.0, "left": PI / 2, "right": -PI / 2, "up": PI}.get(facing, 0.0)
 	var triangle = PackedVector2Array()

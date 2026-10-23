@@ -1,0 +1,255 @@
+{
+  "changsha_cloth": {
+    "title": "맡겨 둔 옷감",
+    "stages": {
+      "deliver": {
+        "label": "객잔에 옷감 전달",
+        "goals": [
+          {
+            "id": "inn_waiter",
+            "npc_id": "inn_waiter"
+          }
+        ]
+      },
+      "report": {
+        "label": "포목상에게 완료 보고",
+        "goals": [
+          {
+            "id": "cloth_merchant",
+            "npc_id": "cloth_merchant"
+          }
+        ]
+      }
+    }
+  },
+  "changsha_dishes": {
+    "title": "돌아오지 않은 그릇",
+    "stages": {
+      "collect": {
+        "label": "공방에서 식기 회수",
+        "goals": [
+          {
+            "id": "carpenter",
+            "npc_id": "carpenter"
+          }
+        ]
+      },
+      "report": {
+        "label": "점소이에게 식기 전달",
+        "goals": [
+          {
+            "id": "inn_waiter",
+            "npc_id": "inn_waiter"
+          }
+        ]
+      }
+    }
+  },
+  "changsha_handle": {
+    "title": "농가의 부러진 자루",
+    "stages": {
+      "deliver": {
+        "label": "농가에 자루 전달",
+        "goals": [
+          {
+            "id": "old_farmer",
+            "npc_id": "old_farmer"
+          }
+        ]
+      },
+      "report": {
+        "label": "목수에게 완료 보고",
+        "goals": [
+          {
+            "id": "carpenter",
+            "npc_id": "carpenter"
+          }
+        ]
+      }
+    }
+  },
+  "changsha_baskets": {
+    "title": "뒤바뀐 바구니",
+    "stages": {
+      "exchange": {
+        "label": "잡화상과 바구니 교환",
+        "goals": [
+          {
+            "id": "general_merchant",
+            "npc_id": "general_merchant"
+          }
+        ]
+      },
+      "report": {
+        "label": "채소 장수에게 보고",
+        "goals": [
+          {
+            "id": "vegetable_vendor",
+            "npc_id": "vegetable_vendor"
+          }
+        ]
+      }
+    }
+  },
+  "changsha_bundle": {
+    "title": "어느 길로 갔더라",
+    "stages": {
+      "inquire": {
+        "label": "우물가에서 보따리 탐문",
+        "goals": [
+          {
+            "id": "well_grandmother",
+            "npc_id": "well_grandmother"
+          }
+        ]
+      },
+      "collect": {
+        "label": "처마 밑 보따리 찾기",
+        "goals": [
+          {
+            "id": "bundle",
+            "point": [
+              490,
+              830
+            ]
+          }
+        ]
+      },
+      "report": {
+        "label": "행상인에게 보따리 전달",
+        "goals": [
+          {
+            "id": "travelling_merchant",
+            "npc_id": "travelling_merchant"
+          }
+        ]
+      }
+    }
+  },
+  "changsha_cargo": {
+    "title": "표식이 같은 짐",
+    "stages": {
+      "collect": {
+        "label": "창고에서 표식 짐 회수",
+        "goals": [
+          {
+            "id": "warehouse_assistant",
+            "npc_id": "warehouse_assistant"
+          }
+        ]
+      },
+      "report": {
+        "label": "나루로 짐 운반",
+        "goals": [
+          {
+            "id": "dock_worker",
+            "npc_id": "dock_worker"
+          }
+        ]
+      }
+    }
+  },
+  "changsha_pages": {
+    "title": "젖기 전에",
+    "stages": {
+      "collect": {
+        "label": "남은 장부 낱장 찾기",
+        "goals": [
+          {
+            "id": "page_1",
+            "point": [
+              430,
+              230
+            ]
+          },
+          {
+            "id": "page_2",
+            "point": [
+              470,
+              235
+            ]
+          },
+          {
+            "id": "page_3",
+            "point": [
+              450,
+              258
+            ]
+          }
+        ]
+      },
+      "report": {
+        "label": "창고지기에게 장부 전달",
+        "goals": [
+          {
+            "id": "warehouse_keeper",
+            "npc_id": "warehouse_keeper"
+          }
+        ]
+      }
+    }
+  },
+  "changsha_waterway": {
+    "title": "막힌 물길",
+    "stages": {
+      "clear": {
+        "label": "남은 물길 조사",
+        "goals": [
+          {
+            "id": "waterway_1",
+            "point": [
+              1315,
+              720
+            ]
+          },
+          {
+            "id": "waterway_2",
+            "point": [
+              1370,
+              710
+            ]
+          },
+          {
+            "id": "waterway_3",
+            "point": [
+              1345,
+              760
+            ]
+          }
+        ]
+      },
+      "report": {
+        "label": "농부에게 완료 보고",
+        "goals": [
+          {
+            "id": "waterway_farmer",
+            "npc_id": "waterway_farmer"
+          }
+        ]
+      }
+    }
+  },
+  "changsha_family": {
+    "title": "오늘도 오지 않는 아들",
+    "stages": {
+      "inquire": {
+        "label": "공방에서 아들의 안부 확인",
+        "goals": [
+          {
+            "id": "young_craftsman",
+            "npc_id": "young_craftsman"
+          }
+        ]
+      },
+      "report": {
+        "label": "아버지에게 안부 전달",
+        "goals": [
+          {
+            "id": "waiting_father",
+            "npc_id": "waiting_father"
+          }
+        ]
+      }
+    }
+  }
+}

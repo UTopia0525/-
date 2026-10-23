@@ -40,11 +40,11 @@ godot --headless --path godot --editor --import --quit
 godot --headless --path godot --script res://tests/changsha.gd
 ```
 
-그래픽 화면을 사용할 수 있는 환경에서는 `godot --path godot --script res://tests/capture_city.gd`로 이 도시의 화면 두 장만 갱신한다.
+그래픽 화면을 사용할 수 있는 환경에서는 `godot --path godot --script res://tests/capture_city.gd`로 이 도시의 플레이·시장·안내 예시·전체 지도 캡처를 갱신한다.
 
 ## 채택한 초기 의뢰
 
-[장사 초기 의뢰 9종](../../../../docs/quests/changsha.md)을 기획으로 채택했다. 「울타리 밖의 닭」은 제외한다. 의뢰인 배치의 세부 조정과 실제 퀘스트 기능 구현은 추후 진행한다.
+[장사 초기 의뢰 9종](../../../../docs/quests/changsha.md)을 기획으로 채택했다. 「울타리 밖의 닭」은 제외한다. 의뢰인·관련 인물 14명의 배치는 완료했다. 실제 퀘스트 수락·대화·보상 기능은 추후 구현한다.
 
 [9개 의뢰의 전체 대화 원고](../../../../docs/quests/changsha-dialogues.md)를 작성했다. 수락·보류·진행 중·완료·재방문 대사를 포함하며, 옷감 배달 → 식기 회수 → 농기구 전달만 연계한다. 나머지 여섯 의뢰는 독립이다. 아직 Godot 퀘스트 기능에 연결하지 않은 원고 단계다.
 
@@ -63,3 +63,12 @@ NPC 30명의 실제 발끝과 캐릭터 영역을 기준으로 재배치했다. 
 ![수정된 시장 플레이 화면](../../../screenshots/changsha-market-ui-revised.png)
 
 기존 `changsha-market-ui.png`는 변경 전 비교용 캡처다. 이번 수정 화면은 `changsha-market-ui-revised.png`를 기준으로 본다. `tests/capture_city.gd`는 나루 0장 캡처를 건드리지 않고 장사 기본 화면·시장 수정 화면·전체 지도만 갱신한다.
+
+## NPC 길 중앙 회피·퀘스트 방향 안내
+
+주민 30명을 가게·마당·골목 가장자리로 옮기고, 의뢰 원고의 14명을 식별 가능한 NPC ID로 등록했다. 미니맵에 추적 목적지의 주황색 마름모를 표시하며 범위 밖이면 가장자리 방향 화살표를 표시한다. TAB 지도에도 주민과 목표를 표시한다. [배치·안내 규칙과 구현 범위](../../../../docs/quests/quest-navigation.md)를 참고한다.
+
+9개 의뢰의 목적지 데이터와 안내 API를 구현했으며, 수락·대화·보상 기능은 아직 연결하지 않았다. 아래 캡처는 옷감 전달 단계를 명시적으로 추적한 안내 예시다.
+
+![범위 밖 목표 방향](../../../screenshots/changsha-navigation-outside.png)
+![범위 안 목표 위치](../../../screenshots/changsha-navigation-inside.png)

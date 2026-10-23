@@ -16,6 +16,14 @@ func _run() -> void:
 	game.exploration.camera.snap_to_player()
 	await create_timer(0.2).timeout
 	await _capture("changsha-market-ui-revised")
+	# Navigation preview uses an explicit tracked stage, not an accepted quest.
+	game.quest_navigation.track("changsha_cloth", "deliver")
+	await create_timer(0.2).timeout
+	await _capture("changsha-navigation-outside")
+	game.exploration.player.position = game.exploration.city_point([971.55, 279.51])
+	game.exploration.camera.snap_to_player()
+	await create_timer(0.2).timeout
+	await _capture("changsha-navigation-inside")
 	game.toggle_city_map()
 	await _capture("changsha-overview")
 	for voice in game.music.players:

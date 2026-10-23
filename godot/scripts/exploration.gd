@@ -115,6 +115,11 @@ func _load_changsha() -> void:
 		citizen.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		citizen.scale = Vector2.ONE * (82.0 / citizen.texture.get_height())
 		citizen.position = city_point(entry.point)
+		citizen.name = entry.id
+		citizen.set_meta("npc_id", entry.id)
+		citizen.set_meta("display_name", entry.name)
+		citizen.set_meta("quest_actor", entry.quest_actor)
+		citizen.set_meta("post", entry.post)
 		# Use the same foot baseline as the player for Y sorting.
 		citizen.offset = Vector2(-citizen.texture.get_width() / 2.0, -citizen.texture.get_height())
 		decorations.add_child(citizen)

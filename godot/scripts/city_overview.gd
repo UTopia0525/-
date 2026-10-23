@@ -4,6 +4,7 @@ const UI = preload("res://scripts/ui.gd")
 var map_image: TextureRect
 var player_dot: ColorRect
 var district_labels: Array[Label] = []
+var actor_markers: Array[Control] = []
 const MAP_RECT = Rect2(190, 65, 900, 600)
 
 func _ready() -> void:
@@ -44,7 +45,10 @@ func _ready() -> void:
 	UI.label(self, "● 현재 위치     ·     TAB / ESC  지도 닫기", Rect2(190, 674, 900, 30), 17, UI.GOLD)
 	hide()
 
-func open_for(exploration) -> void:
+func open_for(exploration, goal: Dictionary = {}) -> void:
+	for marker in actor_markers:
+		marker.free()
+	actor_markers.clear()
 	for label in district_labels:
 		label.free()
 	district_labels.clear()
@@ -56,6 +60,24 @@ func open_for(exploration) -> void:
 		label.add_theme_color_override("font_outline_color", Color("0b1714"))
 		label.add_theme_constant_override("outline_size", 7)
 		district_labels.append(label)
+	for citizen in exploration.ambient_nodes:
+		var marker = ColorRect.new()
+		marker.size = Vector2(6, 6)
+		marker.position = MAP_RECT.position + citizen.position / exploration.map_bounds.size * MAP_RECT.size - marker.size / 2.0
+		marker.color = Color("81f0cf")
+		marker.tooltip_text = str(citizen.get_meta("display_name", "주민")) + " · " + str(citizen.get_meta("post", ""))
+		add_child(marker)
+		actor_markers.append(marker)
+	if not goal.is_empty():
+		var marker = ColorRect.new()
+		marker.size = Vector2(9, 9)
+		marker.pivot_offset = marker.size / 2.0
+		marker.rotation = PI / 4
+		marker.position = MAP_RECT.position + goal.position / exploration.map_bounds.size * MAP_RECT.size - marker.size / 2.0
+		marker.color = Color("ff9863")
+		marker.tooltip_text = goal.label
+		add_child(marker)
+		actor_markers.append(marker)
 	player_dot.position = MAP_RECT.position + exploration.player.position / exploration.map_bounds.size * MAP_RECT.size - Vector2(5, 5)
 	move_child(player_dot, get_child_count() - 1)
 	show()

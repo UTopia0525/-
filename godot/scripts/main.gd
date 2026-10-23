@@ -3,6 +3,7 @@ extends Control
 const UI = preload("res://scripts/ui.gd")
 const EXPLORATION = preload("res://scenes/exploration.tscn")
 const BATTLE = preload("res://scenes/battle.tscn")
+const QUEST_NAVIGATION = preload("res://scripts/quest_navigation.gd")
 const MINIMAP = preload("res://scripts/minimap.gd")
 const CITY_OVERVIEW = preload("res://scripts/city_overview.gd")
 const PORTRAITS = preload("res://scripts/dialogue_portraits.gd")
@@ -26,6 +27,7 @@ var dialogue_text: Label
 var dialogue_cast
 var city_overview
 var minimap
+var quest_navigation
 var dialogue_lines: Array = []
 var dialogue_index: int = 0
 var dialogue_done: Callable
@@ -59,6 +61,9 @@ func _ready() -> void:
 	ui_root.add_child(battle)
 	battle.hide()
 	battle.victory.connect(_on_victory)
+	quest_navigation = QUEST_NAVIGATION.new()
+	quest_navigation.name = "QuestNavigation"
+	add_child(quest_navigation)
 	_build_hud()
 	_build_dialogue()
 	_build_title()
@@ -84,10 +89,12 @@ func _build_hud() -> void:
 	minimap = MINIMAP.new()
 	top_hud.add_child(minimap)
 	minimap.bind_world(exploration)
+	minimap.quest_navigation = quest_navigation
 	location = minimap.place_label
 	var mission_panel = UI.panel(top_hud, Rect2(822, 24, 432, 66), Color("13231edb"))
 	UI.label(mission_panel, "지금 할 일", Rect2(16, 7, 400, 20), 12, UI.GOLD)
 	objective = UI.label(mission_panel, "", Rect2(16, 30, 400, 27), 16)
+	objective.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	bottom_hint = UI.label(ui_root, "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     E  대화     ·     M  음악     ·     F1  처음부터", Rect2(24, 680, 1230, 27), 14, Color("f1dfb4"))
 	bottom_hint.add_theme_color_override("font_shadow_color", Color("11211a"))
 	bottom_hint.add_theme_constant_override("shadow_offset_x", 2)
@@ -143,6 +150,7 @@ func _build_ending() -> void:
 	ending.hide()
 
 func reset() -> void:
+	quest_navigation.clear()
 	city_overview.hide()
 	bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     E  대화     ·     M  음악     ·     F1  처음부터"
 	state = "title"
@@ -171,6 +179,7 @@ func start_story() -> void:
 	say([["hero", "오늘은 나의 첫 정식 표행이다. 출항 전에 표두님을 찾아뵙자."]])
 
 func start_city() -> void:
+	quest_navigation.clear()
 	dialogue_lines.clear()
 	dialogue_done = Callable()
 	dialogue_panel.hide()
@@ -193,6 +202,8 @@ func start_city() -> void:
 func _process(_delta: float) -> void:
 	if state == "explore" and exploration.area_name == "changsha":
 		location.text = "장사 · " + exploration.district_at_player()
+		var goal: Dictionary = quest_navigation.get_goal(exploration)
+		objective.text = goal.quest_title + " · " + goal.label if not goal.is_empty() else "시장·골목·나루·성밖 농촌 둘러보기"
 
 func toggle_city_map() -> void:
 	if city_overview.visible:
@@ -200,7 +211,7 @@ func toggle_city_map() -> void:
 		exploration.set_active(true)
 	else:
 		exploration.set_active(false)
-		city_overview.open_for(exploration)
+		city_overview.open_for(exploration, quest_navigation.get_goal(exploration))
 
 func say(lines: Array, done: Callable = Callable(), listeners: Array = ["hero"]) -> void:
 	if lines.is_empty():
