@@ -45,3 +45,5 @@ godot --headless --path godot --script res://tests/changsha.gd
 ## 채택한 초기 의뢰
 
 [장사 초기 의뢰 9종](../../../../docs/quests/changsha.md)을 기획으로 채택했다. 「울타리 밖의 닭」은 제외한다. 의뢰인 배치의 세부 조정과 실제 퀘스트 기능 구현은 추후 진행한다.
+
+[9개 의뢰의 전체 대화 원고](../../../../docs/quests/changsha-dialogues.md)를 작성했다. 수락·보류·진행 중·완료·재방문 대사를 포함하며, 옷감 배달 → 식기 회수 → 농기구 전달만 연계한다. 나머지 여섯 의뢰는 독립이다. 아직 Godot 퀘스트 기능에 연결하지 않은 원고 단계다.
