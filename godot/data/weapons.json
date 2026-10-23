@@ -8,7 +8,9 @@
     "qi_reduction_percent": 0,
     "description": "장식 없이 만든 평범한 철검. 첫 표행을 나서는 주인공의 시작 무기.",
     "acquisition": "starting_equipment",
-    "status": "starting_equipment"
+    "status": "starting_equipment",
+    "price": null,
+    "price_currency": "mun"
   },
   "refined_sword": {
     "name": "정련검",
@@ -19,7 +21,9 @@
     "qi_reduction_percent": 0,
     "description": "고르게 벼린 날과 안정적인 무게 중심을 갖춘 검.",
     "acquisition": null,
-    "status": "proposal"
+    "status": "proposal",
+    "price": 300,
+    "price_currency": "mun"
   },
   "blue_steel_sword": {
     "name": "청강검",
@@ -30,7 +34,9 @@
     "qi_reduction_percent": 0,
     "description": "탄력 있는 검신으로 베기와 받아내기를 고르게 돕는 검.",
     "acquisition": null,
-    "status": "proposal"
+    "status": "proposal",
+    "price": 500,
+    "price_currency": "mun"
   },
   "hundredfold_sword": {
     "name": "백련검",
@@ -41,7 +47,9 @@
     "qi_reduction_percent": 0,
     "description": "반복 단조로 검신의 균형을 다듬은 상급 검.",
     "acquisition": null,
-    "status": "proposal"
+    "status": "proposal",
+    "price": 700,
+    "price_currency": "mun"
   },
   "thickback_saber": {
     "name": "후배도",
@@ -52,7 +60,9 @@
     "qi_reduction_percent": 0,
     "description": "두꺼운 칼등으로 베는 순간에 무게를 실어 주는 도.",
     "acquisition": null,
-    "status": "proposal"
+    "status": "proposal",
+    "price": 300,
+    "price_currency": "mun"
   },
   "forged_saber": {
     "name": "단강도",
@@ -63,7 +73,9 @@
     "qi_reduction_percent": 0,
     "description": "단단하게 단조한 날에 힘을 집중하는 도.",
     "acquisition": null,
-    "status": "proposal"
+    "status": "proposal",
+    "price": 500,
+    "price_currency": "mun"
   },
   "heavy_steel_saber": {
     "name": "중강도",
@@ -74,7 +86,9 @@
     "qi_reduction_percent": 0,
     "description": "중량과 날의 균형을 맞춰 강한 일격에 특화한 도.",
     "acquisition": null,
-    "status": "proposal"
+    "status": "proposal",
+    "price": 700,
+    "price_currency": "mun"
   },
   "balanced_spear": {
     "name": "균형창",
@@ -85,7 +99,9 @@
     "qi_reduction_percent": 10,
     "description": "창대와 창날의 균형이 좋아 불필요한 힘 소모가 적은 창.",
     "acquisition": null,
-    "status": "proposal"
+    "status": "proposal",
+    "price": 300,
+    "price_currency": "mun"
   },
   "willow_spear": {
     "name": "유엽창",
@@ -96,7 +112,9 @@
     "qi_reduction_percent": 20,
     "description": "버들잎 모양의 창날과 유연한 창대로 힘의 흐름을 잇는 창.",
     "acquisition": null,
-    "status": "proposal"
+    "status": "proposal",
+    "price": 500,
+    "price_currency": "mun"
   },
   "flowing_cloud_spear": {
     "name": "유운창",
@@ -107,6 +125,8 @@
     "qi_reduction_percent": 30,
     "description": "내기를 끊지 않고 창 끝까지 전하기 쉽게 다듬은 창.",
     "acquisition": null,
-    "status": "proposal"
+    "status": "proposal",
+    "price": 700,
+    "price_currency": "mun"
   }
 }
