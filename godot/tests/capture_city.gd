@@ -26,6 +26,24 @@ func _run() -> void:
 	await _capture("changsha-navigation-inside")
 	game.toggle_city_map()
 	await _capture("changsha-overview")
+	game.toggle_city_map()
+	game.quest_navigation.clear()
+	for id in ["city_merchant", "city_artisan", "city_instructor"]:
+		for actor in game.exploration.ambient_nodes:
+			if actor.get_meta("npc_id") != id:
+				continue
+			game.exploration.player.position = actor.position + Vector2(36, 12)
+			game.exploration.player.stop()
+			game.exploration.camera.snap_to_player()
+			await create_timer(0.2).timeout
+			if id == "city_instructor":
+				await _capture("changsha-martial-hall")
+			game.interact()
+			if id == "city_instructor":
+				await _capture("changsha-instructor-dialogue")
+			game.advance_dialogue()
+			await _capture("changsha-service-" + id.trim_prefix("city_"))
+			game.city_service.close_counter()
 	for voice in game.music.players:
 		voice.stop()
 		voice.stream = null

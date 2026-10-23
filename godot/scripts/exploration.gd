@@ -120,10 +120,30 @@ func _load_changsha() -> void:
 		citizen.set_meta("display_name", entry.name)
 		citizen.set_meta("quest_actor", entry.quest_actor)
 		citizen.set_meta("post", entry.post)
+		citizen.set_meta("frame", entry.frame)
+		citizen.set_meta("service_id", entry.get("service_id", ""))
 		# Use the same foot baseline as the player for Y sorting.
 		citizen.offset = Vector2(-citizen.texture.get_width() / 2.0, -citizen.texture.get_height())
 		decorations.add_child(citizen)
 		ambient_nodes.append(citizen)
+		if entry.has("service_id"):
+			var marker = Node2D.new()
+			marker.position = citizen.position
+			var tag = UI.label(marker, entry.name + " · 거래", Rect2(-105, -116, 210, 26), 15, UI.GOLD)
+			tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			tag.add_theme_color_override("font_outline_color", Color("12201c"))
+			tag.add_theme_constant_override("outline_size", 5)
+			decorations.add_child(marker)
+			occlusion_roots.append(marker)
+	# Identify the new martial hall in the existing courtyard building.
+	var hall = Node2D.new()
+	hall.z_index = 1
+	hall.position = city_point([985, 625])
+	var plaque = UI.panel(hall, Rect2(-95, -38, 190, 38), Color("28241af2"))
+	var hall_name = UI.label(plaque, "장사 무관", Rect2(5, 3, 180, 30), 20, UI.GOLD)
+	hall_name.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	decorations.add_child(hall)
+	occlusion_roots.append(hall)
 
 func _build_city_art() -> void:
 	for tile in city_data.detail_tiles:
@@ -256,6 +276,14 @@ func nearest() -> Dictionary:
 		if candidate < distance:
 			distance = candidate
 			found = entry
+	for citizen in ambient_nodes:
+		var service_id: String = citizen.get_meta("service_id", "")
+		if service_id.is_empty():
+			continue
+		var candidate = player.position.distance_to(citizen.position)
+		if candidate < distance:
+			distance = candidate
+			found = {"id": service_id, "name": citizen.get_meta("display_name"), "position": citizen.position, "node": citizen, "frame": citizen.get_meta("frame"), "service_id": service_id}
 	return found
 
 func set_active(value: bool) -> void:
@@ -270,7 +298,7 @@ func _process(_delta: float) -> void:
 	hint.visible = not target.is_empty()
 	if not target.is_empty():
 		hint.position = target.position + Vector2(-75, -142 if target.frame >= 0 else -65)
-		hint.text = "E  승선" if target.id == "boarding" else "E  대화"
+		hint.text = "E  승선" if target.id == "boarding" else ("E  거래" if target.has("service_id") else "E  대화")
 
 func _input(event: InputEvent) -> void:
 	if not active:

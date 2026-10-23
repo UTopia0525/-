@@ -1,0 +1,11 @@
+{
+  "required_districts": [
+    {"category": "market", "name": "상점가", "service_kind": "market"},
+    {"category": "government", "name": "관아"},
+    {"category": "martial_hall", "name": "무관", "service_kind": "training"},
+    {"category": "workshops", "name": "공방거리", "service_kind": "workshop"},
+    {"category": "inn", "name": "객잔"},
+    {"category": "residential", "name": "주거구역"}
+  ],
+  "optional_district_policy": "사용자가 지정한 구역 또는 도시 특성에 맞는 구역을 추가한다."
+}

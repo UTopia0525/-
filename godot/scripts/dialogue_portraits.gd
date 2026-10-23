@@ -3,6 +3,9 @@ extends Control
 const UI = preload("res://scripts/ui.gd")
 const EXTRA_ROOT = "res://assets/portraits/extras/"
 const ACTORS = {
+	"city_merchant": {"name": "장사꾼", "extra": "male_young"},
+	"city_artisan": {"name": "장인", "extra": "female_middle"},
+	"city_instructor": {"name": "교관", "extra": "male_middle"},
 	"hero": {"name": "주인공", "extra": "male_young", "portrait": "res://assets/portraits/player/hero.png"},
 	"captain": {"name": "서문길", "extra": "male_middle"},
 	"apothecary": {"name": "진소옥", "extra": "female_young"},

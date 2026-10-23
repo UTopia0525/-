@@ -617,7 +617,9 @@
       "label": [
         295,
         520
-      ]
+      ],
+      "id": "dock",
+      "category": "dock"
     },
     {
       "name": "하역·창고 거리",
@@ -630,7 +632,9 @@
       "label": [
         530,
         258
-      ]
+      ],
+      "id": "warehouse",
+      "category": "warehouse"
     },
     {
       "name": "객잔·찻집 거리",
@@ -643,10 +647,12 @@
       "label": [
         940,
         258
-      ]
+      ],
+      "id": "inn",
+      "category": "inn"
     },
     {
-      "name": "장시·상점가",
+      "name": "상점가",
       "bounds": [
         335,
         275,
@@ -656,10 +662,12 @@
       "label": [
         525,
         480
-      ]
+      ],
+      "id": "market",
+      "category": "market"
     },
     {
-      "name": "관아 앞",
+      "name": "관아",
       "bounds": [
         790,
         275,
@@ -669,10 +677,12 @@
       "label": [
         950,
         480
-      ]
+      ],
+      "id": "government",
+      "category": "government"
     },
     {
-      "name": "공방 거리",
+      "name": "공방거리",
       "bounds": [
         550,
         495,
@@ -682,10 +692,12 @@
       "label": [
         640,
         675
-      ]
+      ],
+      "id": "workshops",
+      "category": "workshops"
     },
     {
-      "name": "주거 골목",
+      "name": "주거구역·골목",
       "bounds": [
         335,
         495,
@@ -695,10 +707,12 @@
       "label": [
         435,
         675
-      ]
+      ],
+      "id": "residential_lane",
+      "category": "residential"
     },
     {
-      "name": "서민 주거지",
+      "name": "주거구역·남문",
       "bounds": [
         335,
         680,
@@ -708,20 +722,39 @@
       "label": [
         535,
         875
-      ]
+      ],
+      "id": "residential_south",
+      "category": "residential"
     },
     {
-      "name": "사당·정원 골목",
+      "id": "martial_hall",
+      "name": "무관",
       "bounds": [
         790,
         495,
         320,
-        395
+        185
       ],
       "label": [
         950,
-        675
-      ]
+        655
+      ],
+      "category": "martial_hall"
+    },
+    {
+      "id": "garden",
+      "name": "사당·정원 골목",
+      "bounds": [
+        790,
+        680,
+        320,
+        210
+      ],
+      "label": [
+        950,
+        855
+      ],
+      "category": "garden"
     },
     {
       "name": "동문 밖 농촌",
@@ -734,7 +767,9 @@
       "label": [
         1370,
         482
-      ]
+      ],
+      "id": "farmland",
+      "category": "farmland"
     }
   ],
   "landmarks": [
@@ -820,6 +855,13 @@
       "point": [
         765,
         970
+      ]
+    },
+    {
+      "name": "무관 앞",
+      "point": [
+        1045,
+        645
       ]
     }
   ],
@@ -1012,15 +1054,16 @@
       "quest_actor": false
     },
     {
-      "id": "resident_04",
+      "id": "city_merchant",
       "name": "장사꾼",
       "point": [
         390,
         341
       ],
       "frame": 7,
-      "post": "가게·마당·골목 가장자리",
-      "quest_actor": false
+      "post": "상점가 노점 앞",
+      "quest_actor": false,
+      "service_id": "city_merchant"
     },
     {
       "id": "resident_05",
@@ -1078,15 +1121,16 @@
       "quest_actor": false
     },
     {
-      "id": "resident_10",
-      "name": "손님",
+      "id": "city_instructor",
+      "name": "교관",
       "point": [
-        859,
-        400
+        1045,
+        645
       ],
-      "frame": 5,
-      "post": "가게·마당·골목 가장자리",
-      "quest_actor": false
+      "frame": 6,
+      "post": "무관 앞마당 가장자리",
+      "quest_actor": false,
+      "service_id": "city_instructor"
     },
     {
       "id": "resident_11",
@@ -1122,15 +1166,16 @@
       "quest_actor": false
     },
     {
-      "id": "resident_14",
-      "name": "손님",
+      "id": "city_artisan",
+      "name": "장인",
       "point": [
         690,
         606
       ],
       "frame": 5,
-      "post": "가게·마당·골목 가장자리",
-      "quest_actor": false
+      "post": "공방 작업장 앞",
+      "quest_actor": false,
+      "service_id": "city_artisan"
     },
     {
       "id": "resident_15",
@@ -1266,5 +1311,34 @@
       14,
       810
     ]
+  ],
+  "services": [
+    {
+      "id": "city_merchant",
+      "npc_id": "city_merchant",
+      "kind": "market",
+      "title": "장사 상점",
+      "name": "장사꾼",
+      "portrait": "male_young",
+      "items": []
+    },
+    {
+      "id": "city_instructor",
+      "npc_id": "city_instructor",
+      "kind": "training",
+      "title": "장사 무관",
+      "name": "교관",
+      "portrait": "male_middle",
+      "items": []
+    },
+    {
+      "id": "city_artisan",
+      "npc_id": "city_artisan",
+      "kind": "workshop",
+      "title": "장사 공방",
+      "name": "장인",
+      "portrait": "female_middle",
+      "items": []
+    }
   ]
 }

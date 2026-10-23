@@ -75,7 +75,7 @@ func _run() -> void:
 	game.toggle_city_map()
 	check(game.city_overview.visible and not city.active, "overview pauses movement")
 	check(city.player.click_path.is_empty(), "overview clears pending movement")
-	check(game.city_overview.district_labels.size() == 10, "district names on overview")
+	check(game.city_overview.district_labels.size() == 11, "district names on overview")
 	var dot = game.city_overview.player_dot.position
 	var expected = game.city_overview.MAP_RECT.position + city.player.position / city.map_bounds.size * game.city_overview.MAP_RECT.size - Vector2(5, 5)
 	check(dot.distance_to(expected) < 0.1, "correct current-location marker")

@@ -27,6 +27,7 @@ var dialogue_text: Label
 var dialogue_cast
 var city_overview
 var minimap
+var city_service
 var quest_navigation
 var dialogue_lines: Array = []
 var dialogue_index: int = 0
@@ -70,6 +71,11 @@ func _ready() -> void:
 	_build_ending()
 	city_overview = CITY_OVERVIEW.new()
 	ui_root.add_child(city_overview)
+	city_service = preload("res://scripts/city_service.gd").new()
+	ui_root.add_child(city_service)
+	city_service.closed.connect(func():
+		state = "explore"
+		exploration.set_active(true))
 	reset()
 
 func _setup_input() -> void:
@@ -150,6 +156,7 @@ func _build_ending() -> void:
 	ending.hide()
 
 func reset() -> void:
+	city_service.dismiss()
 	quest_navigation.clear()
 	city_overview.hide()
 	bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     E  대화     ·     M  음악     ·     F1  처음부터"
@@ -179,6 +186,7 @@ func start_story() -> void:
 	say([["hero", "오늘은 나의 첫 정식 표행이다. 출항 전에 표두님을 찾아뵙자."]])
 
 func start_city() -> void:
+	city_service.dismiss()
 	quest_navigation.clear()
 	dialogue_lines.clear()
 	dialogue_done = Callable()
@@ -196,7 +204,7 @@ func start_city() -> void:
 	top_hud.show()
 	location.text = "장사 · " + exploration.district_at_player()
 	objective.text = "시장·골목·나루·성밖 농촌 둘러보기"
-	bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     TAB  전체 지도     ·     M  음악     ·     F1  타이틀"
+	bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     E  거래     ·     TAB  전체 지도     ·     M  음악     ·     F1  타이틀"
 	bottom_hint.show()
 
 func _process(_delta: float) -> void:
@@ -269,6 +277,18 @@ func interact() -> void:
 	var npc: Dictionary = exploration.nearest()
 	if npc.is_empty():
 		return
+	if npc.has("service_id"):
+		var service: Dictionary = {}
+		for definition in exploration.city_data.services:
+			if definition.id == npc.service_id:
+				service = definition
+		if not service.is_empty():
+			var greeting: String = {"market": "필요한 물건을 찾으십니까? 진열대를 한번 둘러보시지요.", "workshop": "물건을 맡기러 오셨습니까? 어떤 일인지 살펴보지요.", "training": "무관에 오신 걸 환영하오. 수련에 관해 알아보러 오셨소?"}[service.kind]
+			say([[service.id, greeting]], func():
+				state = "service"
+				exploration.set_active(false)
+				city_service.open_counter(service))
+		return
 	match npc.id:
 		"captain":
 			say([["captain", "오늘부터 너도 정식 표행에 나서는 거다. 긴장했느냐?"], ["captain", "저 배에는 우리 식구들이 함께 탄다. 화물을 살피되 동료가 어디 있는지도 잊지 마라."], ["captain", "준비가 되면 오른쪽 널빤지를 건너 배에 올라라. 갑판에서 다시 보자."]], func():
@@ -319,6 +339,13 @@ func _on_victory(hp: int) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
+		if state == "service":
+			if event.keycode == KEY_ESCAPE:
+				city_service.close_counter()
+			elif event.keycode == KEY_F1:
+				reset()
+			get_viewport().set_input_as_handled()
+			return
 		if city_overview.visible:
 			if event.keycode == KEY_TAB or event.keycode == KEY_ESCAPE:
 				toggle_city_map()
