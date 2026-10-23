@@ -1198,6 +1198,30 @@
       "frame": 7,
       "post": "가게·마당·골목 가장자리",
       "quest_actor": false
+    },
+    {
+      "id": "bandit_officer",
+      "name": "정 포두",
+      "point": [
+        1040,
+        442
+      ],
+      "frame": 4,
+      "quest_actor": false,
+      "post": "관아 앞 모집 접수",
+      "story_actor": true
+    },
+    {
+      "id": "bandit_muster",
+      "name": "집결 포졸",
+      "point": [
+        1185,
+        490
+      ],
+      "frame": 7,
+      "quest_actor": false,
+      "post": "동문 밖 집결지",
+      "story_actor": true
     }
   ],
   "detail_tiles": [

@@ -3,6 +3,11 @@ extends Control
 const UI = preload("res://scripts/ui.gd")
 const EXTRA_ROOT = "res://assets/portraits/extras/"
 const ACTORS = {
+	"bandit_officer": {"name":"정 포두", "extra":"male_middle"},
+	"bandit_messenger": {"name":"포졸", "extra":"male_young"},
+	"bandit_farmer": {"name":"피해 농민", "extra":"male_elder"},
+	"bandit_raider": {"name":"길목 산적", "extra":"male_middle"},
+	"bandit_leader": {"name":"산적 우두머리", "extra":"male_middle"},
 	"cloth_merchant": {"name": "포목상", "extra": "female_middle"},
 	"pirate": {"name": "흑린채 수적", "extra": "male_middle"},
 	"recipient": {"name": "수령인", "extra": "male_middle"},

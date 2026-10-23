@@ -5,7 +5,8 @@ const ROOT = "user://saves"
 const CALLBACKS = {
 	"main":["_captain_done", "_boarding_done", "_service_done", "start_battle", "show_story_choice"],
 	"prologue":["_next", "_drowning", "_delivery", "_after_delivery", "_farewell", "_arrival", "_finish"],
-	"chapter_one":["_accept_first_quest"]}
+	"chapter_one":["_accept_first_quest"],
+	"bandit_story":["_notice_done", "_enrolled", "_battle_one", "_battle_two", "_return_to_city", "_retry", "_settle", "_finish"]}
 var game
 var error := ""
 
@@ -38,7 +39,7 @@ func capture() -> Dictionary:
 	var nodes = {"top_hud":game.top_hud, "bottom_hint":game.bottom_hint, "caption":game.story_caption, "exploration":w, "ending":game.ending, "overview":game.city_overview, "visual":game.story_visual}
 	var visibility := {}
 	for id in nodes: visibility[id] = nodes[id].visible
-	return {"schema":3, "progress":game.progress.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
+	return {"schema":3, "progress":game.progress.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
 		"chapter":game.chapter_number, "money":game.money, "talked_captain":game.talked_captain,
 		"world":{"area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
@@ -48,7 +49,7 @@ func capture() -> Dictionary:
 		"ui":{"visible":visibility, "location":game.location.text, "objective":game.objective.text, "hint":game.bottom_hint.text, "caption":game.story_caption.text, "ending_hp":game.ending_hp.text},
 		"visual":{"mode":game.story_visual.mode, "phase":game.story_visual.phase, "paused":game.story_visual.paused},
 		"choice":game.pending_choice, "service":game.city_service.service.duplicate(true), "service_tab":game.city_service.selected_tab, "pending_service":game.pending_service_id,
-		"battle":{"weapon_id":game.battle.equipped_weapon_id, "weapon_type":game.battle.equipped_weapon_type, "inner_power":game.battle.qi.inner_power, "qi":game.battle.qi.amount, "player_hp":game.battle.player_hp, "enemy_hp":game.battle.enemy_hp, "turn":game.battle.turn, "selected":game.battle.selected, "selected_action":game.battle.selected_action},
+		"battle":{"encounter_id":game.battle.encounter.get("id", ""), "weapon_id":game.battle.equipped_weapon_id, "weapon_type":game.battle.equipped_weapon_type, "inner_power":game.battle.qi.inner_power, "qi":game.battle.qi.amount, "player_hp":game.battle.player_hp, "enemy_hp":game.battle.enemy_hp, "turn":game.battle.turn, "selected":game.battle.selected, "selected_action":game.battle.selected_action},
 		"music":{"track":game.music.current_track, "enabled":game.music.enabled}}
 
 func path(slot: int) -> String: return ROOT + "/slot_%02d.json" % slot
@@ -99,6 +100,7 @@ func validate(d) -> bool:
 	if not d is Dictionary: return false
 	if d.get("schema") != 1 and d.get("schema") != 2 and d.get("schema") != 3: return false
 	if d.schema == 3 and not game.progress.valid(d.get("progress")): return false
+	if d.has("bandit_story") and not game.bandit_story.valid(d.bandit_story): return false
 	for field in ["world", "prologue", "chapter_one", "navigation", "dialogue", "ui", "visual", "service", "battle", "music"]:
 		if not d.get(field) is Dictionary: return false
 	if d.get("state") not in ["explore", "story", "choice", "service", "battle", "end"]: return false
@@ -142,11 +144,18 @@ func validate(d) -> bool:
 	if not d.ui.get("visible") is Dictionary: return false
 	for key in ["top_hud", "bottom_hint", "caption", "exploration", "ending", "overview", "visual"]:
 		if not d.ui.visible.get(key) is bool: return false
-	if d.visual.get("mode") not in ["", "wreck", "river", "shore", "delivery"] or not is_number(d.visual.get("phase"), 0, 1000000000) or not d.visual.get("paused") is bool: return false
+	if d.visual.get("mode") not in ["", "wreck", "river", "shore", "delivery", "bandit_road"] or not is_number(d.visual.get("phase"), 0, 1000000000) or not d.visual.get("paused") is bool: return false
 	if not d.get("pending_service") is String or not is_number(d.get("service_tab"), 0, 1): return false
 	if not d.service.is_empty() and d.service.get("id") not in ["city_merchant", "city_artisan", "city_instructor"]: return false
 	if d.state == "service" and d.service.is_empty(): return false
-	if not is_number(d.battle.get("player_hp"), 0, 300) or not is_number(d.battle.get("enemy_hp"), 0, 150) or not is_number(d.battle.get("turn"), 1, 10000) or not d.battle.get("selected") is bool: return false
+	var enemy_maximum := 150
+	var encounter_id = d.battle.get("encounter_id", "")
+	if encounter_id not in ["", "bandit_sentry", "bandit_ringleader"]: return false
+	for definition in game.bandit_story.data.encounters:
+		if definition.id == encounter_id: enemy_maximum = int(definition.max_hp)
+	if d.has("bandit_story") and d.bandit_story.stage in ["battle_one", "battle_two"]:
+		if d.state != "battle" or encounter_id != game.bandit_story.data.encounters[0 if d.bandit_story.stage == "battle_one" else 1].id: return false
+	if not is_number(d.battle.get("player_hp"), 0, 300) or not is_number(d.battle.get("enemy_hp"), 0, enemy_maximum) or not is_number(d.battle.get("turn"), 1, 10000) or not d.battle.get("selected") is bool: return false
 	if d.battle.has("selected_action"):
 		if d.battle.selected_action not in ["", "basic_attack"] and not game.battle.martial_arts.definitions.has(d.battle.selected_action): return false
 		if d.schema == 3 and d.state == "battle" and d.battle.selected_action not in ["", "basic_attack"] and d.battle.selected_action not in d.progress.loadout: return false
@@ -174,6 +183,11 @@ func load_slot(slot: int) -> bool:
 	if d.schema == 3: game.progress.restore(d.progress)
 	game.battle.player_stats = game.progress.stats.duplicate()
 	game.battle.set_loadout(game.progress.loadout)
+	if d.has("bandit_story"): game.bandit_story.restore(d.bandit_story)
+	var encounter: Dictionary = {}
+	for definition in game.bandit_story.data.encounters:
+		if definition.id == d.battle.get("encounter_id", ""): encounter = definition
+	game.battle.set_encounter(encounter)
 	if d.battle.has("weapon_id"): game.battle.equip_weapon_item(d.battle.weapon_id)
 	else: game.battle.equip_weapon(d.battle.get("weapon_type", "sword"))
 	game.talked_captain = d.talked_captain

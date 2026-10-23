@@ -251,5 +251,37 @@
         ]
       }
     }
+  },
+  "changsha_bandit_campaign": {
+    "title": "산적 토벌 지원",
+    "stages": {
+      "enlist": {
+        "label": "관아 앞 정 포두에게 지원",
+        "goals": [
+          {
+            "id": "bandit_officer",
+            "npc_id": "bandit_officer"
+          }
+        ]
+      },
+      "muster": {
+        "label": "동문 밖 집결 포졸과 출발",
+        "goals": [
+          {
+            "id": "bandit_muster",
+            "npc_id": "bandit_muster"
+          }
+        ]
+      },
+      "report": {
+        "label": "정 포두에게 토벌 완료 보고",
+        "goals": [
+          {
+            "id": "bandit_officer",
+            "npc_id": "bandit_officer"
+          }
+        ]
+      }
+    }
   }
 }

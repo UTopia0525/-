@@ -10,11 +10,13 @@ var learned: Array
 var loadout: Array
 var inventory: Dictionary
 var consumed: Dictionary
+var fame := 0
 var error := ""
 
 func _init() -> void: reset()
 
 func reset() -> void:
+	fame = 0
 	stats = RULES.STARTING_STATS.duplicate()
 	owned_weapons = ["plain_iron_sword"]
 	learned = ["samjae"]
@@ -91,10 +93,11 @@ func assign(id: String, slot: int) -> bool:
 	return true
 
 func snapshot() -> Dictionary:
-	return {"stats":stats.duplicate(), "weapons":owned_weapons.duplicate(), "learned":learned.duplicate(), "loadout":loadout.duplicate(), "inventory":inventory.duplicate(), "consumed":consumed.duplicate()}
+	return {"fame":fame, "stats":stats.duplicate(), "weapons":owned_weapons.duplicate(), "learned":learned.duplicate(), "loadout":loadout.duplicate(), "inventory":inventory.duplicate(), "consumed":consumed.duplicate()}
 
 func valid(data) -> bool:
 	if not data is Dictionary: return false
+	if data.has("fame") and not whole(data.fame, 0, 1000000000): return false
 	for key in ["stats", "inventory", "consumed"]:
 		if not data.get(key) is Dictionary: return false
 	for key in ["weapons", "learned", "loadout"]:
@@ -118,6 +121,7 @@ func whole(value, minimum: int, maximum: int) -> bool:
 	return typeof(value) in [TYPE_INT, TYPE_FLOAT] and is_finite(value) and value == floor(value) and value >= minimum and value <= maximum
 
 func restore(data: Dictionary) -> void:
+	fame = int(data.get("fame", 0))
 	stats = data.stats.duplicate()
 	owned_weapons = data.weapons.duplicate()
 	learned = data.learned.duplicate()

@@ -23,7 +23,7 @@ func _run() -> void:
 	check(city.map_bounds.size == Vector2(6144, 4096), "large continuous city bounds")
 	check(city.active and game.state == "explore", "city starts as free exploration")
 	check(city.point_is_walkable(city.player.position), "spawn on street")
-	check(city.ambient_nodes.size() == 30 and city.npcs.is_empty(), "ambient residents without quests or dialogue triggers")
+	check(city.ambient_nodes.size() == 32 and city.npcs.is_empty(), "thirty residents and two campaign NPCs share the city")
 	var origin = Vector2i(city.player.position / 20.0)
 	for landmark in city.city_data.landmarks:
 		var point = city.city_point(landmark.point)

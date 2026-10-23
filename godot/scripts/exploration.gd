@@ -122,14 +122,15 @@ func _load_changsha() -> void:
 		citizen.set_meta("post", entry.post)
 		citizen.set_meta("frame", entry.frame)
 		citizen.set_meta("service_id", entry.get("service_id", ""))
+		citizen.set_meta("story_actor", entry.get("story_actor", false))
 		# Use the same foot baseline as the player for Y sorting.
 		citizen.offset = Vector2(-citizen.texture.get_width() / 2.0, -citizen.texture.get_height())
 		decorations.add_child(citizen)
 		ambient_nodes.append(citizen)
-		if entry.has("service_id"):
+		if entry.has("service_id") or entry.get("story_actor", false):
 			var marker = Node2D.new()
 			marker.position = citizen.position
-			var tag = UI.label(marker, entry.name + " · 거래", Rect2(-105, -116, 210, 26), 15, UI.GOLD)
+			var tag = UI.label(marker, entry.name + (" · 토벌" if entry.get("story_actor", false) else " · 거래"), Rect2(-105, -116, 210, 26), 15, UI.GOLD)
 			tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			tag.add_theme_color_override("font_outline_color", Color("12201c"))
 			tag.add_theme_constant_override("outline_size", 5)
@@ -278,12 +279,13 @@ func nearest() -> Dictionary:
 			found = entry
 	for citizen in ambient_nodes:
 		var service_id: String = citizen.get_meta("service_id", "")
-		if service_id.is_empty():
+		if service_id.is_empty() and not citizen.get_meta("story_actor", false):
 			continue
 		var candidate = player.position.distance_to(citizen.position)
 		if candidate < distance:
 			distance = candidate
-			found = {"id": service_id, "name": citizen.get_meta("display_name"), "position": citizen.position, "node": citizen, "frame": citizen.get_meta("frame"), "service_id": service_id}
+			found = {"id": citizen.get_meta("npc_id"), "name": citizen.get_meta("display_name"), "position": citizen.position, "node": citizen, "frame": citizen.get_meta("frame")}
+			if not service_id.is_empty(): found["service_id"] = service_id
 	return found
 
 func set_active(value: bool) -> void:

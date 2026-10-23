@@ -31,6 +31,7 @@ var city_service
 var quest_navigation
 var prologue
 var chapter_one
+var bandit_story
 var chapter_number := 0
 var save_system
 var settings_menu
@@ -78,6 +79,8 @@ func _ready() -> void:
 	ui_root.add_child(battle)
 	battle.hide()
 	battle.victory.connect(_on_victory)
+	battle.defeat.connect(func():
+		if bandit_story.in_battle(): bandit_story.after_defeat())
 	quest_navigation = QUEST_NAVIGATION.new()
 	quest_navigation.name = "QuestNavigation"
 	add_child(quest_navigation)
@@ -102,6 +105,9 @@ func _ready() -> void:
 	chapter_one = preload("res://scripts/chapter_one.gd").new()
 	chapter_one.game = self
 	add_child(chapter_one)
+	bandit_story = preload("res://scripts/bandit_story.gd").new()
+	bandit_story.game = self
+	add_child(bandit_story)
 	save_system = preload("res://scripts/save_system.gd").new()
 	save_system.game = self
 	add_child(save_system)
@@ -125,8 +131,8 @@ func _build_hud() -> void:
 	top_hud = Control.new()
 	top_hud.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui_root.add_child(top_hud)
-	var purse = UI.panel(top_hud, Rect2(1010, 99, 244, 36), Color("13231eea"))
-	money_label = UI.label(purse, "소지금  0문", Rect2(12, 4, 220, 28), 18, UI.GOLD)
+	var purse = UI.panel(top_hud, Rect2(930, 99, 324, 36), Color("13231eea"))
+	money_label = UI.label(purse, "소지금  0문", Rect2(12, 4, 300, 28), 18, UI.GOLD)
 	money_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	minimap = MINIMAP.new()
 	top_hud.add_child(minimap)
@@ -202,6 +208,7 @@ func reset() -> void:
 	progress.reset()
 	chapter_number = 0
 	chapter_one.reset()
+	bandit_story.reset()
 	prologue.cancel()
 	money = 0
 	choice_screen.hide()
@@ -221,6 +228,13 @@ func reset() -> void:
 	dialogue_cast.clear()
 	ending.hide()
 	battle.cancel()
+	battle.set_encounter({})
+	battle.enemy_hp = battle.Rules.ENEMY_MAX_HP
+	battle.player_hp = battle.Rules.PLAYER_MAX_HP
+	battle.qi.start(int(progress.stats.inner))
+	battle.selected = false
+	battle.selected_action = ""
+	battle.turn = 1
 	battle.player_stats = progress.stats.duplicate()
 	battle.set_loadout(progress.loadout)
 	battle.equip_weapon("sword")
@@ -277,11 +291,12 @@ func enter_city(at_port: bool = false) -> void:
 	bottom_hint.show()
 
 func _process(_delta: float) -> void:
-	money_label.text = "소지금  %s문" % money
+	money_label.text = "소지금 %d문 · 명성 %d" % [money, progress.fame]
 	if state == "explore" and exploration.area_name == "changsha":
 		location.text = "장사 · " + exploration.district_at_player()
 		var goal: Dictionary = quest_navigation.get_goal(exploration)
 		objective.text = goal.quest_title + " · " + goal.label if not goal.is_empty() else "시장·골목·나루·성밖 농촌 둘러보기"
+	bandit_story.maybe_start()
 
 func toggle_city_map() -> void:
 	if not dialogue_lines.is_empty() or state != "explore": return
@@ -296,7 +311,8 @@ func say(lines: Array, done: Callable = Callable(), listeners: Array = ["hero"])
 	if lines.is_empty():
 		return
 	exploration.set_active(false)
-	dialogue_lines = lines
+	# Keep playback independent: reset/load must never clear reusable scene data.
+	dialogue_lines = lines.duplicate(true)
 	dialogue_music_cues = {}
 	dialogue_index = 0
 	dialogue_done = done
@@ -348,6 +364,7 @@ func interact() -> void:
 	var npc: Dictionary = exploration.nearest()
 	if npc.is_empty():
 		return
+	if bandit_story.handle_interaction(str(npc.id)): return
 	if npc.has("service_id"):
 		var service: Dictionary = {}
 		for definition in exploration.city_data.services:
@@ -374,7 +391,8 @@ func interact() -> void:
 			say(prologue.lines("deck"), start_battle)
 			dialogue_music_cues = {5: "ambush"}
 
-func start_battle() -> void:
+func start_battle(encounter: Dictionary = {}) -> void:
+	story_visual.hide()
 	city_overview.hide()
 	music.play_track("battle")
 	state = "battle"
@@ -390,10 +408,14 @@ func start_battle() -> void:
 	exploration.camera.enabled = false
 	battle.player_stats = progress.stats.duplicate()
 	battle.set_loadout(progress.loadout)
+	battle.set_encounter(encounter)
 	battle.begin()
 
 func _on_victory(hp: int) -> void:
 	if state != "battle": return
+	if bandit_story.in_battle():
+		bandit_story.after_victory()
+		return
 	if prologue.active:
 		prologue.after_victory()
 		return

@@ -22,7 +22,7 @@ func run() -> void:
 		for road in city.city_data.road_centers:
 			check(not Rect2(road[0], road[1], road[2], road[3]).has_point(npc.position / 4), "resident avoids road center")
 	check(actors == 14, "all fourteen quest roles placed")
-	check(nav.definitions.size() == 9, "all nine quest destinations defined")
+	check(nav.definitions.size() == 10, "nine side quests and the bandit campaign have destinations")
 	var origin = Vector2i(city.player.position / 20)
 	for id in nav.definitions:
 		for stage in nav.definitions[id].stages:

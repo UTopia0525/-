@@ -25,9 +25,10 @@ func present(value: String) -> void:
 	mode = value
 	paused = false
 	picture.visible = mode != "river"
-	picture.texture = load("res://assets/deck.png" if mode == "wreck" else "res://assets/dock.png")
+	picture.texture = load("res://assets/battle-bandit-road.png" if mode == "bandit_road" else "res://assets/deck.png" if mode == "wreck" else "res://assets/dock.png")
 	picture.modulate = Color(0.32, 0.39, 0.42) if mode != "delivery" else Color(0.62, 0.64, 0.56)
-	note.text = {"wreck":"선체가 얕은 수로에 걸렸다. 부서진 옆판으로 물이 밀려든다.", "river":"귀물함과 밧줄에 얽힌 허만복이 서로 반대쪽으로 떠밀려간다.", "shore":"기슭의 임시 피난처 · 살아남은 사람들이 돌아오지 않는 이름을 기다린다.", "delivery":"수령처 · 마지막으로 남은 인도 서류를 내민다."}.get(mode, "")
+	if mode == "bandit_road": picture.modulate = Color(0.55, 0.61, 0.55)
+	note.text = {"bandit_road":"장사 동쪽 산길 · 포졸은 길목을 지키고 지원자는 위쪽을 살핀다.", "wreck":"선체가 얕은 수로에 걸렸다. 부서진 옆판으로 물이 밀려든다.", "river":"귀물함과 밧줄에 얽힌 허만복이 서로 반대쪽으로 떠밀려간다.", "shore":"기슭의 임시 피난처 · 살아남은 사람들이 돌아오지 않는 이름을 기다린다.", "delivery":"수령처 · 마지막으로 남은 인도 서류를 내민다."}.get(mode, "")
 	show()
 	queue_redraw()
 

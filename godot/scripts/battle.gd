@@ -1,6 +1,7 @@
 extends Control
 
 signal victory(remaining_hp: int)
+signal defeat
 
 const UI = preload("res://scripts/ui.gd")
 const Rules = preload("res://scripts/rules.gd")
@@ -17,6 +18,12 @@ var equipped_weapon_id := "plain_iron_sword"
 var equipped_weapon_type := "sword"
 var player_hp: int = Rules.PLAYER_MAX_HP
 var enemy_hp: int = Rules.ENEMY_MAX_HP
+var encounter: Dictionary = {}
+var enemy_max_hp: int = Rules.ENEMY_MAX_HP
+var enemy_constitution: int = Rules.ENEMY_CONSTITUTION
+var enemy_raw_damage: int = Rules.DEMO_ENEMY_RAW_DAMAGE
+var enemy_name: Label
+var enemy_faction: Label
 var selected: bool = false
 var selected_action: String = ""
 var player_stats: Dictionary = Rules.STARTING_STATS.duplicate()
@@ -51,8 +58,8 @@ func _ready() -> void:
 	scene_image.size = Vector2(1280, 510)
 	add_child(scene_image)
 	var enemy_panel = UI.panel(self, Rect2(24, 24, 320, 126))
-	UI.label(enemy_panel, "흑린채 · 일반 수적", Rect2(18, 10, 285, 24), 13, UI.GOLD)
-	UI.label(enemy_panel, "흑린채 수적", Rect2(18, 34, 285, 32), 24)
+	enemy_faction = UI.label(enemy_panel, "흑린채 · 일반 수적", Rect2(18, 10, 285, 24), 13, UI.GOLD)
+	enemy_name = UI.label(enemy_panel, "흑린채 수적", Rect2(18, 34, 285, 32), 24)
 	enemy_text = UI.label(enemy_panel, "", Rect2(18, 71, 285, 22), 16)
 	enemy_bar = _health_bar(enemy_panel, Rect2(18, 103, 284, 9), Rules.ENEMY_MAX_HP)
 	var player_panel = UI.panel(self, Rect2(925, 293, 330, 200))
@@ -113,11 +120,21 @@ func _health_bar(parent: Node, area: Rect2, maximum: int) -> ProgressBar:
 	parent.add_child(bar)
 	return bar
 
+func set_encounter(value: Dictionary) -> void:
+	encounter = value.duplicate(true)
+	enemy_max_hp = int(encounter.get("max_hp", Rules.ENEMY_MAX_HP))
+	enemy_constitution = int(encounter.get("constitution", Rules.ENEMY_CONSTITUTION))
+	enemy_raw_damage = int(encounter.get("raw_attack", Rules.DEMO_ENEMY_RAW_DAMAGE))
+	enemy_name.text = str(encounter.get("name", "흑린채 수적"))
+	enemy_faction.text = str(encounter.get("faction", "흑린채 · 일반 수적"))
+	enemy_bar.max_value = enemy_max_hp
+	scene_image.texture = load("res://assets/battle-bandit-road.png" if not encounter.is_empty() else "res://assets/battle-deck.png")
+
 func begin(inner_power: int = -1) -> void:
 	qi.start(int(player_stats.inner) if inner_power < 0 else inner_power)
 	generation += 1
 	player_hp = Rules.PLAYER_MAX_HP
-	enemy_hp = Rules.ENEMY_MAX_HP
+	enemy_hp = enemy_max_hp
 	selected = false
 	selected_action = ""
 	basic_button.disabled = false
@@ -221,11 +238,11 @@ func use_selected() -> void:
 	await get_tree().create_timer(Rules.DEMO_ATTACK_DELAY, false).timeout
 	if token != generation:
 		return
-	var hit = Rules.damage(raw, Rules.ENEMY_CONSTITUTION)
+	var hit = Rules.damage(raw, enemy_constitution)
 	enemy_hp = maxi(0, enemy_hp - hit)
 	_update_hp()
 	_float_damage(hit, false)
-	detail.text = "%s 명중.\n수적에게 %d의 피해를 주었습니다." % [action_name, hit]
+	detail.text = "%s 명중.\n%s에게 %d의 피해를 주었습니다." % [action_name, enemy_name.text, hit]
 	await get_tree().create_timer(Rules.DEMO_TURN_DELAY, false).timeout
 	if token != generation:
 		return
@@ -236,17 +253,23 @@ func use_selected() -> void:
 		victory.emit(player_hp)
 		return
 	turn_label.text = "상대 차례"
-	heading.text = "수적의 반격"
-	detail.text = "수적이 도를 휘두릅니다."
+	heading.text = enemy_name.text + "의 반격"
+	detail.text = enemy_name.text + "이 도를 휘두릅니다."
 	await get_tree().create_timer(Rules.DEMO_ATTACK_DELAY, false).timeout
 	if token != generation:
 		return
-	var counter = weapons.received_damage(Rules.DEMO_ENEMY_RAW_DAMAGE, player_stats.constitution, equipped_weapon_id)
+	var counter = weapons.received_damage(enemy_raw_damage, player_stats.constitution, equipped_weapon_id)
 	player_hp = maxi(0, player_hp - counter)
 	_update_hp()
 	_float_damage(counter, true)
 	await get_tree().create_timer(Rules.DEMO_TURN_DELAY, false).timeout
 	if token != generation:
+		return
+	if player_hp == 0 and not encounter.is_empty():
+		running = false
+		busy = false
+		damage_label.hide()
+		defeat.emit()
 		return
 	turn += 1
 	qi.recover_turn()
@@ -259,7 +282,7 @@ func use_selected() -> void:
 	use_button.grab_focus()
 
 func _update_hp() -> void:
-	enemy_text.text = "체력   %d / %d" % [enemy_hp, Rules.ENEMY_MAX_HP]
+	enemy_text.text = "체력   %d / %d" % [enemy_hp, enemy_max_hp]
 	player_text.text = "체력   %d / %d" % [player_hp, Rules.PLAYER_MAX_HP]
 	enemy_bar.value = enemy_hp
 	player_bar.value = player_hp
