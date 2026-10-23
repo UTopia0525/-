@@ -17,6 +17,9 @@ static func damage(raw: float, constitution: float) -> int:
 static func damage_before_rounding(raw: float, constitution: float) -> float:
 	return maxf(0.0, raw - constitution) * 100.0 / (100.0 + constitution)
 
+static func basic_attack_damage(stats: Dictionary = STARTING_STATS) -> float:
+	return float(stats.strength + stats.agility + stats.inner)
+
 static func samjae_damage() -> float:
 	return STARTING_STATS.strength * 3.0 + STARTING_STATS.agility * 2.0
 

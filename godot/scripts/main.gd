@@ -441,7 +441,7 @@ func _input(event: InputEvent) -> void:
 				if battle.selected:
 					battle.use_selected()
 				else:
-					battle.select_samjae()
+					battle.select_basic_attack()
 				get_viewport().set_input_as_handled()
 
 func _build_story_choice() -> void:
