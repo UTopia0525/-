@@ -32,7 +32,7 @@ func run() -> void:
 	battle.select_samjae()
 	battle.select_samjae()
 	check(battle.qi.amount == 10, "preview does not spend or regenerate")
-	# Temporary test cost only, not a new canon cost for Samjae.
+	# Temporary test costs override the confirmed catalogue cost of 10.
 	battle.skill_qi_costs.samjae = 11
 	battle.use_selected()
 	check(not battle.busy and battle.turn == 1 and battle.qi.amount == 10 and battle.enemy_hp == 150, "insufficient qi does not consume a turn or attack")
@@ -50,7 +50,7 @@ func run() -> void:
 	battle.select_samjae()
 	battle.use_selected()
 	await wait_turn()
-	check(battle.qi.amount == 13, "victory has no extra turn recovery")
+	check(battle.qi.amount == 3, "victory pays confirmed cost 10 with no extra turn recovery")
 	battle.begin(100)
 	battle.qi.restore(100, 490)
 	battle.select_samjae()

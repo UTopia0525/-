@@ -7,7 +7,8 @@ const Rules = preload("res://scripts/rules.gd")
 var qi = preload("res://scripts/inner_qi.gd").new()
 var qi_text: Label
 var qi_bar: ProgressBar
-# Costs are authored per skill later; an absent cost keeps existing combat playable.
+var martial_arts = preload("res://scripts/martial_arts.gd").new()
+# Overrides are available for balancing tests; the catalogue supplies the default costs.
 var skill_qi_costs: Dictionary = {}
 var player_hp: int = Rules.PLAYER_MAX_HP
 var enemy_hp: int = Rules.ENEMY_MAX_HP
@@ -132,14 +133,14 @@ func select_samjae() -> void:
 	selected = true
 	select_button.button_pressed = true
 	heading.text = "삼재검법"
-	detail.text = "근력 × 3 + 기민 × 2\n현재 방어 전 피해: 50"
-	note.text = "내기 소모: %d" % int(skill_qi_costs.samjae) if skill_qi_costs.has("samjae") else "내기 소모: 미정"
+	detail.text = "근력 × 3 + 기민 × 2\n현재 방어 전 피해: %d" % int(martial_arts.raw_damage("samjae", Rules.STARTING_STATS))
+	note.text = "내기 소모: %d" % int(skill_qi_costs.get("samjae", martial_arts.qi_cost("samjae")))
 	use_button.disabled = false
 
 func use_selected() -> void:
 	if not running or not selected or busy:
 		return
-	var cost: int = int(skill_qi_costs.get("samjae", 0))
+	var cost: int = int(skill_qi_costs.get("samjae", martial_arts.qi_cost("samjae")))
 	if not try_spend_qi(cost):
 		note.text = "내기가 부족합니다. 필요 %d / 현재 %d" % [cost, qi.amount] if cost >= 0 else "기술의 내기 비용을 확인해 주세요."
 		return
@@ -153,7 +154,7 @@ func use_selected() -> void:
 	await get_tree().create_timer(Rules.DEMO_ATTACK_DELAY, false).timeout
 	if token != generation:
 		return
-	var hit = Rules.damage(Rules.samjae_damage(), Rules.ENEMY_CONSTITUTION)
+	var hit = Rules.damage(martial_arts.raw_damage("samjae", Rules.STARTING_STATS), Rules.ENEMY_CONSTITUTION)
 	enemy_hp = maxi(0, enemy_hp - hit)
 	_update_hp()
 	_float_damage(hit, false)

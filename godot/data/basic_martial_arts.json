@@ -1,0 +1,235 @@
+{
+  "samjae": {
+    "name": "삼재검법",
+    "kind": "attack",
+    "weapon_style": "sword",
+    "damage_coefficients": {
+      "strength": 3,
+      "agility": 2
+    },
+    "qi_cost": 10,
+    "requirements": {
+      "stats": {},
+      "minimum_total": 0
+    },
+    "acquisition": null,
+    "description": "세 기본 자세로 중심을 잡아 베고 찌르는 입문 검법.",
+    "status": "user_confirmed"
+  },
+  "cheongpung": {
+    "name": "청풍검법",
+    "kind": "attack",
+    "weapon_style": "sword",
+    "damage_coefficients": {
+      "strength": 3,
+      "agility": 3
+    },
+    "qi_cost": 12,
+    "requirements": {
+      "stats": {
+        "strength": 12,
+        "agility": 14,
+        "inner": 12,
+        "insight": 12
+      },
+      "minimum_total": 60
+    },
+    "acquisition": null,
+    "description": "검 끝의 흔들림을 줄이고 빠르게 한 선을 그어 베는 검법.",
+    "status": "proposal"
+  },
+  "yusu": {
+    "name": "유수검법",
+    "kind": "attack",
+    "weapon_style": "sword",
+    "damage_coefficients": {
+      "strength": 2,
+      "agility": 3,
+      "inner": 2
+    },
+    "qi_cost": 14,
+    "requirements": {
+      "stats": {
+        "agility": 15,
+        "inner": 12,
+        "insight": 13
+      },
+      "minimum_total": 60
+    },
+    "acquisition": null,
+    "description": "힘을 억지로 멈추지 않고 몸의 흐름과 내기를 검 끝에 잇는 검법.",
+    "status": "proposal"
+  },
+  "swaeam": {
+    "name": "쇄암검법",
+    "kind": "attack",
+    "weapon_style": "sword",
+    "damage_coefficients": {
+      "strength": 5,
+      "constitution": 2
+    },
+    "qi_cost": 20,
+    "requirements": {
+      "stats": {
+        "strength": 18,
+        "constitution": 14,
+        "inner": 12
+      },
+      "minimum_total": 70
+    },
+    "acquisition": null,
+    "description": "단단히 버틴 하체를 바탕으로 무거운 일격을 내려치는 검법.",
+    "status": "proposal"
+  },
+  "danseok": {
+    "name": "단석도법",
+    "kind": "attack",
+    "weapon_style": "saber",
+    "damage_coefficients": {
+      "strength": 4,
+      "agility": 2
+    },
+    "qi_cost": 16,
+    "requirements": {
+      "stats": {
+        "strength": 16,
+        "constitution": 12,
+        "inner": 12
+      },
+      "minimum_total": 60
+    },
+    "acquisition": null,
+    "description": "도의 무게를 실어 짧고 깊게 내려베는 도법.",
+    "status": "proposal"
+  },
+  "hoepung": {
+    "name": "회풍도법",
+    "kind": "attack",
+    "weapon_style": "saber",
+    "damage_coefficients": {
+      "strength": 3,
+      "agility": 4
+    },
+    "qi_cost": 20,
+    "requirements": {
+      "stats": {
+        "strength": 14,
+        "agility": 16,
+        "inner": 12
+      },
+      "minimum_total": 70
+    },
+    "acquisition": null,
+    "description": "몸을 돌려 모은 힘을 넓은 베기 한 번으로 풀어내는 도법.",
+    "status": "proposal"
+  },
+  "gwanpung": {
+    "name": "관풍창법",
+    "kind": "attack",
+    "weapon_style": "spear",
+    "damage_coefficients": {
+      "strength": 3,
+      "agility": 3,
+      "insight": 1
+    },
+    "qi_cost": 15,
+    "requirements": {
+      "stats": {
+        "strength": 13,
+        "agility": 15,
+        "inner": 12,
+        "insight": 12
+      },
+      "minimum_total": 65
+    },
+    "acquisition": null,
+    "description": "상대의 움직임을 읽고 창 끝을 곧게 뻗어 찌르는 창법.",
+    "status": "proposal"
+  },
+  "yeonhwan": {
+    "name": "연환창법",
+    "kind": "attack",
+    "weapon_style": "spear",
+    "damage_coefficients": {
+      "strength": 2,
+      "agility": 4,
+      "inner": 2
+    },
+    "qi_cost": 24,
+    "requirements": {
+      "stats": {
+        "agility": 18,
+        "inner": 14,
+        "insight": 14
+      },
+      "minimum_total": 80
+    },
+    "acquisition": null,
+    "description": "허초와 실초를 이어 마지막 찌르기에 내기를 집중하는 창법.",
+    "status": "proposal"
+  },
+  "cheolsan": {
+    "name": "철산권법",
+    "kind": "attack",
+    "weapon_style": "fist",
+    "damage_coefficients": {
+      "strength": 4,
+      "constitution": 3
+    },
+    "qi_cost": 18,
+    "requirements": {
+      "stats": {
+        "strength": 16,
+        "constitution": 16,
+        "inner": 12
+      },
+      "minimum_total": 70
+    },
+    "acquisition": null,
+    "description": "굳게 선 몸 전체의 힘을 짧은 주먹에 싣는 권법.",
+    "status": "proposal"
+  },
+  "jingak": {
+    "name": "진각권법",
+    "kind": "attack",
+    "weapon_style": "fist",
+    "damage_coefficients": {
+      "strength": 4,
+      "constitution": 2,
+      "inner": 2
+    },
+    "qi_cost": 26,
+    "requirements": {
+      "stats": {
+        "strength": 18,
+        "constitution": 18,
+        "inner": 14
+      },
+      "minimum_total": 80
+    },
+    "acquisition": null,
+    "description": "발을 굳게 디뎌 얻은 힘과 내기를 한 주먹으로 뻗는 권법.",
+    "status": "proposal"
+  },
+  "ungi": {
+    "name": "운기장법",
+    "kind": "attack",
+    "weapon_style": "palm",
+    "damage_coefficients": {
+      "strength": 1,
+      "inner": 5,
+      "insight": 2
+    },
+    "qi_cost": 28,
+    "requirements": {
+      "stats": {
+        "inner": 18,
+        "insight": 16
+      },
+      "minimum_total": 80
+    },
+    "acquisition": null,
+    "description": "호흡으로 모은 내기를 손바닥에 집중해 밀어내는 장법.",
+    "status": "proposal"
+  }
+}
