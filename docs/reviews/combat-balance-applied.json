@@ -1,0 +1,2404 @@
+[
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 268,
+    "reactive_defense": false,
+    "skill": "cheongpung",
+    "stats": {
+      "agility": 14,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 52,
+      "strength": 12
+    },
+    "turns": 4,
+    "weapon": "plain_iron_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 176,
+    "reactive_defense": false,
+    "skill": "cheongpung",
+    "stats": {
+      "agility": 14,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 52,
+      "strength": 12
+    },
+    "turns": 6,
+    "weapon": "plain_iron_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 3,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 260,
+    "reactive_defense": true,
+    "skill": "cheongpung",
+    "stats": {
+      "agility": 14,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 52,
+      "strength": 12
+    },
+    "turns": 7,
+    "weapon": "plain_iron_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 3,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 215,
+    "reactive_defense": true,
+    "skill": "cheongpung",
+    "stats": {
+      "agility": 14,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 52,
+      "strength": 12
+    },
+    "turns": 8,
+    "weapon": "plain_iron_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 269,
+    "reactive_defense": false,
+    "skill": "cheongpung",
+    "stats": {
+      "agility": 14,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 52,
+      "strength": 12
+    },
+    "turns": 4,
+    "weapon": "refined_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 224,
+    "reactive_defense": false,
+    "skill": "cheongpung",
+    "stats": {
+      "agility": 14,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 52,
+      "strength": 12
+    },
+    "turns": 5,
+    "weapon": "refined_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 3,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 262,
+    "reactive_defense": true,
+    "skill": "cheongpung",
+    "stats": {
+      "agility": 14,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 52,
+      "strength": 12
+    },
+    "turns": 7,
+    "weapon": "refined_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 3,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 220,
+    "reactive_defense": true,
+    "skill": "cheongpung",
+    "stats": {
+      "agility": 14,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 52,
+      "strength": 12
+    },
+    "turns": 8,
+    "weapon": "refined_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 270,
+    "reactive_defense": false,
+    "skill": "cheongpung",
+    "stats": {
+      "agility": 14,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 52,
+      "strength": 12
+    },
+    "turns": 4,
+    "weapon": "blue_steel_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 226,
+    "reactive_defense": false,
+    "skill": "cheongpung",
+    "stats": {
+      "agility": 14,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 52,
+      "strength": 12
+    },
+    "turns": 5,
+    "weapon": "blue_steel_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 3,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 262,
+    "reactive_defense": true,
+    "skill": "cheongpung",
+    "stats": {
+      "agility": 14,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 52,
+      "strength": 12
+    },
+    "turns": 7,
+    "weapon": "blue_steel_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 3,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 220,
+    "reactive_defense": true,
+    "skill": "cheongpung",
+    "stats": {
+      "agility": 14,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 52,
+      "strength": 12
+    },
+    "turns": 8,
+    "weapon": "blue_steel_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 271,
+    "reactive_defense": false,
+    "skill": "cheongpung",
+    "stats": {
+      "agility": 14,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 52,
+      "strength": 12
+    },
+    "turns": 4,
+    "weapon": "hundredfold_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 229,
+    "reactive_defense": false,
+    "skill": "cheongpung",
+    "stats": {
+      "agility": 14,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 52,
+      "strength": 12
+    },
+    "turns": 5,
+    "weapon": "hundredfold_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 266,
+    "reactive_defense": true,
+    "skill": "cheongpung",
+    "stats": {
+      "agility": 14,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 52,
+      "strength": 12
+    },
+    "turns": 6,
+    "weapon": "hundredfold_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 3,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 225,
+    "reactive_defense": true,
+    "skill": "cheongpung",
+    "stats": {
+      "agility": 14,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 52,
+      "strength": 12
+    },
+    "turns": 8,
+    "weapon": "hundredfold_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 268,
+    "reactive_defense": false,
+    "skill": "yusu",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 53,
+      "strength": 10
+    },
+    "turns": 4,
+    "weapon": "plain_iron_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 176,
+    "reactive_defense": false,
+    "skill": "yusu",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 53,
+      "strength": 10
+    },
+    "turns": 7,
+    "weapon": "plain_iron_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 3,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 260,
+    "reactive_defense": true,
+    "skill": "yusu",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 53,
+      "strength": 10
+    },
+    "turns": 7,
+    "weapon": "plain_iron_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 3,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 215,
+    "reactive_defense": true,
+    "skill": "yusu",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 53,
+      "strength": 10
+    },
+    "turns": 8,
+    "weapon": "plain_iron_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 269,
+    "reactive_defense": false,
+    "skill": "yusu",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 53,
+      "strength": 10
+    },
+    "turns": 4,
+    "weapon": "refined_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 180,
+    "reactive_defense": false,
+    "skill": "yusu",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 53,
+      "strength": 10
+    },
+    "turns": 6,
+    "weapon": "refined_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 3,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 262,
+    "reactive_defense": true,
+    "skill": "yusu",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 53,
+      "strength": 10
+    },
+    "turns": 7,
+    "weapon": "refined_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 3,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 220,
+    "reactive_defense": true,
+    "skill": "yusu",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 53,
+      "strength": 10
+    },
+    "turns": 8,
+    "weapon": "refined_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 270,
+    "reactive_defense": false,
+    "skill": "yusu",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 53,
+      "strength": 10
+    },
+    "turns": 4,
+    "weapon": "blue_steel_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 226,
+    "reactive_defense": false,
+    "skill": "yusu",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 53,
+      "strength": 10
+    },
+    "turns": 5,
+    "weapon": "blue_steel_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 3,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 262,
+    "reactive_defense": true,
+    "skill": "yusu",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 53,
+      "strength": 10
+    },
+    "turns": 7,
+    "weapon": "blue_steel_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 3,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 220,
+    "reactive_defense": true,
+    "skill": "yusu",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 53,
+      "strength": 10
+    },
+    "turns": 8,
+    "weapon": "blue_steel_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 271,
+    "reactive_defense": false,
+    "skill": "yusu",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 53,
+      "strength": 10
+    },
+    "turns": 4,
+    "weapon": "hundredfold_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 229,
+    "reactive_defense": false,
+    "skill": "yusu",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 53,
+      "strength": 10
+    },
+    "turns": 5,
+    "weapon": "hundredfold_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 266,
+    "reactive_defense": true,
+    "skill": "yusu",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 53,
+      "strength": 10
+    },
+    "turns": 6,
+    "weapon": "hundredfold_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 3,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 225,
+    "reactive_defense": true,
+    "skill": "yusu",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 53,
+      "strength": 10
+    },
+    "turns": 8,
+    "weapon": "hundredfold_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 275,
+    "reactive_defense": false,
+    "skill": "swaeam",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 12,
+      "insight": 46,
+      "strength": 18
+    },
+    "turns": 4,
+    "weapon": "plain_iron_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 231,
+    "reactive_defense": false,
+    "skill": "swaeam",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 12,
+      "insight": 46,
+      "strength": 18
+    },
+    "turns": 5,
+    "weapon": "plain_iron_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 279,
+    "reactive_defense": true,
+    "skill": "swaeam",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 12,
+      "insight": 46,
+      "strength": 18
+    },
+    "turns": 5,
+    "weapon": "plain_iron_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 3,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 228,
+    "reactive_defense": true,
+    "skill": "swaeam",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 12,
+      "insight": 46,
+      "strength": 18
+    },
+    "turns": 8,
+    "weapon": "plain_iron_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 276,
+    "reactive_defense": false,
+    "skill": "swaeam",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 12,
+      "insight": 46,
+      "strength": 18
+    },
+    "turns": 4,
+    "weapon": "refined_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 235,
+    "reactive_defense": false,
+    "skill": "swaeam",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 12,
+      "insight": 46,
+      "strength": 18
+    },
+    "turns": 5,
+    "weapon": "refined_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 281,
+    "reactive_defense": true,
+    "skill": "swaeam",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 12,
+      "insight": 46,
+      "strength": 18
+    },
+    "turns": 5,
+    "weapon": "refined_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 246,
+    "reactive_defense": true,
+    "skill": "swaeam",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 12,
+      "insight": 46,
+      "strength": 18
+    },
+    "turns": 7,
+    "weapon": "refined_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 276,
+    "reactive_defense": false,
+    "skill": "swaeam",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 12,
+      "insight": 46,
+      "strength": 18
+    },
+    "turns": 4,
+    "weapon": "blue_steel_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 236,
+    "reactive_defense": false,
+    "skill": "swaeam",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 12,
+      "insight": 46,
+      "strength": 18
+    },
+    "turns": 5,
+    "weapon": "blue_steel_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 281,
+    "reactive_defense": true,
+    "skill": "swaeam",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 12,
+      "insight": 46,
+      "strength": 18
+    },
+    "turns": 5,
+    "weapon": "blue_steel_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 246,
+    "reactive_defense": true,
+    "skill": "swaeam",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 12,
+      "insight": 46,
+      "strength": 18
+    },
+    "turns": 7,
+    "weapon": "blue_steel_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 278,
+    "reactive_defense": false,
+    "skill": "swaeam",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 12,
+      "insight": 46,
+      "strength": 18
+    },
+    "turns": 4,
+    "weapon": "hundredfold_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 239,
+    "reactive_defense": false,
+    "skill": "swaeam",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 12,
+      "insight": 46,
+      "strength": 18
+    },
+    "turns": 5,
+    "weapon": "hundredfold_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 282,
+    "reactive_defense": true,
+    "skill": "swaeam",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 12,
+      "insight": 46,
+      "strength": 18
+    },
+    "turns": 5,
+    "weapon": "hundredfold_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 262,
+    "reactive_defense": true,
+    "skill": "swaeam",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 12,
+      "insight": 46,
+      "strength": 18
+    },
+    "turns": 5,
+    "weapon": "hundredfold_sword",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 264,
+    "reactive_defense": false,
+    "skill": "danseok",
+    "stats": {
+      "agility": 10,
+      "constitution": 12,
+      "inner": 12,
+      "insight": 50,
+      "strength": 16
+    },
+    "turns": 4,
+    "weapon": "thickback_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 154,
+    "reactive_defense": false,
+    "skill": "danseok",
+    "stats": {
+      "agility": 10,
+      "constitution": 12,
+      "inner": 12,
+      "insight": 50,
+      "strength": 16
+    },
+    "turns": 7,
+    "weapon": "thickback_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 3,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 260,
+    "reactive_defense": true,
+    "skill": "danseok",
+    "stats": {
+      "agility": 10,
+      "constitution": 12,
+      "inner": 12,
+      "insight": 50,
+      "strength": 16
+    },
+    "turns": 7,
+    "weapon": "thickback_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 3,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 211,
+    "reactive_defense": true,
+    "skill": "danseok",
+    "stats": {
+      "agility": 10,
+      "constitution": 12,
+      "inner": 12,
+      "insight": 50,
+      "strength": 16
+    },
+    "turns": 8,
+    "weapon": "thickback_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 264,
+    "reactive_defense": false,
+    "skill": "danseok",
+    "stats": {
+      "agility": 10,
+      "constitution": 12,
+      "inner": 12,
+      "insight": 50,
+      "strength": 16
+    },
+    "turns": 4,
+    "weapon": "forged_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 154,
+    "reactive_defense": false,
+    "skill": "danseok",
+    "stats": {
+      "agility": 10,
+      "constitution": 12,
+      "inner": 12,
+      "insight": 50,
+      "strength": 16
+    },
+    "turns": 7,
+    "weapon": "forged_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 3,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 260,
+    "reactive_defense": true,
+    "skill": "danseok",
+    "stats": {
+      "agility": 10,
+      "constitution": 12,
+      "inner": 12,
+      "insight": 50,
+      "strength": 16
+    },
+    "turns": 7,
+    "weapon": "forged_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 3,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 211,
+    "reactive_defense": true,
+    "skill": "danseok",
+    "stats": {
+      "agility": 10,
+      "constitution": 12,
+      "inner": 12,
+      "insight": 50,
+      "strength": 16
+    },
+    "turns": 8,
+    "weapon": "forged_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 264,
+    "reactive_defense": false,
+    "skill": "danseok",
+    "stats": {
+      "agility": 10,
+      "constitution": 12,
+      "inner": 12,
+      "insight": 50,
+      "strength": 16
+    },
+    "turns": 4,
+    "weapon": "heavy_steel_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 154,
+    "reactive_defense": false,
+    "skill": "danseok",
+    "stats": {
+      "agility": 10,
+      "constitution": 12,
+      "inner": 12,
+      "insight": 50,
+      "strength": 16
+    },
+    "turns": 6,
+    "weapon": "heavy_steel_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 3,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 260,
+    "reactive_defense": true,
+    "skill": "danseok",
+    "stats": {
+      "agility": 10,
+      "constitution": 12,
+      "inner": 12,
+      "insight": 50,
+      "strength": 16
+    },
+    "turns": 7,
+    "weapon": "heavy_steel_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 3,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 211,
+    "reactive_defense": true,
+    "skill": "danseok",
+    "stats": {
+      "agility": 10,
+      "constitution": 12,
+      "inner": 12,
+      "insight": 50,
+      "strength": 16
+    },
+    "turns": 8,
+    "weapon": "heavy_steel_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 260,
+    "reactive_defense": false,
+    "skill": "hoepung",
+    "stats": {
+      "agility": 16,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 48,
+      "strength": 14
+    },
+    "turns": 4,
+    "weapon": "thickback_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 202,
+    "reactive_defense": false,
+    "skill": "hoepung",
+    "stats": {
+      "agility": 16,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 48,
+      "strength": 14
+    },
+    "turns": 5,
+    "weapon": "thickback_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 254,
+    "reactive_defense": true,
+    "skill": "hoepung",
+    "stats": {
+      "agility": 16,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 48,
+      "strength": 14
+    },
+    "turns": 6,
+    "weapon": "thickback_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 3,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 203,
+    "reactive_defense": true,
+    "skill": "hoepung",
+    "stats": {
+      "agility": 16,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 48,
+      "strength": 14
+    },
+    "turns": 8,
+    "weapon": "thickback_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 260,
+    "reactive_defense": false,
+    "skill": "hoepung",
+    "stats": {
+      "agility": 16,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 48,
+      "strength": 14
+    },
+    "turns": 4,
+    "weapon": "forged_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 202,
+    "reactive_defense": false,
+    "skill": "hoepung",
+    "stats": {
+      "agility": 16,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 48,
+      "strength": 14
+    },
+    "turns": 5,
+    "weapon": "forged_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 254,
+    "reactive_defense": true,
+    "skill": "hoepung",
+    "stats": {
+      "agility": 16,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 48,
+      "strength": 14
+    },
+    "turns": 6,
+    "weapon": "forged_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 224,
+    "reactive_defense": true,
+    "skill": "hoepung",
+    "stats": {
+      "agility": 16,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 48,
+      "strength": 14
+    },
+    "turns": 7,
+    "weapon": "forged_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 260,
+    "reactive_defense": false,
+    "skill": "hoepung",
+    "stats": {
+      "agility": 16,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 48,
+      "strength": 14
+    },
+    "turns": 4,
+    "weapon": "heavy_steel_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 1,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 258,
+    "reactive_defense": false,
+    "skill": "hoepung",
+    "stats": {
+      "agility": 16,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 48,
+      "strength": 14
+    },
+    "turns": 4,
+    "weapon": "heavy_steel_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 254,
+    "reactive_defense": true,
+    "skill": "hoepung",
+    "stats": {
+      "agility": 16,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 48,
+      "strength": 14
+    },
+    "turns": 6,
+    "weapon": "heavy_steel_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 1,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 258,
+    "reactive_defense": true,
+    "skill": "hoepung",
+    "stats": {
+      "agility": 16,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 48,
+      "strength": 14
+    },
+    "turns": 4,
+    "weapon": "heavy_steel_saber",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 1,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 0
+    },
+    "hp": 284,
+    "reactive_defense": false,
+    "skill": "gwanpung",
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "turns": 2,
+    "weapon": "balanced_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 1,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 258,
+    "reactive_defense": false,
+    "skill": "gwanpung",
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "turns": 4,
+    "weapon": "balanced_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 1,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 0
+    },
+    "hp": 284,
+    "reactive_defense": true,
+    "skill": "gwanpung",
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "turns": 2,
+    "weapon": "balanced_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 1,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 258,
+    "reactive_defense": true,
+    "skill": "gwanpung",
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "turns": 4,
+    "weapon": "balanced_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 1,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 0
+    },
+    "hp": 284,
+    "reactive_defense": false,
+    "skill": "gwanpung",
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "turns": 2,
+    "weapon": "willow_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 1,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 258,
+    "reactive_defense": false,
+    "skill": "gwanpung",
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "turns": 4,
+    "weapon": "willow_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 1,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 0
+    },
+    "hp": 284,
+    "reactive_defense": true,
+    "skill": "gwanpung",
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "turns": 2,
+    "weapon": "willow_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 1,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 258,
+    "reactive_defense": true,
+    "skill": "gwanpung",
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "turns": 4,
+    "weapon": "willow_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 1,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 0
+    },
+    "hp": 284,
+    "reactive_defense": false,
+    "skill": "gwanpung",
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "turns": 2,
+    "weapon": "flowing_cloud_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 1,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 258,
+    "reactive_defense": false,
+    "skill": "gwanpung",
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "turns": 4,
+    "weapon": "flowing_cloud_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 1,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 0
+    },
+    "hp": 284,
+    "reactive_defense": true,
+    "skill": "gwanpung",
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "turns": 2,
+    "weapon": "flowing_cloud_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 1,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 258,
+    "reactive_defense": true,
+    "skill": "gwanpung",
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "turns": 4,
+    "weapon": "flowing_cloud_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 236,
+    "reactive_defense": false,
+    "skill": "yeonhwan",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "turns": 5,
+    "weapon": "balanced_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 3,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 125,
+    "reactive_defense": false,
+    "skill": "yeonhwan",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "turns": 8,
+    "weapon": "balanced_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 270,
+    "reactive_defense": true,
+    "skill": "yeonhwan",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "turns": 5,
+    "weapon": "balanced_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 4,
+      "basic_attack": 3,
+      "basic_defense": 3
+    },
+    "hp": 186,
+    "reactive_defense": true,
+    "skill": "yeonhwan",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "turns": 10,
+    "weapon": "balanced_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 236,
+    "reactive_defense": false,
+    "skill": "yeonhwan",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "turns": 5,
+    "weapon": "willow_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 2,
+      "basic_attack": 3,
+      "basic_defense": 2
+    },
+    "hp": 146,
+    "reactive_defense": false,
+    "skill": "yeonhwan",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "turns": 7,
+    "weapon": "willow_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 270,
+    "reactive_defense": true,
+    "skill": "yeonhwan",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "turns": 5,
+    "weapon": "willow_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 3,
+      "basic_attack": 3,
+      "basic_defense": 3
+    },
+    "hp": 186,
+    "reactive_defense": true,
+    "skill": "yeonhwan",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "turns": 9,
+    "weapon": "willow_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 260,
+    "reactive_defense": false,
+    "skill": "yeonhwan",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "turns": 4,
+    "weapon": "flowing_cloud_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 1,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 258,
+    "reactive_defense": false,
+    "skill": "yeonhwan",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "turns": 4,
+    "weapon": "flowing_cloud_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 2,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 1
+    },
+    "hp": 277,
+    "reactive_defense": true,
+    "skill": "yeonhwan",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "turns": 4,
+    "weapon": "flowing_cloud_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 1,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 258,
+    "reactive_defense": true,
+    "skill": "yeonhwan",
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "turns": 4,
+    "weapon": "flowing_cloud_spear",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 1,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 0
+    },
+    "hp": 288,
+    "reactive_defense": false,
+    "skill": "cheolsan",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 20,
+      "insight": 42,
+      "strength": 14
+    },
+    "turns": 2,
+    "weapon": "none",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 0
+    },
+    "hp": 283,
+    "reactive_defense": false,
+    "skill": "cheolsan",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 20,
+      "insight": 42,
+      "strength": 14
+    },
+    "turns": 2,
+    "weapon": "none",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 1,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 0
+    },
+    "hp": 288,
+    "reactive_defense": true,
+    "skill": "cheolsan",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 20,
+      "insight": 42,
+      "strength": 14
+    },
+    "turns": 2,
+    "weapon": "none",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 0
+    },
+    "hp": 283,
+    "reactive_defense": true,
+    "skill": "cheolsan",
+    "stats": {
+      "agility": 10,
+      "constitution": 14,
+      "inner": 20,
+      "insight": 42,
+      "strength": 14
+    },
+    "turns": 2,
+    "weapon": "none",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 1,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 0
+    },
+    "hp": 290,
+    "reactive_defense": false,
+    "skill": "jingak",
+    "stats": {
+      "agility": 10,
+      "constitution": 16,
+      "inner": 24,
+      "insight": 34,
+      "strength": 16
+    },
+    "turns": 2,
+    "weapon": "none",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 270,
+    "reactive_defense": false,
+    "skill": "jingak",
+    "stats": {
+      "agility": 10,
+      "constitution": 16,
+      "inner": 24,
+      "insight": 34,
+      "strength": 16
+    },
+    "turns": 3,
+    "weapon": "none",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 1,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 0
+    },
+    "hp": 290,
+    "reactive_defense": true,
+    "skill": "jingak",
+    "stats": {
+      "agility": 10,
+      "constitution": 16,
+      "inner": 24,
+      "insight": 34,
+      "strength": 16
+    },
+    "turns": 2,
+    "weapon": "none",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 1
+    },
+    "hp": 270,
+    "reactive_defense": true,
+    "skill": "jingak",
+    "stats": {
+      "agility": 10,
+      "constitution": 16,
+      "inner": 24,
+      "insight": 34,
+      "strength": 16
+    },
+    "turns": 3,
+    "weapon": "none",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 1,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 0
+    },
+    "hp": 284,
+    "reactive_defense": false,
+    "skill": "ungi",
+    "stats": {
+      "agility": 10,
+      "constitution": 10,
+      "inner": 26,
+      "insight": 44,
+      "strength": 10
+    },
+    "turns": 2,
+    "weapon": "none",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 0
+    },
+    "hp": 279,
+    "reactive_defense": false,
+    "skill": "ungi",
+    "stats": {
+      "agility": 10,
+      "constitution": 10,
+      "inner": 26,
+      "insight": 44,
+      "strength": 10
+    },
+    "turns": 2,
+    "weapon": "none",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 1,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 1,
+      "basic_defense": 0
+    },
+    "hp": 284,
+    "reactive_defense": true,
+    "skill": "ungi",
+    "stats": {
+      "agility": 10,
+      "constitution": 10,
+      "inner": 26,
+      "insight": 44,
+      "strength": 10
+    },
+    "turns": 2,
+    "weapon": "none",
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 0
+    },
+    "hp": 279,
+    "reactive_defense": true,
+    "skill": "ungi",
+    "stats": {
+      "agility": 10,
+      "constitution": 10,
+      "inner": 26,
+      "insight": 44,
+      "strength": 10
+    },
+    "turns": 2,
+    "weapon": "none",
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_actions": {
+      "bandit_chop": 3,
+      "bandit_heavy_chop": 0,
+      "basic_attack": 2,
+      "basic_defense": 2
+    },
+    "hp": 236,
+    "skill": "basic-only floor",
+    "turns": 7,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_actions": {
+      "bandit_chop": 0,
+      "bandit_heavy_chop": 4,
+      "basic_attack": 4,
+      "basic_defense": 3
+    },
+    "hp": 69,
+    "skill": "basic-only floor",
+    "turns": 11,
+    "win": true
+  }
+]

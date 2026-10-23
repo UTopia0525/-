@@ -1,0 +1,167 @@
+{
+  "basic_attack": {
+    "atlas": "martial",
+    "cell": 0,
+    "cols": 4
+  },
+  "basic_defense": {
+    "atlas": "martial",
+    "cell": 1,
+    "cols": 4
+  },
+  "samjae": {
+    "atlas": "martial",
+    "cell": 2,
+    "cols": 4
+  },
+  "cheongpung": {
+    "atlas": "martial",
+    "cell": 3,
+    "cols": 4
+  },
+  "yusu": {
+    "atlas": "martial",
+    "cell": 4,
+    "cols": 4
+  },
+  "swaeam": {
+    "atlas": "martial",
+    "cell": 5,
+    "cols": 4
+  },
+  "danseok": {
+    "atlas": "martial",
+    "cell": 6,
+    "cols": 4
+  },
+  "hoepung": {
+    "atlas": "martial",
+    "cell": 7,
+    "cols": 4
+  },
+  "gwanpung": {
+    "atlas": "martial",
+    "cell": 8,
+    "cols": 4
+  },
+  "yeonhwan": {
+    "atlas": "martial",
+    "cell": 9,
+    "cols": 4
+  },
+  "cheolsan": {
+    "atlas": "martial",
+    "cell": 10,
+    "cols": 4
+  },
+  "jingak": {
+    "atlas": "martial",
+    "cell": 11,
+    "cols": 4
+  },
+  "ungi": {
+    "atlas": "martial",
+    "cell": 12,
+    "cols": 4
+  },
+  "plain_iron_sword": {
+    "atlas": "equipment",
+    "cell": 0,
+    "cols": 4
+  },
+  "refined_sword": {
+    "atlas": "equipment",
+    "cell": 1,
+    "cols": 4
+  },
+  "blue_steel_sword": {
+    "atlas": "equipment",
+    "cell": 2,
+    "cols": 4
+  },
+  "hundredfold_sword": {
+    "atlas": "equipment",
+    "cell": 3,
+    "cols": 4
+  },
+  "thickback_saber": {
+    "atlas": "equipment",
+    "cell": 4,
+    "cols": 4
+  },
+  "forged_saber": {
+    "atlas": "equipment",
+    "cell": 5,
+    "cols": 4
+  },
+  "heavy_steel_saber": {
+    "atlas": "equipment",
+    "cell": 6,
+    "cols": 4
+  },
+  "balanced_spear": {
+    "atlas": "equipment",
+    "cell": 7,
+    "cols": 4
+  },
+  "willow_spear": {
+    "atlas": "equipment",
+    "cell": 8,
+    "cols": 4
+  },
+  "flowing_cloud_spear": {
+    "atlas": "equipment",
+    "cell": 9,
+    "cols": 4
+  },
+  "약재 포장용 옷감": {
+    "atlas": "equipment",
+    "cell": 10,
+    "cols": 4
+  },
+  "돌려줄 약사발": {
+    "atlas": "equipment",
+    "cell": 11,
+    "cols": 4
+  },
+  "수련봉 자루": {
+    "atlas": "equipment",
+    "cell": 12,
+    "cols": 4
+  },
+  "bear_strength_pill": {
+    "atlas": "elixirs",
+    "cell": 0,
+    "cols": 2
+  },
+  "light_step_pill": {
+    "atlas": "elixirs",
+    "cell": 1,
+    "cols": 2
+  },
+  "bone_fortifying_pill": {
+    "atlas": "elixirs",
+    "cell": 2,
+    "cols": 2
+  },
+  "qi_nourishing_pill": {
+    "atlas": "elixirs",
+    "cell": 3,
+    "cols": 2
+  },
+  "무관의 수련봉 자루": {
+    "atlas": "equipment",
+    "cell": 12,
+    "cols": 4
+  },
+  "bandit_chop": {
+    "atlas": "bandit",
+    "cols": 2,
+    "cell": 0
+  },
+  "bandit_heavy_chop": {
+    "atlas": "bandit",
+    "cols": 2,
+    "cell": 1
+  }
+}

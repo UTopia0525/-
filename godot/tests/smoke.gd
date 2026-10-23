@@ -97,12 +97,12 @@ func _run() -> void:
 	game.battle.use_selected()
 	game.battle.use_selected()
 	await _wait_for_turn()
-	check(game.battle.enemy_hp == 108 and game.battle.player_hp == 273, "single action despite repeated input")
-	for index in range(3):
+	check(game.battle.enemy_hp == 108 and game.battle.player_hp == 286, "single action despite repeated input")
+	for index in range(4):
 		game.battle.use_selected()
 		await _wait_for_turn()
 	check(game.state == "story", "victory continues the full prologue")
-	check(game.battle.player_hp == 219 and game.battle.enemy_hp == 0, "four hits and three counters")
+	check(game.battle.player_hp == 244 and game.battle.enemy_hp == 0, "enemy defense lengthens battle; sword guard reduces counters")
 	game.start_battle()
 	check(game.battle.player_hp == 300 and game.battle.enemy_hp == 150, "retry restores condition")
 	game.battle.select_samjae()

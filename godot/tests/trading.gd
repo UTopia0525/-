@@ -63,7 +63,7 @@ func run() -> void:
 	shop.select_target_slot(1)
 	shop.select_item("cheongpung")
 	shop.transact()
-	check(p.loadout == ["samjae", "cheongpung", ""], "assign second of three configurable slots")
+	check(p.loadout == ["basic_attack", "cheongpung", "samjae", ""], "replace basic defense with a learned art")
 	check(game.save_system.write_slot(1), "save open counter and progression")
 	game.reset()
 	check(game.save_system.load_slot(1), "load counter and progression")

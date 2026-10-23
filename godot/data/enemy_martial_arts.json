@@ -1,0 +1,40 @@
+{
+  "bandit_chop": {
+    "name": "거친 도질",
+    "description": "산적들이 사용하는 짧고 거친 도 베기.",
+    "weapon_style": "saber",
+    "required_weapon_type": "saber",
+    "damage_coefficients": {
+      "strength": 2,
+      "agility": 1
+    },
+    "qi_cost": 12,
+    "requirements": {
+      "minimum_total": 40,
+      "stats": {
+        "strength": 10,
+        "agility": 8,
+        "inner": 6
+      }
+    }
+  },
+  "bandit_heavy_chop": {
+    "name": "내려찍기",
+    "description": "내기를 모아 도를 힘껏 내려찍는다.",
+    "weapon_style": "saber",
+    "required_weapon_type": "saber",
+    "damage_coefficients": {
+      "strength": 3,
+      "agility": 2
+    },
+    "qi_cost": 20,
+    "requirements": {
+      "minimum_total": 50,
+      "stats": {
+        "strength": 12,
+        "agility": 10,
+        "inner": 8
+      }
+    }
+  }
+}

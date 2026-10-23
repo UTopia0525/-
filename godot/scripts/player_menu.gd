@@ -1,5 +1,6 @@
 extends Control
 ## Safe exploration menus. Possessions/technique loadout use the same persistent data as shops.
+const Icons = preload("res://scripts/catalog_icons.gd")
 const UI = preload("res://scripts/ui.gd")
 var game
 var mode := "inventory"
@@ -34,7 +35,7 @@ func _ready() -> void:
   var button = UI.button(panel, ["무기", "영약", "의뢰 물품"][i], Rect2(25 + i * 142, 137, 132, 38))
   button.pressed.connect(select_category.bind(["weapon", "elixir", "quest"][i]))
   tabs.append(button)
- basic_label = UI.label(panel, "고정  기본공격 · 내기 소모0\n배운 무공 중 세 가지를 골라 전투에 편성하세요.", Rect2(25, 137, 430, 53), 17, UI.GOLD)
+ basic_label = UI.label(panel, "기본공격·기본방어도 교체 가능합니다.\n전투에 사용할 네 가지 행동을 골라 편성하세요.", Rect2(25, 137, 430, 53), 17, UI.GOLD)
  var scroll := ScrollContainer.new()
  scroll.position = Vector2(25, 201)
  scroll.size = Vector2(430, 345)
@@ -46,8 +47,8 @@ func _ready() -> void:
  scroll.add_child(rows)
  detail = UI.label(panel, "", Rect2(490, 142, 590, 246), 17)
  detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
- for i in range(3):
-  var slot = UI.button(panel, "", Rect2(490 + i * 196, 399, 186, 63))
+ for i in range(4):
+  var slot = UI.button(panel, "", Rect2(490 + i * 146, 399, 138, 63))
   slot.add_theme_font_size_override("font_size", 16)
   slot.pressed.connect(select_slot.bind(i))
   slots.append(slot)
@@ -113,7 +114,7 @@ func refresh() -> void:
    for id in p.inventory:
     if p.inventory[id] > 0: ids.append(id)
   "quest": ids = game.trade_intro.quest_items()
-  "art": ids = p.learned.duplicate()
+  "art": ids = ["basic_attack", "basic_defense"] + p.learned.duplicate()
  for id in ids:
   var text: String = str(id)
   match category:
@@ -123,7 +124,8 @@ func refresh() -> void:
     text = str(p.arts.get_skill(id).name)
     if id in p.loadout: text += " · 편성%d" % [p.loadout.find(id) + 1]
   var row = UI.button(rows, text, Rect2(0, 0, 410, 46))
-  row.custom_minimum_size = Vector2(410, 46)
+  row.custom_minimum_size = Vector2(410, 52)
+  Icons.apply(row, str(id))
   row.pressed.connect(select_item.bind(str(id)))
  if ids.is_empty(): UI.label(rows, "보유한 물품이 없습니다.", Rect2(0, 0, 410, 45), 17, UI.MUTED)
  if category == "art":
@@ -135,9 +137,10 @@ func weapon_name() -> String:
  return str(game.progress.weapons.get_weapon(game.battle.equipped_weapon_id).get("name", "맨손"))
 func update_detail() -> void:
  var p = game.progress
- for i in range(3):
+ for i in range(4):
   slots[i].visible = mode == "martial"
   slots[i].disabled = target_slot == i
+  Icons.apply(slots[i], str(p.loadout[i]), 30)
   slots[i].text = "%d번 칸\n%s" % [i + 1, "비어 있음" if p.loadout[i] == "" else p.arts.get_skill(p.loadout[i]).name]
  action.disabled = selected_id.is_empty()
  action.text = "선택하세요"
@@ -160,7 +163,7 @@ func update_detail() -> void:
    action.text = "대화로 전달"
    action.disabled = true
   "art":
-   if selected_id == "clear": detail.text = "선택한 편성 칸만 비웁니다. 기본공격은 항상 유지됩니다."
+   if selected_id == "clear": detail.text = "선택한 편성 칸만 비웁니다. 기본 행동을 포함해 네 칸 모두 바꿀 수 있습니다."
    else:
     var item: Dictionary = p.arts.get_skill(selected_id)
     var names := {"strength":"근력", "agility":"기민", "constitution":"근골", "inner":"내공", "insight":"오성"}
@@ -168,6 +171,7 @@ func update_detail() -> void:
     for key in item.damage_coefficients: terms.append("%s×%d" % [names[key], int(item.damage_coefficients[key])])
     detail.text = "%s\n\n%s\n\n%s\n내기 소모%d · %s" % [item.name, item.description, " + ".join(terms), game.progress.weapons.qi_cost(item.qi_cost, game.battle.equipped_weapon_id, item), p.arts.weapon_requirement(selected_id)]
     if not p.arts.can_use_with_weapon(selected_id, game.battle.equipped_weapon_type): detail.text += "\n현재 장비로 사용 불가 · I에서 장비를 바꾸세요."
+   if selected_id not in ["clear", "basic_attack", "basic_defense"] and p.arts.get_skill(selected_id).weapon_style == "sword": detail.text += "\n사용 후 다음 적 행동 피해20% 감소"
    action.text = "%d번 칸 비우기" % [target_slot + 1] if selected_id == "clear" else "%d번 칸에 편성" % [target_slot + 1]
 func apply_selection() -> void:
  if action.disabled or not visible or game.state != "explore": return

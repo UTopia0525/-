@@ -30,6 +30,7 @@ func blocked_reason() -> String:
 	if game.player_menu.visible: return "소지품·무공 창을 닫은 뒤 저장하세요."
 	if game.state == "title": return "플레이를 시작한 뒤 저장할 수 있습니다."
 	if game.state == "chapter_transition": return "메뉴를 닫아 장 표시를 마친 뒤 저장하세요."
+	if game.state == "battle" and game.battle.player_hp == 0: return "다시 도전한 뒤 저장하세요."
 	if game.state == "battle" and game.battle.busy: return "메뉴를 닫아 공격 연출을 마친 뒤 내 차례에 저장하세요."
 	if not valid_callback(callback_data(game.dialogue_done)) or not valid_callback(callback_data(game.prologue.sequence_done)):
 		return "현재 대화가 끝난 뒤 저장할 수 있습니다."
@@ -51,7 +52,7 @@ func capture() -> Dictionary:
 		"ui":{"visible":visibility, "location":game.location.text, "objective":game.objective.text, "hint":game.bottom_hint.text, "caption":game.story_caption.text, "ending_hp":game.ending_hp.text},
 		"visual":{"mode":game.story_visual.mode, "phase":game.story_visual.phase, "paused":game.story_visual.paused},
 		"choice":game.pending_choice, "service":game.city_service.service.duplicate(true), "service_tab":game.city_service.selected_tab, "pending_service":game.pending_service_id,
-		"battle":{"encounter_id":game.battle.encounter.get("id", ""), "weapon_id":game.battle.equipped_weapon_id, "weapon_type":game.battle.equipped_weapon_type, "inner_power":game.battle.qi.inner_power, "qi":game.battle.qi.amount, "player_hp":game.battle.player_hp, "enemy_hp":game.battle.enemy_hp, "turn":game.battle.turn, "selected":game.battle.selected, "selected_action":game.battle.selected_action},
+		"battle":{"encounter_id":game.battle.encounter.get("id", ""), "weapon_id":game.battle.equipped_weapon_id, "weapon_type":game.battle.equipped_weapon_type, "inner_power":game.battle.qi.inner_power, "qi":game.battle.qi.amount, "player_hp":game.battle.player_hp, "enemy_hp":game.battle.enemy_hp, "turn":game.battle.turn, "selected":game.battle.selected, "selected_action":game.battle.selected_action, "enemy_qi":game.battle.enemy_qi.amount, "enemy_intent":game.battle.enemy_intent, "enemy_guard":game.battle.enemy_guard},
 		"music":{"track":game.music.current_track, "enabled":game.music.enabled}}
 
 func path(slot: int) -> String: return ROOT + "/slot_%02d.json" % slot
@@ -167,8 +168,8 @@ func validate(d) -> bool:
 		if d.state != "battle" or encounter_id != game.bandit_story.data.encounters[0 if d.bandit_story.stage == "battle_one" else 1].id: return false
 	if not is_number(d.battle.get("player_hp"), 0, 300) or not is_number(d.battle.get("enemy_hp"), 0, enemy_maximum) or not is_number(d.battle.get("turn"), 1, 10000) or not d.battle.get("selected") is bool: return false
 	if d.battle.has("selected_action"):
-		if d.battle.selected_action not in ["", "basic_attack"] and not game.battle.martial_arts.definitions.has(d.battle.selected_action): return false
-		if d.schema == 3 and d.state == "battle" and d.battle.selected_action not in ["", "basic_attack"] and d.battle.selected_action not in d.progress.loadout: return false
+		if d.battle.selected_action not in ["", "basic_attack", "basic_defense"] and not game.battle.martial_arts.definitions.has(d.battle.selected_action): return false
+		if d.schema == 3 and d.state == "battle" and d.battle.selected_action not in ["", "basic_attack", "basic_defense"] and d.battle.selected_action not in d.progress.loadout: return false
 		if d.battle.selected != (d.battle.selected_action != ""): return false
 	if d.battle.has("weapon_id"):
 		if not d.battle.weapon_id is String or not game.battle.weapons.exists(d.battle.weapon_id): return false
@@ -176,6 +177,23 @@ func validate(d) -> bool:
 	if d.battle.has("weapon_type") and not game.battle.martial_arts.WEAPON_NAMES.has(d.battle.weapon_type): return false
 	if d.schema >= 2:
 		if not is_number(d.battle.get("inner_power"), 0, 100) or not is_number(d.battle.get("qi"), 0, 500): return false
+	if d.battle.has("enemy_guard"):
+		if not game.progress.whole(d.battle.enemy_guard,0,20): return false
+		if int(d.battle.enemy_guard) not in [0,20]: return false
+	if d.battle.has("enemy_qi") or d.battle.has("enemy_intent"):
+		if not game.progress.whole(d.battle.get("enemy_qi"),0,500): return false
+		var allowed: Array = ["basic_attack","basic_defense","bandit_chop"]
+		for definition in game.bandit_story.data.encounters:
+			if definition.id == encounter_id: allowed = ["basic_attack","basic_defense"] + definition.skills
+		if d.battle.get("enemy_intent") not in allowed: return false
+		var stats := {"strength":12,"agility":12,"constitution":5,"inner":6,"insight":5}
+		var enemy_weapon := "thickback_saber"
+		for definition in game.bandit_story.data.encounters:
+			if definition.id == encounter_id:
+				stats = definition.stats
+				enemy_weapon = definition.weapon
+		var enemy_action: Dictionary = game.battle.combat.action(d.battle.enemy_intent,stats,enemy_weapon)
+		if enemy_action.is_empty() or (d.state == "battle" and enemy_action.cost > d.battle.enemy_qi): return false
 	return game.music.TRACKS.has(d.music.get("track")) and d.music.get("enabled") is bool
 
 func is_number(value, lower: float, upper: float) -> bool:
@@ -250,6 +268,15 @@ func load_slot(slot: int) -> bool:
 		game.battle.player_hp = int(d.battle.player_hp)
 		game.battle.enemy_hp = int(d.battle.enemy_hp)
 		game.battle.turn = int(d.battle.turn)
+		if d.battle.has("enemy_qi"):
+			game.battle.enemy_qi.restore(int(game.battle.enemy_stats.inner),int(d.battle.enemy_qi))
+			game.battle.enemy_intent = d.battle.enemy_intent
+			game.battle.enemy_guard = int(d.battle.get("enemy_guard",0))
+			game.battle._update_intent()
+		else:
+			# Older turns predate enemy resource accounting; give one starting allocation.
+			game.battle._prepare_enemy()
+		game.battle._update_slots()
 		game.battle._update_hp()
 		game.battle.turn_label.text = "내 차례 · %d번째 교전" % game.battle.turn
 		if d.battle.selected:

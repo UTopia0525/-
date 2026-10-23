@@ -20,7 +20,7 @@ func reset() -> void:
 	stats = RULES.STARTING_STATS.duplicate()
 	owned_weapons = ["plain_iron_sword"]
 	learned = ["samjae"]
-	loadout = ["samjae", "", ""]
+	loadout = ["basic_attack", "basic_defense", "samjae", ""]
 	inventory = {}
 	consumed = {}
 	for id in elixirs:
@@ -85,9 +85,9 @@ func consume(id: String) -> bool:
 	return true
 
 func assign(id: String, slot: int) -> bool:
-	if slot < 0 or slot >= 3 or (id != "" and id not in learned): return false
-	# Moving an assigned technique leaves its old slot empty, preserving three distinct slots.
-	for index in range(3):
+	if slot < 0 or slot >= 4 or (id != "" and id not in learned and id not in ["basic_attack", "basic_defense"]): return false
+	# Moving an assigned technique leaves its old slot empty, preserving four distinct slots.
+	for index in range(4):
 		if loadout[index] == id: loadout[index] = ""
 	loadout[slot] = id
 	return true
@@ -108,13 +108,13 @@ func valid(data) -> bool:
 	for id in elixirs:
 		if not whole(data.inventory.get(id), 0, 10) or not whole(data.consumed.get(id), 0, 10): return false
 		if data.inventory[id] + data.consumed[id] > elixirs[id].max_lifetime_uses: return false
-	if "plain_iron_sword" not in data.weapons or "samjae" not in data.learned or data.loadout.size() != 3: return false
+	if "plain_iron_sword" not in data.weapons or "samjae" not in data.learned or data.loadout.size() not in [3,4]: return false
 	for id in data.weapons:
 		if not id is String or not weapons.definitions.has(id) or data.weapons.count(id) != 1: return false
 	for id in data.learned:
 		if not id is String or not arts.definitions.has(id) or data.learned.count(id) != 1: return false
 	for id in data.loadout:
-		if not id is String or (id != "" and (id not in data.learned or data.loadout.count(id) != 1)): return false
+		if not id is String or (id != "" and ((id not in data.learned and (data.loadout.size() == 3 or id not in ["basic_attack", "basic_defense"])) or data.loadout.count(id) != 1)): return false
 	return true
 
 func whole(value, minimum: int, maximum: int) -> bool:
@@ -126,5 +126,6 @@ func restore(data: Dictionary) -> void:
 	owned_weapons = data.weapons.duplicate()
 	learned = data.learned.duplicate()
 	loadout = data.loadout.duplicate()
+	if loadout.size() == 3: loadout.push_front("basic_attack")
 	inventory = data.inventory.duplicate()
 	consumed = data.consumed.duplicate()

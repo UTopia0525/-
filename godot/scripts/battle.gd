@@ -3,6 +3,16 @@ extends Control
 signal victory(remaining_hp: int)
 signal defeat
 
+const Icons = preload("res://scripts/catalog_icons.gd")
+var combat = preload("res://scripts/combat_actions.gd").new()
+var enemy_qi = preload("res://scripts/inner_qi.gd").new()
+var enemy_stats: Dictionary = {}
+var enemy_weapon := "thickback_saber"
+var enemy_skills: Array = ["bandit_chop"]
+var enemy_intent := "basic_attack"
+var enemy_guard := 0
+var intent_label: Label
+var intent_icon: TextureRect
 const UI = preload("res://scripts/ui.gd")
 const Rules = preload("res://scripts/rules.gd")
 var qi = preload("res://scripts/inner_qi.gd").new()
@@ -27,7 +37,7 @@ var enemy_faction: Label
 var selected: bool = false
 var selected_action: String = ""
 var player_stats: Dictionary = Rules.STARTING_STATS.duplicate()
-var loadout: Array = ["samjae", "", ""]
+var loadout: Array = ["basic_attack", "basic_defense", "samjae", ""]
 var skill_buttons: Array[Button] = []
 var busy: bool = false
 var running: bool = false
@@ -57,11 +67,18 @@ func _ready() -> void:
 	scene_image.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	scene_image.size = Vector2(1280, 510)
 	add_child(scene_image)
-	var enemy_panel = UI.panel(self, Rect2(24, 24, 320, 126))
+	var enemy_panel = UI.panel(self, Rect2(24, 24, 390, 126))
 	enemy_faction = UI.label(enemy_panel, "흑린채 · 일반 수적", Rect2(18, 10, 285, 24), 13, UI.GOLD)
 	enemy_name = UI.label(enemy_panel, "흑린채 수적", Rect2(18, 34, 285, 32), 24)
-	enemy_text = UI.label(enemy_panel, "", Rect2(18, 71, 285, 22), 16)
+	enemy_text = UI.label(enemy_panel, "", Rect2(18, 71, 355, 22), 16)
 	enemy_bar = _health_bar(enemy_panel, Rect2(18, 103, 284, 9), Rules.ENEMY_MAX_HP)
+	var intent_panel = UI.panel(self, Rect2(24, 160, 470, 82))
+	intent_label = UI.label(intent_panel, "", Rect2(74, 8, 380, 66), 18, UI.GOLD)
+	intent_icon = TextureRect.new()
+	intent_icon.position = Vector2(12,14)
+	intent_icon.size = Vector2(52,52)
+	intent_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	intent_panel.add_child(intent_icon)
 	var player_panel = UI.panel(self, Rect2(925, 293, 330, 200))
 	weapon_label = UI.label(player_panel, "장착 무기 · 무문철검", Rect2(18, 10, 295, 24), 13, UI.GOLD)
 	UI.label(player_panel, "주인공", Rect2(18, 34, 295, 32), 24)
@@ -83,17 +100,15 @@ func _ready() -> void:
 	use_button = UI.button(description_panel, "사용  ↵", Rect2(450, 119, 140, 38), true)
 	use_button.pressed.connect(use_selected)
 	var slots = UI.panel(self, Rect2(650, 525, 605, 171))
-	UI.label(slots, "기본공격 1칸 · 편성 무공 3칸", Rect2(18, 8, 550, 24), 14, UI.GOLD)
-	basic_button = UI.button(slots, "기본공격 · 고정", Rect2(18, 40, 277, 54))
-	basic_button.toggle_mode = true
-	basic_button.pressed.connect(select_basic_attack)
-	for index in range(3):
-		var point: Vector2 = [Vector2(310, 40), Vector2(18, 103), Vector2(310, 103)][index]
+	UI.label(slots, "전투 행동 4칸 · 탐험 중 K로 편성", Rect2(18, 8, 550, 24), 14, UI.GOLD)
+	for index in range(4):
+		var point := Vector2(18 + (index % 2) * 292, 40 + (index / 2) * 63)
 		var button = UI.button(slots, "—", Rect2(point, Vector2(277, 54)))
 		button.toggle_mode = true
 		button.pressed.connect(select_slot.bind(index))
 		skill_buttons.append(button)
-	select_button = skill_buttons[0]
+	basic_button = skill_buttons[0]
+	select_button = skill_buttons[2]
 	_update_slots()
 	damage_label = UI.label(self, "", Rect2(930, 190, 200, 65), 48, Color("ffe3ac"))
 	damage_label.add_theme_color_override("font_shadow_color", Color("151f18"))
@@ -124,7 +139,15 @@ func set_encounter(value: Dictionary) -> void:
 	encounter = value.duplicate(true)
 	enemy_max_hp = int(encounter.get("max_hp", Rules.ENEMY_MAX_HP))
 	enemy_constitution = int(encounter.get("constitution", Rules.ENEMY_CONSTITUTION))
-	enemy_raw_damage = int(encounter.get("raw_attack", Rules.DEMO_ENEMY_RAW_DAMAGE))
+	enemy_stats = encounter.get("stats", {"strength":12,"agility":12,"constitution":5,"inner":6,"insight":5}).duplicate()
+	enemy_stats.constitution = enemy_constitution
+	enemy_weapon = str(encounter.get("weapon", "thickback_saber"))
+	enemy_skills = encounter.get("skills", ["bandit_chop"]).duplicate()
+	enemy_raw_damage = int(Rules.basic_attack_damage(enemy_stats))
+	enemy_guard = 0
+	enemy_qi.start(int(enemy_stats.inner))
+	enemy_intent = combat.enemy_plan(enemy_stats,enemy_weapon,enemy_skills,enemy_qi.amount,1)
+	_update_intent()
 	enemy_name.text = str(encounter.get("name", "흑린채 수적"))
 	enemy_faction.text = str(encounter.get("faction", "흑린채 · 일반 수적"))
 	enemy_bar.max_value = enemy_max_hp
@@ -132,6 +155,8 @@ func set_encounter(value: Dictionary) -> void:
 
 func begin(inner_power: int = -1) -> void:
 	qi.start(int(player_stats.inner) if inner_power < 0 else inner_power)
+	enemy_qi.start(int(enemy_stats.get("inner", 6)))
+	enemy_guard = 0
 	generation += 1
 	player_hp = Rules.PLAYER_MAX_HP
 	enemy_hp = enemy_max_hp
@@ -145,11 +170,13 @@ func begin(inner_power: int = -1) -> void:
 	_update_slots()
 	for button in skill_buttons: button.button_pressed = false
 	use_button.disabled = true
+	use_button.text = "사용  ↵"
 	damage_label.hide()
 	heading.text = "무공을 살펴보세요"
 	detail.text = "오른쪽 무공을 클릭하면 설명을 확인합니다."
 	note.text = "선택만으로는 턴을 소모하지 않습니다."
 	turn_label.text = "내 차례 · 첫 교전"
+	_prepare_enemy()
 	_update_hp()
 	show()
 	basic_button.grab_focus()
@@ -163,16 +190,7 @@ func cancel() -> void:
 	hide()
 
 func select_basic_attack() -> void:
-	if busy or not running:
-		return
-	selected = true
-	selected_action = "basic_attack"
-	basic_button.button_pressed = true
-	for button in skill_buttons: button.button_pressed = false
-	heading.text = "기본공격"
-	detail.text = "근력 × 1 + 기민 × 1 + 내공 × 1\n현재 방어 전 피해: %s" % str(basic_attack_damage())
-	note.text = "내기 소모: 0 · 무기 제한 없음 · 다음 턴 내공만큼 회복"
-	use_button.disabled = false
+	select_skill("basic_attack")
 
 func basic_attack_damage() -> float:
 	var stats: Dictionary = player_stats.duplicate()
@@ -181,43 +199,71 @@ func basic_attack_damage() -> float:
 
 func set_loadout(value: Array) -> void:
 	loadout = value.duplicate()
+	if loadout.size() == 3: loadout.push_front("basic_attack")
 	if is_node_ready(): _update_slots()
+
+func _has_usable_action() -> bool:
+	for id in loadout:
+		var a: Dictionary = combat.action(str(id), player_stats, equipped_weapon_id)
+		if not a.is_empty() and qi.can_spend(current_qi_cost(str(id))): return true
+	return false
 
 func _update_slots() -> void:
 	for i in range(skill_buttons.size()):
 		var id: String = str(loadout[i])
 		skill_buttons[i].text = "—" if id == "" else str(martial_arts.get_skill(id).name)
+		Icons.apply(skill_buttons[i], id)
 		skill_buttons[i].disabled = busy or id == ""
+	# Contextual free fallback prevents a soft lock after removing both basic actions.
+	if running and not busy and not _has_usable_action():
+		skill_buttons[0].text = "임시 기본공격 · 내기 부족/장비 불일치"
+		Icons.apply(skill_buttons[0], "basic_attack")
+		skill_buttons[0].disabled = false
 
 func select_slot(index: int) -> void:
-	if index >= 0 and index < loadout.size() and loadout[index] != "": select_skill(str(loadout[index]))
+	if index == 0 and not _has_usable_action(): select_basic_attack()
+	elif index >= 0 and index < loadout.size() and loadout[index] != "": select_skill(str(loadout[index]))
 
 func refresh_selection() -> void:
-	if selected_action == "basic_attack": select_basic_attack()
-	elif selected_action != "": select_skill(selected_action)
+	if selected_action != "": select_skill(selected_action)
 
 func select_samjae() -> void:
 	select_skill("samjae")
 
 func select_skill(id: String) -> void:
-	if busy or not running or id not in loadout or not martial_arts.definitions.has(id): return
+	if busy or not running: return
+	if id not in loadout and not (id == "basic_attack" and not _has_usable_action()): return
+	var item: Dictionary = martial_arts.get_skill(id)
+	if item.is_empty(): return
 	selected = true
 	selected_action = id
-	basic_button.button_pressed = false
 	for i in range(skill_buttons.size()): skill_buttons[i].button_pressed = loadout[i] == id
-	var item: Dictionary = martial_arts.get_skill(id)
 	heading.text = item.name
 	var names := {"strength":"근력", "agility":"기민", "constitution":"근골", "inner":"내공", "insight":"오성"}
 	var terms: Array = []
 	for key in item.damage_coefficients: terms.append("%s × %d" % [names[key], int(item.damage_coefficients[key])])
-	detail.text = " + ".join(terms) + "\n현재 방어 전 피해: " + str(weapons.attack_damage(martial_arts.raw_damage(id, player_stats), equipped_weapon_id, item))
+	var a: Dictionary = combat.action(id, player_stats, equipped_weapon_id)
+	detail.text = "다음 적 행동의 피해70% 감소 · 공격하지 않음" if id == "basic_defense" else " + ".join(terms) + "\n현재 방어 전 피해: " + str(a.get("raw",0))
+	if item.weapon_style == "sword": detail.text += " · 다음 적 행동 피해20% 감소"
 	note.text = "내기 소모: %d · %s" % [current_qi_cost(id), martial_arts.weapon_requirement(id)]
 	use_button.disabled = not martial_arts.can_use_with_weapon(id, equipped_weapon_type)
 
+func _prepare_enemy() -> void:
+	enemy_intent = combat.enemy_plan(enemy_stats,enemy_weapon,enemy_skills,enemy_qi.amount,turn)
+	_update_intent()
+
+func _update_intent() -> void:
+	intent_icon.texture = Icons.texture(enemy_intent)
+	var a: Dictionary = combat.action(enemy_intent,enemy_stats,enemy_weapon)
+	intent_label.text = "적이 공격을 하려고 한다\n%s · 내기 소모%d" % [a.name,a.cost] if a.get("raw",0)>0 else "적이 방어 태세를 취하고 있다 · 피해70% 감소"
+
 func use_selected() -> void:
+	if not running and player_hp == 0 and encounter.is_empty():
+		begin()
+		return
 	if not running or not selected or busy:
 		return
-	var is_basic := selected_action == "basic_attack"
+	var is_basic := selected_action in ["basic_attack", "basic_defense"]
 	if not is_basic and not martial_arts.can_use_with_weapon(selected_action, equipped_weapon_type):
 		note.text = martial_arts.weapon_requirement(selected_action)
 		return
@@ -225,24 +271,28 @@ func use_selected() -> void:
 	if not try_spend_qi(cost):
 		note.text = "내기가 부족합니다. 필요 %d / 현재 %d" % [cost, qi.amount] if cost >= 0 else "기술의 내기 비용을 확인해 주세요."
 		return
-	var action_name: String = "기본공격" if is_basic else str(martial_arts.get_skill(selected_action).name)
-	var raw: float = basic_attack_damage() if is_basic else weapons.attack_damage(martial_arts.raw_damage(selected_action, player_stats), equipped_weapon_id, martial_arts.get_skill(selected_action))
+	var player_action: Dictionary = combat.action(selected_action,player_stats,equipped_weapon_id)
+	var opponent_action: Dictionary = combat.action(enemy_intent,enemy_stats,enemy_weapon)
+	var action_name: String = str(player_action.name)
+	var raw: float = float(player_action.raw)
 	busy = true
 	basic_button.disabled = true
 	for button in skill_buttons: button.disabled = true
 	use_button.disabled = true
 	var token = generation
-	turn_label.text = "주인공의 공격"
+	turn_label.text = "주인공의 방어" if selected_action == "basic_defense" else "주인공의 공격"
 	detail.text = action_name + "을 펼칩니다."
 	note.text = ""
 	await get_tree().create_timer(Rules.DEMO_ATTACK_DELAY, false).timeout
 	if token != generation:
 		return
-	var hit = Rules.damage(raw, enemy_constitution)
+	var active_enemy_guard: int = combat.BASIC_GUARD if enemy_intent == "basic_defense" else enemy_guard
+	var hit: int = combat.damage(raw, enemy_constitution, enemy_weapon, active_enemy_guard)
+	enemy_guard = 0
 	enemy_hp = maxi(0, enemy_hp - hit)
 	_update_hp()
 	_float_damage(hit, false)
-	detail.text = "%s 명중.\n%s에게 %d의 피해를 주었습니다." % [action_name, enemy_name.text, hit]
+	detail.text = "방어 태세를 취했습니다." if raw == 0 else "%s 명중.\n%s에게 %d의 피해를 주었습니다." % [action_name, enemy_name.text, hit]
 	await get_tree().create_timer(Rules.DEMO_TURN_DELAY, false).timeout
 	if token != generation:
 		return
@@ -252,37 +302,53 @@ func use_selected() -> void:
 		damage_label.hide()
 		victory.emit(player_hp)
 		return
+	# Pay the locked enemy action only when the living actor actually takes its turn.
+	enemy_qi.spend(int(opponent_action.cost))
+	# A sword guard begins after the attack, protecting against the next player action.
+	if opponent_action.raw > 0: enemy_guard = int(opponent_action.guard)
 	turn_label.text = "상대 차례"
 	heading.text = enemy_name.text + "의 반격"
-	detail.text = enemy_name.text + "이 도를 휘두릅니다."
+	detail.text = "%s: %s" % [enemy_name.text, opponent_action.name]
 	await get_tree().create_timer(Rules.DEMO_ATTACK_DELAY, false).timeout
 	if token != generation:
 		return
-	var counter = weapons.received_damage(enemy_raw_damage, player_stats.constitution, equipped_weapon_id)
+	var counter: int = combat.damage(float(opponent_action.raw), player_stats.constitution, equipped_weapon_id, int(player_action.guard))
 	player_hp = maxi(0, player_hp - counter)
 	_update_hp()
 	_float_damage(counter, true)
 	await get_tree().create_timer(Rules.DEMO_TURN_DELAY, false).timeout
 	if token != generation:
 		return
-	if player_hp == 0 and not encounter.is_empty():
+	if player_hp == 0:
 		running = false
 		busy = false
 		damage_label.hide()
 		defeat.emit()
+		if encounter.is_empty():
+			heading.text = "교전에서 밀려났습니다"
+			detail.text = "다시 도전하면 체력과 내기를 회복해 시작합니다."
+			use_button.text = "다시 도전"
+			use_button.disabled = false
 		return
 	turn += 1
 	qi.recover_turn()
+	enemy_qi.recover_turn()
+	_prepare_enemy()
 	busy = false
 	basic_button.disabled = false
 	_update_slots()
 	use_button.disabled = false
 	turn_label.text = "내 차례 · %d번째 교전" % turn
-	refresh_selection()
+	_update_hp()
+	if selected_action not in loadout and _has_usable_action():
+		selected = false
+		selected_action = ""
+		use_button.disabled = true
+	else: refresh_selection()
 	use_button.grab_focus()
 
 func _update_hp() -> void:
-	enemy_text.text = "체력   %d / %d" % [enemy_hp, enemy_max_hp]
+	enemy_text.text = "체력 %d/%d · 내기 %d/500 (+%d)" % [enemy_hp, enemy_max_hp, enemy_qi.amount, enemy_qi.inner_power]
 	player_text.text = "체력   %d / %d" % [player_hp, Rules.PLAYER_MAX_HP]
 	enemy_bar.value = enemy_hp
 	player_bar.value = player_hp
@@ -320,6 +386,6 @@ func equip_weapon_item(id: String) -> bool:
 	return true
 
 func current_qi_cost(skill_id: String) -> int:
-	if skill_id == "basic_attack": return 0
+	if skill_id in ["basic_attack", "basic_defense"]: return 0
 	var base: int = int(skill_qi_costs.get(skill_id, martial_arts.qi_cost(skill_id)))
 	return weapons.qi_cost(base, equipped_weapon_id, martial_arts.get_skill(skill_id))

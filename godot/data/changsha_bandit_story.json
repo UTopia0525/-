@@ -24,7 +24,18 @@
       "faction": "장사 동쪽 산적 무리",
       "max_hp": 180,
       "constitution": 10,
-      "raw_attack": 55
+      "stats": {
+        "strength": 12,
+        "agility": 10,
+        "constitution": 10,
+        "inner": 6,
+        "insight": 8
+      },
+      "weapon": "thickback_saber",
+      "skills": [
+        "bandit_chop"
+      ],
+      "ai": "commit_before_player_skill_then_guard_every_third_turn"
     },
     {
       "id": "bandit_ringleader",
@@ -32,10 +43,21 @@
       "faction": "장사 동쪽 산적 무리",
       "max_hp": 240,
       "constitution": 15,
-      "raw_attack": 70
+      "stats": {
+        "strength": 14,
+        "agility": 12,
+        "constitution": 15,
+        "inner": 8,
+        "insight": 10
+      },
+      "weapon": "thickback_saber",
+      "skills": [
+        "bandit_heavy_chop"
+      ],
+      "ai": "commit_before_player_skill_then_guard_every_third_turn"
     }
   ],
-  "combat_values_status": "provisional",
+  "combat_values_status": "first_clear_balanced_shared_qi",
   "scenes": {
     "notice": [
       [

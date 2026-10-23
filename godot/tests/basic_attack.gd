@@ -24,7 +24,7 @@ func run() -> void:
 		if child is Button:
 			buttons += 1
 			if child.text == "—" and child.disabled: empty += 1
-	check(buttons == 4 and empty == 2, "one fixed basic, Samjae and two empty slots")
+	check(buttons == 4 and empty == 1, "basic attack, defense, Samjae and an empty slot")
 	check(battle.basic_button.position == Vector2(18, 40), "basic attack occupies first slot")
 	for weapon in ["none", "sword", "saber", "spear"]:
 		battle.equip_weapon(weapon)
@@ -39,7 +39,7 @@ func run() -> void:
 	battle.select_samjae()
 	check(battle.busy and battle.selected_action == "basic_attack" and battle.qi.amount == 0, "busy blocks duplicate attacks and switching")
 	await wait_turn()
-	check(battle.enemy_hp == 127 and battle.player_hp == 273 and battle.turn == 2, "raw 30 becomes 23 damage and enemy responds once")
+	check(battle.enemy_hp == 127 and battle.player_hp == 282 and battle.turn == 2, "raw 30 becomes 23 damage and enemy responds once")
 	check(battle.qi.amount == 10 and battle.selected_action == "basic_attack", "normal turn recovery and preserved selection")
 	battle.use_selected()
 	await wait_turn()

@@ -1,5 +1,6 @@
 extends Control
 signal closed
+const Icons = preload("res://scripts/catalog_icons.gd")
 const UI = preload("res://scripts/ui.gd")
 var game
 var heading: Label
@@ -48,8 +49,8 @@ func _ready() -> void:
 	scroll.add_child(rows)
 	message = UI.label(panel, "품목을 선택하세요.", Rect2(735, 155, 385, 290), 16)
 	message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	for i in range(3):
-		var slot = UI.button(panel, str(i + 1) + "번 칸", Rect2(735 + i * 130, 452, 122, 37))
+	for i in range(4):
+		var slot = UI.button(panel, str(i + 1) + "번 칸", Rect2(735 + (i % 2) * 190, 407 + (i / 2) * 42, 180, 37))
 		slot.pressed.connect(select_target_slot.bind(i))
 		slots.append(slot)
 	action = UI.button(panel, "", Rect2(735, 500, 380, 44), true)
@@ -90,7 +91,7 @@ func refresh_list() -> void:
 	match service.kind:
 		"market": ids = p.elixirs.keys()
 		"workshop": ids = p.weapons.definitions.keys() if selected_tab == 0 else ["none"] + p.owned_weapons
-		"training": ids = p.arts.definitions.keys() if selected_tab == 0 else p.learned.duplicate()
+		"training": ids = p.arts.definitions.keys() if selected_tab == 0 else ["basic_attack", "basic_defense"] + p.learned.duplicate()
 	for id in ids:
 		var text := ""
 		match service.kind:
@@ -105,7 +106,8 @@ func refresh_list() -> void:
 				text = str(p.arts.get_skill(id).name)
 				if selected_tab == 0: text += " · " + ("습득 완료" if id in p.learned else "350문")
 		var button = UI.button(rows, text, Rect2(0, 0, 365, 43))
-		button.custom_minimum_size = Vector2(365, 43)
+		button.custom_minimum_size = Vector2(365, 50)
+		Icons.apply(button, str(id))
 		button.add_theme_font_size_override("font_size", 16)
 		button.pressed.connect(select_item.bind(str(id)))
 	if service.kind == "training" and selected_tab == 1:
@@ -125,10 +127,11 @@ func select_item(id: String) -> void:
 func update_detail() -> void:
 	var p = game.progress
 	var is_loadout: bool = service.kind == "training" and selected_tab == 1
-	message.size.y = 285 if is_loadout else 330
-	for i in range(3):
+	message.size.y = 240 if is_loadout else 330
+	for i in range(4):
 		slots[i].visible = is_loadout
 		slots[i].disabled = target_slot == i
+		Icons.apply(slots[i], str(p.loadout[i]), 24)
 		slots[i].text = "%d: %s" % [i + 1, "비움" if p.loadout[i] == "" else p.arts.get_skill(p.loadout[i]).name]
 		slots[i].add_theme_font_size_override("font_size", 12)
 	action.disabled = selected_id.is_empty()
@@ -150,7 +153,7 @@ func update_detail() -> void:
 			action.text = "%d문 · 구매" % item.get("price", 0) if selected_tab == 0 else "장착" if selected_id != "none" else "무기 해제"
 			if selected_tab == 0: problem = p.issue("weapon", selected_id, game.money)
 		"training":
-			if selected_id == "clear": message.text = "기본공격은 고정입니다. 선택한 편성 칸만 비웁니다."
+			if selected_id == "clear": message.text = "선택한 편성 칸을 비웁니다. 기본 행동도 교체할 수 있습니다."
 			else:
 				var item: Dictionary = p.arts.get_skill(selected_id)
 				var req: Array = []
@@ -159,6 +162,7 @@ func update_detail() -> void:
 				for key in item.damage_coefficients: terms.append("%s×%d" % [names[key], int(item.damage_coefficients[key])])
 				for key in item.requirements.stats: req.append("%s%d" % [names[key], item.requirements.stats[key]])
 				message.text = "%s\n\n%s\n\n위력: %s\n내기 소모%d · %s\n학습: %s\n다섯 스탯 합계%d 이상" % [item.name, item.description, " + ".join(terms), item.qi_cost, p.arts.weapon_requirement(selected_id), " · ".join(req), item.requirements.minimum_total]
+			if selected_id not in ["clear", "basic_attack", "basic_defense"] and p.arts.get_skill(selected_id).weapon_style == "sword": message.text += "\n사용 후 다음 적 행동 피해20% 감소"
 			action.text = "350문 · 전수받기" if selected_tab == 0 else "%d번 칸에 편성" % [target_slot + 1]
 			if selected_tab == 0: problem = p.issue("art", selected_id, game.money)
 	if not problem.is_empty():
@@ -183,7 +187,7 @@ func transact() -> void:
 				feedback.text = "장비를 바꾸었습니다." if ok else "장착할 수 없습니다."
 			"training":
 				ok = p.assign("" if selected_id == "clear" else selected_id, target_slot)
-				feedback.text = "편성했습니다. 기본공격은 항상 유지됩니다." if ok else "편성할 수 없습니다."
+				feedback.text = "편성했습니다. 네 칸 모두 교체할 수 있습니다." if ok else "편성할 수 없습니다."
 	refresh_list()
 	update_detail()
 
