@@ -80,7 +80,7 @@ func finish_handoff() -> void:
 	banner.hide()
 	game.story_caption.hide()
 	game.top_hud.show()
-	game.bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     F  거래     ·     TAB  전체 지도     ·     M  음악     ·     F1  타이틀"
+	game.bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     F 대화/거래 · I 소지품 · K 무공 · TAB 전체 지도     ·     M  음악     ·     F1  타이틀"
 	game.bottom_hint.show()
 	game.state = "explore"
 	game.exploration.set_active(true)

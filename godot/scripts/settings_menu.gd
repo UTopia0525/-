@@ -62,6 +62,7 @@ func _ready() -> void:
 
 func open_menu() -> void:
 	if window.visible: return
+	game.player_menu.close_menu()
 	game.exploration.player.stop()
 	game.get_tree().paused = true
 	window.show()

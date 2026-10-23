@@ -6,6 +6,7 @@ const CALLBACKS = {
 	"main":["_captain_done", "_boarding_done", "_service_done", "start_battle", "show_story_choice"],
 	"prologue":["_next", "_drowning", "_delivery", "_after_delivery", "_farewell", "_arrival", "_finish"],
 	"chapter_one":["_accept_first_quest"],
+	"trade_intro":["_finish_visit"],
 	"bandit_story":["_notice_done", "_enrolled", "_battle_one", "_battle_two", "_return_to_city", "_retry", "_settle", "_finish"]}
 var game
 var error := ""
@@ -26,6 +27,7 @@ func callback_from(value: Dictionary) -> Callable:
 	return Callable(game if value.owner == "main" else game.get(value.owner), value.method)
 
 func blocked_reason() -> String:
+	if game.player_menu.visible: return "소지품·무공 창을 닫은 뒤 저장하세요."
 	if game.state == "title": return "플레이를 시작한 뒤 저장할 수 있습니다."
 	if game.state == "chapter_transition": return "메뉴를 닫아 장 표시를 마친 뒤 저장하세요."
 	if game.state == "battle" and game.battle.busy: return "메뉴를 닫아 공격 연출을 마친 뒤 내 차례에 저장하세요."
@@ -39,7 +41,7 @@ func capture() -> Dictionary:
 	var nodes = {"top_hud":game.top_hud, "bottom_hint":game.bottom_hint, "caption":game.story_caption, "exploration":w, "ending":game.ending, "overview":game.city_overview, "visual":game.story_visual}
 	var visibility := {}
 	for id in nodes: visibility[id] = nodes[id].visible
-	return {"schema":3, "progress":game.progress.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
+	return {"schema":3, "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
 		"chapter":game.chapter_number, "money":game.money, "talked_captain":game.talked_captain,
 		"world":{"area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
@@ -100,6 +102,7 @@ func validate(d) -> bool:
 	if not d is Dictionary: return false
 	if d.get("schema") != 1 and d.get("schema") != 2 and d.get("schema") != 3: return false
 	if d.schema == 3 and not game.progress.valid(d.get("progress")): return false
+	if d.has("trade_intro") and not game.trade_intro.valid(d.trade_intro): return false
 	if d.has("bandit_story") and not game.bandit_story.valid(d.bandit_story): return false
 	for field in ["world", "prologue", "chapter_one", "navigation", "dialogue", "ui", "visual", "service", "battle", "music"]:
 		if not d.get(field) is Dictionary: return false
@@ -124,7 +127,11 @@ func validate(d) -> bool:
 		if not c.get(key) is bool: return false
 	if not c.get("accepted_quests") is Dictionary: return false
 	for id in c.accepted_quests:
-		if id != "changsha_cloth" or c.accepted_quests[id] != {"status":"active", "stage":"deliver"}: return false
+		if id not in game.trade_intro.IDS: return false
+		var record = c.accepted_quests[id]
+		if not record is Dictionary or record.size() != 2: return false
+		var stage: String = "collect" if id == "changsha_dishes" else "deliver"
+		if record != {"status":"active", "stage":stage} and record != {"status":"completed", "stage":"done"}: return false
 	var n = d.navigation
 	if not n.get("quest") is String or not n.get("completed") is Array: return false
 	if n.quest != "" and (not game.quest_navigation.definitions.has(n.quest) or not game.quest_navigation.definitions[n.quest].stages.has(n.get("stage"))): return false
@@ -215,6 +222,7 @@ func load_slot(slot: int) -> bool:
 	c.banner_shown = d.chapter_one.banner_shown
 	c.accepted_quests = d.chapter_one.accepted_quests.duplicate(true)
 	if d.navigation.quest != "": game.quest_navigation.track(d.navigation.quest, d.navigation.stage, d.navigation.completed)
+	game.trade_intro.restore(d.get("trade_intro", {"completed":[]}))
 	game.pending_service_id = d.pending_service
 	if not d.dialogue.lines.is_empty():
 		game.say(d.dialogue.lines, callback_from(d.dialogue.done), d.dialogue.listeners)

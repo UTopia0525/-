@@ -34,25 +34,25 @@ func run() -> void:
 				check(city.point_is_walkable(point), "walkable target: " + str(item.id))
 				check(not city.path_to(point, true).is_empty(), "reachable target: " + str(item.id))
 	nav.track("changsha_cloth", "deliver")
-	var inn
+	var recipient
 	for npc in city.ambient_nodes:
-		if npc.get_meta("npc_id") == "inn_waiter": inn = npc
-	var saved: Vector2 = inn.position
+		if npc.get_meta("npc_id") == "city_merchant": recipient = npc
+	var saved: Vector2 = recipient.position
 	city.player.position = Vector2(3072, 2048)
 	city.camera.snap_to_player()
 	await process_frame
 	for direction in [Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN, Vector2(1, 1), Vector2(-1, -1), Vector2(-1, 1), Vector2(1, -1)]:
-		inn.position = city.player.position + direction * 1800
+		recipient.position = city.player.position + direction * 1800
 		mini.refresh()
 		check(mini.quest_active and mini.quest_offscreen, "outside destination uses edge arrow")
 		check(Rect2(Vector2(11, 11), mini.VIEW_SIZE - Vector2(22, 22)).has_point(mini.quest_marker), "edge arrow stays inside map")
 		check(mini.quest_direction.dot(direction.normalized()) > 0.9, "arrow points toward destination")
-	inn.position = city.player.position + Vector2(100, 20)
+	recipient.position = city.player.position + Vector2(100, 20)
 	mini.refresh()
 	check(mini.quest_active and not mini.quest_offscreen, "near destination uses diamond")
-	check(mini.quest_marker.distance_to(mini.project_point(inn.position)) < 0.1, "marker follows live NPC")
-	inn.position = saved
-	nav.track("changsha_cloth", "deliver", ["inn_waiter"])
+	check(mini.quest_marker.distance_to(mini.project_point(recipient.position)) < 0.1, "marker follows live NPC")
+	recipient.position = saved
+	nav.track("changsha_cloth", "deliver", ["city_merchant"])
 	check(nav.get_goal(city).stage_id == "report", "fulfilled goal guides back to report")
 	nav.track("changsha_pages", "collect", ["page_1", "page_2"])
 	check(nav.get_goal(city).goal_id == "page_3", "only remaining objective is tracked")

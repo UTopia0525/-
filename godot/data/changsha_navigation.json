@@ -3,11 +3,11 @@
     "title": "맡겨 둔 옷감",
     "stages": {
       "deliver": {
-        "label": "객잔에 옷감 전달",
+        "label": "상점가 상인에게 옷감 전달 · 영약 거래 배우기",
         "goals": [
           {
-            "id": "inn_waiter",
-            "npc_id": "inn_waiter"
+            "id": "city_merchant",
+            "npc_id": "city_merchant"
           }
         ]
       },
@@ -23,14 +23,14 @@
     }
   },
   "changsha_dishes": {
-    "title": "돌아오지 않은 그릇",
+    "title": "돌려준 약사발",
     "stages": {
       "collect": {
-        "label": "공방에서 식기 회수",
+        "label": "장인에게 약사발 전달 · 무기 거래 배우기",
         "goals": [
           {
-            "id": "carpenter",
-            "npc_id": "carpenter"
+            "id": "city_artisan",
+            "npc_id": "city_artisan"
           }
         ]
       },
@@ -46,14 +46,14 @@
     }
   },
   "changsha_handle": {
-    "title": "농가의 부러진 자루",
+    "title": "무관의 새 자루",
     "stages": {
       "deliver": {
-        "label": "농가에 자루 전달",
+        "label": "교관에게 자루 전달 · 무공 전수 배우기",
         "goals": [
           {
-            "id": "old_farmer",
-            "npc_id": "old_farmer"
+            "id": "city_instructor",
+            "npc_id": "city_instructor"
           }
         ]
       },

@@ -14,7 +14,7 @@
       }
     },
     "changsha_dishes": {
-      "title": "돌아오지 않은 그릇",
+      "title": "돌려준 약사발",
       "type": "intro_chain",
       "money": 150,
       "stat_gains": {
@@ -22,7 +22,7 @@
       }
     },
     "changsha_handle": {
-      "title": "농가의 부러진 자루",
+      "title": "무관의 새 자루",
       "type": "intro_chain",
       "money": 200,
       "stat_gains": {

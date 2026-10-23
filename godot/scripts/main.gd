@@ -29,6 +29,8 @@ var dialogue_cast
 var city_overview
 var minimap
 var city_service
+var player_menu
+var trade_intro
 var quest_navigation
 var prologue
 var chapter_one
@@ -106,6 +108,9 @@ func _ready() -> void:
 	chapter_one = preload("res://scripts/chapter_one.gd").new()
 	chapter_one.game = self
 	add_child(chapter_one)
+	trade_intro = preload("res://scripts/trade_intro.gd").new()
+	trade_intro.game = self
+	add_child(trade_intro)
 	bandit_story = preload("res://scripts/bandit_story.gd").new()
 	bandit_story.game = self
 	add_child(bandit_story)
@@ -115,10 +120,13 @@ func _ready() -> void:
 	settings_menu = preload("res://scripts/settings_menu.gd").new()
 	settings_menu.game = self
 	ui_root.add_child(settings_menu)
+	player_menu = preload("res://scripts/player_menu.gd").new()
+	player_menu.game = self
+	ui_root.add_child(player_menu)
 	reset()
 
 func _setup_input() -> void:
-	var definitions = {"move_left": [KEY_A, KEY_LEFT], "move_right": [KEY_D, KEY_RIGHT], "move_up": [KEY_W, KEY_UP], "move_down": [KEY_S, KEY_DOWN], "interact": [KEY_F]}
+	var definitions = {"move_left": [KEY_A, KEY_LEFT], "move_right": [KEY_D, KEY_RIGHT], "move_up": [KEY_W, KEY_UP], "move_down": [KEY_S, KEY_DOWN], "interact": [KEY_F], "inventory":[KEY_I], "martial_menu":[KEY_K]}
 	for action in definitions:
 		if not InputMap.has_action(action):
 			InputMap.add_action(action)
@@ -135,6 +143,10 @@ func _build_hud() -> void:
 	var purse = UI.panel(top_hud, Rect2(930, 99, 324, 36), Color("13231eea"))
 	money_label = UI.label(purse, "소지금  0문", Rect2(12, 4, 300, 28), 18, UI.GOLD)
 	money_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	var inventory_button = UI.button(top_hud, "소지품 · I", Rect2(930, 195, 150, 35))
+	inventory_button.pressed.connect(func(): player_menu.open_menu("inventory"))
+	var arts_button = UI.button(top_hud, "무공 · K", Rect2(1100, 195, 150, 35))
+	arts_button.pressed.connect(func(): player_menu.open_menu("martial"))
 	minimap = MINIMAP.new()
 	top_hud.add_child(minimap)
 	minimap.bind_world(exploration)
@@ -221,6 +233,9 @@ func reset() -> void:
 	progress.reset()
 	chapter_number = 0
 	chapter_one.reset()
+	trade_intro.reset()
+	player_menu.dismiss()
+	pending_service_id = ""
 	bandit_story.reset()
 	prologue.cancel()
 	money = 0
@@ -300,7 +315,7 @@ func enter_city(at_port: bool = false) -> void:
 	top_hud.show()
 	location.text = "장사 · " + exploration.district_at_player()
 	objective.text = "시장·골목·나루·성밖 농촌 둘러보기"
-	bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     F  거래     ·     TAB  전체 지도     ·     M  음악     ·     F1  타이틀"
+	bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     F 대화/거래 · I 소지품 · K 무공 · TAB 전체 지도     ·     M  음악     ·     F1  타이틀"
 	bottom_hint.show()
 
 func _process(_delta: float) -> void:
@@ -312,7 +327,7 @@ func _process(_delta: float) -> void:
 	bandit_story.maybe_start()
 
 func toggle_city_map() -> void:
-	if not dialogue_lines.is_empty() or state != "explore": return
+	if not dialogue_lines.is_empty() or state != "explore" or player_menu.visible: return
 	if city_overview.visible:
 		city_overview.hide()
 		exploration.set_active(true)
@@ -386,6 +401,7 @@ func interact() -> void:
 	var npc: Dictionary = exploration.nearest()
 	if npc.is_empty():
 		return
+	if trade_intro.handle_interaction(str(npc.id)): return
 	if bandit_story.handle_interaction(str(npc.id)): return
 	if npc.has("service_id"):
 		var service: Dictionary = {}
@@ -414,6 +430,7 @@ func interact() -> void:
 			dialogue_music_cues = {5: "ambush"}
 
 func start_battle(encounter: Dictionary = {}) -> void:
+	player_menu.dismiss()
 	story_visual.hide()
 	city_overview.hide()
 	music.play_track("battle")
@@ -447,6 +464,19 @@ func _on_victory(hp: int) -> void:
 	ending.show()
 
 func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if player_menu.visible:
+			if event.is_action_pressed("inventory"): player_menu.open_menu("inventory")
+			elif event.is_action_pressed("martial_menu"): player_menu.open_menu("martial")
+			elif event.keycode == KEY_ESCAPE: player_menu.close_menu()
+			elif event.keycode == KEY_F1: reset()
+			elif event.keycode == KEY_M: music.toggle()
+			get_viewport().set_input_as_handled()
+			return
+		if event.is_action_pressed("inventory") or event.is_action_pressed("martial_menu"):
+			player_menu.open_menu("inventory" if event.is_action_pressed("inventory") else "martial")
+			get_viewport().set_input_as_handled()
+			return
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE and not city_overview.visible and state != "service":
 		settings_menu.open_menu()
 		get_viewport().set_input_as_handled()

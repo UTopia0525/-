@@ -49,7 +49,7 @@ func explore(next_stage: String) -> void:
 	game.story_caption.hide()
 	game.top_hud.show()
 	game.bottom_hint.show()
-	game.bottom_hint.text = "WASD / 방향키  이동 · F  대화와 거래 · TAB  지도 · ESC  설정"
+	game.bottom_hint.text = "WASD / 방향키  이동 · F 대화/거래 · I 소지품 · K 무공 · TAB 지도 · ESC  설정"
 	game.exploration.show()
 	game.exploration.set_active(true)
 	game.exploration.camera.snap_to_player()
@@ -132,6 +132,7 @@ func _finish() -> void:
 	game.quest_navigation.clear()
 	if not previous_navigation.is_empty() and previous_navigation.get("quest", "") != "":
 		game.quest_navigation.track(previous_navigation.quest, previous_navigation.stage, previous_navigation.completed)
+	game.trade_intro.sync_navigation()
 
 func snapshot() -> Dictionary:
 	return {"stage":stage, "reward_granted":reward_granted, "previous_navigation":previous_navigation.duplicate(true)}
