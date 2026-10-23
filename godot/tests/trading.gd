@@ -1,4 +1,5 @@
 extends SceneTree
+# Mid-dialogue/counter/combat snapshots below are legacy-file compatibility fixtures.
 var failed := false
 var game
 func _initialize() -> void: run.call_deferred()
@@ -64,7 +65,7 @@ func run() -> void:
 	shop.select_item("cheongpung")
 	shop.transact()
 	check(p.loadout == ["basic_attack", "cheongpung", "samjae", ""], "replace basic defense with a learned art")
-	check(game.save_system.write_slot(1), "save open counter and progression")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 1), "save open counter and progression")
 	game.reset()
 	check(game.save_system.load_slot(1), "load counter and progression")
 	check(game.progress.learned == ["samjae", "cheongpung"] and game.progress.consumed.light_step_pill == 1 and game.money == 400, "restore money, learning and lifetime uses")
@@ -75,7 +76,7 @@ func run() -> void:
 	game.start_battle()
 	game.battle.select_skill("cheongpung")
 	check(game.battle.selected_action == "cheongpung" and not game.battle.use_button.disabled, "learned technique appears in actual battle")
-	check(game.save_system.write_slot(2) and game.save_system.load_slot(2), "save selected newly learned technique")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 2) and game.save_system.load_slot(2), "save selected newly learned technique")
 	check(game.battle.selected_action == "cheongpung", "restore generic battle selection")
 	game.battle.use_selected()
 	var deadline = Time.get_ticks_msec() + 6000

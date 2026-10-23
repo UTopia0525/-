@@ -1,4 +1,5 @@
 extends SceneTree
+# Mid-dialogue/counter/combat snapshots below are legacy-file compatibility fixtures.
 var failed := false
 var game
 func _initialize() -> void: run.call_deferred()
@@ -59,7 +60,7 @@ func run() -> void:
 	game.settings_menu.close_menu()
 	story.maybe_start()
 	check(story.stage == "notice" and game.state == "story" and not game.exploration.active, "notice automatically starts and stops movement")
-	check(game.save_system.write_slot(1), "save during automatic notice")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 1), "save during automatic notice")
 	game.advance_dialogue()
 	check(game.save_system.load_slot(1) and story.stage == "notice" and game.dialogue_index == 0, "reload dialogue without replaying trigger")
 	drain()
@@ -71,14 +72,14 @@ func run() -> void:
 	approach("bandit_muster")
 	drain()
 	check(story.stage == "battle_one" and game.battle.enemy_max_hp == 180 and game.battle.qi.amount == 20, "first encounter configured")
-	check(game.save_system.write_slot(3), "save enemy above old 150 hp limit")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 3), "save enemy above old 150 hp limit")
 	check(game.save_system.load_slot(3) and game.battle.enemy_hp == 180 and game.battle.encounter.id == "bandit_sentry", "restore proper enemy and battlefield")
 	await fight_to_end()
 	check(story.stage == "after_first", "first victory routes to campaign dialogue")
-	check(game.save_system.write_slot(9) and game.save_system.load_slot(9) and game.story_visual.mode == "bandit_road" and game.story_visual.visible, "save dialogue between battles with mountain staging")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 9) and game.save_system.load_slot(9) and game.story_visual.mode == "bandit_road" and game.story_visual.visible, "save dialogue between battles with mountain staging")
 	drain()
 	check(story.stage == "battle_two" and game.battle.player_hp == 300 and game.battle.qi.amount == 20, "second fight resets HP and qi")
-	check(game.save_system.write_slot(4) and game.save_system.load_slot(4) and game.battle.enemy_max_hp == 240, "second enemy save restores max hp")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 4) and game.save_system.load_slot(4) and game.battle.enemy_max_hp == 240, "second enemy save restores max hp")
 	# Simulate a losing exchange; retreat must not grant rewards or deadlock.
 	game.battle.player_hp = 1
 	game.battle.select_basic_attack()
@@ -86,7 +87,7 @@ func run() -> void:
 	var deadline = Time.get_ticks_msec() + 15000
 	while game.battle.busy and Time.get_ticks_msec() < deadline: await create_timer(0.04).timeout
 	check(story.stage == "retreat" and not story.reward_granted and game.money == 0, "defeat retreats without settlement")
-	check(game.save_system.write_slot(5) and game.save_system.load_slot(5), "retreat with surviving >150hp enemy is saveable")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 5) and game.save_system.load_slot(5), "retreat with surviving >150hp enemy is saveable")
 	drain()
 	check(story.stage == "preparing" and game.state == "explore", "defeat permits equipment and retry")
 	approach("bandit_muster")
@@ -101,10 +102,10 @@ func run() -> void:
 	approach("bandit_officer")
 	# Stop before payment to verify exact-once completion after reload.
 	while game.dialogue_index < game.dialogue_lines.size() - 1: game.advance_dialogue()
-	check(game.save_system.write_slot(7) and game.save_system.load_slot(7), "save last prepayment line")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 7) and game.save_system.load_slot(7), "save last prepayment line")
 	game.advance_dialogue()
 	check(story.reward_granted and game.money == 500 and game.progress.fame == 5 and game.progress.stats.insight == 25, "pay 500, insight5, fame5 once")
-	check(game.save_system.write_slot(8) and game.save_system.load_slot(8), "save after payment while recognition dialogue remains")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 8) and game.save_system.load_slot(8), "save after payment while recognition dialogue remains")
 	drain()
 	check(story.stage == "completed" and game.quest_navigation.quest_id == "changsha_cloth", "restore previous side quest navigation")
 	approach("bandit_officer")

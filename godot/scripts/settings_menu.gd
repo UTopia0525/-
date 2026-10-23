@@ -104,7 +104,7 @@ func refresh() -> void:
 	action.text = "이 칸에 저장" if mode == "save" else "이 저장 불러오기"
 	var reason: String = game.save_system.blocked_reason() if mode == "save" else ""
 	action.disabled = not reason.is_empty() if mode == "save" else data.is_empty()
-	status.text = reason if not reason.is_empty() else ("원하는 시점마다 다른 칸에 저장할 수 있습니다." if mode == "save" else "선택한 저장 시점으로 돌아갑니다.")
+	status.text = reason if not reason.is_empty() else ("탐험 중이나 분기 선택 전에 다른 칸에 저장할 수 있습니다." if mode == "save" else "선택한 저장 시점으로 돌아갑니다.")
 
 func area_name(id: String) -> String:
 	return {"dock":"청류진 나루", "deck":"호송선", "changsha":"장사"}.get(id, id)

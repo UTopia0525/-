@@ -30,8 +30,10 @@ func blocked_reason() -> String:
 	if game.player_menu.visible: return "소지품·무공 창을 닫은 뒤 저장하세요."
 	if game.state == "title": return "플레이를 시작한 뒤 저장할 수 있습니다."
 	if game.state == "chapter_transition": return "메뉴를 닫아 장 표시를 마친 뒤 저장하세요."
-	if game.state == "battle" and game.battle.player_hp == 0: return "다시 도전한 뒤 저장하세요."
-	if game.state == "battle" and game.battle.busy: return "메뉴를 닫아 공격 연출을 마친 뒤 내 차례에 저장하세요."
+	if game.state == "battle": return "교전 중에는 저장할 수 없습니다. 전투를 마친 뒤 저장하세요."
+	if game.state == "service" or game.city_service.visible: return "거래 중에는 저장할 수 없습니다. 거래 창을 닫은 뒤 저장하세요."
+	if game.state == "story" or game.dialogue_panel.visible or not game.dialogue_lines.is_empty():
+		return "대화 중에는 저장할 수 없습니다. 대화를 마친 뒤 저장하세요."
 	if not valid_callback(callback_data(game.dialogue_done)) or not valid_callback(callback_data(game.prologue.sequence_done)):
 		return "현재 대화가 끝난 뒤 저장할 수 있습니다."
 	return ""

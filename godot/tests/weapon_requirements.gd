@@ -1,4 +1,5 @@
 extends SceneTree
+# Mid-dialogue/counter/combat snapshots below are legacy-file compatibility fixtures.
 var failed := false
 func _initialize() -> void: run.call_deferred()
 func check(ok: bool, message: String) -> void:
@@ -19,7 +20,7 @@ func run() -> void:
 		b.use_selected()
 		check(b.qi.amount == 10 and b.enemy_hp == 150 and b.turn == 1 and not b.busy, "wrong weapon cannot spend qi, damage or consume turn")
 	check(not b.equip_weapon("unknown") and b.equipped_weapon_type == "spear", "unknown type rejected")
-	check(game.save_system.write_slot(1), "save equipment category")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 1), "save equipment category")
 	game.reset()
 	check(game.save_system.load_slot(1) and b.equipped_weapon_type == "spear" and b.use_button.disabled, "restored mismatch remains blocked")
 	var old = game.save_system.capture()

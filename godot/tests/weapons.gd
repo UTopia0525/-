@@ -1,4 +1,5 @@
 extends SceneTree
+# Mid-dialogue/counter/combat snapshots below are legacy-file compatibility fixtures.
 const WEAPONS = preload("res://scripts/weapons.gd")
 const ARTS = preload("res://scripts/martial_arts.gd")
 const RULES = preload("res://scripts/rules.gd")
@@ -40,7 +41,7 @@ func run() -> void:
 	game.start_battle()
 	check(game.battle.equipped_weapon_id == "plain_iron_sword", "actual new game equips starter sword")
 	game.battle.equip_weapon_item("hundredfold_sword")
-	check(game.save_system.write_slot(1), "weapon ID saved")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 1), "weapon ID saved")
 	game.reset()
 	check(game.save_system.load_slot(1) and game.battle.equipped_weapon_id == "hundredfold_sword", "exact weapon tier restored")
 	check(game.battle.equipped_weapon_type == "sword", "category follows restored item")

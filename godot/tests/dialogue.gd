@@ -1,4 +1,5 @@
 extends SceneTree
+# Mid-dialogue/counter/combat snapshots below are legacy-file compatibility fixtures.
 
 const PORTRAITS = preload("res://scripts/dialogue_portraits.gd")
 var failed := false
@@ -77,7 +78,7 @@ func _check_dialogues(game) -> void:
 	check(game.ui_root.get_children().find(game.dialogue_backdrop) < game.ui_root.get_children().find(cast), "portraits are above background shade")
 	check(game.ui_root.get_children().find(game.dialogue_backdrop) < game.ui_root.get_children().find(game.dialogue_panel), "dialogue panel is above shade")
 	check(cast.portraits.city_merchant.self_modulate == Color.WHITE and cast.portraits.hero.self_modulate == PORTRAITS.DIM, "speaker and listener brightness remain independent")
-	check(game.save_system.write_slot(1) and game.save_system.load_slot(1) and game.dialogue_backdrop.visible, "city shade restored with saved dialogue")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 1) and game.save_system.load_slot(1) and game.dialogue_backdrop.visible, "city shade restored with saved dialogue")
 	game.advance_dialogue()
 	check(not game.dialogue_backdrop.visible and game.exploration.active, "conversation end restores city brightness")
 	game.say([["city_merchant", "다시 오셨군요."]])
@@ -110,12 +111,12 @@ func _check_framing_and_facing(game) -> void:
 	check(not cast.portraits.bandit_farmer.flip_h, "NPC can address NPC on the right rather than hero on the left")
 	game.advance_dialogue()
 	check(not cast.portraits.hero.flip_h and cast.portraits.bandit_farmer.flip_h, "hero replies toward previous speaker")
-	check(game.save_system.write_slot(1) and game.save_system.load_slot(1), "save and restore inferred reply direction")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 1) and game.save_system.load_slot(1), "save and restore inferred reply direction")
 	check(not cast.portraits.hero.flip_h and cast.portraits.bandit_farmer.flip_h, "reload preserves reply facing")
 	game.say([["hero", "잠깐 돌아보았다.", "혼잣말", {"facing":{"hero":"left", "bandit_messenger":"right"}}]], Callable(), ["bandit_messenger"])
 	check(cast.portraits.hero.flip_h and not cast.portraits.bandit_messenger.flip_h, "explicit line facing overrides automatic facing")
 	check(game.dialogue_name.text.contains("혼잣말"), "subtitle remains compatible with staging")
-	check(game.save_system.write_slot(1) and game.save_system.load_slot(1), "staging and subtitle survive save")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 1) and game.save_system.load_slot(1), "staging and subtitle survive save")
 	check(cast.portraits.hero.flip_h and not cast.portraits.bandit_messenger.flip_h, "explicit directions survive reload")
 	check(not cast.valid_staging({"to":"unknown"}) and not cast.valid_staging({"facing":{"hero":"up"}}), "invalid direction or actor rejected")
 	var malformed: Dictionary = game.save_system.capture()

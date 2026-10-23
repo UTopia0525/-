@@ -32,6 +32,8 @@ func run() -> void:
 		game.advance_dialogue()
 		count += 1
 	assert(game.money == 3000)
+	drain()
+	if game.state == "chapter_transition": await create_timer(2.6).timeout
 	store(2)
 	game.settings_menu.close_menu()
 	drain()

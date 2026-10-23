@@ -1,4 +1,5 @@
 extends SceneTree
+# Mid-dialogue/counter/combat snapshots below are legacy-file compatibility fixtures.
 const Combat = preload("res://scripts/combat_actions.gd")
 const Icons = preload("res://scripts/catalog_icons.gd")
 const Progress = preload("res://scripts/player_progress.gd")
@@ -90,7 +91,7 @@ func run() -> void:
 	b.select_skill("basic_defense");b.use_selected();b.use_selected();await wait_turn()
 	check(b.turn==2 and b.player_hp==294 and b.enemy_qi.amount==16 and b.enemy_intent=="basic_attack","defense, enemy recovery and costly next intent")
 	var intent: String = b.enemy_intent;var amount: int = b.enemy_qi.amount
-	check(game.save_system.write_slot(10) and game.save_system.load_slot(10),"save/load enemy combat state")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 10) and game.save_system.load_slot(10),"save/load enemy combat state")
 	check(b.enemy_qi.amount==amount and b.enemy_intent==intent and b.selected_action=="basic_defense","save preserves locked enemy intent, qi and defense selection")
 	var invalid: Dictionary = game.save_system.capture();invalid.battle.enemy_qi=0;invalid.battle.enemy_intent="bandit_heavy_chop"
 	check(not game.save_system.validate(invalid),"cannot load an unaffordable locked enemy technique")

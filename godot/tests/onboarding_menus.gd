@@ -1,4 +1,5 @@
 extends SceneTree
+# Mid-dialogue/counter/combat snapshots below are legacy-file compatibility fixtures.
 var game
 var failed := false
 func _initialize() -> void: run.call_deferred()
@@ -56,14 +57,14 @@ func run() -> void:
   check(not game.dialogue_lines.is_empty(), "guide dialogue starts")
   key(KEY_I)
   check(not menu.visible, "inventory cannot interrupt dialogue")
-  check(game.save_system.write_slot(1) and game.save_system.load_slot(1), "guide dialogue can save and restore")
+  check(preload("res://tests/legacy_save_fixture.gd").write(game, 1) and game.save_system.load_slot(1), "guide dialogue can save and restore")
   drain()
   check(game.city_service.visible and game.state == "service", "guide opens real shop")
   check(game.money == expected_money[i] and game.progress.stats.insight == expected_insight[i], "unchanged money and insight reward")
   var completed: Array = game.trade_intro.completed.duplicate()
   game.trade_intro._finish_visit()
   check(game.money == expected_money[i] and game.trade_intro.completed == completed, "stale callback cannot award next quest")
-  check(game.save_system.write_slot(2) and game.save_system.load_slot(2), "reward and shop survive saving")
+  check(preload("res://tests/legacy_save_fixture.gd").write(game, 2) and game.save_system.load_slot(2), "reward and shop survive saving")
   check(game.trade_intro.completed.size() == i + 1 and game.money == expected_money[i], "reward not duplicated on load")
   game.city_service.close_counter()
   check(game.quest_navigation.quest_id == (["changsha_dishes", "changsha_handle", ""][i]), "next guide tracked or cleared")

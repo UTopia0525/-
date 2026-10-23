@@ -1,4 +1,5 @@
 extends SceneTree
+# Mid-dialogue/counter/combat snapshots below are legacy-file compatibility fixtures.
 const QI = preload("res://scripts/inner_qi.gd")
 var failed := false
 var game
@@ -42,7 +43,7 @@ func run() -> void:
 	check(battle.qi.amount == 3 and not battle.try_spend_qi(1), "cost is paid exactly once and busy actions cannot pay again")
 	await wait_turn()
 	check(battle.turn == 2 and battle.qi.amount == 13, "regenerate once at next player turn")
-	check(game.save_system.write_slot(1), "save qi mid-battle")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 1), "save qi mid-battle")
 	battle.skill_qi_costs.clear()
 	check(game.save_system.load_slot(1), "load qi mid-battle")
 	check(battle.qi.amount == 13 and battle.turn == 2 and battle.qi.inner_power == 10, "load preserves spent qi without bonus regeneration")

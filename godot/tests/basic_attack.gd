@@ -1,4 +1,5 @@
 extends SceneTree
+# Mid-dialogue/counter/combat snapshots below are legacy-file compatibility fixtures.
 var failed := false
 var game
 func _initialize() -> void: run.call_deferred()
@@ -44,7 +45,7 @@ func run() -> void:
 	battle.use_selected()
 	await wait_turn()
 	check(battle.qi.amount == 20 and battle.enemy_hp == 104, "repeated basic attacks bank qi without changing damage")
-	check(game.save_system.write_slot(1), "save selected basic attack")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 1), "save selected basic attack")
 	battle.select_samjae()
 	check(game.save_system.load_slot(1), "load basic attack")
 	check(battle.selected_action == "basic_attack" and battle.basic_button.button_pressed and not battle.use_button.disabled and battle.qi.amount == 20, "selection and banked qi restored without extra recovery")

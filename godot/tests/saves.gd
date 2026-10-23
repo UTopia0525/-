@@ -1,4 +1,5 @@
 extends SceneTree
+# Mid-dialogue/counter/combat snapshots below are legacy-file compatibility fixtures.
 var game
 var failed := false
 func _initialize() -> void: run.call_deferred()
@@ -26,7 +27,7 @@ func run() -> void:
 	game.interact()
 	game.advance_dialogue()
 	var text: String = game.dialogue_text.text
-	check(saves.write_slot(1), "save captain dialogue: " + saves.error)
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 1), "save captain dialogue: " + saves.error)
 	game.reset()
 	check(saves.load_slot(1), "load dialogue")
 	check(game.dialogue_text.text == text and not game.talked_captain, "restore exact line and pre-dialogue flags")
@@ -44,7 +45,7 @@ func run() -> void:
 		game.advance_dialogue()
 		count += 1
 	check(game.money == 3000, "treasure paid")
-	check(saves.write_slot(3), "save after payment during dialogue: " + saves.error)
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 3), "save after payment during dialogue: " + saves.error)
 	await settle()
 	check(game.chapter_one.accepted_quests.has("changsha_cloth"), "accepted quest reached")
 	game.exploration.player.position = game.exploration.city_point([515, 440])
@@ -82,7 +83,7 @@ func run() -> void:
 	# Combat resumes only at a stable player turn. Busy actions are unsaveable and pause.
 	game.start_battle()
 	game.battle.select_samjae()
-	check(saves.write_slot(7), "battle between turns saved")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 7), "battle between turns saved")
 	game.battle.use_selected()
 	check(not saves.write_slot(8), "busy battle save disabled")
 	game.settings_menu.open_menu()
@@ -102,7 +103,7 @@ func run() -> void:
 	game.exploration.player.position = Vector2(810, 410)
 	game.interact()
 	game.advance_dialogue()
-	check(saves.write_slot(9), "save boarding dialogue")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 9), "save boarding dialogue")
 	game.reset()
 	check(saves.load_slot(9), "restore boarding dialogue")
 	drain()
@@ -112,13 +113,13 @@ func run() -> void:
 		if actor.get_meta("npc_id") == "city_merchant":
 			game.exploration.player.position = actor.position + Vector2(36, 12)
 	game.interact()
-	check(saves.write_slot(8), "save service greeting")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 8), "save service greeting")
 	game.reset()
 	check(saves.load_slot(8), "restore service greeting")
 	drain()
 	check(game.state == "service" and game.city_service.visible, "service greeting continuation restored")
 	game.city_service.select_tab(1)
-	check(saves.write_slot(8) and saves.load_slot(8), "save and load inside service")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 8) and saves.load_slot(8), "save and load inside service")
 	check(game.city_service.selected_tab == 1, "service tab restored")
 	game.reset()
 	check(not saves.write_slot(10), "title cannot overwrite saves")

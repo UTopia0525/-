@@ -1,4 +1,5 @@
 extends SceneTree
+# Mid-dialogue/counter/combat snapshots below are legacy-file compatibility fixtures.
 var game
 var failed := false
 func _initialize() -> void: run.call_deferred()
@@ -56,7 +57,7 @@ func run() -> void:
 	await create_timer(.4).timeout
 	check(b.player_actor.position.is_equal_approx(paused_position) and b.player_bar.trail.value==paused_trail,"settings pauses both motion and delayed health together")
 	game.settings_menu.close_menu();b.player_actor.reset_motion();b._update_hp()
-	check(game.save_system.write_slot(1) and game.save_system.load_slot(1),"new visuals preserve manual saves")
+	check(preload("res://tests/legacy_save_fixture.gd").write(game, 1) and game.save_system.load_slot(1),"new visuals preserve manual saves")
 	check(b.enemy_bar.trail.value==b.enemy_hp and b.player_bar.trail.value==b.player_hp and b.player_actor.pose=="ready","load snaps bars and poses to stored state")
 	b.select_samjae();b.use_selected()
 	game.reset();await create_timer(.8).timeout
