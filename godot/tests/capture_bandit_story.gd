@@ -46,6 +46,8 @@ func run() -> void:
 	game.exploration.camera.snap_to_player()
 	game.bandit_story.handle_interaction("bandit_officer")
 	while game.bandit_story.stage == "settlement": game.advance_dialogue()
+	assert(game.money == 500 and game.progress.fame == 5 and game.progress.stats.insight == 25)
+	assert(game.story_caption.text.contains("보수500문"))
 	await shot("bandit-completed")
 	drain()
 	await create_timer(1.0).timeout
