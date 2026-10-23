@@ -83,7 +83,7 @@ func _ready() -> void:
 	enemy_text = UI.label(enemy_panel, "", Rect2(18, 71, 355, 22), 16)
 	enemy_bar = _health_bar(enemy_panel, Rect2(18, 103, 354, 20), Rules.ENEMY_MAX_HP)
 	var intent_panel = UI.panel(self, Rect2(430, 24, 450, 82))
-	intent_label = UI.label(intent_panel, "", Rect2(74, 8, 360, 66), 18, UI.GOLD)
+	intent_label = UI.label(intent_panel, "", Rect2(18, 12, 414, 58), 24, UI.GOLD)
 	intent_icon = TextureRect.new()
 	intent_icon.position = Vector2(12,14)
 	intent_icon.size = Vector2(52,52)
@@ -101,16 +101,16 @@ func _ready() -> void:
 	qi_bar.add_theme_stylebox_override("fill", qi_fill)
 	qi.changed.connect(_update_qi)
 	_update_qi()
-	turn_label = UI.label(self, "내 차례", Rect2(1065, 22, 190, 32), 16, UI.GOLD)
+	turn_label = UI.label(self, "나의 차례", Rect2(1065, 22, 190, 32), 16, UI.GOLD)
 	turn_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	var description_panel = UI.panel(self, Rect2(24, 525, 610, 171))
-	heading = UI.label(description_panel, "무공을 살펴보세요", Rect2(18, 12, 565, 30), 23, UI.GOLD)
+	heading = UI.label(description_panel, "펼칠 무공을 고르시오", Rect2(18, 12, 565, 30), 23, UI.GOLD)
 	detail = UI.label(description_panel, "", Rect2(18, 53, 565, 62), 17)
 	note = UI.label(description_panel, "", Rect2(18, 125, 390, 30), 12, UI.MUTED)
 	use_button = UI.button(description_panel, "사용  ↵", Rect2(450, 119, 140, 38), true)
 	use_button.pressed.connect(use_selected)
 	var slots = UI.panel(self, Rect2(650, 525, 605, 171))
-	UI.label(slots, "전투 행동 4칸 · 탐험 중 K로 편성", Rect2(18, 8, 550, 24), 14, UI.GOLD)
+	UI.label(slots, "초식 네 자리 · 탐험 중 K로 정비", Rect2(18, 8, 550, 24), 14, UI.GOLD)
 	for index in range(4):
 		var point := Vector2(18 + (index % 2) * 292, 40 + (index / 2) * 63)
 		var button = UI.button(slots, "—", Rect2(point, Vector2(277, 54)))
@@ -186,10 +186,10 @@ func begin(inner_power: int = -1) -> void:
 	use_button.disabled = true
 	use_button.text = "사용  ↵"
 	damage_label.hide()
-	heading.text = "무공을 살펴보세요"
+	heading.text = "펼칠 무공을 고르시오"
 	detail.text = "오른쪽 무공을 클릭하면 설명을 확인합니다."
 	note.text = "선택만으로는 턴을 소모하지 않습니다."
-	turn_label.text = "내 차례 · 첫 교전"
+	turn_label.text = "나의 차례 · 첫 교전"
 	_prepare_enemy()
 	_update_hp()
 	show()
@@ -269,9 +269,12 @@ func _prepare_enemy() -> void:
 	_update_intent()
 
 func _update_intent() -> void:
-	intent_icon.texture = Icons.texture(enemy_intent)
-	var a: Dictionary = combat.action(enemy_intent,enemy_stats,enemy_weapon)
-	intent_label.text = "적이 공격을 하려고 한다\n%s · 내기 소모%d" % [a.name,a.cost] if a.get("raw",0)>0 else "적이 방어 태세를 취하고 있다 · 피해70% 감소"
+	# Intent category only: no move name, cost, move-specific icon or tooltip leaks.
+	intent_icon.texture = null
+	intent_icon.hide()
+	intent_label.tooltip_text = ""
+	var action: Dictionary = combat.action(enemy_intent,enemy_stats,enemy_weapon)
+	intent_label.text = "적이 공격을 하려고 한다" if action.get("raw",0)>0 else "상대가 수세를 취하고 있다"
 
 func use_selected() -> void:
 	if not running and player_hp == 0 and encounter.is_empty():
@@ -296,7 +299,7 @@ func use_selected() -> void:
 	for button in skill_buttons: button.disabled = true
 	use_button.disabled = true
 	var token = generation
-	turn_label.text = "주인공의 방어" if selected_action == "basic_defense" else "주인공의 공격"
+	turn_label.text = "나의 수비" if selected_action == "basic_defense" else "나의 출수"
 	detail.text = action_name + "을 펼칩니다."
 	note.text = ""
 	if raw > 0:
@@ -328,7 +331,7 @@ func use_selected() -> void:
 	enemy_qi.spend(int(opponent_action.cost))
 	# A sword guard begins after the attack, protecting against the next player action.
 	if opponent_action.raw > 0: enemy_guard = int(opponent_action.guard)
-	turn_label.text = "상대 차례"
+	turn_label.text = "상대의 차례"
 	heading.text = enemy_name.text + "의 반격"
 	detail.text = "%s: %s" % [enemy_name.text, opponent_action.name]
 	if opponent_action.raw > 0:
@@ -365,7 +368,7 @@ func use_selected() -> void:
 	basic_button.disabled = false
 	_update_slots()
 	use_button.disabled = false
-	turn_label.text = "내 차례 · %d번째 교전" % turn
+	turn_label.text = "나의 차례 · %d번째 교전" % turn
 	_update_hp()
 	if selected_action not in loadout and _has_usable_action():
 		selected = false

@@ -35,7 +35,7 @@ func _ready() -> void:
   var button = UI.button(panel, ["무기", "영약", "의뢰 물품"][i], Rect2(25 + i * 142, 137, 132, 38))
   button.pressed.connect(select_category.bind(["weapon", "elixir", "quest"][i]))
   tabs.append(button)
- basic_label = UI.label(panel, "기본공격·기본방어도 교체 가능합니다.\n전투에 사용할 네 가지 행동을 골라 편성하세요.", Rect2(25, 137, 430, 53), 17, UI.GOLD)
+ basic_label = UI.label(panel, "기본공격·기본방어도 바꿀 수 있습니다.\n실전에 펼칠 초식 네 가지를 갖추세요.", Rect2(25, 137, 430, 53), 17, UI.GOLD)
  var scroll := ScrollContainer.new()
  scroll.position = Vector2(25, 201)
  scroll.size = Vector2(430, 345)
@@ -58,7 +58,7 @@ func _ready() -> void:
  feedback.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
  var close = UI.button(panel, "닫기 · ESC", Rect2(850, 600, 216, 35))
  close.pressed.connect(close_menu)
- UI.label(panel, "I 소지품 · K 무공 · 이동과 전투는 창을 닫은 뒤 진행합니다.", Rect2(25, 607, 800, 25), 14, UI.MUTED)
+ UI.label(panel, "I 소지품 · K 무공 · 정비를 마치고 창을 닫으면 여정을 잇습니다.", Rect2(25, 607, 800, 25), 14, UI.MUTED)
  hide()
 func open_menu(value: String) -> void:
  if visible:
@@ -98,7 +98,7 @@ func refresh() -> void:
  var s: Dictionary = p.stats
  var total := int(s.strength + s.agility + s.constitution + s.inner + s.insight)
  var realm: String = "절정까지 %d" % [100 - total] if total < 100 else p.RULES.realm(total)
- heading.text = "소지품 · I" if mode == "inventory" else "습득 무공과 전투 편성 · K"
+ heading.text = "소지품 · I" if mode == "inventory" else "익힌 무공과 초식 편성 · K"
  summary.text = "소지금 %d문  |  근력%d · 기민%d · 근골%d · 내공%d · 오성%d\n합계%d / 500 · %s  |  장착: %s" % [game.money, s.strength, s.agility, s.constitution, s.inner, s.insight, total, realm, weapon_name()]
  for i in range(3):
   tabs[i].visible = mode == "inventory"
@@ -144,7 +144,7 @@ func update_detail() -> void:
   slots[i].text = "%d번 칸\n%s" % [i + 1, "비어 있음" if p.loadout[i] == "" else p.arts.get_skill(p.loadout[i]).name]
  action.disabled = selected_id.is_empty()
  action.text = "선택하세요"
- detail.text = "보유한 물건을 골라 장착하거나 복용하세요.\n물건 구매는 상점가·공방에서 할 수 있습니다." if mode == "inventory" else "목록은 이미 익힌 무공입니다.\n무공과 편성할 칸을 고른 뒤 편성 버튼을 누르세요.\n새 무공은 무관의 교관에게 전수받을 수 있습니다."
+ detail.text = "보유한 물건을 골라 장착하거나 복용하세요.\n물건 구매는 상점가·공방에서 할 수 있습니다." if mode == "inventory" else "이미 익힌 무공 가운데 실전에 펼칠 수를 고르세요.\n무공과 자리를 골라 편성할 수 있습니다.\n새 무공은 무관 교관에게 전수받을 수 있습니다."
  if selected_id.is_empty(): return
  match category:
   "weapon":

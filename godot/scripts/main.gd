@@ -58,10 +58,8 @@ var ending_hp: Label
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_setup_input()
-	var system_font = SystemFont.new()
-	system_font.font_names = PackedStringArray(["Malgun Gothic", "Noto Sans CJK KR", "Apple SD Gothic Neo", "sans-serif"])
 	theme = Theme.new()
-	theme.default_font = system_font
+	theme.default_font = UI.BODY_FONT
 	theme.default_font_size = 18
 	music = MUSIC.new()
 	music.name = "SituationMusic"
@@ -179,7 +177,7 @@ func _build_dialogue() -> void:
 	dialogue_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	dialogue_panel.visibility_changed.connect(_update_dialogue_backdrop)
 	dialogue_name = UI.label(dialogue_panel, "", Rect2(24, 14, 1045, 30), 22, UI.GOLD)
-	dialogue_text = UI.label(dialogue_panel, "", Rect2(24, 55, 1065, 83), 20)
+	dialogue_text = UI.label(dialogue_panel, "", Rect2(24, 55, 1065, 83), 21)
 	dialogue_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	var next = UI.button(dialogue_panel, "다음 ▾", Rect2(1125, 106, 90, 38))
 	next.pressed.connect(advance_dialogue)
@@ -213,7 +211,7 @@ func _build_title() -> void:
 	city.pressed.connect(start_city)
 	continue_button = UI.button(title_screen, "0장 이후 이어하기", Rect2(842, 538, 250, 58))
 	continue_button.pressed.connect(prologue.resume)
-	UI.label(title_screen, "GODOT 4 · 0장 전체 진행 / 장사 항구에서 자유 탐험", Rect2(113, 628, 950, 30), 14, UI.MUTED)
+	UI.label(title_screen, "첫 표행에서 장사 입성까지 · 강호로 나아가는 여정", Rect2(113, 628, 950, 30), 14, UI.MUTED)
 
 func _build_ending() -> void:
 	ending = _full_overlay(Color(0.035, 0.07, 0.055, 0.94))
@@ -409,7 +407,7 @@ func interact() -> void:
 			if definition.id == npc.service_id:
 				service = definition
 		if not service.is_empty():
-			var greeting: String = {"market": "힘을 보할 약도, 몸을 가볍게 할 약도 있지요. 하급 영약은 한 알에100문입니다. 약도 과하면 탈이니, 같은 약은 평생 열 알까지만 드세요.", "workshop": "검이든 도든 창이든 손에 맞아야지요. 삼백, 오백, 칠백문짜리가 있습니다. 날을 한번 살펴보고 고르세요.", "training": "무공은 모두 삼백오십문에 가르치오. 다만 몸과 깨달음이 따라야 배울 수 있소. 배운 뒤에는 쓸 무공 세 가지를 미리 골라두시오."}[service.kind]
+			var greeting: String = {"market": "근력을 돋우고 몸을 가볍게 할 영약이 있지요. 하급 영약은 한 알에 백문입니다. 약력도 과하면 독이니, 같은 약은 평생 열 알까지만 드세요.", "workshop": "검이든 도든 창이든, 손에 맞아야 제 위력을 내는 법이지요. 삼백, 오백, 칠백문짜리가 있으니 날과 무게를 살펴 고르시오.", "training": "무공 한 문을 전수하는 데 삼백오십문이오. 허나 근기와 깨달음이 따르지 않으면 배워도 펼칠 수 없소. K를 눌러 실전에 쓸 네 가지 초식을 미리 갖추시오."}[service.kind]
 			pending_service_id = service.id
 			say([[service.id, greeting]], _service_done)
 		return

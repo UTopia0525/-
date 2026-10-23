@@ -15,6 +15,7 @@ static func texture(id: String) -> Texture2D:
 	return result
 static func apply(button: Button, id: String, width: int = 40) -> void:
 	button.icon = texture(id)
+	preload("res://scripts/ui.gd").item_highlight(button,button.icon != null)
 	button.expand_icon = true
 	button.icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	button.add_theme_constant_override("icon_max_width", width)

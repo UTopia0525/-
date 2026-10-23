@@ -25,6 +25,7 @@ func _ready() -> void:
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.add_theme_font_size_override("font_size", 64)
+	label.add_theme_font_override("font", preload("res://scripts/ui.gd").BRUSH_FONT)
 	label.add_theme_color_override("font_color", Color("e8d7af"))
 	banner.add_child(label)
 	game.ui_root.add_child(banner)
