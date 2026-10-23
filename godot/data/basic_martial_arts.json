@@ -135,18 +135,17 @@
     "weapon_style": "spear",
     "damage_coefficients": {
       "strength": 3,
-      "agility": 3,
-      "insight": 1
+      "agility": 5,
+      "insight": 2
     },
-    "qi_cost": 15,
+    "qi_cost": 20,
     "requirements": {
       "stats": {
-        "strength": 13,
-        "agility": 15,
-        "inner": 12,
-        "insight": 12
+        "strength": 12,
+        "agility": 12,
+        "inner": 12
       },
-      "minimum_total": 65
+      "minimum_total": 60
     },
     "acquisition": null,
     "description": "상대의 움직임을 읽고 창 끝을 곧게 뻗어 찌르는 창법.",
@@ -158,18 +157,18 @@
     "kind": "attack",
     "weapon_style": "spear",
     "damage_coefficients": {
-      "strength": 2,
-      "agility": 4,
-      "inner": 2
+      "strength": 3,
+      "agility": 5,
+      "inner": 3
     },
-    "qi_cost": 24,
+    "qi_cost": 34,
     "requirements": {
       "stats": {
-        "agility": 18,
-        "inner": 14,
-        "insight": 14
+        "agility": 15,
+        "inner": 13,
+        "insight": 12
       },
-      "minimum_total": 80
+      "minimum_total": 70
     },
     "acquisition": null,
     "description": "허초와 실초를 이어 마지막 찌르기에 내기를 집중하는 창법.",
@@ -182,21 +181,22 @@
     "weapon_style": "fist",
     "damage_coefficients": {
       "strength": 4,
-      "constitution": 3
+      "constitution": 3,
+      "inner": 3
     },
     "qi_cost": 18,
     "requirements": {
       "stats": {
-        "strength": 16,
-        "constitution": 16,
-        "inner": 12
+        "strength": 14,
+        "constitution": 14,
+        "inner": 20
       },
-      "minimum_total": 70
+      "minimum_total": 80
     },
     "acquisition": null,
     "description": "굳게 선 몸 전체의 힘을 짧은 주먹에 싣는 권법.",
     "status": "proposal",
-    "required_weapon_type": null
+    "required_weapon_type": "none"
   },
   "jingak": {
     "name": "진각권법",
@@ -205,21 +205,21 @@
     "damage_coefficients": {
       "strength": 4,
       "constitution": 2,
-      "inner": 2
+      "inner": 5
     },
     "qi_cost": 26,
     "requirements": {
       "stats": {
-        "strength": 18,
-        "constitution": 18,
-        "inner": 14
+        "strength": 16,
+        "constitution": 16,
+        "inner": 24
       },
-      "minimum_total": 80
+      "minimum_total": 90
     },
     "acquisition": null,
     "description": "발을 굳게 디뎌 얻은 힘과 내기를 한 주먹으로 뻗는 권법.",
     "status": "proposal",
-    "required_weapon_type": null
+    "required_weapon_type": "none"
   },
   "ungi": {
     "name": "운기장법",
@@ -227,20 +227,20 @@
     "weapon_style": "palm",
     "damage_coefficients": {
       "strength": 1,
-      "inner": 5,
-      "insight": 2
+      "inner": 7,
+      "insight": 3
     },
     "qi_cost": 28,
     "requirements": {
       "stats": {
-        "inner": 18,
-        "insight": 16
+        "inner": 26,
+        "insight": 18
       },
-      "minimum_total": 80
+      "minimum_total": 90
     },
     "acquisition": null,
     "description": "호흡으로 모은 내기를 손바닥에 집중해 밀어내는 장법.",
     "status": "proposal",
-    "required_weapon_type": null
+    "required_weapon_type": "none"
   }
 }

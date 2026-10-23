@@ -38,4 +38,5 @@ func can_use_with_weapon(id: String, equipped_type: String) -> bool:
 func weapon_requirement(id: String) -> String:
 	if not definitions.has(id): return "사용할 수 없는 무공입니다."
 	var required = definitions[id].required_weapon_type
+	if required == "none": return "무기 해제 필요(맨손)"
 	return "필요 무기: 없음" if required == null else "필요 무기: " + str(WEAPON_NAMES[required])

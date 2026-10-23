@@ -31,7 +31,7 @@ func run() -> void:
 	check(weapons.received_damage(100, 100, "hundredfold_sword") == 0, "weapon reduction cannot introduce minimum damage")
 	check(weapons.attack_damage(100, "heavy_steel_saber", arts.get_skill("danseok")) == 130, "saber attack bonus")
 	check(weapons.attack_damage(100, "heavy_steel_saber", arts.get_skill("cheolsan")) == 100, "held weapon does not buff hand arts")
-	check(weapons.qi_cost(24, "flowing_cloud_spear", arts.get_skill("yeonhwan")) == 17, "spear efficiency uses ceiling")
+	check(weapons.qi_cost(arts.qi_cost("yeonhwan"), "flowing_cloud_spear", arts.get_skill("yeonhwan")) == 24, "spear efficiency uses ceiling")
 	check(weapons.qi_cost(1, "flowing_cloud_spear", arts.get_skill("yeonhwan")) == 1 and weapons.qi_cost(0, "flowing_cloud_spear", arts.get_skill("yeonhwan")) == 0, "positive costs never become free")
 	check(weapons.qi_cost(28, "flowing_cloud_spear", arts.get_skill("ungi")) == 28, "spear reduction does not leak to palm arts")
 	var game = load("res://scenes/main.tscn").instantiate()
