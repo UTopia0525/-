@@ -1,0 +1,1693 @@
+{
+  "scope": "검토 전용. 적 예고 패턴·기본방어·검법 방어는 실제 게임 미적용. 의뢰 성장안은 일반6종 완료 연결을 가정한다.",
+  "formula": "floor(max(0,D-G)*100/(100+G)*(1-weapon/100)*(1-guard/100))",
+  "one_hit_comparison": {
+    "0": 34,
+    "20": 27,
+    "50": 17,
+    "60": 13,
+    "70": 10
+  },
+  "scenarios": [
+    {
+      "id": "tutorial",
+      "name": "시작 캐릭터·기존 튜토리얼 적",
+      "stats": {
+        "strength": 10,
+        "agility": 10,
+        "constitution": 10,
+        "inner": 10,
+        "insight": 10
+      },
+      "enemy_hp": 150,
+      "pattern": [
+        [
+          "보통 공격",
+          40
+        ]
+      ],
+      "attack_without_sword_guard": {
+        "win": true,
+        "turns": 4,
+        "hp": 219,
+        "trace": [
+          {
+            "turn": 1,
+            "intent": "보통 공격",
+            "action": "samjae",
+            "dealt": 42,
+            "received": 27,
+            "hp": 273,
+            "enemy_hp": 108,
+            "qi": 0,
+            "guard": 0
+          },
+          {
+            "turn": 2,
+            "intent": "보통 공격",
+            "action": "samjae",
+            "dealt": 42,
+            "received": 27,
+            "hp": 246,
+            "enemy_hp": 66,
+            "qi": 0,
+            "guard": 0
+          },
+          {
+            "turn": 3,
+            "intent": "보통 공격",
+            "action": "samjae",
+            "dealt": 42,
+            "received": 27,
+            "hp": 219,
+            "enemy_hp": 24,
+            "qi": 0,
+            "guard": 0
+          },
+          {
+            "turn": 4,
+            "intent": "보통 공격",
+            "action": "samjae",
+            "dealt": 42,
+            "received": 0,
+            "hp": 219,
+            "enemy_hp": 0,
+            "qi": 0,
+            "guard": 0
+          }
+        ]
+      },
+      "attack": {
+        "win": true,
+        "turns": 4,
+        "hp": 237,
+        "trace": [
+          {
+            "turn": 1,
+            "intent": "보통 공격",
+            "action": "samjae",
+            "dealt": 42,
+            "received": 21,
+            "hp": 279,
+            "enemy_hp": 108,
+            "qi": 0,
+            "guard": 20
+          },
+          {
+            "turn": 2,
+            "intent": "보통 공격",
+            "action": "samjae",
+            "dealt": 42,
+            "received": 21,
+            "hp": 258,
+            "enemy_hp": 66,
+            "qi": 0,
+            "guard": 20
+          },
+          {
+            "turn": 3,
+            "intent": "보통 공격",
+            "action": "samjae",
+            "dealt": 42,
+            "received": 21,
+            "hp": 237,
+            "enemy_hp": 24,
+            "qi": 0,
+            "guard": 20
+          },
+          {
+            "turn": 4,
+            "intent": "보통 공격",
+            "action": "samjae",
+            "dealt": 42,
+            "received": 0,
+            "hp": 237,
+            "enemy_hp": 0,
+            "qi": 0,
+            "guard": 20
+          }
+        ]
+      },
+      "variants": {
+        "50": {
+          "reactive": {
+            "win": true,
+            "turns": 4,
+            "hp": 237,
+            "trace": [
+              {
+                "turn": 1,
+                "intent": "보통 공격",
+                "action": "samjae",
+                "dealt": 42,
+                "received": 21,
+                "hp": 279,
+                "enemy_hp": 108,
+                "qi": 0,
+                "guard": 20
+              },
+              {
+                "turn": 2,
+                "intent": "보통 공격",
+                "action": "samjae",
+                "dealt": 42,
+                "received": 21,
+                "hp": 258,
+                "enemy_hp": 66,
+                "qi": 0,
+                "guard": 20
+              },
+              {
+                "turn": 3,
+                "intent": "보통 공격",
+                "action": "samjae",
+                "dealt": 42,
+                "received": 21,
+                "hp": 237,
+                "enemy_hp": 24,
+                "qi": 0,
+                "guard": 20
+              },
+              {
+                "turn": 4,
+                "intent": "보통 공격",
+                "action": "samjae",
+                "dealt": 42,
+                "received": 0,
+                "hp": 237,
+                "enemy_hp": 0,
+                "qi": 0,
+                "guard": 20
+              }
+            ]
+          },
+          "optimal": {
+            "fastest": {
+              "turns": 4,
+              "hp": 237,
+              "actions": [
+                "samjae",
+                "samjae",
+                "samjae",
+                "samjae"
+              ]
+            },
+            "safest": {
+              "turns": 4,
+              "hp": 237,
+              "actions": [
+                "samjae",
+                "samjae",
+                "samjae",
+                "samjae"
+              ]
+            }
+          }
+        },
+        "60": {
+          "reactive": {
+            "win": true,
+            "turns": 4,
+            "hp": 237,
+            "trace": [
+              {
+                "turn": 1,
+                "intent": "보통 공격",
+                "action": "samjae",
+                "dealt": 42,
+                "received": 21,
+                "hp": 279,
+                "enemy_hp": 108,
+                "qi": 0,
+                "guard": 20
+              },
+              {
+                "turn": 2,
+                "intent": "보통 공격",
+                "action": "samjae",
+                "dealt": 42,
+                "received": 21,
+                "hp": 258,
+                "enemy_hp": 66,
+                "qi": 0,
+                "guard": 20
+              },
+              {
+                "turn": 3,
+                "intent": "보통 공격",
+                "action": "samjae",
+                "dealt": 42,
+                "received": 21,
+                "hp": 237,
+                "enemy_hp": 24,
+                "qi": 0,
+                "guard": 20
+              },
+              {
+                "turn": 4,
+                "intent": "보통 공격",
+                "action": "samjae",
+                "dealt": 42,
+                "received": 0,
+                "hp": 237,
+                "enemy_hp": 0,
+                "qi": 0,
+                "guard": 20
+              }
+            ]
+          },
+          "optimal": {
+            "fastest": {
+              "turns": 4,
+              "hp": 237,
+              "actions": [
+                "samjae",
+                "samjae",
+                "samjae",
+                "samjae"
+              ]
+            },
+            "safest": {
+              "turns": 4,
+              "hp": 237,
+              "actions": [
+                "samjae",
+                "samjae",
+                "samjae",
+                "samjae"
+              ]
+            }
+          }
+        },
+        "70": {
+          "reactive": {
+            "win": true,
+            "turns": 4,
+            "hp": 237,
+            "trace": [
+              {
+                "turn": 1,
+                "intent": "보통 공격",
+                "action": "samjae",
+                "dealt": 42,
+                "received": 21,
+                "hp": 279,
+                "enemy_hp": 108,
+                "qi": 0,
+                "guard": 20
+              },
+              {
+                "turn": 2,
+                "intent": "보통 공격",
+                "action": "samjae",
+                "dealt": 42,
+                "received": 21,
+                "hp": 258,
+                "enemy_hp": 66,
+                "qi": 0,
+                "guard": 20
+              },
+              {
+                "turn": 3,
+                "intent": "보통 공격",
+                "action": "samjae",
+                "dealt": 42,
+                "received": 21,
+                "hp": 237,
+                "enemy_hp": 24,
+                "qi": 0,
+                "guard": 20
+              },
+              {
+                "turn": 4,
+                "intent": "보통 공격",
+                "action": "samjae",
+                "dealt": 42,
+                "received": 0,
+                "hp": 237,
+                "enemy_hp": 0,
+                "qi": 0,
+                "guard": 20
+              }
+            ]
+          },
+          "optimal": {
+            "fastest": {
+              "turns": 4,
+              "hp": 237,
+              "actions": [
+                "samjae",
+                "samjae",
+                "samjae",
+                "samjae"
+              ]
+            },
+            "safest": {
+              "turns": 4,
+              "hp": 237,
+              "actions": [
+                "samjae",
+                "samjae",
+                "samjae",
+                "samjae"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "grown_fixed",
+      "name": "실측 성장·기존 우두머리 공격",
+      "stats": {
+        "strength": 25,
+        "agility": 25,
+        "constitution": 25,
+        "inner": 19,
+        "insight": 10
+      },
+      "enemy_hp": 240,
+      "pattern": [
+        [
+          "보통 공격",
+          70
+        ]
+      ],
+      "attack_without_sword_guard": {
+        "win": true,
+        "turns": 2,
+        "hp": 266,
+        "trace": [
+          {
+            "turn": 1,
+            "intent": "보통 공격",
+            "action": "samjae",
+            "dealt": 101,
+            "received": 34,
+            "hp": 266,
+            "enemy_hp": 139,
+            "qi": 9,
+            "guard": 0
+          },
+          {
+            "turn": 2,
+            "intent": "보통 공격",
+            "action": "swaeam",
+            "dealt": 146,
+            "received": 0,
+            "hp": 266,
+            "enemy_hp": 0,
+            "qi": 8,
+            "guard": 0
+          }
+        ]
+      },
+      "attack": {
+        "win": true,
+        "turns": 2,
+        "hp": 273,
+        "trace": [
+          {
+            "turn": 1,
+            "intent": "보통 공격",
+            "action": "samjae",
+            "dealt": 101,
+            "received": 27,
+            "hp": 273,
+            "enemy_hp": 139,
+            "qi": 9,
+            "guard": 20
+          },
+          {
+            "turn": 2,
+            "intent": "보통 공격",
+            "action": "swaeam",
+            "dealt": 146,
+            "received": 0,
+            "hp": 273,
+            "enemy_hp": 0,
+            "qi": 8,
+            "guard": 20
+          }
+        ]
+      },
+      "variants": {
+        "50": {
+          "reactive": {
+            "win": true,
+            "turns": 2,
+            "hp": 273,
+            "trace": [
+              {
+                "turn": 1,
+                "intent": "보통 공격",
+                "action": "samjae",
+                "dealt": 101,
+                "received": 27,
+                "hp": 273,
+                "enemy_hp": 139,
+                "qi": 9,
+                "guard": 20
+              },
+              {
+                "turn": 2,
+                "intent": "보통 공격",
+                "action": "swaeam",
+                "dealt": 146,
+                "received": 0,
+                "hp": 273,
+                "enemy_hp": 0,
+                "qi": 8,
+                "guard": 20
+              }
+            ]
+          },
+          "optimal": {
+            "fastest": {
+              "turns": 2,
+              "hp": 273,
+              "actions": [
+                "samjae",
+                "swaeam"
+              ]
+            },
+            "safest": {
+              "turns": 2,
+              "hp": 273,
+              "actions": [
+                "samjae",
+                "swaeam"
+              ]
+            }
+          }
+        },
+        "60": {
+          "reactive": {
+            "win": true,
+            "turns": 2,
+            "hp": 273,
+            "trace": [
+              {
+                "turn": 1,
+                "intent": "보통 공격",
+                "action": "samjae",
+                "dealt": 101,
+                "received": 27,
+                "hp": 273,
+                "enemy_hp": 139,
+                "qi": 9,
+                "guard": 20
+              },
+              {
+                "turn": 2,
+                "intent": "보통 공격",
+                "action": "swaeam",
+                "dealt": 146,
+                "received": 0,
+                "hp": 273,
+                "enemy_hp": 0,
+                "qi": 8,
+                "guard": 20
+              }
+            ]
+          },
+          "optimal": {
+            "fastest": {
+              "turns": 2,
+              "hp": 273,
+              "actions": [
+                "samjae",
+                "swaeam"
+              ]
+            },
+            "safest": {
+              "turns": 2,
+              "hp": 273,
+              "actions": [
+                "samjae",
+                "swaeam"
+              ]
+            }
+          }
+        },
+        "70": {
+          "reactive": {
+            "win": true,
+            "turns": 2,
+            "hp": 273,
+            "trace": [
+              {
+                "turn": 1,
+                "intent": "보통 공격",
+                "action": "samjae",
+                "dealt": 101,
+                "received": 27,
+                "hp": 273,
+                "enemy_hp": 139,
+                "qi": 9,
+                "guard": 20
+              },
+              {
+                "turn": 2,
+                "intent": "보통 공격",
+                "action": "swaeam",
+                "dealt": 146,
+                "received": 0,
+                "hp": 273,
+                "enemy_hp": 0,
+                "qi": 8,
+                "guard": 20
+              }
+            ]
+          },
+          "optimal": {
+            "fastest": {
+              "turns": 2,
+              "hp": 273,
+              "actions": [
+                "samjae",
+                "swaeam"
+              ]
+            },
+            "safest": {
+              "turns": 2,
+              "hp": 273,
+              "actions": [
+                "samjae",
+                "swaeam"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "grown_intent",
+      "name": "실측 성장·예고 패턴 가정",
+      "stats": {
+        "strength": 25,
+        "agility": 25,
+        "constitution": 25,
+        "inner": 19,
+        "insight": 10
+      },
+      "enemy_hp": 240,
+      "pattern": [
+        [
+          "견제",
+          55
+        ],
+        [
+          "강공",
+          125
+        ],
+        [
+          "축기",
+          0
+        ]
+      ],
+      "attack_without_sword_guard": {
+        "win": true,
+        "turns": 2,
+        "hp": 277,
+        "trace": [
+          {
+            "turn": 1,
+            "intent": "견제",
+            "action": "samjae",
+            "dealt": 101,
+            "received": 23,
+            "hp": 277,
+            "enemy_hp": 139,
+            "qi": 9,
+            "guard": 0
+          },
+          {
+            "turn": 2,
+            "intent": "강공",
+            "action": "swaeam",
+            "dealt": 146,
+            "received": 0,
+            "hp": 277,
+            "enemy_hp": 0,
+            "qi": 8,
+            "guard": 0
+          }
+        ]
+      },
+      "attack": {
+        "win": true,
+        "turns": 2,
+        "hp": 282,
+        "trace": [
+          {
+            "turn": 1,
+            "intent": "견제",
+            "action": "samjae",
+            "dealt": 101,
+            "received": 18,
+            "hp": 282,
+            "enemy_hp": 139,
+            "qi": 9,
+            "guard": 20
+          },
+          {
+            "turn": 2,
+            "intent": "강공",
+            "action": "swaeam",
+            "dealt": 146,
+            "received": 0,
+            "hp": 282,
+            "enemy_hp": 0,
+            "qi": 8,
+            "guard": 20
+          }
+        ]
+      },
+      "variants": {
+        "50": {
+          "reactive": {
+            "win": true,
+            "turns": 2,
+            "hp": 282,
+            "trace": [
+              {
+                "turn": 1,
+                "intent": "견제",
+                "action": "samjae",
+                "dealt": 101,
+                "received": 18,
+                "hp": 282,
+                "enemy_hp": 139,
+                "qi": 9,
+                "guard": 20
+              },
+              {
+                "turn": 2,
+                "intent": "강공",
+                "action": "swaeam",
+                "dealt": 146,
+                "received": 0,
+                "hp": 282,
+                "enemy_hp": 0,
+                "qi": 8,
+                "guard": 20
+              }
+            ]
+          },
+          "optimal": {
+            "fastest": {
+              "turns": 2,
+              "hp": 282,
+              "actions": [
+                "samjae",
+                "swaeam"
+              ]
+            },
+            "safest": {
+              "turns": 2,
+              "hp": 282,
+              "actions": [
+                "samjae",
+                "swaeam"
+              ]
+            }
+          }
+        },
+        "60": {
+          "reactive": {
+            "win": true,
+            "turns": 2,
+            "hp": 282,
+            "trace": [
+              {
+                "turn": 1,
+                "intent": "견제",
+                "action": "samjae",
+                "dealt": 101,
+                "received": 18,
+                "hp": 282,
+                "enemy_hp": 139,
+                "qi": 9,
+                "guard": 20
+              },
+              {
+                "turn": 2,
+                "intent": "강공",
+                "action": "swaeam",
+                "dealt": 146,
+                "received": 0,
+                "hp": 282,
+                "enemy_hp": 0,
+                "qi": 8,
+                "guard": 20
+              }
+            ]
+          },
+          "optimal": {
+            "fastest": {
+              "turns": 2,
+              "hp": 282,
+              "actions": [
+                "samjae",
+                "swaeam"
+              ]
+            },
+            "safest": {
+              "turns": 2,
+              "hp": 282,
+              "actions": [
+                "samjae",
+                "swaeam"
+              ]
+            }
+          }
+        },
+        "70": {
+          "reactive": {
+            "win": true,
+            "turns": 2,
+            "hp": 282,
+            "trace": [
+              {
+                "turn": 1,
+                "intent": "견제",
+                "action": "samjae",
+                "dealt": 101,
+                "received": 18,
+                "hp": 282,
+                "enemy_hp": 139,
+                "qi": 9,
+                "guard": 20
+              },
+              {
+                "turn": 2,
+                "intent": "강공",
+                "action": "swaeam",
+                "dealt": 146,
+                "received": 0,
+                "hp": 282,
+                "enemy_hp": 0,
+                "qi": 8,
+                "guard": 20
+              }
+            ]
+          },
+          "optimal": {
+            "fastest": {
+              "turns": 2,
+              "hp": 282,
+              "actions": [
+                "samjae",
+                "swaeam"
+              ]
+            },
+            "safest": {
+              "turns": 2,
+              "hp": 282,
+              "actions": [
+                "samjae",
+                "swaeam"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "quest_plan",
+      "name": "의뢰 보상 연결 후 성장안·예고 패턴 가정",
+      "stats": {
+        "strength": 12,
+        "agility": 14,
+        "constitution": 12,
+        "inner": 14,
+        "insight": 55
+      },
+      "enemy_hp": 240,
+      "pattern": [
+        [
+          "견제",
+          55
+        ],
+        [
+          "강공",
+          125
+        ],
+        [
+          "축기",
+          0
+        ]
+      ],
+      "attack_without_sword_guard": {
+        "win": true,
+        "turns": 5,
+        "hp": 129,
+        "trace": [
+          {
+            "turn": 1,
+            "intent": "견제",
+            "action": "cheongpung",
+            "dealt": 58,
+            "received": 37,
+            "hp": 263,
+            "enemy_hp": 182,
+            "qi": 2,
+            "guard": 0
+          },
+          {
+            "turn": 2,
+            "intent": "강공",
+            "action": "cheongpung",
+            "dealt": 58,
+            "received": 97,
+            "hp": 166,
+            "enemy_hp": 124,
+            "qi": 4,
+            "guard": 0
+          },
+          {
+            "turn": 3,
+            "intent": "축기",
+            "action": "cheongpung",
+            "dealt": 58,
+            "received": 0,
+            "hp": 166,
+            "enemy_hp": 66,
+            "qi": 6,
+            "guard": 0
+          },
+          {
+            "turn": 4,
+            "intent": "견제",
+            "action": "cheongpung",
+            "dealt": 58,
+            "received": 37,
+            "hp": 129,
+            "enemy_hp": 8,
+            "qi": 8,
+            "guard": 0
+          },
+          {
+            "turn": 5,
+            "intent": "강공",
+            "action": "cheongpung",
+            "dealt": 58,
+            "received": 0,
+            "hp": 129,
+            "enemy_hp": 0,
+            "qi": 10,
+            "guard": 0
+          }
+        ]
+      },
+      "attack": {
+        "win": true,
+        "turns": 5,
+        "hp": 164,
+        "trace": [
+          {
+            "turn": 1,
+            "intent": "견제",
+            "action": "cheongpung",
+            "dealt": 58,
+            "received": 29,
+            "hp": 271,
+            "enemy_hp": 182,
+            "qi": 2,
+            "guard": 20
+          },
+          {
+            "turn": 2,
+            "intent": "강공",
+            "action": "cheongpung",
+            "dealt": 58,
+            "received": 78,
+            "hp": 193,
+            "enemy_hp": 124,
+            "qi": 4,
+            "guard": 20
+          },
+          {
+            "turn": 3,
+            "intent": "축기",
+            "action": "cheongpung",
+            "dealt": 58,
+            "received": 0,
+            "hp": 193,
+            "enemy_hp": 66,
+            "qi": 6,
+            "guard": 20
+          },
+          {
+            "turn": 4,
+            "intent": "견제",
+            "action": "cheongpung",
+            "dealt": 58,
+            "received": 29,
+            "hp": 164,
+            "enemy_hp": 8,
+            "qi": 8,
+            "guard": 20
+          },
+          {
+            "turn": 5,
+            "intent": "강공",
+            "action": "cheongpung",
+            "dealt": 58,
+            "received": 0,
+            "hp": 164,
+            "enemy_hp": 0,
+            "qi": 10,
+            "guard": 20
+          }
+        ]
+      },
+      "variants": {
+        "50": {
+          "reactive": {
+            "win": true,
+            "turns": 7,
+            "hp": 146,
+            "trace": [
+              {
+                "turn": 1,
+                "intent": "견제",
+                "action": "cheongpung",
+                "dealt": 58,
+                "received": 29,
+                "hp": 271,
+                "enemy_hp": 182,
+                "qi": 2,
+                "guard": 20
+              },
+              {
+                "turn": 2,
+                "intent": "강공",
+                "action": "basic_defense",
+                "dealt": 0,
+                "received": 48,
+                "hp": 223,
+                "enemy_hp": 182,
+                "qi": 16,
+                "guard": 50
+              },
+              {
+                "turn": 3,
+                "intent": "축기",
+                "action": "cheongpung",
+                "dealt": 58,
+                "received": 0,
+                "hp": 223,
+                "enemy_hp": 124,
+                "qi": 18,
+                "guard": 20
+              },
+              {
+                "turn": 4,
+                "intent": "견제",
+                "action": "cheongpung",
+                "dealt": 58,
+                "received": 29,
+                "hp": 194,
+                "enemy_hp": 66,
+                "qi": 20,
+                "guard": 20
+              },
+              {
+                "turn": 5,
+                "intent": "강공",
+                "action": "basic_defense",
+                "dealt": 0,
+                "received": 48,
+                "hp": 146,
+                "enemy_hp": 66,
+                "qi": 34,
+                "guard": 50
+              },
+              {
+                "turn": 6,
+                "intent": "축기",
+                "action": "cheongpung",
+                "dealt": 58,
+                "received": 0,
+                "hp": 146,
+                "enemy_hp": 8,
+                "qi": 36,
+                "guard": 20
+              },
+              {
+                "turn": 7,
+                "intent": "견제",
+                "action": "cheongpung",
+                "dealt": 58,
+                "received": 0,
+                "hp": 146,
+                "enemy_hp": 0,
+                "qi": 38,
+                "guard": 20
+              }
+            ]
+          },
+          "optimal": {
+            "fastest": {
+              "turns": 5,
+              "hp": 164,
+              "actions": [
+                "samjae",
+                "cheongpung",
+                "basic_attack",
+                "cheongpung",
+                "cheongpung"
+              ]
+            },
+            "safest": {
+              "turns": 5,
+              "hp": 164,
+              "actions": [
+                "samjae",
+                "cheongpung",
+                "basic_attack",
+                "cheongpung",
+                "cheongpung"
+              ]
+            }
+          }
+        },
+        "60": {
+          "reactive": {
+            "win": true,
+            "turns": 7,
+            "hp": 164,
+            "trace": [
+              {
+                "turn": 1,
+                "intent": "견제",
+                "action": "cheongpung",
+                "dealt": 58,
+                "received": 29,
+                "hp": 271,
+                "enemy_hp": 182,
+                "qi": 2,
+                "guard": 20
+              },
+              {
+                "turn": 2,
+                "intent": "강공",
+                "action": "basic_defense",
+                "dealt": 0,
+                "received": 39,
+                "hp": 232,
+                "enemy_hp": 182,
+                "qi": 16,
+                "guard": 60
+              },
+              {
+                "turn": 3,
+                "intent": "축기",
+                "action": "cheongpung",
+                "dealt": 58,
+                "received": 0,
+                "hp": 232,
+                "enemy_hp": 124,
+                "qi": 18,
+                "guard": 20
+              },
+              {
+                "turn": 4,
+                "intent": "견제",
+                "action": "cheongpung",
+                "dealt": 58,
+                "received": 29,
+                "hp": 203,
+                "enemy_hp": 66,
+                "qi": 20,
+                "guard": 20
+              },
+              {
+                "turn": 5,
+                "intent": "강공",
+                "action": "basic_defense",
+                "dealt": 0,
+                "received": 39,
+                "hp": 164,
+                "enemy_hp": 66,
+                "qi": 34,
+                "guard": 60
+              },
+              {
+                "turn": 6,
+                "intent": "축기",
+                "action": "cheongpung",
+                "dealt": 58,
+                "received": 0,
+                "hp": 164,
+                "enemy_hp": 8,
+                "qi": 36,
+                "guard": 20
+              },
+              {
+                "turn": 7,
+                "intent": "견제",
+                "action": "cheongpung",
+                "dealt": 58,
+                "received": 0,
+                "hp": 164,
+                "enemy_hp": 0,
+                "qi": 38,
+                "guard": 20
+              }
+            ]
+          },
+          "optimal": {
+            "fastest": {
+              "turns": 5,
+              "hp": 164,
+              "actions": [
+                "samjae",
+                "cheongpung",
+                "basic_attack",
+                "cheongpung",
+                "cheongpung"
+              ]
+            },
+            "safest": {
+              "turns": 5,
+              "hp": 164,
+              "actions": [
+                "samjae",
+                "cheongpung",
+                "basic_attack",
+                "cheongpung",
+                "cheongpung"
+              ]
+            }
+          }
+        },
+        "70": {
+          "reactive": {
+            "win": true,
+            "turns": 7,
+            "hp": 184,
+            "trace": [
+              {
+                "turn": 1,
+                "intent": "견제",
+                "action": "cheongpung",
+                "dealt": 58,
+                "received": 29,
+                "hp": 271,
+                "enemy_hp": 182,
+                "qi": 2,
+                "guard": 20
+              },
+              {
+                "turn": 2,
+                "intent": "강공",
+                "action": "basic_defense",
+                "dealt": 0,
+                "received": 29,
+                "hp": 242,
+                "enemy_hp": 182,
+                "qi": 16,
+                "guard": 70
+              },
+              {
+                "turn": 3,
+                "intent": "축기",
+                "action": "cheongpung",
+                "dealt": 58,
+                "received": 0,
+                "hp": 242,
+                "enemy_hp": 124,
+                "qi": 18,
+                "guard": 20
+              },
+              {
+                "turn": 4,
+                "intent": "견제",
+                "action": "cheongpung",
+                "dealt": 58,
+                "received": 29,
+                "hp": 213,
+                "enemy_hp": 66,
+                "qi": 20,
+                "guard": 20
+              },
+              {
+                "turn": 5,
+                "intent": "강공",
+                "action": "basic_defense",
+                "dealt": 0,
+                "received": 29,
+                "hp": 184,
+                "enemy_hp": 66,
+                "qi": 34,
+                "guard": 70
+              },
+              {
+                "turn": 6,
+                "intent": "축기",
+                "action": "cheongpung",
+                "dealt": 58,
+                "received": 0,
+                "hp": 184,
+                "enemy_hp": 8,
+                "qi": 36,
+                "guard": 20
+              },
+              {
+                "turn": 7,
+                "intent": "견제",
+                "action": "cheongpung",
+                "dealt": 58,
+                "received": 0,
+                "hp": 184,
+                "enemy_hp": 0,
+                "qi": 38,
+                "guard": 20
+              }
+            ]
+          },
+          "optimal": {
+            "fastest": {
+              "turns": 5,
+              "hp": 164,
+              "actions": [
+                "samjae",
+                "cheongpung",
+                "basic_attack",
+                "cheongpung",
+                "cheongpung"
+              ]
+            },
+            "safest": {
+              "turns": 7,
+              "hp": 184,
+              "actions": [
+                "samjae",
+                "basic_defense",
+                "basic_attack",
+                "cheongpung",
+                "basic_defense",
+                "cheongpung",
+                "cheongpung"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "stress",
+      "name": "검토용 내구성 스트레스 적·게임 미적용",
+      "stats": {
+        "strength": 25,
+        "agility": 25,
+        "constitution": 25,
+        "inner": 19,
+        "insight": 10
+      },
+      "enemy_hp": 420,
+      "pattern": [
+        [
+          "견제",
+          55
+        ],
+        [
+          "강공",
+          125
+        ],
+        [
+          "축기",
+          0
+        ]
+      ],
+      "attack_without_sword_guard": {
+        "win": true,
+        "turns": 4,
+        "hp": 200,
+        "trace": [
+          {
+            "turn": 1,
+            "intent": "견제",
+            "action": "samjae",
+            "dealt": 101,
+            "received": 23,
+            "hp": 277,
+            "enemy_hp": 319,
+            "qi": 9,
+            "guard": 0
+          },
+          {
+            "turn": 2,
+            "intent": "강공",
+            "action": "swaeam",
+            "dealt": 146,
+            "received": 77,
+            "hp": 200,
+            "enemy_hp": 173,
+            "qi": 8,
+            "guard": 0
+          },
+          {
+            "turn": 3,
+            "intent": "축기",
+            "action": "swaeam",
+            "dealt": 146,
+            "received": 0,
+            "hp": 200,
+            "enemy_hp": 27,
+            "qi": 7,
+            "guard": 0
+          },
+          {
+            "turn": 4,
+            "intent": "견제",
+            "action": "swaeam",
+            "dealt": 146,
+            "received": 0,
+            "hp": 200,
+            "enemy_hp": 0,
+            "qi": 6,
+            "guard": 0
+          }
+        ]
+      },
+      "attack": {
+        "win": true,
+        "turns": 4,
+        "hp": 220,
+        "trace": [
+          {
+            "turn": 1,
+            "intent": "견제",
+            "action": "samjae",
+            "dealt": 101,
+            "received": 18,
+            "hp": 282,
+            "enemy_hp": 319,
+            "qi": 9,
+            "guard": 20
+          },
+          {
+            "turn": 2,
+            "intent": "강공",
+            "action": "swaeam",
+            "dealt": 146,
+            "received": 62,
+            "hp": 220,
+            "enemy_hp": 173,
+            "qi": 8,
+            "guard": 20
+          },
+          {
+            "turn": 3,
+            "intent": "축기",
+            "action": "swaeam",
+            "dealt": 146,
+            "received": 0,
+            "hp": 220,
+            "enemy_hp": 27,
+            "qi": 7,
+            "guard": 20
+          },
+          {
+            "turn": 4,
+            "intent": "견제",
+            "action": "swaeam",
+            "dealt": 146,
+            "received": 0,
+            "hp": 220,
+            "enemy_hp": 0,
+            "qi": 6,
+            "guard": 20
+          }
+        ]
+      },
+      "variants": {
+        "50": {
+          "reactive": {
+            "win": true,
+            "turns": 5,
+            "hp": 226,
+            "trace": [
+              {
+                "turn": 1,
+                "intent": "견제",
+                "action": "samjae",
+                "dealt": 101,
+                "received": 18,
+                "hp": 282,
+                "enemy_hp": 319,
+                "qi": 9,
+                "guard": 20
+              },
+              {
+                "turn": 2,
+                "intent": "강공",
+                "action": "basic_defense",
+                "dealt": 0,
+                "received": 38,
+                "hp": 244,
+                "enemy_hp": 319,
+                "qi": 28,
+                "guard": 50
+              },
+              {
+                "turn": 3,
+                "intent": "축기",
+                "action": "swaeam",
+                "dealt": 146,
+                "received": 0,
+                "hp": 244,
+                "enemy_hp": 173,
+                "qi": 27,
+                "guard": 20
+              },
+              {
+                "turn": 4,
+                "intent": "견제",
+                "action": "swaeam",
+                "dealt": 146,
+                "received": 18,
+                "hp": 226,
+                "enemy_hp": 27,
+                "qi": 26,
+                "guard": 20
+              },
+              {
+                "turn": 5,
+                "intent": "강공",
+                "action": "swaeam",
+                "dealt": 146,
+                "received": 0,
+                "hp": 226,
+                "enemy_hp": 0,
+                "qi": 25,
+                "guard": 20
+              }
+            ]
+          },
+          "optimal": {
+            "fastest": {
+              "turns": 4,
+              "hp": 227,
+              "actions": [
+                "basic_defense",
+                "swaeam",
+                "swaeam",
+                "swaeam"
+              ]
+            },
+            "safest": {
+              "turns": 5,
+              "hp": 233,
+              "actions": [
+                "basic_defense",
+                "basic_defense",
+                "swaeam",
+                "swaeam",
+                "swaeam"
+              ]
+            }
+          }
+        },
+        "60": {
+          "reactive": {
+            "win": true,
+            "turns": 5,
+            "hp": 233,
+            "trace": [
+              {
+                "turn": 1,
+                "intent": "견제",
+                "action": "samjae",
+                "dealt": 101,
+                "received": 18,
+                "hp": 282,
+                "enemy_hp": 319,
+                "qi": 9,
+                "guard": 20
+              },
+              {
+                "turn": 2,
+                "intent": "강공",
+                "action": "basic_defense",
+                "dealt": 0,
+                "received": 31,
+                "hp": 251,
+                "enemy_hp": 319,
+                "qi": 28,
+                "guard": 60
+              },
+              {
+                "turn": 3,
+                "intent": "축기",
+                "action": "swaeam",
+                "dealt": 146,
+                "received": 0,
+                "hp": 251,
+                "enemy_hp": 173,
+                "qi": 27,
+                "guard": 20
+              },
+              {
+                "turn": 4,
+                "intent": "견제",
+                "action": "swaeam",
+                "dealt": 146,
+                "received": 18,
+                "hp": 233,
+                "enemy_hp": 27,
+                "qi": 26,
+                "guard": 20
+              },
+              {
+                "turn": 5,
+                "intent": "강공",
+                "action": "swaeam",
+                "dealt": 146,
+                "received": 0,
+                "hp": 233,
+                "enemy_hp": 0,
+                "qi": 25,
+                "guard": 20
+              }
+            ]
+          },
+          "optimal": {
+            "fastest": {
+              "turns": 4,
+              "hp": 229,
+              "actions": [
+                "basic_defense",
+                "swaeam",
+                "swaeam",
+                "swaeam"
+              ]
+            },
+            "safest": {
+              "turns": 5,
+              "hp": 242,
+              "actions": [
+                "basic_defense",
+                "basic_defense",
+                "swaeam",
+                "swaeam",
+                "swaeam"
+              ]
+            }
+          }
+        },
+        "70": {
+          "reactive": {
+            "win": true,
+            "turns": 5,
+            "hp": 241,
+            "trace": [
+              {
+                "turn": 1,
+                "intent": "견제",
+                "action": "samjae",
+                "dealt": 101,
+                "received": 18,
+                "hp": 282,
+                "enemy_hp": 319,
+                "qi": 9,
+                "guard": 20
+              },
+              {
+                "turn": 2,
+                "intent": "강공",
+                "action": "basic_defense",
+                "dealt": 0,
+                "received": 23,
+                "hp": 259,
+                "enemy_hp": 319,
+                "qi": 28,
+                "guard": 70
+              },
+              {
+                "turn": 3,
+                "intent": "축기",
+                "action": "swaeam",
+                "dealt": 146,
+                "received": 0,
+                "hp": 259,
+                "enemy_hp": 173,
+                "qi": 27,
+                "guard": 20
+              },
+              {
+                "turn": 4,
+                "intent": "견제",
+                "action": "swaeam",
+                "dealt": 146,
+                "received": 18,
+                "hp": 241,
+                "enemy_hp": 27,
+                "qi": 26,
+                "guard": 20
+              },
+              {
+                "turn": 5,
+                "intent": "강공",
+                "action": "swaeam",
+                "dealt": 146,
+                "received": 0,
+                "hp": 241,
+                "enemy_hp": 0,
+                "qi": 25,
+                "guard": 20
+              }
+            ]
+          },
+          "optimal": {
+            "fastest": {
+              "turns": 4,
+              "hp": 232,
+              "actions": [
+                "basic_defense",
+                "swaeam",
+                "swaeam",
+                "swaeam"
+              ]
+            },
+            "safest": {
+              "turns": 5,
+              "hp": 253,
+              "actions": [
+                "basic_defense",
+                "basic_defense",
+                "swaeam",
+                "swaeam",
+                "swaeam"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}
