@@ -63,7 +63,7 @@ func _ready() -> void:
 func open_counter(definition: Dictionary) -> void:
 	service = definition.duplicate(true)
 	heading.text = service.title + " · " + service.name
-	portrait.texture = game.dialogue_cast.texture_for(game.PORTRAITS.ACTORS[service.id])
+	game.dialogue_cast.apply_framing(portrait, game.PORTRAITS.ACTORS[service.id])
 	var names: Array = {"market": ["영약 구매", "보유 영약 · 복용"], "workshop": ["무기 구매", "장비 장착"], "training": ["무공 전수", "전투 무공 편성"]}[service.kind]
 	for i in range(tabs.size()): tabs[i].text = names[i]
 	feedback.text = ""

@@ -348,9 +348,17 @@ func _show_line() -> void:
 	if dialogue_music_cues.has(dialogue_index):
 		music.play_track(dialogue_music_cues[dialogue_index])
 	var line = dialogue_lines[dialogue_index]
-	dialogue_name.text = PORTRAITS.ACTORS[line[0]].name + (" · " + str(line[2]) if line.size() > 2 and not str(line[2]).is_empty() else "")
+	var subtitle: String = str(line[2]) if line.size() > 2 and line[2] is String else ""
+	dialogue_name.text = PORTRAITS.ACTORS[line[0]].name + (" · " + subtitle if not subtitle.is_empty() else "")
 	dialogue_text.text = line[1]
-	dialogue_cast.set_speaker(line[0])
+	var staging: Dictionary = {}
+	if line.size() > 2 and line[2] is Dictionary: staging = line[2].duplicate(true)
+	if line.size() > 3 and line[3] is Dictionary: staging = line[3].duplicate(true)
+	# Infer the hero's reply target from the script, so loading a line is deterministic.
+	if not staging.has("to") and line[0] == "hero" and dialogue_index > 0:
+		var previous: String = str(dialogue_lines[dialogue_index - 1][0])
+		if previous != "hero": staging["to"] = previous
+	dialogue_cast.set_speaker(line[0], staging)
 
 func advance_dialogue() -> void:
 	if dialogue_lines.is_empty():

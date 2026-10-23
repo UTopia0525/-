@@ -20,10 +20,13 @@ const ACTORS = {
 	"sailor": {"name": "허만복", "extra": "male_middle"},
 	"clerk": {"name": "육승", "extra": "male_young"},
 }
+const FRAME_SHADER = preload("res://shaders/dialogue_portrait.gdshader")
+var framing: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/portrait_framing.json"))
 const DIM = Color(0.32, 0.32, 0.32, 1.0)
 var portraits: Dictionary = {}
 var actor_names: Dictionary = {}
 var active_actor: String = ""
+var source_facing: Dictionary = {}
 
 func _init() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -40,6 +43,41 @@ func texture_for(actor: Dictionary) -> Texture2D:
 		return load(path)
 	push_error("Missing dialogue portrait: " + path)
 	return null
+
+func frame_for(texture: Texture2D, display_size: Vector2) -> Rect2:
+	var reference: Dictionary = framing.reference
+	var source_size := texture.get_size()
+	var profile: Dictionary = framing.profiles.get(texture.resource_path, {"face_x":source_size.x / 2.0, "eye_y":source_size.y * float(reference.eye_y) / float(reference.height), "eye_to_chin":float(reference.eye_to_chin) * source_size.y / float(reference.height)})
+	var target_eye := display_size.y * float(reference.eye_y) / float(reference.height)
+	var scale_factor := display_size.y / float(reference.height) * float(reference.eye_to_chin) / float(profile.eye_to_chin)
+	# Keep the lower crop filled even for a source that ends high on the torso.
+	scale_factor = maxf(scale_factor, (display_size.y - target_eye) / (source_size.y - float(profile.eye_y)))
+	var window := display_size / scale_factor
+	var origin := Vector2(float(profile.face_x) - window.x / 2.0, float(profile.eye_y) - target_eye / scale_factor)
+	return Rect2(origin, window)
+
+func apply_framing(view: TextureRect, actor: Dictionary) -> void:
+	view.texture = texture_for(actor)
+	if not view.texture: return
+	var frame := frame_for(view.texture, view.size)
+	var shader = ShaderMaterial.new()
+	shader.shader = FRAME_SHADER
+	shader.set_shader_parameter("frame_origin", frame.position)
+	shader.set_shader_parameter("frame_size", frame.size)
+	shader.set_shader_parameter("source_size", view.texture.get_size())
+	view.material = shader
+	view.stretch_mode = TextureRect.STRETCH_SCALE
+
+func valid_staging(value) -> bool:
+	if not value is Dictionary: return false
+	for key in value:
+		if key not in ["to", "facing"]: return false
+	if value.has("to") and (not value.to is String or not ACTORS.has(value.to)): return false
+	if value.has("facing"):
+		if not value.facing is Dictionary: return false
+		for id in value.facing:
+			if not ACTORS.has(id) or value.facing[id] not in ["left", "right"]: return false
+	return true
 
 func set_participants(participants: Array) -> void:
 	clear()
@@ -65,7 +103,8 @@ func set_participants(participants: Array) -> void:
 		portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		portrait.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		portrait.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		portrait.texture = texture_for(actor)
+		apply_framing(portrait, actor)
+		source_facing[id] = framing.profiles.get(portrait.texture.resource_path, {}).get("natural_facing", "right")
 		add_child(portrait)
 		portraits[id] = portrait
 		var label = UI.label(self, actor.get("name", id), Rect2(portrait.position + Vector2(0, row_height - 26), Vector2(slot_width, 26)), 16)
@@ -76,11 +115,35 @@ func set_participants(participants: Array) -> void:
 	show()
 	set_speaker("")
 
-func set_speaker(id: String) -> void:
+func set_speaker(id: String, staging: Dictionary = {}) -> void:
 	active_actor = id
+	var addressed: String = str(staging.get("to", ""))
+	if not portraits.has(addressed) or addressed == id:
+		addressed = "hero" if id != "hero" and portraits.has("hero") else ""
+		if addressed.is_empty():
+			var nearest := INF
+			for other in portraits:
+				if other == id or not portraits.has(id): continue
+				var distance: float = portraits[id].position.distance_squared_to(portraits[other].position)
+				if distance < nearest:
+					nearest = distance
+					addressed = other
 	for actor_id in portraits:
-		portraits[actor_id].self_modulate = Color.WHITE if actor_id == id else DIM
+		var view: TextureRect = portraits[actor_id]
+		view.self_modulate = Color.WHITE if actor_id == id else DIM
 		actor_names[actor_id].self_modulate = Color.WHITE if actor_id == id else Color(0.65, 0.65, 0.65)
+		var target: String = addressed if actor_id == id else id
+		var desired: String = str(source_facing[actor_id])
+		if portraits.has(target) and target != actor_id:
+			var from_x: float = view.position.x + view.size.x / 2.0
+			var to_view: TextureRect = portraits[target]
+			var to_x: float = to_view.position.x + to_view.size.x / 2.0
+			if not is_equal_approx(from_x, to_x): desired = "right" if to_x > from_x else "left"
+		elif id.is_empty() and portraits.size() > 1:
+			desired = "right" if view.position.x + view.size.x / 2.0 < size.x / 2.0 else "left"
+		var overrides: Dictionary = staging.get("facing", {})
+		if overrides.has(actor_id): desired = str(overrides[actor_id])
+		view.flip_h = desired != source_facing[actor_id]
 
 func clear() -> void:
 	for child in get_children():
@@ -88,5 +151,6 @@ func clear() -> void:
 		child.queue_free()
 	portraits.clear()
 	actor_names.clear()
+	source_facing.clear()
 	active_actor = ""
 	hide()

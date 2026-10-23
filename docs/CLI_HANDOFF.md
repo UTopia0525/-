@@ -233,3 +233,9 @@ scripts/bandit_story.gd가 진행·목표 추적과 복원·보상/재도전을 
 포졸은male_young 공용 그림을 사용한다. 주인공과 너무 비슷하게 미형이라는 사용자 피드백으로 assets/portraits/extras/male_young·male_middle·male_elder.png 얼굴을 평범하고 생활감 있게 조금 수정했다. 렌더링 품질/투명 배경/기존 복식과 자세는 유지하며 주인공 전용hero.png 및 거래NPC 전용3장은 그대로 둔다. 공용그림을 쓰는 육승/정포두/일반산적/농민 등에 함께 반영된다. 포졸은 후속 요청으로 별도 전용그림을 연결했다. extras/README.md의 연령별 갤러리와 산적 토벌 대화 캡처로 확인한다.
 
 포졸(bandit_messenger)은 후속 사용자 요청으로 assets/portraits/story/constable.png 전용 초상화를 추가했다. 검은 소박한 두건형 관모·짙은 남색 관아 복식·절제된 붉은 깃과 허리 포승줄, 둥글고 투박한 얼굴로 주인공과 구별한다. 토벌 모집/집결/철수/완료 등 모든 포졸 대화에 자동 적용되며 전투 수치/대사/탐험 스프라이트는 바꾸지 않는다.
+
+## 대화 일러스트 비율·시선 통일
+
+현재 게임에서 쓰는11종의 얼굴 크기/눈높이/상반신 표시 범위를 주인공 기준으로 맞췄다. 원본PNG는 유지하며 data/portrait_framing.json의 얼굴 기준점과 shaders/dialogue_portrait.gdshader로 화면 표시를 조정한다. 포졸은 무릎 대신 허리 부근까지 보인다. 거래창에도 같은 기준을 적용한다. 새 그림은 비율 프로필을 추가한다.
+
+두 사람은 서로, 여러 사람의 청자는 발언자, 발언자는 주인공을 기본적으로 향한다. 주인공 답변은 직전 상대를 향한다. 대사의3번째Dictionary로 {"to":"배우ID","facing":{"배우ID":"left 또는 right"}}를 줄 수 있다. 기존3번째String 부제와 함께 쓰면4번째Dictionary로 지정한다. 저장검증/복원도 호환하며 과거대사 형식은 유지한다. 모집 장면 농민→포졸에 상대지정 예를 적용했다. docs/systems/dialogue-portraits.md와 tests/dialogue.gd, tests/capture_portrait_layout.gd 참고. 원본 주인공 그림과 전투규칙은 유지한다.

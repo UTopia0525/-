@@ -1,0 +1,16 @@
+{
+  "reference": {"height":1536, "eye_y":320, "eye_to_chin":185},
+  "profiles": {
+    "res://assets/portraits/player/hero.png": {"face_x":585, "eye_y":320, "eye_to_chin":185, "natural_facing":"right"},
+    "res://assets/portraits/extras/male_young.png": {"face_x":580, "eye_y":300, "eye_to_chin":185, "natural_facing":"right"},
+    "res://assets/portraits/extras/male_middle.png": {"face_x":680, "eye_y":260, "eye_to_chin":170, "natural_facing":"right"},
+    "res://assets/portraits/extras/male_elder.png": {"face_x":590, "eye_y":300, "eye_to_chin":190, "natural_facing":"right"},
+    "res://assets/portraits/extras/female_young.png": {"face_x":580, "eye_y":340, "eye_to_chin":185, "natural_facing":"right"},
+    "res://assets/portraits/extras/female_middle.png": {"face_x":560, "eye_y":275, "eye_to_chin":190, "natural_facing":"right"},
+    "res://assets/portraits/extras/female_elder.png": {"face_x":580, "eye_y":300, "eye_to_chin":190, "natural_facing":"right"},
+    "res://assets/portraits/services/artisan.png": {"face_x":560, "eye_y":245, "eye_to_chin":140, "natural_facing":"right"},
+    "res://assets/portraits/services/instructor.png": {"face_x":595, "eye_y":235, "eye_to_chin":145, "natural_facing":"right"},
+    "res://assets/portraits/services/merchant.png": {"face_x":540, "eye_y":225, "eye_to_chin":145, "natural_facing":"right"},
+    "res://assets/portraits/story/constable.png": {"face_x":550, "eye_y":205, "eye_to_chin":135, "natural_facing":"right"}
+  }
+}

@@ -135,6 +135,9 @@ func validate(d) -> bool:
 	if not is_number(dialogue.get("index"), 0, maxi(0, dialogue.lines.size() - 1)) and not dialogue.lines.is_empty(): return false
 	for line in dialogue.lines:
 		if not line is Array or line.size() < 2 or not game.PORTRAITS.ACTORS.has(line[0]) or not line[1] is String: return false
+		if line.size() > 4: return false
+		if line.size() > 2 and not line[2] is String and not game.dialogue_cast.valid_staging(line[2]): return false
+		if line.size() > 3 and not game.dialogue_cast.valid_staging(line[3]): return false
 	for id in dialogue.listeners:
 		if not game.PORTRAITS.ACTORS.has(id): return false
 	for value in dialogue.cues.values():
