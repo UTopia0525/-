@@ -41,6 +41,7 @@ var choice_screen: Control
 var choice_buttons: Array[Button] = []
 var choice_confirm: Button
 var pending_choice := ""
+var progress = preload("res://scripts/player_progress.gd").new()
 var money := 0
 var money_label: Label
 var continue_button: Button
@@ -93,6 +94,7 @@ func _ready() -> void:
 	city_overview = CITY_OVERVIEW.new()
 	ui_root.add_child(city_overview)
 	city_service = preload("res://scripts/city_service.gd").new()
+	city_service.game = self
 	ui_root.add_child(city_service)
 	city_service.closed.connect(func():
 		state = "explore"
@@ -197,6 +199,7 @@ func _build_ending() -> void:
 
 func reset() -> void:
 	if is_instance_valid(settings_menu): settings_menu.close_menu()
+	progress.reset()
 	chapter_number = 0
 	chapter_one.reset()
 	prologue.cancel()
@@ -218,6 +221,8 @@ func reset() -> void:
 	dialogue_cast.clear()
 	ending.hide()
 	battle.cancel()
+	battle.player_stats = progress.stats.duplicate()
+	battle.set_loadout(progress.loadout)
 	battle.equip_weapon("sword")
 	exploration.show()
 	exploration.load_area("dock")
@@ -239,10 +244,7 @@ func start_story() -> void:
 	say(prologue.lines("opening"))
 
 func start_city() -> void:
-	chapter_number = 0
-	chapter_one.reset()
-	prologue.cancel()
-	money = 0
+	reset()
 	enter_city()
 
 func enter_city(at_port: bool = false) -> void:
@@ -352,7 +354,7 @@ func interact() -> void:
 			if definition.id == npc.service_id:
 				service = definition
 		if not service.is_empty():
-			var greeting: String = {"market": "필요한 물건을 찾으십니까? 진열대를 한번 둘러보시지요.", "workshop": "물건을 맡기러 오셨습니까? 어떤 일인지 살펴보지요.", "training": "무관에 오신 걸 환영하오. 수련에 관해 알아보러 오셨소?"}[service.kind]
+			var greeting: String = {"market": "힘을 보할 약도, 몸을 가볍게 할 약도 있지요. 하급 영약은 한 알에100문입니다. 약도 과하면 탈이니, 같은 약은 평생 열 알까지만 드세요.", "workshop": "검이든 도든 창이든 손에 맞아야지요. 삼백, 오백, 칠백문짜리가 있습니다. 날을 한번 살펴보고 고르세요.", "training": "무공은 모두 삼백오십문에 가르치오. 다만 몸과 깨달음이 따라야 배울 수 있소. 배운 뒤에는 쓸 무공 세 가지를 미리 골라두시오."}[service.kind]
 			pending_service_id = service.id
 			say([[service.id, greeting]], _service_done)
 		return
@@ -386,6 +388,8 @@ func start_battle() -> void:
 	exploration.set_active(false)
 	exploration.hide()
 	exploration.camera.enabled = false
+	battle.player_stats = progress.stats.duplicate()
+	battle.set_loadout(progress.loadout)
 	battle.begin()
 
 func _on_victory(hp: int) -> void:

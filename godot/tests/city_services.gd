@@ -40,7 +40,7 @@ func run() -> void:
 		for index in range(2):
 			game.city_service.tabs[index].pressed.emit()
 			check(game.city_service.selected_tab == index, "counter tabs selectable")
-		check(definition.items.is_empty(), "no invented goods or prices")
+		check(definition.items.size() == {"market":4, "workshop":9, "training":10}[definition.kind], "authored goods available at the correct service")
 		var key = InputEventKey.new()
 		key.keycode = KEY_ESCAPE
 		key.pressed = true

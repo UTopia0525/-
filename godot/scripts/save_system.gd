@@ -38,7 +38,7 @@ func capture() -> Dictionary:
 	var nodes = {"top_hud":game.top_hud, "bottom_hint":game.bottom_hint, "caption":game.story_caption, "exploration":w, "ending":game.ending, "overview":game.city_overview, "visual":game.story_visual}
 	var visibility := {}
 	for id in nodes: visibility[id] = nodes[id].visible
-	return {"schema":2, "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
+	return {"schema":3, "progress":game.progress.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
 		"chapter":game.chapter_number, "money":game.money, "talked_captain":game.talked_captain,
 		"world":{"area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
@@ -97,7 +97,8 @@ func read_slot(slot: int) -> Dictionary:
 
 func validate(d) -> bool:
 	if not d is Dictionary: return false
-	if d.get("schema") != 1 and d.get("schema") != 2: return false
+	if d.get("schema") != 1 and d.get("schema") != 2 and d.get("schema") != 3: return false
+	if d.schema == 3 and not game.progress.valid(d.get("progress")): return false
 	for field in ["world", "prologue", "chapter_one", "navigation", "dialogue", "ui", "visual", "service", "battle", "music"]:
 		if not d.get(field) is Dictionary: return false
 	if d.get("state") not in ["explore", "story", "choice", "service", "battle", "end"]: return false
@@ -147,13 +148,14 @@ func validate(d) -> bool:
 	if d.state == "service" and d.service.is_empty(): return false
 	if not is_number(d.battle.get("player_hp"), 0, 300) or not is_number(d.battle.get("enemy_hp"), 0, 150) or not is_number(d.battle.get("turn"), 1, 10000) or not d.battle.get("selected") is bool: return false
 	if d.battle.has("selected_action"):
-		if d.battle.selected_action not in ["", "basic_attack", "samjae"]: return false
+		if d.battle.selected_action not in ["", "basic_attack"] and not game.battle.martial_arts.definitions.has(d.battle.selected_action): return false
+		if d.schema == 3 and d.state == "battle" and d.battle.selected_action not in ["", "basic_attack"] and d.battle.selected_action not in d.progress.loadout: return false
 		if d.battle.selected != (d.battle.selected_action != ""): return false
 	if d.battle.has("weapon_id"):
 		if not d.battle.weapon_id is String or not game.battle.weapons.exists(d.battle.weapon_id): return false
 		if d.battle.has("weapon_type") and game.battle.weapons.weapon_type(d.battle.weapon_id) != d.battle.weapon_type: return false
 	if d.battle.has("weapon_type") and not game.battle.martial_arts.WEAPON_NAMES.has(d.battle.weapon_type): return false
-	if d.schema == 2:
+	if d.schema >= 2:
 		if not is_number(d.battle.get("inner_power"), 0, 100) or not is_number(d.battle.get("qi"), 0, 500): return false
 	return game.music.TRACKS.has(d.music.get("track")) and d.music.get("enabled") is bool
 
@@ -169,6 +171,9 @@ func load_slot(slot: int) -> bool:
 	game.state = d.state
 	game.chapter_number = int(d.chapter)
 	game.money = int(d.money)
+	if d.schema == 3: game.progress.restore(d.progress)
+	game.battle.player_stats = game.progress.stats.duplicate()
+	game.battle.set_loadout(game.progress.loadout)
 	if d.battle.has("weapon_id"): game.battle.equip_weapon_item(d.battle.weapon_id)
 	else: game.battle.equip_weapon(d.battle.get("weapon_type", "sword"))
 	game.talked_captain = d.talked_captain
@@ -210,10 +215,10 @@ func load_slot(slot: int) -> bool:
 			if definition.id == d.service.id: game.city_service.open_counter(definition)
 		game.city_service.select_tab(int(d.service_tab))
 	if d.state == "battle":
-		var inner_power: int = int(d.battle.inner_power) if d.schema == 2 else int(game.battle.Rules.STARTING_STATS.inner)
+		var inner_power: int = int(d.battle.inner_power) if d.schema >= 2 else int(game.battle.Rules.STARTING_STATS.inner)
 		game.battle.begin(inner_power)
 		# Legacy saves predate costs: regenerate once per elapsed player turn.
-		var amount: int = int(d.battle.qi) if d.schema == 2 else mini(500, inner_power * int(d.battle.turn))
+		var amount: int = int(d.battle.qi) if d.schema >= 2 else mini(500, inner_power * int(d.battle.turn))
 		game.battle.qi.restore(inner_power, amount)
 		game.battle.player_hp = int(d.battle.player_hp)
 		game.battle.enemy_hp = int(d.battle.enemy_hp)
@@ -222,7 +227,7 @@ func load_slot(slot: int) -> bool:
 		game.battle.turn_label.text = "내 차례 · %d번째 교전" % game.battle.turn
 		if d.battle.selected:
 			if d.battle.get("selected_action", "samjae") == "basic_attack": game.battle.select_basic_attack()
-			else: game.battle.select_samjae()
+			else: game.battle.select_skill(str(d.battle.get("selected_action", "samjae")))
 		game.exploration.camera.enabled = false
 	game.location.text = d.ui.location
 	game.objective.text = d.ui.objective

@@ -18,7 +18,7 @@ func run() -> void:
 	for id in weapons.definitions:
 		var item = weapons.get_weapon(id)
 		if item.tier == 0: continue
-		check(item.acquisition == null, "no invented acquisition")
+		check(item.acquisition == "city_artisan", "tiered weapons sold by city artisan")
 		var tier: int = int(item.tier)
 		match item.weapon_type:
 			"sword": check(item.attack_bonus_percent == tier * 5 and item.damage_reduction_percent == tier * 3 and item.qi_reduction_percent == 0, "balanced sword tiers")

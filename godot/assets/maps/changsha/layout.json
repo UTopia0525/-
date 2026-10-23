@@ -1320,7 +1320,12 @@
       "title": "장사 상점",
       "name": "장사꾼",
       "portrait": "male_young",
-      "items": []
+      "items": [
+        "bear_strength_pill",
+        "light_step_pill",
+        "bone_fortifying_pill",
+        "qi_nourishing_pill"
+      ]
     },
     {
       "id": "city_instructor",
@@ -1329,7 +1334,18 @@
       "title": "장사 무관",
       "name": "교관",
       "portrait": "male_middle",
-      "items": []
+      "items": [
+        "cheongpung",
+        "yusu",
+        "swaeam",
+        "danseok",
+        "hoepung",
+        "gwanpung",
+        "yeonhwan",
+        "cheolsan",
+        "jingak",
+        "ungi"
+      ]
     },
     {
       "id": "city_artisan",
@@ -1338,7 +1354,17 @@
       "title": "장사 공방",
       "name": "장인",
       "portrait": "female_middle",
-      "items": []
+      "items": [
+        "refined_sword",
+        "blue_steel_sword",
+        "hundredfold_sword",
+        "thickback_saber",
+        "forged_saber",
+        "heavy_steel_saber",
+        "balanced_spear",
+        "willow_spear",
+        "flowing_cloud_spear"
+      ]
     }
   ]
 }

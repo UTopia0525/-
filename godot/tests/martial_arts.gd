@@ -16,7 +16,7 @@ func _initialize() -> void:
 		var skill: Dictionary = arts.get_skill(id)
 		check(not names.has(skill.name), "unique skill names")
 		names.append(skill.name)
-		check(skill.acquisition == null, "acquisition intentionally unspecified")
+		check(skill.acquisition == (null if id == "samjae" else "city_instructor"), "starting technique or instructor acquisition")
 		var required = skill.required_weapon_type
 		if required != null:
 			check(arts.can_use_with_weapon(id, required), "matching weapon accepted: " + id)
