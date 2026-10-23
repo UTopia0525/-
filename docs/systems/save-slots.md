@@ -33,7 +33,7 @@
 
 ## 구현과 검증
 
-- `godot/scripts/save_system.gd`: 버전 1의 수동 저장 형식, 슬롯 읽기/쓰기/검증, 상태 캡처와 복원.
+- `godot/scripts/save_system.gd`: 버전 2의 수동 저장 형식(버전 1 읽기 호환), 슬롯 읽기/쓰기/검증, 상태 캡처와 복원.
 - 대화 이후 진행은 허용 목록에 등록한 메서드 이름으로만 기록한다. 객체나 실행 코드를 파일에서 역직렬화하지 않는다. 새로운 대화 연결을 추가할 때 해당 진행 메서드를 명시적으로 등록한다. 등록되지 않은 콜백은 저장을 막는다.
 - `godot/scripts/settings_menu.gd`: 설정·일시 정지·10칸 목록·확인 창.
 - `tests/saves.gd`: 같은 분기점에서 두 결말 진행, 정확한 대사와 콜백/위치/장/의뢰/소지금 복원, 지급 중복 방지, 재생성한 게임 인스턴스의 복원, 슬롯 독립성, 덮어쓰기 확인/백업, 손상 파일, 시설 및 전투 복원, 설정 중 공격 타이머 정지를 검사한다.
@@ -48,3 +48,5 @@ godot --audio-driver Dummy --path godot --script res://tests/capture_saves.gd
 
 ![저장 슬롯 선택](../../godot/screenshots/save-slots-choice.png)
 ![여러 시점 불러오기](../../godot/screenshots/load-slots.png)
+
+내기 전투 자원 도입 후 schema 2는 내공 기준값과 남은 내기도 보존한다. 이전 schema 1의 전투 저장은 당시 무소모 규칙에 맞춰 주인공 턴 번호×기본 내공을 최대 500으로 제한해 복원한다. [내기 규칙](inner-qi.md)을 참고한다.

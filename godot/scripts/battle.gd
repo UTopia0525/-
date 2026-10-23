@@ -4,6 +4,11 @@ signal victory(remaining_hp: int)
 
 const UI = preload("res://scripts/ui.gd")
 const Rules = preload("res://scripts/rules.gd")
+var qi = preload("res://scripts/inner_qi.gd").new()
+var qi_text: Label
+var qi_bar: ProgressBar
+# Costs are authored per skill later; an absent cost keeps existing combat playable.
+var skill_qi_costs: Dictionary = {}
 var player_hp: int = Rules.PLAYER_MAX_HP
 var enemy_hp: int = Rules.ENEMY_MAX_HP
 var selected: bool = false
@@ -39,11 +44,18 @@ func _ready() -> void:
 	UI.label(enemy_panel, "흑린채 수적", Rect2(18, 34, 285, 32), 24)
 	enemy_text = UI.label(enemy_panel, "", Rect2(18, 71, 285, 22), 16)
 	enemy_bar = _health_bar(enemy_panel, Rect2(18, 103, 284, 9), Rules.ENEMY_MAX_HP)
-	var player_panel = UI.panel(self, Rect2(925, 367, 330, 126))
+	var player_panel = UI.panel(self, Rect2(925, 293, 330, 200))
 	UI.label(player_panel, "첫 표행의 신참 표사", Rect2(18, 10, 295, 24), 13, UI.GOLD)
 	UI.label(player_panel, "주인공", Rect2(18, 34, 295, 32), 24)
 	player_text = UI.label(player_panel, "", Rect2(18, 71, 295, 22), 16)
 	player_bar = _health_bar(player_panel, Rect2(18, 103, 294, 9), Rules.PLAYER_MAX_HP)
+	qi_text = UI.label(player_panel, "", Rect2(18, 136, 295, 22), 16, Color("a3dfe8"))
+	qi_bar = _health_bar(player_panel, Rect2(18, 165, 294, 9), qi.MAXIMUM)
+	var qi_fill = UI.box(Color("4eabbc"), Color("92d1dc"))
+	for side in [SIDE_LEFT, SIDE_TOP, SIDE_RIGHT, SIDE_BOTTOM]: qi_fill.set_content_margin(side, 0)
+	qi_bar.add_theme_stylebox_override("fill", qi_fill)
+	qi.changed.connect(_update_qi)
+	_update_qi()
 	turn_label = UI.label(self, "내 차례", Rect2(1065, 22, 190, 32), 16, UI.GOLD)
 	turn_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	var description_panel = UI.panel(self, Rect2(24, 525, 610, 171))
@@ -85,7 +97,8 @@ func _health_bar(parent: Node, area: Rect2, maximum: int) -> ProgressBar:
 	parent.add_child(bar)
 	return bar
 
-func begin() -> void:
+func begin(inner_power: int = Rules.STARTING_STATS.inner) -> void:
+	qi.start(inner_power)
 	generation += 1
 	player_hp = Rules.PLAYER_MAX_HP
 	enemy_hp = Rules.ENEMY_MAX_HP
@@ -120,11 +133,15 @@ func select_samjae() -> void:
 	select_button.button_pressed = true
 	heading.text = "삼재검법"
 	detail.text = "근력 × 3 + 기민 × 2\n현재 방어 전 피해: 50"
-	note.text = "구체적인 부가 효과는 추후 설정됩니다."
+	note.text = "내기 소모: %d" % int(skill_qi_costs.samjae) if skill_qi_costs.has("samjae") else "내기 소모: 미정"
 	use_button.disabled = false
 
 func use_selected() -> void:
 	if not running or not selected or busy:
+		return
+	var cost: int = int(skill_qi_costs.get("samjae", 0))
+	if not try_spend_qi(cost):
+		note.text = "내기가 부족합니다. 필요 %d / 현재 %d" % [cost, qi.amount] if cost >= 0 else "기술의 내기 비용을 확인해 주세요."
 		return
 	busy = true
 	select_button.disabled = true
@@ -164,6 +181,7 @@ func use_selected() -> void:
 	if token != generation:
 		return
 	turn += 1
+	qi.recover_turn()
 	busy = false
 	select_button.disabled = false
 	use_button.disabled = false
@@ -187,3 +205,12 @@ func _float_damage(value: int, on_player: bool) -> void:
 	float_tween = create_tween().set_parallel()
 	float_tween.tween_property(damage_label, "position:y", damage_label.position.y - 38, 0.65)
 	float_tween.tween_property(damage_label, "modulate:a", 0.0, 0.65)
+
+func try_spend_qi(cost: int) -> bool:
+	# Called once when an attack/defence action is committed, never on preview.
+	if not running or busy: return false
+	return qi.spend(cost)
+
+func _update_qi() -> void:
+	qi_text.text = "내기   %d / %d    (+%d/턴)" % [qi.amount, qi.MAXIMUM, qi.inner_power]
+	qi_bar.value = qi.amount
