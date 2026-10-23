@@ -213,3 +213,5 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 ## CLI에서 작업 이어가기
 
 현재 구현 상태와 최신 전투·0장 설정은 [CLI 인계 문서](docs/CLI_HANDOFF.md)를 먼저 확인한다.
+
+- [장사 자유 탐험 도시 맵 — 전체 지도와 이용 안내](godot/assets/maps/changsha/README.md)

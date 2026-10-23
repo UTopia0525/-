@@ -136,3 +136,9 @@ godot --path godot --script res://tests/capture.gd
 [엑스트라 일러스트 6종](assets/portraits/extras/README.md)은 성별·연령별 투명 배경 반신 초상화이다. 대화 참여자를 모두 화면에 남기고 발언자만 원래 밝기, 청자는 어둡게 표시한다. 전용 초상화가 있으면 우선 사용하며, 주인공은 [전용 초상화](assets/portraits/player/README.md), 나머지 0장 인물들은 공용 초상화를 임시 사용한다. 인물 등록·교체는 `scripts/dialogue_portraits.gd`를 따른다.
 
 검증: `godot --headless --path godot --script res://tests/dialogue.gd`
+
+## 장사 자유 탐방
+
+타이틀에서 **장사 자유 탐방**을 선택하면 6144×4096 크기의 도시와 성밖 농촌을 걸어볼 수 있다. WASD/방향키·클릭 이동을 사용하고 TAB으로 전체 지도와 현재 위치를 확인한다. 나루·시장·객잔·공방·주거지·관아 앞·농촌을 연결했으며, 상점 메뉴·퀘스트·실내는 아직 추가하지 않았다. [전체 맵과 이용 안내](assets/maps/changsha/README.md).
+
+검증: `godot --headless --path godot --script res://tests/changsha.gd`

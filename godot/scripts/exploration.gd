@@ -15,6 +15,8 @@ var collision_root: Node2D
 var walk_regions: Array[Rect2] = []
 var blockers: Array[Rect2] = []
 var astar = AStarGrid2D.new()
+var city_data: Dictionary = {}
+var ambient_nodes: Array[Node2D] = []
 var active: bool = false
 var hint: Label
 
@@ -49,7 +51,15 @@ func load_area(value: String) -> void:
 	npcs.clear()
 	for child in collision_root.get_children():
 		child.free()
-	if value == "dock":
+	for node in ambient_nodes:
+		node.free()
+	ambient_nodes.clear()
+	city_data = {}
+	map_bounds = Rect2(0, 0, 1280, 720)
+	camera.exploration_zoom = camera_zoom
+	if value == "changsha":
+		_load_changsha()
+	elif value == "dock":
 		background.texture = preload("res://assets/dock.png")
 		walk_regions = [Rect2(85, 300, 650, 325), Rect2(705, 380, 210, 62)]
 		blockers = [Rect2(85, 490, 90, 80), Rect2(600, 570, 65, 60)]
@@ -71,6 +81,41 @@ func load_area(value: String) -> void:
 	_build_collision_and_navigation()
 	camera.set_map_bounds(map_bounds)
 	camera.snap_to_player()
+
+func _load_changsha() -> void:
+	city_data = JSON.parse_string(FileAccess.get_file_as_string("res://assets/maps/changsha/layout.json"))
+	map_bounds = Rect2(0, 0, city_data.world_size[0], city_data.world_size[1])
+	camera.exploration_zoom = 1.25
+	background.texture = load("res://assets/maps/changsha/city.png")
+	walk_regions.clear()
+	blockers.clear()
+	for rectangle in city_data.walk_regions:
+		walk_regions.append(_city_rect(rectangle))
+	for rectangle in city_data.blockers:
+		blockers.append(_city_rect(rectangle))
+	player.position = city_point(city_data.spawn)
+	for entry in city_data.residents:
+		var citizen = Sprite2D.new()
+		citizen.texture = UI.character_texture(int(entry.frame))
+		citizen.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		citizen.scale = Vector2.ONE * (82.0 / citizen.texture.get_height())
+		citizen.position = city_point(entry.point)
+		# Use the same foot baseline as the player for Y sorting.
+		citizen.offset.y = -citizen.texture.get_height() / 2.0
+		decorations.add_child(citizen)
+		ambient_nodes.append(citizen)
+
+func city_point(point: Array) -> Vector2:
+	return Vector2(point[0], point[1]) * map_bounds.size / Vector2(city_data.art_size[0], city_data.art_size[1])
+
+func _city_rect(rectangle: Array) -> Rect2:
+	return Rect2(city_point([rectangle[0], rectangle[1]]), city_point([rectangle[2], rectangle[3]]))
+
+func district_at_player() -> String:
+	for district in city_data.get("districts", []):
+		if _city_rect(district.bounds).has_point(player.position):
+			return district.name
+	return "성내 거리"
 
 func _add_npc(id: String, title: String, point: Vector2, frame: int) -> void:
 	var body = Area2D.new()

@@ -10,3 +10,5 @@ exports/
 
 /tests/camera.gd.uid
 /tests/dialogue.gd.uid
+/tests/changsha.gd.uid
+/tests/capture_city.gd.uid

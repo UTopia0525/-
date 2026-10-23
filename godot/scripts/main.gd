@@ -3,6 +3,7 @@ extends Control
 const UI = preload("res://scripts/ui.gd")
 const EXPLORATION = preload("res://scenes/exploration.tscn")
 const BATTLE = preload("res://scenes/battle.tscn")
+const CITY_OVERVIEW = preload("res://scripts/city_overview.gd")
 const PORTRAITS = preload("res://scripts/dialogue_portraits.gd")
 const MUSIC = preload("res://scripts/music.gd")
 var exploration
@@ -22,6 +23,8 @@ var dialogue_panel: Panel
 var dialogue_name: Label
 var dialogue_text: Label
 var dialogue_cast
+var city_overview
+var chapter_label: Label
 var dialogue_lines: Array = []
 var dialogue_index: int = 0
 var dialogue_done: Callable
@@ -59,6 +62,8 @@ func _ready() -> void:
 	_build_dialogue()
 	_build_title()
 	_build_ending()
+	city_overview = CITY_OVERVIEW.new()
+	ui_root.add_child(city_overview)
 	reset()
 
 func _setup_input() -> void:
@@ -76,7 +81,7 @@ func _build_hud() -> void:
 	top_hud.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui_root.add_child(top_hud)
 	var place_panel = UI.panel(top_hud, Rect2(24, 24, 360, 66), Color("13231edb"))
-	UI.label(place_panel, "序章 · 가라앉은 약속", Rect2(16, 7, 325, 22), 13, UI.GOLD)
+	chapter_label = UI.label(place_panel, "序章 · 가라앉은 약속", Rect2(16, 7, 325, 22), 13, UI.GOLD)
 	location = UI.label(place_panel, "동정호 남쪽 · 청류진 나루", Rect2(16, 31, 325, 25), 18)
 	var mission_panel = UI.panel(top_hud, Rect2(822, 24, 432, 66), Color("13231edb"))
 	UI.label(mission_panel, "지금 할 일", Rect2(16, 7, 400, 20), 12, UI.GOLD)
@@ -118,6 +123,8 @@ func _build_title() -> void:
 	start.pressed.connect(start_story)
 	var quick = UI.button(title_screen, "전투만 체험", Rect2(365, 538, 200, 58))
 	quick.pressed.connect(start_battle)
+	var city = UI.button(title_screen, "장사 자유 탐방", Rect2(588, 538, 230, 58))
+	city.pressed.connect(start_city)
 	UI.label(title_screen, "GODOT 4 · 탐험 미술 개선판 / 0장 첫 전투까지", Rect2(113, 628, 950, 30), 14, UI.MUTED)
 
 func _build_ending() -> void:
@@ -134,6 +141,9 @@ func _build_ending() -> void:
 	ending.hide()
 
 func reset() -> void:
+	city_overview.hide()
+	chapter_label.text = "序章 · 가라앉은 약속"
+	bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     E  대화     ·     M  음악     ·     F1  처음부터"
 	state = "title"
 	music.play_track("title")
 	talked_captain = false
@@ -158,6 +168,39 @@ func start_story() -> void:
 	bottom_hint.show()
 	objective.text = "나루 끝의 표두 서문길과 대화하기"
 	say([["hero", "오늘은 나의 첫 정식 표행이다. 출항 전에 표두님을 찾아뵙자."]])
+
+func start_city() -> void:
+	dialogue_lines.clear()
+	dialogue_done = Callable()
+	dialogue_panel.hide()
+	dialogue_cast.clear()
+	city_overview.hide()
+	title_screen.hide()
+	ending.hide()
+	battle.cancel()
+	state = "explore"
+	music.play_track("dock")
+	exploration.show()
+	exploration.load_area("changsha")
+	exploration.set_active(true)
+	top_hud.show()
+	chapter_label.text = "長沙 · 자유 탐험"
+	location.text = "장사 · " + exploration.district_at_player()
+	objective.text = "시장·골목·나루·성밖 농촌 둘러보기"
+	bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     TAB  전체 지도     ·     M  음악     ·     F1  타이틀"
+	bottom_hint.show()
+
+func _process(_delta: float) -> void:
+	if state == "explore" and exploration.area_name == "changsha":
+		location.text = "장사 · " + exploration.district_at_player()
+
+func toggle_city_map() -> void:
+	if city_overview.visible:
+		city_overview.hide()
+		exploration.set_active(true)
+	else:
+		exploration.set_active(false)
+		city_overview.open_for(exploration)
 
 func say(lines: Array, done: Callable = Callable(), listeners: Array = ["hero"]) -> void:
 	if lines.is_empty():
@@ -242,6 +285,7 @@ func interact() -> void:
 			dialogue_music_cues = {2: "ambush"}
 
 func start_battle() -> void:
+	city_overview.hide()
 	music.play_track("battle")
 	state = "battle"
 	dialogue_lines = []
@@ -264,7 +308,15 @@ func _on_victory(hp: int) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
-		if event.keycode == KEY_M:
+		if city_overview.visible:
+			if event.keycode == KEY_TAB or event.keycode == KEY_ESCAPE:
+				toggle_city_map()
+			get_viewport().set_input_as_handled()
+			return
+		if event.keycode == KEY_TAB and state == "explore" and exploration.area_name == "changsha":
+			toggle_city_map()
+			get_viewport().set_input_as_handled()
+		elif event.keycode == KEY_M:
 			music.toggle()
 			get_viewport().set_input_as_handled()
 		elif event.keycode == KEY_F1:
