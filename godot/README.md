@@ -144,3 +144,7 @@ godot --path godot --script res://tests/capture.gd
 검증: `godot --headless --path godot --script res://tests/changsha.gd`
 
 장사 탐험 HUD는 주변 지형·플레이어 방향·NPC 위치·구역명을 담은 미니맵으로 갱신했다. 4개 세부 구역 배경과 NPC 발끝 정렬·지붕 가림을 적용한 [최신 시장 화면](screenshots/changsha-market-ui-revised.png)을 참고한다.
+
+## 0장 후반부 대화 원고
+
+[0장 전체 대화 원고](../docs/story/chapter-00-dialogues.md)에 침몰·귀물/구조 선택·양쪽의 후회·표국 해체·인도/실패 보고·장사 입성까지 작성했다. 귀물 인도 보수는 3,000문이며 구조 경로는 해당 보수를 받지 않는다. 이 문서는 원고이며 현재 실행 범위는 여전히 첫 전투까지다. 분기·소지금·후반부 연출과 0장 이후 장사 이동을 실제 게임에 연결한 것은 아니다.
