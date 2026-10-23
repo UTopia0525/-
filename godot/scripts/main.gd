@@ -21,6 +21,7 @@ var location: Label
 var top_hud: Control
 var bottom_hint: Label
 var title_screen: Control
+var dialogue_backdrop: ColorRect
 var dialogue_panel: Panel
 var dialogue_name: Label
 var dialogue_text: Label
@@ -149,6 +150,13 @@ func _build_hud() -> void:
 	bottom_hint.add_theme_constant_override("shadow_offset_y", 2)
 
 func _build_dialogue() -> void:
+	dialogue_backdrop = ColorRect.new()
+	dialogue_backdrop.name = "CityDialogueBackdrop"
+	dialogue_backdrop.color = Color(0, 0, 0, 0.55)
+	dialogue_backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dialogue_backdrop.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	ui_root.add_child(dialogue_backdrop)
+	dialogue_backdrop.hide()
 	story_caption = UI.label(ui_root, "", Rect2(36, 32, 1200, 45), 25, UI.GOLD)
 	story_caption.add_theme_color_override("font_outline_color", Color("091718"))
 	story_caption.add_theme_constant_override("outline_size", 5)
@@ -157,6 +165,7 @@ func _build_dialogue() -> void:
 	ui_root.add_child(dialogue_cast)
 	dialogue_panel = UI.panel(ui_root, Rect2(24, 535, 1232, 160))
 	dialogue_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	dialogue_panel.visibility_changed.connect(_update_dialogue_backdrop)
 	dialogue_name = UI.label(dialogue_panel, "", Rect2(24, 14, 1045, 30), 22, UI.GOLD)
 	dialogue_text = UI.label(dialogue_panel, "", Rect2(24, 55, 1065, 83), 20)
 	dialogue_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -164,6 +173,10 @@ func _build_dialogue() -> void:
 	next.pressed.connect(advance_dialogue)
 	dialogue_panel.hide()
 	dialogue_cast.clear()
+
+func _update_dialogue_backdrop() -> void:
+	# Shade the city and HUD, keeping portraits, captions and dialogue above it.
+	dialogue_backdrop.visible = dialogue_panel.visible and exploration.area_name == "changsha" and not story_visual.visible
 
 func _full_overlay(color: Color) -> Control:
 	var overlay = Control.new()
@@ -328,6 +341,7 @@ func say(lines: Array, done: Callable = Callable(), listeners: Array = ["hero"])
 		participants.append(actor)
 	dialogue_cast.set_participants(participants)
 	dialogue_panel.show()
+	_update_dialogue_backdrop()
 	_show_line()
 
 func _show_line() -> void:
