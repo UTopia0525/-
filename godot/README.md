@@ -133,6 +133,6 @@ godot --path godot --script res://tests/capture.gd
 
 ## 공용 대화 일러스트와 발언자 표시
 
-[엑스트라 일러스트 6종](assets/portraits/extras/README.md)은 성별·연령별 투명 배경 반신 초상화이다. 대화 참여자를 모두 화면에 남기고 발언자만 원래 밝기, 청자는 어둡게 표시한다. 전용 초상화가 있으면 우선 사용하며, 0장 인물들은 현재 공용 초상화를 임시 사용한다. 인물 등록·교체는 `scripts/dialogue_portraits.gd`를 따른다.
+[엑스트라 일러스트 6종](assets/portraits/extras/README.md)은 성별·연령별 투명 배경 반신 초상화이다. 대화 참여자를 모두 화면에 남기고 발언자만 원래 밝기, 청자는 어둡게 표시한다. 전용 초상화가 있으면 우선 사용하며, 주인공은 [전용 초상화](assets/portraits/player/README.md), 나머지 0장 인물들은 공용 초상화를 임시 사용한다. 인물 등록·교체는 `scripts/dialogue_portraits.gd`를 따른다.
 
 검증: `godot --headless --path godot --script res://tests/dialogue.gd`
