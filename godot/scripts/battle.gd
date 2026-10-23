@@ -133,7 +133,7 @@ func use_selected() -> void:
 	turn_label.text = "주인공의 공격"
 	detail.text = "삼재검법을 펼칩니다."
 	note.text = ""
-	await get_tree().create_timer(Rules.DEMO_ATTACK_DELAY).timeout
+	await get_tree().create_timer(Rules.DEMO_ATTACK_DELAY, false).timeout
 	if token != generation:
 		return
 	var hit = Rules.damage(Rules.samjae_damage(), Rules.ENEMY_CONSTITUTION)
@@ -141,7 +141,7 @@ func use_selected() -> void:
 	_update_hp()
 	_float_damage(hit, false)
 	detail.text = "삼재검법 명중.\n수적에게 %d의 피해를 주었습니다." % hit
-	await get_tree().create_timer(Rules.DEMO_TURN_DELAY).timeout
+	await get_tree().create_timer(Rules.DEMO_TURN_DELAY, false).timeout
 	if token != generation:
 		return
 	if enemy_hp == 0:
@@ -153,14 +153,14 @@ func use_selected() -> void:
 	turn_label.text = "상대 차례"
 	heading.text = "수적의 반격"
 	detail.text = "수적이 도를 휘두릅니다."
-	await get_tree().create_timer(Rules.DEMO_ATTACK_DELAY).timeout
+	await get_tree().create_timer(Rules.DEMO_ATTACK_DELAY, false).timeout
 	if token != generation:
 		return
 	var counter = Rules.damage(Rules.DEMO_ENEMY_RAW_DAMAGE, Rules.STARTING_STATS.constitution)
 	player_hp = maxi(0, player_hp - counter)
 	_update_hp()
 	_float_damage(counter, true)
-	await get_tree().create_timer(Rules.DEMO_TURN_DELAY).timeout
+	await get_tree().create_timer(Rules.DEMO_TURN_DELAY, false).timeout
 	if token != generation:
 		return
 	turn += 1

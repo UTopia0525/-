@@ -32,6 +32,9 @@ var quest_navigation
 var prologue
 var chapter_one
 var chapter_number := 0
+var save_system
+var settings_menu
+var pending_service_id := ""
 var story_visual
 var story_caption: Label
 var choice_screen: Control
@@ -97,6 +100,12 @@ func _ready() -> void:
 	chapter_one = preload("res://scripts/chapter_one.gd").new()
 	chapter_one.game = self
 	add_child(chapter_one)
+	save_system = preload("res://scripts/save_system.gd").new()
+	save_system.game = self
+	add_child(save_system)
+	settings_menu = preload("res://scripts/settings_menu.gd").new()
+	settings_menu.game = self
+	ui_root.add_child(settings_menu)
 	reset()
 
 func _setup_input() -> void:
@@ -187,6 +196,7 @@ func _build_ending() -> void:
 	ending.hide()
 
 func reset() -> void:
+	if is_instance_valid(settings_menu): settings_menu.close_menu()
 	chapter_number = 0
 	chapter_one.reset()
 	prologue.cancel()
@@ -342,27 +352,19 @@ func interact() -> void:
 				service = definition
 		if not service.is_empty():
 			var greeting: String = {"market": "필요한 물건을 찾으십니까? 진열대를 한번 둘러보시지요.", "workshop": "물건을 맡기러 오셨습니까? 어떤 일인지 살펴보지요.", "training": "무관에 오신 걸 환영하오. 수련에 관해 알아보러 오셨소?"}[service.kind]
-			say([[service.id, greeting]], func():
-				state = "service"
-				exploration.set_active(false)
-				city_service.open_counter(service))
+			pending_service_id = service.id
+			say([[service.id, greeting]], _service_done)
 		return
 	match npc.id:
 		"captain":
-			say(prologue.lines("captain"), func():
-				talked_captain = true
-				objective.text = "오른쪽 널빤지를 건너 호송선에 오르기")
+			say(prologue.lines("captain"), _captain_done)
 		"apothecary", "sailor", "clerk":
 			say(prologue.lines(npc.id))
 		"boarding":
 			if not talked_captain:
 				say([["hero", "먼저 표두님께 인사하자."]])
 			else:
-				say(prologue.lines("boarding"), func():
-					exploration.load_area("deck")
-					music.play_track("voyage")
-					location.text = "호송선 · 동정호 수로"
-					objective.text = "갑판의 표두에게 출항 보고하기")
+				say(prologue.lines("boarding"), _boarding_done)
 		"deck-sailor":
 			say([["sailor", "물살은 괜찮군. 저 좁은 수로만 지나면 한동안 편할 거야."]])
 		"deck-captain":
@@ -396,6 +398,10 @@ func _on_victory(hp: int) -> void:
 	ending.show()
 
 func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE and not city_overview.visible and state != "service":
+		settings_menu.open_menu()
+		get_viewport().set_input_as_handled()
+		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		if state == "choice":
 			if event.keycode == KEY_F1: reset()
@@ -474,3 +480,20 @@ func select_story_choice(value: String) -> void:
 func confirm_story_choice() -> void:
 	if state == "choice" and not pending_choice.is_empty():
 		prologue.choose(pending_choice)
+
+func _captain_done() -> void:
+	talked_captain = true
+	objective.text = "오른쪽 널빤지를 건너 호송선에 오르기"
+
+func _boarding_done() -> void:
+	exploration.load_area("deck")
+	music.play_track("voyage")
+	location.text = "호송선 · 동정호 수로"
+	objective.text = "갑판의 표두에게 출항 보고하기"
+
+func _service_done() -> void:
+	for service in exploration.city_data.get("services", []):
+		if service.id == pending_service_id:
+			state = "service"
+			exploration.set_active(false)
+			city_service.open_counter(service)
