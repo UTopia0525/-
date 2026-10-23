@@ -1,0 +1,66 @@
+{
+  "bear_strength_pill": {
+    "name": "웅력환",
+    "grade": "low",
+    "primary_stat": "strength",
+    "permanent_stat_gains": {
+      "strength": 3,
+      "agility": 1,
+      "constitution": 1,
+      "inner": 1,
+      "insight": 0
+    },
+    "description": "힘줄과 근육을 보하는 짙은 갈색 환약. 복용하면 몸에 은은한 열기가 돈다.",
+    "acquisition": null,
+    "price": null,
+    "status": "proposal"
+  },
+  "light_step_pill": {
+    "name": "경신환",
+    "grade": "low",
+    "primary_stat": "agility",
+    "permanent_stat_gains": {
+      "strength": 1,
+      "agility": 3,
+      "constitution": 1,
+      "inner": 1,
+      "insight": 0
+    },
+    "description": "몸의 긴장을 풀고 움직임을 가볍게 하는 담록색 환약. 풀잎처럼 산뜻한 향이 난다.",
+    "acquisition": null,
+    "price": null,
+    "status": "proposal"
+  },
+  "bone_fortifying_pill": {
+    "name": "고골환",
+    "grade": "low",
+    "primary_stat": "constitution",
+    "permanent_stat_gains": {
+      "strength": 1,
+      "agility": 1,
+      "constitution": 3,
+      "inner": 1,
+      "insight": 0
+    },
+    "description": "뼈와 몸의 기초를 다지는 회백색 환약. 씹으면 쌉쌀한 맛이 오래 남는다.",
+    "acquisition": null,
+    "price": null,
+    "status": "proposal"
+  },
+  "qi_nourishing_pill": {
+    "name": "양기단",
+    "grade": "low",
+    "primary_stat": "inner",
+    "permanent_stat_gains": {
+      "strength": 1,
+      "agility": 1,
+      "constitution": 1,
+      "inner": 3,
+      "insight": 0
+    },
+    "description": "기혈의 순환을 돕고 내공의 기초를 보하는 연한 황색 단약. 약성이 비교적 온순하다.",
+    "acquisition": null,
+    "price": null,
+    "status": "proposal"
+  }
+}
