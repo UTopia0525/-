@@ -13,6 +13,10 @@ var enemy_intent := "basic_attack"
 var enemy_guard := 0
 var intent_label: Label
 var intent_icon: TextureRect
+const Actor = preload("res://scripts/battle_actor.gd")
+const DamageBar = preload("res://scripts/damage_health_bar.gd")
+var player_actor: Node2D
+var enemy_actor: Node2D
 const UI = preload("res://scripts/ui.gd")
 const Rules = preload("res://scripts/rules.gd")
 var qi = preload("res://scripts/inner_qi.gd").new()
@@ -46,8 +50,8 @@ var turn: int = 1
 var scene_image: TextureRect
 var enemy_text: Label
 var player_text: Label
-var enemy_bar: ProgressBar
-var player_bar: ProgressBar
+var enemy_bar
+var player_bar
 var heading: Label
 var detail: Label
 var note: Label
@@ -61,19 +65,25 @@ var float_tween: Tween
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	scene_image = TextureRect.new()
-	scene_image.texture = preload("res://assets/battle-deck.png")
+	scene_image.texture = preload("res://assets/battle/deck-empty.png")
 	scene_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	scene_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	scene_image.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	scene_image.size = Vector2(1280, 510)
 	add_child(scene_image)
-	var enemy_panel = UI.panel(self, Rect2(24, 24, 390, 126))
+	player_actor = Actor.new()
+	add_child(player_actor)
+	player_actor.configure(false, equipped_weapon_type, Vector2(350,490))
+	enemy_actor = Actor.new()
+	add_child(enemy_actor)
+	enemy_actor.configure(true, "saber", Vector2(945,300))
+	var enemy_panel = UI.panel(self, Rect2(24, 24, 390, 140))
 	enemy_faction = UI.label(enemy_panel, "흑린채 · 일반 수적", Rect2(18, 10, 285, 24), 13, UI.GOLD)
 	enemy_name = UI.label(enemy_panel, "흑린채 수적", Rect2(18, 34, 285, 32), 24)
 	enemy_text = UI.label(enemy_panel, "", Rect2(18, 71, 355, 22), 16)
-	enemy_bar = _health_bar(enemy_panel, Rect2(18, 103, 284, 9), Rules.ENEMY_MAX_HP)
-	var intent_panel = UI.panel(self, Rect2(24, 160, 470, 82))
-	intent_label = UI.label(intent_panel, "", Rect2(74, 8, 380, 66), 18, UI.GOLD)
+	enemy_bar = _health_bar(enemy_panel, Rect2(18, 103, 354, 20), Rules.ENEMY_MAX_HP)
+	var intent_panel = UI.panel(self, Rect2(430, 24, 450, 82))
+	intent_label = UI.label(intent_panel, "", Rect2(74, 8, 360, 66), 18, UI.GOLD)
 	intent_icon = TextureRect.new()
 	intent_icon.position = Vector2(12,14)
 	intent_icon.size = Vector2(52,52)
@@ -83,9 +93,9 @@ func _ready() -> void:
 	weapon_label = UI.label(player_panel, "장착 무기 · 무문철검", Rect2(18, 10, 295, 24), 13, UI.GOLD)
 	UI.label(player_panel, "주인공", Rect2(18, 34, 295, 32), 24)
 	player_text = UI.label(player_panel, "", Rect2(18, 71, 295, 22), 16)
-	player_bar = _health_bar(player_panel, Rect2(18, 103, 294, 9), Rules.PLAYER_MAX_HP)
+	player_bar = _health_bar(player_panel, Rect2(18, 103, 294, 20), Rules.PLAYER_MAX_HP)
 	qi_text = UI.label(player_panel, "", Rect2(18, 136, 295, 22), 16, Color("a3dfe8"))
-	qi_bar = _health_bar(player_panel, Rect2(18, 165, 294, 9), qi.MAXIMUM)
+	qi_bar = _health_bar(player_panel, Rect2(18, 165, 294, 9), qi.MAXIMUM, false)
 	var qi_fill = UI.box(Color("4eabbc"), Color("92d1dc"))
 	for side in [SIDE_LEFT, SIDE_TOP, SIDE_RIGHT, SIDE_BOTTOM]: qi_fill.set_content_margin(side, 0)
 	qi_bar.add_theme_stylebox_override("fill", qi_fill)
@@ -110,14 +120,16 @@ func _ready() -> void:
 	basic_button = skill_buttons[0]
 	select_button = skill_buttons[2]
 	_update_slots()
-	damage_label = UI.label(self, "", Rect2(930, 190, 200, 65), 48, Color("ffe3ac"))
-	damage_label.add_theme_color_override("font_shadow_color", Color("151f18"))
+	damage_label = UI.label(self, "", Rect2(930, 190, 200, 65), 48, Color("ff4f55"))
+	damage_label.add_theme_color_override("font_shadow_color", Color("151018"))
+	damage_label.add_theme_color_override("font_outline_color", Color("1d1018"))
+	damage_label.add_theme_constant_override("outline_size", 5)
 	damage_label.add_theme_constant_override("shadow_offset_x", 3)
 	damage_label.add_theme_constant_override("shadow_offset_y", 3)
 	damage_label.hide()
 
-func _health_bar(parent: Node, area: Rect2, maximum: int) -> ProgressBar:
-	var bar = ProgressBar.new()
+func _health_bar(parent: Node, area: Rect2, maximum: int, damage_trail: bool = true) -> ProgressBar:
+	var bar = DamageBar.new() if damage_trail else ProgressBar.new()
 	bar.position = area.position
 	bar.size = area.size
 	bar.max_value = maximum
@@ -151,13 +163,15 @@ func set_encounter(value: Dictionary) -> void:
 	enemy_name.text = str(encounter.get("name", "흑린채 수적"))
 	enemy_faction.text = str(encounter.get("faction", "흑린채 · 일반 수적"))
 	enemy_bar.max_value = enemy_max_hp
-	scene_image.texture = load("res://assets/battle-bandit-road.png" if not encounter.is_empty() else "res://assets/battle-deck.png")
+	scene_image.texture = load("res://assets/battle/road-empty.png" if not encounter.is_empty() else "res://assets/battle/deck-empty.png")
+	enemy_actor.set_weapon(weapons.weapon_type(enemy_weapon))
 
 func begin(inner_power: int = -1) -> void:
 	qi.start(int(player_stats.inner) if inner_power < 0 else inner_power)
 	enemy_qi.start(int(enemy_stats.get("inner", 6)))
 	enemy_guard = 0
 	generation += 1
+	_reset_presentation()
 	player_hp = Rules.PLAYER_MAX_HP
 	enemy_hp = enemy_max_hp
 	selected = false
@@ -185,8 +199,9 @@ func cancel() -> void:
 	generation += 1
 	running = false
 	busy = false
-	if float_tween and float_tween.is_valid():
-		float_tween.kill()
+	_reset_presentation()
+	player_actor.stop()
+	enemy_actor.stop()
 	hide()
 
 func select_basic_attack() -> void:
@@ -284,6 +299,11 @@ func use_selected() -> void:
 	turn_label.text = "주인공의 방어" if selected_action == "basic_defense" else "주인공의 공격"
 	detail.text = action_name + "을 펼칩니다."
 	note.text = ""
+	if raw > 0:
+		player_actor.attack()
+	else:
+		player_actor.defend(1.8)
+	if enemy_intent == "basic_defense": enemy_actor.defend()
 	await get_tree().create_timer(Rules.DEMO_ATTACK_DELAY, false).timeout
 	if token != generation:
 		return
@@ -291,7 +311,8 @@ func use_selected() -> void:
 	var hit: int = combat.damage(raw, enemy_constitution, enemy_weapon, active_enemy_guard)
 	enemy_guard = 0
 	enemy_hp = maxi(0, enemy_hp - hit)
-	_update_hp()
+	_update_hp(true)
+	if hit > 0: enemy_actor.hurt()
 	_float_damage(hit, false)
 	detail.text = "방어 태세를 취했습니다." if raw == 0 else "%s 명중.\n%s에게 %d의 피해를 주었습니다." % [action_name, enemy_name.text, hit]
 	await get_tree().create_timer(Rules.DEMO_TURN_DELAY, false).timeout
@@ -310,12 +331,17 @@ func use_selected() -> void:
 	turn_label.text = "상대 차례"
 	heading.text = enemy_name.text + "의 반격"
 	detail.text = "%s: %s" % [enemy_name.text, opponent_action.name]
+	if opponent_action.raw > 0:
+		enemy_actor.attack()
+	else:
+		enemy_actor.defend()
 	await get_tree().create_timer(Rules.DEMO_ATTACK_DELAY, false).timeout
 	if token != generation:
 		return
 	var counter: int = combat.damage(float(opponent_action.raw), player_stats.constitution, equipped_weapon_id, int(player_action.guard))
 	player_hp = maxi(0, player_hp - counter)
-	_update_hp()
+	_update_hp(true)
+	if counter > 0: player_actor.hurt()
 	_float_damage(counter, true)
 	await get_tree().create_timer(Rules.DEMO_TURN_DELAY, false).timeout
 	if token != generation:
@@ -348,22 +374,33 @@ func use_selected() -> void:
 	else: refresh_selection()
 	use_button.grab_focus()
 
-func _update_hp() -> void:
+func _update_hp(animate: bool = false) -> void:
 	enemy_text.text = "체력 %d/%d · 내기 %d/500 (+%d)" % [enemy_hp, enemy_max_hp, enemy_qi.amount, enemy_qi.inner_power]
 	player_text.text = "체력   %d / %d" % [player_hp, Rules.PLAYER_MAX_HP]
-	enemy_bar.value = enemy_hp
-	player_bar.value = player_hp
+	enemy_bar.set_health(enemy_hp, enemy_max_hp, animate)
+	player_bar.set_health(player_hp, Rules.PLAYER_MAX_HP, animate)
 
 func _float_damage(value: int, on_player: bool) -> void:
 	if float_tween and float_tween.is_valid():
 		float_tween.kill()
-	damage_label.position = Vector2(350, 320) if on_player else Vector2(990, 170)
+	if value <= 0:
+		damage_label.hide()
+		return
+	damage_label.position = (player_actor.home + Vector2(-35,-235)) if on_player else (enemy_actor.home + Vector2(-20,-190))
 	damage_label.text = "−%d" % value
 	damage_label.modulate.a = 1.0
 	damage_label.show()
 	float_tween = create_tween().set_parallel()
 	float_tween.tween_property(damage_label, "position:y", damage_label.position.y - 38, 0.65)
 	float_tween.tween_property(damage_label, "modulate:a", 0.0, 0.65)
+
+func _reset_presentation() -> void:
+	if float_tween and float_tween.is_valid(): float_tween.kill()
+	if is_instance_valid(damage_label): damage_label.hide()
+	player_actor.reset_motion()
+	enemy_actor.reset_motion()
+	enemy_bar.snap()
+	player_bar.snap()
 
 func try_spend_qi(cost: int) -> bool:
 	# Called once when an attack/defence action is committed, never on preview.
@@ -382,6 +419,7 @@ func equip_weapon_item(id: String) -> bool:
 	if busy or not weapons.exists(id): return false
 	equipped_weapon_id = id
 	equipped_weapon_type = weapons.weapon_type(id)
+	if is_instance_valid(player_actor): player_actor.set_weapon(equipped_weapon_type)
 	if is_instance_valid(weapon_label): weapon_label.text = "장착 무기 · " + str(weapons.get_weapon(id).get("name", "맨손"))
 	if running and selected: refresh_selection()
 	return true
