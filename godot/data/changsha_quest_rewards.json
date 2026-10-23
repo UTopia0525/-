@@ -1,0 +1,81 @@
+{
+  "currency": "mun",
+  "currency_display": "문",
+  "grant_at": "completion_dialogue_end",
+  "grant_once_per_quest": true,
+  "stat_cap": 100,
+  "quests": {
+    "changsha_cloth": {
+      "title": "맡겨 둔 옷감",
+      "type": "intro_chain",
+      "money": 100,
+      "stat_gains": {
+        "insight": 5
+      }
+    },
+    "changsha_dishes": {
+      "title": "돌아오지 않은 그릇",
+      "type": "intro_chain",
+      "money": 150,
+      "stat_gains": {
+        "insight": 5
+      }
+    },
+    "changsha_handle": {
+      "title": "농가의 부러진 자루",
+      "type": "intro_chain",
+      "money": 200,
+      "stat_gains": {
+        "insight": 5
+      }
+    },
+    "changsha_baskets": {
+      "title": "뒤바뀐 바구니",
+      "type": "normal",
+      "money": 100,
+      "stat_gains": {
+        "insight": 5
+      }
+    },
+    "changsha_bundle": {
+      "title": "어느 길로 갔더라",
+      "type": "normal",
+      "money": 100,
+      "stat_gains": {
+        "insight": 5
+      }
+    },
+    "changsha_cargo": {
+      "title": "표식이 같은 짐",
+      "type": "normal",
+      "money": 150,
+      "stat_gains": {
+        "insight": 5
+      }
+    },
+    "changsha_pages": {
+      "title": "젖기 전에",
+      "type": "normal",
+      "money": 100,
+      "stat_gains": {
+        "insight": 5
+      }
+    },
+    "changsha_waterway": {
+      "title": "막힌 물길",
+      "type": "normal",
+      "money": 150,
+      "stat_gains": {
+        "insight": 5
+      }
+    },
+    "changsha_family": {
+      "title": "오늘도 오지 않는 아들",
+      "type": "normal",
+      "money": 100,
+      "stat_gains": {
+        "insight": 5
+      }
+    }
+  }
+}
