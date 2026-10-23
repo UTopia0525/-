@@ -23,6 +23,19 @@ func _ready() -> void:
 	map_image.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	map_image.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(map_image)
+	var data = JSON.parse_string(FileAccess.get_file_as_string("res://assets/maps/changsha/layout.json"))
+	for tile in data.detail_tiles:
+		var atlas = AtlasTexture.new()
+		atlas.atlas = load(tile.path)
+		atlas.region = Rect2(tile.source[0], tile.source[1], tile.source[2], tile.source[3])
+		var section = TextureRect.new()
+		section.texture = atlas
+		section.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		section.position = Vector2(tile.target[0], tile.target[1]) / Vector2(data.art_size[0], data.art_size[1]) * MAP_RECT.size
+		section.size = Vector2(tile.target[2], tile.target[3]) / Vector2(data.art_size[0], data.art_size[1]) * MAP_RECT.size
+		section.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		section.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+		map_image.add_child(section)
 	player_dot = ColorRect.new()
 	player_dot.color = Color("ffe3a0")
 	player_dot.size = Vector2(10, 10)

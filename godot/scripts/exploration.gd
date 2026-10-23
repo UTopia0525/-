@@ -17,6 +17,9 @@ var blockers: Array[Rect2] = []
 var astar = AStarGrid2D.new()
 var city_data: Dictionary = {}
 var ambient_nodes: Array[Node2D] = []
+var art_tiles: Array[Dictionary] = []
+var occlusion_roots: Array[Node2D] = []
+const CITIZEN_REGIONS = {4: Rect2(69, 504, 254, 465), 5: Rect2(479, 529, 186, 440), 6: Rect2(829, 529, 272, 440), 7: Rect2(1236, 508, 205, 461)}
 var active: bool = false
 var hint: Label
 
@@ -54,6 +57,12 @@ func load_area(value: String) -> void:
 	for node in ambient_nodes:
 		node.free()
 	ambient_nodes.clear()
+	for node in occlusion_roots:
+		node.free()
+	occlusion_roots.clear()
+	for node in background.get_children():
+		node.free()
+	art_tiles.clear()
 	city_data = {}
 	map_bounds = Rect2(0, 0, 1280, 720)
 	camera.exploration_zoom = camera_zoom
@@ -85,7 +94,7 @@ func load_area(value: String) -> void:
 func _load_changsha() -> void:
 	city_data = JSON.parse_string(FileAccess.get_file_as_string("res://assets/maps/changsha/layout.json"))
 	map_bounds = Rect2(0, 0, city_data.world_size[0], city_data.world_size[1])
-	camera.exploration_zoom = 1.25
+	camera.exploration_zoom = 1.0
 	background.texture = load("res://assets/maps/changsha/city.png")
 	walk_regions.clear()
 	blockers.clear()
@@ -93,17 +102,64 @@ func _load_changsha() -> void:
 		walk_regions.append(_city_rect(rectangle))
 	for rectangle in city_data.blockers:
 		blockers.append(_city_rect(rectangle))
+	_build_city_art()
+	_build_city_occlusion()
 	player.position = city_point(city_data.spawn)
 	for entry in city_data.residents:
 		var citizen = Sprite2D.new()
-		citizen.texture = UI.character_texture(int(entry.frame))
+		var sprite_atlas = AtlasTexture.new()
+		sprite_atlas.atlas = preload("res://assets/characters.png")
+		sprite_atlas.region = CITIZEN_REGIONS[int(entry.frame)]
+		citizen.texture = sprite_atlas
+		citizen.centered = false
 		citizen.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		citizen.scale = Vector2.ONE * (82.0 / citizen.texture.get_height())
 		citizen.position = city_point(entry.point)
 		# Use the same foot baseline as the player for Y sorting.
-		citizen.offset.y = -citizen.texture.get_height() / 2.0
+		citizen.offset = Vector2(-citizen.texture.get_width() / 2.0, -citizen.texture.get_height())
 		decorations.add_child(citizen)
 		ambient_nodes.append(citizen)
+
+func _build_city_art() -> void:
+	for tile in city_data.detail_tiles:
+		var texture: Texture2D = load(tile.path)
+		var source: Rect2 = Rect2(tile.source[0], tile.source[1], tile.source[2], tile.source[3])
+		var target: Rect2 = Rect2(tile.target[0], tile.target[1], tile.target[2], tile.target[3])
+		var atlas = AtlasTexture.new()
+		atlas.atlas = texture
+		atlas.region = source
+		var sprite = Sprite2D.new()
+		sprite.centered = false
+		sprite.texture = atlas
+		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		sprite.position = target.position
+		sprite.scale = target.size / source.size
+		background.add_child(sprite)
+		art_tiles.append({"texture": texture, "source": source, "target": target})
+
+func _build_city_occlusion() -> void:
+	# Redraw actual roof/stall pixels in Y order at their lower edge.
+	for rectangle in city_data.blockers:
+		var obstacle = Rect2(rectangle[0], rectangle[1], rectangle[2], rectangle[3])
+		var layer = Node2D.new()
+		layer.position = city_point([0, obstacle.end.y])
+		for tile in art_tiles:
+			var intersection: Rect2 = obstacle.intersection(tile.target)
+			if not intersection.has_area():
+				continue
+			var pixels_per_unit: Vector2 = tile.source.size / tile.target.size
+			var atlas = AtlasTexture.new()
+			atlas.atlas = tile.texture
+			atlas.region = Rect2(tile.source.position + (intersection.position - tile.target.position) * pixels_per_unit, intersection.size * pixels_per_unit)
+			var sprite = Sprite2D.new()
+			sprite.centered = false
+			sprite.texture = atlas
+			sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+			sprite.position = city_point([intersection.position.x, intersection.position.y]) - layer.position
+			sprite.scale = (map_bounds.size / Vector2(city_data.art_size[0], city_data.art_size[1])) / pixels_per_unit
+			layer.add_child(sprite)
+		decorations.add_child(layer)
+		occlusion_roots.append(layer)
 
 func city_point(point: Array) -> Vector2:
 	return Vector2(point[0], point[1]) * map_bounds.size / Vector2(city_data.art_size[0], city_data.art_size[1])

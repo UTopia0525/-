@@ -3,6 +3,7 @@ extends Control
 const UI = preload("res://scripts/ui.gd")
 const EXPLORATION = preload("res://scenes/exploration.tscn")
 const BATTLE = preload("res://scenes/battle.tscn")
+const MINIMAP = preload("res://scripts/minimap.gd")
 const CITY_OVERVIEW = preload("res://scripts/city_overview.gd")
 const PORTRAITS = preload("res://scripts/dialogue_portraits.gd")
 const MUSIC = preload("res://scripts/music.gd")
@@ -24,7 +25,7 @@ var dialogue_name: Label
 var dialogue_text: Label
 var dialogue_cast
 var city_overview
-var chapter_label: Label
+var minimap
 var dialogue_lines: Array = []
 var dialogue_index: int = 0
 var dialogue_done: Callable
@@ -80,9 +81,10 @@ func _build_hud() -> void:
 	top_hud = Control.new()
 	top_hud.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui_root.add_child(top_hud)
-	var place_panel = UI.panel(top_hud, Rect2(24, 24, 360, 66), Color("13231edb"))
-	chapter_label = UI.label(place_panel, "序章 · 가라앉은 약속", Rect2(16, 7, 325, 22), 13, UI.GOLD)
-	location = UI.label(place_panel, "동정호 남쪽 · 청류진 나루", Rect2(16, 31, 325, 25), 18)
+	minimap = MINIMAP.new()
+	top_hud.add_child(minimap)
+	minimap.bind_world(exploration)
+	location = minimap.place_label
 	var mission_panel = UI.panel(top_hud, Rect2(822, 24, 432, 66), Color("13231edb"))
 	UI.label(mission_panel, "지금 할 일", Rect2(16, 7, 400, 20), 12, UI.GOLD)
 	objective = UI.label(mission_panel, "", Rect2(16, 30, 400, 27), 16)
@@ -142,7 +144,6 @@ func _build_ending() -> void:
 
 func reset() -> void:
 	city_overview.hide()
-	chapter_label.text = "序章 · 가라앉은 약속"
 	bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     E  대화     ·     M  음악     ·     F1  처음부터"
 	state = "title"
 	music.play_track("title")
@@ -184,7 +185,6 @@ func start_city() -> void:
 	exploration.load_area("changsha")
 	exploration.set_active(true)
 	top_hud.show()
-	chapter_label.text = "長沙 · 자유 탐험"
 	location.text = "장사 · " + exploration.district_at_player()
 	objective.text = "시장·골목·나루·성밖 농촌 둘러보기"
 	bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     TAB  전체 지도     ·     M  음악     ·     F1  타이틀"

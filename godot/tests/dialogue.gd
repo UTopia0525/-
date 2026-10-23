@@ -16,6 +16,7 @@ func _run() -> void:
 	root.add_child(game)
 	await process_frame
 	_check_dialogues(game)
+	await create_timer(1.0).timeout
 	for voice in game.music.players:
 		voice.stop()
 		voice.stream = null

@@ -142,3 +142,5 @@ godot --path godot --script res://tests/capture.gd
 타이틀에서 **장사 자유 탐방**을 선택하면 6144×4096 크기의 도시와 성밖 농촌을 걸어볼 수 있다. WASD/방향키·클릭 이동을 사용하고 TAB으로 전체 지도와 현재 위치를 확인한다. 나루·시장·객잔·공방·주거지·관아 앞·농촌을 연결했으며, 상점 메뉴·퀘스트·실내는 아직 추가하지 않았다. [전체 맵과 이용 안내](assets/maps/changsha/README.md).
 
 검증: `godot --headless --path godot --script res://tests/changsha.gd`
+
+장사 탐험 HUD는 주변 지형·플레이어 방향·NPC 위치·구역명을 담은 미니맵으로 갱신했다. 4개 세부 구역 배경과 NPC 발끝 정렬·지붕 가림을 적용한 [최신 시장 화면](screenshots/changsha-market-ui-revised.png)을 참고한다.

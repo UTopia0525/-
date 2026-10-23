@@ -11,6 +11,11 @@ func _run() -> void:
 	game.start_city()
 	await create_timer(0.3).timeout
 	await _capture("changsha-exploration")
+	game.exploration.player.position = game.exploration.city_point([515, 440])
+	game.exploration.player.stop()
+	game.exploration.camera.snap_to_player()
+	await create_timer(0.2).timeout
+	await _capture("changsha-market-ui-revised")
 	game.toggle_city_map()
 	await _capture("changsha-overview")
 	for voice in game.music.players:

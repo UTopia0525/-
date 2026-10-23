@@ -30,9 +30,32 @@ func _run() -> void:
 		var destination = Vector2i(point / 20.0)
 		check(city.point_is_walkable(point), "walkable landmark: " + landmark.name)
 		check(not city.astar.get_point_path(origin, destination).is_empty(), "reachable landmark: " + landmark.name)
+	check(city.art_tiles.size() == 4, "four detailed city districts")
+	check(city.occlusion_roots.size() > 0, "roof/stall occlusion layers exist")
 	for citizen in city.ambient_nodes:
 		check(city.point_is_walkable(citizen.position), "residents stand on ground")
-	for point in [[100, 500], [850, 315], [1240, 160], [960, 800]]:
+		check(not city.astar.get_point_path(origin, Vector2i(citizen.position / 20.0)).is_empty(), "residents on reachable ground")
+		var body_bounds = Rect2(citizen.position - Vector2(28, 96), Vector2(56, 96))
+		for block in city.blockers:
+			check(not body_bounds.intersects(block), "full resident sprite stays clear of roofs and stalls")
+	game.minimap.refresh()
+	check(city.map_bounds.encloses(game.minimap.world_window), "local map stays within map bounds")
+	check(Rect2(Vector2.ZERO, game.minimap.VIEW_SIZE).has_point(game.minimap.player_marker), "player marker inside minimap")
+	var citizen = city.ambient_nodes[0]
+	var saved_position = citizen.position
+	citizen.position = city.player.position + Vector2(100, 0)
+	game.minimap.refresh()
+	var marker = game.minimap.project_point(citizen.position)
+	check(game.minimap.npc_markers.has(marker), "minimap follows live NPC position")
+	citizen.position = saved_position
+	game.minimap.refresh()
+	var map_click = InputEventMouseButton.new()
+	map_click.position = game.minimap.position + Vector2(100, 100)
+	map_click.button_index = MOUSE_BUTTON_LEFT
+	map_click.pressed = true
+	root.push_input(map_click, true)
+	check(city.player.click_path.is_empty(), "clicking minimap does not move player")
+	for point in city.city_data.blocked_samples:
 		check(not city.point_is_walkable(city.city_point(point)), "river, roofs, paddies and garden obstacles blocked")
 	var before = city.player.position
 	Input.action_press("move_right")
@@ -71,6 +94,8 @@ func _run() -> void:
 	city.camera.force_update_scroll()
 	check(city.camera.get_screen_center_position().x > 4500, "camera follows beyond old small map")
 	check(game.location.text.contains("농촌"), "district HUD follows player")
+	game.minimap.refresh()
+	check(city.map_bounds.encloses(game.minimap.world_window), "minimap clamps at outer farmland")
 	game.reset()
 	check(city.map_bounds.size == Vector2(1280, 720), "reset restores prologue map bounds")
 	check(city.ambient_nodes.is_empty() and city.npcs.size() == 5, "city residents removed on reset")
