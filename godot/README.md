@@ -150,3 +150,7 @@ godot --path godot --script res://tests/capture.gd
 [0장 전체 대화 원고](../docs/story/chapter-00-dialogues.md)에 침몰·귀물/구조 선택·양쪽의 후회·표국 해체·인도/실패 보고·장사 입성까지 작성했다. 귀물 인도 보수는 3,000문이며 구조 경로는 해당 보수를 받지 않는다. 이 원고의 대사·분기·소지금·항구 도착을 실제 게임에 연결했다. 마지막 대화는 장사 항구에서 진행하고 이후 조작을 재개한다. 0장 완료 체크포인트는 타이틀의 ‘0장 이후 이어하기’로 복원한다. 상세 범위는 [구현 안내](../docs/story/chapter-00-implementation.md)를 따른다.
 
 분기 검증: `godot --headless --audio-driver Dummy --path godot --script res://tests/prologue.gd`. 실제 양쪽 경로 캡처: `godot --audio-driver Dummy --path godot --script res://tests/capture_prologue.gd`.
+
+## 1장 시작 연결
+
+0장 끝 항구 독백 뒤 포목상이 바로 말을 건다. 옷감 전달 의뢰를 자동 수락한 후 화면 중앙에 제목 없이 **1장**을 한 번 표시하고 이동을 넘긴다. 첫 의뢰 목표는 미니맵으로 안내한다. 저장을 불러와도 대화와 장 표시를 반복하지 않으며 이전 0장 완료 저장도 새 도입으로 이어진다. 상세 범위는 [1장 도입 안내](../docs/story/chapter-01-intro.md)를 따른다.

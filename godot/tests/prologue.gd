@@ -66,6 +66,9 @@ func run() -> void:
 			else: check(game.money == 0, "money is not paid on choice or before delivery confirmation")
 			game.advance_dialogue()
 			limit += 1
+		if game.state == "chapter_transition": await create_timer(2.6).timeout
+		check(game.chapter_one.intro_complete and game.chapter_one.banner_shown, "chapter one introduction completes")
+		check(game.quest_navigation.quest_id == "changsha_cloth", "first chain quest tracked")
 		check(limit < 300 and saw_port, "branch reaches port")
 		check(game.prologue.completed and game.state == "explore" and game.exploration.active, "chapter ends in free exploration")
 		check(game.money == (3000 if branch == "treasure" else 0), "branch-specific money")

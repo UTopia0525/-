@@ -46,3 +46,11 @@ for scene_id, title in titles.items():
 result['free_roam']['lines'] = [['hero', '장사 항구인가. 우선 시내로 들어가 보자. 맡을 만한 일거리라도 있겠지.', '']]
 (ROOT / 'godot/data/prologue_dialogues.json').write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n')
 print(f'Exported {len(result)} scenes, {sum(len(s["lines"]) for s in result.values())} dialogue lines')
+
+# Chapter one starts with the existing cloth merchant greeting immediately after 0.
+quest_source = (ROOT / 'docs/quests/changsha-dialogues.md').read_text()
+greeting = quest_source.split('### 자동 수락 대화 — 항구 앞 포목 노점\n', 1)[1].split('\n### ', 1)[0]
+intro_actors = {'포목상':'cloth_merchant', '주인공':'hero'}
+intro = [[intro_actors[name], text] for name, text in re.findall(r'^\*\*(.+?):\*\* (.+)$', greeting, re.M)]
+(ROOT / 'godot/data/chapter_one_intro.json').write_text(json.dumps(intro, ensure_ascii=False, indent=2)+'\n')
+print(f'Exported chapter one greeting: {len(intro)} lines')

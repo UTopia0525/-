@@ -30,6 +30,8 @@ var minimap
 var city_service
 var quest_navigation
 var prologue
+var chapter_one
+var chapter_number := 0
 var story_visual
 var story_caption: Label
 var choice_screen: Control
@@ -92,6 +94,9 @@ func _ready() -> void:
 	city_service.closed.connect(func():
 		state = "explore"
 		exploration.set_active(true))
+	chapter_one = preload("res://scripts/chapter_one.gd").new()
+	chapter_one.game = self
+	add_child(chapter_one)
 	reset()
 
 func _setup_input() -> void:
@@ -182,6 +187,8 @@ func _build_ending() -> void:
 	ending.hide()
 
 func reset() -> void:
+	chapter_number = 0
+	chapter_one.reset()
 	prologue.cancel()
 	money = 0
 	choice_screen.hide()
@@ -221,6 +228,8 @@ func start_story() -> void:
 	say(prologue.lines("opening"))
 
 func start_city() -> void:
+	chapter_number = 0
+	chapter_one.reset()
 	prologue.cancel()
 	money = 0
 	enter_city()

@@ -38,14 +38,23 @@ func run() -> void:
 		game.confirm_story_choice()
 		var delivered := false
 		var count := 0
+		var saw_intro := false
 		while not game.dialogue_lines.is_empty() and count < 300:
 			if not delivered and game.exploration.area_name == "changsha":
 				delivered = true
 				await capture("prologue-" + branch + "-delivery")
 			if game.dialogue_text.text.begins_with("장사 항구인가"):
 				await capture("prologue-" + branch + "-port-dialogue")
+			if not saw_intro and game.chapter_one.intro_started:
+				saw_intro = true
+				if branch == "treasure": await capture("chapter-one-intro")
 			game.advance_dialogue()
 			count += 1
+		if game.state == "chapter_transition":
+			if branch == "treasure":
+				await create_timer(0.6).timeout
+				await capture("chapter-one-title")
+			await create_timer(2.5).timeout
 		assert(game.prologue.completed)
 		await capture("prologue-" + branch + "-free-roam")
 	await create_timer(1).timeout

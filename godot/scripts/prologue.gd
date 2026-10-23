@@ -104,17 +104,12 @@ func _finish() -> void:
 	if completed: return
 	completed = true
 	active = false
-	game.story_caption.hide()
-	game.top_hud.show()
-	game.state = "explore"
-	game.exploration.set_active(true)
-	game.objective.text = "장사 항구에서 시내로 들어가 일거리 찾기"
-	save_checkpoint()
+	game.chapter_one.begin()
 
 func save_checkpoint() -> void:
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file:
-		file.store_string(JSON.stringify({"version":1, "chapter_00_complete":true, "branch":branch, "payment_received":payment_received, "money":game.money}))
+		file.store_string(JSON.stringify({"version":2, "chapter_one":game.chapter_one.snapshot(), "chapter_00_complete":true, "branch":branch, "payment_received":payment_received, "money":game.money}))
 		game.continue_button.disabled = false
 	else:
 		game.objective.text = "저장하지 못했습니다. 현재 진행은 계속할 수 있습니다."
@@ -124,7 +119,18 @@ func read_checkpoint() -> Dictionary:
 	if not FileAccess.file_exists(SAVE_PATH): return {}
 	var data = JSON.parse_string(FileAccess.get_file_as_string(SAVE_PATH))
 	if not data is Dictionary: return {}
-	if data.get("version") != 1 or data.get("chapter_00_complete") != true: return {}
+	var version = data.get("version")
+	if typeof(version) not in [TYPE_FLOAT, TYPE_INT]: return {}
+	if version != 1 and version != 2: return {}
+	if data.get("chapter_00_complete") != true: return {}
+	if version == 2:
+		var chapter = data.get("chapter_one")
+		if not chapter is Dictionary: return {}
+		if not chapter.get("intro_complete") is bool or not chapter.get("banner_shown") is bool: return {}
+		if chapter.intro_complete:
+			var quests = chapter.get("accepted_quests")
+			if not quests is Dictionary: return {}
+			if quests.get("changsha_cloth") != {"status":"active", "stage":"deliver"}: return {}
 	if data.get("branch") not in ["treasure", "rescue"]: return {}
 	var expected = 3000 if data.branch == "treasure" else 0
 	if data.get("money") != expected or data.get("payment_received") != (data.branch == "treasure"): return {}
@@ -139,3 +145,4 @@ func resume() -> void:
 	payment_received = data.payment_received
 	game.money = int(data.money)
 	game.enter_city(true)
+	game.chapter_one.restore(data.get("chapter_one", {}))

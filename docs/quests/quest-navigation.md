@@ -4,7 +4,7 @@
 
 | 의뢰 관련 인물 | 배치 장소 |
 |---|---|
-| 포목상 | 동문 안 가게 옆 |
+| 포목상 | 항구 앞 포목 노점 |
 | 점소이 | 객잔 앞마당 |
 | 목수 | 공방 작업대 옆 |
 | 채소 장수 | 시장 노점 옆 |
@@ -49,3 +49,5 @@ quest_navigation.clear()
 ![미니맵 안 목적지 안내](../../godot/screenshots/changsha-navigation-inside.png)
 
 검증: `godot --headless --audio-driver Dummy --path godot --script res://tests/quest_navigation.gd`. 9개 의뢰의 모든 단계 목적지 접근, 14명 배치, 길 중앙 회피, 8방향 화살표, 내부 목표 표시, 실제 NPC 위치 추적, 달성 목표 제외, 보고 목적지 전환과 초기화를 검사한다.
+
+최신 변경: [1장 도입](../story/chapter-01-intro.md)에서 첫 옷감 의뢰를 실제 자동 수락하고 이 안내 API에 연결한다. 나머지 의뢰의 진행 기능과 수집 오브젝트는 여전히 후속 작업이다.

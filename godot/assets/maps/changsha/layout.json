@@ -870,11 +870,11 @@
       "id": "cloth_merchant",
       "name": "포목상",
       "point": [
-        1100,
-        548
+        330,
+        485
       ],
       "frame": 5,
-      "post": "동문 안 가게 옆",
+      "post": "항구 앞 포목 노점",
       "quest_actor": true
     },
     {

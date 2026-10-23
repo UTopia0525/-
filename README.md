@@ -217,3 +217,5 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 - [장사 자유 탐험 도시 맵 — 전체 지도와 이용 안내](godot/assets/maps/changsha/README.md)
 
 [0장 전체 대화 원고 — 가라앉은 약속](docs/story/chapter-00-dialogues.md): 출항·습격·침몰·귀물/구조 선택과 두 경로의 후회, 표국 해체·인도/실패 보고·장사 입성을 정리했다. 귀물 인도 보수는 3,000문이다. 해당 대사와 분기는 Godot에 연결했으며 [구현 안내](docs/story/chapter-00-implementation.md)를 따른다.
+
+[1장 도입 연결](docs/story/chapter-01-intro.md): 0장 직후 포목상 대화 → 첫 옷감 의뢰 수락 → 중앙 ‘1장’ 표시 → 조작 재개. 1장 제목은 미정이다.
