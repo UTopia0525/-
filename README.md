@@ -1,6 +1,6 @@
 # 명초 무협 RPG
 
-**[Godot 4 프로젝트 · 실행 안내와 실제 화면](godot/README.md)** — 탐험 미술을 개선한 0장 버전. `godot/project.godot`을 Godot에서 열고 F5로 실행한다.
+**[Godot 4 프로젝트 · 실행 안내와 실제 화면](godot/README.md)** — 침몰·귀물/구조 선택·보수·장사 항구까지 진행하는 0장 버전. `godot/project.godot`을 Godot에서 열고 F5로 실행한다.
 
 **[0장 플레이 데모 실행 안내](demo/README.md)** — 저장소를 내려받은 뒤 `demo/index.html`을 브라우저에서 열면 된다. GitHub 파일 미리보기에서는 실행되지 않는다.
 
@@ -216,4 +216,4 @@ GitHub에서 아래 링크를 누르면 각 PNG를 확인하고 다운로드할 
 
 - [장사 자유 탐험 도시 맵 — 전체 지도와 이용 안내](godot/assets/maps/changsha/README.md)
 
-[0장 전체 대화 원고 — 가라앉은 약속](docs/story/chapter-00-dialogues.md): 출항·습격·침몰·귀물/구조 선택과 두 경로의 후회, 표국 해체·인도/실패 보고·장사 입성을 정리했다. 귀물 인도 보수는 3,000문이다. 후반부 게임 구현과 구분되는 원고 자료다.
+[0장 전체 대화 원고 — 가라앉은 약속](docs/story/chapter-00-dialogues.md): 출항·습격·침몰·귀물/구조 선택과 두 경로의 후회, 표국 해체·인도/실패 보고·장사 입성을 정리했다. 귀물 인도 보수는 3,000문이다. 해당 대사와 분기는 Godot에 연결했으며 [구현 안내](docs/story/chapter-00-implementation.md)를 따른다.

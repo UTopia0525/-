@@ -31,7 +31,7 @@ func _run() -> void:
 	check(game.music.players[game.music.current_index].stream_paused, "music mute")
 	game.music.set_enabled(true)
 	game.start_story()
-	game.advance_dialogue()
+	while not game.dialogue_lines.is_empty(): game.advance_dialogue()
 	check(game.exploration.active, "movement enabled after dialogue")
 	check(game.music.current_track == "dock", "dock music")
 	var player = game.exploration.player
@@ -70,23 +70,24 @@ func _run() -> void:
 	check(game.exploration.player.position.x >= 90, "native collision prevents walking into water")
 	game.exploration.player.position = Vector2(640, 395)
 	game.interact()
-	for index in range(3):
+	while not game.dialogue_lines.is_empty():
 		game.advance_dialogue()
 	check(game.talked_captain, "captain dialogue")
 	check(String(player.sprite.animation).begins_with("idle_"), "dialogue stops walking animation")
 	game.exploration.player.position = Vector2(810, 410)
 	game.interact()
-	game.advance_dialogue()
+	while not game.dialogue_lines.is_empty(): game.advance_dialogue()
 	check(game.exploration.area_name == "deck", "boarding changes map")
 	check(game.music.current_track == "voyage", "voyage music")
 	check(game.exploration.active, "deck movement")
 	check(not game.exploration.astar.get_point_path(Vector2i(game.exploration.player.position / 20.0), Vector2i(35, 18)).is_empty(), "deck captain is reachable")
 	game.exploration.player.position = Vector2(715, 365)
 	game.interact()
-	for index in range(4):
+	var heard_warning := false
+	while not game.dialogue_lines.is_empty():
+		if game.music.current_track == "ambush": heard_warning = true
 		game.advance_dialogue()
-		if index == 1:
-			check(game.music.current_track == "ambush", "tension music on pirate warning")
+	check(heard_warning, "tension music on pirate warning")
 	check(game.music.current_track == "battle", "battle music")
 	check(game.state == "battle", "ambush transitions into battle")
 	check(game.battle.player_hp == 300 and game.battle.enemy_hp == 150, "fresh battle HP")
@@ -100,7 +101,7 @@ func _run() -> void:
 	for index in range(3):
 		game.battle.use_selected()
 		await _wait_for_turn()
-	check(game.state == "end", "victory")
+	check(game.state == "story", "victory continues the full prologue")
 	check(game.battle.player_hp == 219 and game.battle.enemy_hp == 0, "four hits and three counters")
 	game.start_battle()
 	check(game.battle.player_hp == 300 and game.battle.enemy_hp == 150, "retry restores condition")
