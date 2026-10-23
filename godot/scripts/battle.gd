@@ -241,6 +241,7 @@ func select_skill(id: String) -> void:
 	heading.text = item.name
 	var names := {"strength":"근력", "agility":"기민", "constitution":"근골", "inner":"내공", "insight":"오성"}
 	var terms: Array = []
+	if int(item.get("base_damage",0)) > 0: terms.append(str(int(item.base_damage)))
 	for key in item.damage_coefficients: terms.append("%s × %d" % [names[key], int(item.damage_coefficients[key])])
 	var a: Dictionary = combat.action(id, player_stats, equipped_weapon_id)
 	detail.text = "다음 적 행동의 피해70% 감소 · 공격하지 않음" if id == "basic_defense" else " + ".join(terms) + "\n현재 방어 전 피해: " + str(a.get("raw",0))

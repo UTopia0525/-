@@ -168,6 +168,7 @@ func update_detail() -> void:
     var item: Dictionary = p.arts.get_skill(selected_id)
     var names := {"strength":"근력", "agility":"기민", "constitution":"근골", "inner":"내공", "insight":"오성"}
     var terms: Array = []
+    if int(item.get("base_damage",0)) > 0: terms.append(str(int(item.base_damage)))
     for key in item.damage_coefficients: terms.append("%s×%d" % [names[key], int(item.damage_coefficients[key])])
     detail.text = "%s\n\n%s\n\n%s\n내기 소모%d · %s" % [item.name, item.description, " + ".join(terms), game.progress.weapons.qi_cost(item.qi_cost, game.battle.equipped_weapon_id, item), p.arts.weapon_requirement(selected_id)]
     if not p.arts.can_use_with_weapon(selected_id, game.battle.equipped_weapon_type): detail.text += "\n현재 장비로 사용 불가 · I에서 장비를 바꾸세요."

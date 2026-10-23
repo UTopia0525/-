@@ -1,0 +1,1540 @@
+{
+  "duels": [
+    {
+      "after": {
+        "actions": [
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu"
+        ],
+        "damage": 270,
+        "turns": 4
+      },
+      "before": {
+        "actions": [
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu"
+        ],
+        "damage": 270,
+        "turns": 4
+      },
+      "skills": [
+        "cheongpung",
+        "yusu"
+      ],
+      "stat_each": 15,
+      "target_g": 15,
+      "target_hp": 240,
+      "weapon": "refined_sword"
+    },
+    {
+      "after": {
+        "actions": [
+          "basic_attack",
+          "gwanpung",
+          "gwanpung"
+        ],
+        "damage": 245,
+        "turns": 3
+      },
+      "before": {
+        "actions": [
+          "basic_attack",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung"
+        ],
+        "damage": 295,
+        "turns": 4
+      },
+      "skills": [
+        "gwanpung"
+      ],
+      "stat_each": 15,
+      "target_g": 15,
+      "target_hp": 240,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan"
+        ],
+        "damage": 441,
+        "turns": 4
+      },
+      "before": {
+        "actions": [
+          "basic_attack",
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan"
+        ],
+        "damage": 247,
+        "turns": 5
+      },
+      "skills": [
+        "yeonhwan"
+      ],
+      "stat_each": 15,
+      "target_g": 15,
+      "target_hp": 240,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu"
+        ],
+        "damage": 540,
+        "turns": 8
+      },
+      "before": {
+        "actions": [
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu"
+        ],
+        "damage": 540,
+        "turns": 8
+      },
+      "skills": [
+        "cheongpung",
+        "yusu"
+      ],
+      "stat_each": 15,
+      "target_g": 15,
+      "target_hp": 480,
+      "weapon": "refined_sword"
+    },
+    {
+      "after": {
+        "actions": [
+          "basic_attack",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung"
+        ],
+        "damage": 583,
+        "turns": 5
+      },
+      "before": {
+        "actions": [
+          "basic_attack",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "basic_attack",
+          "gwanpung"
+        ],
+        "damage": 590,
+        "turns": 8
+      },
+      "skills": [
+        "gwanpung"
+      ],
+      "stat_each": 15,
+      "target_g": 15,
+      "target_hp": 480,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan"
+        ],
+        "damage": 528,
+        "turns": 6
+      },
+      "before": {
+        "actions": [
+          "basic_attack",
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan"
+        ],
+        "damage": 605,
+        "turns": 11
+      },
+      "skills": [
+        "yeonhwan"
+      ],
+      "stat_each": 15,
+      "target_g": 15,
+      "target_hp": 480,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu"
+        ],
+        "damage": 728,
+        "turns": 11
+      },
+      "before": {
+        "actions": [
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu"
+        ],
+        "damage": 728,
+        "turns": 11
+      },
+      "skills": [
+        "cheongpung",
+        "yusu"
+      ],
+      "stat_each": 15,
+      "target_g": 15,
+      "target_hp": 720,
+      "weapon": "refined_sword"
+    },
+    {
+      "after": {
+        "actions": [
+          "basic_attack",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung"
+        ],
+        "damage": 802,
+        "turns": 7
+      },
+      "before": {
+        "actions": [
+          "basic_attack",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "basic_attack",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung"
+        ],
+        "damage": 742,
+        "turns": 10
+      },
+      "skills": [
+        "gwanpung"
+      ],
+      "stat_each": 15,
+      "target_g": 15,
+      "target_hp": 720,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan",
+          "yeonhwan"
+        ],
+        "damage": 732,
+        "turns": 7
+      },
+      "before": {
+        "actions": [
+          "basic_attack",
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan"
+        ],
+        "damage": 742,
+        "turns": 13
+      },
+      "skills": [
+        "yeonhwan"
+      ],
+      "stat_each": 15,
+      "target_g": 15,
+      "target_hp": 720,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "yusu",
+          "yusu",
+          "yusu"
+        ],
+        "damage": 262,
+        "turns": 3
+      },
+      "before": {
+        "actions": [
+          "yusu",
+          "yusu",
+          "yusu"
+        ],
+        "damage": 262,
+        "turns": 3
+      },
+      "skills": [
+        "cheongpung",
+        "yusu",
+        "swaeam"
+      ],
+      "stat_each": 20,
+      "target_g": 15,
+      "target_hp": 240,
+      "weapon": "refined_sword"
+    },
+    {
+      "after": {
+        "actions": [
+          "hoepung",
+          "hoepung"
+        ],
+        "damage": 240,
+        "turns": 2
+      },
+      "before": {
+        "actions": [
+          "hoepung",
+          "hoepung"
+        ],
+        "damage": 240,
+        "turns": 2
+      },
+      "skills": [
+        "danseok",
+        "hoepung"
+      ],
+      "stat_each": 20,
+      "target_g": 15,
+      "target_hp": 240,
+      "weapon": "thickback_saber"
+    },
+    {
+      "after": {
+        "actions": [
+          "gwanpung",
+          "gwanpung"
+        ],
+        "damage": 390,
+        "turns": 2
+      },
+      "before": {
+        "actions": [
+          "gwanpung",
+          "gwanpung"
+        ],
+        "damage": 320,
+        "turns": 2
+      },
+      "skills": [
+        "gwanpung"
+      ],
+      "stat_each": 20,
+      "target_g": 15,
+      "target_hp": 240,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "basic_attack",
+          "yeonhwan"
+        ],
+        "damage": 269,
+        "turns": 2
+      },
+      "before": {
+        "actions": [
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan"
+        ],
+        "damage": 406,
+        "turns": 4
+      },
+      "skills": [
+        "yeonhwan"
+      ],
+      "stat_each": 20,
+      "target_g": 15,
+      "target_hp": 240,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "cheolsan",
+          "cheolsan"
+        ],
+        "damage": 320,
+        "turns": 2
+      },
+      "before": {
+        "actions": [
+          "cheolsan",
+          "cheolsan"
+        ],
+        "damage": 320,
+        "turns": 2
+      },
+      "skills": [
+        "cheolsan"
+      ],
+      "stat_each": 20,
+      "target_g": 15,
+      "target_hp": 240,
+      "weapon": "none"
+    },
+    {
+      "after": {
+        "actions": [
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu"
+        ],
+        "damage": 490,
+        "turns": 5
+      },
+      "before": {
+        "actions": [
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu"
+        ],
+        "damage": 490,
+        "turns": 5
+      },
+      "skills": [
+        "cheongpung",
+        "yusu",
+        "swaeam"
+      ],
+      "stat_each": 20,
+      "target_g": 15,
+      "target_hp": 480,
+      "weapon": "refined_sword"
+    },
+    {
+      "after": {
+        "actions": [
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung"
+        ],
+        "damage": 516,
+        "turns": 5
+      },
+      "before": {
+        "actions": [
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung"
+        ],
+        "damage": 516,
+        "turns": 5
+      },
+      "skills": [
+        "danseok",
+        "hoepung"
+      ],
+      "stat_each": 20,
+      "target_g": 15,
+      "target_hp": 480,
+      "weapon": "thickback_saber"
+    },
+    {
+      "after": {
+        "actions": [
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung"
+        ],
+        "damage": 643,
+        "turns": 4
+      },
+      "before": {
+        "actions": [
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung"
+        ],
+        "damage": 528,
+        "turns": 4
+      },
+      "skills": [
+        "gwanpung"
+      ],
+      "stat_each": 20,
+      "target_g": 15,
+      "target_hp": 480,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "basic_attack",
+          "yeonhwan",
+          "yeonhwan",
+          "yeonhwan"
+        ],
+        "damage": 568,
+        "turns": 4
+      },
+      "before": {
+        "actions": [
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan",
+          "yeonhwan"
+        ],
+        "damage": 584,
+        "turns": 5
+      },
+      "skills": [
+        "yeonhwan"
+      ],
+      "stat_each": 20,
+      "target_g": 15,
+      "target_hp": 480,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "cheolsan",
+          "cheolsan",
+          "cheolsan",
+          "cheolsan"
+        ],
+        "damage": 528,
+        "turns": 4
+      },
+      "before": {
+        "actions": [
+          "cheolsan",
+          "cheolsan",
+          "cheolsan",
+          "cheolsan"
+        ],
+        "damage": 528,
+        "turns": 4
+      },
+      "skills": [
+        "cheolsan"
+      ],
+      "stat_each": 20,
+      "target_g": 15,
+      "target_hp": 480,
+      "weapon": "none"
+    },
+    {
+      "after": {
+        "actions": [
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu"
+        ],
+        "damage": 752,
+        "turns": 8
+      },
+      "before": {
+        "actions": [
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu"
+        ],
+        "damage": 752,
+        "turns": 8
+      },
+      "skills": [
+        "cheongpung",
+        "yusu",
+        "swaeam"
+      ],
+      "stat_each": 20,
+      "target_g": 15,
+      "target_hp": 720,
+      "weapon": "refined_sword"
+    },
+    {
+      "after": {
+        "actions": [
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung"
+        ],
+        "damage": 792,
+        "turns": 8
+      },
+      "before": {
+        "actions": [
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung"
+        ],
+        "damage": 792,
+        "turns": 8
+      },
+      "skills": [
+        "danseok",
+        "hoepung"
+      ],
+      "stat_each": 20,
+      "target_g": 15,
+      "target_hp": 720,
+      "weapon": "thickback_saber"
+    },
+    {
+      "after": {
+        "actions": [
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung"
+        ],
+        "damage": 838,
+        "turns": 5
+      },
+      "before": {
+        "actions": [
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung"
+        ],
+        "damage": 736,
+        "turns": 6
+      },
+      "skills": [
+        "gwanpung"
+      ],
+      "stat_each": 20,
+      "target_g": 15,
+      "target_hp": 720,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "basic_attack",
+          "yeonhwan",
+          "yeonhwan",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan",
+          "yeonhwan"
+        ],
+        "damage": 906,
+        "turns": 7
+      },
+      "before": {
+        "actions": [
+          "basic_attack",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan",
+          "yeonhwan",
+          "basic_attack",
+          "yeonhwan"
+        ],
+        "damage": 773,
+        "turns": 7
+      },
+      "skills": [
+        "yeonhwan"
+      ],
+      "stat_each": 20,
+      "target_g": 15,
+      "target_hp": 720,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "cheolsan",
+          "cheolsan",
+          "cheolsan",
+          "cheolsan",
+          "cheolsan",
+          "cheolsan"
+        ],
+        "damage": 736,
+        "turns": 6
+      },
+      "before": {
+        "actions": [
+          "cheolsan",
+          "cheolsan",
+          "cheolsan",
+          "cheolsan",
+          "cheolsan",
+          "cheolsan"
+        ],
+        "damage": 736,
+        "turns": 6
+      },
+      "skills": [
+        "cheolsan"
+      ],
+      "stat_each": 20,
+      "target_g": 15,
+      "target_hp": 720,
+      "weapon": "none"
+    },
+    {
+      "after": {
+        "actions": [
+          "yusu",
+          "yusu"
+        ],
+        "damage": 356,
+        "turns": 2
+      },
+      "before": {
+        "actions": [
+          "yusu",
+          "yusu"
+        ],
+        "damage": 356,
+        "turns": 2
+      },
+      "skills": [
+        "cheongpung",
+        "yusu",
+        "swaeam"
+      ],
+      "stat_each": 30,
+      "target_g": 15,
+      "target_hp": 240,
+      "weapon": "refined_sword"
+    },
+    {
+      "after": {
+        "actions": [
+          "hoepung",
+          "hoepung"
+        ],
+        "damage": 374,
+        "turns": 2
+      },
+      "before": {
+        "actions": [
+          "hoepung",
+          "hoepung"
+        ],
+        "damage": 374,
+        "turns": 2
+      },
+      "skills": [
+        "danseok",
+        "hoepung"
+      ],
+      "stat_each": 30,
+      "target_g": 15,
+      "target_hp": 240,
+      "weapon": "thickback_saber"
+    },
+    {
+      "after": {
+        "actions": [
+          "gwanpung"
+        ],
+        "damage": 247,
+        "turns": 1
+      },
+      "before": {
+        "actions": [
+          "gwanpung"
+        ],
+        "damage": 247,
+        "turns": 1
+      },
+      "skills": [
+        "gwanpung"
+      ],
+      "stat_each": 30,
+      "target_g": 15,
+      "target_hp": 240,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "yeonhwan"
+        ],
+        "damage": 282,
+        "turns": 1
+      },
+      "before": {
+        "actions": [
+          "basic_attack",
+          "yeonhwan"
+        ],
+        "damage": 338,
+        "turns": 2
+      },
+      "skills": [
+        "yeonhwan"
+      ],
+      "stat_each": 30,
+      "target_g": 15,
+      "target_hp": 240,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "jingak"
+        ],
+        "damage": 273,
+        "turns": 1
+      },
+      "before": {
+        "actions": [
+          "jingak"
+        ],
+        "damage": 273,
+        "turns": 1
+      },
+      "skills": [
+        "cheolsan",
+        "jingak",
+        "ungi"
+      ],
+      "stat_each": 30,
+      "target_g": 15,
+      "target_hp": 240,
+      "weapon": "none"
+    },
+    {
+      "after": {
+        "actions": [
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu"
+        ],
+        "damage": 587,
+        "turns": 4
+      },
+      "before": {
+        "actions": [
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu"
+        ],
+        "damage": 587,
+        "turns": 4
+      },
+      "skills": [
+        "cheongpung",
+        "yusu",
+        "swaeam"
+      ],
+      "stat_each": 30,
+      "target_g": 15,
+      "target_hp": 480,
+      "weapon": "refined_sword"
+    },
+    {
+      "after": {
+        "actions": [
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung"
+        ],
+        "damage": 617,
+        "turns": 4
+      },
+      "before": {
+        "actions": [
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung"
+        ],
+        "damage": 617,
+        "turns": 4
+      },
+      "skills": [
+        "danseok",
+        "hoepung"
+      ],
+      "stat_each": 30,
+      "target_g": 15,
+      "target_hp": 480,
+      "weapon": "thickback_saber"
+    },
+    {
+      "after": {
+        "actions": [
+          "gwanpung",
+          "gwanpung"
+        ],
+        "damage": 494,
+        "turns": 2
+      },
+      "before": {
+        "actions": [
+          "gwanpung",
+          "gwanpung"
+        ],
+        "damage": 494,
+        "turns": 2
+      },
+      "skills": [
+        "gwanpung"
+      ],
+      "stat_each": 30,
+      "target_g": 15,
+      "target_hp": 480,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "yeonhwan",
+          "yeonhwan"
+        ],
+        "damage": 564,
+        "turns": 2
+      },
+      "before": {
+        "actions": [
+          "basic_attack",
+          "yeonhwan",
+          "yeonhwan",
+          "yeonhwan"
+        ],
+        "damage": 693,
+        "turns": 4
+      },
+      "skills": [
+        "yeonhwan"
+      ],
+      "stat_each": 30,
+      "target_g": 15,
+      "target_hp": 480,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "jingak",
+          "jingak"
+        ],
+        "damage": 546,
+        "turns": 2
+      },
+      "before": {
+        "actions": [
+          "jingak",
+          "jingak"
+        ],
+        "damage": 546,
+        "turns": 2
+      },
+      "skills": [
+        "cheolsan",
+        "jingak",
+        "ungi"
+      ],
+      "stat_each": 30,
+      "target_g": 15,
+      "target_hp": 480,
+      "weapon": "none"
+    },
+    {
+      "after": {
+        "actions": [
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu"
+        ],
+        "damage": 765,
+        "turns": 5
+      },
+      "before": {
+        "actions": [
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu",
+          "yusu"
+        ],
+        "damage": 765,
+        "turns": 5
+      },
+      "skills": [
+        "cheongpung",
+        "yusu",
+        "swaeam"
+      ],
+      "stat_each": 30,
+      "target_g": 15,
+      "target_hp": 720,
+      "weapon": "refined_sword"
+    },
+    {
+      "after": {
+        "actions": [
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung"
+        ],
+        "damage": 804,
+        "turns": 5
+      },
+      "before": {
+        "actions": [
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung",
+          "hoepung"
+        ],
+        "damage": 804,
+        "turns": 5
+      },
+      "skills": [
+        "danseok",
+        "hoepung"
+      ],
+      "stat_each": 30,
+      "target_g": 15,
+      "target_hp": 720,
+      "weapon": "thickback_saber"
+    },
+    {
+      "after": {
+        "actions": [
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung"
+        ],
+        "damage": 815,
+        "turns": 4
+      },
+      "before": {
+        "actions": [
+          "gwanpung",
+          "gwanpung",
+          "gwanpung",
+          "gwanpung"
+        ],
+        "damage": 815,
+        "turns": 4
+      },
+      "skills": [
+        "gwanpung"
+      ],
+      "stat_each": 30,
+      "target_g": 15,
+      "target_hp": 720,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "yeonhwan",
+          "yeonhwan",
+          "yeonhwan",
+          "yeonhwan"
+        ],
+        "damage": 930,
+        "turns": 4
+      },
+      "before": {
+        "actions": [
+          "basic_attack",
+          "yeonhwan",
+          "yeonhwan",
+          "yeonhwan",
+          "yeonhwan"
+        ],
+        "damage": 966,
+        "turns": 5
+      },
+      "skills": [
+        "yeonhwan"
+      ],
+      "stat_each": 30,
+      "target_g": 15,
+      "target_hp": 720,
+      "weapon": "balanced_spear"
+    },
+    {
+      "after": {
+        "actions": [
+          "jingak",
+          "jingak",
+          "jingak",
+          "jingak"
+        ],
+        "damage": 901,
+        "turns": 4
+      },
+      "before": {
+        "actions": [
+          "jingak",
+          "jingak",
+          "jingak",
+          "jingak"
+        ],
+        "damage": 901,
+        "turns": 4
+      },
+      "skills": [
+        "cheolsan",
+        "jingak",
+        "ungi"
+      ],
+      "stat_each": 30,
+      "target_g": 15,
+      "target_hp": 720,
+      "weapon": "none"
+    }
+  ],
+  "scaling": [
+    {
+      "arts": {
+        "cheolsan": {
+          "after": 150.0,
+          "before": 150.0,
+          "eligible": false
+        },
+        "cheongpung": {
+          "after": 103.5,
+          "before": 103.5,
+          "eligible": true
+        },
+        "danseok": {
+          "after": 117.0,
+          "before": 117.0,
+          "eligible": false
+        },
+        "gwanpung": {
+          "after": 210.0,
+          "before": 150.0,
+          "eligible": true
+        },
+        "hoepung": {
+          "after": 136.5,
+          "before": 136.5,
+          "eligible": false
+        },
+        "jingak": {
+          "after": 165.0,
+          "before": 165.0,
+          "eligible": false
+        },
+        "swaeam": {
+          "after": 120.75,
+          "before": 120.75,
+          "eligible": false
+        },
+        "ungi": {
+          "after": 165.0,
+          "before": 165.0,
+          "eligible": false
+        },
+        "yeonhwan": {
+          "after": 250.0,
+          "before": 165.0,
+          "eligible": true
+        },
+        "yusu": {
+          "after": 120.75,
+          "before": 120.75,
+          "eligible": true
+        }
+      },
+      "stat_each": 15
+    },
+    {
+      "arts": {
+        "cheolsan": {
+          "after": 200.0,
+          "before": 200.0,
+          "eligible": true
+        },
+        "cheongpung": {
+          "after": 138.0,
+          "before": 138.0,
+          "eligible": true
+        },
+        "danseok": {
+          "after": 156.0,
+          "before": 156.0,
+          "eligible": true
+        },
+        "gwanpung": {
+          "after": 240.0,
+          "before": 200.0,
+          "eligible": true
+        },
+        "hoepung": {
+          "after": 182.0,
+          "before": 182.0,
+          "eligible": true
+        },
+        "jingak": {
+          "after": 220.0,
+          "before": 220.0,
+          "eligible": false
+        },
+        "swaeam": {
+          "after": 161.0,
+          "before": 161.0,
+          "eligible": true
+        },
+        "ungi": {
+          "after": 220.0,
+          "before": 220.0,
+          "eligible": false
+        },
+        "yeonhwan": {
+          "after": 280.0,
+          "before": 220.0,
+          "eligible": true
+        },
+        "yusu": {
+          "after": 161.0,
+          "before": 161.0,
+          "eligible": true
+        }
+      },
+      "stat_each": 20
+    },
+    {
+      "arts": {
+        "cheolsan": {
+          "after": 300.0,
+          "before": 300.0,
+          "eligible": true
+        },
+        "cheongpung": {
+          "after": 207.0,
+          "before": 207.0,
+          "eligible": true
+        },
+        "danseok": {
+          "after": 234.0,
+          "before": 234.0,
+          "eligible": true
+        },
+        "gwanpung": {
+          "after": 300.0,
+          "before": 300.0,
+          "eligible": true
+        },
+        "hoepung": {
+          "after": 273.0,
+          "before": 273.0,
+          "eligible": true
+        },
+        "jingak": {
+          "after": 330.0,
+          "before": 330.0,
+          "eligible": true
+        },
+        "swaeam": {
+          "after": 241.5,
+          "before": 241.5,
+          "eligible": true
+        },
+        "ungi": {
+          "after": 330.0,
+          "before": 330.0,
+          "eligible": true
+        },
+        "yeonhwan": {
+          "after": 340.0,
+          "before": 330.0,
+          "eligible": true
+        },
+        "yusu": {
+          "after": 241.5,
+          "before": 241.5,
+          "eligible": true
+        }
+      },
+      "stat_each": 30
+    },
+    {
+      "arts": {
+        "cheolsan": {
+          "after": 600.0,
+          "before": 600.0,
+          "eligible": true
+        },
+        "cheongpung": {
+          "after": 414.0,
+          "before": 414.0,
+          "eligible": true
+        },
+        "danseok": {
+          "after": 468.0,
+          "before": 468.0,
+          "eligible": true
+        },
+        "gwanpung": {
+          "after": 480.0,
+          "before": 600.0,
+          "eligible": true
+        },
+        "hoepung": {
+          "after": 546.0,
+          "before": 546.0,
+          "eligible": true
+        },
+        "jingak": {
+          "after": 660.0,
+          "before": 660.0,
+          "eligible": true
+        },
+        "swaeam": {
+          "after": 483.0,
+          "before": 483.0,
+          "eligible": true
+        },
+        "ungi": {
+          "after": 660.0,
+          "before": 660.0,
+          "eligible": true
+        },
+        "yeonhwan": {
+          "after": 520.0,
+          "before": 660.0,
+          "eligible": true
+        },
+        "yusu": {
+          "after": 483.0,
+          "before": 483.0,
+          "eligible": true
+        }
+      },
+      "stat_each": 60
+    },
+    {
+      "arts": {
+        "cheolsan": {
+          "after": 800.0,
+          "before": 800.0,
+          "eligible": true
+        },
+        "cheongpung": {
+          "after": 552.0,
+          "before": 552.0,
+          "eligible": true
+        },
+        "danseok": {
+          "after": 624.0,
+          "before": 624.0,
+          "eligible": true
+        },
+        "gwanpung": {
+          "after": 600.0,
+          "before": 800.0,
+          "eligible": true
+        },
+        "hoepung": {
+          "after": 728.0,
+          "before": 728.0,
+          "eligible": true
+        },
+        "jingak": {
+          "after": 880.0,
+          "before": 880.0,
+          "eligible": true
+        },
+        "swaeam": {
+          "after": 644.0,
+          "before": 644.0,
+          "eligible": true
+        },
+        "ungi": {
+          "after": 880.0,
+          "before": 880.0,
+          "eligible": true
+        },
+        "yeonhwan": {
+          "after": 640.0,
+          "before": 880.0,
+          "eligible": true
+        },
+        "yusu": {
+          "after": 644.0,
+          "before": 644.0,
+          "eligible": true
+        }
+      },
+      "stat_each": 80
+    },
+    {
+      "arts": {
+        "cheolsan": {
+          "after": 1000.0,
+          "before": 1000.0,
+          "eligible": true
+        },
+        "cheongpung": {
+          "after": 690.0,
+          "before": 690.0,
+          "eligible": true
+        },
+        "danseok": {
+          "after": 780.0,
+          "before": 780.0,
+          "eligible": true
+        },
+        "gwanpung": {
+          "after": 720.0,
+          "before": 1000.0,
+          "eligible": true
+        },
+        "hoepung": {
+          "after": 910.0,
+          "before": 910.0,
+          "eligible": true
+        },
+        "jingak": {
+          "after": 1100.0,
+          "before": 1100.0,
+          "eligible": true
+        },
+        "swaeam": {
+          "after": 805.0,
+          "before": 805.0,
+          "eligible": true
+        },
+        "ungi": {
+          "after": 1100.0,
+          "before": 1100.0,
+          "eligible": true
+        },
+        "yeonhwan": {
+          "after": 760.0,
+          "before": 1100.0,
+          "eligible": true
+        },
+        "yusu": {
+          "after": 805.0,
+          "before": 805.0,
+          "eligible": true
+        }
+      },
+      "stat_each": 100
+    }
+  ],
+  "scope": "균등 능력치 비교는 성장 가정. 후반 적·상위 무공은 미구현이므로 실제 후반 전투 보장이 아님."
+}

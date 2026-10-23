@@ -159,6 +159,7 @@ func update_detail() -> void:
 				var req: Array = []
 				var names := {"strength":"근력", "agility":"기민", "constitution":"근골", "inner":"내공", "insight":"오성"}
 				var terms: Array = []
+				if int(item.get("base_damage",0)) > 0: terms.append(str(int(item.base_damage)))
 				for key in item.damage_coefficients: terms.append("%s×%d" % [names[key], int(item.damage_coefficients[key])])
 				for key in item.requirements.stats: req.append("%s%d" % [names[key], item.requirements.stats[key]])
 				message.text = "%s\n\n%s\n\n위력: %s\n내기 소모%d · %s\n학습: %s\n다섯 스탯 합계%d 이상" % [item.name, item.description, " + ".join(terms), item.qi_cost, p.arts.weapon_requirement(selected_id), " · ".join(req), item.requirements.minimum_total]

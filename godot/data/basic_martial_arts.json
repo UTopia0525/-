@@ -146,11 +146,11 @@
     "kind": "attack",
     "weapon_style": "spear",
     "damage_coefficients": {
-      "strength": 3,
-      "agility": 5,
-      "insight": 2
+      "strength": 2,
+      "agility": 3,
+      "insight": 1
     },
-    "qi_cost": 20,
+    "qi_cost": 18,
     "requirements": {
       "stats": {
         "strength": 12,
@@ -160,22 +160,23 @@
       "minimum_total": 60
     },
     "acquisition": "city_instructor",
-    "description": "상대의 움직임을 읽고 창 끝을 곧게 뻗어 찌르는 창법.",
+    "description": "긴 창의 간격을 살려 상대의 움직임을 읽고 곧게 찌르는 창법. 기본 위력120으로 초반에 강하지만 능력치 성장 효율은 낮다.",
     "status": "proposal",
     "required_weapon_type": "spear",
     "price": 350,
-    "price_currency": "mun"
+    "price_currency": "mun",
+    "base_damage": 120
   },
   "yeonhwan": {
     "name": "연환창법",
     "kind": "attack",
     "weapon_style": "spear",
     "damage_coefficients": {
-      "strength": 3,
-      "agility": 5,
-      "inner": 3
+      "strength": 2,
+      "agility": 3,
+      "inner": 1
     },
-    "qi_cost": 34,
+    "qi_cost": 28,
     "requirements": {
       "stats": {
         "agility": 15,
@@ -185,11 +186,12 @@
       "minimum_total": 70
     },
     "acquisition": "city_instructor",
-    "description": "허초와 실초를 이어 마지막 찌르기에 내기를 집중하는 창법.",
+    "description": "허초와 실초를 이어 마지막 찌르기에 내기를 집중하는 창법. 기본 위력160의 강한 일격을 내지만 초급 초식의 성장 효율에는 한계가 있다.",
     "status": "proposal",
     "required_weapon_type": "spear",
     "price": 350,
-    "price_currency": "mun"
+    "price_currency": "mun",
+    "base_damage": 160
   },
   "cheolsan": {
     "name": "철산권법",

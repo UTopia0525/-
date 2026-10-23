@@ -24,7 +24,7 @@ func can_learn(id: String, stats: Dictionary) -> bool:
 
 func raw_damage(id: String, stats: Dictionary) -> float:
 	if not definitions.has(id): return 0.0
-	var amount := 0.0
+	var amount := float(definitions[id].get("base_damage", 0))
 	for stat in definitions[id].damage_coefficients:
 		amount += float(stats.get(stat, 0)) * float(definitions[id].damage_coefficients[stat])
 	return amount

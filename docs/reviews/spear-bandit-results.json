@@ -1,0 +1,506 @@
+[
+  {
+    "skill": "gwanpung",
+    "weapon": "balanced_spear",
+    "enemy": "bandit_sentry",
+    "reactive_defense": false,
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "before": {
+      "hp": 284,
+      "turns": 2
+    },
+    "after": {
+      "hp": 284,
+      "turns": 2
+    }
+  },
+  {
+    "skill": "gwanpung",
+    "weapon": "balanced_spear",
+    "enemy": "bandit_ringleader",
+    "reactive_defense": false,
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "before": {
+      "hp": 258,
+      "turns": 4
+    },
+    "after": {
+      "hp": 258,
+      "turns": 3
+    }
+  },
+  {
+    "skill": "gwanpung",
+    "weapon": "balanced_spear",
+    "enemy": "bandit_sentry",
+    "reactive_defense": true,
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "before": {
+      "hp": 284,
+      "turns": 2
+    },
+    "after": {
+      "hp": 284,
+      "turns": 2
+    }
+  },
+  {
+    "skill": "gwanpung",
+    "weapon": "balanced_spear",
+    "enemy": "bandit_ringleader",
+    "reactive_defense": true,
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "before": {
+      "hp": 258,
+      "turns": 4
+    },
+    "after": {
+      "hp": 258,
+      "turns": 3
+    }
+  },
+  {
+    "skill": "gwanpung",
+    "weapon": "willow_spear",
+    "enemy": "bandit_sentry",
+    "reactive_defense": false,
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "before": {
+      "hp": 284,
+      "turns": 2
+    },
+    "after": {
+      "hp": 284,
+      "turns": 2
+    }
+  },
+  {
+    "skill": "gwanpung",
+    "weapon": "willow_spear",
+    "enemy": "bandit_ringleader",
+    "reactive_defense": false,
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "before": {
+      "hp": 258,
+      "turns": 4
+    },
+    "after": {
+      "hp": 258,
+      "turns": 3
+    }
+  },
+  {
+    "skill": "gwanpung",
+    "weapon": "willow_spear",
+    "enemy": "bandit_sentry",
+    "reactive_defense": true,
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "before": {
+      "hp": 284,
+      "turns": 2
+    },
+    "after": {
+      "hp": 284,
+      "turns": 2
+    }
+  },
+  {
+    "skill": "gwanpung",
+    "weapon": "willow_spear",
+    "enemy": "bandit_ringleader",
+    "reactive_defense": true,
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "before": {
+      "hp": 258,
+      "turns": 4
+    },
+    "after": {
+      "hp": 258,
+      "turns": 3
+    }
+  },
+  {
+    "skill": "gwanpung",
+    "weapon": "flowing_cloud_spear",
+    "enemy": "bandit_sentry",
+    "reactive_defense": false,
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "before": {
+      "hp": 284,
+      "turns": 2
+    },
+    "after": {
+      "hp": 284,
+      "turns": 2
+    }
+  },
+  {
+    "skill": "gwanpung",
+    "weapon": "flowing_cloud_spear",
+    "enemy": "bandit_ringleader",
+    "reactive_defense": false,
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "before": {
+      "hp": 258,
+      "turns": 4
+    },
+    "after": {
+      "hp": 258,
+      "turns": 3
+    }
+  },
+  {
+    "skill": "gwanpung",
+    "weapon": "flowing_cloud_spear",
+    "enemy": "bandit_sentry",
+    "reactive_defense": true,
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "before": {
+      "hp": 284,
+      "turns": 2
+    },
+    "after": {
+      "hp": 284,
+      "turns": 2
+    }
+  },
+  {
+    "skill": "gwanpung",
+    "weapon": "flowing_cloud_spear",
+    "enemy": "bandit_ringleader",
+    "reactive_defense": true,
+    "stats": {
+      "agility": 12,
+      "constitution": 10,
+      "inner": 12,
+      "insight": 54,
+      "strength": 12
+    },
+    "before": {
+      "hp": 258,
+      "turns": 4
+    },
+    "after": {
+      "hp": 258,
+      "turns": 3
+    }
+  },
+  {
+    "skill": "yeonhwan",
+    "weapon": "balanced_spear",
+    "enemy": "bandit_sentry",
+    "reactive_defense": false,
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "before": {
+      "hp": 236,
+      "turns": 5
+    },
+    "after": {
+      "hp": 284,
+      "turns": 2
+    }
+  },
+  {
+    "skill": "yeonhwan",
+    "weapon": "balanced_spear",
+    "enemy": "bandit_ringleader",
+    "reactive_defense": false,
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "before": {
+      "hp": 125,
+      "turns": 8
+    },
+    "after": {
+      "hp": 258,
+      "turns": 4
+    }
+  },
+  {
+    "skill": "yeonhwan",
+    "weapon": "balanced_spear",
+    "enemy": "bandit_sentry",
+    "reactive_defense": true,
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "before": {
+      "hp": 270,
+      "turns": 5
+    },
+    "after": {
+      "hp": 284,
+      "turns": 2
+    }
+  },
+  {
+    "skill": "yeonhwan",
+    "weapon": "balanced_spear",
+    "enemy": "bandit_ringleader",
+    "reactive_defense": true,
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "before": {
+      "hp": 186,
+      "turns": 10
+    },
+    "after": {
+      "hp": 258,
+      "turns": 4
+    }
+  },
+  {
+    "skill": "yeonhwan",
+    "weapon": "willow_spear",
+    "enemy": "bandit_sentry",
+    "reactive_defense": false,
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "before": {
+      "hp": 236,
+      "turns": 5
+    },
+    "after": {
+      "hp": 284,
+      "turns": 2
+    }
+  },
+  {
+    "skill": "yeonhwan",
+    "weapon": "willow_spear",
+    "enemy": "bandit_ringleader",
+    "reactive_defense": false,
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "before": {
+      "hp": 146,
+      "turns": 7
+    },
+    "after": {
+      "hp": 258,
+      "turns": 4
+    }
+  },
+  {
+    "skill": "yeonhwan",
+    "weapon": "willow_spear",
+    "enemy": "bandit_sentry",
+    "reactive_defense": true,
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "before": {
+      "hp": 270,
+      "turns": 5
+    },
+    "after": {
+      "hp": 284,
+      "turns": 2
+    }
+  },
+  {
+    "skill": "yeonhwan",
+    "weapon": "willow_spear",
+    "enemy": "bandit_ringleader",
+    "reactive_defense": true,
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "before": {
+      "hp": 186,
+      "turns": 9
+    },
+    "after": {
+      "hp": 258,
+      "turns": 4
+    }
+  },
+  {
+    "skill": "yeonhwan",
+    "weapon": "flowing_cloud_spear",
+    "enemy": "bandit_sentry",
+    "reactive_defense": false,
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "before": {
+      "hp": 260,
+      "turns": 4
+    },
+    "after": {
+      "hp": 284,
+      "turns": 2
+    }
+  },
+  {
+    "skill": "yeonhwan",
+    "weapon": "flowing_cloud_spear",
+    "enemy": "bandit_ringleader",
+    "reactive_defense": false,
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "before": {
+      "hp": 258,
+      "turns": 4
+    },
+    "after": {
+      "hp": 258,
+      "turns": 4
+    }
+  },
+  {
+    "skill": "yeonhwan",
+    "weapon": "flowing_cloud_spear",
+    "enemy": "bandit_sentry",
+    "reactive_defense": true,
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "before": {
+      "hp": 277,
+      "turns": 4
+    },
+    "after": {
+      "hp": 284,
+      "turns": 2
+    }
+  },
+  {
+    "skill": "yeonhwan",
+    "weapon": "flowing_cloud_spear",
+    "enemy": "bandit_ringleader",
+    "reactive_defense": true,
+    "stats": {
+      "agility": 15,
+      "constitution": 10,
+      "inner": 13,
+      "insight": 52,
+      "strength": 10
+    },
+    "before": {
+      "hp": 258,
+      "turns": 4
+    },
+    "after": {
+      "hp": 258,
+      "turns": 4
+    }
+  }
+]
