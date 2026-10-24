@@ -1,3 +1,15 @@
+# 장사 도시 자산
+
+2026-10-24부터 실행 맵은 **바닥 + 독립 투명 건물/담장/문/소품 + 인물의 발밑 정렬** 구조를 사용한다. [구조·현재 화면·검증](../../../../docs/systems/layered-city-and-conversation.md).
+
+- `layout.json`: 월드 크기·구역·NPC·지형 충돌·152개 개별 오브젝트 배치.
+- `layered/ground.png`: 건물 없는 흙길·마당·상강·농촌 바닥.
+- `layered/scenery-atlas.png`, `layered/open-gate.png`: 독립 투명 건축/소품과 통과 가능한 문.
+- `layered/prefabs.json`: 원본 이미지의 표시 영역·종류·발밑 충돌 영역.
+- `city.png`, `detail/`: 아래의 이전 버전 원본 보관용이며 현재 실행 맵에 덧씌우지 않는다.
+
+아래는 이전 일체형 맵의 제작 기록이다.
+
 # 장사 — 자유 탐험 도시 맵
 
 ![장사 전체 맵](../../../screenshots/changsha-overview.png)

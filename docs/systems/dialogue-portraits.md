@@ -33,3 +33,7 @@
 - [남성 공용 비교](../../godot/screenshots/portrait-framing-male.png)
 - [여성 공용 비교](../../godot/screenshots/portrait-framing-female.png)
 - [거래 인물 비교](../../godot/screenshots/portrait-framing-services.png)
+
+## 2026-10-24 후속 업데이트
+
+남녀 공용 초상화 2장씩 추가, 한 대화 안의 초상화 중복 금지, H키 대화 기록을 적용했다. [새 화면과 규칙](layered-city-and-conversation.md). 기존 프레이밍·반전·발언자 강조는 유지한다.

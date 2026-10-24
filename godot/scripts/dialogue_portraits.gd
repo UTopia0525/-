@@ -10,14 +10,14 @@ const ACTORS = {
 	"bandit_leader": {"name":"산적 우두머리", "extra":"male_middle"},
 	"cloth_merchant": {"name": "포목상", "extra": "female_middle"},
 	"pirate": {"name": "흑린채 수적", "extra": "male_middle"},
-	"recipient": {"name": "수령인", "extra": "male_middle"},
+	"recipient": {"name": "수령인", "extra": "male_common_b"},
 	"city_merchant": {"name": "장사꾼", "extra": "male_young", "portrait": "res://assets/portraits/services/merchant.png"},
 	"city_artisan": {"name": "장인", "extra": "female_middle", "portrait": "res://assets/portraits/services/artisan.png"},
 	"city_instructor": {"name": "교관", "extra": "male_middle", "portrait": "res://assets/portraits/services/instructor.png"},
 	"hero": {"name": "주인공", "extra": "male_young", "portrait": "res://assets/portraits/player/hero.png"},
 	"captain": {"name": "서문길", "extra": "male_middle"},
 	"apothecary": {"name": "진소옥", "extra": "female_young"},
-	"sailor": {"name": "허만복", "extra": "male_middle"},
+	"sailor": {"name": "허만복", "extra": "male_common_a"},
 	"clerk": {"name": "육승", "extra": "male_young"},
 }
 const FRAME_SHADER = preload("res://shaders/dialogue_portrait.gdshader")
@@ -27,6 +27,11 @@ var portraits: Dictionary = {}
 var actor_names: Dictionary = {}
 var active_actor: String = ""
 var source_facing: Dictionary = {}
+var portrait_choices: Dictionary = {}
+const COMMON_POOL = {
+	"male": ["male_middle", "male_common_a", "male_common_b", "male_young", "male_elder"],
+	"female": ["female_middle", "female_common_a", "female_common_b", "female_young", "female_elder"]
+}
 
 func _init() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -34,6 +39,7 @@ func _init() -> void:
 	size = Vector2(1232, 410)
 
 func texture_for(actor: Dictionary) -> Texture2D:
+	if actor.get("portrait_unavailable", false): return null
 	# A dedicated illustration overrides the common age/sex portrait.
 	var dedicated: String = actor.get("portrait", "")
 	if not dedicated.is_empty() and ResourceLoader.exists(dedicated):
@@ -79,8 +85,40 @@ func valid_staging(value) -> bool:
 			if not ACTORS.has(id) or value.facing[id] not in ["left", "right"]: return false
 	return true
 
+func allocate_portraits(participants: Array) -> Array:
+	var result: Array = []
+	var used := {}
+	var pending: Array[int] = []
+	for actor in participants:
+		var resolved: Dictionary = actor.duplicate(true)
+		var texture := texture_for(actor)
+		var path: String = texture.resource_path if texture else ""
+		if not path.is_empty() and not used.has(path):
+			resolved.portrait = path
+			used[path] = true
+		else:
+			pending.append(result.size())
+		result.append(resolved)
+	for index in pending:
+		var actor: Dictionary = result[index]
+		var gender := "female" if str(actor.get("extra", "male_middle")).begins_with("female") else "male"
+		var chosen := ""
+		for variant in COMMON_POOL[gender]:
+			var path: String = EXTRA_ROOT + variant + ".png"
+			if not used.has(path) and ResourceLoader.exists(path):
+				chosen = path
+				used[path] = true
+				break
+		# Never silently give a second speaker the same face. Extend the pool first.
+		if chosen.is_empty():
+			push_error("More unique NPC portraits required for this conversation")
+			actor.portrait_unavailable = true
+		actor.portrait = chosen
+	return result
+
 func set_participants(participants: Array) -> void:
 	clear()
+	participants = allocate_portraits(participants)
 	var columns: int = mini(4, participants.size())
 	var rows: int = ceili(participants.size() / 4.0)
 	if columns == 0:
@@ -104,7 +142,8 @@ func set_participants(participants: Array) -> void:
 		portrait.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		portrait.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		apply_framing(portrait, actor)
-		source_facing[id] = framing.profiles.get(portrait.texture.resource_path, {}).get("natural_facing", "right")
+		portrait_choices[id] = portrait.texture.resource_path if portrait.texture else ""
+		source_facing[id] = framing.profiles.get(portrait_choices[id], {}).get("natural_facing", "right")
 		add_child(portrait)
 		portraits[id] = portrait
 		var label = UI.label(self, actor.get("name", id), Rect2(portrait.position + Vector2(0, row_height - 26), Vector2(slot_width, 26)), 16)
@@ -152,5 +191,6 @@ func clear() -> void:
 	portraits.clear()
 	actor_names.clear()
 	source_facing.clear()
+	portrait_choices.clear()
 	active_actor = ""
 	hide()

@@ -91,7 +91,7 @@ func _check_dialogues(game) -> void:
 
 func _check_framing_and_facing(game) -> void:
 	var cast = game.dialogue_cast
-	check(cast.framing.profiles.size() == 11, "all eleven in-game artworks have framing profiles")
+	check(cast.framing.profiles.size() == 15, "all fifteen in-game artworks have framing profiles")
 	for path in cast.framing.profiles:
 		var texture: Texture2D = load(path)
 		var frame: Rect2 = cast.frame_for(texture, Vector2(340, 384))

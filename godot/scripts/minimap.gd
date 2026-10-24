@@ -26,7 +26,7 @@ class MapView extends Control:
 func _ready() -> void:
 	position = Vector2(24, 24)
 	size = Vector2(264, 262)
-	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_theme_stylebox_override("panel", UI.box(Color("12221bf5")))
 	place_label = UI.label(self, "", Rect2(12, 9, 240, 26), 16, UI.TEXT)
 	place_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS

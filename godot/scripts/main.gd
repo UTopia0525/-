@@ -26,6 +26,7 @@ var dialogue_panel: Panel
 var dialogue_name: Label
 var dialogue_text: Label
 var dialogue_cast
+var dialogue_history
 var city_overview
 var minimap
 var city_service
@@ -121,6 +122,9 @@ func _ready() -> void:
 	player_menu = preload("res://scripts/player_menu.gd").new()
 	player_menu.game = self
 	ui_root.add_child(player_menu)
+	dialogue_history = preload("res://scripts/dialogue_history.gd").new()
+	dialogue_history.game = self
+	ui_root.add_child(dialogue_history)
 	reset()
 
 func _setup_input() -> void:
@@ -176,15 +180,18 @@ func _build_dialogue() -> void:
 	dialogue_panel = UI.panel(ui_root, Rect2(24, 535, 1232, 160))
 	dialogue_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	dialogue_panel.visibility_changed.connect(_update_dialogue_backdrop)
-	dialogue_name = UI.label(dialogue_panel, "", Rect2(24, 14, 1045, 30), 22, UI.GOLD)
+	dialogue_name = UI.label(dialogue_panel, "", Rect2(24, 14, 970, 30), 22, UI.GOLD)
 	dialogue_text = UI.label(dialogue_panel, "", Rect2(24, 55, 1065, 83), 21)
 	dialogue_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	var next = UI.button(dialogue_panel, "다음 ▾", Rect2(1125, 106, 90, 38))
 	next.pressed.connect(advance_dialogue)
+	var history_button = UI.button(dialogue_panel, "대화 기록 · H", Rect2(1010, 10, 205, 34))
+	history_button.pressed.connect(func(): dialogue_history.open_history())
 	dialogue_panel.hide()
 	dialogue_cast.clear()
 
 func _update_dialogue_backdrop() -> void:
+	if is_instance_valid(dialogue_history) and not dialogue_panel.visible: dialogue_history.close_history()
 	# Shade the city and HUD, keeping portraits, captions and dialogue above it.
 	dialogue_backdrop.visible = dialogue_panel.visible and exploration.area_name == "changsha" and not story_visual.visible
 
@@ -334,6 +341,7 @@ func toggle_city_map() -> void:
 		city_overview.open_for(exploration, quest_navigation.get_goal(exploration))
 
 func say(lines: Array, done: Callable = Callable(), listeners: Array = ["hero"]) -> void:
+	if is_instance_valid(dialogue_history): dialogue_history.close_history()
 	if lines.is_empty():
 		return
 	exploration.set_active(false)
@@ -374,6 +382,7 @@ func _show_line() -> void:
 	dialogue_cast.set_speaker(line[0], staging)
 
 func advance_dialogue() -> void:
+	if is_instance_valid(dialogue_history) and dialogue_history.visible: return
 	if dialogue_lines.is_empty():
 		return
 	dialogue_index += 1
@@ -462,6 +471,10 @@ func _on_victory(hp: int) -> void:
 	ending.show()
 
 func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_H and not dialogue_lines.is_empty():
+		dialogue_history.open_history()
+		get_viewport().set_input_as_handled()
+		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		if player_menu.visible:
 			if event.is_action_pressed("inventory"): player_menu.open_menu("inventory")

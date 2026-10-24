@@ -48,7 +48,7 @@ func run() -> void:
 	check(preload("res://tests/legacy_save_fixture.gd").write(game, 3), "save after payment during dialogue: " + saves.error)
 	await settle()
 	check(game.chapter_one.accepted_quests.has("changsha_cloth"), "accepted quest reached")
-	game.exploration.player.position = game.exploration.city_point([515, 440])
+	game.exploration.player.position = game.exploration.city_point([540, 480])
 	game.exploration.camera.snap_to_player()
 	check(saves.write_slot(4), "save city and quest")
 	check(saves.load_slot(3), "restore mid-sequence after payment")
@@ -63,7 +63,7 @@ func run() -> void:
 	check(saves.write_slot(5), "save rescue in separate slot")
 	check(saves.load_slot(4), "load independent treasure city slot")
 	check(game.money == 3000 and game.prologue.branch == "treasure" and game.chapter_one.accepted_quests.has("changsha_cloth"), "money, branch and quest independent")
-	check(game.exploration.player.position.distance_to(game.exploration.city_point([515, 440])) < 0.1, "exact city position restored")
+	check(game.exploration.player.position.distance_to(game.exploration.city_point([540, 480])) < 0.1, "exact city position restored")
 	check(game.quest_navigation.quest_id == "changsha_cloth" and game.chapter_number == 1, "chapter and tracked objective restored")
 	# Broken files and unsupported versions never touch current play.
 	var file = FileAccess.open(saves.path(6), FileAccess.WRITE)

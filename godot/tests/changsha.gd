@@ -12,6 +12,7 @@ func check(condition: bool, message: String) -> void:
 		push_error("CHANGSHA TEST: " + message)
 
 func _run() -> void:
+	root.size = Vector2i(1280, 720)
 	game = load("res://scenes/main.tscn").instantiate()
 	root.add_child(game)
 	await process_frame
@@ -28,7 +29,7 @@ func _run() -> void:
 		var point = city.city_point(landmark.point)
 		check(city.point_is_walkable(point), "walkable landmark: " + landmark.name)
 		check(not city.path_to(point, true).is_empty(), "reachable landmark: " + landmark.name)
-	check(city.art_tiles.size() == 4, "four detailed city districts")
+	check(city.art_tiles.size() == city.scenery_nodes.size(), "overview uses each independent city object")
 	check(city.occlusion_roots.size() > 0, "roof/stall occlusion layers exist")
 	for citizen in city.ambient_nodes:
 		check(city.point_is_walkable(citizen.position), "residents stand on ground")
@@ -85,7 +86,7 @@ func _run() -> void:
 	Input.action_press("move_left")
 	await create_timer(0.5).timeout
 	Input.action_release("move_left")
-	check(city.player.position.x >= 1080, "physics prevents entering river")
+	check(city.player.position.x >= city.city_point([260, 0]).x + city.FOOT_RADIUS - 1, "physics prevents entering river")
 	city.player.position = city.city_point([1360, 735])
 	city.camera.snap_to_player()
 	await create_timer(0.05).timeout

@@ -18,24 +18,28 @@ func _ready() -> void:
 	map_image = TextureRect.new()
 	map_image.position = MAP_RECT.position
 	map_image.size = MAP_RECT.size
-	map_image.texture = load("res://assets/maps/changsha/city.png")
+	var data = JSON.parse_string(FileAccess.get_file_as_string("res://assets/maps/changsha/layout.json"))
+	map_image.texture = load(data.ground_texture)
 	map_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	map_image.stretch_mode = TextureRect.STRETCH_SCALE
 	map_image.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	map_image.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(map_image)
-	var data = JSON.parse_string(FileAccess.get_file_as_string("res://assets/maps/changsha/layout.json"))
-	for tile in data.detail_tiles:
+	var prefabs: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(data.prefabs_path))
+	var objects: Array = data.objects.duplicate()
+	objects.sort_custom(func(a,b): return a.rect[1] + a.rect[3] < b.rect[1] + b.rect[3])
+	for spec in objects:
+		var prefab: Dictionary = prefabs[spec.prefab]
 		var atlas = AtlasTexture.new()
-		atlas.atlas = load(tile.path)
-		atlas.region = Rect2(tile.source[0], tile.source[1], tile.source[2], tile.source[3])
+		atlas.atlas = load(prefab.texture)
+		atlas.region = Rect2(prefab.source[0], prefab.source[1], prefab.source[2], prefab.source[3])
 		var section = TextureRect.new()
 		section.texture = atlas
 		section.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		section.position = Vector2(tile.target[0], tile.target[1]) / Vector2(data.art_size[0], data.art_size[1]) * MAP_RECT.size
-		section.size = Vector2(tile.target[2], tile.target[3]) / Vector2(data.art_size[0], data.art_size[1]) * MAP_RECT.size
+		section.position = Vector2(spec.rect[0], spec.rect[1]) / Vector2(data.art_size[0], data.art_size[1]) * MAP_RECT.size
+		section.size = Vector2(spec.rect[2], spec.rect[3]) / Vector2(data.art_size[0], data.art_size[1]) * MAP_RECT.size
 		section.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		section.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+		section.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		map_image.add_child(section)
 	player_dot = ColorRect.new()
 	player_dot.color = Color("ffe3a0")

@@ -20,6 +20,8 @@ var astar = AStarGrid2D.new()
 var city_data: Dictionary = {}
 var ambient_nodes: Array[Node2D] = []
 var art_tiles: Array[Dictionary] = []
+var scenery_bounds: Array[Rect2] = []
+var scenery_nodes: Array[Node2D] = []
 var occlusion_roots: Array[Node2D] = []
 const CITIZEN_REGIONS = {4: Rect2(69, 504, 254, 465), 5: Rect2(479, 529, 186, 440), 6: Rect2(829, 529, 272, 440), 7: Rect2(1236, 508, 205, 461)}
 var active: bool = false
@@ -65,6 +67,8 @@ func load_area(value: String) -> void:
 	for node in background.get_children():
 		node.free()
 	art_tiles.clear()
+	scenery_bounds.clear()
+	scenery_nodes.clear()
 	city_data = {}
 	map_bounds = Rect2(0, 0, 1280, 720)
 	camera.exploration_zoom = camera_zoom
@@ -97,9 +101,7 @@ func _load_changsha() -> void:
 	city_data = JSON.parse_string(FileAccess.get_file_as_string("res://assets/maps/changsha/layout.json"))
 	map_bounds = Rect2(0, 0, city_data.world_size[0], city_data.world_size[1])
 	camera.exploration_zoom = 1.0
-	background.texture = load("res://assets/maps/changsha/city.png")
-	for obstacle in city_data.get("scenery_objects", []):
-		city_data.blockers.append(obstacle.bounds)
+	background.texture = load(city_data.ground_texture)
 	walk_regions.clear()
 	blockers.clear()
 	for rectangle in city_data.walk_regions:
@@ -107,7 +109,6 @@ func _load_changsha() -> void:
 	for rectangle in city_data.blockers:
 		blockers.append(_city_rect(rectangle))
 	_build_city_art()
-	_build_city_occlusion()
 	player.position = city_point(city_data.spawn)
 	for entry in city_data.residents:
 		var citizen = CharacterBody2D.new()
@@ -153,7 +154,7 @@ func _load_changsha() -> void:
 	# Identify the new martial hall in the existing courtyard building.
 	var hall = Node2D.new()
 	hall.z_index = 1
-	hall.position = city_point([985, 625])
+	hall.position = city_point([944, 615])
 	var plaque = UI.panel(hall, Rect2(-95, -38, 190, 38), Color("28241af2"))
 	var hall_name = UI.label(plaque, "장사 무관", Rect2(5, 3, 180, 30), 20, UI.GOLD)
 	hall_name.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -161,47 +162,23 @@ func _load_changsha() -> void:
 	occlusion_roots.append(hall)
 
 func _build_city_art() -> void:
-	for tile in city_data.detail_tiles:
-		var texture: Texture2D = load(tile.path)
-		var source: Rect2 = Rect2(tile.source[0], tile.source[1], tile.source[2], tile.source[3])
-		var target: Rect2 = Rect2(tile.target[0], tile.target[1], tile.target[2], tile.target[3])
-		var atlas = AtlasTexture.new()
-		atlas.atlas = texture
-		atlas.region = source
-		var sprite = Sprite2D.new()
-		sprite.centered = false
-		sprite.texture = atlas
-		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		sprite.position = target.position
-		sprite.scale = target.size / source.size
-		background.add_child(sprite)
-		art_tiles.append({"texture": texture, "source": source, "target": target})
-
-func _build_city_occlusion() -> void:
-	# Redraw actual roof/stall pixels in Y order at their lower edge.
-	var regions: Array = city_data.blockers.duplicate()
-	regions.append_array(city_data.get("visual_occluders", []))
-	for rectangle in regions:
-		var obstacle = Rect2(rectangle[0], rectangle[1], rectangle[2], rectangle[3])
-		var layer = Node2D.new()
-		layer.position = city_point([0, obstacle.end.y])
-		for tile in art_tiles:
-			var intersection: Rect2 = obstacle.intersection(tile.target)
-			if not intersection.has_area():
-				continue
-			var pixels_per_unit: Vector2 = tile.source.size / tile.target.size
-			var atlas = AtlasTexture.new()
-			atlas.atlas = tile.texture
-			atlas.region = Rect2(tile.source.position + (intersection.position - tile.target.position) * pixels_per_unit, intersection.size * pixels_per_unit)
-			var sprite = Sprite2D.new()
-			sprite.centered = false
-			sprite.texture = atlas
-			sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-			sprite.position = city_point([intersection.position.x, intersection.position.y]) - layer.position
-			sprite.scale = (map_bounds.size / Vector2(city_data.art_size[0], city_data.art_size[1])) / pixels_per_unit
-			layer.add_child(sprite)
-		decorations.add_child(layer)
-		occlusion_roots.append(layer)
+	var prefabs: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(city_data.prefabs_path))
+	var world_scale := map_bounds.size / Vector2(city_data.art_size[0], city_data.art_size[1])
+	for spec in city_data.objects:
+		var prefab: Dictionary = prefabs[spec.prefab]
+		var node = preload("res://scripts/city_scenery.gd").new()
+		node.configure(spec, prefab, world_scale)
+		decorations.add_child(node)
+		occlusion_roots.append(node)
+		scenery_nodes.append(node)
+		scenery_bounds.append(node.visual_rect)
+		for rectangle in node.collision_rects:
+			blockers.append(rectangle)
+			city_data.scenery_objects.append({"kind":prefab.kind, "bounds":[rectangle.position.x / world_scale.x, rectangle.position.y / world_scale.y, rectangle.size.x / world_scale.x, rectangle.size.y / world_scale.y]})
+		var src: Array = prefab.source
+		var target: Array = spec.rect
+		art_tiles.append({"texture":load(prefab.texture), "source":Rect2(src[0], src[1], src[2], src[3]), "target":Rect2(target[0], target[1], target[2], target[3])})
+	art_tiles.sort_custom(func(a,b): return a.target.end.y < b.target.end.y)
 
 func city_point(point: Array) -> Vector2:
 	return Vector2(point[0], point[1]) * map_bounds.size / Vector2(city_data.art_size[0], city_data.art_size[1])
@@ -270,6 +247,8 @@ func can_stand(point: Vector2, radius: float = FOOT_RADIUS, residents: bool = tr
 func _citizen_fits(point: Vector2, entry: Dictionary) -> bool:
 	if not can_stand(point, CITIZEN_RADIUS): return false
 	var visual := Rect2(point - Vector2(28, 96), Vector2(56, 96))
+	for bounds in scenery_bounds:
+		if visual.grow(6).intersects(bounds): return false
 	for block in blockers:
 		if visual.grow(6).intersects(block): return false
 	for other in ambient_nodes:
@@ -358,7 +337,11 @@ func _build_collision_and_navigation() -> void:
 	wall_body.collision_mask = 3
 	collision_root.add_child(wall_body)
 	# Exact scenery shapes serve both keyboard movement and moving NPC bodies.
-	for block in blockers:
+	var terrain_blocks: Array[Rect2] = []
+	if area_name == "changsha":
+		for rectangle in city_data.blockers: terrain_blocks.append(_city_rect(rectangle))
+	else: terrain_blocks = blockers
+	for block in terrain_blocks:
 		var shape = RectangleShape2D.new()
 		shape.size = block.size
 		var collision = CollisionShape2D.new()
@@ -419,7 +402,7 @@ func _process(_delta: float) -> void:
 		hint.position = target.position + Vector2(-75, -142 if target.frame >= 0 else -65)
 		hint.text = "F  승선" if target.id == "boarding" else ("F  거래" if target.has("service_id") else "F  대화")
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if not active:
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:

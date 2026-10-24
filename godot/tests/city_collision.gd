@@ -14,8 +14,7 @@ func run() -> void:
  var city = game.exploration
  var player = city.player
  var tested := {}
- var objects: Array = [{"kind":"building", "bounds":city.city_data.blockers[0]}]
- objects.append_array(city.city_data.scenery_objects)
+ var objects: Array = city.city_data.scenery_objects.duplicate(true)
  for obstacle in objects:
   if tested.has(obstacle.kind): continue
   var block: Rect2 = city._city_rect(obstacle.bounds)
@@ -26,12 +25,12 @@ func run() -> void:
    var motion: Vector2 = block.get_center() - start
    var hit := KinematicCollision2D.new()
    check(player.test_move(Transform2D(0, start), motion, hit), "player stopped by " + obstacle.kind)
-   check(hit.get_collider() == city.collision_root.get_child(0), "native scenery body for " + obstacle.kind)
+   check(hit.get_collider() is StaticBody2D and hit.get_collider().collision_layer == 2, "native scenery body for " + obstacle.kind)
    var actor: CharacterBody2D = city.ambient_nodes[0]
    check(actor.test_move(Transform2D(0, start), motion), "NPC stopped by " + obstacle.kind)
    tested[obstacle.kind] = true
    break
- for kind in ["building", "wall", "tree", "cargo", "well", "pond", "furniture"]:
+ for kind in ["building", "wall", "tree", "cargo", "well", "pond", "stall", "gate"]:
   if tested.has(kind): continue
   # Some water is enclosed by banks: its center must still be solid in physics.
   for obstacle in objects:
