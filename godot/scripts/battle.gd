@@ -98,7 +98,7 @@ func _ready() -> void:
 	intent_panel.add_child(intent_icon)
 	var player_panel = UI.panel(self, Rect2(925, 293, 330, 200))
 	weapon_label = UI.label(player_panel, "장착 무기 · 무문철검", Rect2(18, 10, 295, 24), 13, UI.GOLD)
-	UI.label(player_panel, "주인공", Rect2(18, 34, 295, 32), 24)
+	UI.label(player_panel, "도원", Rect2(18, 34, 295, 32), 24)
 	player_text = UI.label(player_panel, "", Rect2(18, 71, 295, 22), 16)
 	player_bar = _health_bar(player_panel, Rect2(18, 103, 294, 20), Rules.PLAYER_MAX_HP)
 	qi_text = UI.label(player_panel, "", Rect2(18, 136, 295, 22), 16, Color("a3dfe8"))
@@ -322,7 +322,7 @@ func use_selected() -> void:
 	var active_enemy_guard: int = combat.BASIC_GUARD if enemy_intent == "basic_defense" else enemy_guard
 	var hit: int = combat.damage(raw, enemy_constitution, enemy_weapon, active_enemy_guard)
 	enemy_guard = 0
-	log_action("주인공",action_name,hit,cost,active_enemy_guard,qi.amount)
+	log_action("도원",action_name,hit,cost,active_enemy_guard,qi.amount)
 	enemy_hp = maxi(0, enemy_hp - hit)
 	_update_hp(true)
 	if raw > 0: sound_requested.emit("hit" if hit > 0 else "block")
@@ -379,7 +379,7 @@ func use_selected() -> void:
 	var old_enemy_qi: int=enemy_qi.amount
 	qi.recover_turn()
 	enemy_qi.recover_turn()
-	log_action("주인공","내기 회복",0,old_qi-qi.amount,0,qi.amount,"recovery")
+	log_action("도원","내기 회복",0,old_qi-qi.amount,0,qi.amount,"recovery")
 	log_action(enemy_name.text,"내기 회복",0,old_enemy_qi-enemy_qi.amount,0,enemy_qi.amount,"recovery")
 	_prepare_enemy()
 	busy = false

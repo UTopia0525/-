@@ -14,7 +14,7 @@ static var ACTORS = {
 	"city_merchant": {"name": "장사꾼", "extra": "male_young", "portrait": "res://assets/portraits/services/merchant.png"},
 	"city_artisan": {"name": "장인", "extra": "female_middle", "portrait": "res://assets/portraits/services/artisan.png"},
 	"city_instructor": {"name": "교관", "extra": "male_middle", "portrait": "res://assets/portraits/services/instructor.png"},
-	"hero": {"name": "주인공", "extra": "male_young", "portrait": "res://assets/portraits/player/hero.png"},
+	"hero": {"name": "도원", "extra": "male_young", "portrait": "res://assets/portraits/player/hero.png"},
 	"captain": {"name": "서문길", "extra": "male_middle"},
 	"apothecary": {"name": "진소옥", "extra": "female_young"},
 	"sailor": {"name": "허만복", "extra": "male_common_a"},
