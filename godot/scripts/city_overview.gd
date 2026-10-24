@@ -87,7 +87,7 @@ func open_for(exploration, goal: Dictionary = {}) -> void:
 		label.add_theme_constant_override("outline_size", 7)
 		district_labels.append(label)
 	for exit in exploration.travel_exits:
-		var marker=UI.label(self,exit.name,Rect2(map_rect.position+exit.position/exploration.map_bounds.size*map_rect.size-Vector2(85,18),Vector2(170,35)),16,UI.GOLD)
+		var marker=UI.label(self,"○ "+exit.name,Rect2(map_rect.position+exit.position/exploration.map_bounds.size*map_rect.size-Vector2(85,18),Vector2(170,35)),16,Color("9de5ff"))
 		marker.add_theme_color_override("font_outline_color",Color("14231e"));marker.add_theme_constant_override("outline_size",5);actor_markers.append(marker)
 	for citizen in exploration.ambient_nodes:
 		var marker = ColorRect.new()

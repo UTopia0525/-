@@ -4,11 +4,19 @@ var failed=false
 func _initialize() -> void:run.call_deferred()
 func check(ok: bool,message: String) -> void:
 	if not ok:failed=true;push_error("OVERLAND: "+message)
+func press_f() -> void:
+	var key=InputEventKey.new();key.keycode=KEY_F;key.physical_keycode=KEY_F;key.pressed=true
+	Input.parse_input_event(key);await process_frame
+	key=InputEventKey.new();key.keycode=KEY_F;key.physical_keycode=KEY_F;key.pressed=false
+	Input.parse_input_event(key);await physics_frame
 func exit_to(area: String) -> void:
 	for exit in game.exploration.travel_exits:
 		if exit.travel.area==area:
 			game.exploration.player.position=exit.position;game.exploration.player.stop()
-			await physics_frame;game.interact();await physics_frame
+			await physics_frame;await create_timer(.04).timeout
+			check(exit.node.get_script()==preload("res://scripts/travel_portal.gd") and not exit.node is CollisionObject2D,"exit is a blue non-blocking portal")
+			check(exit.node.available and game.exploration.hint.text=="F  이동","nearby portal highlights and prompts F")
+			await press_f()
 			check(game.exploration.area_name==area,"F crosses into "+area);return
 	check(false,"missing exit to "+area)
 func run() -> void:
@@ -23,6 +31,14 @@ func run() -> void:
 	await exit_to("mountain_road")
 	check(city.ambient_nodes.is_empty() and city.npcs.is_empty(),"road adds no NPCs")
 	check(city.map_bounds.size==Vector2(4096,5120) and city.player.display_height==140,"half height retains horizontal size and actor proportions")
+	var arrival=city.player.position
+	await press_f()
+	check(city.area_name=="mountain_road" and city.player.position.distance_to(arrival)<1,"F away from a portal never transfers")
+	var portal=city.travel_exits[0].node
+	var phase: float=portal.phase
+	game.settings_menu.open_menu();await create_timer(.12).timeout
+	check(portal.phase==phase,"portal animation obeys settings pause")
+	game.settings_menu.close_menu()
 	check(city.travel_exits.size()==2,"both road ends remain after quest refresh")
 	var destination=city.travel_exits[1].position
 	var path=city.path_to(destination)

@@ -14,7 +14,9 @@ func run() -> void:
 	world.player.position=world.city_point([630,700]);world.player.stop();world.camera.snap_to_player();await shot("overland-mountain-pass")
 	await create_timer(3.6).timeout
 	game.toggle_city_map();await shot("overland-overview");game.toggle_city_map()
-	world.player.position=world.travel_exits[1].position;game.interact();await process_frame;await shot("overland-wuchang-arrival")
+	world.player.position=world.travel_exits[1].position;world.player.stop();world.camera.snap_to_player();await shot("portal-road-north")
+	game.interact();await process_frame;await shot("overland-wuchang-arrival")
+	world.player.position=world.travel_exits[0].position+Vector2(65,-10);world.player.stop();world.camera.snap_to_player();await shot("portal-wuchang-south")
 	var viewport=SubViewport.new();viewport.world_2d=World2D.new();viewport.size=Vector2i(1024,1280);viewport.render_target_update_mode=SubViewport.UPDATE_ALWAYS;root.add_child(viewport)
 	var map=load("res://scripts/mountain_road_map.gd").new();map.scale=Vector2.ONE*.25;viewport.add_child(map)
 	await create_timer(.3).timeout;await RenderingServer.frame_post_draw

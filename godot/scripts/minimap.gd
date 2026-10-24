@@ -57,7 +57,7 @@ func bind_world(world) -> void:
 func refresh() -> void:
 	if not is_instance_valid(exploration):
 		return
-	facility_legend.text="약 상인 · 장 장인 · 무 교관" if exploration.area_name=="changsha" else "● 출입 지점 · 가까이에서 F 이동"
+	facility_legend.text="약 상인 · 장 장인 · 무 교관" if exploration.area_name=="changsha" else "○ 푸른 포탈 · 가까이에서 F 이동"
 	var bounds: Rect2 = exploration.map_bounds
 	var ratio = VIEW_SIZE.x / VIEW_SIZE.y
 	var width = minf(WORLD_WIDTH, minf(bounds.size.x, bounds.size.y * ratio))
@@ -135,7 +135,7 @@ func draw_map(canvas: Control) -> void:
 	for exit in exploration.travel_exits:
 		if not world_window.has_point(exit.position):continue
 		var point=project_point(exit.position)
-		canvas.draw_circle(point,5,Color("14251e"));canvas.draw_circle(point,3,UI.GOLD)
+		canvas.draw_circle(point,6,Color("102e42"));canvas.draw_arc(point,4,0,TAU,20,Color("50bfff"),2);canvas.draw_circle(point,1.5,Color("c1f6ff"))
 	for point in npc_markers:
 		canvas.draw_circle(point, 4.0, Color("10251e"))
 		canvas.draw_circle(point, 2.8, Color("81f0cf"))

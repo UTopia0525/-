@@ -7,9 +7,9 @@ const LINKS={
 static func install(world) -> void:
 	world.travel_exits.clear()
 	for link in LINKS.get(world.area_name,[]):
-		var marker=Node2D.new();marker.position=world.city_point(link.point)
+		var marker=preload("res://scripts/travel_portal.gd").new();marker.position=world.city_point(link.point)
 		world.decorations.add_child(marker);world.occlusion_roots.append(marker)
-		var label=preload("res://scripts/ui.gd").label(marker,link.name,Rect2(-160,-70,320,32),20,Color("f2d79a"))
+		var label=preload("res://scripts/ui.gd").label(marker,link.name,Rect2(-180,-164,360,32),20,Color("9de5ff"))
 		label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;label.add_theme_color_override("font_outline_color",Color("14231e"));label.add_theme_constant_override("outline_size",5)
 		world.travel_exits.append({"id":link.id,"name":link.name,"position":marker.position,"node":marker,"frame":-1,"travel":link,"important":true})
 static func use(game,entry: Dictionary) -> bool:

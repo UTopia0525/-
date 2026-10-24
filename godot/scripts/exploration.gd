@@ -449,13 +449,16 @@ func set_active(value: bool) -> void:
 
 func _process(_delta: float) -> void:
 	var target = nearest() if active else {}
+	for exit in travel_exits:
+		exit.node.set_available(not target.is_empty() and target.id==exit.id)
 	hint.visible = not target.is_empty()
-	indicator.visible = not target.is_empty()
+	indicator.visible = not target.is_empty() and not target.has("travel")
 	if not target.is_empty():
 		indicator.position=target.position
 		indicator.set_body_height((Metrics.CITIZEN_HEIGHT if area_name=="changsha" else Metrics.PROLOGUE_HEIGHT) if target.frame>=0 else 0.0)
 	if not target.is_empty():
-		hint.position = target.position + Vector2(-75, 14)
+		hint.add_theme_color_override("font_color",Color("9de5ff") if target.has("travel") else UI.GOLD)
+		hint.position = target.position + Vector2(-75, 20 if target.has("travel") else 14)
 		hint.text = "F  이동" if target.has("travel") else "F  조사" if str(target.id).begins_with("quest_goal:") else "F  승선" if target.id == "boarding" else ("F  거래" if target.has("service_id") else "F  대화")
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -471,5 +474,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				interaction = true
 				break
 		for entry in objectives+travel_exits:
-			if Rect2(entry.position-Vector2(25,40),Vector2(50,60)).has_point(local_point):target=entry.position;interaction=true;break
+			var hitbox=Rect2(entry.position-Vector2(62,130),Vector2(124,160)) if entry.has("travel") else Rect2(entry.position-Vector2(25,40),Vector2(50,60))
+			if hitbox.has_point(local_point):target=entry.position;interaction=true;break
 		player.click_path = path_to(target, interaction)
