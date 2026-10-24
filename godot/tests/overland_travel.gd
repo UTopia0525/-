@@ -27,7 +27,8 @@ func run() -> void:
 	await physics_frame
 	var progress=game.progress.snapshot();var quests=game.ordinary_quests.snapshot();var intro=game.chapter_one.snapshot()
 	var city=game.exploration
-	check(not city.path_to(city.travel_exits[0].position).is_empty(),"Changsha spawn reaches north-gate trail entrance")
+	check(city.travel_exits[0].position.x>city.map_bounds.size.x*.9,"Changsha portal is at eastern farmland edge")
+	check(not city.path_to(city.travel_exits[0].position).is_empty(),"Changsha spawn reaches eastern farmland portal")
 	await exit_to("mountain_road")
 	check(city.ambient_nodes.is_empty() and city.npcs.is_empty(),"road adds no NPCs")
 	check(city.map_bounds.size==Vector2(4096,5120) and city.player.display_height==140,"half height retains horizontal size and actor proportions")
@@ -71,8 +72,21 @@ func run() -> void:
 	check(not game.save_system.validate(invalid),"new map coordinate bounds validated")
 	await exit_to("wuchang")
 	check(city.ambient_nodes.is_empty() and city.npcs.is_empty(),"Wuchang remains NPC-free")
-	check(city.player.position.y>5500 and city.can_stand(city.player.position),"arrive safely at Wuchang south gate")
+	check(city.player.position.y>6144 and city.can_stand(city.player.position),"arrive safely in southern Wuchang farmland")
+	check(city.district_at_player()=="남문 밖 농촌","arrival is outside city walls")
+	var gate=city.decorations.get_node("south_gate")
+	var gate_route=city.path_to(gate.position+Vector2(0,-40))
+	check(not gate_route.is_empty(),"rural arrival reaches city through south gate")
+	check(not city.path_to(city.travel_exits[0].position).is_empty(),"rural arrival reaches exit beyond farms")
+	for field in city.city_data.fields:
+		var point=city._city_rect(field.rect).get_center()
+		check(not city.can_stand(point),"crop plots block feet and navigation")
+		var query=PhysicsPointQueryParameters2D.new();query.position=point;query.collision_mask=2
+		check(not city.get_world_2d().direct_space_state.intersect_point(query).is_empty(),"crop plots have matching physical collision")
 	check(game.save_system.write_slot(2) and game.save_system.load_slot(2),"Wuchang exploration save roundtrip")
+	var old_city=game.save_system.capture();old_city.world.position=[4400,5960]
+	file=FileAccess.open(game.save_system.path(4),FileAccess.WRITE);file.store_string(JSON.stringify(old_city));file.close()
+	check(game.save_system.load_slot(4) and city.player.position.is_equal_approx(Vector2(4400,5960)),"old Wuchang city saves keep original positions after rural extension")
 	await exit_to("mountain_road");await exit_to("changsha")
 	check(city.ambient_nodes.size()>0 and city.regional_map==null,"return restores existing Changsha NPCs and terrain")
 	check(city.can_stand(city.player.position),"return point clear of gate and NPCs")

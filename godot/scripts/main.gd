@@ -239,7 +239,7 @@ func _build_title() -> void:
 
 func start_wuchang() -> void:
 	start_city()
-	preload("res://scripts/overland_travel.gd").use(self,{"travel":{"area":"wuchang","arrival":[1100,1435]}})
+	preload("res://scripts/overland_travel.gd").use(self,{"travel":{"area":"wuchang","arrival":[1100,1790]}})
 
 func _build_ending() -> void:
 	ending = _full_overlay(Color(0.035, 0.07, 0.055, 0.94))
@@ -353,7 +353,7 @@ func _process(_delta: float) -> void:
 	if state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang"]:
 		location.text = exploration.city_data.name+" · " + exploration.district_at_player()
 		var goal: Dictionary = quest_navigation.get_goal(exploration)
-		objective.text = goal.quest_title + " · " + goal.label if not goal.is_empty() else ("산길을 따라 북쪽 무창으로 · 출입 지점에서 F 이동" if exploration.area_name=="mountain_road" else "무창 둘러보기 · 남문에서 장사 방면" if exploration.area_name=="wuchang" else "시장·골목·나루·성밖 농촌 둘러보기")
+		objective.text = goal.quest_title + " · " + goal.label if not goal.is_empty() else ("산길을 따라 북쪽 무창으로 · 출입 지점에서 F 이동" if exploration.area_name=="mountain_road" else "무창 둘러보기 · 남쪽 농촌 끝에서 장사 방면" if exploration.area_name=="wuchang" else "시장·골목·나루·성밖 농촌 둘러보기")
 	bandit_story.maybe_start()
 
 func toggle_city_map() -> void:

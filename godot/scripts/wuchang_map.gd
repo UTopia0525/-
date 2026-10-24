@@ -9,9 +9,10 @@ var scenery_nodes: Array=[]
 var blockers: Array[Rect2]=[]
 var astar=AStarGrid2D.new()
 var world_scale=Vector2(4,4)
-var map_bounds=Rect2(0,0,8192,6144)
+var map_bounds=Rect2(0,0,data.world_size[0],data.world_size[1])
 var walk_bounds: Rect2
 func _ready() -> void:
+	map_bounds=Rect2(0,0,data.world_size[0],data.world_size[1])
 	prefabs.alliance_hall={"texture":"res://assets/maps/wuchang/alliance-hall.png","source":[0,0,1536,1024],"kind":"building","footprints":[[.10,.62,.80,.35]]}
 	walk_bounds=rect(data.walk_bounds)
 	for id in data.get("prefabs",{}):prefabs[id]=data.prefabs[id]
@@ -20,12 +21,16 @@ func _ready() -> void:
 	for spec in data.objects:
 		var node=SCENERY.new();node.configure(spec,prefabs[spec.prefab],world_scale)
 		actors.add_child(node);scenery_nodes.append(node);blockers.append_array(node.collision_rects)
+	for value in data.get("terrain_blockers",[]):blockers.append(rect(value))
 	_build_boundaries()
 	_build_navigation()
 func _build_boundaries() -> void:
 	# Physical outer/river limits match the navigation walk bounds.
-	for bounds in [Rect2(-128,-128,walk_bounds.position.x+128,6400),Rect2(walk_bounds.end.x,-128,1024,6400),Rect2(0,-128,8192,walk_bounds.position.y+128),Rect2(0,walk_bounds.end.y,8192,1024)]:
+	for bounds in [Rect2(-128,-128,walk_bounds.position.x+128,map_bounds.size.y+256),Rect2(walk_bounds.end.x,-128,1024,map_bounds.size.y+256),Rect2(0,-128,map_bounds.size.x,walk_bounds.position.y+128),Rect2(0,walk_bounds.end.y,map_bounds.size.x,1024)]:
 		var body=StaticBody2D.new();body.collision_layer=2
+		var shape=CollisionShape2D.new();var box=RectangleShape2D.new();box.size=bounds.size;shape.shape=box;shape.position=bounds.get_center();body.add_child(shape);add_child(body)
+	for value in data.get("terrain_blockers",[]):
+		var bounds=rect(value);var body=StaticBody2D.new();body.collision_layer=2
 		var shape=CollisionShape2D.new();var box=RectangleShape2D.new();box.size=bounds.size;shape.shape=box;shape.position=bounds.get_center();body.add_child(shape);add_child(body)
 func point(value: Array) -> Vector2:return Vector2(value[0],value[1])*world_scale
 func rect(value: Array) -> Rect2:return Rect2(point(value),Vector2(value[2],value[3])*world_scale)

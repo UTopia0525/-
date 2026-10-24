@@ -10,7 +10,7 @@ func run() -> void:
 	check(city.data.npcs.is_empty(),"NPC placement waits for layout approval")
 	check(city.data.spawn[1]>1400,"arrival is the southern land route")
 	check(city.scenery_nodes.size()==city.data.objects.size(),"every visible object has independent instance")
-	check(city.data.districts.size()==9,"six standard districts plus harbor/plaza/alliance")
+	check(city.data.districts.size()==10,"standard city districts plus southern countryside")
 	check(city.can_stand(scene.player.position),"southern spawn is clear")
 	for landmark in city.data.landmarks:
 		var target=city.point(landmark.point)
@@ -27,7 +27,8 @@ func run() -> void:
 			check(not city.can_stand(prop.collision_rects[0].get_center()),"gate pillar blocks: "+str(prop.name))
 	var hall=city.actors.get_node("alliance_main_hall")
 	check(hall.visual_rect.size.y>=1100,"main hall has two-storey monumental height")
-	check(city.rect(city.data.alliance_bounds).get_area()/city.map_bounds.get_area()>.25,"alliance occupies more than one quarter of city")
+	check(city.rect(city.data.alliance_bounds).size==Vector2(4000,3280),"rural extension preserves the full existing alliance compound")
+	scene.player.position=city.actors.get_node("south_gate").position+Vector2(0,60)
 	var before=scene.player.position
 	Input.action_press("move_up");for i in range(20):await physics_frame
 	Input.action_release("move_up");await physics_frame

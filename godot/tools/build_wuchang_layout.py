@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 out=Path('godot/assets/maps/wuchang')
-d={'name':'무창','historical_note':'명 초기 무창을 모티프로 한 가상 배치. 남쪽 육로로 입성하며 NPC·본편 이동 연결은 배치 승인 후 추가한다.','art_size':[2048,1536],'world_size':[8192,6144],'spawn':[1100,1490],'walk_bounds':[210,60,1750,1470],'alliance_bounds':[930,85,1000,820], 'npcs':[], 'objects':[], 'roads':[], 'districts':[], 'landmarks':[]}
+d={'name':'무창','historical_note':'명 초기 무창을 모티프로 한 가상 배치. 남쪽 농촌을 거쳐 남문으로 입성하며 NPC·후속 이야기는 별도 구현한다.','art_size':[2048,1920],'world_size':[8192,7680],'spawn':[1100,1790],'walk_bounds':[210,60,1750,1840],'alliance_bounds':[930,85,1000,820], 'npcs':[], 'objects':[], 'roads':[], 'districts':[], 'landmarks':[]}
 def obj(id,prefab,r):d['objects'].append({'id':id,'prefab':prefab,'rect':r})
 def road(points,width,kind='earth'):d['roads'].append({'points':points,'width':width,'kind':kind})
 def district(id,name,r,label):d['districts'].append({'id':id,'name':name,'rect':r,'label':label})
@@ -80,5 +80,23 @@ obj('alliance_main_hall','alliance_hall',[1300,105,360,300]);landmark('main_hall
 obj('commander_quarters','government',[1000,105,155,136]);obj('strategist_office','government',[1700,100,155,136])
 for i,(x,y) in enumerate([(990,715),(1830,720),(1230,240),(1640,250),(365,790)]):obj(f'courtyard_tree_{i}','tree',[x,y,57,64])
 landmark('training','대연무장',[1480,565]);landmark('market','상점가',[780,1215]);landmark('workshops','공방거리',[1500,1400]);landmark('martial','무관 앞뜰',[1370,1170]);landmark('government','관아 앞',[1760,1280]);landmark('harbor','장강 나루',[250,950]);landmark('homes','주거 골목',[535,430]);landmark('inns','객잔 거리',[780,850]);landmark('plaza','중앙 광장',[1100,945])
+# Rural approach beyond the existing south wall; the old city is not rescaled.
+district('farmland','남문 밖 농촌',[600,1480,1180,420],[1100,1870])
+road([[1100,1480],[1100,1870]],58)
+road([[650,1650],[1680,1650]],30)
+obj('farm_home_west','farmhouse',[850,1515,150,108])
+obj('farm_home_east','farmhouse',[1220,1690,150,108])
+obj('farm_barn','warehouse',[1580,1620,130,102])
+obj('farm_well','well',[1020,1645,44,54])
+obj('farm_cargo','cargo',[1450,1665,42,49])
+obj('farm_tree','tree',[730,1610,65,72])
+obj('farm_willow','willow',[1530,1730,66,76])
+d['fields']=[{'rect':[640,1510,170,130],'crop':'rice'},
+ {'rect':[650,1710,350,130],'crop':'vegetables'},
+ {'rect':[1230,1500,260,130],'crop':'rice'},
+ {'rect':[1440,1780,270,90],'crop':'vegetables'}]
+d['terrain_blockers']=[[f['rect'][0]+6,f['rect'][1]+6,f['rect'][2]-12,f['rect'][3]-12] for f in d['fields']]
+landmark('farmland','남문 밖 농촌',[1100,1660])
+landmark('rural_portal','농촌 끝 · 산길 방면',[1100,1840])
 (out/'layout.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
 print(len(d['objects']),'independent objects')

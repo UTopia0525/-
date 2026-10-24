@@ -14,7 +14,7 @@ func run() -> void:
 			scene.player.position=scene.city.point(landmark.point);scene.player.stop();scene.camera.snap_to_player()
 			await shot("wuchang-"+landmark.id)
 	# Export terrain and the exact prop layout at full art resolution, not a concept image.
-	scene.atlas_view.size=Vector2i(2048,1536)
+	scene.atlas_view.size=Vector2i(scene.city.data.art_size[0],scene.city.data.art_size[1])
 	scene.atlas_view.get_child(0).scale=Vector2.ONE*.25
 	scene.atlas_view.render_target_update_mode=SubViewport.UPDATE_ONCE
 	await create_timer(.5).timeout;await RenderingServer.frame_post_draw
