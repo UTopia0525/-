@@ -69,7 +69,7 @@ func load_area(value: String) -> void:
 	regional_map=null
 	area_name = value
 	player.stop()
-	player.set_display_height(float(player.animation_metadata.target_height) if value in ["changsha","mountain_road","wuchang"] else Metrics.PROLOGUE_HEIGHT)
+	player.set_display_height(float(player.animation_metadata.target_height) if value in ["changsha","mountain_road","wuchang","alliance_office"] else Metrics.PROLOGUE_HEIGHT)
 	camera.set_focus_height(player.display_height*Metrics.CAMERA_FOCUS_RATIO)
 	for entry in npcs:
 		entry.node.free()
@@ -90,7 +90,7 @@ func load_area(value: String) -> void:
 	city_data = {}
 	map_bounds = Rect2(0, 0, 1280, 720)
 	camera.exploration_zoom = camera_zoom
-	if value in ["mountain_road","wuchang"]:
+	if value in ["mountain_road","wuchang","alliance_office"]:
 		_load_regional(value)
 	elif value == "changsha":
 		_load_changsha()
@@ -119,10 +119,10 @@ func load_area(value: String) -> void:
 	camera.snap_to_player()
 
 func _load_regional(value: String) -> void:
-	regional_map=load("res://scripts/"+("mountain_road_map.gd" if value=="mountain_road" else "wuchang_map.gd")).new()
+	regional_map=load("res://scripts/"+("mountain_road_map.gd" if value=="mountain_road" else "alliance_office_map.gd" if value=="alliance_office" else "wuchang_map.gd")).new()
 	add_child(regional_map)
 	city_data=regional_map.data.duplicate(true)
-	city_data.ground_texture="res://assets/maps/"+("changsha-wuchang" if value=="mountain_road" else "wuchang")+"/ground.png"
+	city_data.ground_texture="res://assets/maps/"+("changsha-wuchang" if value=="mountain_road" else "alliance-office" if value=="alliance_office" else "wuchang")+"/ground.png"
 	for district in city_data.districts:
 		district.bounds=district.rect;district.category={"market":"market","workshops":"workshops","martial":"martial_hall"}.get(district.get("id",""),"regional")
 	map_bounds=regional_map.map_bounds;camera.exploration_zoom=1.0
@@ -356,7 +356,7 @@ func safe_player_position(preferred: Vector2) -> Vector2:
 				if absi(x) != ring and absi(y) != ring: continue
 				var candidate := preferred + Vector2(x, y) * 20.0
 				if can_stand(candidate): return candidate
-	return city_point(city_data.spawn) if area_name in ["changsha","mountain_road","wuchang"] else preferred
+	return city_point(city_data.spawn) if area_name in ["changsha","mountain_road","wuchang","alliance_office"] else preferred
 
 func path_to(point: Vector2, interaction: bool = false) -> PackedVector2Array:
 	if is_instance_valid(regional_map):

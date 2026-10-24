@@ -208,7 +208,7 @@ func _build_dialogue() -> void:
 func _update_dialogue_backdrop() -> void:
 	if is_instance_valid(dialogue_history) and not dialogue_panel.visible: dialogue_history.close_history()
 	# Shade the city and HUD, keeping portraits, captions and dialogue above it.
-	dialogue_backdrop.visible = dialogue_panel.visible and exploration.area_name in ["changsha","wuchang"] and not story_visual.visible
+	dialogue_backdrop.visible = dialogue_panel.visible and exploration.area_name in ["changsha","wuchang","alliance_office"] and not story_visual.visible
 
 func _full_overlay(color: Color) -> Control:
 	var overlay = Control.new()
@@ -350,10 +350,10 @@ func enter_city(at_port: bool = false) -> void:
 
 func _process(_delta: float) -> void:
 	money_label.text = "소지금 %d문 · 명성 %d" % [money, progress.fame]
-	if state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang"]:
+	if state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office"]:
 		location.text = exploration.city_data.name+" · " + exploration.district_at_player()
 		var goal: Dictionary = quest_navigation.get_goal(exploration)
-		objective.text = goal.quest_title + " · " + goal.label if not goal.is_empty() else ("산길을 따라 북쪽 무창으로 · 출입 지점에서 F 이동" if exploration.area_name=="mountain_road" else "무창 둘러보기 · 남쪽 농촌 끝에서 장사 방면" if exploration.area_name=="wuchang" else "시장·골목·나루·성밖 농촌 둘러보기")
+		objective.text = goal.quest_title + " · " + goal.label if not goal.is_empty() else ("총무당 둘러보기 · 남쪽 출입 지점에서 F 이동" if exploration.area_name=="alliance_office" else "산길을 따라 북쪽 무창으로 · 출입 지점에서 F 이동" if exploration.area_name=="mountain_road" else "무창 둘러보기 · 남쪽 농촌 끝에서 장사 방면" if exploration.area_name=="wuchang" else "시장·골목·나루·성밖 농촌 둘러보기")
 	bandit_story.maybe_start()
 
 func toggle_city_map() -> void:
@@ -568,7 +568,7 @@ func _input(event: InputEvent) -> void:
 				toggle_city_map()
 			get_viewport().set_input_as_handled()
 			return
-		if event.keycode == KEY_TAB and state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang"]:
+		if event.keycode == KEY_TAB and state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office"]:
 			toggle_city_map()
 			get_viewport().set_input_as_handled()
 		elif event.keycode == KEY_M:

@@ -1,0 +1,263 @@
+{
+  "name": "무림맹 · 총무당",
+  "world_size": [
+    2048,
+    1440
+  ],
+  "art_size": [
+    512,
+    360
+  ],
+  "walk_bounds": [
+    26,
+    69,
+    460,
+    273
+  ],
+  "spawn": [
+    256,
+    289
+  ],
+  "ground_script": "res://scripts/alliance_office_ground.gd",
+  "districts": [
+    {
+      "id": "office",
+      "name": "총무당",
+      "rect": [
+        26,
+        69,
+        460,
+        273
+      ],
+      "label": [
+        256,
+        85
+      ]
+    }
+  ],
+  "roads": [],
+  "objects": [
+    {
+      "id": "chief_desk",
+      "prefab": "desk",
+      "rect": [
+        204,
+        91,
+        104,
+        81
+      ]
+    },
+    {
+      "id": "reception_desk",
+      "prefab": "desk",
+      "rect": [
+        337,
+        202,
+        94,
+        74
+      ]
+    },
+    {
+      "id": "documents_w",
+      "prefab": "shelf",
+      "rect": [
+        40,
+        71,
+        103,
+        81
+      ]
+    },
+    {
+      "id": "documents_e",
+      "prefab": "shelf",
+      "rect": [
+        366,
+        71,
+        103,
+        81
+      ]
+    },
+    {
+      "id": "records",
+      "prefab": "shelf",
+      "rect": [
+        41,
+        174,
+        82,
+        64
+      ]
+    },
+    {
+      "id": "waiting_w",
+      "prefab": "bench",
+      "rect": [
+        60,
+        270,
+        100,
+        78
+      ]
+    },
+    {
+      "id": "waiting_e",
+      "prefab": "bench",
+      "rect": [
+        356,
+        270,
+        100,
+        78
+      ]
+    },
+    {
+      "id": "partition_w",
+      "prefab": "screen",
+      "rect": [
+        125,
+        103,
+        64,
+        85
+      ]
+    },
+    {
+      "id": "partition_e",
+      "prefab": "screen",
+      "rect": [
+        322,
+        103,
+        31,
+        85
+      ]
+    },
+    {
+      "id": "pillar_w",
+      "prefab": "pillar",
+      "rect": [
+        26,
+        177,
+        28,
+        66
+      ]
+    },
+    {
+      "id": "pillar_e",
+      "prefab": "pillar",
+      "rect": [
+        458,
+        177,
+        28,
+        66
+      ]
+    }
+  ],
+  "prefabs": {
+    "desk": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        0,
+        0,
+        128,
+        100
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.05,
+          0.54,
+          0.9,
+          0.4
+        ]
+      ]
+    },
+    "shelf": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        128,
+        0,
+        128,
+        100
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.08,
+          0.7,
+          0.84,
+          0.27
+        ]
+      ]
+    },
+    "bench": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        256,
+        0,
+        128,
+        100
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.05,
+          0.5,
+          0.9,
+          0.45
+        ]
+      ]
+    },
+    "screen": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        0,
+        100,
+        128,
+        100
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.03,
+          0.83,
+          0.94,
+          0.14
+        ]
+      ]
+    },
+    "pillar": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        128,
+        100,
+        128,
+        100
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.2,
+          0.75,
+          0.6,
+          0.22
+        ]
+      ]
+    },
+    "lantern": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        256,
+        100,
+        128,
+        100
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.25,
+          0.8,
+          0.5,
+          0.18
+        ]
+      ]
+    }
+  },
+  "landmarks": [],
+  "services": []
+}

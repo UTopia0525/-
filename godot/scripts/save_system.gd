@@ -115,12 +115,12 @@ func validate(d) -> bool:
 	if d.get("state") not in ["explore", "story", "choice", "service", "battle", "end"]: return false
 	if not d.get("saved_at") is String or not is_number(d.get("money"), 0, 1000000000) or not is_number(d.get("chapter"), 0, 1): return false
 	if not d.get("talked_captain") is bool or d.get("choice") not in ["", "treasure", "rescue"]: return false
-	if d.world.get("area") not in ["dock", "deck", "changsha", "mountain_road", "wuchang"]: return false
+	if d.world.get("area") not in ["dock", "deck", "changsha", "mountain_road", "wuchang", "alliance_office"]: return false
 	var layout_version=d.world.get("layout_version",1)
 	if not is_number(layout_version,1,2) or float(layout_version) not in [1.0,2.0]:return false
 	var pos = d.world.get("position")
 	if not pos is Array or pos.size() != 2: return false
-	var limit: Vector2={"changsha":Vector2(6144,4096),"mountain_road":Vector2(4096,5120 if d.world.get("layout_version",1)==2 else 10240),"wuchang":Vector2(8192,7680)}.get(d.world.area,Vector2(1280,720))
+	var limit: Vector2={"changsha":Vector2(6144,4096),"mountain_road":Vector2(4096,5120 if d.world.get("layout_version",1)==2 else 10240),"wuchang":Vector2(8192,7680),"alliance_office":Vector2(2048,1440)}.get(d.world.area,Vector2(1280,720))
 	if not is_number(pos[0], 0, limit.x) or not is_number(pos[1], 0, limit.y): return false
 	if d.world.get("facing") not in ["up", "down", "left", "right"] or not d.world.get("active") is bool: return false
 	var p = d.prologue
@@ -231,7 +231,7 @@ func load_slot(slot: int) -> bool:
 	game.exploration.player.position = Vector2(d.world.position[0], d.world.position[1])
 	if d.world.area=="mountain_road" and d.world.get("layout_version",1)==1:
 		game.exploration.player.position.y*=.5
-	if d.world.area in ["changsha","mountain_road","wuchang"]:
+	if d.world.area in ["changsha","mountain_road","wuchang","alliance_office"]:
 		game.exploration.player.position = game.exploration.safe_player_position(game.exploration.player.position)
 	game.exploration.player.facing = d.world.facing
 	game.exploration.player.stop()

@@ -37,3 +37,9 @@
 `tests/wuchang.gd`는 NPC 없음·남쪽 농촌 시작·주요 지점 전부 접근·독립 충돌/Y정렬·문 중앙/기둥·실제 남문 이동·본단 규모·지도 크기/입력·타이틀 복귀·진도 불변을 검사한다. `tests/capture_wuchang.gd`는 실제 Godot 화면과 고해상도 전체 지형을 저장한다. 검사 시 사용자 데이터는 분리한 XDG 경로를 사용한다.
 
 남문 밖 농촌에는 논/밭4곳과 농가2채·헛간·우물·짐·수목을 배치했다. 작물 안쪽은 지형 충돌과 길 찾기에서 막고 둑길과 마을 길로 돌아갈 수 있다. [포탈 위치와 왕복](changsha-wuchang-road.md).
+
+## 총무당 실내
+
+정문 안 왼편의 기존 `reception` 건물을 총무당으로 지정했다. 건물 앞 푸른 포탈에서 F로 출입하고, 실내 남쪽 포탈에서 외원으로 돌아온다. 별도 지역 `alliance_office`는2048×1440이며 총관 책상·접수 탁자·대기석·문서장·병풍을 독립 충돌/Y정렬 오브젝트로 배치했다. 실내에서도 TAB 지도와 저장/불러오기를 지원한다. 총관·송지겸·수문 무사와 후속 스토리/무공 전수는 아직 적용하지 않았다.
+
+[실내 플레이 화면](../../godot/screenshots/alliance-office-interior.png) · [실내 전체 배치](../../godot/screenshots/alliance-office-map.png). `tests/alliance_office.gd`로 F 왕복·가구 충돌·길 찾기·실내 지도·저장/불러오기·성장 보존을 확인한다. `tools/bake_alliance_office.gd`는 바닥과 독립 가구 아틀라스를 렌더링한다.

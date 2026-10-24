@@ -70,7 +70,7 @@ col('alliance_east',1905,120,880)
 row('alliance_south',940,1910,861,gate=(1414,1548))
 obj('alliance_gate','gate',[1330,681,300,222]);landmark('alliance_gate','무림맹 정문',[1480,930])
 # Public outer court, lodging and reception on the sides.
-obj('reception','government',[1000,620,155,137]);landmark('reception','외원 접수처',[1180,777])
+obj('reception','government',[1000,620,155,137]);landmark('reception','총무당',[1077,775])
 obj('guest_lodging','inn',[1710,620,152,146])
 # Rear perimeter framing the two large open training grounds.
 obj('west_training_hall','martial_hall',[1010,410,160,143]);obj('east_armory','warehouse',[1690,435,165,120])
