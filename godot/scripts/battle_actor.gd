@@ -1,4 +1,6 @@
 extends Node2D
+
+signal strike_started
 ## Weapon columns: sword / saber / spear / none. Pose rows: ready / windup / strike / hit.
 const COLUMNS = {"sword":0,"saber":1,"spear":2,"none":3}
 const ROWS = {"ready":0,"windup":1,"strike":2,"hit":3}
@@ -97,6 +99,7 @@ func attack() -> void:
 	motion = create_tween()
 	motion.tween_property(self,"position",home-direction*10,.12)
 	motion.tween_callback(set_pose.bind("strike"))
+	motion.tween_callback(func(): strike_started.emit())
 	motion.tween_property(self,"position",home+direction*reach,.16).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	motion.tween_interval(.20)
 	motion.tween_property(self,"position",home,.16).set_trans(Tween.TRANS_SINE)

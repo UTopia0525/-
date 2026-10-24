@@ -182,8 +182,6 @@ func _show_next_toast() -> void:
 func tip(id: String,text: String) -> void:
 	if id in game.options.seen:return
 	game.options.seen.append(id);game.options.persist();notify(text+"\nF2 도움말에서 다시 볼 수 있습니다.","confirm")
-func record_action(entry: Dictionary) -> void:
-	game.options.play("block" if entry.damage==0 else "hit") if entry.kind=="action" else null
 func record_result(won: bool) -> void:
 	results.append({"won":won,"enemy":game.battle.enemy_name.text,"turns":game.battle.turn,"events":game.battle.records.duplicate(true),"player_hp":game.battle.player_hp})
 	if results.size()>10:results.pop_front()

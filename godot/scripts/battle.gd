@@ -2,6 +2,7 @@ extends Control
 
 signal victory(remaining_hp: int)
 signal defeat
+signal sound_requested(id: String)
 signal event_recorded(entry: Dictionary)
 var records: Array[Dictionary]=[]
 
@@ -74,9 +75,13 @@ func _ready() -> void:
 	scene_image.size = Vector2(1280, 510)
 	add_child(scene_image)
 	player_actor = Actor.new()
+	player_actor.strike_started.connect(func():
+		if running and busy: sound_requested.emit("attack_"+player_actor.weapon_type))
 	add_child(player_actor)
 	player_actor.configure(false, equipped_weapon_type, Vector2(350,490))
 	enemy_actor = Actor.new()
+	enemy_actor.strike_started.connect(func():
+		if running and busy: sound_requested.emit("attack_"+enemy_actor.weapon_type))
 	add_child(enemy_actor)
 	enemy_actor.configure(true, "saber", Vector2(945,300))
 	var enemy_panel = UI.panel(self, Rect2(24, 24, 390, 140))
@@ -309,6 +314,7 @@ func use_selected() -> void:
 		player_actor.attack()
 	else:
 		player_actor.defend(1.8)
+		sound_requested.emit("block")
 	if enemy_intent == "basic_defense": enemy_actor.defend()
 	await get_tree().create_timer(Rules.DEMO_ATTACK_DELAY, false).timeout
 	if token != generation:
@@ -319,6 +325,7 @@ func use_selected() -> void:
 	log_action("주인공",action_name,hit,cost,active_enemy_guard,qi.amount)
 	enemy_hp = maxi(0, enemy_hp - hit)
 	_update_hp(true)
+	if raw > 0: sound_requested.emit("hit" if hit > 0 else "block")
 	if hit > 0: enemy_actor.hurt()
 	_float_damage(hit, false)
 	detail.text = "방어 태세를 취했습니다." if raw == 0 else "%s 명중.\n%s에게 %d의 피해를 주었습니다." % [action_name, enemy_name.text, hit]
@@ -342,6 +349,7 @@ func use_selected() -> void:
 		enemy_actor.attack()
 	else:
 		enemy_actor.defend()
+		sound_requested.emit("block")
 	await get_tree().create_timer(Rules.DEMO_ATTACK_DELAY, false).timeout
 	if token != generation:
 		return
@@ -349,6 +357,7 @@ func use_selected() -> void:
 	log_action(enemy_name.text,opponent_action.name,counter,int(opponent_action.cost),int(player_action.guard),enemy_qi.amount)
 	player_hp = maxi(0, player_hp - counter)
 	_update_hp(true)
+	if opponent_action.raw > 0: sound_requested.emit("hit" if counter > 0 else "block")
 	if counter > 0: player_actor.hurt()
 	_float_damage(counter, true)
 	await get_tree().create_timer(Rules.DEMO_TURN_DELAY, false).timeout

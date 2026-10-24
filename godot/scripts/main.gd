@@ -132,7 +132,7 @@ func _ready() -> void:
 	adventure_ui=preload("res://scripts/adventure_ui.gd").new();adventure_ui.game=self;ui_root.add_child(adventure_ui)
 	ordinary_quests=preload("res://scripts/ordinary_quests.gd").new();ordinary_quests.game=self;add_child(ordinary_quests)
 	progress.progress_changed.connect(_progress_changed)
-	battle.event_recorded.connect(adventure_ui.record_action)
+	battle.sound_requested.connect(options.play)
 	var journal_button=UI.button(top_hud,"의뢰 일지 · Q",Rect2(930,245,150,35))
 	journal_button.pressed.connect(adventure_ui.open_journal)
 	var help_button=UI.button(top_hud,"도움말 · F2",Rect2(1100,245,150,35))

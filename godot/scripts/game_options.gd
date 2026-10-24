@@ -1,7 +1,7 @@
 extends Node
 ## Device preferences are separate from story saves and survive returning to title.
 const FILE="user://preferences.cfg"
-const SFX={"confirm":preload("res://assets/sfx/confirm.wav"),"coin":preload("res://assets/sfx/coin.wav"),"quest":preload("res://assets/sfx/quest.wav"),"learn":preload("res://assets/sfx/learn.wav"),"hit":preload("res://assets/sfx/hit.wav"),"block":preload("res://assets/sfx/block.wav")}
+const SFX={"attack_sword":preload("res://assets/sfx/attack_sword.wav"),"attack_saber":preload("res://assets/sfx/attack_saber.wav"),"attack_spear":preload("res://assets/sfx/attack_spear.wav"),"attack_none":preload("res://assets/sfx/attack_none.wav"),"confirm":preload("res://assets/sfx/confirm.wav"),"coin":preload("res://assets/sfx/coin.wav"),"quest":preload("res://assets/sfx/quest.wav"),"learn":preload("res://assets/sfx/learn.wav"),"hit":preload("res://assets/sfx/hit.wav"),"block":preload("res://assets/sfx/block.wav")}
 var game
 var bgm_volume:=70.0
 var sfx_volume:=65.0
