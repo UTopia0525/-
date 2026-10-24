@@ -22,8 +22,8 @@ func run() -> void:
 		check(prop.position.y==prop.visual_rect.end.y,"foot-sorted prop: "+str(prop.name))
 		check(not prop.collision_rects.is_empty(),"physical prop: "+str(prop.name))
 		if prop.get_meta("kind")=="gate":
-			var foot=prop.position
-			check(city.can_stand(foot-Vector2(0,10)),"open gate center: "+str(prop.name))
+			var foot=city.point(prop.definition.passage_point) if prop.definition.has("passage_point") else prop.position-Vector2(0,10)
+			check(city.can_stand(foot),"open gate center: "+str(prop.name))
 			check(not city.can_stand(prop.collision_rects[0].get_center()),"gate pillar blocks: "+str(prop.name))
 	var hall=city.actors.get_node("alliance_main_hall")
 	check(hall.visual_rect.size.y>=1100,"main hall has two-storey monumental height")
@@ -33,6 +33,15 @@ func run() -> void:
 	Input.action_press("move_up");for i in range(20):await physics_frame
 	Input.action_release("move_up");await physics_frame
 	check(scene.player.position.y<before.y-90,"south gate is traversable with actual player physics")
+	var east=city.actors.get_node("east_gate")
+	check(east.definition.opening_axis=="east_west","east gate has east-west opening")
+	scene.player.position=city.point([1900,945]);scene.player.stop()
+	Input.action_press("move_right");for i in range(48):await physics_frame
+	Input.action_release("move_right");await physics_frame
+	check(scene.player.position.x>1945*4,"keyboard walks east through city gate")
+	Input.action_press("move_left");for i in range(48):await physics_frame
+	Input.action_release("move_left");await physics_frame
+	check(scene.player.position.x<1925*4,"keyboard returns west through city gate")
 	scene.toggle_map();check(not scene.player.movement_enabled,"overview pauses movement")
 	scene.toggle_map();check(scene.player.movement_enabled,"closing overview restores movement")
 	check(scene.mini.size==Vector2(256,192),"minimap stays within its panel")

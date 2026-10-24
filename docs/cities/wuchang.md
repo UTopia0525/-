@@ -50,3 +50,12 @@
 5시 방향 관아 구역의 앞 담장에 북쪽·서쪽·동쪽 담장을 이어 네 면의 경계를 완성했다. 독립 담장 오브젝트15개를 추가해 전체 구조물은224개다. 북쪽 담장은 대로의 통행 영역과 관아 지붕 사이에 두며, 남쪽 기존 문과 가운데 통로는 유지한다. 포두 육정호의 자리와 접근로도 유지한다. 바닥 그림·퀘스트·보상은 바꾸지 않았다.
 
 [관아 담장 확대](../../godot/screenshots/wuchang-government-walls.png) · [갱신한 무창 전체 지도](../../godot/screenshots/wuchang-full-map.png). 배치 생성기는 `tools/build_wuchang_layout.py`, 캡처는 `tests/capture_government_walls.gd`다. `wuchang.gd`와 `wuchang_residents.gd`로 주요 지점 접근·문 통행·주민 겹침/접근을 확인했다.
+
+
+## 동문 방향 수정
+
+성곽 동쪽 출입문은 남쪽을 향하던 공용 정문 그림 대신 **동쪽을 향하는 전용 측면 그림**(`east-gate.png`)을 사용한다. 지붕 용마루와 두 기둥은 남북으로 배치하고 가운데를 동서로 통과한다. 남문·관아 문·무림맹 문은 기존 형태를 유지한다.
+
+`layout.json`의 `gate_east` 프리팹과 `east_gate.opening_axis=east_west`, 통과점 `[1949,945]`를 사용한다. 북·남 기둥 밑에만 독립 충돌을 두고 성곽의 문틈도 맞췄다. 도원이 지붕 밑으로 들어가면 기존 발밑 정렬과 투명 영역으로 자연스럽게 가려진다. 전체 지도와 미니맵도 같은 새 그림/배치를 표시한다.
+
+[동문 확대](../../godot/screenshots/wuchang-east-gate.png) · [실제 통행 화면](../../godot/screenshots/wuchang-east-gate-passage.png). `tests/wuchang.gd`는 가운데 통행·기둥 충돌과 실제 키보드 동서 왕복을 검사한다. 주민 접근과 산길 왕복 검사를 유지했다. 갱신 캡처는 `tests/capture_east_gate.gd`다.

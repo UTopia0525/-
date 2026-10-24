@@ -44,10 +44,14 @@ for args in [('harbor','장강 나루·하역장',[210,600,270,620],[335,875]),(
 # City enclosure: no long ornamental tree rows.
 row('city_north',240,1945,70)
 col('city_west',217,105,1420,gap=(890,1010))
-col('city_east',1940,105,1430,gap=(900,1010))
+col('city_east',1940,105,1430,gap=(900,980))
 row('city_south',240,1940,1410,gate=(1042,1163))
 obj('south_gate','gate',[982,1310,232,172]);landmark('south_entry','남문 · 장사 방면',[1100,1490])
-obj('east_gate','gate',[1830,864,220,162])
+# East entrance uses upright side-view architecture, not a rotated south gate.
+d['prefabs']={'gate_east':{'texture':'res://assets/maps/wuchang/east-gate.png','source':[0,0,887,1774],'kind':'gate','footprints':[[.40,.48,.20,.062],[.565,.83,.205,.078]]}}
+obj('east_gate','gate_east',[1895,810,94,187])
+d['objects'][-1].update({'opening_axis':'east_west','passage_point':[1949,945]})
+landmark('east_entry','동문 · 동서 통행',[1949,945])
 # Neighbourhoods: room for future residents in yards and at shop sides.
 for i,(x,y) in enumerate([(275,115),(600,115),(290,320),(625,325)]):obj(f'home_{i}','home',[x,y,126,113])
 obj('residential_well','well',[487,337,43,53]);obj('small_shrine','shrine',[740,130,105,98])
