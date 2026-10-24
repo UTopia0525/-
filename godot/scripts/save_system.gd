@@ -48,7 +48,7 @@ func capture() -> Dictionary:
 	for id in nodes: visibility[id] = nodes[id].visible
 	return {"schema":3, "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
 		"chapter":game.chapter_number, "money":game.money, "talked_captain":game.talked_captain,
-		"world":{"area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
+		"world":{"layout_version":2 if w.area_name=="mountain_road" else 1, "area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
 		"chapter_one":game.chapter_one.snapshot().merged({"started":game.chapter_one.intro_started}),
 		"navigation":{"quest":game.quest_navigation.quest_id, "stage":game.quest_navigation.stage_id, "completed":game.quest_navigation.completed_goal_ids.duplicate(),"facility":game.quest_navigation.facility_id},
@@ -116,9 +116,11 @@ func validate(d) -> bool:
 	if not d.get("saved_at") is String or not is_number(d.get("money"), 0, 1000000000) or not is_number(d.get("chapter"), 0, 1): return false
 	if not d.get("talked_captain") is bool or d.get("choice") not in ["", "treasure", "rescue"]: return false
 	if d.world.get("area") not in ["dock", "deck", "changsha", "mountain_road", "wuchang"]: return false
+	var layout_version=d.world.get("layout_version",1)
+	if not is_number(layout_version,1,2) or float(layout_version) not in [1.0,2.0]:return false
 	var pos = d.world.get("position")
 	if not pos is Array or pos.size() != 2: return false
-	var limit: Vector2={"changsha":Vector2(6144,4096),"mountain_road":Vector2(4096,10240),"wuchang":Vector2(8192,6144)}.get(d.world.area,Vector2(1280,720))
+	var limit: Vector2={"changsha":Vector2(6144,4096),"mountain_road":Vector2(4096,5120 if d.world.get("layout_version",1)==2 else 10240),"wuchang":Vector2(8192,6144)}.get(d.world.area,Vector2(1280,720))
 	if not is_number(pos[0], 0, limit.x) or not is_number(pos[1], 0, limit.y): return false
 	if d.world.get("facing") not in ["up", "down", "left", "right"] or not d.world.get("active") is bool: return false
 	var p = d.prologue
@@ -227,6 +229,8 @@ func load_slot(slot: int) -> bool:
 	game.talked_captain = d.talked_captain
 	game.exploration.load_area(d.world.area)
 	game.exploration.player.position = Vector2(d.world.position[0], d.world.position[1])
+	if d.world.area=="mountain_road" and d.world.get("layout_version",1)==1:
+		game.exploration.player.position.y*=.5
 	if d.world.area in ["changsha","mountain_road","wuchang"]:
 		game.exploration.player.position = game.exploration.safe_player_position(game.exploration.player.position)
 	game.exploration.player.facing = d.world.facing

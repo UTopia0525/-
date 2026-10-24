@@ -1,9 +1,9 @@
 extends RefCounted
 const AREAS=["changsha","mountain_road","wuchang"]
 const LINKS={
- "changsha":[{"id":"travel:road_east","name":"무창 방면 산길 →","point":[768,94],"area":"mountain_road","arrival":[125,2350]}],
- "mountain_road":[{"id":"travel:changsha","name":"← 장사 북문","point":[80,2350],"area":"changsha","arrival":[768,125]}, {"id":"travel:wuchang","name":"↑ 무창 남문","point":[740,80],"area":"wuchang","arrival":[1100,1435]}],
- "wuchang":[{"id":"travel:road_south","name":"↓ 장사 방면 산길","point":[1100,1508],"area":"mountain_road","arrival":[740,130]}]}
+ "changsha":[{"id":"travel:road_east","name":"무창 방면 산길 →","point":[768,94],"area":"mountain_road","arrival":[125,1175]}],
+ "mountain_road":[{"id":"travel:changsha","name":"← 장사 북문","point":[80,1175],"area":"changsha","arrival":[768,125]}, {"id":"travel:wuchang","name":"↑ 무창 남문","point":[740,64],"area":"wuchang","arrival":[1100,1435]}],
+ "wuchang":[{"id":"travel:road_south","name":"↓ 장사 방면 산길","point":[1100,1508],"area":"mountain_road","arrival":[740,110]}]}
 static func install(world) -> void:
 	world.travel_exits.clear()
 	for link in LINKS.get(world.area_name,[]):

@@ -4,23 +4,23 @@ var texture: Texture2D
 func _ready() -> void:
 	var rng=RandomNumberGenerator.new();rng.seed=1421
 	var noise=FastNoiseLite.new();noise.seed=731;noise.frequency=.024
-	var image=Image.create(512,1280,false,Image.FORMAT_RGB8)
-	for y in range(1280):
+	var image=Image.create(512,int(data.art_size[1])/2,false,Image.FORMAT_RGB8)
+	for y in range(int(data.art_size[1])/2):
 		for x in range(512):
 			var v=noise.get_noise_2d(x,y)*.15+rng.randf_range(-.018,.018)
 			image.set_pixel(x,y,Color(.32+v,.37+v,.24+v*.6))
 	texture=ImageTexture.create_from_image(image)
 func _draw() -> void:
 	if not is_instance_valid(texture):return
-	draw_texture_rect(texture,Rect2(0,0,1024,2560),false)
+	draw_texture_rect(texture,Rect2(0,0,data.art_size[0],data.art_size[1]),false)
 	var rng=RandomNumberGenerator.new();rng.seed=1234
 	# Rock faces form terrain relief; trees and individual boulders are independent sprites.
 	for side in [0,1]:
 		var edge=PackedVector2Array([Vector2(-10 if side==0 else 1100,-10)])
-		for y in range(0,2640,80):
+		for y in range(0,int(data.art_size[1])+80,80):
 			var x=rng.randf_range(220,340) if side==0 else rng.randf_range(930,1050)
 			edge.append(Vector2(x,y))
-		edge.append(Vector2(-10 if side==0 else 1100,2600))
+		edge.append(Vector2(-10 if side==0 else 1100,data.art_size[1]+40))
 		draw_colored_polygon(edge,Color("616b52") if side==0 else Color("56654c"))
 		for i in range(1,edge.size()-2):
 			var p=edge[i];var toward=Vector2(-rng.randf_range(70,150),36) if side==0 else Vector2(rng.randf_range(70,150),36)

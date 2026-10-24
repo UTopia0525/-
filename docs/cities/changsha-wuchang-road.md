@@ -1,6 +1,6 @@
 # 장사–무창 육로
 
-장사보다 무창이 동북쪽에 있는 관계를 살려 **아래쪽에서 먼저 동진한 뒤 굽이진 산길로 북상**한다. 남북으로 긴4096×10240 지형이며 실제 도시 간 거리와 이동 시간을 재현한 지도는 아니다. NPC·적·랜덤 전투·새 퀘스트·입장 조건은 추가하지 않았다.
+장사보다 무창이 동북쪽에 있는 관계를 살려 **아래쪽에서 먼저 동진한 뒤 굽이진 산길로 북상**한다. 남북으로 긴4096×5120 지형이며 실제 도시 간 거리와 이동 시간을 재현한 지도는 아니다. NPC·적·랜덤 전투·새 퀘스트·입장 조건은 추가하지 않았다.
 
 ## 이동
 
@@ -32,3 +32,5 @@
 - 회귀 검사: `city_collision`, `adventure_features`, `saves`, `save_restrictions`, `wuchang`. 검사마다 별도 XDG 사용자 경로 사용.
 
 실제 실행 화면: [전체 산길](../../godot/screenshots/overland-full-map.png), [구역 지도](../../godot/screenshots/overland-overview.png), [동쪽 굽이](../../godot/screenshots/overland-east-turn.png), [산길](../../godot/screenshots/overland-mountain-pass.png), [무창 도착](../../godot/screenshots/overland-wuchang-arrival.png).
+
+세로 길이는 최초 지도의 절반으로 줄였다. 가로 거리·길 폭·인물·바위/수목 그림 크기는 유지하고 위치와 구역을 재배치했다. 북쪽 출입구는 새 경계 안으로 옮겼다. 이전 긴 산길에서 저장한 진도는 `world.layout_version`이 없으면 Y좌표를 절반으로 변환하고 안전 위치를 찾는다. 새 저장은 버전2를 기록해 다시 불러올 때 중복 변환하지 않는다.

@@ -25,5 +25,15 @@ for i in range(105):
 # Deliberate rock cuts at bends keep relief visible from the player's camera.
 for i,rect in enumerate([[460,1325,130,92],[730,1430,150,104],[430,1820,145,104],[810,1580,145,104],[520,300,145,104],[350,2190,140,100]]):
  d['objects'].append({'id':f'road_cut_{i}','prefab':'rock','rect':rect})
+# Halve north/south distances, preserving sprite dimensions and the path width.
+d['art_size'][1]=1280;d['world_size'][1]=5120;d['walk_bounds'][3]=1280
+d['spawn'][1]/=2
+for point in d['route']:point[1]/=2
+# Keep the northern round end fully inside the map and arrivals away from the exit.
+d['route'][-1][1]=64
+for district in d['districts']:
+ district['rect'][1]/=2;district['rect'][3]/=2;district['label'][1]/=2
+for obj in d['objects']:
+ x,y,w,h=obj['rect'];obj['rect'][1]=round((y+h)/2-h,1)
 Path('godot/assets/maps/changsha-wuchang/layout.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
 print(len(d['objects']),'mountain props')
