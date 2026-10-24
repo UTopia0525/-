@@ -6,7 +6,7 @@
 
 ## 실행과 조작
 
-저장소를 내려받은 폴더에서 `git pull --ff-only`로 최신 내용을 받은 뒤 Godot에서 `godot/project.godot`을 가져옵니다. 처음에는 자산 가져오기를 기다리고 F5를 누릅니다. 타이틀에서 표행 시작·장사 자유 탐방·전투 체험을 선택합니다. 기존 저장이 있으면 이어하기를 사용할 수 있습니다.
+저장소를 내려받은 폴더에서 `git pull --ff-only`로 최신 내용을 받은 뒤 Godot에서 `godot/project.godot`을 가져옵니다. 처음에는 자산 가져오기를 기다리고 F5를 누릅니다. 타이틀에서 표행 시작·장사 자유 탐방·전투 체험을 선택합니다. ‘무창 지도 답사’는 NPC 배치 전 도시 확인용이며 남문에서 시작합니다. 기존 저장이 있으면 이어하기를 사용할 수 있습니다.
 
 | 키 | 기능 |
 | --- | --- |
@@ -80,3 +80,5 @@ try {
 - [이전 README 전체 기록](../docs/archive/godot-readme-before-cleanup.md): 당시의 화면·단계별 한계 설명을 보존합니다.
 
 - [탐험 인물 크기·이동 속도](../docs/systems/exploration-scale.md)
+
+- [무창 지도 답사·무림맹 본단](../docs/cities/wuchang.md)

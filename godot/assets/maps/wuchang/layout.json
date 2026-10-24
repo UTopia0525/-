@@ -1,0 +1,2471 @@
+{
+  "name": "무창",
+  "historical_note": "명 초기 무창을 모티프로 한 가상 배치. 남쪽 육로로 입성하며 NPC·본편 이동 연결은 배치 승인 후 추가한다.",
+  "art_size": [
+    2048,
+    1536
+  ],
+  "world_size": [
+    8192,
+    6144
+  ],
+  "spawn": [
+    1100,
+    1490
+  ],
+  "walk_bounds": [
+    210,
+    60,
+    1750,
+    1470
+  ],
+  "alliance_bounds": [
+    930,
+    85,
+    1000,
+    820
+  ],
+  "npcs": [],
+  "objects": [
+    {
+      "id": "city_north_0",
+      "prefab": "wall_h",
+      "rect": [
+        240,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_1",
+      "prefab": "wall_h",
+      "rect": [
+        310,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_2",
+      "prefab": "wall_h",
+      "rect": [
+        380,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_3",
+      "prefab": "wall_h",
+      "rect": [
+        450,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_4",
+      "prefab": "wall_h",
+      "rect": [
+        520,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_5",
+      "prefab": "wall_h",
+      "rect": [
+        590,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_6",
+      "prefab": "wall_h",
+      "rect": [
+        660,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_7",
+      "prefab": "wall_h",
+      "rect": [
+        730,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_8",
+      "prefab": "wall_h",
+      "rect": [
+        800,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_9",
+      "prefab": "wall_h",
+      "rect": [
+        870,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_10",
+      "prefab": "wall_h",
+      "rect": [
+        940,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_11",
+      "prefab": "wall_h",
+      "rect": [
+        1010,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_12",
+      "prefab": "wall_h",
+      "rect": [
+        1080,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_13",
+      "prefab": "wall_h",
+      "rect": [
+        1150,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_14",
+      "prefab": "wall_h",
+      "rect": [
+        1220,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_15",
+      "prefab": "wall_h",
+      "rect": [
+        1290,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_16",
+      "prefab": "wall_h",
+      "rect": [
+        1360,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_17",
+      "prefab": "wall_h",
+      "rect": [
+        1430,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_18",
+      "prefab": "wall_h",
+      "rect": [
+        1500,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_19",
+      "prefab": "wall_h",
+      "rect": [
+        1570,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_20",
+      "prefab": "wall_h",
+      "rect": [
+        1640,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_21",
+      "prefab": "wall_h",
+      "rect": [
+        1710,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_22",
+      "prefab": "wall_h",
+      "rect": [
+        1780,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_23",
+      "prefab": "wall_h",
+      "rect": [
+        1850,
+        70,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_north_24",
+      "prefab": "wall_h",
+      "rect": [
+        1920,
+        70,
+        25,
+        42
+      ]
+    },
+    {
+      "id": "city_west_0",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        105,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_1",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        163,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_2",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        221,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_3",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        279,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_4",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        337,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_5",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        395,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_6",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        453,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_7",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        511,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_8",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        569,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_9",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        627,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_10",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        685,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_11",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        743,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_12",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        801,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_13",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        859,
+        23,
+        31
+      ]
+    },
+    {
+      "id": "city_west_14",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        1010,
+        23,
+        23
+      ]
+    },
+    {
+      "id": "city_west_15",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        1033,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_16",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        1091,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_17",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        1149,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_18",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        1207,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_19",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        1265,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_20",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        1323,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_west_21",
+      "prefab": "wall_v",
+      "rect": [
+        217,
+        1381,
+        23,
+        39
+      ]
+    },
+    {
+      "id": "city_east_0",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        105,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_1",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        163,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_2",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        221,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_3",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        279,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_4",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        337,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_5",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        395,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_6",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        453,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_7",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        511,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_8",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        569,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_9",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        627,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_10",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        685,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_11",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        743,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_12",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        801,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_13",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        859,
+        23,
+        41
+      ]
+    },
+    {
+      "id": "city_east_14",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        1010,
+        23,
+        23
+      ]
+    },
+    {
+      "id": "city_east_15",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        1033,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_16",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        1091,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_17",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        1149,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_18",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        1207,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_19",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        1265,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_20",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        1323,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "city_east_21",
+      "prefab": "wall_v",
+      "rect": [
+        1940,
+        1381,
+        23,
+        49
+      ]
+    },
+    {
+      "id": "city_south_0",
+      "prefab": "wall_h",
+      "rect": [
+        240,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_1",
+      "prefab": "wall_h",
+      "rect": [
+        310,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_2",
+      "prefab": "wall_h",
+      "rect": [
+        380,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_3",
+      "prefab": "wall_h",
+      "rect": [
+        450,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_4",
+      "prefab": "wall_h",
+      "rect": [
+        520,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_5",
+      "prefab": "wall_h",
+      "rect": [
+        590,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_6",
+      "prefab": "wall_h",
+      "rect": [
+        660,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_7",
+      "prefab": "wall_h",
+      "rect": [
+        730,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_8",
+      "prefab": "wall_h",
+      "rect": [
+        800,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_9",
+      "prefab": "wall_h",
+      "rect": [
+        870,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_10",
+      "prefab": "wall_h",
+      "rect": [
+        940,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_11",
+      "prefab": "wall_h",
+      "rect": [
+        1010,
+        1410,
+        32,
+        42
+      ]
+    },
+    {
+      "id": "city_south_12",
+      "prefab": "wall_h",
+      "rect": [
+        1163,
+        1410,
+        57,
+        42
+      ]
+    },
+    {
+      "id": "city_south_13",
+      "prefab": "wall_h",
+      "rect": [
+        1220,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_14",
+      "prefab": "wall_h",
+      "rect": [
+        1290,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_15",
+      "prefab": "wall_h",
+      "rect": [
+        1360,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_16",
+      "prefab": "wall_h",
+      "rect": [
+        1430,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_17",
+      "prefab": "wall_h",
+      "rect": [
+        1500,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_18",
+      "prefab": "wall_h",
+      "rect": [
+        1570,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_19",
+      "prefab": "wall_h",
+      "rect": [
+        1640,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_20",
+      "prefab": "wall_h",
+      "rect": [
+        1710,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_21",
+      "prefab": "wall_h",
+      "rect": [
+        1780,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_22",
+      "prefab": "wall_h",
+      "rect": [
+        1850,
+        1410,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "city_south_23",
+      "prefab": "wall_h",
+      "rect": [
+        1920,
+        1410,
+        20,
+        42
+      ]
+    },
+    {
+      "id": "south_gate",
+      "prefab": "gate",
+      "rect": [
+        982,
+        1310,
+        232,
+        172
+      ]
+    },
+    {
+      "id": "east_gate",
+      "prefab": "gate",
+      "rect": [
+        1830,
+        864,
+        220,
+        162
+      ]
+    },
+    {
+      "id": "home_0",
+      "prefab": "home",
+      "rect": [
+        275,
+        115,
+        126,
+        113
+      ]
+    },
+    {
+      "id": "home_1",
+      "prefab": "home",
+      "rect": [
+        600,
+        115,
+        126,
+        113
+      ]
+    },
+    {
+      "id": "home_2",
+      "prefab": "home",
+      "rect": [
+        290,
+        320,
+        126,
+        113
+      ]
+    },
+    {
+      "id": "home_3",
+      "prefab": "home",
+      "rect": [
+        625,
+        325,
+        126,
+        113
+      ]
+    },
+    {
+      "id": "residential_well",
+      "prefab": "well",
+      "rect": [
+        487,
+        337,
+        43,
+        53
+      ]
+    },
+    {
+      "id": "small_shrine",
+      "prefab": "shrine",
+      "rect": [
+        740,
+        130,
+        105,
+        98
+      ]
+    },
+    {
+      "id": "residential_tree",
+      "prefab": "tree",
+      "rect": [
+        450,
+        155,
+        70,
+        78
+      ]
+    },
+    {
+      "id": "shrine_tree",
+      "prefab": "tree",
+      "rect": [
+        826,
+        305,
+        62,
+        70
+      ]
+    },
+    {
+      "id": "inn_west",
+      "prefab": "inn",
+      "rect": [
+        570,
+        620,
+        145,
+        145
+      ]
+    },
+    {
+      "id": "tea_house",
+      "prefab": "inn",
+      "rect": [
+        735,
+        650,
+        132,
+        130
+      ]
+    },
+    {
+      "id": "riverside_inn",
+      "prefab": "inn",
+      "rect": [
+        285,
+        620,
+        140,
+        143
+      ]
+    },
+    {
+      "id": "warehouse_0",
+      "prefab": "warehouse",
+      "rect": [
+        255,
+        1015,
+        132,
+        102
+      ]
+    },
+    {
+      "id": "freight_0",
+      "prefab": "cargo",
+      "rect": [
+        365,
+        1103,
+        39,
+        42
+      ]
+    },
+    {
+      "id": "warehouse_1",
+      "prefab": "warehouse",
+      "rect": [
+        340,
+        1130,
+        132,
+        102
+      ]
+    },
+    {
+      "id": "freight_1",
+      "prefab": "cargo",
+      "rect": [
+        450,
+        1218,
+        39,
+        42
+      ]
+    },
+    {
+      "id": "warehouse_2",
+      "prefab": "warehouse",
+      "rect": [
+        270,
+        1270,
+        132,
+        102
+      ]
+    },
+    {
+      "id": "freight_2",
+      "prefab": "cargo",
+      "rect": [
+        380,
+        1358,
+        39,
+        42
+      ]
+    },
+    {
+      "id": "market_shop_0",
+      "prefab": "home",
+      "rect": [
+        615,
+        1015,
+        126,
+        113
+      ]
+    },
+    {
+      "id": "market_shop_1",
+      "prefab": "home",
+      "rect": [
+        830,
+        1015,
+        126,
+        113
+      ]
+    },
+    {
+      "id": "market_shop_2",
+      "prefab": "home",
+      "rect": [
+        615,
+        1250,
+        126,
+        113
+      ]
+    },
+    {
+      "id": "market_shop_3",
+      "prefab": "home",
+      "rect": [
+        850,
+        1270,
+        126,
+        113
+      ]
+    },
+    {
+      "id": "stall_0",
+      "prefab": "stall_b",
+      "rect": [
+        630,
+        1150,
+        70,
+        56
+      ]
+    },
+    {
+      "id": "stall_1",
+      "prefab": "stall_a",
+      "rect": [
+        870,
+        1150,
+        70,
+        56
+      ]
+    },
+    {
+      "id": "stall_2",
+      "prefab": "stall_b",
+      "rect": [
+        630,
+        1380,
+        70,
+        56
+      ]
+    },
+    {
+      "id": "stall_3",
+      "prefab": "stall_a",
+      "rect": [
+        875,
+        1390,
+        70,
+        56
+      ]
+    },
+    {
+      "id": "workshop_0",
+      "prefab": "workshop",
+      "rect": [
+        1190,
+        1270,
+        136,
+        122
+      ]
+    },
+    {
+      "id": "workshop_1",
+      "prefab": "workshop",
+      "rect": [
+        1430,
+        1275,
+        136,
+        122
+      ]
+    },
+    {
+      "id": "workshop_2",
+      "prefab": "workshop",
+      "rect": [
+        1730,
+        1270,
+        136,
+        122
+      ]
+    },
+    {
+      "id": "public_martial_hall",
+      "prefab": "martial_hall",
+      "rect": [
+        1190,
+        1020,
+        145,
+        128
+      ]
+    },
+    {
+      "id": "public_martial_annex",
+      "prefab": "home",
+      "rect": [
+        1420,
+        1020,
+        95,
+        88
+      ]
+    },
+    {
+      "id": "government_hall",
+      "prefab": "government",
+      "rect": [
+        1670,
+        1010,
+        159,
+        142
+      ]
+    },
+    {
+      "id": "government_gate",
+      "prefab": "gate",
+      "rect": [
+        1670,
+        1135,
+        155,
+        115
+      ]
+    },
+    {
+      "id": "government_front_0",
+      "prefab": "wall_h",
+      "rect": [
+        1600,
+        1225,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "government_front_1",
+      "prefab": "wall_h",
+      "rect": [
+        1670,
+        1225,
+        40,
+        42
+      ]
+    },
+    {
+      "id": "government_front_2",
+      "prefab": "wall_h",
+      "rect": [
+        1787,
+        1225,
+        23,
+        42
+      ]
+    },
+    {
+      "id": "government_front_3",
+      "prefab": "wall_h",
+      "rect": [
+        1810,
+        1225,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "government_front_4",
+      "prefab": "wall_h",
+      "rect": [
+        1880,
+        1225,
+        20,
+        42
+      ]
+    },
+    {
+      "id": "alliance_north_0",
+      "prefab": "wall_h",
+      "rect": [
+        940,
+        85,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_north_1",
+      "prefab": "wall_h",
+      "rect": [
+        1010,
+        85,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_north_2",
+      "prefab": "wall_h",
+      "rect": [
+        1080,
+        85,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_north_3",
+      "prefab": "wall_h",
+      "rect": [
+        1150,
+        85,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_north_4",
+      "prefab": "wall_h",
+      "rect": [
+        1220,
+        85,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_north_5",
+      "prefab": "wall_h",
+      "rect": [
+        1290,
+        85,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_north_6",
+      "prefab": "wall_h",
+      "rect": [
+        1360,
+        85,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_north_7",
+      "prefab": "wall_h",
+      "rect": [
+        1430,
+        85,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_north_8",
+      "prefab": "wall_h",
+      "rect": [
+        1500,
+        85,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_north_9",
+      "prefab": "wall_h",
+      "rect": [
+        1570,
+        85,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_north_10",
+      "prefab": "wall_h",
+      "rect": [
+        1640,
+        85,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_north_11",
+      "prefab": "wall_h",
+      "rect": [
+        1710,
+        85,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_north_12",
+      "prefab": "wall_h",
+      "rect": [
+        1780,
+        85,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_north_13",
+      "prefab": "wall_h",
+      "rect": [
+        1850,
+        85,
+        60,
+        42
+      ]
+    },
+    {
+      "id": "alliance_west_0",
+      "prefab": "wall_v",
+      "rect": [
+        932,
+        120,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_west_1",
+      "prefab": "wall_v",
+      "rect": [
+        932,
+        178,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_west_2",
+      "prefab": "wall_v",
+      "rect": [
+        932,
+        236,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_west_3",
+      "prefab": "wall_v",
+      "rect": [
+        932,
+        294,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_west_4",
+      "prefab": "wall_v",
+      "rect": [
+        932,
+        352,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_west_5",
+      "prefab": "wall_v",
+      "rect": [
+        932,
+        410,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_west_6",
+      "prefab": "wall_v",
+      "rect": [
+        932,
+        468,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_west_7",
+      "prefab": "wall_v",
+      "rect": [
+        932,
+        526,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_west_8",
+      "prefab": "wall_v",
+      "rect": [
+        932,
+        584,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_west_9",
+      "prefab": "wall_v",
+      "rect": [
+        932,
+        642,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_west_10",
+      "prefab": "wall_v",
+      "rect": [
+        932,
+        700,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_west_11",
+      "prefab": "wall_v",
+      "rect": [
+        932,
+        758,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_west_12",
+      "prefab": "wall_v",
+      "rect": [
+        932,
+        816,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_west_13",
+      "prefab": "wall_v",
+      "rect": [
+        932,
+        874,
+        23,
+        6
+      ]
+    },
+    {
+      "id": "alliance_east_0",
+      "prefab": "wall_v",
+      "rect": [
+        1905,
+        120,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_east_1",
+      "prefab": "wall_v",
+      "rect": [
+        1905,
+        178,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_east_2",
+      "prefab": "wall_v",
+      "rect": [
+        1905,
+        236,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_east_3",
+      "prefab": "wall_v",
+      "rect": [
+        1905,
+        294,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_east_4",
+      "prefab": "wall_v",
+      "rect": [
+        1905,
+        352,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_east_5",
+      "prefab": "wall_v",
+      "rect": [
+        1905,
+        410,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_east_6",
+      "prefab": "wall_v",
+      "rect": [
+        1905,
+        468,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_east_7",
+      "prefab": "wall_v",
+      "rect": [
+        1905,
+        526,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_east_8",
+      "prefab": "wall_v",
+      "rect": [
+        1905,
+        584,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_east_9",
+      "prefab": "wall_v",
+      "rect": [
+        1905,
+        642,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_east_10",
+      "prefab": "wall_v",
+      "rect": [
+        1905,
+        700,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_east_11",
+      "prefab": "wall_v",
+      "rect": [
+        1905,
+        758,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_east_12",
+      "prefab": "wall_v",
+      "rect": [
+        1905,
+        816,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "alliance_east_13",
+      "prefab": "wall_v",
+      "rect": [
+        1905,
+        874,
+        23,
+        6
+      ]
+    },
+    {
+      "id": "alliance_south_0",
+      "prefab": "wall_h",
+      "rect": [
+        940,
+        861,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_south_1",
+      "prefab": "wall_h",
+      "rect": [
+        1010,
+        861,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_south_2",
+      "prefab": "wall_h",
+      "rect": [
+        1080,
+        861,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_south_3",
+      "prefab": "wall_h",
+      "rect": [
+        1150,
+        861,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_south_4",
+      "prefab": "wall_h",
+      "rect": [
+        1220,
+        861,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_south_5",
+      "prefab": "wall_h",
+      "rect": [
+        1290,
+        861,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_south_6",
+      "prefab": "wall_h",
+      "rect": [
+        1360,
+        861,
+        54,
+        42
+      ]
+    },
+    {
+      "id": "alliance_south_7",
+      "prefab": "wall_h",
+      "rect": [
+        1548,
+        861,
+        22,
+        42
+      ]
+    },
+    {
+      "id": "alliance_south_8",
+      "prefab": "wall_h",
+      "rect": [
+        1570,
+        861,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_south_9",
+      "prefab": "wall_h",
+      "rect": [
+        1640,
+        861,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_south_10",
+      "prefab": "wall_h",
+      "rect": [
+        1710,
+        861,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_south_11",
+      "prefab": "wall_h",
+      "rect": [
+        1780,
+        861,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "alliance_south_12",
+      "prefab": "wall_h",
+      "rect": [
+        1850,
+        861,
+        60,
+        42
+      ]
+    },
+    {
+      "id": "alliance_gate",
+      "prefab": "gate",
+      "rect": [
+        1330,
+        681,
+        300,
+        222
+      ]
+    },
+    {
+      "id": "reception",
+      "prefab": "government",
+      "rect": [
+        1000,
+        620,
+        155,
+        137
+      ]
+    },
+    {
+      "id": "guest_lodging",
+      "prefab": "inn",
+      "rect": [
+        1710,
+        620,
+        152,
+        146
+      ]
+    },
+    {
+      "id": "west_training_hall",
+      "prefab": "martial_hall",
+      "rect": [
+        1010,
+        410,
+        160,
+        143
+      ]
+    },
+    {
+      "id": "east_armory",
+      "prefab": "warehouse",
+      "rect": [
+        1690,
+        435,
+        165,
+        120
+      ]
+    },
+    {
+      "id": "west_barracks",
+      "prefab": "home",
+      "rect": [
+        1010,
+        220,
+        150,
+        134
+      ]
+    },
+    {
+      "id": "east_barracks",
+      "prefab": "home",
+      "rect": [
+        1700,
+        225,
+        150,
+        134
+      ]
+    },
+    {
+      "id": "alliance_main_hall",
+      "prefab": "alliance_hall",
+      "rect": [
+        1300,
+        105,
+        360,
+        300
+      ]
+    },
+    {
+      "id": "commander_quarters",
+      "prefab": "government",
+      "rect": [
+        1000,
+        105,
+        155,
+        136
+      ]
+    },
+    {
+      "id": "strategist_office",
+      "prefab": "government",
+      "rect": [
+        1700,
+        100,
+        155,
+        136
+      ]
+    },
+    {
+      "id": "courtyard_tree_0",
+      "prefab": "tree",
+      "rect": [
+        990,
+        715,
+        57,
+        64
+      ]
+    },
+    {
+      "id": "courtyard_tree_1",
+      "prefab": "tree",
+      "rect": [
+        1830,
+        720,
+        57,
+        64
+      ]
+    },
+    {
+      "id": "courtyard_tree_2",
+      "prefab": "tree",
+      "rect": [
+        1230,
+        240,
+        57,
+        64
+      ]
+    },
+    {
+      "id": "courtyard_tree_3",
+      "prefab": "tree",
+      "rect": [
+        1640,
+        250,
+        57,
+        64
+      ]
+    },
+    {
+      "id": "courtyard_tree_4",
+      "prefab": "tree",
+      "rect": [
+        365,
+        790,
+        57,
+        64
+      ]
+    }
+  ],
+  "roads": [
+    {
+      "points": [
+        [
+          1100,
+          1536
+        ],
+        [
+          1100,
+          950
+        ],
+        [
+          1100,
+          870
+        ]
+      ],
+      "width": 58,
+      "kind": "earth"
+    },
+    {
+      "points": [
+        [
+          215,
+          945
+        ],
+        [
+          1110,
+          945
+        ],
+        [
+          1940,
+          945
+        ]
+      ],
+      "width": 58,
+      "kind": "earth"
+    },
+    {
+      "points": [
+        [
+          1110,
+          875
+        ],
+        [
+          1480,
+          875
+        ],
+        [
+          1480,
+          785
+        ]
+      ],
+      "width": 52,
+      "kind": "stone"
+    },
+    {
+      "points": [
+        [
+          535,
+          110
+        ],
+        [
+          535,
+          1410
+        ]
+      ],
+      "width": 37,
+      "kind": "earth"
+    },
+    {
+      "points": [
+        [
+          255,
+          565
+        ],
+        [
+          870,
+          565
+        ],
+        [
+          870,
+          945
+        ]
+      ],
+      "width": 35,
+      "kind": "earth"
+    },
+    {
+      "points": [
+        [
+          260,
+          1225
+        ],
+        [
+          1870,
+          1225
+        ]
+      ],
+      "width": 38,
+      "kind": "earth"
+    },
+    {
+      "points": [
+        [
+          780,
+          640
+        ],
+        [
+          780,
+          1400
+        ]
+      ],
+      "width": 32,
+      "kind": "earth"
+    },
+    {
+      "points": [
+        [
+          1710,
+          950
+        ],
+        [
+          1710,
+          1415
+        ]
+      ],
+      "width": 36,
+      "kind": "earth"
+    },
+    {
+      "points": [
+        [
+          1100,
+          1090
+        ],
+        [
+          1400,
+          1090
+        ]
+      ],
+      "width": 30,
+      "kind": "earth"
+    },
+    {
+      "points": [
+        [
+          1480,
+          805
+        ],
+        [
+          1480,
+          310
+        ]
+      ],
+      "width": 80,
+      "kind": "stone"
+    },
+    {
+      "points": [
+        [
+          1030,
+          580
+        ],
+        [
+          1830,
+          580
+        ]
+      ],
+      "width": 42,
+      "kind": "stone"
+    },
+    {
+      "points": [
+        [
+          1050,
+          355
+        ],
+        [
+          1840,
+          355
+        ]
+      ],
+      "width": 36,
+      "kind": "stone"
+    }
+  ],
+  "districts": [
+    {
+      "id": "harbor",
+      "name": "장강 나루·하역장",
+      "rect": [
+        210,
+        600,
+        270,
+        620
+      ],
+      "label": [
+        335,
+        875
+      ]
+    },
+    {
+      "id": "homes",
+      "name": "주거구역",
+      "rect": [
+        250,
+        90,
+        630,
+        430
+      ],
+      "label": [
+        580,
+        500
+      ]
+    },
+    {
+      "id": "inns",
+      "name": "객잔·다루 거리",
+      "rect": [
+        270,
+        610,
+        600,
+        280
+      ],
+      "label": [
+        650,
+        865
+      ]
+    },
+    {
+      "id": "market",
+      "name": "상점가",
+      "rect": [
+        570,
+        1000,
+        450,
+        390
+      ],
+      "label": [
+        820,
+        1195
+      ]
+    },
+    {
+      "id": "workshops",
+      "name": "공방거리",
+      "rect": [
+        1170,
+        1260,
+        690,
+        170
+      ],
+      "label": [
+        1490,
+        1430
+      ]
+    },
+    {
+      "id": "martial",
+      "name": "무관 구역",
+      "rect": [
+        1190,
+        1020,
+        360,
+        200
+      ],
+      "label": [
+        1370,
+        1200
+      ]
+    },
+    {
+      "id": "government",
+      "name": "관아 구역",
+      "rect": [
+        1610,
+        1000,
+        290,
+        210
+      ],
+      "label": [
+        1780,
+        1200
+      ]
+    },
+    {
+      "id": "plaza",
+      "name": "중앙 광장",
+      "rect": [
+        970,
+        860,
+        330,
+        180
+      ],
+      "label": [
+        1110,
+        1000
+      ]
+    },
+    {
+      "id": "alliance",
+      "name": "무림맹 본단",
+      "rect": [
+        930,
+        85,
+        1000,
+        820
+      ],
+      "label": [
+        1490,
+        760
+      ]
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "south_entry",
+      "name": "남문 · 장사 방면",
+      "point": [
+        1100,
+        1490
+      ]
+    },
+    {
+      "id": "alliance_gate",
+      "name": "무림맹 정문",
+      "point": [
+        1480,
+        930
+      ]
+    },
+    {
+      "id": "reception",
+      "name": "외원 접수처",
+      "point": [
+        1180,
+        777
+      ]
+    },
+    {
+      "id": "main_hall",
+      "name": "무림맹 회의당",
+      "point": [
+        1480,
+        430
+      ]
+    },
+    {
+      "id": "training",
+      "name": "대연무장",
+      "point": [
+        1480,
+        565
+      ]
+    },
+    {
+      "id": "market",
+      "name": "상점가",
+      "point": [
+        780,
+        1215
+      ]
+    },
+    {
+      "id": "workshops",
+      "name": "공방거리",
+      "point": [
+        1500,
+        1400
+      ]
+    },
+    {
+      "id": "martial",
+      "name": "무관 앞뜰",
+      "point": [
+        1370,
+        1170
+      ]
+    },
+    {
+      "id": "government",
+      "name": "관아 앞",
+      "point": [
+        1760,
+        1280
+      ]
+    },
+    {
+      "id": "harbor",
+      "name": "장강 나루",
+      "point": [
+        250,
+        950
+      ]
+    },
+    {
+      "id": "homes",
+      "name": "주거 골목",
+      "point": [
+        535,
+        430
+      ]
+    },
+    {
+      "id": "inns",
+      "name": "객잔 거리",
+      "point": [
+        780,
+        850
+      ]
+    },
+    {
+      "id": "plaza",
+      "name": "중앙 광장",
+      "point": [
+        1100,
+        945
+      ]
+    }
+  ]
+}

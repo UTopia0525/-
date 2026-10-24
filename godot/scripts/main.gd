@@ -233,7 +233,19 @@ func _build_title() -> void:
 	city.pressed.connect(start_city)
 	continue_button = UI.button(title_screen, "0장 이후 이어하기", Rect2(842, 538, 250, 58))
 	continue_button.pressed.connect(prologue.resume)
-	UI.label(title_screen, "첫 표행에서 장사 입성까지 · 강호로 나아가는 여정", Rect2(113, 628, 950, 30), 14, UI.MUTED)
+	UI.label(title_screen, "첫 표행에서 장사 입성까지 · 강호로 나아가는 여정", Rect2(113, 628, 700, 30), 14, UI.MUTED)
+	var wuchang=UI.button(title_screen,"무창 지도 답사",Rect2(842,618,250,45))
+	wuchang.pressed.connect(_open_wuchang_review)
+
+func _open_wuchang_review() -> void:
+	var preview=preload("res://scenes/wuchang.tscn").instantiate()
+	preview.embedded=true
+	ui_root.hide();set_process_input(false)
+	music.play_track("dock")
+	preview.closed.connect(func():
+		ui_root.show();set_process_input(true)
+		exploration.camera.snap_to_player();music.play_track("title"))
+	add_child(preview)
 
 func _build_ending() -> void:
 	ending = _full_overlay(Color(0.035, 0.07, 0.055, 0.94))
