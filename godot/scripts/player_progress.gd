@@ -1,4 +1,5 @@
 extends RefCounted
+signal progress_changed(event: Dictionary)
 ## Persistent possessions and growth; shop actions validate before spending money.
 const RULES = preload("res://scripts/rules.gd")
 var weapons = preload("res://scripts/weapons.gd").new()
@@ -62,6 +63,7 @@ func purchase(kind: String, id: String, game) -> bool:
 		"weapon": owned_weapons.append(id)
 		"art": learned.append(id)
 		"elixir": inventory[id] += 1
+	progress_changed.emit({"event":"purchase","kind":kind,"id":id,"price":price_for(kind,id)})
 	return true
 
 func consume(id: String) -> bool:
@@ -82,6 +84,7 @@ func consume(id: String) -> bool:
 	inventory[id] -= 1
 	consumed[id] += 1
 	error = ""
+	progress_changed.emit({"event":"consume","id":id})
 	return true
 
 func assign(id: String, slot: int) -> bool:
@@ -90,6 +93,7 @@ func assign(id: String, slot: int) -> bool:
 	for index in range(4):
 		if loadout[index] == id: loadout[index] = ""
 	loadout[slot] = id
+	progress_changed.emit({"event":"loadout","id":id,"slot":slot})
 	return true
 
 func snapshot() -> Dictionary:

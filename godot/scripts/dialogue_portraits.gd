@@ -2,7 +2,7 @@ extends Control
 ## Stable participant slots; identity is independent of the reusable portrait.
 const UI = preload("res://scripts/ui.gd")
 const EXTRA_ROOT = "res://assets/portraits/extras/"
-const ACTORS = {
+static var ACTORS = {
 	"bandit_officer": {"name":"정 포두", "extra":"male_middle"},
 	"bandit_messenger": {"name":"포졸", "extra":"male_young", "portrait":"res://assets/portraits/story/constable.png"},
 	"bandit_farmer": {"name":"피해 농민", "extra":"male_elder"},

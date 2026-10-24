@@ -2,6 +2,7 @@ extends Node
 ## Tracks an explicitly supplied quest stage; does not accept or complete quests.
 signal target_changed
 var definitions: Dictionary
+var facility_id:=""
 var quest_id := ""
 var stage_id := ""
 var completed_goal_ids: Array[String] = []
@@ -12,6 +13,7 @@ func _ready() -> void:
 func track(id: String, stage: String, completed: Array = []) -> bool:
 	if not definitions.has(id) or not definitions[id].stages.has(stage):
 		return false
+	facility_id=""
 	quest_id = id
 	stage_id = stage
 	completed_goal_ids.assign(completed)
@@ -19,12 +21,16 @@ func track(id: String, stage: String, completed: Array = []) -> bool:
 	return true
 
 func clear() -> void:
+	facility_id=""
 	quest_id = ""
 	stage_id = ""
 	completed_goal_ids.clear()
 	target_changed.emit()
 
 func get_goal(world) -> Dictionary:
+	if not facility_id.is_empty() and world.area_name=="changsha":
+		for npc in world.ambient_nodes:
+			if npc.get_meta("npc_id")==facility_id:return {"position":npc.position,"label":npc.get_meta("display_name")+"에게 이동","quest_title":"시설 안내","goal_id":facility_id,"quest_id":"","stage_id":"facility"}
 	if quest_id.is_empty() or world.area_name != "changsha":
 		return {}
 	var effective_stage = stage_id
@@ -53,6 +59,8 @@ func get_goal(world) -> Dictionary:
 				continue
 		else:
 			point = world.city_point(goal.point)
+			for entry in world.objectives:
+				if entry.goal_id==goal.id:point=entry.position;break
 		var candidate: float = world.player.position.distance_squared_to(point)
 		if candidate < distance:
 			distance = candidate

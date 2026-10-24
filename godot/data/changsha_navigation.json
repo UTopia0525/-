@@ -88,6 +88,15 @@
             "npc_id": "vegetable_vendor"
           }
         ]
+      },
+      "offer": {
+        "label": "의뢰인에게 F로 말을 걸어 용건 듣기",
+        "goals": [
+          {
+            "id": "vegetable_vendor",
+            "npc_id": "vegetable_vendor"
+          }
+        ]
       }
     }
   },
@@ -123,6 +132,15 @@
             "npc_id": "travelling_merchant"
           }
         ]
+      },
+      "offer": {
+        "label": "의뢰인에게 F로 말을 걸어 용건 듣기",
+        "goals": [
+          {
+            "id": "travelling_merchant",
+            "npc_id": "travelling_merchant"
+          }
+        ]
       }
     }
   },
@@ -140,6 +158,15 @@
       },
       "report": {
         "label": "나루로 짐 운반",
+        "goals": [
+          {
+            "id": "dock_worker",
+            "npc_id": "dock_worker"
+          }
+        ]
+      },
+      "offer": {
+        "label": "의뢰인에게 F로 말을 걸어 용건 듣기",
         "goals": [
           {
             "id": "dock_worker",
@@ -186,6 +213,15 @@
             "npc_id": "warehouse_keeper"
           }
         ]
+      },
+      "offer": {
+        "label": "의뢰인에게 F로 말을 걸어 용건 듣기",
+        "goals": [
+          {
+            "id": "warehouse_keeper",
+            "npc_id": "warehouse_keeper"
+          }
+        ]
       }
     }
   },
@@ -226,6 +262,15 @@
             "npc_id": "waterway_farmer"
           }
         ]
+      },
+      "offer": {
+        "label": "의뢰인에게 F로 말을 걸어 용건 듣기",
+        "goals": [
+          {
+            "id": "waterway_farmer",
+            "npc_id": "waterway_farmer"
+          }
+        ]
       }
     }
   },
@@ -243,6 +288,15 @@
       },
       "report": {
         "label": "아버지에게 안부 전달",
+        "goals": [
+          {
+            "id": "waiting_father",
+            "npc_id": "waiting_father"
+          }
+        ]
+      },
+      "offer": {
+        "label": "의뢰인에게 F로 말을 걸어 용건 듣기",
         "goals": [
           {
             "id": "waiting_father",

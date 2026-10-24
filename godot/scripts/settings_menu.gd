@@ -33,6 +33,8 @@ func _ready() -> void:
 	save_tab.pressed.connect(set_mode.bind("save"))
 	load_tab = UI.button(panel, "불러오기", Rect2(220, 76, 180, 43))
 	load_tab.pressed.connect(set_mode.bind("load"))
+	var environment=UI.button(panel,"환경 설정 · 도움말",Rect2(425,76,285,43))
+	environment.pressed.connect(func():game.adventure_ui.open_options())
 	music_toggle = CheckButton.new()
 	music_toggle.text = "배경음악"
 	music_toggle.position = Vector2(750, 76)

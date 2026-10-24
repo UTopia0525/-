@@ -4,7 +4,8 @@ const Icons = preload("res://scripts/catalog_icons.gd")
 const UI = preload("res://scripts/ui.gd")
 var game
 var heading: Label
-var message: Label
+var balance_preview: Label
+var message: RichTextLabel
 var summary: Label
 var feedback: Label
 var portrait: TextureRect
@@ -47,7 +48,11 @@ func _ready() -> void:
 	rows.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	rows.add_theme_constant_override("separation", 7)
 	scroll.add_child(rows)
-	message = UI.label(panel, "품목을 선택하세요.", Rect2(735, 155, 385, 290), 16)
+	balance_preview=UI.label(panel,"",Rect2(735,112,385,30),16,UI.GOLD)
+	message = RichTextLabel.new()
+	message.position=Vector2(735,155);message.size=Vector2(385,290);message.bbcode_enabled=false
+	message.add_theme_font_override("normal_font",UI.BODY_FONT);message.add_theme_font_size_override("normal_font_size",16)
+	message.add_theme_color_override("default_color",UI.TEXT);panel.add_child(message)
 	message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	for i in range(4):
 		var slot = UI.button(panel, str(i + 1) + "번 칸", Rect2(735 + (i % 2) * 190, 407 + (i / 2) * 42, 180, 37))
@@ -70,6 +75,8 @@ func open_counter(definition: Dictionary) -> void:
 	feedback.text = ""
 	select_tab(0)
 	show()
+	if game.quest_navigation.facility_id==service.id:game.quest_navigation.facility_id=""
+	game.adventure_ui.tip("trade","품목 비교 → 구매 → I 장착·복용 / K 편성")
 	tabs[0].grab_focus()
 
 func select_tab(index: int) -> void:
@@ -135,6 +142,7 @@ func update_detail() -> void:
 		slots[i].text = "%d: %s" % [i + 1, "비움" if p.loadout[i] == "" else p.arts.get_skill(p.loadout[i]).name]
 		slots[i].add_theme_font_size_override("font_size", 12)
 	action.disabled = selected_id.is_empty()
+	balance_preview.text=""
 	message.text = "품목을 선택하면 설명과 조건을 확인합니다."
 	action.text = "선택하세요"
 	if selected_id.is_empty(): return
@@ -166,8 +174,14 @@ func update_detail() -> void:
 			if selected_id not in ["clear", "basic_attack", "basic_defense"] and p.arts.get_skill(selected_id).weapon_style == "sword": message.text += "\n사용 후 다음 적 행동 피해20% 감소"
 			action.text = "350문 · 전수받기" if selected_tab == 0 else "%d번 칸에 편성" % [target_slot + 1]
 			if selected_tab == 0: problem = p.issue("art", selected_id, game.money)
+	if service.kind=="workshop":message.add_text("\n\n"+preload("res://scripts/item_comparison.gd").weapon(p,selected_id,game.battle.equipped_weapon_id))
+	if service.kind=="training" and selected_id not in ["clear","basic_attack","basic_defense"]:preload("res://scripts/item_comparison.gd").append_art(message,p,selected_id,game.battle.equipped_weapon_id)
+	if selected_tab==0:
+		var kind: String={"market":"elixir","workshop":"weapon","training":"art"}[service.kind]
+		var left: int=game.money-p.price_for(kind,selected_id)
+		balance_preview.text="구매 후 소지금 %d문" % left if left>=0 else "소지금 %d문 부족" % -left
 	if not problem.is_empty():
-		message.text += "\n\n" + problem
+		message.push_color(Color("f8a494"));message.add_text("\n\n"+problem);message.pop()
 		action.disabled = true
 
 func transact() -> void:
@@ -189,6 +203,7 @@ func transact() -> void:
 			"training":
 				ok = p.assign("" if selected_id == "clear" else selected_id, target_slot)
 				feedback.text = "편성했습니다. 네 칸 모두 교체할 수 있습니다." if ok else "편성할 수 없습니다."
+	if ok and selected_tab==1 and service.kind=="workshop":game.adventure_ui.notify("장비를 바꾸었습니다.","confirm")
 	refresh_list()
 	update_detail()
 

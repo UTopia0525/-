@@ -11,6 +11,10 @@ const MUSIC = preload("res://scripts/music.gd")
 var exploration
 var battle
 var music
+var ordinary_quests
+var adventure_ui
+var options
+var dialogue_next: Button
 var ui_layer: CanvasLayer
 var ui_root: Control
 var dialogue_music_cues: Dictionary = {}
@@ -81,8 +85,7 @@ func _ready() -> void:
 	ui_root.add_child(battle)
 	battle.hide()
 	battle.victory.connect(_on_victory)
-	battle.defeat.connect(func():
-		if bandit_story.in_battle(): bandit_story.after_defeat())
+	battle.defeat.connect(_on_defeat)
 	quest_navigation = QUEST_NAVIGATION.new()
 	quest_navigation.name = "QuestNavigation"
 	add_child(quest_navigation)
@@ -125,10 +128,21 @@ func _ready() -> void:
 	dialogue_history = preload("res://scripts/dialogue_history.gd").new()
 	dialogue_history.game = self
 	ui_root.add_child(dialogue_history)
+	options=preload("res://scripts/game_options.gd").new();options.game=self;add_child(options)
+	adventure_ui=preload("res://scripts/adventure_ui.gd").new();adventure_ui.game=self;ui_root.add_child(adventure_ui)
+	ordinary_quests=preload("res://scripts/ordinary_quests.gd").new();ordinary_quests.game=self;add_child(ordinary_quests)
+	progress.progress_changed.connect(_progress_changed)
+	battle.event_recorded.connect(adventure_ui.record_action)
+	var journal_button=UI.button(top_hud,"의뢰 일지 · Q",Rect2(930,245,150,35))
+	journal_button.pressed.connect(adventure_ui.open_journal)
+	var help_button=UI.button(top_hud,"도움말 · F2",Rect2(1100,245,150,35))
+	help_button.pressed.connect(adventure_ui.open_help)
+	var log_button=UI.button(battle,"교전 기록 · L",Rect2(915,145,205,35))
+	log_button.pressed.connect(adventure_ui.open_log)
 	reset()
 
 func _setup_input() -> void:
-	var definitions = {"move_left": [KEY_A, KEY_LEFT], "move_right": [KEY_D, KEY_RIGHT], "move_up": [KEY_W, KEY_UP], "move_down": [KEY_S, KEY_DOWN], "interact": [KEY_F], "inventory":[KEY_I], "martial_menu":[KEY_K]}
+	var definitions = {"move_left": [KEY_A, KEY_LEFT], "move_right": [KEY_D, KEY_RIGHT], "move_up": [KEY_W, KEY_UP], "move_down": [KEY_S, KEY_DOWN], "interact": [KEY_F], "inventory":[KEY_I], "martial_menu":[KEY_K], "journal":[KEY_Q]}
 	for action in definitions:
 		if not InputMap.has_action(action):
 			InputMap.add_action(action)
@@ -184,8 +198,9 @@ func _build_dialogue() -> void:
 	dialogue_text = UI.label(dialogue_panel, "", Rect2(24, 55, 1065, 83), 21)
 	dialogue_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	var next = UI.button(dialogue_panel, "다음 ▾", Rect2(1125, 106, 90, 38))
+	dialogue_next=next
 	next.pressed.connect(advance_dialogue)
-	var history_button = UI.button(dialogue_panel, "대화 기록 · H", Rect2(1010, 10, 205, 34))
+	var history_button = UI.button(dialogue_panel, "대화 기록 · H", Rect2(1010, 3, 205, 34))
 	history_button.pressed.connect(func(): dialogue_history.open_history())
 	dialogue_panel.hide()
 	dialogue_cast.clear()
@@ -234,6 +249,8 @@ func _build_ending() -> void:
 	ending.hide()
 
 func reset() -> void:
+	if is_instance_valid(adventure_ui):adventure_ui.reset()
+	if is_instance_valid(ordinary_quests):ordinary_quests.reset()
 	if is_instance_valid(settings_menu): settings_menu.close_menu()
 	progress.reset()
 	chapter_number = 0
@@ -252,7 +269,7 @@ func reset() -> void:
 	city_service.dismiss()
 	quest_navigation.clear()
 	city_overview.hide()
-	bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     F  대화     ·     M  음악     ·     F1  처음부터"
+	bottom_hint.text = UI.EXPLORATION_HINT
 	state = "title"
 	music.play_track("title")
 	talked_captain = false
@@ -320,8 +337,10 @@ func enter_city(at_port: bool = false) -> void:
 	top_hud.show()
 	location.text = "장사 · " + exploration.district_at_player()
 	objective.text = "시장·골목·나루·성밖 농촌 둘러보기"
-	bottom_hint.text = "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     F 대화/거래 · I 소지품 · K 무공 · TAB 전체 지도     ·     M  음악     ·     F1  타이틀"
+	bottom_hint.text = UI.EXPLORATION_HINT
 	bottom_hint.show()
+	ordinary_quests.refresh_world()
+	adventure_ui.tip("city","Q 의뢰 일지 · 노란 ! 대화로 의뢰 수락")
 
 func _process(_delta: float) -> void:
 	money_label.text = "소지금 %d문 · 명성 %d" % [money, progress.fame]
@@ -341,6 +360,7 @@ func toggle_city_map() -> void:
 		city_overview.open_for(exploration, quest_navigation.get_goal(exploration))
 
 func say(lines: Array, done: Callable = Callable(), listeners: Array = ["hero"]) -> void:
+	if is_instance_valid(adventure_ui):adventure_ui.tip("dialogue","F 다음 대사 · H 지난 대화")
 	if is_instance_valid(dialogue_history): dialogue_history.close_history()
 	if lines.is_empty():
 		return
@@ -382,6 +402,7 @@ func _show_line() -> void:
 	dialogue_cast.set_speaker(line[0], staging)
 
 func advance_dialogue() -> void:
+	if is_instance_valid(adventure_ui) and adventure_ui.window.visible and adventure_ui.mode=="result":adventure_ui.dismiss()
 	if is_instance_valid(dialogue_history) and dialogue_history.visible: return
 	if dialogue_lines.is_empty():
 		return
@@ -408,6 +429,7 @@ func interact() -> void:
 	var npc: Dictionary = exploration.nearest()
 	if npc.is_empty():
 		return
+	if ordinary_quests.handle_interaction(str(npc.id)): return
 	if trade_intro.handle_interaction(str(npc.id)): return
 	if bandit_story.handle_interaction(str(npc.id)): return
 	if npc.has("service_id"):
@@ -420,6 +442,8 @@ func interact() -> void:
 			pending_service_id = service.id
 			say([[service.id, greeting]], _service_done)
 		return
+	if exploration.area_name=="changsha" and not npc.has("service_id") and npc.id not in ["bandit_officer","bandit_muster"]:
+		say([[str(npc.id),"오늘도 장사 거리는 분주하군요. 무슨 일이 있거든 길가 사람들에게 물어보세요."]]);return
 	match npc.id:
 		"captain":
 			say(prologue.lines("captain"), _captain_done)
@@ -437,6 +461,7 @@ func interact() -> void:
 			dialogue_music_cues = {5: "ambush"}
 
 func start_battle(encounter: Dictionary = {}) -> void:
+	if is_instance_valid(adventure_ui):adventure_ui.dismiss()
 	player_menu.dismiss()
 	story_visual.hide()
 	city_overview.hide()
@@ -456,8 +481,17 @@ func start_battle(encounter: Dictionary = {}) -> void:
 	battle.set_loadout(progress.loadout)
 	battle.set_encounter(encounter)
 	battle.begin()
+	adventure_ui.tip("battle","행동을 고른 뒤 사용으로 실행 · L 교전 기록")
 
 func _on_victory(hp: int) -> void:
+	_finish_victory(hp)
+	adventure_ui.record_result(true)
+
+func _on_defeat() -> void:
+	if bandit_story.in_battle():bandit_story.after_defeat()
+	adventure_ui.record_result(false)
+
+func _finish_victory(hp: int) -> void:
 	if state != "battle": return
 	if bandit_story.in_battle():
 		bandit_story.after_victory()
@@ -471,6 +505,14 @@ func _on_victory(hp: int) -> void:
 	ending.show()
 
 func _input(event: InputEvent) -> void:
+	if is_instance_valid(adventure_ui) and adventure_ui.window.visible:return
+	if event is InputEventKey and event.pressed and not event.echo and not settings_menu.window.visible:
+		if event.keycode==KEY_Q:
+			adventure_ui.open_journal();get_viewport().set_input_as_handled();return
+		if event.keycode==KEY_F2:
+			adventure_ui.open_help();get_viewport().set_input_as_handled();return
+		if event.keycode==KEY_L:
+			adventure_ui.open_log();get_viewport().set_input_as_handled();return
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_H and not dialogue_lines.is_empty():
 		dialogue_history.open_history()
 		get_viewport().set_input_as_handled()
@@ -587,3 +629,11 @@ func _service_done() -> void:
 			state = "service"
 			exploration.set_active(false)
 			city_service.open_counter(service)
+
+func _progress_changed(event: Dictionary) -> void:
+	if not is_instance_valid(adventure_ui):return
+	var name: String=progress.weapons.get_weapon(event.id).get("name",event.id) if event.get("kind")=="weapon" else progress.arts.get_skill(event.id).get("name",event.id) if event.get("kind")=="art" else progress.elixirs.get(event.id,{}).get("name",event.id)
+	match event.event:
+		"purchase":adventure_ui.notify(("무공 습득 · " if event.kind=="art" else "구매 완료 · ")+name+" · -%d문" % int(event.price),"learn" if event.kind=="art" else "coin")
+		"consume":adventure_ui.notify("영약 복용 · "+name,"confirm")
+		"loadout":adventure_ui.notify("초식 편성을 바꾸었습니다.","confirm")

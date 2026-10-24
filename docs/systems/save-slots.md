@@ -72,3 +72,7 @@ godot --audio-driver Dummy --path godot --script res://tests/capture_saves.gd
 `tests/legacy_save_fixture.gd`는 테스트 전용으로 과거 대화·거래·전투 저장 파일을 구성한다. 새 게임 API가 쓰기를 거절하는 것을 확인한 뒤에만 파일을 만들며, 기존 회귀 검사의 구버전 불러오기 범위를 유지한다. 런타임에 제한을 우회하는 기능은 추가하지 않았다.
 
 실행 결과: `save_restrictions`, `saves`, `onboarding_menus`, `bandit_story`, `combat_updates`(110개 사례) 통과. Godot 편집기의 가져오기와 스크립트 검사도 완료했다. 테스트는 격리된 XDG 사용자 폴더에서 실행했다.
+
+## 2026-10-24 일반 의뢰·시설 안내
+
+선택 필드 `ordinary_quests`에 일반6종의 수락/달성/완료·완료 목표·안부 전달 선택을, `navigation.facility`에 시설 안내를 저장한다. 구버전 파일에 필드가 없으면 미수락/안내 없음으로 읽는다. 보상 중복 지급과 의뢰 선택창에서의 쓰기를 차단한다. [공통 편의 기능](adventure-usability.md). 음량·화면·대화 글자 크기와 최초 안내 확인은 이야기 진도와 별도의 `user://preferences.cfg`다.

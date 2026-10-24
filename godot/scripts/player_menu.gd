@@ -9,7 +9,7 @@ var selected_id := ""
 var target_slot := 0
 var heading: Label
 var summary: Label
-var detail: Label
+var detail: RichTextLabel
 var feedback: Label
 var rows: VBoxContainer
 var action: Button
@@ -45,7 +45,9 @@ func _ready() -> void:
  rows.size_flags_horizontal = Control.SIZE_EXPAND_FILL
  rows.add_theme_constant_override("separation", 8)
  scroll.add_child(rows)
- detail = UI.label(panel, "", Rect2(490, 142, 590, 246), 17)
+ detail=RichTextLabel.new()
+ detail.position=Vector2(490,142);detail.size=Vector2(590,246);detail.bbcode_enabled=false
+ detail.add_theme_font_override("normal_font",UI.BODY_FONT);detail.add_theme_font_size_override("normal_font_size",17);detail.add_theme_color_override("default_color",UI.TEXT);panel.add_child(detail)
  detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
  for i in range(4):
   var slot = UI.button(panel, "", Rect2(490 + i * 146, 399, 138, 63))
@@ -174,6 +176,8 @@ func update_detail() -> void:
     if not p.arts.can_use_with_weapon(selected_id, game.battle.equipped_weapon_type): detail.text += "\n현재 장비로 사용 불가 · I에서 장비를 바꾸세요."
    if selected_id not in ["clear", "basic_attack", "basic_defense"] and p.arts.get_skill(selected_id).weapon_style == "sword": detail.text += "\n사용 후 다음 적 행동 피해20% 감소"
    action.text = "%d번 칸 비우기" % [target_slot + 1] if selected_id == "clear" else "%d번 칸에 편성" % [target_slot + 1]
+ if category=="weapon":detail.add_text("\n\n"+preload("res://scripts/item_comparison.gd").weapon(p,selected_id,game.battle.equipped_weapon_id))
+ if category=="art" and selected_id!="clear":preload("res://scripts/item_comparison.gd").append_art(detail,p,selected_id,game.battle.equipped_weapon_id)
 func apply_selection() -> void:
  if action.disabled or not visible or game.state != "explore": return
  var ok := false
@@ -186,4 +190,5 @@ func apply_selection() -> void:
    ok = p.assign("" if selected_id == "clear" else selected_id, target_slot)
    game.battle.set_loadout(p.loadout)
  refresh()
+ if ok and category=="weapon":game.adventure_ui.notify("장비를 바꾸었습니다.","confirm")
  feedback.text = "적용했습니다." if ok else (p.error if category == "elixir" else "적용할 수 없습니다.")

@@ -14,6 +14,7 @@ const QUEST_COLOR = Color("ff9863")
 var place_label: Label
 var map_view: Control
 var world_window: Rect2
+var facility_markers: Array[Dictionary]=[]
 var npc_markers: PackedVector2Array = []
 var player_marker: Vector2
 var facing := "down"
@@ -25,7 +26,7 @@ class MapView extends Control:
 
 func _ready() -> void:
 	position = Vector2(24, 24)
-	size = Vector2(264, 262)
+	size = Vector2(264, 290)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_theme_stylebox_override("panel", UI.box(Color("12221bf5")))
 	place_label = UI.label(self, "", Rect2(12, 9, 240, 26), 16, UI.TEXT)
@@ -44,7 +45,8 @@ func _ready() -> void:
 	var north = UI.label(map_view, "N ↑", Rect2(106, 2, 28, 20), 12, UI.TEXT)
 	north.add_theme_color_override("font_outline_color", Color.BLACK)
 	north.add_theme_constant_override("outline_size", 4)
-	quest_label = UI.label(self, "추적 중인 퀘스트 없음", Rect2(12, 228, 240, 22), 13, UI.MUTED)
+	UI.label(self,"약 상인 · 장 장인 · 무 교관",Rect2(12,225,240,22),13,UI.GOLD)
+	quest_label = UI.label(self, "추적 중인 퀘스트 없음", Rect2(12, 254, 240, 22), 13, UI.MUTED)
 	quest_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 
 func bind_world(world) -> void:
@@ -66,9 +68,12 @@ func refresh() -> void:
 	player_marker = project_point(center)
 	facing = exploration.player.facing
 	npc_markers.clear()
+	facility_markers.clear()
 	for citizen in exploration.ambient_nodes:
 		if world_window.has_point(citizen.position):
 			npc_markers.append(project_point(citizen.position))
+			var id: String=citizen.get_meta("service_id", "")
+			if not id.is_empty():facility_markers.append({"id":id,"position":project_point(citizen.position)})
 	for npc in exploration.npcs:
 		if npc.frame >= 0 and world_window.has_point(npc.position):
 			npc_markers.append(project_point(npc.position))
@@ -128,6 +133,10 @@ func draw_map(canvas: Control) -> void:
 	for point in npc_markers:
 		canvas.draw_circle(point, 4.0, Color("10251e"))
 		canvas.draw_circle(point, 2.8, Color("81f0cf"))
+	for facility in facility_markers:
+		var color: Color={"city_merchant":Color("92dca1"),"city_artisan":Color("e7b777"),"city_instructor":Color("9fc5fc")}[facility.id]
+		canvas.draw_circle(facility.position,8,Color("16261e"));canvas.draw_arc(facility.position,8,0,TAU,20,color,1.5)
+		canvas.draw_string(UI.BODY_FONT,facility.position+Vector2(-5,5),{"city_merchant":"약","city_artisan":"장","city_instructor":"무"}[facility.id],HORIZONTAL_ALIGNMENT_LEFT,-1,12,color)
 	if quest_active:
 		if quest_offscreen:
 			var tangent = Vector2(-quest_direction.y, quest_direction.x)

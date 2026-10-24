@@ -2,6 +2,8 @@ extends Control
 
 signal victory(remaining_hp: int)
 signal defeat
+signal event_recorded(entry: Dictionary)
+var records: Array[Dictionary]=[]
 
 const Icons = preload("res://scripts/catalog_icons.gd")
 var combat = preload("res://scripts/combat_actions.gd").new()
@@ -167,6 +169,7 @@ func set_encounter(value: Dictionary) -> void:
 	enemy_actor.set_weapon(weapons.weapon_type(enemy_weapon))
 
 func begin(inner_power: int = -1) -> void:
+	records.clear()
 	qi.start(int(player_stats.inner) if inner_power < 0 else inner_power)
 	enemy_qi.start(int(enemy_stats.get("inner", 6)))
 	enemy_guard = 0
@@ -313,6 +316,7 @@ func use_selected() -> void:
 	var active_enemy_guard: int = combat.BASIC_GUARD if enemy_intent == "basic_defense" else enemy_guard
 	var hit: int = combat.damage(raw, enemy_constitution, enemy_weapon, active_enemy_guard)
 	enemy_guard = 0
+	log_action("주인공",action_name,hit,cost,active_enemy_guard,qi.amount)
 	enemy_hp = maxi(0, enemy_hp - hit)
 	_update_hp(true)
 	if hit > 0: enemy_actor.hurt()
@@ -342,6 +346,7 @@ func use_selected() -> void:
 	if token != generation:
 		return
 	var counter: int = combat.damage(float(opponent_action.raw), player_stats.constitution, equipped_weapon_id, int(player_action.guard))
+	log_action(enemy_name.text,opponent_action.name,counter,int(opponent_action.cost),int(player_action.guard),enemy_qi.amount)
 	player_hp = maxi(0, player_hp - counter)
 	_update_hp(true)
 	if counter > 0: player_actor.hurt()
@@ -361,8 +366,12 @@ func use_selected() -> void:
 			use_button.disabled = false
 		return
 	turn += 1
+	var old_qi: int=qi.amount
+	var old_enemy_qi: int=enemy_qi.amount
 	qi.recover_turn()
 	enemy_qi.recover_turn()
+	log_action("주인공","내기 회복",0,old_qi-qi.amount,0,qi.amount,"recovery")
+	log_action(enemy_name.text,"내기 회복",0,old_enemy_qi-enemy_qi.amount,0,enemy_qi.amount,"recovery")
 	_prepare_enemy()
 	busy = false
 	basic_button.disabled = false
@@ -431,3 +440,9 @@ func current_qi_cost(skill_id: String) -> int:
 	if skill_id in ["basic_attack", "basic_defense"]: return 0
 	var base: int = int(skill_qi_costs.get(skill_id, martial_arts.qi_cost(skill_id)))
 	return weapons.qi_cost(base, equipped_weapon_id, martial_arts.get_skill(skill_id))
+
+func log_action(actor: String,technique: String,damage: int,cost: int,guard: int,amount: int,kind: String="action") -> void:
+	var entry={"turn":turn,"actor":actor,"technique":technique,"damage":damage,"cost":cost,"guard":guard,"qi":amount,"kind":kind}
+	records.append(entry)
+	if records.size()>400:records.pop_front()
+	event_recorded.emit(entry)

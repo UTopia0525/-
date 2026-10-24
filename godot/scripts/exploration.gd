@@ -24,6 +24,9 @@ var scenery_bounds: Array[Rect2] = []
 var scenery_nodes: Array[Node2D] = []
 var occlusion_roots: Array[Node2D] = []
 const CITIZEN_REGIONS = {4: Rect2(69, 504, 254, 465), 5: Rect2(479, 529, 186, 440), 6: Rect2(829, 529, 272, 440), 7: Rect2(1236, 508, 205, 461)}
+var load_revision:=0
+var objectives: Array[Dictionary]=[]
+var indicator: Node2D
 var active: bool = false
 var hint: Label
 
@@ -48,9 +51,15 @@ func _ready() -> void:
 	hint.add_theme_constant_override("shadow_offset_x", 2)
 	hint.add_theme_constant_override("shadow_offset_y", 2)
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	indicator=preload("res://scripts/interaction_indicator.gd").new()
+	indicator.z_index=5
+	decorations.add_child(indicator)
+	indicator.hide()
 	load_area("dock")
 
 func load_area(value: String) -> void:
+	load_revision+=1
+	objectives.clear()
 	area_name = value
 	player.stop()
 	for entry in npcs:
@@ -365,22 +374,25 @@ func _build_collision_and_navigation() -> void:
 				wall_body.add_child(collision)
 
 func nearest() -> Dictionary:
-	var found: Dictionary = {}
-	var distance = 78.0
-	for entry in npcs:
-		var candidate = player.position.distance_to(entry.position)
-		if candidate < distance and _clear_interaction(entry.position, entry.node):
-			distance = candidate
-			found = entry
+	var candidates: Array=npcs.duplicate()
+	var owner_game=get_parent()
+	var errands=owner_game.get("ordinary_quests")
 	for citizen in ambient_nodes:
-		var service_id: String = citizen.get_meta("service_id", "")
-		if service_id.is_empty() and not citizen.get_meta("story_actor", false):
-			continue
-		var candidate = player.position.distance_to(citizen.position)
-		if candidate < distance and _clear_interaction(citizen.position, citizen):
-			distance = candidate
-			found = {"id": citizen.get_meta("npc_id"), "name": citizen.get_meta("display_name"), "position": citizen.position, "node": citizen, "frame": citizen.get_meta("frame")}
-			if not service_id.is_empty(): found["service_id"] = service_id
+		var id: String=citizen.get_meta("npc_id")
+		var entry={"id":id,"name":citizen.get_meta("display_name"),"position":citizen.position,"node":citizen,"frame":citizen.get_meta("frame"),"important":citizen.get_meta("story_actor",false)}
+		var service: String=citizen.get_meta("service_id","")
+		if not service.is_empty():entry.service_id=service;entry.important=true
+		if is_instance_valid(errands) and (not errands.marker_for(id).is_empty() or errands.is_target(id)):entry.important=true
+		candidates.append(entry)
+	candidates.append_array(objectives)
+	var found: Dictionary={}
+	var best:=INF
+	for entry in candidates:
+		var distance: float=player.position.distance_to(entry.position)
+		if distance>=78 or not _clear_interaction(entry.position,entry.node):continue
+		# A small tie preference prevents a nearby bystander stealing a marked interaction.
+		var score: float=distance-(12.0 if entry.get("important",false) else 0.0)
+		if score<best:best=score;found=entry
 	return found
 
 func _clear_interaction(point: Vector2, target: Node2D) -> bool:
@@ -398,9 +410,11 @@ func set_active(value: bool) -> void:
 func _process(_delta: float) -> void:
 	var target = nearest() if active else {}
 	hint.visible = not target.is_empty()
+	indicator.visible = not target.is_empty()
+	if not target.is_empty():indicator.position=target.position
 	if not target.is_empty():
-		hint.position = target.position + Vector2(-75, -142 if target.frame >= 0 else -65)
-		hint.text = "F  승선" if target.id == "boarding" else ("F  거래" if target.has("service_id") else "F  대화")
+		hint.position = target.position + Vector2(-75, 14)
+		hint.text = "F  조사" if str(target.id).begins_with("quest_goal:") else "F  승선" if target.id == "boarding" else ("F  거래" if target.has("service_id") else "F  대화")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not active:
@@ -414,4 +428,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				target = citizen.position
 				interaction = true
 				break
+		for entry in objectives:
+			if Rect2(entry.position-Vector2(25,40),Vector2(50,60)).has_point(local_point):target=entry.position;interaction=true;break
 		player.click_path = path_to(target, interaction)

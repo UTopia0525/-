@@ -24,7 +24,7 @@ func eligible() -> bool:
 
 func maybe_start() -> void:
 	if stage != "dormant" or not eligible(): return
-	if game.get_tree().paused or game.state != "explore" or game.exploration.area_name != "changsha" or not game.exploration.active: return
+	if game.adventure_ui.window.visible or game.get_tree().paused or game.state != "explore" or game.exploration.area_name != "changsha" or not game.exploration.active: return
 	if not game.dialogue_lines.is_empty() or game.city_overview.visible or game.city_service.visible or game.settings_menu.window.visible: return
 	previous_navigation = {"quest":game.quest_navigation.quest_id, "stage":game.quest_navigation.stage_id, "completed":game.quest_navigation.completed_goal_ids.duplicate()}
 	play("notice", _notice_done)
@@ -49,7 +49,7 @@ func explore(next_stage: String) -> void:
 	game.story_caption.hide()
 	game.top_hud.show()
 	game.bottom_hint.show()
-	game.bottom_hint.text = "WASD / 방향키  이동 · F 대화/거래 · I 소지품 · K 무공 · TAB 지도 · ESC  설정"
+	game.bottom_hint.text = preload("res://scripts/ui.gd").EXPLORATION_HINT
 	game.exploration.show()
 	game.exploration.set_active(true)
 	game.exploration.camera.snap_to_player()
@@ -120,6 +120,7 @@ func _settle() -> void:
 	var before: int = int(game.progress.stats.insight)
 	game.progress.stats.insight = mini(100, before + int(data.reward.insight))
 	game.progress.fame += int(data.reward.fame)
+	game.adventure_ui.notify("토벌 보고 완료 · %d문 · 오성+%d · 명성+%d" % [int(data.reward.money),int(game.progress.stats.insight)-before,int(data.reward.fame)],"quest")
 	reward_granted = true
 	stage = "completed"
 	game.state = "story"

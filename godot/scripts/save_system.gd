@@ -3,6 +3,7 @@ extends Node
 const SLOT_COUNT = 10
 const ROOT = "user://saves"
 const CALLBACKS = {
+	"ordinary_quests":["_after_dialogue"],
 	"main":["_captain_done", "_boarding_done", "_service_done", "start_battle", "show_story_choice"],
 	"prologue":["_next", "_drowning", "_delivery", "_after_delivery", "_farewell", "_arrival", "_finish"],
 	"chapter_one":["_accept_first_quest"],
@@ -27,6 +28,7 @@ func callback_from(value: Dictionary) -> Callable:
 	return Callable(game if value.owner == "main" else game.get(value.owner), value.method)
 
 func blocked_reason() -> String:
+	if game.adventure_ui.window.visible:return "의뢰 일지·도움말·기록 창을 닫은 뒤 저장하세요."
 	if game.player_menu.visible: return "소지품·무공 창을 닫은 뒤 저장하세요."
 	if game.state == "title": return "플레이를 시작한 뒤 저장할 수 있습니다."
 	if game.state == "chapter_transition": return "메뉴를 닫아 장 표시를 마친 뒤 저장하세요."
@@ -44,12 +46,12 @@ func capture() -> Dictionary:
 	var nodes = {"top_hud":game.top_hud, "bottom_hint":game.bottom_hint, "caption":game.story_caption, "exploration":w, "ending":game.ending, "overview":game.city_overview, "visual":game.story_visual}
 	var visibility := {}
 	for id in nodes: visibility[id] = nodes[id].visible
-	return {"schema":3, "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
+	return {"schema":3, "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
 		"chapter":game.chapter_number, "money":game.money, "talked_captain":game.talked_captain,
 		"world":{"area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
 		"chapter_one":game.chapter_one.snapshot().merged({"started":game.chapter_one.intro_started}),
-		"navigation":{"quest":game.quest_navigation.quest_id, "stage":game.quest_navigation.stage_id, "completed":game.quest_navigation.completed_goal_ids.duplicate()},
+		"navigation":{"quest":game.quest_navigation.quest_id, "stage":game.quest_navigation.stage_id, "completed":game.quest_navigation.completed_goal_ids.duplicate(),"facility":game.quest_navigation.facility_id},
 		"dialogue":{"lines":game.dialogue_lines.duplicate(true), "index":game.dialogue_index, "done":callback_data(game.dialogue_done), "cues":game.dialogue_music_cues.duplicate(), "listeners":game.dialogue_cast.portraits.keys()},
 		"ui":{"visible":visibility, "location":game.location.text, "objective":game.objective.text, "hint":game.bottom_hint.text, "caption":game.story_caption.text, "ending_hp":game.ending_hp.text},
 		"visual":{"mode":game.story_visual.mode, "phase":game.story_visual.phase, "paused":game.story_visual.paused},
@@ -105,6 +107,7 @@ func validate(d) -> bool:
 	if not d is Dictionary: return false
 	if d.get("schema") != 1 and d.get("schema") != 2 and d.get("schema") != 3: return false
 	if d.schema == 3 and not game.progress.valid(d.get("progress")): return false
+	if d.has("ordinary_quests") and not game.ordinary_quests.valid(d.ordinary_quests):return false
 	if d.has("trade_intro") and not game.trade_intro.valid(d.trade_intro): return false
 	if d.has("bandit_story") and not game.bandit_story.valid(d.bandit_story): return false
 	for field in ["world", "prologue", "chapter_one", "navigation", "dialogue", "ui", "visual", "service", "battle", "music"]:
@@ -136,6 +139,7 @@ func validate(d) -> bool:
 		var stage: String = "collect" if id == "changsha_dishes" else "deliver"
 		if record != {"status":"active", "stage":stage} and record != {"status":"completed", "stage":"done"}: return false
 	var n = d.navigation
+	if n.get("facility","") not in ["","city_merchant","city_artisan","city_instructor"]:return false
 	if not n.get("quest") is String or not n.get("completed") is Array: return false
 	if n.quest != "" and (not game.quest_navigation.definitions.has(n.quest) or not game.quest_navigation.definitions[n.quest].stages.has(n.get("stage"))): return false
 	for id in n.completed:
@@ -243,6 +247,8 @@ func load_slot(slot: int) -> bool:
 	c.accepted_quests = d.chapter_one.accepted_quests.duplicate(true)
 	if d.navigation.quest != "": game.quest_navigation.track(d.navigation.quest, d.navigation.stage, d.navigation.completed)
 	game.trade_intro.restore(d.get("trade_intro", {"completed":[]}))
+	game.ordinary_quests.restore(d.get("ordinary_quests",{"records":{},"pending":{}}))
+	game.quest_navigation.facility_id=d.navigation.get("facility","")
 	game.pending_service_id = d.pending_service
 	if not d.dialogue.lines.is_empty():
 		game.say(d.dialogue.lines, callback_from(d.dialogue.done), d.dialogue.listeners)

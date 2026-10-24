@@ -24,6 +24,7 @@ func _finish_visit() -> void:
  var before: int = game.progress.stats.insight
  game.progress.stats.insight = mini(100, before + int(reward.stat_gains.insight))
  completed.append(quest.id)
+ game.adventure_ui.notify("의뢰 완료 · %d문 · 오성+%d" % [reward.money,game.progress.stats.insight-before],"quest")
  game.chapter_one.accepted_quests[quest.id] = {"status":"completed", "stage":"done"}
  if active():
   var next := current()
