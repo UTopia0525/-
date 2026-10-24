@@ -142,6 +142,12 @@
       "eye_y": 285,
       "eye_to_chin": 190,
       "natural_facing": "right"
+    },
+    "res://assets/portraits/story/constable-duty.png": {
+      "face_x": 510,
+      "eye_y": 230,
+      "eye_to_chin": 155,
+      "natural_facing": "left"
     }
   }
 }

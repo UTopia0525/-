@@ -91,7 +91,9 @@ func _check_dialogues(game) -> void:
 
 func _check_framing_and_facing(game) -> void:
 	var cast = game.dialogue_cast
-	check(cast.framing.profiles.size() == 15, "all fifteen in-game artworks have framing profiles")
+	for actor in game.PORTRAITS.ACTORS.values():
+		var texture=cast.texture_for(actor)
+		check(texture!=null and cast.framing.profiles.has(texture.resource_path),"every bound character illustration has framing")
 	for path in cast.framing.profiles:
 		var texture: Texture2D = load(path)
 		var frame: Rect2 = cast.frame_for(texture, Vector2(340, 384))
@@ -99,14 +101,16 @@ func _check_framing_and_facing(game) -> void:
 		var eye_on_screen: float = (profile.eye_y - frame.position.y) * 384 / frame.size.y
 		check(absf(eye_on_screen - 80) < 0.1, "shared eye height: " + path)
 		check(frame.end.y <= texture.get_height() + 0.1, "torso fills frame to its bottom: " + path)
-	var constable: Texture2D = load("res://assets/portraits/story/constable.png")
-	check(cast.frame_for(constable, Vector2(340, 384)).size.y < 1200, "constable knees cropped to upper-body framing")
+	var constable: Texture2D = cast.texture_for(game.PORTRAITS.ACTORS.bandit_messenger)
+	check(constable.resource_path.ends_with("constable-duty.png"), "all existing constable lines use new duty uniform")
+	var left_flip: bool=cast.framing.profiles[constable.resource_path].natural_facing=="right"
 	game.start_city()
 	game.say([["bandit_messenger", "확인했습니다."], ["hero", "알겠습니다."]])
-	check(not cast.portraits.hero.flip_h and cast.portraits.bandit_messenger.flip_h, "two participants face each other")
+	check(not cast.portraits.hero.flip_h and cast.portraits.bandit_messenger.flip_h==left_flip, "two participants face each other")
+	check(cast.portraits.bandit_messenger.texture.resource_path=="res://assets/portraits/story/constable-duty.png", "existing dialogue displays replacement uniform")
 	check(cast.portraits.bandit_messenger.material is ShaderMaterial, "portrait uses normalized display material")
 	game.advance_dialogue()
-	check(not cast.portraits.hero.flip_h and cast.portraits.bandit_messenger.flip_h, "speaker changes preserve facing")
+	check(not cast.portraits.hero.flip_h and cast.portraits.bandit_messenger.flip_h==left_flip, "speaker changes preserve facing")
 	game.say([["bandit_farmer", "포졸 나리.", {"to":"bandit_messenger"}], ["hero", "그쪽 이야기를 들었습니다."]], Callable(), ["hero", "bandit_farmer", "bandit_messenger"])
 	check(not cast.portraits.bandit_farmer.flip_h, "NPC can address NPC on the right rather than hero on the left")
 	game.advance_dialogue()
@@ -114,10 +118,10 @@ func _check_framing_and_facing(game) -> void:
 	check(preload("res://tests/legacy_save_fixture.gd").write(game, 1) and game.save_system.load_slot(1), "save and restore inferred reply direction")
 	check(not cast.portraits.hero.flip_h and cast.portraits.bandit_farmer.flip_h, "reload preserves reply facing")
 	game.say([["hero", "잠깐 돌아보았다.", "혼잣말", {"facing":{"hero":"left", "bandit_messenger":"right"}}]], Callable(), ["bandit_messenger"])
-	check(cast.portraits.hero.flip_h and not cast.portraits.bandit_messenger.flip_h, "explicit line facing overrides automatic facing")
+	check(cast.portraits.hero.flip_h and cast.portraits.bandit_messenger.flip_h!=left_flip, "explicit line facing overrides automatic facing")
 	check(game.dialogue_name.text.contains("혼잣말"), "subtitle remains compatible with staging")
 	check(preload("res://tests/legacy_save_fixture.gd").write(game, 1) and game.save_system.load_slot(1), "staging and subtitle survive save")
-	check(cast.portraits.hero.flip_h and not cast.portraits.bandit_messenger.flip_h, "explicit directions survive reload")
+	check(cast.portraits.hero.flip_h and cast.portraits.bandit_messenger.flip_h!=left_flip, "explicit directions survive reload")
 	check(not cast.valid_staging({"to":"unknown"}) and not cast.valid_staging({"facing":{"hero":"up"}}), "invalid direction or actor rejected")
 	var malformed: Dictionary = game.save_system.capture()
 	malformed.dialogue.lines[0][3] = {"facing":{"hero":"up"}}
