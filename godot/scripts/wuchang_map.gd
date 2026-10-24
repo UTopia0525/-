@@ -6,6 +6,7 @@ var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://asse
 var prefabs: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://assets/maps/changsha/layered/prefabs.json"))
 var actors: Node2D
 var scenery_nodes: Array=[]
+var resident_positions: Array[Vector2]=[]
 var blockers: Array[Rect2]=[]
 var astar=AStarGrid2D.new()
 var world_scale=Vector2(4,4)
@@ -38,6 +39,8 @@ func can_stand(p: Vector2,radius: float=16) -> bool:
 	if not _inside(p,radius):return false
 	for bounds in blockers:
 		if bounds.grow(radius).has_point(p):return false
+	for resident in resident_positions:
+		if p.distance_to(resident)<=radius+16:return false
 	return true
 func _inside(p: Vector2,radius: float) -> bool:return walk_bounds.grow(-radius).has_point(p)
 func _build_navigation() -> void:
@@ -53,6 +56,10 @@ func _build_navigation() -> void:
 		var high=Vector2i((grown.end/float(CELL)).ceil()).min(astar.region.end-Vector2i.ONE)
 		for y in range(low.y,high.y+1):
 			for x in range(low.x,high.x+1):astar.set_point_solid(Vector2i(x,y))
+	for resident in resident_positions:
+		for y in range(maxi(0,int((resident.y-64)/CELL)),mini(astar.region.end.y,int((resident.y+64)/CELL)+1)):
+			for x in range(maxi(0,int((resident.x-64)/CELL)),mini(astar.region.end.x,int((resident.x+64)/CELL)+1)):
+				if astar.get_point_position(Vector2i(x,y)).distance_to(resident)<=48:astar.set_point_solid(Vector2i(x,y))
 func _cell(p: Vector2) -> Vector2i:
 	var cell=Vector2i((p/float(CELL)).floor())
 	if astar.is_in_boundsv(cell) and not astar.is_point_solid(cell):return cell

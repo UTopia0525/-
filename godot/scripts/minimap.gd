@@ -57,7 +57,7 @@ func bind_world(world) -> void:
 func refresh() -> void:
 	if not is_instance_valid(exploration):
 		return
-	facility_legend.text="약 상인 · 장 장인 · 무 교관" if exploration.area_name=="changsha" else "○ 푸른 포탈 · 가까이에서 F 이동"
+	facility_legend.text="약 상인 · 장 장인 · 무 교관" if not exploration.city_data.get("services",[]).is_empty() else "○ 푸른 포탈 · 가까이에서 F 이동"
 	var bounds: Rect2 = exploration.map_bounds
 	var ratio = VIEW_SIZE.x / VIEW_SIZE.y
 	var width = minf(WORLD_WIDTH, minf(bounds.size.x, bounds.size.y * ratio))

@@ -94,6 +94,54 @@
       "eye_y": 310,
       "eye_to_chin": 185,
       "natural_facing": "right"
+    },
+    "res://assets/portraits/wuchang/liu_baicao.png": {
+      "face_x": 590,
+      "eye_y": 290,
+      "eye_to_chin": 190,
+      "natural_facing": "right"
+    },
+    "res://assets/portraits/wuchang/shi_dayong.png": {
+      "face_x": 590,
+      "eye_y": 250,
+      "eye_to_chin": 185,
+      "natural_facing": "right"
+    },
+    "res://assets/portraits/wuchang/lin_zhengshan.png": {
+      "face_x": 590,
+      "eye_y": 275,
+      "eye_to_chin": 185,
+      "natural_facing": "right"
+    },
+    "res://assets/portraits/wuchang/du_sanniang.png": {
+      "face_x": 590,
+      "eye_y": 310,
+      "eye_to_chin": 180,
+      "natural_facing": "right"
+    },
+    "res://assets/portraits/wuchang/lu_zhenghao.png": {
+      "face_x": 590,
+      "eye_y": 285,
+      "eye_to_chin": 190,
+      "natural_facing": "right"
+    },
+    "res://assets/portraits/wuchang/wu_deshu.png": {
+      "face_x": 600,
+      "eye_y": 260,
+      "eye_to_chin": 200,
+      "natural_facing": "right"
+    },
+    "res://assets/portraits/wuchang/grandmother_zheng.png": {
+      "face_x": 600,
+      "eye_y": 330,
+      "eye_to_chin": 200,
+      "natural_facing": "right"
+    },
+    "res://assets/portraits/wuchang/zhou_jifu.png": {
+      "face_x": 600,
+      "eye_y": 285,
+      "eye_to_chin": 190,
+      "natural_facing": "right"
     }
   }
 }

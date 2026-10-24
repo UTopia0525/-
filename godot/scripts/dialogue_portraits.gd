@@ -34,6 +34,9 @@ const COMMON_POOL = {
 }
 
 func _init() -> void:
+	var civil=JSON.parse_string(FileAccess.get_file_as_string("res://data/wuchang_residents.json"))
+	for entry in civil.npcs:
+		ACTORS[entry.id]={"name":entry.name,"extra":entry.extra,"portrait":"res://assets/portraits/wuchang/"+str(entry.id).trim_prefix("wc_")+".png"}
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	position = Vector2(24, 125)
 	size = Vector2(1232, 410)

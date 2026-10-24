@@ -61,7 +61,7 @@ func open_for(exploration, goal: Dictionary = {}) -> void:
 		var fit=minf(MAP_RECT.size.x/ratio.x,MAP_RECT.size.y/ratio.y)
 		map_rect=Rect2(MAP_RECT.get_center()-ratio*fit/2,ratio*fit)
 	heading.text=exploration.city_data.name+" · 전체 지도"
-	for widget in facility_widgets:widget.visible=exploration.area_name=="changsha"
+	for widget in facility_widgets:widget.visible=not exploration.city_data.get("services",[]).is_empty()
 	map_image.texture=exploration.background.texture
 	map_image.position=map_rect.position;map_image.size=map_rect.size
 	for child in map_image.get_children():child.free()

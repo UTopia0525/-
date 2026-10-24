@@ -124,7 +124,7 @@ func _load_regional(value: String) -> void:
 	city_data=regional_map.data.duplicate(true)
 	city_data.ground_texture="res://assets/maps/"+("changsha-wuchang" if value=="mountain_road" else "wuchang")+"/ground.png"
 	for district in city_data.districts:
-		district.bounds=district.rect;district.category="regional"
+		district.bounds=district.rect;district.category={"market":"market","workshops":"workshops","martial":"martial_hall"}.get(district.get("id",""),"regional")
 	map_bounds=regional_map.map_bounds;camera.exploration_zoom=1.0
 	background.texture=load(city_data.ground_texture)
 	# The cached floor contains terrain only. Independent props retain shared Y sorting.
@@ -137,6 +137,19 @@ func _load_regional(value: String) -> void:
 		art_tiles.append({"texture":load(prefab.texture),"source":Rect2(prefab.source[0],prefab.source[1],prefab.source[2],prefab.source[3]),"target":Rect2(spec.rect[0],spec.rect[1],spec.rect[2],spec.rect[3])})
 	art_tiles.sort_custom(func(a,b):return a.target.end.y<b.target.end.y)
 	player.position=city_point(city_data.spawn)
+	if value=="wuchang":
+		var civil=JSON.parse_string(FileAccess.get_file_as_string("res://data/wuchang_residents.json"))
+		city_data.residents=civil.npcs;city_data.services=civil.services
+		city_data.road_centers=[]
+		for road in city_data.roads:
+			for i in range(road.points.size()-1):
+				var a=Vector2(road.points[i][0],road.points[i][1]);var b=Vector2(road.points[i+1][0],road.points[i+1][1]);var r=Rect2(a.min(b),a.max(b)-a.min(b)).grow(float(road.width)/2)
+				city_data.road_centers.append([r.position.x,r.position.y,r.size.x,r.size.y])
+		_populate_residents(city_data.residents)
+		regional_map.resident_positions.assign(ambient_nodes.map(func(n):return n.position))
+		regional_map._build_navigation()
+		astar=regional_map.astar
+		player.position=safe_player_position(player.position)
 
 func _load_changsha() -> void:
 	city_data = JSON.parse_string(FileAccess.get_file_as_string("res://assets/maps/changsha/layout.json"))
@@ -151,7 +164,20 @@ func _load_changsha() -> void:
 		blockers.append(_city_rect(rectangle))
 	_build_city_art()
 	player.position = city_point(city_data.spawn)
-	for entry in city_data.residents:
+	_populate_residents(city_data.residents)
+	player.position = safe_player_position(player.position)
+	# Identify the new martial hall in the existing courtyard building.
+	var hall = Node2D.new()
+	hall.z_index = 1
+	hall.position = city_point([944, 615])
+	var plaque = UI.panel(hall, Rect2(-95, -38, 190, 38), Color("28241af2"))
+	var hall_name = UI.label(plaque, "장사 무관", Rect2(5, 3, 180, 30), 20, UI.GOLD)
+	hall_name.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	decorations.add_child(hall)
+	occlusion_roots.append(hall)
+
+func _populate_residents(entries: Array) -> void:
+	for entry in entries:
 		var citizen = CharacterBody2D.new()
 		citizen.collision_layer = 2
 		citizen.collision_mask = 3
@@ -162,12 +188,12 @@ func _load_changsha() -> void:
 		citizen.add_child(feet)
 		var sprite = Sprite2D.new()
 		var sprite_atlas = AtlasTexture.new()
-		sprite_atlas.atlas = preload("res://assets/characters.png")
-		sprite_atlas.region = CITIZEN_REGIONS[int(entry.frame)]
+		sprite_atlas.atlas = load(entry.sprite_texture) if entry.has("sprite_texture") else preload("res://assets/characters.png")
+		sprite_atlas.region = Rect2(entry.sprite_region[0],entry.sprite_region[1],entry.sprite_region[2],entry.sprite_region[3]) if entry.has("sprite_region") else CITIZEN_REGIONS[int(entry.frame)]
 		sprite.texture = sprite_atlas
 		sprite.centered = false
 		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		sprite.scale = Vector2.ONE * (Metrics.CITIZEN_HEIGHT / sprite.texture.get_height())
+		sprite.scale = Vector2.ONE * minf(Metrics.CITIZEN_HEIGHT / sprite.texture.get_height(),88.0/sprite.texture.get_width())
 		sprite.offset = Vector2(-sprite.texture.get_width() / 2.0, -sprite.texture.get_height())
 		citizen.add_child(sprite)
 		citizen.position = _clear_citizen_position(city_point(entry.point), entry)
@@ -182,25 +208,16 @@ func _load_changsha() -> void:
 		# Use the same foot baseline as the player for Y sorting.
 		decorations.add_child(citizen)
 		ambient_nodes.append(citizen)
-		if entry.has("service_id") or entry.get("story_actor", false):
+		if entry.has("service_id") or entry.get("story_actor", false) or area_name=="wuchang":
 			var marker = Node2D.new()
+			marker.set_meta("npc_id",entry.id)
 			marker.position = citizen.position
-			var tag = UI.label(marker, entry.name + (" · 토벌" if entry.get("story_actor", false) else " · 거래"), Rect2(-105, -Metrics.CITIZEN_HEIGHT-Metrics.NAME_GAP, 210, 26), 15, UI.GOLD)
+			var tag = UI.label(marker, entry.name + (" · 토벌" if entry.get("story_actor", false) else " · 거래" if entry.has("service_id") else ""), Rect2(-105, -Metrics.CITIZEN_HEIGHT-Metrics.NAME_GAP, 210, 26), 15, UI.GOLD)
 			tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			tag.add_theme_color_override("font_outline_color", Color("12201c"))
 			tag.add_theme_constant_override("outline_size", 5)
 			decorations.add_child(marker)
 			occlusion_roots.append(marker)
-	player.position = safe_player_position(player.position)
-	# Identify the new martial hall in the existing courtyard building.
-	var hall = Node2D.new()
-	hall.z_index = 1
-	hall.position = city_point([944, 615])
-	var plaque = UI.panel(hall, Rect2(-95, -38, 190, 38), Color("28241af2"))
-	var hall_name = UI.label(plaque, "장사 무관", Rect2(5, 3, 180, 30), 20, UI.GOLD)
-	hall_name.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	decorations.add_child(hall)
-	occlusion_roots.append(hall)
 
 func _build_city_art() -> void:
 	var prefabs: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(city_data.prefabs_path))
@@ -280,7 +297,12 @@ func _inside_walk_regions(point: Vector2) -> bool:
 
 func can_stand(point: Vector2, radius: float = FOOT_RADIUS, residents: bool = true) -> bool:
 	# A free center alone does not guarantee that the character's feet fit.
-	if is_instance_valid(regional_map):return regional_map.can_stand(point,radius)
+	if is_instance_valid(regional_map):
+		if not regional_map.can_stand(point,radius):return false
+		if residents:
+			for citizen in ambient_nodes:
+				if point.distance_to(citizen.position)<=radius+CITIZEN_RADIUS:return false
+		return true
 	if not _inside_walk_regions(point): return false
 	for direction in [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN, Vector2(-0.707, -0.707), Vector2(0.707, -0.707), Vector2(-0.707, 0.707), Vector2(0.707, 0.707)]:
 		if not _inside_walk_regions(point + direction * radius): return false
@@ -303,6 +325,9 @@ func _citizen_fits(point: Vector2, entry: Dictionary) -> bool:
 	var art_point := point / (map_bounds.size / Vector2(city_data.art_size[0], city_data.art_size[1]))
 	for road in city_data.road_centers:
 		if Rect2(road[0], road[1], road[2], road[3]).has_point(art_point): return false
+	if entry.has("district"):
+		for district in city_data.districts:
+			if district.id==entry.district and not _city_rect(district.bounds).has_point(point):return false
 	# Keep shop staff in their assigned district when moving them away from scenery.
 	if entry.has("service_id"):
 		var categories = {"city_merchant":"market", "city_artisan":"workshops", "city_instructor":"martial_hall"}
@@ -333,7 +358,18 @@ func safe_player_position(preferred: Vector2) -> Vector2:
 	return city_point(city_data.spawn) if area_name in ["changsha","mountain_road","wuchang"] else preferred
 
 func path_to(point: Vector2, interaction: bool = false) -> PackedVector2Array:
-	if is_instance_valid(regional_map):return regional_map.path_to(player.position,point)
+	if is_instance_valid(regional_map):
+		if not interaction:return regional_map.path_to(player.position,point)
+		var candidates: Array[Vector2]=[]
+		for radius in [48.0,64.0]:
+			for i in range(16):
+				var p=point+Vector2.from_angle(TAU*i/16)*radius
+				if can_stand(p):candidates.append(p)
+		candidates.sort_custom(func(a,b):return a.distance_squared_to(player.position)<b.distance_squared_to(player.position))
+		for candidate in candidates:
+			var path=regional_map.path_to(player.position,candidate)
+			if not path.is_empty():return path
+		return []
 	var origin := Vector2i(player.position / 20.0)
 	var destination := Vector2i(point / 20.0)
 	if not astar.region.has_point(origin): return []
@@ -455,7 +491,7 @@ func _process(_delta: float) -> void:
 	indicator.visible = not target.is_empty() and not target.has("travel")
 	if not target.is_empty():
 		indicator.position=target.position
-		indicator.set_body_height((Metrics.CITIZEN_HEIGHT if area_name=="changsha" else Metrics.PROLOGUE_HEIGHT) if target.frame>=0 else 0.0)
+		indicator.set_body_height((Metrics.CITIZEN_HEIGHT if area_name in ["changsha","wuchang"] else Metrics.PROLOGUE_HEIGHT) if target.frame>=0 else 0.0)
 	if not target.is_empty():
 		hint.add_theme_color_override("font_color",Color("9de5ff") if target.has("travel") else UI.GOLD)
 		hint.position = target.position + Vector2(-75, 20 if target.has("travel") else 14)
