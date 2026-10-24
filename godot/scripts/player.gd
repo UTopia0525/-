@@ -1,14 +1,16 @@
 extends CharacterBody2D
 
-@export var speed: float = 180.0
+@export var speed: float = 360.0
 var movement_enabled: bool = true
 var click_path: PackedVector2Array = []
 var sprite: AnimatedSprite2D
 var facing: String = "down"
+var display_height:=140.0
 var animation_metadata: Dictionary
 
 func _ready() -> void:
 	animation_metadata = JSON.parse_string(FileAccess.get_file_as_string("res://assets/animation/hero_walk_frames.json"))
+	display_height=float(animation_metadata.target_height)
 	sprite = AnimatedSprite2D.new()
 	sprite.centered = false
 	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
@@ -50,7 +52,13 @@ func _align_frame() -> void:
 	# Per-frame atlas regions register the head center and foot baseline.
 	sprite.offset = -Vector2(info.pivot[0], info.pivot[1])
 	var reference: float = poses.reference_height if walking else poses.idle.height
-	sprite.scale = Vector2.ONE * (float(animation_metadata.target_height) / reference)
+	sprite.scale = Vector2.ONE * (display_height / reference)
+
+func set_display_height(height: float) -> void:
+	display_height=height
+	if is_instance_valid(sprite):
+		sprite.speed_scale=float(animation_metadata.target_height)/height
+		_align_frame()
 
 func _play(animation_name: String) -> void:
 	if sprite.animation != animation_name:
@@ -62,17 +70,19 @@ func _physics_process(_delta: float) -> void:
 		velocity = Vector2.ZERO
 		_play("idle_" + facing)
 		return
+	var click_distance: float=-1.0
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if direction.length_squared() > 0:
 		click_path.clear()
-	elif not click_path.is_empty():
-		var destination = click_path[0]
-		if position.distance_to(destination) < 5.0:
-			click_path.remove_at(0)
-		else:
-			direction = position.direction_to(destination)
+	else:
+		while not click_path.is_empty() and position.distance_to(click_path[0])<2.0:click_path.remove_at(0)
+		if not click_path.is_empty():
+			click_distance=position.distance_to(click_path[0])
+			direction=position.direction_to(click_path[0])
 	var previous = position
-	velocity = direction * speed
+	# Clamp a click step to its waypoint even at low FPS; keyboard retains full speed.
+	var movement_speed: float=minf(speed,click_distance/maxf(_delta,.00001)) if click_distance>=0 else speed
+	velocity = direction * movement_speed
 	move_and_slide()
 	if direction.length_squared() > 0:
 		if absf(direction.x) > absf(direction.y):

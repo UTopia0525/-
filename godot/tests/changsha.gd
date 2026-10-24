@@ -34,7 +34,7 @@ func _run() -> void:
 	for citizen in city.ambient_nodes:
 		check(city.point_is_walkable(citizen.position), "residents stand on ground")
 		check(not city.path_to(citizen.position, true).is_empty(), "residents on reachable ground: " + str(citizen.name))
-		var body_bounds = Rect2(citizen.position - Vector2(28, 96), Vector2(56, 96))
+		var body_bounds = Rect2(citizen.position+city.CITIZEN_BOUNDS.position,city.CITIZEN_BOUNDS.size)
 		for block in city.blockers:
 			check(not body_bounds.intersects(block), "full resident sprite stays clear of roofs and stalls: " + str(citizen.name))
 	game.minimap.refresh()

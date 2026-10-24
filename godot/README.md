@@ -10,7 +10,7 @@
 
 | 키 | 기능 |
 | --- | --- |
-| WASD / 방향키 / 바닥 클릭 | 이동 |
+| WASD / 방향키 / 바닥 클릭 | 이동(기존 대비2배 속도) |
 | F | 가까운 인물과 대화·다음 대사·승선·시설 진입 |
 | I / K | 소지품 / 무공과 4칸 편성 |
 | Q | 의뢰 일지·의뢰인 위치 안내·목표 추적 |
@@ -78,3 +78,5 @@ try {
 - [초상화 비율과 시선](../docs/systems/dialogue-portraits.md)
 - [애니메이션 자산](assets/animation/README.md) · [BGM](assets/music/README.md)
 - [이전 README 전체 기록](../docs/archive/godot-readme-before-cleanup.md): 당시의 화면·단계별 한계 설명을 보존합니다.
+
+- [탐험 인물 크기·이동 속도](../docs/systems/exploration-scale.md)

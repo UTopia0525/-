@@ -57,7 +57,7 @@ func run() -> void:
  var saved_position: Vector2 = player.position
  var departure_tested := false
  for actor in city.ambient_nodes:
-  for offset in [Vector2(24, 0), Vector2(-24, 0), Vector2(0, 24), Vector2(0, -24)]:
+  for offset in [Vector2(34, 0), Vector2(-34, 0), Vector2(0, 34), Vector2(0, -34)]:
    var edge: Vector2 = actor.position + offset
    var cell := Vector2i(edge / 20)
    if not city.can_stand(edge) or not city.astar.is_point_solid(cell): continue
@@ -72,7 +72,7 @@ func run() -> void:
   var path: PackedVector2Array = city.path_to(actor.position, true)
   check(not path.is_empty(), "approach NPC: " + str(actor.name))
   if not path.is_empty():
-   check(path[-1].distance_to(actor.position) < 78 and path[-1].distance_to(actor.position) > 23, "path ends beside NPC within interaction range")
+   check(path[-1].distance_to(actor.position) < 78 and path[-1].distance_to(actor.position) > city.FOOT_RADIUS + city.CITIZEN_RADIUS, "path ends beside NPC within interaction range")
    for point in path: check(city.can_stand(point), "click path avoids scenery and NPC feet")
  # A pre-redesign save inside a new obstacle recovers to safe ground.
  var inside: Vector2 = city.blockers[0].get_center()

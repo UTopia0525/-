@@ -129,7 +129,7 @@ func refresh_world() -> void:
 		if not marks.has(id):
 			var mark=UI.label(world.decorations,"",Rect2(0,0,40,46),34,Color("ffe14b"));mark.z_index=6;mark.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
 			mark.add_theme_color_override("font_outline_color",Color("2b2614"));mark.add_theme_constant_override("outline_size",5);marks[id]=mark
-		marks[id].position=npc.position+Vector2(-20,-175 if not str(npc.get_meta("service_id","")).is_empty() or npc.get_meta("story_actor",false) else -140);marks[id].text=marker_for(id);marks[id].visible=not str(marks[id].text).is_empty()
+		marks[id].position=npc.position+Vector2(-20,-world.Metrics.CITIZEN_HEIGHT-world.Metrics.QUEST_GAP-(world.Metrics.NAME_GAP if not str(npc.get_meta("service_id","")).is_empty() or npc.get_meta("story_actor",false) else 0.0));marks[id].text=marker_for(id);marks[id].visible=not str(marks[id].text).is_empty()
 	# Rebuild investigation markers only when the stage/completion signature changes.
 	var signature:=JSON.stringify(records)
 	if world.get_meta("quest_signature","")==signature:return

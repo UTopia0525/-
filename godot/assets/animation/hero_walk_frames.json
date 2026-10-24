@@ -1,6 +1,6 @@
 {
-  "target_height": 82,
-  "fps": 8,
+  "target_height": 140,
+  "fps": 10,
   "directions": {
     "down": {
       "walk": [

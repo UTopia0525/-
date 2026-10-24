@@ -3,8 +3,10 @@ extends Node2D
 const UI = preload("res://scripts/ui.gd")
 const PLAYER_SCENE = preload("res://scenes/player.tscn")
 const FOLLOW_CAMERA = preload("res://scripts/follow_camera.gd")
-const FOOT_RADIUS = 11.0
-const CITIZEN_RADIUS = 12.0
+const Metrics=preload("res://scripts/exploration_metrics.gd")
+const FOOT_RADIUS = Metrics.PLAYER_RADIUS
+const CITIZEN_RADIUS = Metrics.CITIZEN_RADIUS
+const CITIZEN_BOUNDS=Metrics.CITIZEN_BOUNDS
 @export var map_bounds: Rect2 = Rect2(0, 0, 1280, 720)
 @export_range(1.0, 3.0, 0.25) var camera_zoom: float = 1.5
 var camera: Camera2D
@@ -62,6 +64,8 @@ func load_area(value: String) -> void:
 	objectives.clear()
 	area_name = value
 	player.stop()
+	player.set_display_height(float(player.animation_metadata.target_height) if value=="changsha" else Metrics.PROLOGUE_HEIGHT)
+	camera.set_focus_height(player.display_height*Metrics.CAMERA_FOCUS_RATIO)
 	for entry in npcs:
 		entry.node.free()
 	npcs.clear()
@@ -135,7 +139,7 @@ func _load_changsha() -> void:
 		sprite.texture = sprite_atlas
 		sprite.centered = false
 		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		sprite.scale = Vector2.ONE * (82.0 / sprite.texture.get_height())
+		sprite.scale = Vector2.ONE * (Metrics.CITIZEN_HEIGHT / sprite.texture.get_height())
 		sprite.offset = Vector2(-sprite.texture.get_width() / 2.0, -sprite.texture.get_height())
 		citizen.add_child(sprite)
 		citizen.position = _clear_citizen_position(city_point(entry.point), entry)
@@ -153,7 +157,7 @@ func _load_changsha() -> void:
 		if entry.has("service_id") or entry.get("story_actor", false):
 			var marker = Node2D.new()
 			marker.position = citizen.position
-			var tag = UI.label(marker, entry.name + (" · 토벌" if entry.get("story_actor", false) else " · 거래"), Rect2(-105, -116, 210, 26), 15, UI.GOLD)
+			var tag = UI.label(marker, entry.name + (" · 토벌" if entry.get("story_actor", false) else " · 거래"), Rect2(-105, -Metrics.CITIZEN_HEIGHT-Metrics.NAME_GAP, 210, 26), 15, UI.GOLD)
 			tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			tag.add_theme_color_override("font_outline_color", Color("12201c"))
 			tag.add_theme_constant_override("outline_size", 5)
@@ -213,12 +217,16 @@ func _add_npc(id: String, title: String, point: Vector2, frame: int) -> void:
 	body.add_child(collision)
 	if frame >= 0:
 		var sprite = Sprite2D.new()
-		sprite.texture = UI.character_texture(frame)
+		var atlas=AtlasTexture.new()
+		atlas.atlas=preload("res://assets/characters.png")
+		atlas.region=CITIZEN_REGIONS[frame]
+		sprite.texture = atlas
 		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		sprite.scale = Vector2.ONE * (104.0 / sprite.texture.get_height())
-		sprite.position.y = -43
+		sprite.centered=false
+		sprite.scale = Vector2.ONE * (Metrics.PROLOGUE_HEIGHT / sprite.texture.get_height())
+		sprite.offset=Vector2(-sprite.texture.get_width()/2,-sprite.texture.get_height())
 		body.add_child(sprite)
-	var tag = UI.label(body, title, Rect2(-100, -108 if frame >= 0 else -25, 200, 28), 14, UI.TEXT)
+	var tag = UI.label(body, title, Rect2(-100, -Metrics.PROLOGUE_HEIGHT-Metrics.NAME_GAP if frame >= 0 else -25, 200, 28), 14, UI.TEXT)
 	tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	tag.add_theme_color_override("font_shadow_color", Color("142019"))
 	tag.add_theme_constant_override("shadow_offset_x", 2)
@@ -255,13 +263,13 @@ func can_stand(point: Vector2, radius: float = FOOT_RADIUS, residents: bool = tr
 
 func _citizen_fits(point: Vector2, entry: Dictionary) -> bool:
 	if not can_stand(point, CITIZEN_RADIUS): return false
-	var visual := Rect2(point - Vector2(28, 96), Vector2(56, 96))
+	var visual := Rect2(point+CITIZEN_BOUNDS.position,CITIZEN_BOUNDS.size)
 	for bounds in scenery_bounds:
 		if visual.grow(6).intersects(bounds): return false
 	for block in blockers:
 		if visual.grow(6).intersects(block): return false
 	for other in ambient_nodes:
-		if visual.grow(8).intersects(Rect2(other.position - Vector2(28, 96), Vector2(56, 96))): return false
+		if visual.grow(8).intersects(Rect2(other.position+CITIZEN_BOUNDS.position,CITIZEN_BOUNDS.size)): return false
 	var art_point := point / (map_bounds.size / Vector2(city_data.art_size[0], city_data.art_size[1]))
 	for road in city_data.road_centers:
 		if Rect2(road[0], road[1], road[2], road[3]).has_point(art_point): return false
@@ -411,7 +419,9 @@ func _process(_delta: float) -> void:
 	var target = nearest() if active else {}
 	hint.visible = not target.is_empty()
 	indicator.visible = not target.is_empty()
-	if not target.is_empty():indicator.position=target.position
+	if not target.is_empty():
+		indicator.position=target.position
+		indicator.set_body_height((Metrics.CITIZEN_HEIGHT if area_name=="changsha" else Metrics.PROLOGUE_HEIGHT) if target.frame>=0 else 0.0)
 	if not target.is_empty():
 		hint.position = target.position + Vector2(-75, 14)
 		hint.text = "F  조사" if str(target.id).begins_with("quest_goal:") else "F  승선" if target.id == "boarding" else ("F  거래" if target.has("service_id") else "F  대화")
@@ -424,7 +434,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var target: Vector2 = local_point
 		var interaction := false
 		for citizen in ambient_nodes:
-			if Rect2(citizen.position - Vector2(28, 82), Vector2(56, 94)).has_point(local_point):
+			if Rect2(citizen.position+CITIZEN_BOUNDS.position,CITIZEN_BOUNDS.size).has_point(local_point):
 				target = citizen.position
 				interaction = true
 				break

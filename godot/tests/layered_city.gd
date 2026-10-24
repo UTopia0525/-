@@ -26,7 +26,7 @@ func run() -> void:
 				check(city.player.test_move(Transform2D(0,foot.get_center()+Vector2(0,80)),Vector2(0,-80)),"solid pillar: "+node.name)
 	for npc in city.ambient_nodes:
 		check(city.can_stand(npc.position,city.CITIZEN_RADIUS,false),"NPC has safe physical ground: "+npc.name)
-		var body:=Rect2(npc.position-Vector2(28,96),Vector2(56,96))
+		var body:=Rect2(npc.position+city.CITIZEN_BOUNDS.position,city.CITIZEN_BOUNDS.size)
 		for bounds in city.scenery_bounds:check(not body.grow(6).intersects(bounds),"NPC image clear of architecture: "+npc.name)
 		check(not city.path_to(npc.position,true).is_empty(),"reachable resident: "+npc.name)
 	for landmark in city.city_data.landmarks:

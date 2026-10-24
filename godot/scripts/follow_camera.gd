@@ -17,6 +17,10 @@ func _ready() -> void:
 	get_viewport().size_changed.connect(_fit_view)
 	set_map_bounds(map_bounds)
 
+func set_focus_height(height: float) -> void:
+	focus_height=height
+	position=Vector2(0,-height)
+
 func set_map_bounds(bounds: Rect2) -> void:
 	assert(bounds.size.x > 0 and bounds.size.y > 0, "Camera requires positive map dimensions")
 	map_bounds = bounds
