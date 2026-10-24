@@ -46,7 +46,7 @@ func capture() -> Dictionary:
 	var nodes = {"top_hud":game.top_hud, "bottom_hint":game.bottom_hint, "caption":game.story_caption, "exploration":w, "ending":game.ending, "overview":game.city_overview, "visual":game.story_visual}
 	var visibility := {}
 	for id in nodes: visibility[id] = nodes[id].visible
-	return {"schema":3, "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
+	return {"schema":3, "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
 		"chapter":game.chapter_number, "money":game.money, "talked_captain":game.talked_captain,
 		"world":{"layout_version":2 if w.area_name=="mountain_road" else 1, "area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
@@ -111,6 +111,7 @@ func validate(d) -> bool:
 	if d.has("trade_intro") and not game.trade_intro.valid(d.trade_intro): return false
 	if d.has("bandit_story") and not game.bandit_story.valid(d.bandit_story): return false
 	if d.has("alliance_visit") and not game.alliance_visit.valid(d.alliance_visit):return false
+	if d.has("herbalist_quest") and not game.herbalist_quest.valid(d.herbalist_quest):return false
 	for field in ["world", "prologue", "chapter_one", "navigation", "dialogue", "ui", "visual", "service", "battle", "music"]:
 		if not d.get(field) is Dictionary: return false
 	if d.get("state") not in ["explore", "story", "choice", "service", "battle", "end"]: return false
@@ -170,9 +171,10 @@ func validate(d) -> bool:
 	if d.state == "service" and d.service.is_empty(): return false
 	var enemy_maximum := 150
 	var encounter_id = d.battle.get("encounter_id", "")
-	if encounter_id not in ["", "bandit_sentry", "bandit_ringleader"]: return false
-	for definition in game.bandit_story.data.encounters:
+	if encounter_id not in ["", "bandit_sentry", "bandit_ringleader", "herb_ruffian"]: return false
+	for definition in (game.bandit_story.data.encounters + [game.herbalist_quest.data.encounter]):
 		if definition.id == encounter_id: enemy_maximum = int(definition.max_hp)
+	if d.state=="battle" and encounter_id=="herb_ruffian" and d.get("herbalist_quest",{}).get("phase")!="rescue":return false
 	if d.has("bandit_story") and d.bandit_story.stage in ["battle_one", "battle_two"]:
 		if d.state != "battle" or encounter_id != game.bandit_story.data.encounters[0 if d.bandit_story.stage == "battle_one" else 1].id: return false
 	if not is_number(d.battle.get("player_hp"), 0, 300) or not is_number(d.battle.get("enemy_hp"), 0, enemy_maximum) or not is_number(d.battle.get("turn"), 1, 10000) or not d.battle.get("selected") is bool: return false
@@ -192,12 +194,12 @@ func validate(d) -> bool:
 	if d.battle.has("enemy_qi") or d.battle.has("enemy_intent"):
 		if not game.progress.whole(d.battle.get("enemy_qi"),0,500): return false
 		var allowed: Array = ["basic_attack","basic_defense","bandit_chop"]
-		for definition in game.bandit_story.data.encounters:
+		for definition in (game.bandit_story.data.encounters + [game.herbalist_quest.data.encounter]):
 			if definition.id == encounter_id: allowed = ["basic_attack","basic_defense"] + definition.skills
 		if d.battle.get("enemy_intent") not in allowed: return false
 		var stats := {"strength":12,"agility":12,"constitution":5,"inner":6,"insight":5}
 		var enemy_weapon := "thickback_saber"
-		for definition in game.bandit_story.data.encounters:
+		for definition in (game.bandit_story.data.encounters + [game.herbalist_quest.data.encounter]):
 			if definition.id == encounter_id:
 				stats = definition.stats
 				enemy_weapon = definition.weapon
@@ -223,12 +225,14 @@ func load_slot(slot: int) -> bool:
 	if d.has("bandit_story"): game.bandit_story.restore(d.bandit_story)
 	if d.has("alliance_visit"):game.alliance_visit.restore(d.alliance_visit)
 	var encounter: Dictionary = {}
-	for definition in game.bandit_story.data.encounters:
+	for definition in (game.bandit_story.data.encounters + [game.herbalist_quest.data.encounter]):
 		if definition.id == d.battle.get("encounter_id", ""): encounter = definition
 	game.battle.set_encounter(encounter)
 	if d.battle.has("weapon_id"): game.battle.equip_weapon_item(d.battle.weapon_id)
 	else: game.battle.equip_weapon(d.battle.get("weapon_type", "sword"))
 	game.talked_captain = d.talked_captain
+	game.herbalist_quest.restore(d.get("herbalist_quest",{"phase":"available"}))
+	game.herbalist_quest.battle_active=d.state=="battle" and d.battle.get("encounter_id","")=="herb_ruffian"
 	game.exploration.load_area(d.world.area)
 	game.exploration.player.position = Vector2(d.world.position[0], d.world.position[1])
 	if d.world.area=="mountain_road" and d.world.get("layout_version",1)==1:

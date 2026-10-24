@@ -22,7 +22,7 @@ func run() -> void:
 		for road in city.city_data.road_centers:
 			check(not Rect2(road[0], road[1], road[2], road[3]).has_point(npc.position / 4), "resident avoids road center")
 	check(actors == 11, "all eleven active quest residents placed")
-	check(nav.definitions.size() == 10, "nine side quests and the bandit campaign have destinations")
+	check(nav.definitions.size() == 11, "ten side quests and the bandit campaign have destinations")
 	for id in nav.definitions:
 		for stage in nav.definitions[id].stages:
 			check(nav.track(id, stage), "valid quest stage")

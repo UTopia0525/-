@@ -117,6 +117,8 @@ func load_area(value: String) -> void:
 	preload("res://scripts/overland_travel.gd").install(self)
 	var visit=get_parent().get("alliance_visit")
 	if is_instance_valid(visit):visit.install(self)
+	var herbalist=get_parent().get("herbalist_quest")
+	if is_instance_valid(herbalist):herbalist.refresh_world()
 	camera.set_map_bounds(map_bounds)
 	camera.snap_to_player()
 
@@ -506,7 +508,7 @@ func _process(_delta: float) -> void:
 	indicator.visible = not target.is_empty() and not target.has("travel")
 	if not target.is_empty():
 		indicator.position=target.position
-		indicator.set_body_height((Metrics.CITIZEN_HEIGHT if area_name in ["changsha","wuchang"] else Metrics.PROLOGUE_HEIGHT) if target.frame>=0 else 0.0)
+		indicator.set_body_height((Metrics.CITIZEN_HEIGHT if area_name in ["changsha","wuchang","mountain_road","alliance_office"] else Metrics.PROLOGUE_HEIGHT) if target.frame>=0 else 0.0)
 	if not target.is_empty():
 		hint.add_theme_color_override("font_color",Color("9de5ff") if target.has("travel") else UI.GOLD)
 		hint.position = target.position + Vector2(-75, 20 if target.has("travel") else 14)

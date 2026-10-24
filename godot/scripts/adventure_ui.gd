@@ -107,6 +107,10 @@ func set_filter(value: String) -> void:
 		for id in game.ordinary_quests.definitions:
 			var state: String=game.ordinary_quests.status(id)
 			if (filter=="active" and state in ["active","ready"]) or filter==state:add_quest_row(id,state,"offer" if state=="available" else game.ordinary_quests.stage_for(id),"일반 의뢰")
+	var herb=game.herbalist_quest
+	var herb_status: String=herb.status()
+	if (filter=="active" and herb_status in ["active","ready"]) or filter==herb_status:
+		if herb_status!="available" or game.exploration.area_name=="wuchang":add_quest_row(herb.ID,herb_status,herb.stage(),"일반 의뢰")
 	var story=game.bandit_story
 	if story.stage!="dormant":
 		var state: String="completed" if story.stage=="completed" else "active"
@@ -123,8 +127,10 @@ func select_quest(id: String) -> void:
 		body.text="0장 · 표행의 기록\n\n"+history
 		return
 	selected=id;var data: Dictionary=entries[id];var nav: Dictionary=game.quest_navigation.definitions[id]
-	var reward: String="500문 · 오성+5 · 명성+5 (귀환 보고 후)" if id==game.bandit_story.QUEST_ID else "%d문 · 오성+5 (상한100)" % int(game.trade_intro.rewards.quests[id].money)
+	var reward: String="500문 · 오성+5 · 명성+5 (귀환 보고 후)" if id==game.bandit_story.QUEST_ID else "%d문 · 오성+5 (상한100)" % int(game.trade_intro.rewards.quests.get(id,{"money":0}).money)
+	if id==game.herbalist_quest.ID:reward=game.herbalist_quest.reward_label()
 	var who: String="연계 대화에서 받은 용건"
+	if id==game.herbalist_quest.ID:who="유백초 · 무창 약재상"
 	if game.ordinary_quests.definitions.has(id):who=game.PORTRAITS.ACTORS[game.ordinary_quests.definitions[id].giver].name
 	body.text="%s\n%s · %s\n\n의뢰인: %s\n\n%s\n\n보수: %s\n\n%s" % [nav.title,data.kind,{"active":"진행 중","available":"수락 가능","ready":"달성 · 완료 보고 대기","completed":"완료"}[data.status],who,"이미 마친 의뢰입니다." if data.status=="completed" else nav.stages[data.stage].label,reward,"일지에서 수락하지 않습니다. 의뢰인에게 F로 말을 걸어 직접 맡으세요." if data.status=="available" else "보상을 받으려면 완료 대화를 끝내야 합니다."]
 	if game.ordinary_quests.records.has(id):body.add_text("\n\n현재 달성 %d/%d" % [game.ordinary_quests.records[id].done.size(),game.ordinary_quests.definitions[id].steps.size()])
@@ -197,6 +203,7 @@ func select_result(index: int) -> void:
 	var result: Dictionary=results[index]
 	var note: String="승리 · %s · %d교전\n남은 체력 %d/300\n이 교전에서 즉시 받는 보상: 없음.
 표행·의뢰 보수는 해당 이야기의 인도·보고 후 지급합니다.\n다음 전투는 체력과 시작 내기를 새로 갖춥니다." % [result.enemy,result.turns,result.player_hp] if result.won else "패배 · %s\n산적 토벌은 퇴각 대화를 마친 뒤 I/K로 정비하고 동문에서 다시 출정할 수 있습니다.\n0장/전투 체험은 전투창의 다시 도전으로 재개합니다." % result.enemy
+	if not result.won and result.enemy=="구칠":note="패배 · 구칠\n약초 꾸러미가 있던 곳으로 물러났습니다. 조사 진도는 유지됩니다.\nI/K에서 정비한 뒤 약초꾼이 있는 곳에서 F로 다시 도전하세요.\n다음 전투는 체력과 시작 내기를 새로 갖춥니다."
 	render_events(result.events,note)
 func render_events(events: Array,note: String) -> void:
 	body.text=note+"\n\n"

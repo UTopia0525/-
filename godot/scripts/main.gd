@@ -12,6 +12,7 @@ var exploration
 var battle
 var music
 var ordinary_quests
+var herbalist_quest
 var alliance_visit
 var adventure_ui
 var options
@@ -133,6 +134,7 @@ func _ready() -> void:
 	options=preload("res://scripts/game_options.gd").new();options.game=self;add_child(options)
 	adventure_ui=preload("res://scripts/adventure_ui.gd").new();adventure_ui.game=self;ui_root.add_child(adventure_ui)
 	ordinary_quests=preload("res://scripts/ordinary_quests.gd").new();ordinary_quests.game=self;add_child(ordinary_quests)
+	herbalist_quest=preload("res://scripts/herbalist_quest.gd").new();herbalist_quest.game=self;add_child(herbalist_quest)
 	progress.progress_changed.connect(_progress_changed)
 	battle.sound_requested.connect(options.play)
 	var journal_button=UI.button(top_hud,"의뢰 일지 · Q",Rect2(930,245,150,35))
@@ -209,8 +211,10 @@ func _build_dialogue() -> void:
 
 func _update_dialogue_backdrop() -> void:
 	if is_instance_valid(dialogue_history) and not dialogue_panel.visible: dialogue_history.close_history()
+	# Keep quest notifications above the dialogue text instead of obscuring it.
+	if is_instance_valid(adventure_ui):adventure_ui.toast.position.y=50 if dialogue_panel.visible else 590
 	# Shade the city and HUD, keeping portraits, captions and dialogue above it.
-	dialogue_backdrop.visible = dialogue_panel.visible and exploration.area_name in ["changsha","wuchang","alliance_office"] and not story_visual.visible
+	dialogue_backdrop.visible = dialogue_panel.visible and exploration.area_name in ["changsha","wuchang","mountain_road","alliance_office"] and not story_visual.visible
 
 func _full_overlay(color: Color) -> Control:
 	var overlay = Control.new()
@@ -258,6 +262,7 @@ func _build_ending() -> void:
 
 func reset() -> void:
 	if is_instance_valid(adventure_ui):adventure_ui.reset()
+	if is_instance_valid(herbalist_quest):herbalist_quest.reset()
 	if is_instance_valid(ordinary_quests):ordinary_quests.reset()
 	if is_instance_valid(settings_menu): settings_menu.close_menu()
 	progress.reset()
@@ -439,6 +444,7 @@ func interact() -> void:
 	if npc.is_empty():
 		return
 	if preload("res://scripts/overland_travel.gd").use(self,npc):return
+	if herbalist_quest.handle_interaction(str(npc.id)):return
 	if alliance_visit.handle_interaction(str(npc.id)):return
 	if ordinary_quests.handle_interaction(str(npc.id)): return
 	if trade_intro.handle_interaction(str(npc.id)): return
@@ -505,11 +511,15 @@ func _on_victory(hp: int) -> void:
 	adventure_ui.record_result(true)
 
 func _on_defeat() -> void:
-	if bandit_story.in_battle():bandit_story.after_defeat()
+	if herbalist_quest.in_battle():herbalist_quest.after_defeat()
+	elif bandit_story.in_battle():bandit_story.after_defeat()
 	adventure_ui.record_result(false)
 
 func _finish_victory(hp: int) -> void:
 	if state != "battle": return
+	if herbalist_quest.in_battle():
+		herbalist_quest.after_victory()
+		return
 	if bandit_story.in_battle():
 		bandit_story.after_victory()
 		return

@@ -110,6 +110,7 @@ func is_target(npc: String) -> bool:
 			if goal.get("npc_id","")==npc:return true
 	return false
 func marker_for(npc: String) -> String:
+	if npc=="wc_liu_baicao" and is_instance_valid(game.herbalist_quest):return game.herbalist_quest.marker_for(npc)
 	for id in definitions:
 		if definitions[id].giver==npc:
 			return "?" if status(id)=="ready" else "!" if status(id) in ["available","active"] else ""
@@ -122,7 +123,7 @@ func clear_world() -> void:
 	for node in goal_nodes:
 		if is_instance_valid(node):node.free()
 	goal_nodes.clear()
-	if is_instance_valid(game.exploration):game.exploration.objectives.clear()
+	if is_instance_valid(game.exploration):game.exploration.objectives=game.exploration.objectives.filter(func(e):return not str(e.id).begins_with("quest_goal:changsha_"))
 func refresh_world() -> void:
 	var world=game.exploration
 	if revision!=world.load_revision:
