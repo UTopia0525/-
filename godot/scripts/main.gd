@@ -172,7 +172,7 @@ func _build_hud() -> void:
 	UI.label(mission_panel, "지금 할 일", Rect2(16, 7, 400, 20), 12, UI.GOLD)
 	objective = UI.label(mission_panel, "", Rect2(16, 30, 400, 27), 16)
 	objective.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	bottom_hint = UI.label(ui_root, "WASD / 방향키  이동     ·     바닥 클릭  이동     ·     F  대화     ·     M  음악     ·     F1  처음부터", Rect2(24, 680, 1230, 27), 14, Color("f1dfb4"))
+	bottom_hint = UI.label(ui_root, "WASD / 방향키  이동     ·     F  대화     ·     M  음악     ·     F1  처음부터", Rect2(24, 680, 1230, 27), 14, Color("f1dfb4"))
 	bottom_hint.add_theme_color_override("font_shadow_color", Color("11211a"))
 	bottom_hint.add_theme_constant_override("shadow_offset_x", 2)
 	bottom_hint.add_theme_constant_override("shadow_offset_y", 2)

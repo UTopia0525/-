@@ -13,12 +13,9 @@ func run() -> void:
 	Input.action_release("move_right");await physics_frame
 	check(player.position.x-start.x>165 and player.position.x-start.x<195,"keyboard moves about 180 world units in half a second, twice the old distance")
 	check(player.display_height==140 and player.get_node("Feet").shape.radius==world.FOOT_RADIUS,"city art and real feet use the enlarged proportions")
-	var old_rate: int=Engine.physics_ticks_per_second;Engine.physics_ticks_per_second=30
-	player.position=start;player.stop();var end:=start+Vector2(106,0)
-	player.click_path=PackedVector2Array([start+Vector2(6,0),start+Vector2(26,0),start+Vector2(46,0),end])
-	for i in range(30):await physics_frame
-	check(player.click_path.is_empty() and player.position.distance_to(end)<2.1,"fast click movement reaches short waypoints at 30Hz without oscillation")
-	Engine.physics_ticks_per_second=old_rate
+	player.position=start;player.stop()
+	await create_timer(.1).timeout
+	check(player.position==start,"without keyboard input the player never walks automatically")
 	var resting=player.position;game.settings_menu.open_menu()
 	await create_timer(.15).timeout
 	check(player.position==resting,"settings still pauses movement")

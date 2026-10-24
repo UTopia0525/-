@@ -15,14 +15,20 @@ func drain() -> void:
 func approach(id: String) -> void:
 	var w=game.exploration
 	var entry=w.npcs.filter(func(n):return n.id==id)[0]
-	var point: Vector2=entry.position+Vector2(0,-90 if entry.frame>=0 else -10)
-	var e=InputEventMouseButton.new();e.button_index=MOUSE_BUTTON_LEFT;e.pressed=true;e.position=w.get_global_transform_with_canvas()*point
-	Input.parse_input_event(e);await process_frame
-	e=InputEventMouseButton.new();e.button_index=MOUSE_BUTTON_LEFT;e.pressed=false;e.position=w.get_global_transform_with_canvas()*point;Input.parse_input_event(e)
-	for i in range(240):
-		await physics_frame
-		if w.player.click_path.is_empty():break
-	check(w.nearest().get("id","")==id,"walking after click selects "+id+" for F")
+	var path=w.path_to(entry.position,true)
+	check(not path.is_empty(),"keyboard route reaches "+id)
+	for waypoint in path:
+		for i in range(90):
+			var offset: Vector2=waypoint-w.player.position
+			for action in ["move_left","move_right","move_up","move_down"]:Input.action_release(action)
+			if offset.length()<9:break
+			var action="move_right" if offset.x>0 else "move_left"
+			if absf(offset.y)>absf(offset.x):action="move_down" if offset.y>0 else "move_up"
+			Input.action_press(action);await physics_frame
+	for action in ["move_left","move_right","move_up","move_down"]:Input.action_release(action)
+	await physics_frame
+	check(w.nearest().get("id","")==id,"keyboard walking selects "+id+" for F")
+
 func run() -> void:
 	root.size=Vector2i(1280,720)
 	game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await process_frame;game.start_story();await physics_frame
@@ -44,5 +50,5 @@ func run() -> void:
 	for voice in game.music.players:voice.stop();voice.stream=null
 	for voice in game.options.voices:voice.stop();voice.stream=null
 	game.queue_free();await process_frame
-	if not failed:print("PROLOGUE F PASS: real click navigation, physical F including Hangul, all dock actors, boarding, deck, tutorial")
+	if not failed:print("PROLOGUE F PASS: keyboard navigation, physical F including Hangul, all dock actors, boarding, deck, tutorial")
 	quit(1 if failed else 0)

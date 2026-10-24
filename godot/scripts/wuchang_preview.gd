@@ -39,7 +39,7 @@ func _ready() -> void:
 	UI.label(panel,"▲ 나     TAB 전체 지도",Rect2(12,237,260,25),14,UI.GOLD)
 	var exit=UI.button(hud,"답사 마치기",Rect2(1080,20,180,42));exit.pressed.connect(close)
 	notice=UI.label(hud,"무창 · 남문 밖 농촌",Rect2(335,25,700,35),24,UI.GOLD)
-	UI.label(hud,"WASD / 방향키 · 클릭 이동     TAB 전체 지도     ESC 돌아가기",Rect2(25,677,1200,30),17)
+	UI.label(hud,"WASD / 방향키 이동     TAB 전체 지도     ESC 돌아가기",Rect2(25,677,1200,30),17)
 	_build_overview(hud)
 func _build_overview(hud: Control) -> void:
 	overview=Control.new();hud.add_child(overview);overview.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -74,9 +74,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			if overview.visible:toggle_map()
 			else:close()
 			get_viewport().set_input_as_handled()
-	if event is InputEventMouseButton and event.pressed and event.button_index==MOUSE_BUTTON_LEFT and not overview.visible:
-		player.click_path=city.path_to(player.position,get_global_mouse_position())
-		notice.text="무창 · "+city.district_at(player.position) if not player.click_path.is_empty() else "담장과 건물을 돌아서 가야 합니다."
 func close() -> void:
 	if embedded:closed.emit();queue_free()
 	else:get_tree().change_scene_to_file("res://scenes/main.tscn")

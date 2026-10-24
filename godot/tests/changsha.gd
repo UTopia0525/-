@@ -53,7 +53,7 @@ func _run() -> void:
 	map_click.button_index = MOUSE_BUTTON_LEFT
 	map_click.pressed = true
 	root.push_input(map_click, true)
-	check(city.player.click_path.is_empty(), "clicking minimap does not move player")
+	check(city.player.velocity.is_zero_approx(), "clicking minimap does not move player")
 	for point in city.city_data.blocked_samples:
 		check(not city.point_is_walkable(city.city_point(point)), "river, roofs, paddies and garden obstacles blocked")
 	var before = city.player.position
@@ -70,10 +70,10 @@ func _run() -> void:
 	before = city.player.position
 	root.push_input(click, true)
 	await create_timer(0.2).timeout
-	check(city.player.position.x > before.x + 10, "click movement works on scrolling city map")
+	check(city.player.position.distance_to(before)<.1, "map clicks do not move the keyboard-only player")
 	game.toggle_city_map()
 	check(game.city_overview.visible and not city.active, "overview pauses movement")
-	check(city.player.click_path.is_empty(), "overview clears pending movement")
+	check(city.player.velocity.is_zero_approx(), "overview clears pending movement")
 	check(game.city_overview.district_labels.size() == 11, "district names on overview")
 	var dot = game.city_overview.player_dot.position
 	var expected = game.city_overview.MAP_RECT.position + city.player.position / city.map_bounds.size * game.city_overview.MAP_RECT.size - Vector2(5, 5)

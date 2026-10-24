@@ -41,7 +41,7 @@ func run() -> void:
 	var progress_before=game.progress.snapshot()
 	game.start_wuchang();await process_frame
 	check(game.exploration.area_name=="wuchang" and game.state=="explore","title opens playable Wuchang")
-	check(game.exploration.travel_exits.size()==1,"Wuchang title entry connects to southern road")
+	check(game.exploration.travel_exits.any(func(exit):return exit.travel.area=="mountain_road"),"Wuchang title entry connects to southern road")
 	check(game.progress.snapshot()==progress_before,"fresh Wuchang exploration starts with normal possessions")
 	game.reset();await create_timer(.5).timeout
 	for voice in game.music.players:voice.stop();voice.stream=null

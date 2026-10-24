@@ -61,7 +61,7 @@ func _run() -> void:
 	click.pressed = true
 	root.push_input(click, true)
 	await create_timer(0.25).timeout
-	check(game.exploration.player.position.distance_to(before_click) > 10.0, "click movement passes through HUD")
+	check(game.exploration.player.position.distance_to(before_click) < .1, "map clicks leave the keyboard-only player stationary")
 	game.exploration.player.stop()
 	game.exploration.player.position = Vector2(110, 400)
 	Input.action_press("move_left")
