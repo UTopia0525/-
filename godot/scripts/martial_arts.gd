@@ -4,6 +4,9 @@ const WEAPON_NAMES = {"none":"맨손", "sword":"검", "saber":"도", "spear":"�
 const RULES = preload("res://scripts/rules.gd")
 var definitions: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/basic_martial_arts.json"))
 
+func _init() -> void:
+	definitions.merge(JSON.parse_string(FileAccess.get_file_as_string("res://data/alliance_martial_arts.json")))
+
 func get_skill(id: String) -> Dictionary:
 	if id == "basic_attack": return {"name":"기본공격", "description":"내기를 소모하지 않고 공격합니다.", "damage_coefficients":{"strength":1,"agility":1,"inner":1}, "qi_cost":0, "required_weapon_type":null, "weapon_style":"basic", "requirements":{"stats":{},"minimum_total":0}}
 	if id == "basic_defense": return {"name":"기본방어", "description":"다음 적 행동의 피해를70% 줄입니다. 내기 소모 없이 턴 종료 시 정상 회복합니다.", "damage_coefficients":{}, "qi_cost":0, "required_weapon_type":null, "weapon_style":"basic", "requirements":{"stats":{},"minimum_total":0}}

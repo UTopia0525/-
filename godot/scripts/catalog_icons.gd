@@ -9,7 +9,7 @@ static func texture(id: String) -> Texture2D:
 	var sheet: Texture2D = load("res://assets/icons/" + str(data.atlas) + ".png")
 	var result := AtlasTexture.new()
 	result.atlas = sheet
-	var cell := sheet.get_size() / float(data.cols)
+	var cell := sheet.get_size() / Vector2(float(data.cols),float(data.get("rows",data.cols)))
 	result.region = Rect2(Vector2(int(data.cell) % int(data.cols), int(data.cell) / int(data.cols)) * cell, cell)
 	cache[id] = result
 	return result

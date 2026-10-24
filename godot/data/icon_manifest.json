@@ -163,5 +163,35 @@
     "atlas": "bandit",
     "cols": 2,
     "cell": 1
+  },
+  "hoeryu": {
+    "atlas": "alliance-martial",
+    "cell": 0,
+    "cols": 3,
+    "rows": 2
+  },
+  "paak": {
+    "atlas": "alliance-martial",
+    "cell": 1,
+    "cols": 3,
+    "rows": 2
+  },
+  "gwanak": {
+    "atlas": "alliance-martial",
+    "cell": 2,
+    "cols": 3,
+    "rows": 2
+  },
+  "banseok": {
+    "atlas": "alliance-martial",
+    "cell": 3,
+    "cols": 3,
+    "rows": 2
+  },
+  "jungun": {
+    "atlas": "alliance-martial",
+    "cell": 4,
+    "cols": 3,
+    "rows": 2
   }
 }

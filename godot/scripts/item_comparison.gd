@@ -12,7 +12,10 @@ static func art(progress,id: String,equipped: String) -> Array[String]:
 	for key in skill.requirements.stats:
 		var need: int=skill.requirements.stats[key];var have: int=progress.stats[key]
 		lines.append(("[충족] " if have>=need else "[부족] ")+"%s %d/%d" % [NAMES[key],have,need])
-	lines.append(("[충족] " if total>=int(skill.requirements.minimum_total) else "[부족] ")+"능력 합계 %d/%d" % [total,int(skill.requirements.minimum_total)])
+	if skill.requirements.stats.is_empty() and int(skill.requirements.minimum_total)==0:
+		lines.append("[충족] 능력치·경지 학습 조건 없음")
+	else:
+		lines.append(("[충족] " if total>=int(skill.requirements.minimum_total) else "[부족] ")+"능력 합계 %d/%d" % [total,int(skill.requirements.minimum_total)])
 	var usable: bool=progress.arts.can_use_with_weapon(id,progress.weapons.weapon_type(equipped))
 	if usable:lines.append("현재 장비 적용 내기 %d · 기본 %d" % [progress.weapons.qi_cost(int(skill.qi_cost),equipped,skill),int(skill.qi_cost)])
 	lines.append(("[충족] " if usable else "[부족] ")+progress.arts.weapon_requirement(id))

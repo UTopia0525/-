@@ -109,7 +109,7 @@ func refresh_list() -> void:
 				if selected_tab == 0: text += " · %d문" % p.weapons.get_weapon(id).price
 				if id == game.battle.equipped_weapon_id: text += " · 장착 중"
 			"training":
-				if selected_tab == 0 and id == "samjae": continue
+				if selected_tab == 0 and p.arts.get_skill(id).get("price") == null: continue
 				text = str(p.arts.get_skill(id).name)
 				if selected_tab == 0: text += " · " + ("습득 완료" if id in p.learned else "350문")
 		var button = UI.button(rows, text, Rect2(0, 0, 365, 43))

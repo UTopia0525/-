@@ -1,0 +1,123 @@
+{
+  "hoeryu": {
+    "name": "회류검법",
+    "hanja": "回流劍法",
+    "grade": "intermediate",
+    "kind": "attack",
+    "weapon_style": "sword",
+    "required_weapon_type": "sword",
+    "damage_coefficients": {
+      "strength": 5,
+      "agility": 4,
+      "constitution": 2,
+      "inner": 2
+    },
+    "base_damage": 0,
+    "qi_cost": 18,
+    "requirements": {
+      "stats": {},
+      "minimum_total": 0
+    },
+    "acquisition": "alliance_instructor",
+    "price": null,
+    "price_currency": "mun",
+    "description": "검로를 원으로 되감아 상대의 빈틈을 베고 곧바로 수세를 잇는다. 출수 후 다음 적 공격의 피해20% 감소.",
+    "status": "implemented"
+  },
+  "paak": {
+    "name": "파악도법",
+    "hanja": "破嶽刀法",
+    "grade": "intermediate",
+    "kind": "attack",
+    "weapon_style": "saber",
+    "required_weapon_type": "saber",
+    "damage_coefficients": {
+      "strength": 7,
+      "agility": 5,
+      "constitution": 2
+    },
+    "base_damage": 0,
+    "qi_cost": 22,
+    "requirements": {
+      "stats": {},
+      "minimum_total": 0
+    },
+    "acquisition": "alliance_instructor",
+    "price": null,
+    "price_currency": "mun",
+    "description": "허리와 하체의 힘을 도날에 모아 바위산을 가르듯 내려벤다. 방어보다 한 번의 강한 출수에 집중한다.",
+    "status": "implemented"
+  },
+  "gwanak": {
+    "name": "관악창법",
+    "hanja": "貫嶽槍法",
+    "grade": "intermediate",
+    "kind": "attack",
+    "weapon_style": "spear",
+    "required_weapon_type": "spear",
+    "damage_coefficients": {
+      "strength": 2,
+      "agility": 3,
+      "inner": 1
+    },
+    "base_damage": 240,
+    "qi_cost": 28,
+    "requirements": {
+      "stats": {},
+      "minimum_total": 0
+    },
+    "acquisition": "alliance_instructor",
+    "price": null,
+    "price_currency": "mun",
+    "description": "창대를 타고 모은 힘을 한 점에 터뜨린다. 높은 고정 위력으로 익힌 직후 강력하며 능력치 성장 계수는 낮다. 창의 내기 절감 효과를 받는다.",
+    "status": "implemented"
+  },
+  "banseok": {
+    "name": "반석권법",
+    "hanja": "磐石拳法",
+    "grade": "intermediate",
+    "kind": "attack",
+    "weapon_style": "fist",
+    "required_weapon_type": "none",
+    "damage_coefficients": {
+      "strength": 6,
+      "constitution": 4,
+      "inner": 5
+    },
+    "base_damage": 0,
+    "qi_cost": 26,
+    "requirements": {
+      "stats": {},
+      "minimum_total": 0
+    },
+    "acquisition": "alliance_instructor",
+    "price": null,
+    "price_currency": "mun",
+    "description": "반석처럼 중심을 세우고 근력과 단단한 몸, 내기를 한 주먹에 겹쳐 싣는다. 맨손으로 펼친다.",
+    "status": "implemented"
+  },
+  "jungun": {
+    "name": "중운장법",
+    "hanja": "重雲掌法",
+    "grade": "intermediate",
+    "kind": "attack",
+    "weapon_style": "palm",
+    "required_weapon_type": "none",
+    "damage_coefficients": {
+      "strength": 2,
+      "inner": 9,
+      "insight": 5
+    },
+    "base_damage": 0,
+    "qi_cost": 24,
+    "requirements": {
+      "stats": {},
+      "minimum_total": 0
+    },
+    "acquisition": "alliance_instructor",
+    "price": null,
+    "price_currency": "mun",
+    "description": "겹겹이 쌓인 구름처럼 내기를 손바닥에 모아 밀어낸다. 내공과 오성의 성장이 장력으로 이어진다. 맨손으로 펼친다.",
+    "status": "implemented"
+  }
+}

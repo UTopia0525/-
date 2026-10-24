@@ -57,7 +57,7 @@ func run() -> void:
 	for e in encounters:
 		for id in e.skills: check(combat.arts.can_learn(id,e.stats),"enemy meets its own skill requirements")
 	for id in p.arts.definitions:
-		if id == "samjae": continue
+		if id == "samjae" or p.arts.get_skill(id).get("acquisition") != "city_instructor": continue
 		var skill: Dictionary = p.arts.get_skill(id)
 		var stats: Dictionary = p.RULES.STARTING_STATS.duplicate()
 		for key in skill.requirements.stats: stats[key] = maxi(int(stats[key]),int(skill.requirements.stats[key]))
