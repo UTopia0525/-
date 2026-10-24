@@ -10,6 +10,7 @@
 | 도시 간 육로 | [산길·출입·지도·저장](cities/changsha-wuchang-road.md) | `scripts/overland_travel.gd`, `mountain_road_map.gd`, `assets/maps/changsha-wuchang/layout.json` | `overland_travel.gd`, `capture_overland.gd` |
 | 무창 민간 주민 | [8인 설정·대사·그림](characters/wuchang-civilians.md) | `data/wuchang_residents.json`, `scripts/exploration.gd`, `dialogue_portraits.gd` | `wuchang_residents.gd`, `capture_wuchang_residents.gd` |
 | 무창·무림맹 지도 | [배치·답사·범위](cities/wuchang.md), [조직 설정](factions/murim-alliance.md) | `scripts/wuchang_map.gd`, `wuchang_preview.gd`, `wuchang_ground.gd`, `assets/maps/wuchang/layout.json` | `wuchang.gd`, `capture_wuchang.gd` |
+| 장사 주민 정리·이름 | [의뢰 관련11인 설정](characters/changsha-quest-residents.md) | `assets/maps/changsha/layout.json`, `scripts/ordinary_quests.gd`, `main.gd` | `changsha_residents.gd`, `quest_navigation.gd`, `adventure_features.gd` |
 | 도시·충돌 | [인물 비율·이동](systems/exploration-scale.md), [도시 기준](cities/city-standards.md), [현재 장사·오브젝트](systems/layered-city-and-conversation.md) | `scripts/exploration.gd`, `city_scenery.gd`, `assets/maps/changsha/layout.json` | `layered_city.gd`, `city_collision.gd`, `changsha.gd`, `city_services.gd` |
 | 거래·I/K·성장 | [거래](systems/city-trading.md), [정비창](systems/player-menus.md) | `scripts/player_progress.gd`, `city_service.gd`, `player_menu.gd` | `trading.gd`, `onboarding_menus.gd` |
 | 전투·아이콘 | [현재 규칙](systems/combat-actions-and-icons.md), [창법](systems/spear-balance.md) | `scripts/battle.gd`, `combat_actions.gd`, `data/icon_manifest.json` | `combat_updates.gd`, `spear_balance.gd` |

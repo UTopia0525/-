@@ -35,11 +35,11 @@
         ]
       },
       "report": {
-        "label": "점소이에게 식기 전달",
+        "label": "장인에게 약사발 전달 확인",
         "goals": [
           {
             "id": "inn_waiter",
-            "npc_id": "inn_waiter"
+            "npc_id": "city_artisan"
           }
         ]
       }
@@ -58,11 +58,11 @@
         ]
       },
       "report": {
-        "label": "목수에게 완료 보고",
+        "label": "교관에게 자루 전달 확인",
         "goals": [
           {
             "id": "carpenter",
-            "npc_id": "carpenter"
+            "npc_id": "city_instructor"
           }
         ]
       }

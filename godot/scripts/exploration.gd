@@ -205,14 +205,15 @@ func _populate_residents(entries: Array) -> void:
 		citizen.set_meta("frame", entry.frame)
 		citizen.set_meta("service_id", entry.get("service_id", ""))
 		citizen.set_meta("story_actor", entry.get("story_actor", false))
+		citizen.set_meta("show_name",entry.has("service_id") or entry.get("story_actor",false) or entry.has("character_profile") or area_name=="wuchang")
 		# Use the same foot baseline as the player for Y sorting.
 		decorations.add_child(citizen)
 		ambient_nodes.append(citizen)
-		if entry.has("service_id") or entry.get("story_actor", false) or area_name=="wuchang":
+		if citizen.get_meta("show_name"):
 			var marker = Node2D.new()
 			marker.set_meta("npc_id",entry.id)
 			marker.position = citizen.position
-			var tag = UI.label(marker, entry.name + (" · 토벌" if entry.get("story_actor", false) else " · 거래" if entry.has("service_id") else ""), Rect2(-105, -Metrics.CITIZEN_HEIGHT-Metrics.NAME_GAP, 210, 26), 15, UI.GOLD)
+			var tag = UI.label(marker, entry.name + (" · "+str(entry.role) if entry.has("character_profile") else "") + (" · 토벌" if entry.get("story_actor", false) else " · 거래" if entry.has("service_id") else ""), Rect2(-105, -Metrics.CITIZEN_HEIGHT-Metrics.NAME_GAP, 210, 26), 15, UI.GOLD)
 			tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			tag.add_theme_color_override("font_outline_color", Color("12201c"))
 			tag.add_theme_constant_override("outline_size", 5)

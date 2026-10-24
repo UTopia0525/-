@@ -453,6 +453,9 @@ func interact() -> void:
 		for entry in exploration.city_data.residents:
 			if entry.id==npc.id:say(entry.dialogue);return
 	if exploration.area_name=="changsha" and not npc.has("service_id") and npc.id not in ["bandit_officer","bandit_muster"]:
+		for resident in exploration.city_data.residents:
+			if resident.id==npc.id and resident.has("character_profile"):
+				say([[str(npc.id),resident.character_profile.smalltalk]]);return
 		say([[str(npc.id),"오늘도 장사 거리는 분주하군요. 무슨 일이 있거든 길가 사람들에게 물어보세요."]]);return
 	match npc.id:
 		"captain":

@@ -346,190 +346,223 @@
   "residents": [
     {
       "id": "cloth_merchant",
-      "name": "포목상",
+      "name": "오금화",
       "point": [
         328,
         495
       ],
       "frame": 5,
       "post": "항구 앞 포목 노점",
-      "quest_actor": true
-    },
-    {
-      "id": "inn_waiter",
-      "name": "점소이",
-      "point": [
-        950,
-        238
-      ],
-      "frame": 7,
-      "post": "객잔 앞마당",
-      "quest_actor": true
-    },
-    {
-      "id": "carpenter",
-      "name": "목수",
-      "point": [
-        552.5,
-        652.5
-      ],
-      "frame": 4,
-      "post": "공방 작업대 옆",
-      "quest_actor": true
+      "quest_actor": true,
+      "role": "포목상",
+      "character_profile": {
+        "age": 48,
+        "basic_portrait": "female_middle",
+        "personality": "말끝은 무뚝뚝하지만 낯선 이의 살림을 먼저 살핀다.",
+        "background": "나루 앞 포목 노점을 오래 지킨 상인. 다친 손으로도 옷감 매듭과 품질을 꼼꼼히 챙긴다.",
+        "relations": "약재 상인과 거래하며 주인공에게 장사의 첫 일거리를 소개한다.",
+        "smalltalk": "옷감은 끝을 잡아당기지 말고 매듭을 잡게. 사람 사이 신의도 다루는 손에 달렸지."
+      }
     },
     {
       "id": "vegetable_vendor",
-      "name": "채소 장수",
+      "name": "진옥란",
       "point": [
         460,
         448
       ],
       "frame": 5,
       "post": "시장 노점 옆",
-      "quest_actor": true
+      "quest_actor": true,
+      "role": "채소 장수",
+      "character_profile": {
+        "age": 43,
+        "basic_portrait": "female_middle",
+        "personality": "목소리가 크고 흥정에 빠르지만 값을 속이지 않는다.",
+        "background": "새벽마다 농촌에서 채소를 들여오는 장수. 바구니 손잡이의 매듭으로 자기 물건을 구별한다.",
+        "relations": "고만복과 이웃 노점을 쓰며 바구니를 서로 바꿔 들고 티격태격한다.",
+        "smalltalk": "새벽 채소라 싱싱해요. 값은 깎아도 좋지만 물건은 함부로 뒤집지 마셔요."
+      }
     },
     {
       "id": "general_merchant",
-      "name": "잡화상",
+      "name": "고만복",
       "point": [
         580,
         365
       ],
       "frame": 7,
       "post": "잡화 노점 옆",
-      "quest_actor": true
+      "quest_actor": true,
+      "role": "잡화상",
+      "character_profile": {
+        "age": 34,
+        "basic_portrait": "male_young",
+        "personality": "작은 물건도 장부에 적지만 정작 자기 짐은 잘 헷갈린다.",
+        "background": "끈과 생활 잡화를 파는 젊은 상인. 장사를 넓히기보다 단골을 잃지 않는 일을 중시한다.",
+        "relations": "진옥란과 바구니를 바꾸어 든 장본인. 잘못을 알면 순순히 돌려준다.",
+        "smalltalk": "끈 한 타래도 쓸 곳이 다 있지요. 필요한 물건이 있으면 이름부터 말씀해 보세요."
+      }
     },
     {
       "id": "travelling_merchant",
-      "name": "행상인",
+      "name": "백문식",
       "point": [
         831,
         235
       ],
       "frame": 7,
       "post": "객잔 옆 처마",
-      "quest_actor": true
+      "quest_actor": true,
+      "role": "행상인",
+      "character_profile": {
+        "age": 46,
+        "basic_portrait": "male_common_b",
+        "personality": "수다스럽고 검소하며 짐을 내려놓을 때마다 수를 센다.",
+        "background": "여러 고을을 오가며 생활용품을 파는 행상인. 쉬어 가는 객잔 근처에서 짐 보따리를 놓쳤다.",
+        "relations": "우물가 손정임에게 길과 물 사정을 자주 묻는다.",
+        "smalltalk": "길은 늘 같은데 짐은 다르게 느껴진다니까. 떠나기 전에 한 번 더 세어 봐야겠어."
+      }
     },
     {
       "id": "well_grandmother",
-      "name": "우물가 노파",
+      "name": "손정임",
       "point": [
         529,
         790
       ],
       "frame": 5,
       "post": "주거지 우물 옆",
-      "quest_actor": true
+      "quest_actor": true,
+      "role": "우물가 노파",
+      "character_profile": {
+        "age": 72,
+        "basic_portrait": "female_elder",
+        "personality": "느긋하고 눈썰미가 좋으며 상대가 말을 마치기 전에 사정을 알아챈다.",
+        "background": "주거지 우물을 매일 돌보는 노파. 길가에 놓인 물건과 동네 사람들의 동선을 잘 기억한다.",
+        "relations": "행상 백문식을 얼굴로 알아보며 잃어버린 보따리의 단서를 전한다.",
+        "smalltalk": "우물가에선 급하게 뛰지 말거라. 물 한 바가지 뜨는 동안 숨도 좀 돌리고."
+      }
     },
     {
       "id": "dock_worker",
-      "name": "하역 인부",
+      "name": "허대산",
       "point": [
         278.0,
         460.0
       ],
       "frame": 6,
       "post": "나루 하역장 가장자리",
-      "quest_actor": true
+      "quest_actor": true,
+      "role": "하역 인부",
+      "character_profile": {
+        "age": 41,
+        "basic_portrait": "male_common_a",
+        "personality": "말은 거칠어도 안전 매듭과 동료의 품삯에는 엄격하다.",
+        "background": "상강 나루에서 짐을 나르는 인부. 밤 작업에 쓸 등잔 심지가 떨어져 창고의 꾸러미를 기다린다.",
+        "relations": "창고 보조 임소연과 일 때문에 자주 만나며 무거운 짐을 대신 들어주곤 한다.",
+        "smalltalk": "짐이 무거울수록 매듭부터 봐야 하네. 힘만 믿고 들다가는 옆 사람까지 다쳐."
+      }
     },
     {
       "id": "warehouse_assistant",
-      "name": "창고 보조",
+      "name": "임소연",
       "point": [
         625,
         242
       ],
       "frame": 5,
       "post": "창고 출입구 옆",
-      "quest_actor": true
+      "quest_actor": true,
+      "role": "창고 보조",
+      "character_profile": {
+        "age": 22,
+        "basic_portrait": "female_young",
+        "personality": "조심스럽고 성실하며 꾸러미 표찰을 두 번씩 읽는다.",
+        "background": "창고에서 물품을 찾고 출고를 돕는 신참. 물건을 잘못 내주지 않으려 기록을 배우고 있다.",
+        "relations": "창고지기 장수겸에게 일을 배우며 허대산에게 보낼 꾸러미를 맡는다.",
+        "smalltalk": "표찰을 한 번 더 읽고 있어요. 서두르다 물건을 잘못 내주면 모두가 곤란해지니까요."
+      }
     },
     {
       "id": "warehouse_keeper",
-      "name": "창고지기",
+      "name": "장수겸",
       "point": [
         465,
         242
       ],
       "frame": 7,
       "post": "창고 마당",
-      "quest_actor": true
-    },
-    {
-      "id": "old_farmer",
-      "name": "노농",
-      "point": [
-        1360,
-        378
-      ],
-      "frame": 4,
-      "post": "동문 밖 농가 옆",
-      "quest_actor": true
+      "quest_actor": true,
+      "role": "창고지기",
+      "character_profile": {
+        "age": 65,
+        "basic_portrait": "male_elder",
+        "personality": "꼼꼼하고 고집스럽지만 실수한 신참에게 이유부터 묻는다.",
+        "background": "평생 창고 물량과 장부를 맞춰 온 창고지기. 바람에 날린 장부 낱장을 유난히 걱정한다.",
+        "relations": "임소연의 일 스승이며 종이를 아끼라는 잔소리를 자주 한다.",
+        "smalltalk": "짐이 드나든 수는 맞아야지. 눈이 침침해져도 대충 적을 수는 없는 노릇이네."
+      }
     },
     {
       "id": "waterway_farmer",
-      "name": "농부",
+      "name": "한소정",
       "point": [
         1340.0,
         700.0
       ],
       "frame": 5,
       "post": "농가·물길 옆",
-      "quest_actor": true
+      "quest_actor": true,
+      "role": "농부",
+      "character_profile": {
+        "age": 37,
+        "basic_portrait": "female_common_a",
+        "personality": "시원시원하고 실용적이며 물이 흐르는 소리로 수로 상태를 짐작한다.",
+        "background": "동문 밖 밭과 논을 돌보는 농부. 물길이 막히면 이웃 밭까지 마를까 먼저 걱정한다.",
+        "relations": "이웃 농가들과 수로 손질 순서를 나누어 맡는다.",
+        "smalltalk": "물소리가 어제와 다르면 살펴봐야 해요. 작은 막힘 하나가 이웃 밭까지 말리니까."
+      }
     },
     {
       "id": "waiting_father",
-      "name": "골목의 노인",
+      "name": "조경수",
       "point": [
         529,
         824
       ],
       "frame": 4,
       "post": "주거지 처마 앞",
-      "quest_actor": true
+      "quest_actor": true,
+      "role": "골목의 노인",
+      "character_profile": {
+        "age": 66,
+        "basic_portrait": "male_elder",
+        "personality": "표현은 서툴고 퉁명스럽지만 아들의 끼니와 안부를 늘 걱정한다.",
+        "background": "주거 골목에 사는 은퇴한 목공 일꾼. 공방에 나간 아들이 집을 뜸하게 찾자 소식을 기다린다.",
+        "relations": "젊은 공방 일꾼 조성우의 아버지다.",
+        "smalltalk": "손을 놓고 쉬라니 더 심심하군. 공방 쪽이 늦도록 바쁘지는 않은가?"
+      }
     },
     {
       "id": "young_craftsman",
-      "name": "젊은 공방 일꾼",
+      "name": "조성우",
       "point": [
         733.0,
         648.0
       ],
       "frame": 7,
       "post": "공방 작업 마당 가장자리",
-      "quest_actor": true
-    },
-    {
-      "id": "resident_01",
-      "name": "주민",
-      "point": [
-        395,
-        242
-      ],
-      "frame": 4,
-      "post": "가게·마당·골목 가장자리",
-      "quest_actor": false
-    },
-    {
-      "id": "resident_02",
-      "name": "손님",
-      "point": [
-        649,
-        242
-      ],
-      "frame": 5,
-      "post": "가게·마당·골목 가장자리",
-      "quest_actor": false
-    },
-    {
-      "id": "resident_03",
-      "name": "짐꾼",
-      "point": [
-        683,
-        242
-      ],
-      "frame": 6,
-      "post": "가게·마당·골목 가장자리",
-      "quest_actor": false
+      "quest_actor": true,
+      "role": "젊은 공방 일꾼",
+      "character_profile": {
+        "age": 25,
+        "basic_portrait": "male_young",
+        "personality": "책임감과 독립심이 강하지만 가족에게 사정을 설명하는 데 서툴다.",
+        "background": "공방에서 자루와 생활 목제품을 다듬는 젊은 일꾼. 제 몫을 해내려 밤늦게까지 일한다.",
+        "relations": "조경수의 아들. 아버지를 걱정시키지 않으려다 오히려 연락이 뜸해졌다.",
+        "smalltalk": "자루 하나도 손에 맞춰 깎으려면 시간이 걸리네요. 아직 배울 게 많습니다."
+      }
     },
     {
       "id": "city_merchant",
@@ -544,61 +577,6 @@
       "service_id": "city_merchant"
     },
     {
-      "id": "resident_05",
-      "name": "주민",
-      "point": [
-        650,
-        455
-      ],
-      "frame": 4,
-      "post": "가게·마당·골목 가장자리",
-      "quest_actor": false
-    },
-    {
-      "id": "resident_06",
-      "name": "손님",
-      "point": [
-        437,
-        455
-      ],
-      "frame": 5,
-      "post": "가게·마당·골목 가장자리",
-      "quest_actor": false
-    },
-    {
-      "id": "resident_07",
-      "name": "짐꾼",
-      "point": [
-        281.0,
-        196.0
-      ],
-      "frame": 6,
-      "post": "가게·마당·골목 가장자리",
-      "quest_actor": false
-    },
-    {
-      "id": "resident_08",
-      "name": "장사꾼",
-      "point": [
-        285.0,
-        700.0
-      ],
-      "frame": 7,
-      "post": "가게·마당·골목 가장자리",
-      "quest_actor": false
-    },
-    {
-      "id": "resident_09",
-      "name": "주민",
-      "point": [
-        1148.0,
-        285.0
-      ],
-      "frame": 4,
-      "post": "가게·마당·골목 가장자리",
-      "quest_actor": false
-    },
-    {
       "id": "city_instructor",
       "name": "교관",
       "point": [
@@ -611,39 +589,6 @@
       "service_id": "city_instructor"
     },
     {
-      "id": "resident_11",
-      "name": "짐꾼",
-      "point": [
-        1060,
-        441
-      ],
-      "frame": 6,
-      "post": "가게·마당·골목 가장자리",
-      "quest_actor": false
-    },
-    {
-      "id": "resident_12",
-      "name": "장사꾼",
-      "point": [
-        447.0,
-        765.0
-      ],
-      "frame": 7,
-      "post": "가게·마당·골목 가장자리",
-      "quest_actor": false
-    },
-    {
-      "id": "resident_13",
-      "name": "주민",
-      "point": [
-        641,
-        865
-      ],
-      "frame": 4,
-      "post": "가게·마당·골목 가장자리",
-      "quest_actor": false
-    },
-    {
       "id": "city_artisan",
       "name": "장인",
       "point": [
@@ -654,28 +599,6 @@
       "post": "공방 작업장 앞",
       "quest_actor": false,
       "service_id": "city_artisan"
-    },
-    {
-      "id": "resident_15",
-      "name": "짐꾼",
-      "point": [
-        1438.0,
-        740.0
-      ],
-      "frame": 6,
-      "post": "가게·마당·골목 가장자리",
-      "quest_actor": false
-    },
-    {
-      "id": "resident_16",
-      "name": "장사꾼",
-      "point": [
-        1240.0,
-        878.0
-      ],
-      "frame": 7,
-      "post": "가게·마당·골목 가장자리",
-      "quest_actor": false
     },
     {
       "id": "bandit_officer",
@@ -2353,5 +2276,71 @@
         31
       ]
     }
-  ]
+  ],
+  "retired_actor_names": {
+    "inn_waiter": {
+      "name": "점소이",
+      "extra": "male_young"
+    },
+    "carpenter": {
+      "name": "목수",
+      "extra": "male_middle"
+    },
+    "old_farmer": {
+      "name": "노농",
+      "extra": "male_middle"
+    },
+    "resident_01": {
+      "name": "주민",
+      "extra": "male_middle"
+    },
+    "resident_02": {
+      "name": "손님",
+      "extra": "female_middle"
+    },
+    "resident_03": {
+      "name": "짐꾼",
+      "extra": "male_middle"
+    },
+    "resident_05": {
+      "name": "주민",
+      "extra": "male_middle"
+    },
+    "resident_06": {
+      "name": "손님",
+      "extra": "female_middle"
+    },
+    "resident_07": {
+      "name": "짐꾼",
+      "extra": "male_middle"
+    },
+    "resident_08": {
+      "name": "장사꾼",
+      "extra": "male_young"
+    },
+    "resident_09": {
+      "name": "주민",
+      "extra": "male_middle"
+    },
+    "resident_11": {
+      "name": "짐꾼",
+      "extra": "male_middle"
+    },
+    "resident_12": {
+      "name": "장사꾼",
+      "extra": "male_young"
+    },
+    "resident_13": {
+      "name": "주민",
+      "extra": "male_middle"
+    },
+    "resident_15": {
+      "name": "짐꾼",
+      "extra": "male_middle"
+    },
+    "resident_16": {
+      "name": "장사꾼",
+      "extra": "male_young"
+    }
+  }
 }

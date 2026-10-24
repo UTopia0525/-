@@ -11,9 +11,14 @@ var revision := -1
 
 func _ready() -> void:
 	var layout: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/maps/changsha/layout.json"))
+	# Old dialogue saves may still name a retired bystander; never respawn their map body.
+	for id in layout.get("retired_actor_names",{}):game.PORTRAITS.ACTORS[id]=layout.retired_actor_names[id].duplicate()
 	var explicit = {"vegetable_vendor":"female_middle","warehouse_assistant":"female_young","well_grandmother":"female_elder","waterway_farmer":"female_common_a","waiting_father":"male_elder","warehouse_keeper":"male_elder","travelling_merchant":"male_common_b","dock_worker":"male_common_a"}
 	for npc in layout.residents:
 		if not game.PORTRAITS.ACTORS.has(npc.id): game.PORTRAITS.ACTORS[npc.id] = {"name":npc.name,"extra":explicit.get(npc.id,"female_middle" if npc.frame==5 else "male_young" if npc.frame==7 else "male_middle")}
+		if npc.has("character_profile"):
+			game.PORTRAITS.ACTORS[npc.id].name=npc.name
+			game.PORTRAITS.ACTORS[npc.id].basic_portrait=npc.character_profile.basic_portrait
 
 func reset() -> void:
 	records.clear();pending.clear();clear_world();revision=-1
@@ -129,7 +134,7 @@ func refresh_world() -> void:
 		if not marks.has(id):
 			var mark=UI.label(world.decorations,"",Rect2(0,0,40,46),34,Color("ffe14b"));mark.z_index=6;mark.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
 			mark.add_theme_color_override("font_outline_color",Color("2b2614"));mark.add_theme_constant_override("outline_size",5);marks[id]=mark
-		marks[id].position=npc.position+Vector2(-20,-world.Metrics.CITIZEN_HEIGHT-world.Metrics.QUEST_GAP-(world.Metrics.NAME_GAP if not str(npc.get_meta("service_id","")).is_empty() or npc.get_meta("story_actor",false) else 0.0));marks[id].text=marker_for(id);marks[id].visible=not str(marks[id].text).is_empty()
+		marks[id].position=npc.position+Vector2(-20,-world.Metrics.CITIZEN_HEIGHT-world.Metrics.QUEST_GAP-(world.Metrics.NAME_GAP if npc.get_meta("show_name",false) else 0.0));marks[id].text=marker_for(id);marks[id].visible=not str(marks[id].text).is_empty()
 	# Rebuild investigation markers only when the stage/completion signature changes.
 	var signature:=JSON.stringify(records)
 	if world.get_meta("quest_signature","")==signature:return
