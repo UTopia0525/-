@@ -38,12 +38,10 @@ func run() -> void:
 	scene.queue_free();await process_frame
 	var game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await process_frame
 	var progress_before=game.progress.snapshot()
-	game._open_wuchang_review();await process_frame
-	var review=game.get_node("Wuchang")
-	check(not game.ui_root.visible and not game.is_processing_input(),"review isolates title HUD and shortcuts")
-	review.close();await process_frame
-	check(game.ui_root.visible and game.is_processing_input() and game.state=="title","closing review restores title")
-	check(game.progress.snapshot()==progress_before,"map review does not change story or inventory")
+	game.start_wuchang();await process_frame
+	check(game.exploration.area_name=="wuchang" and game.state=="explore","title opens playable Wuchang")
+	check(game.exploration.travel_exits.size()==1,"Wuchang title entry connects to southern road")
+	check(game.progress.snapshot()==progress_before,"fresh Wuchang exploration starts with normal possessions")
 	game.reset();await create_timer(.5).timeout
 	for voice in game.music.players:voice.stop();voice.stream=null
 	for voice in game.options.voices:voice.stop();voice.stream=null

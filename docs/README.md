@@ -7,6 +7,7 @@
 | 0장·분기 | [진행](story/chapter-00-implementation.md), [원고](story/chapter-00-dialogues.md) | `scripts/prologue.gd`, `data/prologue_dialogues.json` | `prologue.gd`, `chapter_one.gd` |
 | 도입 의뢰3종 | [진행·보상](quests/trade-intro.md) | `scripts/trade_intro.gd`, `data/trade_intro.json` | `onboarding_menus.gd` |
 | 일반 의뢰6종 | [실제 진행·표식](systems/adventure-usability.md), [목록](quests/changsha.md), [흐름](quests/quest-flow.md), [원고](quests/changsha-dialogues.md) | `data/normal_quests.json`, `scripts/ordinary_quests.gd`, `quest_navigation.gd` | `adventure_features.gd`, `quest_navigation.gd` |
+| 도시 간 육로 | [산길·출입·지도·저장](cities/changsha-wuchang-road.md) | `scripts/overland_travel.gd`, `mountain_road_map.gd`, `assets/maps/changsha-wuchang/layout.json` | `overland_travel.gd`, `capture_overland.gd` |
 | 무창·무림맹 지도 | [배치·답사·범위](cities/wuchang.md), [조직 설정](factions/murim-alliance.md) | `scripts/wuchang_map.gd`, `wuchang_preview.gd`, `wuchang_ground.gd`, `assets/maps/wuchang/layout.json` | `wuchang.gd`, `capture_wuchang.gd` |
 | 도시·충돌 | [인물 비율·이동](systems/exploration-scale.md), [도시 기준](cities/city-standards.md), [현재 장사·오브젝트](systems/layered-city-and-conversation.md) | `scripts/exploration.gd`, `city_scenery.gd`, `assets/maps/changsha/layout.json` | `layered_city.gd`, `city_collision.gd`, `changsha.gd`, `city_services.gd` |
 | 거래·I/K·성장 | [거래](systems/city-trading.md), [정비창](systems/player-menus.md) | `scripts/player_progress.gd`, `city_service.gd`, `player_menu.gd` | `trading.gd`, `onboarding_menus.gd` |

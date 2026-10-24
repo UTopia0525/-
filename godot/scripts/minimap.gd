@@ -5,6 +5,7 @@ const VIEW_SIZE = Vector2(240, 150)
 const WORLD_WIDTH = 1920.0
 var exploration
 var quest_navigation
+var facility_legend: Label
 var quest_label: Label
 var quest_active := false
 var quest_offscreen := false
@@ -45,7 +46,7 @@ func _ready() -> void:
 	var north = UI.label(map_view, "N ↑", Rect2(106, 2, 28, 20), 12, UI.TEXT)
 	north.add_theme_color_override("font_outline_color", Color.BLACK)
 	north.add_theme_constant_override("outline_size", 4)
-	UI.label(self,"약 상인 · 장 장인 · 무 교관",Rect2(12,225,240,22),13,UI.GOLD)
+	facility_legend=UI.label(self,"약 상인 · 장 장인 · 무 교관",Rect2(12,225,240,22),13,UI.GOLD)
 	quest_label = UI.label(self, "추적 중인 퀘스트 없음", Rect2(12, 254, 240, 22), 13, UI.MUTED)
 	quest_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 
@@ -56,6 +57,7 @@ func bind_world(world) -> void:
 func refresh() -> void:
 	if not is_instance_valid(exploration):
 		return
+	facility_legend.text="약 상인 · 장 장인 · 무 교관" if exploration.area_name=="changsha" else "● 출입 지점 · 가까이에서 F 이동"
 	var bounds: Rect2 = exploration.map_bounds
 	var ratio = VIEW_SIZE.x / VIEW_SIZE.y
 	var width = minf(WORLD_WIDTH, minf(bounds.size.x, bounds.size.y * ratio))
@@ -87,7 +89,7 @@ func _refresh_quest() -> void:
 	quest_marker = Vector2.ZERO
 	quest_direction = Vector2.ZERO
 	if not quest_active:
-		quest_label.text = "추적 중인 퀘스트 없음"
+		quest_label.text = "산길 북쪽 무창 · 서쪽 장사" if exploration.area_name=="mountain_road" else "추적 중인 퀘스트 없음"
 		quest_label.tooltip_text = ""
 		return
 	quest_label.text = "목표 · " + goal.label
@@ -130,6 +132,10 @@ func draw_map(canvas: Control) -> void:
 		var destination = Rect2((intersection.position - source.position) / source.size * VIEW_SIZE, intersection.size / source.size * VIEW_SIZE)
 		var sample = Rect2(tile.source.position + (intersection.position - tile.target.position) / tile.target.size * tile.source.size, intersection.size / tile.target.size * tile.source.size)
 		canvas.draw_texture_rect_region(tile.texture, destination, sample, Color(0.75, 0.83, 0.77))
+	for exit in exploration.travel_exits:
+		if not world_window.has_point(exit.position):continue
+		var point=project_point(exit.position)
+		canvas.draw_circle(point,5,Color("14251e"));canvas.draw_circle(point,3,UI.GOLD)
 	for point in npc_markers:
 		canvas.draw_circle(point, 4.0, Color("10251e"))
 		canvas.draw_circle(point, 2.8, Color("81f0cf"))

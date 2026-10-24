@@ -234,18 +234,12 @@ func _build_title() -> void:
 	continue_button = UI.button(title_screen, "0장 이후 이어하기", Rect2(842, 538, 250, 58))
 	continue_button.pressed.connect(prologue.resume)
 	UI.label(title_screen, "첫 표행에서 장사 입성까지 · 강호로 나아가는 여정", Rect2(113, 628, 700, 30), 14, UI.MUTED)
-	var wuchang=UI.button(title_screen,"무창 지도 답사",Rect2(842,618,250,45))
-	wuchang.pressed.connect(_open_wuchang_review)
+	var wuchang=UI.button(title_screen,"무창 자유 탐방",Rect2(842,618,250,45))
+	wuchang.pressed.connect(start_wuchang)
 
-func _open_wuchang_review() -> void:
-	var preview=preload("res://scenes/wuchang.tscn").instantiate()
-	preview.embedded=true
-	ui_root.hide();set_process_input(false)
-	music.play_track("dock")
-	preview.closed.connect(func():
-		ui_root.show();set_process_input(true)
-		exploration.camera.snap_to_player();music.play_track("title"))
-	add_child(preview)
+func start_wuchang() -> void:
+	start_city()
+	preload("res://scripts/overland_travel.gd").use(self,{"travel":{"area":"wuchang","arrival":[1100,1435]}})
 
 func _build_ending() -> void:
 	ending = _full_overlay(Color(0.035, 0.07, 0.055, 0.94))
@@ -356,10 +350,10 @@ func enter_city(at_port: bool = false) -> void:
 
 func _process(_delta: float) -> void:
 	money_label.text = "소지금 %d문 · 명성 %d" % [money, progress.fame]
-	if state == "explore" and exploration.area_name == "changsha":
-		location.text = "장사 · " + exploration.district_at_player()
+	if state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang"]:
+		location.text = exploration.city_data.name+" · " + exploration.district_at_player()
 		var goal: Dictionary = quest_navigation.get_goal(exploration)
-		objective.text = goal.quest_title + " · " + goal.label if not goal.is_empty() else "시장·골목·나루·성밖 농촌 둘러보기"
+		objective.text = goal.quest_title + " · " + goal.label if not goal.is_empty() else ("산길을 따라 북쪽 무창으로 · 출입 지점에서 F 이동" if exploration.area_name=="mountain_road" else "무창 둘러보기 · 남문에서 장사 방면" if exploration.area_name=="wuchang" else "시장·골목·나루·성밖 농촌 둘러보기")
 	bandit_story.maybe_start()
 
 func toggle_city_map() -> void:
@@ -441,6 +435,7 @@ func interact() -> void:
 	var npc: Dictionary = exploration.nearest()
 	if npc.is_empty():
 		return
+	if preload("res://scripts/overland_travel.gd").use(self,npc):return
 	if ordinary_quests.handle_interaction(str(npc.id)): return
 	if trade_intro.handle_interaction(str(npc.id)): return
 	if bandit_story.handle_interaction(str(npc.id)): return
@@ -567,7 +562,7 @@ func _input(event: InputEvent) -> void:
 				toggle_city_map()
 			get_viewport().set_input_as_handled()
 			return
-		if event.keycode == KEY_TAB and state == "explore" and exploration.area_name == "changsha":
+		if event.keycode == KEY_TAB and state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang"]:
 			toggle_city_map()
 			get_viewport().set_input_as_handled()
 		elif event.keycode == KEY_M:

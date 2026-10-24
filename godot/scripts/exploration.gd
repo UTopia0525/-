@@ -10,6 +10,8 @@ const CITIZEN_BOUNDS=Metrics.CITIZEN_BOUNDS
 @export var map_bounds: Rect2 = Rect2(0, 0, 1280, 720)
 @export_range(1.0, 3.0, 0.25) var camera_zoom: float = 1.5
 var camera: Camera2D
+var regional_map: Node2D
+var travel_exits: Array[Dictionary]=[]
 var area_name: String = "dock"
 var player
 var background: Sprite2D
@@ -18,7 +20,7 @@ var decorations: Node2D
 var collision_root: Node2D
 var walk_regions: Array[Rect2] = []
 var blockers: Array[Rect2] = []
-var astar = AStarGrid2D.new()
+var astar: AStarGrid2D = AStarGrid2D.new()
 var city_data: Dictionary = {}
 var ambient_nodes: Array[Node2D] = []
 var art_tiles: Array[Dictionary] = []
@@ -62,9 +64,12 @@ func _ready() -> void:
 func load_area(value: String) -> void:
 	load_revision+=1
 	objectives.clear()
+	travel_exits.clear()
+	if is_instance_valid(regional_map):regional_map.free()
+	regional_map=null
 	area_name = value
 	player.stop()
-	player.set_display_height(float(player.animation_metadata.target_height) if value=="changsha" else Metrics.PROLOGUE_HEIGHT)
+	player.set_display_height(float(player.animation_metadata.target_height) if value in ["changsha","mountain_road","wuchang"] else Metrics.PROLOGUE_HEIGHT)
 	camera.set_focus_height(player.display_height*Metrics.CAMERA_FOCUS_RATIO)
 	for entry in npcs:
 		entry.node.free()
@@ -85,7 +90,9 @@ func load_area(value: String) -> void:
 	city_data = {}
 	map_bounds = Rect2(0, 0, 1280, 720)
 	camera.exploration_zoom = camera_zoom
-	if value == "changsha":
+	if value in ["mountain_road","wuchang"]:
+		_load_regional(value)
+	elif value == "changsha":
 		_load_changsha()
 	elif value == "dock":
 		background.texture = preload("res://assets/dock.png")
@@ -106,9 +113,30 @@ func load_area(value: String) -> void:
 		_add_npc("deck-sailor", "허만복", Vector2(540, 320), 6)
 	background.position = map_bounds.position
 	background.scale = map_bounds.size / background.texture.get_size()
-	_build_collision_and_navigation()
+	if not is_instance_valid(regional_map):_build_collision_and_navigation()
+	preload("res://scripts/overland_travel.gd").install(self)
 	camera.set_map_bounds(map_bounds)
 	camera.snap_to_player()
+
+func _load_regional(value: String) -> void:
+	regional_map=load("res://scripts/"+("mountain_road_map.gd" if value=="mountain_road" else "wuchang_map.gd")).new()
+	add_child(regional_map)
+	city_data=regional_map.data.duplicate(true)
+	city_data.ground_texture="res://assets/maps/"+("changsha-wuchang" if value=="mountain_road" else "wuchang")+"/ground.png"
+	for district in city_data.districts:
+		district.bounds=district.rect;district.category="regional"
+	map_bounds=regional_map.map_bounds;camera.exploration_zoom=1.0
+	background.texture=load(city_data.ground_texture)
+	# The cached floor contains terrain only. Independent props retain shared Y sorting.
+	regional_map.get_child(0).hide()
+	blockers.assign(regional_map.blockers);walk_regions=[regional_map.walk_bounds]
+	astar=regional_map.astar
+	for node in regional_map.scenery_nodes:
+		node.reparent(decorations);occlusion_roots.append(node);scenery_nodes.append(node);scenery_bounds.append(node.visual_rect)
+		var spec: Dictionary=node.definition;var prefab: Dictionary=regional_map.prefabs[spec.prefab]
+		art_tiles.append({"texture":load(prefab.texture),"source":Rect2(prefab.source[0],prefab.source[1],prefab.source[2],prefab.source[3]),"target":Rect2(spec.rect[0],spec.rect[1],spec.rect[2],spec.rect[3])})
+	art_tiles.sort_custom(func(a,b):return a.target.end.y<b.target.end.y)
+	player.position=city_point(city_data.spawn)
 
 func _load_changsha() -> void:
 	city_data = JSON.parse_string(FileAccess.get_file_as_string("res://assets/maps/changsha/layout.json"))
@@ -235,6 +263,7 @@ func _add_npc(id: String, title: String, point: Vector2, frame: int) -> void:
 	npcs.append({"id": id, "name": title, "position": point, "node": body, "frame": frame})
 
 func point_is_walkable(point: Vector2) -> bool:
+	if is_instance_valid(regional_map):return regional_map.can_stand(point,0)
 	var inside = false
 	for region in walk_regions:
 		if region.has_point(point):
@@ -251,6 +280,7 @@ func _inside_walk_regions(point: Vector2) -> bool:
 
 func can_stand(point: Vector2, radius: float = FOOT_RADIUS, residents: bool = true) -> bool:
 	# A free center alone does not guarantee that the character's feet fit.
+	if is_instance_valid(regional_map):return regional_map.can_stand(point,radius)
 	if not _inside_walk_regions(point): return false
 	for direction in [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN, Vector2(-0.707, -0.707), Vector2(0.707, -0.707), Vector2(-0.707, 0.707), Vector2(0.707, 0.707)]:
 		if not _inside_walk_regions(point + direction * radius): return false
@@ -300,9 +330,10 @@ func safe_player_position(preferred: Vector2) -> Vector2:
 				if absi(x) != ring and absi(y) != ring: continue
 				var candidate := preferred + Vector2(x, y) * 20.0
 				if can_stand(candidate): return candidate
-	return city_point(city_data.spawn) if area_name == "changsha" else preferred
+	return city_point(city_data.spawn) if area_name in ["changsha","mountain_road","wuchang"] else preferred
 
 func path_to(point: Vector2, interaction: bool = false) -> PackedVector2Array:
+	if is_instance_valid(regional_map):return regional_map.path_to(player.position,point)
 	var origin := Vector2i(player.position / 20.0)
 	var destination := Vector2i(point / 20.0)
 	if not astar.region.has_point(origin): return []
@@ -383,6 +414,7 @@ func _build_collision_and_navigation() -> void:
 
 func nearest() -> Dictionary:
 	var candidates: Array=npcs.duplicate()
+	candidates.append_array(travel_exits)
 	var owner_game=get_parent()
 	var errands=owner_game.get("ordinary_quests")
 	for citizen in ambient_nodes:
@@ -424,7 +456,7 @@ func _process(_delta: float) -> void:
 		indicator.set_body_height((Metrics.CITIZEN_HEIGHT if area_name=="changsha" else Metrics.PROLOGUE_HEIGHT) if target.frame>=0 else 0.0)
 	if not target.is_empty():
 		hint.position = target.position + Vector2(-75, 14)
-		hint.text = "F  조사" if str(target.id).begins_with("quest_goal:") else "F  승선" if target.id == "boarding" else ("F  거래" if target.has("service_id") else "F  대화")
+		hint.text = "F  이동" if target.has("travel") else "F  조사" if str(target.id).begins_with("quest_goal:") else "F  승선" if target.id == "boarding" else ("F  거래" if target.has("service_id") else "F  대화")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not active:
@@ -438,6 +470,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				target = citizen.position
 				interaction = true
 				break
-		for entry in objectives:
+		for entry in objectives+travel_exits:
 			if Rect2(entry.position-Vector2(25,40),Vector2(50,60)).has_point(local_point):target=entry.position;interaction=true;break
 		player.click_path = path_to(target, interaction)

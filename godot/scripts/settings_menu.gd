@@ -109,7 +109,7 @@ func refresh() -> void:
 	status.text = reason if not reason.is_empty() else ("탐험 중이나 분기 선택 전에 다른 칸에 저장할 수 있습니다." if mode == "save" else "선택한 저장 시점으로 돌아갑니다.")
 
 func area_name(id: String) -> String:
-	return {"dock":"청류진 나루", "deck":"호송선", "changsha":"장사"}.get(id, id)
+	return {"dock":"청류진 나루", "deck":"호송선", "changsha":"장사", "mountain_road":"장사–무창 산길", "wuchang":"무창"}.get(id, id)
 
 func request_action() -> void:
 	if action.disabled: return
