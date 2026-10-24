@@ -115,6 +115,8 @@ func load_area(value: String) -> void:
 	background.scale = map_bounds.size / background.texture.get_size()
 	if not is_instance_valid(regional_map):_build_collision_and_navigation()
 	preload("res://scripts/overland_travel.gd").install(self)
+	var visit=get_parent().get("alliance_visit")
+	if is_instance_valid(visit):visit.install(self)
 	camera.set_map_bounds(map_bounds)
 	camera.snap_to_player()
 
@@ -144,6 +146,8 @@ func _load_regional(value: String) -> void:
 	if value=="wuchang":
 		var civil=JSON.parse_string(FileAccess.get_file_as_string("res://data/wuchang_residents.json"))
 		city_data.residents=civil.npcs;city_data.services=civil.services
+		var faction=JSON.parse_string(FileAccess.get_file_as_string("res://data/alliance_characters.json"))
+		city_data.residents.append_array(faction.npcs.filter(func(n):return n.area==value))
 		city_data.road_centers=[]
 		for road in city_data.roads:
 			for i in range(road.points.size()-1):
@@ -153,6 +157,12 @@ func _load_regional(value: String) -> void:
 		regional_map.resident_positions.assign(ambient_nodes.map(func(n):return n.position))
 		regional_map._build_navigation()
 		astar=regional_map.astar
+		player.position=safe_player_position(player.position)
+	elif value=="alliance_office":
+		var faction=JSON.parse_string(FileAccess.get_file_as_string("res://data/alliance_characters.json"))
+		city_data.residents=faction.npcs.filter(func(n):return n.area==value);city_data.road_centers=[]
+		_populate_residents(city_data.residents)
+		regional_map.resident_positions.assign(ambient_nodes.map(func(n):return n.position));regional_map._build_navigation();astar=regional_map.astar
 		player.position=safe_player_position(player.position)
 
 func _load_changsha() -> void:
@@ -217,7 +227,7 @@ func _populate_residents(entries: Array) -> void:
 			var marker = Node2D.new()
 			marker.set_meta("npc_id",entry.id)
 			marker.position = citizen.position
-			var tag = UI.label(marker, entry.name + (" · "+str(entry.role) if entry.has("character_profile") else "") + (" · 토벌" if entry.get("story_actor", false) else " · 거래" if entry.has("service_id") else ""), Rect2(-105, -Metrics.CITIZEN_HEIGHT-Metrics.NAME_GAP, 210, 26), 15, UI.GOLD)
+			var tag = UI.label(marker, entry.name + (" · "+str(entry.role) if entry.get("alliance_actor",false) or entry.has("character_profile") else "") + (" · 토벌" if entry.get("story_actor", false) and not entry.get("alliance_actor",false) else " · 거래" if entry.has("service_id") else ""), Rect2(-105, -Metrics.CITIZEN_HEIGHT-Metrics.NAME_GAP, 210, 26), 15, UI.GOLD)
 			tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			tag.add_theme_color_override("font_outline_color", Color("12201c"))
 			tag.add_theme_constant_override("outline_size", 5)
@@ -329,7 +339,7 @@ func _citizen_fits(point: Vector2, entry: Dictionary) -> bool:
 		if visual.grow(8).intersects(Rect2(other.position+CITIZEN_BOUNDS.position,CITIZEN_BOUNDS.size)): return false
 	var art_point := point / (map_bounds.size / Vector2(city_data.art_size[0], city_data.art_size[1]))
 	for road in city_data.road_centers:
-		if Rect2(road[0], road[1], road[2], road[3]).has_point(art_point): return false
+		if not entry.get("allow_road_post",false) and Rect2(road[0], road[1], road[2], road[3]).has_point(art_point): return false
 	if entry.has("district"):
 		for district in city_data.districts:
 			if district.id==entry.district and not _city_rect(district.bounds).has_point(point):return false

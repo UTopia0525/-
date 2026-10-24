@@ -12,6 +12,7 @@ var exploration
 var battle
 var music
 var ordinary_quests
+var alliance_visit
 var adventure_ui
 var options
 var dialogue_next: Button
@@ -116,6 +117,7 @@ func _ready() -> void:
 	bandit_story = preload("res://scripts/bandit_story.gd").new()
 	bandit_story.game = self
 	add_child(bandit_story)
+	alliance_visit=preload("res://scripts/alliance_visit.gd").new();alliance_visit.game=self;add_child(alliance_visit)
 	save_system = preload("res://scripts/save_system.gd").new()
 	save_system.game = self
 	add_child(save_system)
@@ -265,6 +267,7 @@ func reset() -> void:
 	player_menu.dismiss()
 	pending_service_id = ""
 	bandit_story.reset()
+	alliance_visit.reset()
 	prologue.cancel()
 	money = 0
 	choice_screen.hide()
@@ -436,6 +439,7 @@ func interact() -> void:
 	if npc.is_empty():
 		return
 	if preload("res://scripts/overland_travel.gd").use(self,npc):return
+	if alliance_visit.handle_interaction(str(npc.id)):return
 	if ordinary_quests.handle_interaction(str(npc.id)): return
 	if trade_intro.handle_interaction(str(npc.id)): return
 	if bandit_story.handle_interaction(str(npc.id)): return

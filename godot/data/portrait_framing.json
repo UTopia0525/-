@@ -148,6 +148,18 @@
       "eye_y": 230,
       "eye_to_chin": 155,
       "natural_facing": "left"
+    },
+    "res://assets/portraits/alliance/heo-mungyu.png": {
+      "face_x": 600,
+      "eye_y": 320,
+      "eye_to_chin": 180,
+      "natural_facing": "right"
+    },
+    "res://assets/portraits/alliance/gwak-jinseok.png": {
+      "face_x": 600,
+      "eye_y": 290,
+      "eye_to_chin": 185,
+      "natural_facing": "right"
     }
   }
 }

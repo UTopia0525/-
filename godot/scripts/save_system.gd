@@ -46,7 +46,7 @@ func capture() -> Dictionary:
 	var nodes = {"top_hud":game.top_hud, "bottom_hint":game.bottom_hint, "caption":game.story_caption, "exploration":w, "ending":game.ending, "overview":game.city_overview, "visual":game.story_visual}
 	var visibility := {}
 	for id in nodes: visibility[id] = nodes[id].visible
-	return {"schema":3, "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
+	return {"schema":3, "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
 		"chapter":game.chapter_number, "money":game.money, "talked_captain":game.talked_captain,
 		"world":{"layout_version":2 if w.area_name=="mountain_road" else 1, "area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
@@ -110,6 +110,7 @@ func validate(d) -> bool:
 	if d.has("ordinary_quests") and not game.ordinary_quests.valid(d.ordinary_quests):return false
 	if d.has("trade_intro") and not game.trade_intro.valid(d.trade_intro): return false
 	if d.has("bandit_story") and not game.bandit_story.valid(d.bandit_story): return false
+	if d.has("alliance_visit") and not game.alliance_visit.valid(d.alliance_visit):return false
 	for field in ["world", "prologue", "chapter_one", "navigation", "dialogue", "ui", "visual", "service", "battle", "music"]:
 		if not d.get(field) is Dictionary: return false
 	if d.get("state") not in ["explore", "story", "choice", "service", "battle", "end"]: return false
@@ -220,6 +221,7 @@ func load_slot(slot: int) -> bool:
 	game.battle.player_stats = game.progress.stats.duplicate()
 	game.battle.set_loadout(game.progress.loadout)
 	if d.has("bandit_story"): game.bandit_story.restore(d.bandit_story)
+	if d.has("alliance_visit"):game.alliance_visit.restore(d.alliance_visit)
 	var encounter: Dictionary = {}
 	for definition in game.bandit_story.data.encounters:
 		if definition.id == d.battle.get("encounter_id", ""): encounter = definition

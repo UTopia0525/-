@@ -46,6 +46,8 @@ func _inside(p: Vector2,radius: float) -> bool:return walk_bounds.grow(-radius).
 func _build_navigation() -> void:
 	astar.region=Rect2i(Vector2i.ZERO,Vector2i((map_bounds.size/CELL).ceil()));astar.cell_size=Vector2(CELL,CELL);astar.offset=Vector2(CELL,CELL)/2
 	astar.diagonal_mode=AStarGrid2D.DIAGONAL_MODE_NEVER;astar.update()
+	# Dynamic entry barriers and moved residents must not leave stale solid cells.
+	astar.fill_solid_region(astar.region,false)
 	for y in range(astar.region.size.y):
 		for x in range(astar.region.size.x):
 			var p=Vector2(x*CELL+CELL/2,y*CELL+CELL/2)

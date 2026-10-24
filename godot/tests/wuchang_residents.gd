@@ -19,11 +19,11 @@ func run() -> void:
 	game.chapter_one.accepted_quests[intro.id]={"status":"active","stage":intro.stage}
 	game.trade_intro.sync_navigation()
 	var world=game.exploration
-	check(world.ambient_nodes.size()==8,"only eight approved civilian NPCs")
+	check(world.ambient_nodes.size()==11,"eight civilians plus three alliance NPCs")
 	check(world.city_data.services.size()==3,"three existing trade types")
 	var portraits: Array=[]
 	var quest_before=game.chapter_one.snapshot();var regular_before=game.ordinary_quests.snapshot()
-	for entry in world.city_data.residents:
+	for entry in world.city_data.residents.filter(func(n):return not n.get("alliance_actor",false)):
 		var npc=world.decorations.get_node(entry.id)
 		for marker in world.occlusion_roots:
 			if marker.get_meta("npc_id","")==entry.id:
@@ -69,7 +69,7 @@ func run() -> void:
 	check(game.city_overview.facility_widgets[0].visible,"Wuchang facility tools enabled")
 	game.toggle_city_map()
 	check(game.save_system.write_slot(1) and game.save_system.load_slot(1),"civilian region preserves saves")
-	check(world.ambient_nodes.size()==8,"load recreates civilians once")
+	check(world.ambient_nodes.size()==11,"load recreates civilians once")
 	game.reset();await create_timer(.5).timeout
 	for voice in game.music.players:voice.stop();voice.stream=null
 	for voice in game.options.voices:voice.stop();voice.stream=null
