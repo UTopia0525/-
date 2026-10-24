@@ -43,9 +43,11 @@ func run() -> void:
 			check(arts.can_learn(id,zero),"no hidden learning floor "+id)
 		report.append(row)
 	var early: Dictionary=report[1];var late: Dictionary=report[3]
+	check(early.banseok.raw==320 and early.banseok.raw==early.jungun.raw,"approved fist/palm parity at balanced20")
+	check(arts.get_skill("gwanak").base_damage==360 and arts.get_skill("gwanak").qi_cost==18,"approved spear fixed force360 / qi18")
 	check(early.gwanak.raw>early.hoeryu.raw and early.gwanak.raw>early.paak.raw,"spear dominates early raw damage")
 	for id in ["hoeryu","paak","banseok","jungun"]:check(late[id].raw>late.gwanak.raw,"higher coefficients overtake spear later "+id)
-	check(int(early.hoeryu.guard)==20 and early.gwanak.cost<28,"sword guards and spear equipment reduces qi")
+	check(int(early.hoeryu.guard)==20 and early.gwanak.cost==17 and early.gwanak.raw==480,"sword guards and spear equipment reduces qi")
 	var encounters=JSON.parse_string(FileAccess.get_file_as_string("res://data/changsha_bandit_story.json")).encounters
 	for stats in [{"strength":10,"agility":10,"constitution":10,"inner":10,"insight":10},{"strength":10,"agility":10,"constitution":10,"inner":10,"insight":60},{"strength":20,"agility":20,"constitution":20,"inner":20,"insight":20}]:
 		for id in IDS:

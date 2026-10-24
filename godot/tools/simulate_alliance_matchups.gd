@@ -38,7 +38,7 @@ func _initialize() -> void:
 	var profiles={"balanced_100":{"strength":20,"agility":20,"constitution":20,"inner":20,"insight":20},"quest_heavy_120":{"strength":16,"agility":16,"constitution":16,"inner":17,"insight":55},"balanced_125":{"strength":25,"agility":25,"constitution":25,"inner":25,"insight":25},"balanced_150":{"strength":30,"agility":30,"constitution":30,"inner":30,"insight":30}}
 	var enemies=[{"id":"veteran","name":"가상 숙련 무사","hp":600,"stats":{"strength":22,"agility":18,"constitution":25,"inner":18,"insight":17},"weapon":"thickback_saber","skills":["bandit_chop","bandit_heavy_chop"]},{"id":"heavy","name":"가상 중장 무사","hp":900,"stats":{"strength":24,"agility":18,"constitution":35,"inner":20,"insight":18},"weapon":"forged_saber","skills":["bandit_heavy_chop"]},{"id":"raider","name":"가상 강습 무사","hp":500,"stats":{"strength":30,"agility":24,"constitution":20,"inner":24,"insight":20},"weapon":"forged_saber","skills":["bandit_heavy_chop"]}]
 	var results=[]
-	var variants={"current":{"base":240,"cost":28},"trial_360_18":{"base":360,"cost":18},"trial_380_18":{"base":380,"cost":18}}
+	var variants={"historical_240_28":{"base":240,"cost":28},"current":{"base":combat.arts.get_skill("gwanak").base_damage,"cost":combat.arts.get_skill("gwanak").qi_cost},"trial_380_18":{"base":380,"cost":18}}
 	for variant in variants:
 		combat.arts.definitions.gwanak.base_damage=variants[variant].base
 		combat.arts.definitions.gwanak.qi_cost=variants[variant].cost
@@ -53,7 +53,7 @@ func _initialize() -> void:
 							if not (profile=="balanced_100" and tier==1 and enemy.id=="veteran" and policy=="respond"):result.erase("trace")
 							results.append(result)
 	var data={"profiles":profiles,"enemies":enemies,"variants":variants,"results":results}
-	var f=FileAccess.open("res://../docs/reviews/alliance-matchups.json",FileAccess.WRITE);assert(f!=null);f.store_string(JSON.stringify(data,"  "));f.close()
+	var f=FileAccess.open("res://../docs/reviews/alliance-matchups-latest.json",FileAccess.WRITE);assert(f!=null);f.store_string(JSON.stringify(data,"  "));f.close()
 	for profile in profiles:
 		print(profile," / tier1 veteran respond")
 		for r in results:

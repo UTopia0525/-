@@ -60,8 +60,8 @@
       "agility": 3,
       "inner": 1
     },
-    "base_damage": 240,
-    "qi_cost": 28,
+    "base_damage": 360,
+    "qi_cost": 18,
     "requirements": {
       "stats": {},
       "minimum_total": 0
@@ -82,7 +82,7 @@
     "damage_coefficients": {
       "strength": 6,
       "constitution": 4,
-      "inner": 5
+      "inner": 6
     },
     "base_damage": 0,
     "qi_cost": 26,
