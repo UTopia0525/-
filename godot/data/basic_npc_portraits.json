@@ -1,0 +1,121 @@
+{
+  "policy": "일반 마을 NPC는 이18장을 재사용한다. 사용자가 별도 지시할 때만 새 전용 이미지를 제작한다.",
+  "entries": {
+    "male_middle": {
+      "path": "res://assets/portraits/extras/male_middle.png",
+      "gender": "male",
+      "age_group": "middle",
+      "role": "general"
+    },
+    "male_common_a": {
+      "path": "res://assets/portraits/extras/male_common_a.png",
+      "gender": "male",
+      "age_group": "adult",
+      "role": "general"
+    },
+    "male_common_b": {
+      "path": "res://assets/portraits/extras/male_common_b.png",
+      "gender": "male",
+      "age_group": "adult",
+      "role": "general"
+    },
+    "male_young": {
+      "path": "res://assets/portraits/extras/male_young.png",
+      "gender": "male",
+      "age_group": "young",
+      "role": "general"
+    },
+    "male_elder": {
+      "path": "res://assets/portraits/extras/male_elder.png",
+      "gender": "male",
+      "age_group": "elder",
+      "role": "general"
+    },
+    "female_middle": {
+      "path": "res://assets/portraits/extras/female_middle.png",
+      "gender": "female",
+      "age_group": "middle",
+      "role": "general"
+    },
+    "female_common_a": {
+      "path": "res://assets/portraits/extras/female_common_a.png",
+      "gender": "female",
+      "age_group": "adult",
+      "role": "general"
+    },
+    "female_common_b": {
+      "path": "res://assets/portraits/extras/female_common_b.png",
+      "gender": "female",
+      "age_group": "adult",
+      "role": "general"
+    },
+    "female_young": {
+      "path": "res://assets/portraits/extras/female_young.png",
+      "gender": "female",
+      "age_group": "young",
+      "role": "general"
+    },
+    "female_elder": {
+      "path": "res://assets/portraits/extras/female_elder.png",
+      "gender": "female",
+      "age_group": "elder",
+      "role": "general"
+    },
+    "female_herbalist": {
+      "path": "res://assets/portraits/wuchang/liu_baicao.png",
+      "gender": "female",
+      "age_group": "middle",
+      "role": "herbalist",
+      "original_actor": "wc_liu_baicao"
+    },
+    "male_blacksmith": {
+      "path": "res://assets/portraits/wuchang/shi_dayong.png",
+      "gender": "male",
+      "age_group": "middle",
+      "role": "blacksmith",
+      "original_actor": "wc_shi_dayong"
+    },
+    "male_instructor": {
+      "path": "res://assets/portraits/wuchang/lin_zhengshan.png",
+      "gender": "male",
+      "age_group": "middle",
+      "role": "instructor",
+      "original_actor": "wc_lin_zhengshan"
+    },
+    "female_innkeeper": {
+      "path": "res://assets/portraits/wuchang/du_sanniang.png",
+      "gender": "female",
+      "age_group": "adult",
+      "role": "innkeeper",
+      "original_actor": "wc_du_sanniang"
+    },
+    "male_constable": {
+      "path": "res://assets/portraits/wuchang/lu_zhenghao.png",
+      "gender": "male",
+      "age_group": "middle",
+      "role": "constable",
+      "original_actor": "wc_lu_zhenghao"
+    },
+    "male_dockworker": {
+      "path": "res://assets/portraits/wuchang/wu_deshu.png",
+      "gender": "male",
+      "age_group": "middle",
+      "role": "dockworker",
+      "original_actor": "wc_wu_deshu"
+    },
+    "female_elder_seamstress": {
+      "path": "res://assets/portraits/wuchang/grandmother_zheng.png",
+      "gender": "female",
+      "age_group": "elder",
+      "role": "resident",
+      "original_actor": "wc_grandmother_zheng"
+    },
+    "male_farmer": {
+      "path": "res://assets/portraits/wuchang/zhou_jifu.png",
+      "gender": "male",
+      "age_group": "adult",
+      "role": "farmer",
+      "original_actor": "wc_zhou_jifu"
+    }
+  }
+}

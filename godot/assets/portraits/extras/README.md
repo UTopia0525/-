@@ -35,3 +35,7 @@
 | ![남성 A](male_common_a.png) | ![남성 B](male_common_b.png) | ![여성 A](female_common_a.png) | ![여성 B](female_common_b.png) |
 
 허만복은 남성 A, 수령인은 남성 B를 기본 사용한다. 같은 대화의 다른 인물과 중복되면 공용 풀에서 빈 그림을 배정한다. [실제 대화 화면·검증](../../../../docs/systems/layered-city-and-conversation.md).
+
+## 현재 기본 풀18장
+
+이 폴더10장에 `../wuchang/`의8장을 합쳐 기본 NPC 이미지18장으로 지정했다. 일반 마을 NPC는 별도 지시 없이 이 풀을 재사용하며 새 그림을 자동 생성하지 않는다. 파일을 복사/이동하지 않고 `data/basic_npc_portraits.json`의 안정적인 ID로 참조한다. 인물 등록에는 `basic_portrait: "male_farmer"`처럼 지정할 수 있고 기존 `extra` 분류도 유지한다. [현재 제작 원칙](../../../../docs/characters/creation-guidelines.md).

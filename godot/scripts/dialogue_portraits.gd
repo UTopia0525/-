@@ -28,12 +28,11 @@ var actor_names: Dictionary = {}
 var active_actor: String = ""
 var source_facing: Dictionary = {}
 var portrait_choices: Dictionary = {}
-const COMMON_POOL = {
-	"male": ["male_middle", "male_common_a", "male_common_b", "male_young", "male_elder"],
-	"female": ["female_middle", "female_common_a", "female_common_b", "female_young", "female_elder"]
-}
+var basic_portraits: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/basic_npc_portraits.json")).entries
+var COMMON_POOL={"male":[],"female":[]}
 
 func _init() -> void:
+	for id in basic_portraits:COMMON_POOL[basic_portraits[id].gender].append(id)
 	var civil=JSON.parse_string(FileAccess.get_file_as_string("res://data/wuchang_residents.json"))
 	for entry in civil.npcs:
 		ACTORS[entry.id]={"name":entry.name,"extra":entry.extra,"portrait":"res://assets/portraits/wuchang/"+str(entry.id).trim_prefix("wc_")+".png"}
@@ -47,7 +46,8 @@ func texture_for(actor: Dictionary) -> Texture2D:
 	var dedicated: String = actor.get("portrait", "")
 	if not dedicated.is_empty() and ResourceLoader.exists(dedicated):
 		return load(dedicated)
-	var path = EXTRA_ROOT + str(actor.get("extra", "male_young")) + ".png"
+	var id=str(actor.get("basic_portrait",actor.get("extra","male_young")))
+	var path: String=basic_portraits.get(id,{}).get("path",EXTRA_ROOT+id+".png")
 	if ResourceLoader.exists(path):
 		return load(path)
 	push_error("Missing dialogue portrait: " + path)
@@ -104,15 +104,16 @@ func allocate_portraits(participants: Array) -> Array:
 		result.append(resolved)
 	for index in pending:
 		var actor: Dictionary = result[index]
-		var gender := "female" if str(actor.get("extra", "male_middle")).begins_with("female") else "male"
+		var requested=str(actor.get("basic_portrait",actor.get("extra","male_middle")))
+		var gender: String=basic_portraits.get(requested,{}).get("gender","female" if str(actor.get("extra","male_middle")).begins_with("female") else "male")
 		var chosen := ""
 		for variant in COMMON_POOL[gender]:
-			var path: String = EXTRA_ROOT + variant + ".png"
+			var path: String = basic_portraits[variant].path
 			if not used.has(path) and ResourceLoader.exists(path):
 				chosen = path
 				used[path] = true
 				break
-		# Never silently give a second speaker the same face. Extend the pool first.
+		# Never silently give two speakers the same face or generate unrequested artwork.
 		if chosen.is_empty():
 			push_error("More unique NPC portraits required for this conversation")
 			actor.portrait_unavailable = true
