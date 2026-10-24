@@ -152,10 +152,10 @@
     "desk": {
       "texture": "res://assets/maps/alliance-office/furniture.png",
       "source": [
-        0,
-        0,
-        128,
-        100
+        29,
+        75,
+        574,
+        330
       ],
       "kind": "furniture",
       "footprints": [
@@ -165,15 +165,21 @@
           0.9,
           0.4
         ]
+      ],
+      "content_rect": [
+        0.05,
+        0.3,
+        0.9,
+        0.64
       ]
     },
     "shelf": {
       "texture": "res://assets/maps/alliance-office/furniture.png",
       "source": [
-        128,
-        0,
-        128,
-        100
+        642,
+        10,
+        455,
+        429
       ],
       "kind": "furniture",
       "footprints": [
@@ -183,15 +189,21 @@
           0.84,
           0.27
         ]
+      ],
+      "content_rect": [
+        0.07,
+        0.05,
+        0.86,
+        0.91
       ]
     },
     "bench": {
       "texture": "res://assets/maps/alliance-office/furniture.png",
       "source": [
-        256,
-        0,
-        128,
-        100
+        1134,
+        142,
+        568,
+        263
       ],
       "kind": "furniture",
       "footprints": [
@@ -201,15 +213,21 @@
           0.9,
           0.45
         ]
+      ],
+      "content_rect": [
+        0.06,
+        0.45,
+        0.88,
+        0.5
       ]
     },
     "screen": {
       "texture": "res://assets/maps/alliance-office/furniture.png",
       "source": [
-        0,
-        100,
-        128,
-        100
+        59,
+        449,
+        512,
+        427
       ],
       "kind": "furniture",
       "footprints": [
@@ -219,15 +237,21 @@
           0.94,
           0.14
         ]
+      ],
+      "content_rect": [
+        0.05,
+        0.07,
+        0.9,
+        0.86
       ]
     },
     "pillar": {
       "texture": "res://assets/maps/alliance-office/furniture.png",
       "source": [
-        128,
-        100,
-        128,
-        100
+        748,
+        444,
+        241,
+        421
       ],
       "kind": "furniture",
       "footprints": [
@@ -237,15 +261,21 @@
           0.6,
           0.22
         ]
+      ],
+      "content_rect": [
+        0.23,
+        0.05,
+        0.54,
+        0.91
       ]
     },
     "lantern": {
       "texture": "res://assets/maps/alliance-office/furniture.png",
       "source": [
-        256,
-        100,
-        128,
-        100
+        1327,
+        454,
+        172,
+        418
       ],
       "kind": "furniture",
       "footprints": [
@@ -255,6 +285,12 @@
           0.5,
           0.18
         ]
+      ],
+      "content_rect": [
+        0.3,
+        0.06,
+        0.4,
+        0.9
       ]
     }
   },

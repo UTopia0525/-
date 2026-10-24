@@ -125,11 +125,13 @@ func draw_map(canvas: Control) -> void:
 	var bounds: Rect2 = exploration.map_bounds
 	var source = Rect2((world_window.position - bounds.position) / bounds.size * texture.get_size(), world_window.size / bounds.size * texture.get_size())
 	canvas.draw_texture_rect_region(texture, Rect2(Vector2.ZERO, VIEW_SIZE), source, Color(0.75, 0.83, 0.77))
+	var art_size=Vector2(exploration.city_data.get("art_size",[texture.get_width(),texture.get_height()])[0],exploration.city_data.get("art_size",[texture.get_width(),texture.get_height()])[1])
+	var art_source=Rect2((world_window.position-bounds.position)/bounds.size*art_size,world_window.size/bounds.size*art_size)
 	for tile in exploration.art_tiles:
-		var intersection: Rect2 = source.intersection(tile.target)
+		var intersection: Rect2 = art_source.intersection(tile.target)
 		if not intersection.has_area():
 			continue
-		var destination = Rect2((intersection.position - source.position) / source.size * VIEW_SIZE, intersection.size / source.size * VIEW_SIZE)
+		var destination = Rect2((intersection.position - art_source.position) / art_source.size * VIEW_SIZE, intersection.size / art_source.size * VIEW_SIZE)
 		var sample = Rect2(tile.source.position + (intersection.position - tile.target.position) / tile.target.size * tile.source.size, intersection.size / tile.target.size * tile.source.size)
 		canvas.draw_texture_rect_region(tile.texture, destination, sample, Color(0.75, 0.83, 0.77))
 	for exit in exploration.travel_exits:

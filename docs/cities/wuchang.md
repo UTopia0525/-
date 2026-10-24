@@ -32,7 +32,7 @@
 
 `assets/maps/wuchang/layout.json`은 구역·도로·오브젝트·육로 입구·검사용 목적지를 가진다. `python godot/tools/build_wuchang_layout.py`로 같은 배치를 재생성할 수 있다. 편집 후에는 검사·캡처를 갱신한다.
 
-`wuchang_ground.gd`는 흙·강·포장만 그린다. 구조물209개는 기존 `city_scenery.gd`와 공용 아틀라스로 각각 생성하고 전용 회의당 그림1종을 더한다. 물리 충돌·발밑Y정렬·문기둥 충돌/중앙 통과/지붕 가림을 유지한다. 클릭 이동은 같은 발밑 충돌 영역으로 만든 길 찾기를 사용한다. 미니맵과 전체 지도는 같은 배치를 별도의2D물리 월드에서 렌더링하므로 작은 복제 충돌체가 실제 도시에 섞이지 않는다.
+`wuchang_ground.gd`는 전용 원화의 흙·강·포장만 표시한다. 구조물209개는 기존 `city_scenery.gd`와 공용 아틀라스로 각각 생성하고 전용 회의당 그림1종을 더한다. 물리 충돌·발밑Y정렬·문기둥 충돌/중앙 통과/지붕 가림을 유지한다. 클릭 이동은 같은 발밑 충돌 영역으로 만든 길 찾기를 사용한다. 미니맵과 전체 지도는 같은 배치를 별도의2D물리 월드에서 렌더링하므로 작은 복제 충돌체가 실제 도시에 섞이지 않는다.
 
 `tests/wuchang.gd`는 NPC 없음·남쪽 농촌 시작·주요 지점 전부 접근·독립 충돌/Y정렬·문 중앙/기둥·실제 남문 이동·본단 규모·지도 크기/입력·타이틀 복귀·진도 불변을 검사한다. `tests/capture_wuchang.gd`는 실제 Godot 화면과 고해상도 전체 지형을 저장한다. 검사 시 사용자 데이터는 분리한 XDG 경로를 사용한다.
 
@@ -42,4 +42,4 @@
 
 정문 안 왼편의 기존 `reception` 건물을 총무당으로 지정했다. 건물 앞 푸른 포탈에서 F로 출입하고, 실내 남쪽 포탈에서 외원으로 돌아온다. 별도 지역 `alliance_office`는2048×1440이며 총관 책상·접수 탁자·대기석·문서장·병풍을 독립 충돌/Y정렬 오브젝트로 배치했다. 실내에서도 TAB 지도와 저장/불러오기를 지원한다. 총관·송지겸·수문 무사와 후속 스토리/무공 전수는 아직 적용하지 않았다.
 
-[실내 플레이 화면](../../godot/screenshots/alliance-office-interior.png) · [실내 전체 배치](../../godot/screenshots/alliance-office-map.png). `tests/alliance_office.gd`로 F 왕복·가구 충돌·길 찾기·실내 지도·저장/불러오기·성장 보존을 확인한다. `tools/bake_alliance_office.gd`는 바닥과 독립 가구 아틀라스를 렌더링한다.
+[실내 플레이 화면](../../godot/screenshots/alliance-office-interior.png) · [실내 전체 배치](../../godot/screenshots/alliance-office-map.png). `tests/alliance_office.gd`로 F 왕복·가구 충돌·길 찾기·실내 지도·저장/불러오기·성장 보존을 확인한다. 총무당 바닥과 가구는 전용 원화이며 이전 bake 명령으로 덮어쓰지 않는다. [최신 전체 미술](regional-map-art.md).

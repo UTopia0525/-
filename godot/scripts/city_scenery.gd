@@ -24,6 +24,12 @@ func configure(spec: Dictionary, prefab: Dictionary, world_scale: Vector2) -> vo
 	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	sprite.position = visual_rect.position - position
 	sprite.scale = visual_rect.size / atlas.region.size
+	# Optional transparent-cell padding preserves the original visible footprint
+	# when a higher-resolution atlas uses tightly cropped source rectangles.
+	if prefab.has("content_rect"):
+		var c: Array=prefab.content_rect
+		sprite.position+=Vector2(c[0],c[1])*visual_rect.size
+		sprite.scale*=Vector2(c[2],c[3])
 	add_child(sprite)
 	for shape in prefab.footprints:
 		var bounds := Rect2(visual_rect.position + Vector2(shape[0], shape[1]) * visual_rect.size, Vector2(shape[2], shape[3]) * visual_rect.size)

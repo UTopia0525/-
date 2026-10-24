@@ -1,0 +1,41 @@
+{
+  "style_reference": "assets/maps/changsha/layered/ground.png",
+  "assets": [
+    {
+      "path": "assets/maps/changsha-wuchang/ground.png",
+      "size": [
+        1122,
+        1402
+      ],
+      "sha256": "c552061f833ea5199b4f9a04188d01c3f3d7a9850aca3a9514cd6818e43202b8",
+      "method": "image_gen edit; original PNG retained without raster edits"
+    },
+    {
+      "path": "assets/maps/wuchang/ground.png",
+      "size": [
+        1295,
+        1215
+      ],
+      "sha256": "1948fd0f93e6e0022f5a2979862b22e36dbc7c984c988e10dea46ed0f87134f0",
+      "method": "image_gen edit; original PNG retained without raster edits"
+    },
+    {
+      "path": "assets/maps/alliance-office/ground.png",
+      "size": [
+        1495,
+        1052
+      ],
+      "sha256": "1a3bac981bfcef458b1797ad69a9352282677fb3d18b7f4ce329616f6411b3ad",
+      "method": "image_gen edit; original PNG retained without raster edits"
+    },
+    {
+      "path": "assets/maps/alliance-office/furniture.png",
+      "size": [
+        1738,
+        905
+      ],
+      "sha256": "e88ab7897d0de5e06ec4057f51d16ccfb9121744eade99f7efdd653301bbf810",
+      "method": "image_gen edit; original PNG retained without raster edits"
+    }
+  ]
+}

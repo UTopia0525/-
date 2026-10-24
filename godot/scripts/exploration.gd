@@ -134,7 +134,11 @@ func _load_regional(value: String) -> void:
 	for node in regional_map.scenery_nodes:
 		node.reparent(decorations);occlusion_roots.append(node);scenery_nodes.append(node);scenery_bounds.append(node.visual_rect)
 		var spec: Dictionary=node.definition;var prefab: Dictionary=regional_map.prefabs[spec.prefab]
-		art_tiles.append({"texture":load(prefab.texture),"source":Rect2(prefab.source[0],prefab.source[1],prefab.source[2],prefab.source[3]),"target":Rect2(spec.rect[0],spec.rect[1],spec.rect[2],spec.rect[3])})
+		var target=Rect2(spec.rect[0],spec.rect[1],spec.rect[2],spec.rect[3])
+		if prefab.has("content_rect"):
+			var c: Array=prefab.content_rect
+			target=Rect2(target.position+Vector2(c[0],c[1])*target.size,target.size*Vector2(c[2],c[3]))
+		art_tiles.append({"texture":load(prefab.texture),"source":Rect2(prefab.source[0],prefab.source[1],prefab.source[2],prefab.source[3]),"target":target})
 	art_tiles.sort_custom(func(a,b):return a.target.end.y<b.target.end.y)
 	player.position=city_point(city_data.spawn)
 	if value=="wuchang":
