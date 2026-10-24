@@ -1,6 +1,6 @@
 # 0장 「가라앉은 약속」 플레이 데모
 
-출항 전 나루터부터 배 위의 첫 전투까지 플레이하는 작은 브라우저 데모입니다. 설치·빌드·외부 라이브러리·계정 연결 없이 실행됩니다. 탐험은 Canvas로 그린 임시 도트 맵이고, 전투에는 기존 시안을 바탕으로 제작한 별도의 배경 이미지를 사용합니다. 최종 게임 엔진을 결정한 것은 아닙니다.
+출항 전 나루터부터 배 위의 첫 전투까지 플레이하는 작은 브라우저 데모입니다. 설치·빌드·외부 라이브러리·계정 연결 없이 실행됩니다. 탐험은 Canvas로 그린 임시 도트 맵이고, 전투에는 기존 시안을 바탕으로 제작한 별도의 배경 이미지를 사용합니다. 이전 웹 프로토타입으로 보관하며, 현재 개발 대상은 [Godot 본게임](../godot/README.md)입니다.
 
 ## 실제 실행 화면
 
@@ -18,7 +18,7 @@ git pull
 Start-Process .\demo\index.html
 ```
 
-또는 파일 탐색기에서 `demo/index.html`을 더블클릭합니다. `index.html`, `style.css`, `game.js`, `assets/battle-deck.png`는 같은 디렉터리 구조로 보관해야 합니다. GitHub의 파일 미리보기는 게임을 실행하지 않습니다.
+또는 파일 탐색기에서 `demo/index.html`을 더블클릭합니다. 저장소 전체를 내려받아 `demo/`와 `godot/assets/battle-deck.png`의 상대 경로를 유지해야 합니다. 전투 배경은 Godot 원본을 공유하므로 `demo/` 폴더만 분리하면 배경이 표시되지 않습니다. GitHub의 파일 미리보기는 게임을 실행하지 않습니다.
 
 로컬 서버를 선호한다면 저장소 루트에서 `python -m http.server 8000`을 실행하고 `http://localhost:8000/demo/`를 엽니다. 서버는 필수가 아닙니다.
 
@@ -78,7 +78,7 @@ Start-Process .\demo\index.html
 - `index.html`: 화면과 메뉴
 - `style.css`: 반응형 UI
 - `game.js`: 이동·대화·진행·전투
-- `assets/battle-deck.png`: UI가 없는 전투 배경 시안
+- `../godot/assets/battle-deck.png`: Godot 본게임과 공유하는 전투 배경 시안
 
 배경 이미지를 포함한 모든 실행 자원은 로컬 파일입니다. CDN, 네트워크 호출, 외부 폰트 또는 패키지 설치가 필요하지 않습니다.
 

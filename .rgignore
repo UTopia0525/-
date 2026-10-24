@@ -1,0 +1,8 @@
+# Search scope only; tracked files remain available with rg --no-ignore.
+docs/archive/
+godot/screenshots/
+demo/screenshots/
+prototypes/
+godot/assets/music/source/
+docs/reviews/*.json
+docs/reviews/combat-icons/simulation.json

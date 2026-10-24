@@ -1,0 +1,26 @@
+# Generated editor/build state
+**/.godot/
+godot/exports/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+node_modules/
+
+# Local editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.tmp
+*.bak
+*~
+
+# Private author notes and local secrets
+/author-notes/
+/cli-handoff-private.zip
+.env
+.env.*
+!.env.example
