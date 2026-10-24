@@ -514,6 +514,16 @@ func _unhandled_input(event: InputEvent) -> void:
 				target = citizen.position
 				interaction = true
 				break
+		# Prologue actors use Area2D sprites rather than city ambient bodies.
+		# A click on their head must approach their feet, not an unwalkable
+		# point in the illustration above them.
+		for entry in npcs:
+			var hit=false
+			if entry.frame>=0:
+				for child in entry.node.get_children():
+					if child is Sprite2D and child.get_rect().has_point(child.to_local(to_global(local_point))):hit=true;break
+			else:hit=Rect2(entry.position-Vector2(55,35),Vector2(110,70)).has_point(local_point)
+			if hit:target=entry.position;interaction=true;break
 		for entry in objectives+travel_exits:
 			var hitbox=Rect2(entry.position-Vector2(62,130),Vector2(124,160)) if entry.has("travel") else Rect2(entry.position-Vector2(25,40),Vector2(50,60))
 			if hitbox.has_point(local_point):target=entry.position;interaction=true;break
