@@ -1348,6 +1348,156 @@
       ]
     },
     {
+      "id": "government_back_0",
+      "prefab": "wall_h",
+      "rect": [
+        1600,
+        967,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "government_back_1",
+      "prefab": "wall_h",
+      "rect": [
+        1670,
+        967,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "government_back_2",
+      "prefab": "wall_h",
+      "rect": [
+        1740,
+        967,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "government_back_3",
+      "prefab": "wall_h",
+      "rect": [
+        1810,
+        967,
+        70,
+        42
+      ]
+    },
+    {
+      "id": "government_back_4",
+      "prefab": "wall_h",
+      "rect": [
+        1880,
+        967,
+        20,
+        42
+      ]
+    },
+    {
+      "id": "government_west_0",
+      "prefab": "wall_v",
+      "rect": [
+        1600,
+        989,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "government_west_1",
+      "prefab": "wall_v",
+      "rect": [
+        1600,
+        1047,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "government_west_2",
+      "prefab": "wall_v",
+      "rect": [
+        1600,
+        1105,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "government_west_3",
+      "prefab": "wall_v",
+      "rect": [
+        1600,
+        1163,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "government_west_4",
+      "prefab": "wall_v",
+      "rect": [
+        1600,
+        1221,
+        23,
+        46
+      ]
+    },
+    {
+      "id": "government_east_0",
+      "prefab": "wall_v",
+      "rect": [
+        1877,
+        989,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "government_east_1",
+      "prefab": "wall_v",
+      "rect": [
+        1877,
+        1047,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "government_east_2",
+      "prefab": "wall_v",
+      "rect": [
+        1877,
+        1105,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "government_east_3",
+      "prefab": "wall_v",
+      "rect": [
+        1877,
+        1163,
+        23,
+        58
+      ]
+    },
+    {
+      "id": "government_east_4",
+      "prefab": "wall_v",
+      "rect": [
+        1877,
+        1221,
+        23,
+        46
+      ]
+    },
+    {
       "id": "alliance_north_0",
       "prefab": "wall_h",
       "rect": [

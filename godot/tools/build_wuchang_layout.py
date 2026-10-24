@@ -63,6 +63,10 @@ obj('public_martial_hall','martial_hall',[1190,1020,145,128])
 obj('public_martial_annex','home',[1420,1020,95,88])
 obj('government_hall','government',[1670,1010,159,142]);obj('government_gate','gate',[1670,1135,155,115])
 row('government_front',1600,1900,1225,gate=(1710,1787))
+# Close the government compound; north wall clears the hall roof and street feet.
+row('government_back',1600,1900,967)
+col('government_west',1600,989,1267)
+col('government_east',1877,989,1267)
 # Alliance occupies a much larger, enclosed compound with three courts.
 row('alliance_north',940,1910,85)
 col('alliance_west',932,120,880)
