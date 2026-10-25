@@ -1,6 +1,6 @@
 # 작업별 색인
 
-최신 변경: [산길 이동 단축·발 교차 보행·크기 고정](systems/short-road-and-stride.md), [작은 A안 HUD와 장사 통행](ui/compact-a.md). 이전 비교 시안과 검토는 당시 기록이다.
+최신 변경: [BGM 반복 재생 유지](systems/bgm-loop.md), [산길 이동 단축·발 교차 보행](systems/short-road-and-stride.md), [작은 A안 HUD](ui/compact-a.md). 이전 비교 시안과 검토는 당시 기록이다.
 
 현재 상태는 [CLI 인계](CLI_HANDOFF.md), 실행은 [Godot 안내](../godot/README.md)를 참고한다. 아래 경로는 저장소 루트 기준이다. 문서와 관련 소스만 먼저 읽고 필요한 검사를 선택한다.
 

@@ -17,20 +17,24 @@ var current_index: int = 0
 var players: Array[AudioStreamPlayer] = []
 var crossfade: Tween
 var generation: int = 0
+var watchdog_elapsed := 0.0
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	for index in range(2):
 		var player = AudioStreamPlayer.new()
 		player.name = "MusicVoice%d" % index
 		player.volume_db = -60.0
 		add_child(player)
 		players.append(player)
+		player.finished.connect(_on_voice_finished.bind(index))
 
 func play_track(track_id: String) -> void:
 	if not TRACKS.has(track_id):
 		push_warning("Unknown music context: " + track_id)
 		return
-	if current_track == track_id and players[current_index].playing:
+	if current_track == track_id and players[current_index].stream != null:
+		_ensure_current_playing()
 		return
 	generation += 1
 	if crossfade and crossfade.is_valid():
@@ -60,6 +64,31 @@ func set_enabled(value: bool) -> void:
 	enabled = value
 	for player in players:
 		player.stream_paused = not value
+	if value:_ensure_current_playing()
+
+func _on_voice_finished(index: int) -> void:
+	# Native OGG looping is the seamless path. If a platform/imported stream
+	# nevertheless ends, resume the current song without a new fade-in.
+	if index==current_index:_ensure_current_playing.call_deferred()
+
+func _ensure_current_playing() -> void:
+	if not enabled or current_track.is_empty() or players.is_empty():return
+	var active=players[current_index]
+	if active.stream==null or active.playing:return
+	if active.stream is AudioStreamOggVorbis:
+		active.stream.loop=true
+		active.stream.loop_offset=0.0
+	active.volume_db=volume_db
+	active.play(0.0)
+	active.stream_paused=false
+
+func _process(delta: float) -> void:
+	watchdog_elapsed+=delta
+	if watchdog_elapsed<0.25:return
+	watchdog_elapsed=0.0
+	# Also recover a stopped voice when no finished signal was delivered. Never
+	# revive an outgoing fade voice or override the user's music-off setting.
+	_ensure_current_playing()
 
 func toggle() -> void:
 	set_enabled(not enabled)
