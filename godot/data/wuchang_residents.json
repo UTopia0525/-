@@ -283,6 +283,32 @@
         255,
         451
       ]
+    },
+    {
+      "id": "wc_jin_munsu",
+      "name": "진문수",
+      "age": 42,
+      "role": "창고 정산 담당자",
+      "extra": "male_common_b",
+      "basic_portrait": "male_common_b",
+      "district": "harbor",
+      "point": [
+        370,
+        1020
+      ],
+      "frame": 7,
+      "post": "창고 앞 정산 자리",
+      "quest_actor": false,
+      "character_profile": {},
+      "personality": "꼼꼼하게 적는 것을 자랑하지만 옮겨 적은 뜻까지 살피는 데는 소홀했다. 체면 때문에 방어적으로 반응해도 잘못을 인정하면 책임진다.",
+      "appearance": "길고 마른 얼굴과 가지런한 머리, 수수한 회갈색 옷. 기본 성인 남성 그림을 재사용한다.",
+      "relations": "오덕수와 하역 품삯을 정산하며 자주 마주친다.",
+      "dialogue": [
+        [
+          "wc_jin_munsu",
+          "지급 장부는 제가 맡고 있습니다. 하역 일거리는 오덕수 반장께 물으십시오."
+        ]
+      ]
     }
   ],
   "services": [

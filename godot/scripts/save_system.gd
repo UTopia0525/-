@@ -46,7 +46,7 @@ func capture() -> Dictionary:
 	var nodes = {"top_hud":game.top_hud, "bottom_hint":game.bottom_hint, "caption":game.story_caption, "exploration":w, "ending":game.ending, "overview":game.city_overview, "visual":game.story_visual}
 	var visibility := {}
 	for id in nodes: visibility[id] = nodes[id].visible
-	return {"schema":3, "alliance_story":game.alliance_story.snapshot(), "impostor_quest":game.impostor_quest.snapshot(), "inn_quest":game.inn_quest.snapshot(), "duel_quest":game.duel_quest.snapshot(), "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
+	return {"schema":3, "wages_quest":game.wages_quest.snapshot(), "alliance_story":game.alliance_story.snapshot(), "impostor_quest":game.impostor_quest.snapshot(), "inn_quest":game.inn_quest.snapshot(), "duel_quest":game.duel_quest.snapshot(), "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
 		"chapter":game.chapter_number, "money":game.money, "talked_captain":game.talked_captain,
 		"world":{"layout_version":2 if w.area_name=="mountain_road" else 1, "area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
@@ -118,6 +118,7 @@ func validate(d) -> bool:
 		if d.alliance_story.stage in ["steward","instructor"] and d.get("alliance_visit",{}).get("phase")!="visiting":return false
 	if d.has("alliance_visit") and not game.alliance_visit.valid(d.alliance_visit):return false
 	if d.has("herbalist_quest") and not game.herbalist_quest.valid(d.herbalist_quest):return false
+	if d.has("wages_quest") and not game.wages_quest.valid(d.wages_quest):return false
 	if d.has("artisan_quest") and not game.artisan_quest.valid(d.artisan_quest):return false
 	if d.has("duel_quest") and not game.duel_quest.valid(d.duel_quest):return false
 	if d.has("impostor_quest") and not game.impostor_quest.valid(d.impostor_quest):return false
@@ -271,6 +272,7 @@ func load_slot(slot: int) -> bool:
 				if id in game.progress.learned:story={"stage":"completed","received_art":id};break
 	game.alliance_story.restore(story)
 	game.herbalist_quest.restore(d.get("herbalist_quest",{"phase":"available"}))
+	game.wages_quest.restore(d.get("wages_quest",{"phase":"available"}))
 	game.artisan_quest.restore(d.get("artisan_quest",{"phase":"available"}))
 	game.duel_quest.restore(d.get("duel_quest",{"phase":"available","result":""}))
 	game.impostor_quest.restore(d.get("impostor_quest",{"phase":"available"}))

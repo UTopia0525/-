@@ -64,7 +64,7 @@ func run() -> void:
 	game.herbalist_quest.accept();drain();game.artisan_quest.accept();drain();game.duel_quest.accept();drain()
 	var others=[game.herbalist_quest.snapshot(),game.artisan_quest.snapshot(),game.duel_quest.snapshot()]
 	await approach(q.GIVER);drain();game.adventure_ui.primary_action();drain()
-	check(q.phase=="listening" and w.ambient_nodes.size()==14,"all four regional quests accepted concurrently")
+	check(q.phase=="listening" and w.ambient_nodes.size()==15,"all four regional quests accepted concurrently")
 	for id in [q.WORKER,q.WARRIOR]:
 		var npc=actor(id);var visual=Rect2(npc.position+w.CITIZEN_BOUNDS.position,w.CITIZEN_BOUNDS.size)
 		for bounds in w.scenery_bounds:check(not visual.grow(6).intersects(bounds),"guest clears buildings")

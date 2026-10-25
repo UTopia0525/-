@@ -19,7 +19,7 @@ func run() -> void:
 	game.chapter_one.accepted_quests[intro.id]={"status":"active","stage":intro.stage}
 	game.trade_intro.sync_navigation()
 	var world=game.exploration
-	check(world.ambient_nodes.size()==11,"eight civilians plus three alliance NPCs")
+	check(world.ambient_nodes.size()==12,"nine civilians plus three alliance NPCs")
 	check(world.city_data.services.size()==3,"three existing trade types")
 	var portraits: Array=[]
 	var quest_before=game.chapter_one.snapshot();var regular_before=game.ordinary_quests.snapshot()
@@ -44,14 +44,14 @@ func run() -> void:
 		check(game.dialogue_backdrop.visible,"Wuchang dialogue dims background")
 		var actor=game.PORTRAITS.ACTORS[entry.id]
 		var texture=game.dialogue_cast.texture_for(actor)
-		check(texture!=null and texture.resource_path==actor.portrait and ResourceLoader.exists(actor.portrait),"dedicated portrait is used")
+		check(texture!=null and texture.resource_path==actor.get("portrait",game.dialogue_cast.basic_portraits.get(actor.get("basic_portrait",""),{}).get("path","")) and ResourceLoader.exists(texture.resource_path),"dedicated portrait is used")
 		check(texture.resource_path not in portraits,"each resident has unique artwork")
 		portraits.append(texture.resource_path)
-		check(game.dialogue_cast.framing.profiles.has(actor.portrait),"portrait has aligned face profile")
+		check(game.dialogue_cast.framing.profiles.has(texture.resource_path),"portrait has aligned face profile")
 		var choices=game.dialogue_cast.portrait_choices.values()
 		check(choices.size()==2 and choices[0]!=choices[1],"speaker and player portraits stay distinct")
 		drain()
-		if entry.id=="wc_du_sanniang":game.adventure_ui.secondary_action();drain()
+		if entry.id in ["wc_du_sanniang","wc_wu_deshu"]:game.adventure_ui.secondary_action();drain()
 		if entry.has("service_id"):
 			check(game.state=="service" and game.city_service.service.actor_id==entry.id,"greeting opens correct person's counter")
 			check(game.city_service.portrait.texture.resource_path==actor.portrait,"counter keeps resident portrait")
@@ -71,7 +71,7 @@ func run() -> void:
 	check(game.city_overview.facility_widgets[0].visible,"Wuchang facility tools enabled")
 	game.toggle_city_map()
 	check(game.save_system.write_slot(1) and game.save_system.load_slot(1),"civilian region preserves saves")
-	check(world.ambient_nodes.size()==11,"load recreates civilians once")
+	check(world.ambient_nodes.size()==12,"load recreates civilians once")
 	game.reset();await create_timer(.5).timeout
 	for voice in game.music.players:voice.stop();voice.stream=null
 	for voice in game.options.voices:voice.stop();voice.stream=null

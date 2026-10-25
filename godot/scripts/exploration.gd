@@ -129,6 +129,8 @@ func load_area(value: String) -> void:
 	if is_instance_valid(impostor):impostor.refresh_world()
 	var story=get_parent().get("alliance_story")
 	if is_instance_valid(story):story.refresh_world()
+	var wages=get_parent().get("wages_quest")
+	if is_instance_valid(wages):wages.refresh_world()
 	camera.set_map_bounds(map_bounds)
 	camera.snap_to_player()
 

@@ -23,6 +23,7 @@ func run() -> void:
 			chosen.append(actor.portrait)
 		check(chosen.any(func(p):return "/wuchang/" in p),"Wuchang images participate in reuse")
 	for id in cast.ACTORS:
-		if str(id).begins_with("wc_"):check(cast.texture_for(cast.ACTORS[id]).resource_path==cast.ACTORS[id].portrait,"original Wuchang identity retains its illustration")
+		if str(id).begins_with("wc_") and cast.ACTORS[id].has("portrait"):check(cast.texture_for(cast.ACTORS[id]).resource_path==cast.ACTORS[id].portrait,"original Wuchang identity retains its illustration")
+	check(cast.texture_for(cast.ACTORS.wc_jin_munsu).resource_path==cast.basic_portraits.male_common_b.path,"new civilian reuses existing basic image")
 	cast.queue_free();await process_frame
 	print("GODOT_BASIC_PORTRAITS: "+("FAIL" if failed else "PASS"));quit(1 if failed else 0)

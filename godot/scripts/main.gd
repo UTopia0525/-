@@ -14,6 +14,7 @@ var music
 var ordinary_quests
 var herbalist_quest
 var artisan_quest
+var wages_quest
 var duel_quest
 var inn_quest
 var impostor_quest
@@ -145,6 +146,7 @@ func _ready() -> void:
 	inn_quest=preload("res://scripts/inn_quest.gd").new();inn_quest.game=self;add_child(inn_quest)
 	impostor_quest=preload("res://scripts/impostor_quest.gd").new();impostor_quest.game=self;add_child(impostor_quest)
 	alliance_story=preload("res://scripts/alliance_story.gd").new();alliance_story.game=self;add_child(alliance_story)
+	wages_quest=preload("res://scripts/wages_quest.gd").new();wages_quest.game=self;add_child(wages_quest)
 	progress.progress_changed.connect(_progress_changed)
 	battle.sound_requested.connect(options.play)
 	var journal_button=UI.button(top_hud,"의뢰 일지 · Q",Rect2(930,245,150,35))
@@ -272,11 +274,12 @@ func _build_ending() -> void:
 	restart.pressed.connect(reset)
 	ending.hide()
 
-func regional_quests() -> Array:return [alliance_story,herbalist_quest,artisan_quest,duel_quest,inn_quest,impostor_quest]
+func regional_quests() -> Array:return [alliance_story,herbalist_quest,artisan_quest,wages_quest,duel_quest,inn_quest,impostor_quest]
 func encounters() -> Array:return bandit_story.data.encounters+[herbalist_quest.data.encounter,duel_quest.data.encounter,inn_quest.data.encounter,impostor_quest.data.encounter]
 
 func reset() -> void:
 	if is_instance_valid(adventure_ui):adventure_ui.reset()
+	if is_instance_valid(wages_quest):wages_quest.reset()
 	if is_instance_valid(alliance_story):alliance_story.reset()
 	if is_instance_valid(impostor_quest):impostor_quest.reset()
 	if is_instance_valid(inn_quest):inn_quest.reset()
@@ -466,6 +469,7 @@ func interact() -> void:
 		return
 	if preload("res://scripts/overland_travel.gd").use(self,npc):return
 	if alliance_story.handle_interaction(str(npc.id)):return
+	if wages_quest.handle_interaction(str(npc.id)):return
 	if impostor_quest.handle_interaction(str(npc.id)):return
 	if inn_quest.handle_interaction(str(npc.id)):return
 	if duel_quest.handle_interaction(str(npc.id)):return

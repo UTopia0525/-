@@ -26,6 +26,9 @@ func approach(id: String) -> void:
 	var e=InputEventKey.new();e.keycode=KEY_F;e.physical_keycode=KEY_F;e.pressed=true
 	Input.parse_input_event(e);await process_frame
 	e=e.duplicate();e.pressed=false;Input.parse_input_event(e);await process_frame
+	if id==game.wages_quest.GIVER and game.adventure_ui.window.visible:
+		game.adventure_ui.secondary_action()
+		if game.adventure_ui.window.visible:game.adventure_ui.primary_action()
 func wait_turn() -> void:
 	var deadline=Time.get_ticks_msec()+20000
 	while game.battle.busy and Time.get_ticks_msec()<deadline:await create_timer(.03).timeout

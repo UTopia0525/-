@@ -27,13 +27,18 @@ func approach(id: String) -> void:
 	world.player.position=path[-1];world.player.stop();await physics_frame;await physics_frame
 	check(world.nearest().get("id","")==id,"F selects intended NPC: "+id)
 	await press_f()
+	if id==game.wages_quest.GIVER:
+		if game.adventure_ui.window.visible:game.adventure_ui.secondary_action()
+		else:
+			drain()
+			if game.adventure_ui.window.visible:game.adventure_ui.secondary_action()
 func roundtrip(slot: int) -> void:
 	var phase: String=game.artisan_quest.phase
 	check(game.save_system.write_slot(slot),"save stable phase "+phase+": "+game.save_system.error)
 	check(game.save_system.load_slot(slot),"load phase "+phase)
 	await process_frame
 	check(game.artisan_quest.phase==phase,"saved progress restored")
-	check(game.exploration.ambient_nodes.size()==(11 if game.exploration.area_name=="wuchang" else 0),"no duplicate residents after reload")
+	check(game.exploration.ambient_nodes.size()==(12 if game.exploration.area_name=="wuchang" else 0),"no duplicate residents after reload")
 func journal(filter: String,phase: String) -> void:
 	var q=game.artisan_quest;var ui=game.adventure_ui
 	ui.open_journal();ui.set_filter(filter)
