@@ -131,6 +131,10 @@ func load_area(value: String) -> void:
 	if is_instance_valid(story):story.refresh_world()
 	var wages=get_parent().get("wages_quest")
 	if is_instance_valid(wages):wages.refresh_world()
+	var plaque=get_parent().get("plaque_quest")
+	if is_instance_valid(plaque):plaque.refresh_world()
+	var grain=get_parent().get("grain_quest")
+	if is_instance_valid(grain):grain.refresh_world()
 	camera.set_map_bounds(map_bounds)
 	camera.snap_to_player()
 

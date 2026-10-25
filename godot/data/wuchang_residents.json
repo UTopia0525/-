@@ -309,6 +309,32 @@
           "지급 장부는 제가 맡고 있습니다. 하역 일거리는 오덕수 반장께 물으십시오."
         ]
       ]
+    },
+    {
+      "id": "wc_no_seongbok",
+      "name": "노성복",
+      "age": 48,
+      "role": "옛집터 관리인",
+      "extra": "male_middle",
+      "basic_portrait": "male_middle",
+      "district": "homes",
+      "point": [
+        290,
+        480
+      ],
+      "frame": 6,
+      "post": "주거구역 서쪽 옛집터",
+      "quest_actor": false,
+      "character_profile": {},
+      "personality": "말수는 적지만 남의 물건과 쓸 만한 목재를 함부로 버리지 않는다.",
+      "appearance": "투박한 중년 남성. 기존 기본 중년 그림과 인부형 도트를 재사용한다.",
+      "relations": "정씨 할머니가 떠난 옛집터를 관리한다.",
+      "dialogue": [
+        [
+          "wc_no_seongbok",
+          "집터는 제가 관리합니다. 쓸 만한 목재를 골라 두는 중이오. 못이 남아 있으니 발밑을 조심하시오."
+        ]
+      ]
     }
   ],
   "services": [

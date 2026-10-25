@@ -43,7 +43,7 @@ func run() -> void:
 	game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await process_frame
 	game.options.seen.append_array(["city","dialogue","trade","battle"]);game.start_wuchang()
 	var q=game.wages_quest;var w=game.exploration
-	check(w.ambient_nodes.size()==12 and actor(q.CLERK)!=null,"new clerk permanently installed")
+	check(w.ambient_nodes.size()==13 and actor(q.CLERK)!=null,"new clerk permanently installed")
 	check(game.dialogue_cast.texture_for(game.PORTRAITS.ACTORS[q.CLERK]).resource_path==game.dialogue_cast.basic_portraits.male_common_b.path,"uses existing general portrait")
 	check(q.marker_for(q.GIVER)=="!","quest giver marked")
 	await approach(q.CLERK);drain();check(q.phase=="available","clerk cannot autoaccept quest")

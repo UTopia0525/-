@@ -1,0 +1,439 @@
+{
+  "changsha": {
+    "note": "장사 상시 NPC16명 · 송지겸의 초대는 플레이어 주변에서 발생하여 고정 위치 표시에서 제외",
+    "records": [
+      {
+        "detail": "항구 앞 포목 노점",
+        "id": "cloth_merchant",
+        "kind": "resident",
+        "name": "오금화",
+        "position": [
+          1296.0,
+          1964.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "시장 노점 옆",
+        "id": "vegetable_vendor",
+        "kind": "resident",
+        "name": "진옥란",
+        "position": [
+          1840.0,
+          1792.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "잡화 노점 옆",
+        "id": "general_merchant",
+        "kind": "resident",
+        "name": "고만복",
+        "position": [
+          2328.0,
+          1452.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "객잔 옆 처마",
+        "id": "travelling_merchant",
+        "kind": "resident",
+        "name": "백문식",
+        "position": [
+          3340.0,
+          924.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "주거지 우물 옆",
+        "id": "well_grandmother",
+        "kind": "resident",
+        "name": "손정임",
+        "position": [
+          2148.0,
+          3128.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "나루 하역장 가장자리",
+        "id": "dock_worker",
+        "kind": "resident",
+        "name": "허대산",
+        "position": [
+          1112.0,
+          1840.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "창고 출입구 옆",
+        "id": "warehouse_assistant",
+        "kind": "resident",
+        "name": "임소연",
+        "position": [
+          2484.0,
+          952.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "창고 마당",
+        "id": "warehouse_keeper",
+        "kind": "resident",
+        "name": "장수겸",
+        "position": [
+          1844.0,
+          952.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "농가·물길 옆",
+        "id": "waterway_farmer",
+        "kind": "resident",
+        "name": "한소정",
+        "position": [
+          5360.0,
+          2800.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "주거지 처마 앞",
+        "id": "waiting_father",
+        "kind": "resident",
+        "name": "조경수",
+        "position": [
+          2116.0,
+          3296.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "공방 작업 마당 가장자리",
+        "id": "young_craftsman",
+        "kind": "resident",
+        "name": "조성우",
+        "position": [
+          2932.0,
+          2592.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "상점가 노점 앞",
+        "id": "city_merchant",
+        "kind": "resident",
+        "name": "장사꾼",
+        "position": [
+          1776.0,
+          1272.0
+        ],
+        "service": true
+      },
+      {
+        "detail": "무관 앞마당 가장자리",
+        "id": "city_instructor",
+        "kind": "resident",
+        "name": "교관",
+        "position": [
+          3576.0,
+          2572.0
+        ],
+        "service": true
+      },
+      {
+        "detail": "공방 작업장 앞",
+        "id": "city_artisan",
+        "kind": "resident",
+        "name": "장인",
+        "position": [
+          2472.0,
+          2660.0
+        ],
+        "service": true
+      },
+      {
+        "detail": "관아 앞 모집 접수",
+        "id": "bandit_officer",
+        "kind": "resident",
+        "name": "정 포두",
+        "position": [
+          4084.0,
+          1736.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "동문 밖 집결지",
+        "id": "bandit_muster",
+        "kind": "resident",
+        "name": "집결 포졸",
+        "position": [
+          4740.0,
+          1960.0
+        ],
+        "service": false
+      }
+    ],
+    "world_size": [
+      6144.0,
+      4096.0
+    ]
+  },
+  "wuchang": {
+    "note": "무창 상시13명 + 총무당 실내1명 · 테두리 번호는 사건별 위치이며 동시에 등장한다는 뜻이 아닙니다",
+    "records": [
+      {
+        "detail": "약재상",
+        "id": "wc_liu_baicao",
+        "kind": "resident",
+        "name": "유백초",
+        "position": [
+          3040.0,
+          4760.0
+        ],
+        "service": true
+      },
+      {
+        "detail": "병장기 장인",
+        "id": "wc_shi_dayong",
+        "kind": "resident",
+        "name": "석대용",
+        "position": [
+          5560.0,
+          5600.0
+        ],
+        "service": true
+      },
+      {
+        "detail": "무관 교관",
+        "id": "wc_lin_zhengshan",
+        "kind": "resident",
+        "name": "임정산",
+        "position": [
+          5520.0,
+          4680.0
+        ],
+        "service": true
+      },
+      {
+        "detail": "객잔 주인",
+        "id": "wc_du_sanniang",
+        "kind": "resident",
+        "name": "도삼랑",
+        "position": [
+          2960.0,
+          3280.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "포두",
+        "id": "wc_lu_zhenghao",
+        "kind": "resident",
+        "name": "육정호",
+        "position": [
+          7400.0,
+          4740.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "하역반장",
+        "id": "wc_wu_deshu",
+        "kind": "resident",
+        "name": "오덕수",
+        "position": [
+          1760.0,
+          4460.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "오래된 주민",
+        "id": "wc_grandmother_zheng",
+        "kind": "resident",
+        "name": "정씨 할머니",
+        "position": [
+          1920.0,
+          1800.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "소작농",
+        "id": "wc_zhou_jifu",
+        "kind": "resident",
+        "name": "주계복",
+        "position": [
+          4760.0,
+          6480.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "창고 앞 정산 자리",
+        "id": "wc_jin_munsu",
+        "kind": "resident",
+        "name": "진문수",
+        "position": [
+          1448.0,
+          4048.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "주거구역 서쪽 옛집터",
+        "id": "wc_no_seongbok",
+        "kind": "resident",
+        "name": "노성복",
+        "position": [
+          1160.0,
+          1920.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "정문 경비",
+        "id": "alliance_guard_left",
+        "kind": "resident",
+        "name": "좌측 수문 무사",
+        "position": [
+          5692.0,
+          3764.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "정문 경비",
+        "id": "alliance_guard_right",
+        "kind": "resident",
+        "name": "우측 수문 무사",
+        "position": [
+          6148.0,
+          3764.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "교관",
+        "id": "gwak_jinseok",
+        "kind": "resident",
+        "name": "곽진석",
+        "position": [
+          5480.0,
+          2500.0
+        ],
+        "service": false
+      },
+      {
+        "detail": "총무당 내부 · 표시는 실내 출입 지점",
+        "id": "heo_mungyu",
+        "kind": "interior",
+        "name": "허문규",
+        "position": [
+          4308,
+          3100
+        ]
+      },
+      {
+        "detail": "객잔 시비 의뢰 진행 중",
+        "id": "inn_worker",
+        "kind": "event",
+        "name": "양복",
+        "position": [
+          2560.0,
+          3280.0
+        ]
+      },
+      {
+        "detail": "객잔 시비 의뢰 진행 중",
+        "id": "inn_warrior",
+        "kind": "event",
+        "name": "장만길",
+        "position": [
+          2760.0,
+          3280.0
+        ]
+      },
+      {
+        "detail": "연무장 대련 수락 후",
+        "id": "training_student",
+        "kind": "event",
+        "name": "유소강",
+        "position": [
+          5120.0,
+          4740.0
+        ]
+      },
+      {
+        "detail": "구조 후 약재상 옆 · 보고 전",
+        "id": "herb_gatherer",
+        "kind": "event",
+        "name": "임소평",
+        "position": [
+          3220.0,
+          4760.0
+        ]
+      },
+      {
+        "detail": "무림맹 사칭 사건 조사 후",
+        "id": "impostor_ma",
+        "kind": "event",
+        "name": "마응칠",
+        "position": [
+          1304.0,
+          4616.0
+        ]
+      },
+      {
+        "detail": "세곡 의뢰 수락~독촉 철회 전",
+        "id": "grain_yang_samro",
+        "kind": "event",
+        "name": "양삼로",
+        "position": [
+          4896.0,
+          6664.0
+        ]
+      },
+      {
+        "detail": "초대 후 정문 신원 확인 장면",
+        "id": "song_jigyeom",
+        "kind": "event",
+        "name": "송지겸 · 정문 보증",
+        "position": [
+          5920.0,
+          3960.0
+        ]
+      },
+      {
+        "detail": "사칭 사건 보수 수령 직후",
+        "id": "song_jigyeom",
+        "kind": "event",
+        "name": "송지겸 · 감사 방문",
+        "position": [
+          7368.0,
+          4572.0
+        ]
+      },
+      {
+        "detail": "세곡 대면 대화 중만 · 뒤 관아 복귀",
+        "id": "wc_lu_zhenghao",
+        "kind": "event",
+        "name": "육정호 · 농촌 출장",
+        "position": [
+          4520.0,
+          6440.0
+        ]
+      }
+    ],
+    "world_size": [
+      8192.0,
+      7680.0
+    ]
+  }
+}

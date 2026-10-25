@@ -27,7 +27,7 @@ func run() -> void:
 		game.toggle_city_map();await create_timer(.3).timeout;await RenderingServer.frame_post_draw
 		assert(root.get_texture().get_image().save_png("res://screenshots/alliance-office-map.png")==OK);game.toggle_city_map()
 	w.player.position=w.travel_exits[0].position;w.player.stop();await physics_frame;await create_timer(.06).timeout;await press_f()
-	assert(w.area_name=="wuchang" and w.can_stand(w.player.position));assert(w.ambient_nodes.size()==12)
+	assert(w.area_name=="wuchang" and w.can_stand(w.player.position));assert(w.ambient_nodes.size()==13)
 	assert(game.money==money);assert(JSON.parse_string(JSON.stringify(game.progress.snapshot()))==JSON.parse_string(JSON.stringify(progress)))
 	print("ALLIANCE OFFICE PASS: F round trip, furniture collision, pathfinding, map, save/load, unchanged progress")
 	game.free();quit()

@@ -11,6 +11,8 @@
 | 무창 무림맹 사칭 사건 | [전수 후 활성화·감사·보상](quests/wuchang-impostor.md) | `scripts/impostor_quest.gd`, `data/wuchang_impostor_quest.json` | `impostor_quest.gd`, `capture_impostor_quest.gd` |
 | 무창 객잔 시비 | [진행·분기·원고](quests/wuchang-inn.md) | `scripts/inn_quest.gd`, `data/wuchang_inn_quest.json` | `inn_quest.gd`, `capture_inn_quest.gd` |
 | 무창 대련·조식수원공 | [진행·전수·제한](quests/wuchang-duel-proposal.md) | `scripts/duel_quest.gd`, `data/wuchang_duel_quest.json`, `data/support_martial_arts.json`, `scripts/combat_actions.gd` | `duel_quest.gd`, `josik_suwon.gd` |
+| 무창 문패·세곡 의뢰 | [진행·보상·동시 수행](quests/wuchang-last-two.md) | `scripts/plaque_quest.gd`, `grain_quest.gd`, `data/wuchang_plaque_quest.json`, `wuchang_grain_quest.json` | `last_wuchang_quests.gd`, `artisan_quest.gd` |
+| NPC 배치 지도 | [장사/무창 번호 지도·명단](cities/npc-placement-maps.md) | `tests/capture_npc_maps.gd`, `npc_map_sheet.gd` | 실제 NPC 좌표/주민 수를 출력 도구에서 확인 |
 | 무창 품삯 의뢰 | [진행·신규 주민·보상](quests/wuchang-wages.md) | `scripts/wages_quest.gd`, `work_board.gd`, `data/wuchang_wages_quest.json` | `wages_quest.gd`, `artisan_quest.gd`, `impostor_quest.gd` |
 | 무창 장인의 이름값 | [진행·원고·검증](quests/wuchang-artisan.md) | `scripts/artisan_quest.gd`, `data/wuchang_artisan_quest.json` | `artisan_quest.gd` |
 | 무창 약초꾼 의뢰 | [진행·원고·난이도](quests/wuchang-herbalist.md) | `scripts/herbalist_quest.gd`, `data/wuchang_herbalist_quest.json` | `herbalist_quest.gd` |

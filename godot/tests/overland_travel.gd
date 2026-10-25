@@ -71,7 +71,7 @@ func run() -> void:
 	var invalid=game.save_system.capture();invalid.world.position=[100,5121]
 	check(not game.save_system.validate(invalid),"new map coordinate bounds validated")
 	await exit_to("wuchang")
-	check(city.ambient_nodes.size()==12 and city.npcs.is_empty(),"Wuchang has nine civilians and three alliance members")
+	check(city.ambient_nodes.size()==13 and city.npcs.is_empty(),"Wuchang has ten civilians and three alliance members")
 	check(city.player.position.y>6144 and city.can_stand(city.player.position),"arrive safely in southern Wuchang farmland")
 	check(city.district_at_player()=="남문 밖 농촌","arrival is outside city walls")
 	var gate=city.decorations.get_node("south_gate")

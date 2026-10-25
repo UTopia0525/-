@@ -22,7 +22,7 @@ func talk(id: String) -> void:
 func run() -> void:
 	game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await process_frame;game.options.seen.append("city");game.start_wuchang();await physics_frame;await physics_frame
 	var w=game.exploration;var v=game.alliance_visit
-	check(w.ambient_nodes.size()==12,"nine civilians plus two guards and instructor")
+	check(w.ambient_nodes.size()==13,"ten civilians plus two guards and instructor")
 	for entry in v.data.npcs:
 		if entry.area!="wuchang":continue
 		var npc=w.decorations.get_node(entry.id)
