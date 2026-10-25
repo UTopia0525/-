@@ -14,8 +14,7 @@ var nodes: Array[Node]=[]
 var signature:=""
 func _ready() -> void:
 	game.PORTRAITS.ACTORS[SUSPECT]={"name":"마응칠","basic_portrait":"male_middle"}
-	# Event-only actor: no permanent town placement or new portrait allocation.
-	game.PORTRAITS.ACTORS[MESSENGER]={"name":"송지겸","basic_portrait":"male_young"}
+	# Song uses the shared dedicated portrait and remains an event-only actor.
 	game.quest_navigation.definitions[ID]={"title":data.title,"stages":{
 		"offer":{"label":"관아 앞 육정호에게 사칭 사건 묻기","goals":[]},
 		"witness":{"label":"하역장 오덕수에게 증언과 징수 문서 확인","goals":[]},

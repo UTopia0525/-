@@ -160,6 +160,12 @@
       "eye_y": 290,
       "eye_to_chin": 185,
       "natural_facing": "right"
+    },
+    "res://assets/portraits/alliance/song-jigyeom.png": {
+      "face_x": 450,
+      "eye_y": 253,
+      "eye_to_chin": 135,
+      "natural_facing": "left"
     }
   }
 }

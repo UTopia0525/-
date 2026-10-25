@@ -14,7 +14,6 @@ var pending_art:=""
 var nodes: Array[Node]=[]
 var signature:=""
 func _ready() -> void:
-	game.PORTRAITS.ACTORS[GIVER]={"name":"송지겸","basic_portrait":"male_young"}
 	game.quest_navigation.definitions[ID]={"title":data.title,"stages":{
 		"invitation":{"label":"장사에서 무림맹 사절 송지겸 만나기","goals":[]},
 		"invited":{"label":"무창 북동쪽 무림맹 정문에서 방문 용무 전하기","goals":[]},

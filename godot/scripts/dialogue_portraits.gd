@@ -3,6 +3,7 @@ extends Control
 const UI = preload("res://scripts/ui.gd")
 const EXTRA_ROOT = "res://assets/portraits/extras/"
 static var ACTORS = {
+	"song_jigyeom":{"name":"송지겸","extra":"male_young","portrait":"res://assets/portraits/alliance/song-jigyeom.png"},
 	"bandit_officer": {"name":"정 포두", "extra":"male_middle"},
 	"bandit_messenger": {"name":"포졸", "extra":"male_young", "portrait":"res://assets/portraits/story/constable-duty.png"},
 	"bandit_farmer": {"name":"피해 농민", "extra":"male_elder"},
