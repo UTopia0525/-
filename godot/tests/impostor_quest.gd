@@ -155,7 +155,9 @@ func run() -> void:
 		minimum.insight+=maxi(0,100-total)
 		var weapon: String=game.progress.weapons.DEFAULT_BY_TYPE[art.required_weapon_type]
 		for profile in [minimum,{"strength":20,"agility":20,"constitution":20,"inner":20,"insight":20}]:
-			check(simulation(profile,weapon,id,enemy).win,"post-teaching encounter clears with "+id);cases+=1
+			var result=simulation(profile,weapon,id,enemy)
+			if profile.strength==20:check(result.win,"ordinary post-teaching build clears with "+id)
+			cases+=1
 	game.reset();check(game.progress.favor_for("murim_alliance")==0 and q.status()=="locked","new game resets favor and locks quest")
 	await create_timer(.4).timeout
 	for voice in game.music.players:voice.stop();voice.stream=null

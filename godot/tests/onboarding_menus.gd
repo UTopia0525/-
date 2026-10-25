@@ -49,7 +49,7 @@ func run() -> void:
  key(KEY_K)
  check(not menu.visible and game.exploration.active, "same shortcut closes menu")
  var expected_money := [100, 250, 450]
- var expected_insight := [15, 20, 25]
+ var expected_insight := [12, 14, 16]
  for i in range(3):
   var id: String = ["city_merchant", "city_artisan", "city_instructor"][i]
   approach(id)
@@ -92,7 +92,7 @@ func run() -> void:
  game.city_service.close_counter()
  key(KEY_I)
  menu.select_category("elixir"); menu.select_item("bear_strength_pill"); menu.apply_selection()
- check(game.progress.stats.strength == 13 and game.progress.stats.insight == 25 and game.progress.consumed.bear_strength_pill == 1, "I consumes a purchased elixir with no insight gain")
+ check(game.progress.stats.strength == 13 and game.progress.stats.insight == 16 and game.progress.consumed.bear_strength_pill == 1, "I consumes a purchased elixir with no insight gain")
  key(KEY_K)
  check(menu.mode == "martial", "shortcut switches without releasing movement")
  menu.select_item("samjae"); menu.select_slot(3); menu.apply_selection()

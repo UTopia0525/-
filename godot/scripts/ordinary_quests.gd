@@ -8,6 +8,7 @@ var pending: Dictionary = {}
 var marks: Dictionary = {}
 var goal_nodes: Array[Node2D] = []
 var revision := -1
+var target_marks: Dictionary = {}
 
 func _ready() -> void:
 	var layout: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/maps/changsha/layout.json"))
@@ -33,7 +34,7 @@ func stage_for(id: String) -> String:
 func sync_navigation(id: String) -> void:
 	if status(id)=="completed":
 		if game.quest_navigation.quest_id==id:game.quest_navigation.clear()
-	elif status(id)!="available":game.quest_navigation.track(id,stage_for(id),records[id].done)
+	elif status(id)!="available":game.quest_navigation.update_quest(id,stage_for(id),records[id].done)
 func accept(id: String) -> void:
 	if status(id)!="available":return
 	records[id]={"status":"active","done":[],"branch":""}
@@ -88,7 +89,7 @@ func _after_dialogue() -> void:
 	if pending.is_empty():return
 	var work: Dictionary=pending.duplicate();pending.clear();var id: String=work.id
 	match work.op:
-		"offer":game.adventure_ui.choose("의뢰 · "+game.quest_navigation.definitions[id].title,"보수 %d문 · 오성+5\n다른 일반 의뢰와 독립적으로 받을 수 있습니다." % int(game.trade_intro.rewards.quests[id].money),"맡는다",choose_offer.bind(true,id),"나중에 온다",choose_offer.bind(false,id))
+		"offer":game.adventure_ui.choose("의뢰 · "+game.quest_navigation.definitions[id].title,"보수 %d문 · 오성+2\n다른 일반 의뢰와 독립적으로 받을 수 있습니다." % int(game.trade_intro.rewards.quests[id].money),"맡는다",choose_offer.bind(true,id),"나중에 온다",choose_offer.bind(false,id))
 		"goal":
 			if status(id)!="active" or work.goal in records[id].done:return
 			records[id].done.append(work.goal)
@@ -114,12 +115,37 @@ func is_target(npc: String) -> bool:
 func marker_for(npc: String) -> String:
 	for quest in game.regional_quests():
 		if is_instance_valid(quest) and npc==quest.GIVER:return quest.marker_for(npc)
+	if game.trade_intro.active() and game.trade_intro.current().npc==npc:return "?"
 	for id in definitions:
 		if definitions[id].giver==npc:
-			return "?" if status(id)=="ready" else "!" if status(id) in ["available","active"] else ""
+			return "?" if status(id)=="ready" else "!" if status(id)=="available" else ""
 	if npc=="bandit_officer":return "?" if game.bandit_story.stage=="report" else "!" if game.bandit_story.stage=="offered" else ""
 	return "!" if npc=="bandit_muster" and game.bandit_story.stage=="preparing" else ""
+func _refresh_target_icons() -> void:
+	var w=game.exploration
+	var present: Dictionary={}
+	for npc in w.ambient_nodes:
+		var id: String=npc.get_meta("npc_id")
+		var is_giver:=false
+		for q in game.regional_quests():
+			if id==q.GIVER:is_giver=true
+		if w.area_name=="changsha" or is_giver:continue
+		if not is_target(id):continue
+		present[id]=true
+		if not target_marks.has(id):
+			var mark=UI.label(w.decorations,"◆",Rect2(0,0,80,92),68,Color("ff9863"))
+			mark.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;mark.z_index=6
+			mark.add_theme_color_override("font_outline_color",Color("2b2614"));mark.add_theme_constant_override("outline_size",5);target_marks[id]=mark
+		target_marks[id].position=npc.position+Vector2(-40,-w.Metrics.CITIZEN_HEIGHT-w.Metrics.QUEST_GAP-w.Metrics.NAME_GAP-46)
+	for id in target_marks.keys():
+		if not present.has(id):
+			if is_instance_valid(target_marks[id]):target_marks[id].free()
+			target_marks.erase(id)
+
 func clear_world() -> void:
+	for mark in target_marks.values():
+		if is_instance_valid(mark):mark.free()
+	target_marks.clear()
 	for mark in marks.values():
 		if is_instance_valid(mark):mark.free()
 	marks.clear()
@@ -136,9 +162,11 @@ func refresh_world() -> void:
 	for npc in world.ambient_nodes:
 		var id: String=npc.get_meta("npc_id")
 		if not marks.has(id):
-			var mark=UI.label(world.decorations,"",Rect2(0,0,40,46),34,Color("ffe14b"));mark.z_index=6;mark.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+			var mark=UI.label(world.decorations,"",Rect2(0,0,80,92),68,Color("ffe14b"));mark.z_index=6;mark.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
 			mark.add_theme_color_override("font_outline_color",Color("2b2614"));mark.add_theme_constant_override("outline_size",5);marks[id]=mark
-		marks[id].position=npc.position+Vector2(-20,-world.Metrics.CITIZEN_HEIGHT-world.Metrics.QUEST_GAP-(world.Metrics.NAME_GAP if npc.get_meta("show_name",false) else 0.0));marks[id].text=marker_for(id);marks[id].visible=not str(marks[id].text).is_empty()
+		marks[id].position=npc.position+Vector2(-40,-world.Metrics.CITIZEN_HEIGHT-world.Metrics.QUEST_GAP-46-(world.Metrics.NAME_GAP if npc.get_meta("show_name",false) else 0.0));marks[id].text=marker_for(id)
+		if marks[id].text.is_empty() and is_target(id):marks[id].text="◆"
+		marks[id].visible=not str(marks[id].text).is_empty()
 	# Rebuild investigation markers only when the stage/completion signature changes.
 	var signature:=JSON.stringify(records)
 	if world.get_meta("quest_signature","")==signature:return
@@ -151,10 +179,11 @@ func refresh_world() -> void:
 		for goal in game.quest_navigation.definitions[id].stages[stage_for(id)].goals:
 			if not goal.has("point") or goal.id in records[id].done:continue
 			var node=Node2D.new();node.position=world.safe_player_position(world.city_point(goal.point));node.z_index=2
-			var mark=UI.label(node,"◆",Rect2(-15,-24,30,30),24,UI.GOLD);mark.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+			var mark=UI.label(node,"◆",Rect2(-30,-48,60,60),48,UI.GOLD);mark.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
 			world.decorations.add_child(node);goal_nodes.append(node)
 			world.objectives.append({"id":"quest_goal:"+id+":"+goal.id,"goal_id":goal.id,"name":"의뢰 조사 지점","node":node,"position":node.position,"frame":-1})
-func _process(_delta: float) -> void:refresh_world()
+func _process(_delta: float) -> void:
+	refresh_world();_refresh_target_icons()
 func snapshot() -> Dictionary:return {"records":records.duplicate(true),"pending":pending.duplicate(true)}
 func valid(data) -> bool:
 	if not data is Dictionary or not data.get("records") is Dictionary or not data.get("pending",{}) is Dictionary:return false

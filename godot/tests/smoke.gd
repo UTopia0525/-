@@ -102,7 +102,7 @@ func _run() -> void:
 		game.battle.use_selected()
 		await _wait_for_turn()
 	check(game.state == "story", "victory continues the full prologue")
-	check(game.battle.player_hp == 244 and game.battle.enemy_hp == 0, "enemy defense lengthens battle; sword guard reduces counters")
+	check(game.battle.player_hp == 236 and game.battle.enemy_hp == 0, "learned lower art buffs tutorial; sword guard reduces counters")
 	game.start_battle()
 	check(game.battle.player_hp == 300 and game.battle.enemy_hp == 150, "retry restores condition")
 	game.battle.select_samjae()

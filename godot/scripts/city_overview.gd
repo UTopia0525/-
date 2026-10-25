@@ -49,6 +49,9 @@ func _ready() -> void:
 	UI.label(self,"약 / 장 / 무
 시설 아이콘도
 클릭해 안내",Rect2(20,450,150,100),16,UI.MUTED)
+	UI.label(self,"! 수락 가능
+? 완료 보고
+◆ 의뢰 목표",Rect2(20,562,155,92),16,UI.GOLD)
 	for i in range(first_facility,get_child_count()):facility_widgets.append(get_child(i))
 	UI.label(self, "● 현재 위치     ·     TAB / ESC  지도 닫기", Rect2(190, 674, 900, 30), 17, UI.GOLD)
 	hide()
@@ -109,12 +112,19 @@ func open_for(exploration, goal: Dictionary = {}) -> void:
 			marker.add_child(badge)
 			badge.set_deferred("size",Vector2(22,22))
 			badge.size=Vector2(22,22);badge.pressed.connect(track_facility.bind(service))
+		var errands=exploration.get_parent().ordinary_quests
+		var symbol: String=errands.marker_for(citizen.get_meta("npc_id"))
+		if symbol.is_empty() and errands.is_target(citizen.get_meta("npc_id")):symbol="◆"
+		if not symbol.is_empty():
+			var quest_badge=UI.label(self,symbol,Rect2(marker.position+Vector2(-18,-43),Vector2(48,48)),32,Color("ffe14b"))
+			quest_badge.add_theme_color_override("font_outline_color",Color("14231e"));quest_badge.add_theme_constant_override("outline_size",4)
+			quest_badge.set_meta("quest",true);actor_markers.append(quest_badge)
 		marker.tooltip_text = str(citizen.get_meta("display_name", "주민")) + " · " + str(citizen.get_meta("post", ""))
 		add_child(marker)
 		actor_markers.append(marker)
 	if not goal.is_empty():
 		var marker = Panel.new()
-		marker.size = Vector2(28, 28)
+		marker.size = Vector2(56, 56)
 		marker.mouse_filter=Control.MOUSE_FILTER_IGNORE
 		var outline=StyleBoxFlat.new();outline.bg_color=Color.TRANSPARENT;outline.border_color=Color("ff9863");outline.set_border_width_all(2)
 		marker.add_theme_stylebox_override("panel",outline)

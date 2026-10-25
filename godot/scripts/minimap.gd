@@ -16,6 +16,7 @@ var place_label: Label
 var map_view: Control
 var world_window: Rect2
 var facility_markers: Array[Dictionary]=[]
+var quest_badges: Array[Dictionary]=[]
 var npc_markers: PackedVector2Array = []
 var player_marker: Vector2
 var facing := "down"
@@ -70,10 +71,14 @@ func refresh() -> void:
 	player_marker = project_point(center)
 	facing = exploration.player.facing
 	npc_markers.clear()
-	facility_markers.clear()
+	facility_markers.clear();quest_badges.clear()
 	for citizen in exploration.ambient_nodes:
 		if world_window.has_point(citizen.position):
 			npc_markers.append(project_point(citizen.position))
+			var errands=exploration.get_parent().ordinary_quests
+			var symbol: String=errands.marker_for(citizen.get_meta("npc_id"))
+			if symbol.is_empty() and errands.is_target(citizen.get_meta("npc_id")):symbol="◆"
+			if not symbol.is_empty():quest_badges.append({"position":project_point(citizen.position),"symbol":symbol})
 			var id: String=citizen.get_meta("service_id", "")
 			if not id.is_empty():facility_markers.append({"id":id,"position":project_point(citizen.position)})
 	for npc in exploration.npcs:
@@ -96,7 +101,7 @@ func _refresh_quest() -> void:
 	quest_label.tooltip_text = goal.quest_title + " · " + goal.label
 	var projected = project_point(goal.position)
 	quest_offscreen = not world_window.has_point(goal.position)
-	var lower = Vector2(12, 12)
+	var lower = Vector2(20, 20)
 	var upper = VIEW_SIZE - lower
 	quest_direction = (projected - player_marker).normalized()
 	if not quest_offscreen:
@@ -145,13 +150,16 @@ func draw_map(canvas: Control) -> void:
 		var color: Color={"city_merchant":Color("92dca1"),"city_artisan":Color("e7b777"),"city_instructor":Color("9fc5fc")}[facility.id]
 		canvas.draw_circle(facility.position,8,Color("16261e"));canvas.draw_arc(facility.position,8,0,TAU,20,color,1.5)
 		canvas.draw_string(UI.BODY_FONT,facility.position+Vector2(-5,5),{"city_merchant":"약","city_artisan":"장","city_instructor":"무"}[facility.id],HORIZONTAL_ALIGNMENT_LEFT,-1,12,color)
+	for badge in quest_badges:
+		canvas.draw_string_outline(UI.BODY_FONT,badge.position+Vector2(-7,-8),badge.symbol,HORIZONTAL_ALIGNMENT_LEFT,-1,26,5,Color("14251e"))
+		canvas.draw_string(UI.BODY_FONT,badge.position+Vector2(-7,-8),badge.symbol,HORIZONTAL_ALIGNMENT_LEFT,-1,26,Color("ffe14b"))
 	if quest_active:
 		if quest_offscreen:
 			var tangent = Vector2(-quest_direction.y, quest_direction.x)
-			canvas.draw_circle(quest_marker, 9, Color("14251e"))
-			canvas.draw_colored_polygon(PackedVector2Array([quest_marker + quest_direction * 7, quest_marker - quest_direction * 5 + tangent * 5, quest_marker - quest_direction * 5 - tangent * 5]), QUEST_COLOR)
+			canvas.draw_circle(quest_marker, 18, Color("14251e"))
+			canvas.draw_colored_polygon(PackedVector2Array([quest_marker + quest_direction * 14, quest_marker - quest_direction * 10 + tangent * 10, quest_marker - quest_direction * 10 - tangent * 10]), QUEST_COLOR)
 		else:
-			var diamond = PackedVector2Array([quest_marker + Vector2(-7, 0), quest_marker + Vector2(0, -7), quest_marker + Vector2(7, 0), quest_marker + Vector2(0, 7), quest_marker + Vector2(-7, 0)])
+			var diamond = PackedVector2Array([quest_marker + Vector2(-14, 0), quest_marker + Vector2(0, -14), quest_marker + Vector2(14, 0), quest_marker + Vector2(0, 14), quest_marker + Vector2(-14, 0)])
 			canvas.draw_polyline(diamond, Color("14251e"), 5)
 			canvas.draw_polyline(diamond, QUEST_COLOR, 2)
 	canvas.draw_circle(player_marker, 7, Color("10251e"))

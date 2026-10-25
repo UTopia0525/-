@@ -34,7 +34,7 @@ func marker_for(id: String) -> String:
 	return "?" if phase=="ready" else "!" if phase=="available" else ""
 
 func track() -> void:
-	game.quest_navigation.track(ID,stage())
+	game.quest_navigation.update_quest(ID,stage())
 
 func handle_interaction(id: String) -> bool:
 	if id==GIVER and game.exploration.area_name=="wuchang":
@@ -189,7 +189,7 @@ func refresh_world() -> void:
 	if world.area_name=="wuchang":
 		for npc in world.ambient_nodes:
 			if npc.get_meta("npc_id")==GIVER:
-				var mark=UI.label(npc,marker_for(GIVER),Rect2(-20,-world.Metrics.CITIZEN_HEIGHT-world.Metrics.QUEST_GAP-world.Metrics.NAME_GAP,40,46),34,Color("ffe14b"))
+				var mark=UI.label(npc,marker_for(GIVER),Rect2(-40,-world.Metrics.CITIZEN_HEIGHT-world.Metrics.QUEST_GAP-world.Metrics.NAME_GAP-46,80,92),68,Color("ffe14b"))
 				mark.add_theme_color_override("font_outline_color",Color("2b2614"));mark.add_theme_constant_override("outline_size",5)
 				mark.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;nodes.append(mark)
 		if phase=="ready":_actor("herb_gatherer",[805,1190],7)

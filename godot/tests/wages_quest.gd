@@ -52,7 +52,7 @@ func run() -> void:
 	await approach(q.GIVER);drain();game.adventure_ui.primary_action();drain()
 	check(q.phase=="inspect","explicit acceptance")
 	game.adventure_ui.open_journal();game.adventure_ui.set_filter("active");check(game.adventure_ui.entries.has(q.ID),"Q active entry")
-	game.adventure_ui.select_quest(q.ID);check(game.adventure_ui.body.text.contains("100문") and game.adventure_ui.body.text.contains("오성+5"),"journal shows correct reward");game.adventure_ui.close_menu()
+	game.adventure_ui.select_quest(q.ID);check(game.adventure_ui.body.text.contains("100문") and game.adventure_ui.body.text.contains("오성+2"),"journal shows correct reward");game.adventure_ui.close_menu()
 	await approach(q.CLERK);drain();check(q.phase=="inspect","early clerk visit cannot skip board")
 	var board=w.objectives.filter(func(e):return e.id==q.BOARD)[0].node
 	check(not w.can_stand(board.position+Vector2(0,-7)),"board feet have navigation collision")
@@ -86,12 +86,12 @@ func run() -> void:
 	await approach(q.GIVER);check(game.adventure_ui.window.visible,"shared giver offers topic menu");game.adventure_ui.primary_action()
 	while game.dialogue_index<game.dialogue_lines.size()-1:game.advance_dialogue()
 	check(game.money==money and game.progress.stats==stats,"no premature report reward");game.advance_dialogue()
-	check(q.phase=="completed" and game.money==money+100 and game.progress.stats.insight==stats.insight+5,"requested 100 money and 5 insight")
+	check(q.phase=="completed" and game.money==money+100 and game.progress.stats.insight==stats.insight+2,"requested 100 money and 2 insight")
 	var after=game.progress.stats.duplicate();after.insight=stats.insight
 	check(after==stats and game.progress.fame==0 and game.progress.favor_for("murim_alliance")==0,"other stats fame favor unchanged")
 	check(others==[game.herbalist_quest.snapshot(),game.artisan_quest.snapshot(),game.duel_quest.snapshot(),game.inn_quest.snapshot(),game.impostor_quest.snapshot()],"other five quests untouched")
 	check(actor(q.CLERK)!=null and q.marker_for(q.GIVER)=="","permanent clerk remains after completion, marker removed")
-	q._complete();check(game.money==money+100 and game.progress.stats.insight==stats.insight+5,"duplicate reward blocked")
+	q._complete();check(game.money==money+100 and game.progress.stats.insight==stats.insight+2,"duplicate reward blocked")
 	await roundtrip(5)
 	await approach(q.GIVER);game.adventure_ui.secondary_action();check(game.adventure_ui.window.visible,"two pending other topics available")
 	game.adventure_ui.primary_action();drain();check(game.impostor_quest.phase=="verify" and game.artisan_quest.phase=="dock","completed wages smalltalk cannot block impostor witness")

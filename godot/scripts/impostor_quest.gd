@@ -38,7 +38,7 @@ func marker_for(id: String) -> String:
 	return "!" if status()=="available" else "?" if phase=="ready" else ""
 func is_target(id: String) -> bool:return phase not in ["available","completed"] and id==target()
 func reward_label() -> String:return "보수 250문 · 명성+5 · 무림맹 호의도+5 (보수 수령 후 감사 대화)"
-func track() -> void:game.quest_navigation.track(ID,stage())
+func track() -> void:game.quest_navigation.update_quest(ID,stage())
 func in_battle() -> bool:return phase=="battle"
 func handle_interaction(id: String) -> bool:
 	if game.exploration.area_name!="wuchang" or status()=="locked":return false
@@ -136,7 +136,7 @@ func refresh_world() -> void:
 	if w.area_name!="wuchang":return
 	for npc in w.ambient_nodes:
 		if npc.get_meta("npc_id")!=GIVER:continue
-		var marker=UI.label(npc,marker_for(GIVER),Rect2(-20,-w.Metrics.CITIZEN_HEIGHT-w.Metrics.QUEST_GAP-w.Metrics.NAME_GAP,40,46),34,Color("ffe14b"))
+		var marker=UI.label(npc,marker_for(GIVER),Rect2(-40,-w.Metrics.CITIZEN_HEIGHT-w.Metrics.QUEST_GAP-w.Metrics.NAME_GAP-46,80,92),68,Color("ffe14b"))
 		marker.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;marker.visible=not marker.text.is_empty()
 		marker.add_theme_color_override("font_outline_color",Color("2b2614"));marker.add_theme_constant_override("outline_size",5);nodes.append(marker)
 	if phase in ["confront","battle"]:_actor(SUSPECT,data.suspect_point,7,"사칭범","harbor")

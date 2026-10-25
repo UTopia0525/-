@@ -29,3 +29,7 @@
 ![무기 구매](../../godot/screenshots/trading-workshop.png)
 ![무공 전수](../../godot/screenshots/trading-training.png)
 ![영약 구매](../../godot/screenshots/trading-market.png)
+
+## 도시별 무기 판매 목록
+
+장사 장인은 정련검·후배도·균형창3종(각300문)만 판매한다. 무창의9종과 영약/무공 판매는 유지한다. `city_weapon_stock.json`을 표시와 실제 거래에서 함께 검증하며 기존 소유 무기의 장착은 유지한다. [최신 구현](quest-world-update.md).

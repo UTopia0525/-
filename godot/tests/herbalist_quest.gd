@@ -149,7 +149,7 @@ func run() -> void:
 		var weapon: String=game.progress.weapons.DEFAULT_BY_TYPE[art.required_weapon_type]
 		var result=simulation(stats,weapon,id,enemy)
 		balance.append(result.merged({"skill":id,"weapon":weapon,"stats":stats}))
-		check(result.win,"minimum learning + realm floor clears with "+id)
+		# Record extreme minimum builds; the enemy buff no longer guarantees an attack-only win.
 		var balanced={"strength":20,"agility":20,"constitution":20,"inner":20,"insight":20}
 		result=simulation(balanced,weapon,id,enemy)
 		balance.append(result.merged({"skill":id,"profile":"balanced_100"}))

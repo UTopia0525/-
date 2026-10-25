@@ -498,7 +498,7 @@ func interact() -> void:
 			if definition.id == npc.service_id:
 				service = definition
 		if not service.is_empty():
-			var greeting: String = {"market": "근력을 돋우고 몸을 가볍게 할 영약이 있지요. 하급 영약은 한 알에 백문입니다. 약력도 과하면 독이니, 같은 약은 평생 열 알까지만 드세요.", "workshop": "검이든 도든 창이든, 손에 맞아야 제 위력을 내는 법이지요. 삼백, 오백, 칠백문짜리가 있으니 날과 무게를 살펴 고르시오.", "training": "무공 한 문을 전수하는 데 삼백오십문이오. 허나 근기와 깨달음이 따르지 않으면 배워도 펼칠 수 없소. K를 눌러 실전에 쓸 네 가지 초식을 미리 갖추시오."}[service.kind]
+			var greeting: String = {"market": "근력을 돋우고 몸을 가볍게 할 영약이 있지요. 하급 영약은 한 알에 백문입니다. 약력도 과하면 독이니, 같은 약은 평생 열 알까지만 드세요.", "workshop": ("여기서는 정련검과 후배도, 균형창만 취급하오. 어느 것이든 삼백문이니 손에 맞는 병장기를 고르시오." if exploration.area_name=="changsha" else "검이든 도든 창이든, 손에 맞아야 제 위력을 내는 법이지요. 삼백, 오백, 칠백문짜리가 있으니 날과 무게를 살펴 고르시오."), "training": "무공 한 문을 전수하는 데 삼백오십문이오. 허나 근기와 깨달음이 따르지 않으면 배워도 펼칠 수 없소. K를 눌러 실전에 쓸 네 가지 초식을 미리 갖추시오."}[service.kind]
 			pending_service_id = service.id
 			say(service.get("greeting_lines",[[service.get("actor_id",service.id), greeting]]), _service_done)
 		return

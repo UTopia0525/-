@@ -28,7 +28,7 @@ func reward_label() -> String:return "중급 무공5종 중1종 전수 (금전·
 func marker_for(_id: String) -> String:return ""
 func is_target(id: String) -> bool:
 	return (stage_id=="invited" and id in ["alliance_guard_left","alliance_guard_right"]) or (stage_id=="steward" and id=="heo_mungyu") or (stage_id=="instructor" and id=="gwak_jinseok")
-func track() -> void:game.quest_navigation.track(ID,stage())
+func track() -> void:game.quest_navigation.update_quest(ID,stage())
 func can_play() -> bool:
 	return game.state=="explore" and game.dialogue_lines.is_empty() and not game.get_tree().paused and not game.settings_menu.window.visible and not game.player_menu.visible and not game.city_overview.visible and not game.city_service.visible and not game.dialogue_history.visible and not game.adventure_ui.window.visible
 func maybe_start() -> void:

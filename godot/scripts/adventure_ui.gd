@@ -123,14 +123,13 @@ func set_filter(value: String) -> void:
 		if record.is_empty():continue
 		var state: String="completed" if record.status=="completed" else "active"
 		if state==filter:add_quest_row(id,state,record.stage,"도입 연계")
-	if game.exploration.area_name=="changsha":
-		for id in game.ordinary_quests.definitions:
-			var state: String=game.ordinary_quests.status(id)
-			if (filter=="active" and state in ["active","ready"]) or filter==state:add_quest_row(id,state,"offer" if state=="available" else game.ordinary_quests.stage_for(id),"일반 의뢰")
+	for id in game.ordinary_quests.definitions:
+		var state: String=game.ordinary_quests.status(id)
+		if (filter=="active" and state in ["active","ready"]) or filter==state:add_quest_row(id,state,"offer" if state=="available" else game.ordinary_quests.stage_for(id),"장사 · 일반 의뢰")
 	for quest in game.regional_quests():
 		var quest_status: String=quest.status()
 		if (filter=="active" and quest_status in ["active","ready"]) or filter==quest_status:
-			if quest_status!="available" or game.exploration.area_name=="wuchang":add_quest_row(quest.ID,quest_status,quest.stage(),"메인 이야기" if quest.ID==game.alliance_story.ID else "일반 의뢰")
+			add_quest_row(quest.ID,quest_status,quest.stage(),"메인 이야기" if quest.ID==game.alliance_story.ID else "무창 · 일반 의뢰")
 	var story=game.bandit_story
 	if story.stage!="dormant":
 		var state: String="completed" if story.stage=="completed" else "active"
@@ -138,7 +137,7 @@ func set_filter(value: String) -> void:
 	if entries.is_empty():body.text={"active":"진행 중인 의뢰가 없습니다.\n수락 가능 목록을 살피거나 시설에서 강호행을 준비하세요.","available":"지금 받을 수 있는 일반 의뢰가 없습니다.\n진행 중인 용건과 성장·정비를 살펴보세요.","completed":"아직 마친 의뢰가 없습니다.\n노란 ! 인물에게 일거리를 물어보세요."}[filter]
 func add_quest_row(id: String,state: String,stage: String,kind: String) -> void:
 	entries[id]={"status":state,"stage":stage,"kind":kind}
-	row(("? " if state=="ready" else "! " if state=="available" else "")+game.quest_navigation.definitions[id].title,select_quest.bind(id))
+	row(("◆ " if game.quest_navigation.quest_id==id else "")+("? " if state=="ready" else "! " if state=="available" else "")+game.quest_navigation.definitions[id].title,select_quest.bind(id))
 func select_quest(id: String) -> void:
 	if id=="prologue_record":
 		selected=id;primary.disabled=true;primary.text="이야기의 목표 안내를 따르세요"
@@ -147,7 +146,7 @@ func select_quest(id: String) -> void:
 		body.text="0장 · 표행의 기록\n\n"+history
 		return
 	selected=id;var data: Dictionary=entries[id];var nav: Dictionary=game.quest_navigation.definitions[id]
-	var reward: String="500문 · 오성+5 · 명성+5 (귀환 보고 후)" if id==game.bandit_story.QUEST_ID else "%d문 · 오성+5 (상한100)" % int(game.trade_intro.rewards.quests.get(id,{"money":0}).money)
+	var reward: String="500문 · 오성+2 · 명성+5 (귀환 보고 후)" if id==game.bandit_story.QUEST_ID else "%d문 · 오성+2 (상한100)" % int(game.trade_intro.rewards.quests.get(id,{"money":0}).money)
 	for quest in game.regional_quests():
 		if id==quest.ID:reward=quest.reward_label().trim_prefix("보수 ")
 	var who: String="연계 대화에서 받은 용건"

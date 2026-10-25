@@ -26,7 +26,8 @@
     "weapon": "thickback_saber",
     "skills": [
       "bandit_chop",
-      "bandit_heavy_chop"
+      "bandit_heavy_chop",
+      "soemok"
     ]
   },
   "scenes": {

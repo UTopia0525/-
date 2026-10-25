@@ -99,6 +99,7 @@ func refresh_list() -> void:
 		"market": ids = p.elixirs.keys()
 		"workshop": ids = p.weapons.definitions.keys() if selected_tab == 0 else ["none"] + p.owned_weapons
 		"training": ids = p.arts.definitions.keys() if selected_tab == 0 else ["basic_attack", "basic_defense"] + p.learned.duplicate()
+	if selected_tab==0 and service.kind=="workshop":ids=weapon_stock()
 	for id in ids:
 		var text := ""
 		match service.kind:
@@ -121,6 +122,10 @@ func refresh_list() -> void:
 		var clear = UI.button(rows, "선택한 칸 비우기", Rect2(0, 0, 365, 43))
 		clear.custom_minimum_size = Vector2(365, 43)
 		clear.pressed.connect(select_item.bind("clear"))
+
+func weapon_stock() -> Array:
+	var stock: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/city_weapon_stock.json"))
+	return stock.get(game.exploration.area_name,game.progress.weapons.definitions.keys())
 
 func select_target_slot(index: int) -> void:
 	target_slot = index
@@ -160,6 +165,7 @@ func update_detail() -> void:
 			message.text = "맨손으로 전환합니다. 권법·장법을 사용할 수 있습니다." if selected_id == "none" else "%s\n\n%s\n\n공격+%d%% · 받는 피해-%d%%\n해당 창법 내기-%d%%" % [item.name, item.description, item.attack_bonus_percent, item.damage_reduction_percent, item.qi_reduction_percent]
 			action.text = "%d문 · 구매" % item.get("price", 0) if selected_tab == 0 else "장착" if selected_id != "none" else "무기 해제"
 			if selected_tab == 0: problem = p.issue("weapon", selected_id, game.money)
+			if selected_tab==0 and selected_id not in weapon_stock():problem="이 도시에서는 판매하지 않는 병장기입니다."
 		"training":
 			if selected_id == "clear": message.text = "선택한 편성 칸을 비웁니다. 기본 행동도 교체할 수 있습니다."
 			else:
@@ -190,6 +196,9 @@ func transact() -> void:
 	var ok := false
 	if selected_tab == 0:
 		var kind: String = {"market":"elixir", "workshop":"weapon", "training":"art"}[service.kind]
+		if kind=="weapon" and selected_id not in weapon_stock():
+			feedback.text="이 도시에서는 판매하지 않는 병장기입니다."
+			return
 		ok = p.purchase(kind, selected_id, game)
 		feedback.text = {"market":"약은 보유 영약 탭에서 복용하시면 됩니다.", "workshop":"잘 골랐네요. 장비 장착 탭에서 손에 쥐어보세요.", "training":"배운 수를 잊지 마시오. 편성 탭에서 쓸 무공을 고르시오."}[service.kind] if ok else p.error
 	else:

@@ -1,0 +1,80 @@
+{
+  "scope": "shared combat, simple attack/defense strategies; not a guaranteed win for every stat distribution",
+  "campaign": {
+    "cases": 110,
+    "wins": 109,
+    "losses": [
+      {
+        "enemy": "bandit_ringleader",
+        "enemy_actions": {
+          "bandit_chop": 0,
+          "bandit_heavy_chop": 0,
+          "basic_attack": 1,
+          "basic_defense": 3,
+          "soemok": 6
+        },
+        "hp": 0,
+        "reactive_defense": true,
+        "skill": "cheongpung",
+        "stats": {
+          "agility": 14,
+          "constitution": 10,
+          "inner": 12,
+          "insight": 52,
+          "strength": 12
+        },
+        "turns": 10,
+        "weapon": "plain_iron_sword",
+        "win": false
+      }
+    ]
+  },
+  "herbalist": {
+    "cases": 20,
+    "wins": 17,
+    "losses": [
+      {
+        "hp": 0,
+        "skill": "yusu",
+        "stats": {
+          "agility": 15,
+          "constitution": 10,
+          "inner": 12,
+          "insight": 53,
+          "strength": 10
+        },
+        "turns": 7,
+        "weapon": "plain_iron_sword",
+        "win": false
+      },
+      {
+        "hp": 0,
+        "skill": "danseok",
+        "stats": {
+          "agility": 10,
+          "constitution": 12,
+          "inner": 12,
+          "insight": 50,
+          "strength": 16
+        },
+        "turns": 5,
+        "weapon": "thickback_saber",
+        "win": false
+      },
+      {
+        "hp": 0,
+        "skill": "hoepung",
+        "stats": {
+          "agility": 16,
+          "constitution": 10,
+          "inner": 12,
+          "insight": 48,
+          "strength": 14
+        },
+        "turns": 5,
+        "weapon": "thickback_saber",
+        "win": false
+      }
+    ]
+  }
+}

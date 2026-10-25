@@ -36,5 +36,25 @@
         "inner": 8
       }
     }
+  },
+  "soemok": {
+    "name": "쇄목도법",
+    "description": "도끼로 장작을 쪼개듯 도의 무게를 실어 짧고 힘차게 내리벤다. 도적과 하급 무사가 익히는 입문 도법.",
+    "grade": "low",
+    "weapon_style": "saber",
+    "required_weapon_type": "saber",
+    "damage_coefficients": {
+      "strength": 4,
+      "agility": 2
+    },
+    "qi_cost": 12,
+    "requirements": {
+      "minimum_total": 40,
+      "stats": {
+        "strength": 10,
+        "agility": 8,
+        "inner": 6
+      }
+    }
   }
 }

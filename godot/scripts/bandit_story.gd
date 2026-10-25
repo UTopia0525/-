@@ -55,7 +55,7 @@ func explore(next_stage: String) -> void:
 	game.exploration.camera.snap_to_player()
 	game.music.play_track("dock")
 	var target: String = {"offered":"enlist", "preparing":"muster", "report":"report"}.get(stage, "")
-	if not target.is_empty(): game.quest_navigation.track(QUEST_ID, target)
+	if not target.is_empty(): game.quest_navigation.update_quest(QUEST_ID, target)
 
 func _notice_done() -> void: explore("offered")
 func _enrolled() -> void: explore("preparing")
@@ -130,9 +130,7 @@ func _settle() -> void:
 
 func _finish() -> void:
 	explore("completed")
-	game.quest_navigation.clear()
-	if not previous_navigation.is_empty() and previous_navigation.get("quest", "") != "":
-		game.quest_navigation.track(previous_navigation.quest, previous_navigation.stage, previous_navigation.completed)
+	if game.quest_navigation.quest_id==QUEST_ID:game.quest_navigation.clear()
 	game.trade_intro.sync_navigation()
 
 func snapshot() -> Dictionary:

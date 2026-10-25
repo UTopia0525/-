@@ -227,7 +227,7 @@ func validate(d) -> bool:
 		if int(d.battle.enemy_guard) not in [0,20]: return false
 	if d.battle.has("enemy_qi") or d.battle.has("enemy_intent"):
 		if not game.progress.whole(d.battle.get("enemy_qi"),0,500): return false
-		var allowed: Array = ["basic_attack","basic_defense","bandit_chop"]
+		var allowed: Array = ["basic_attack","basic_defense","bandit_chop","soemok"]
 		for definition in game.encounters():
 			if definition.id == encounter_id: allowed = ["basic_attack","basic_defense"] + definition.skills
 		if d.battle.get("enemy_intent") not in allowed: return false

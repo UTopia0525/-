@@ -41,7 +41,7 @@ func run() -> void:
 	check(ui.window.visible and ui.mode=="choice" and quests.status("changsha_baskets")=="available","conversation requests acceptance, never forced")
 	ui.secondary_action();drain();check(quests.status("changsha_baskets")=="available","decline preserves offer")
 	game.interact();drain();ui.primary_action();drain()
-	check(quests.status("changsha_baskets")=="active" and quests.marker_for("vegetable_vendor")=="!","accepted independent errand")
+	check(quests.status("changsha_baskets")=="active" and quests.marker_for("vegetable_vendor")=="","accepted independent errand")
 	key(KEY_Q);await process_frame
 	check(ui.window.visible and ui.mode=="journal" and paused,"Q journal pauses world")
 	for i in range(20):
@@ -78,7 +78,7 @@ func run() -> void:
 			quests.handle_interaction(quests.definitions[id].giver);ui.secondary_action();drain()
 			check(game.money==paid,"family branches have identical reward")
 		else:quests.handle_interaction(quests.definitions[id].giver);drain()
-	check(game.money==700 and game.progress.stats.insight==40,"six normal quests pay approved total 700 and insight30")
+	check(game.money==700 and game.progress.stats.insight==22,"six normal quests pay approved total 700 and insight12")
 	game.toggle_city_map()
 	await process_frame
 	for marker in game.city_overview.actor_markers:

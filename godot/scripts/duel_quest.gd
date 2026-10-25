@@ -25,7 +25,7 @@ func marker_for(id: String) -> String:
 	return ("!" if phase=="available" else "?" if phase=="ready" else "") if id==GIVER else ""
 func is_target(id: String) -> bool:return id==STUDENT if phase=="accepted" else id==GIVER if phase=="ready" else false
 func reward_label() -> String:return "조식수원공 전수"
-func track() -> void:game.quest_navigation.track(ID,stage())
+func track() -> void:game.quest_navigation.update_quest(ID,stage())
 func in_battle() -> bool:return phase=="battle"
 
 func handle_interaction(id: String) -> bool:
@@ -112,7 +112,7 @@ func refresh_world() -> void:
 	if world.area_name!="wuchang":return
 	for npc in world.ambient_nodes:
 		if npc.get_meta("npc_id")!=GIVER:continue
-		var marker=UI.label(npc,marker_for(GIVER),Rect2(-20,-world.Metrics.CITIZEN_HEIGHT-world.Metrics.QUEST_GAP-world.Metrics.NAME_GAP,40,46),34,Color("ffe14b"))
+		var marker=UI.label(npc,marker_for(GIVER),Rect2(-40,-world.Metrics.CITIZEN_HEIGHT-world.Metrics.QUEST_GAP-world.Metrics.NAME_GAP-46,80,92),68,Color("ffe14b"))
 		marker.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;marker.visible=not marker.text.is_empty()
 		marker.add_theme_color_override("font_outline_color",Color("2b2614"));marker.add_theme_constant_override("outline_size",5);nodes.append(marker)
 	if phase not in ["accepted","battle","ready"]:return

@@ -26,8 +26,8 @@ func status() -> String:return "active" if phase in ["inspect","ledger","decide"
 func stage() -> String:return {"available":"offer","ready":"report","completed":"report"}.get(phase,phase)
 func marker_for(id: String) -> String:return ("!" if phase=="available" else "?" if phase=="ready" else "") if id==GIVER else ""
 func is_target(id: String) -> bool:return (phase=="inspect" and id==BOARD) or (phase in ["ledger","decide"] and id==CLERK) or (phase=="ready" and id==GIVER)
-func reward_label() -> String:return "보수 100문 · 오성+5 (상한100)"
-func track() -> void:game.quest_navigation.track(ID,stage())
+func reward_label() -> String:return "보수 100문 · 오성+2 (상한100)"
+func track() -> void:game.quest_navigation.update_quest(ID,stage())
 func other_topics() -> Array:
 	var topics=[]
 	if game.impostor_quest.phase=="witness":topics.append("impostor")
@@ -131,7 +131,7 @@ func refresh_world() -> void:
 	if w.area_name!="wuchang":return
 	for npc in w.ambient_nodes:
 		if npc.get_meta("npc_id")!=GIVER:continue
-		var marker=UI.label(npc,marker_for(GIVER),Rect2(-20,-w.Metrics.CITIZEN_HEIGHT-w.Metrics.QUEST_GAP-w.Metrics.NAME_GAP,40,46),34,Color("ffe14b"))
+		var marker=UI.label(npc,marker_for(GIVER),Rect2(-40,-w.Metrics.CITIZEN_HEIGHT-w.Metrics.QUEST_GAP-w.Metrics.NAME_GAP-46,80,92),68,Color("ffe14b"))
 		marker.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;marker.visible=not marker.text.is_empty();marker.add_theme_color_override("font_outline_color",Color("2b2614"));marker.add_theme_constant_override("outline_size",5);nodes.append(marker)
 	var board=Board.new();board.position=w._clear_citizen_position(w.city_point(data.board_point),{"id":BOARD,"district":"harbor"})
 	w.decorations.add_child(board);nodes.append(board)

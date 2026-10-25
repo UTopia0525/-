@@ -27,13 +27,22 @@ func clear() -> void:
 	completed_goal_ids.clear()
 	target_changed.emit()
 
+func update_quest(id: String, stage: String, completed: Array = []) -> bool:
+	# Preserve the player's chosen quest or facility while other errands progress.
+	if not facility_id.is_empty() or (not quest_id.is_empty() and quest_id != id): return false
+	return track(id,stage,completed)
+
 func get_goal(world) -> Dictionary:
 	if not facility_id.is_empty() and world.area_name in ["changsha","wuchang"]:
 		for npc in world.ambient_nodes:
 			if npc.get_meta("service_id","")==facility_id:return {"position":npc.position,"label":npc.get_meta("display_name")+"에게 이동","quest_title":"시설 안내","goal_id":facility_id,"quest_id":"","stage_id":"facility"}
 	for quest in get_parent().regional_quests():
 		if is_instance_valid(quest) and quest_id==quest.ID:return quest.goal(world)
-	if quest_id.is_empty() or world.area_name != "changsha":
+	if quest_id.is_empty():return {}
+	if world.area_name != "changsha":
+		var exit_id: String={"wuchang":"travel:road_south","mountain_road":"travel:changsha","alliance_office":"travel:office_exit"}.get(world.area_name,"")
+		for exit in world.travel_exits:
+			if exit.id==exit_id:return {"position":exit.position,"label":"장사 의뢰를 위해 "+exit.name+" 이동","quest_title":definitions[quest_id].title,"goal_id":exit_id,"quest_id":quest_id,"stage_id":stage_id}
 		return {}
 	var effective_stage = stage_id
 	var stage: Dictionary = definitions[quest_id].stages[effective_stage]

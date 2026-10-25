@@ -11,7 +11,7 @@ var combat = preload("res://scripts/combat_actions.gd").new()
 var enemy_qi = preload("res://scripts/inner_qi.gd").new()
 var enemy_stats: Dictionary = {}
 var enemy_weapon := "thickback_saber"
-var enemy_skills: Array = ["bandit_chop"]
+var enemy_skills: Array = ["bandit_chop", "soemok"]
 var enemy_intent := "basic_attack"
 var enemy_guard := 0
 var ready_turns: Dictionary = {}
@@ -58,6 +58,7 @@ var player_text: Label
 var enemy_bar
 var player_bar
 var heading: Label
+var executed_icon: TextureRect
 var detail: Label
 var note: Label
 var turn_label: Label
@@ -114,6 +115,8 @@ func _ready() -> void:
 	turn_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	var description_panel = UI.panel(self, Rect2(24, 525, 610, 171))
 	heading = UI.label(description_panel, "펼칠 무공을 고르시오", Rect2(18, 12, 565, 30), 23, UI.GOLD)
+	executed_icon=TextureRect.new();executed_icon.position=Vector2(18,10);executed_icon.size=Vector2(34,34)
+	executed_icon.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;description_panel.add_child(executed_icon);executed_icon.hide()
 	detail = UI.label(description_panel, "", Rect2(18, 53, 565, 62), 17)
 	note = UI.label(description_panel, "", Rect2(18, 125, 390, 30), 12, UI.MUTED)
 	use_button = UI.button(description_panel, "사용  ↵", Rect2(450, 119, 140, 38), true)
@@ -163,7 +166,7 @@ func set_encounter(value: Dictionary) -> void:
 	enemy_stats = encounter.get("stats", {"strength":12,"agility":12,"constitution":5,"inner":6,"insight":5}).duplicate()
 	enemy_stats.constitution = enemy_constitution
 	enemy_weapon = str(encounter.get("weapon", "thickback_saber"))
-	enemy_skills = encounter.get("skills", ["bandit_chop"]).duplicate()
+	enemy_skills = encounter.get("skills", ["bandit_chop", "soemok"]).duplicate()
 	enemy_raw_damage = int(Rules.basic_attack_damage(enemy_stats))
 	enemy_guard = 0
 	enemy_qi.start(int(enemy_stats.inner))
@@ -269,6 +272,7 @@ func select_skill(id: String) -> void:
 	selected_action = id
 	for i in range(skill_buttons.size()): skill_buttons[i].button_pressed = loadout[i] == id
 	heading.text = item.name
+	_show_action_icon(id)
 	var names := {"strength":"근력", "agility":"기민", "constitution":"근골", "inner":"내공", "insight":"오성"}
 	var terms: Array = []
 	if int(item.get("base_damage",0)) > 0: terms.append(str(int(item.base_damage)))
@@ -360,6 +364,8 @@ func use_selected() -> void:
 	if opponent_action.raw > 0: enemy_guard = int(opponent_action.guard)
 	turn_label.text = "상대의 차례"
 	heading.text = enemy_name.text + "의 반격"
+	# Reveal the icon only after this living opponent commits its action.
+	_show_action_icon(enemy_intent)
 	detail.text = "%s: %s" % [enemy_name.text, opponent_action.name]
 	if opponent_action.raw > 0:
 		enemy_actor.attack()
@@ -432,12 +438,18 @@ func _float_damage(value: int, on_player: bool) -> void:
 	float_tween.tween_property(damage_label, "modulate:a", 0.0, 0.65)
 
 func _reset_presentation() -> void:
+	if is_instance_valid(executed_icon):executed_icon.hide();heading.position.x=18
 	if float_tween and float_tween.is_valid(): float_tween.kill()
 	if is_instance_valid(damage_label): damage_label.hide()
 	player_actor.reset_motion()
 	enemy_actor.reset_motion()
 	enemy_bar.snap()
 	player_bar.snap()
+
+func _show_action_icon(id: String) -> void:
+	executed_icon.texture=Icons.texture(id);executed_icon.visible=executed_icon.texture!=null
+	heading.position.x=62 if executed_icon.visible else 18
+	heading.size.x=520 if executed_icon.visible else 565
 
 func try_spend_qi(cost: int) -> bool:
 	# Called once when an attack/defence action is committed, never on preview.

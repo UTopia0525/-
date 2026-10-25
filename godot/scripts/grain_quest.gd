@@ -29,7 +29,7 @@ func stage() -> String:return {"available":"offer","ready":"report","completed":
 func marker_for(id: String) -> String:return ("!" if phase=="available" else "?" if phase=="ready" else "") if id==GIVER else ""
 func is_target(id: String) -> bool:return (phase=="receipt" and id==GIVER) or (phase=="shipping" and id==CLERK) or (phase=="official" and id==OFFICER) or (phase=="confront" and id==COLLECTOR)
 func reward_label() -> String:return "보수 200문"
-func track() -> void:game.quest_navigation.track(ID,stage())
+func track() -> void:game.quest_navigation.update_quest(ID,stage())
 func handle_interaction(id: String) -> bool:
 	if game.exploration.area_name!="wuchang":return false
 	if id==GIVER:
@@ -124,7 +124,7 @@ func refresh_world() -> void:
 	if w.area_name!="wuchang":return
 	for npc in w.ambient_nodes:
 		if npc.get_meta("npc_id")==GIVER:
-			var marker=UI.label(npc,marker_for(GIVER),Rect2(-20,-w.Metrics.CITIZEN_HEIGHT-w.Metrics.QUEST_GAP-w.Metrics.NAME_GAP,40,46),34,Color("ffe14b"));marker.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;marker.visible=not marker.text.is_empty();marker.add_theme_color_override("font_outline_color",Color("2b2614"));marker.add_theme_constant_override("outline_size",5);nodes.append(marker)
+			var marker=UI.label(npc,marker_for(GIVER),Rect2(-40,-w.Metrics.CITIZEN_HEIGHT-w.Metrics.QUEST_GAP-w.Metrics.NAME_GAP-46,80,92),68,Color("ffe14b"));marker.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;marker.visible=not marker.text.is_empty();marker.add_theme_color_override("font_outline_color",Color("2b2614"));marker.add_theme_constant_override("outline_size",5);nodes.append(marker)
 		if phase=="confront" and hearing_active and npc.get_meta("npc_id")==OFFICER:
 			officer_body=npc;officer_home=npc.position;npc.position=w._clear_citizen_position(w.city_point(data.officer_point),{"id":OFFICER,"district":"farmland"});_tag_position(npc)
 	if phase in ["receipt","shipping","official","confront"]:
