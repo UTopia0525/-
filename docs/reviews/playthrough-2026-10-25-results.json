@@ -1,0 +1,452 @@
+{
+  "baseline": "2fa95f4",
+  "engine": "4.6.3",
+  "date": "2026-10-25",
+  "mode": "headless scenario tests and separate scripted reproductions, not uninterrupted manual play",
+  "tests": [
+    {
+      "test": "prologue",
+      "exit": 0,
+      "seconds": 17.9,
+      "result": [
+        "GODOT_PROLOGUE: PASS — both branches, F input, payment, port arrival, checkpoint, reset"
+      ]
+    },
+    {
+      "test": "prologue_f_input",
+      "exit": 0,
+      "seconds": 11.4,
+      "result": [
+        "PROLOGUE F PASS: keyboard navigation, physical F including Hangul, all dock actors, boarding, deck, tutorial"
+      ]
+    },
+    {
+      "test": "chapter_one",
+      "exit": 0,
+      "seconds": 13.6,
+      "result": [
+        "GODOT_CHAPTER_ONE: PASS"
+      ]
+    },
+    {
+      "test": "onboarding_menus",
+      "exit": 0,
+      "seconds": 22.3,
+      "result": [
+        "GODOT_ONBOARDING_MENUS: PASS — zero-fund chain, rewards, I/K, purchases, persistence, modal gates"
+      ]
+    },
+    {
+      "test": "adventure_features",
+      "exit": 0,
+      "seconds": 20.7,
+      "result": [
+        "GODOT_ADVENTURE_FEATURES: PASS"
+      ]
+    },
+    {
+      "test": "quest_navigation",
+      "exit": 0,
+      "seconds": 4.9,
+      "result": [
+        "GODOT_QUEST_NAVIGATION: PASS"
+      ]
+    },
+    {
+      "test": "bandit_story",
+      "exit": 0,
+      "seconds": 45.3,
+      "result": [
+        "GODOT_BANDIT_STORY: PASS"
+      ]
+    },
+    {
+      "test": "alliance_story",
+      "exit": 0,
+      "seconds": 37.0,
+      "result": [
+        "GODOT_ALLIANCE_STORY: PASS",
+        "ERROR: 2 resources still in use at exit (run with --verbose for details)."
+      ]
+    },
+    {
+      "test": "alliance_visit",
+      "exit": 0,
+      "seconds": 16.2,
+      "result": [
+        "ALLIANCE VISIT PASS: guard posts, refusal, physical gate, future callbacks, closure, portraits/dialogue, no rewards, old/new saves"
+      ]
+    },
+    {
+      "test": "alliance_office",
+      "exit": 0,
+      "seconds": 5.5,
+      "result": [
+        "ALLIANCE OFFICE PASS: F round trip, furniture collision, pathfinding, map, save/load, unchanged progress",
+        "ERROR: 2 resources still in use at exit (run with --verbose for details)."
+      ]
+    },
+    {
+      "test": "herbalist_quest",
+      "exit": 0,
+      "seconds": 33.6,
+      "result": [
+        "GODOT_HERBALIST_QUEST: PASS · balance cases 20"
+      ]
+    },
+    {
+      "test": "artisan_quest",
+      "exit": 0,
+      "seconds": 22.3,
+      "result": [
+        "GODOT_ARTISAN_QUEST: PASS",
+        "ERROR: 2 resources still in use at exit (run with --verbose for details)."
+      ]
+    },
+    {
+      "test": "duel_quest",
+      "exit": 0,
+      "seconds": 35.4,
+      "result": [
+        "GODOT_DUEL_QUEST: PASS",
+        "ERROR: 3 resources still in use at exit (run with --verbose for details)."
+      ]
+    },
+    {
+      "test": "inn_quest",
+      "exit": 0,
+      "seconds": 37.7,
+      "result": [
+        "GODOT_INN_QUEST: PASS · balance cases 20",
+        "ERROR: 2 resources still in use at exit (run with --verbose for details)."
+      ]
+    },
+    {
+      "test": "impostor_quest",
+      "exit": 0,
+      "seconds": 34.8,
+      "result": [
+        "GODOT_IMPOSTOR_QUEST: PASS · balance cases 30",
+        "ERROR: 2 resources still in use at exit (run with --verbose for details)."
+      ]
+    },
+    {
+      "test": "wages_quest",
+      "exit": 0,
+      "seconds": 17.8,
+      "result": [
+        "GODOT_WAGES_QUEST: PASS",
+        "ERROR: 2 resources still in use at exit (run with --verbose for details)."
+      ]
+    },
+    {
+      "test": "last_wuchang_quests",
+      "exit": 0,
+      "seconds": 28.6,
+      "result": [
+        "GODOT_LAST_QUESTS: PASS",
+        "ERROR: 3 resources still in use at exit (run with --verbose for details)."
+      ]
+    },
+    {
+      "test": "saves",
+      "exit": 0,
+      "seconds": 30.2,
+      "result": [
+        "GODOT_SAVES: PASS"
+      ]
+    },
+    {
+      "test": "save_restrictions",
+      "exit": 0,
+      "seconds": 8.9,
+      "result": [
+        "GODOT_SAVE_RESTRICTIONS: PASS"
+      ]
+    },
+    {
+      "test": "overland_travel",
+      "exit": 0,
+      "seconds": 16.2,
+      "result": [
+        "GODOT_OVERLAND: PASS"
+      ]
+    },
+    {
+      "test": "city_collision",
+      "exit": 0,
+      "seconds": 9.6,
+      "result": [
+        "GODOT_CITY_COLLISION: PASS — scenery, NPC bodies, approach paths, old saves"
+      ]
+    },
+    {
+      "test": "keyboard_exploration",
+      "exit": 0,
+      "seconds": 11.5,
+      "result": [
+        "KEYBOARD MAP PASS: six maps ignore clicks; inventory and purchases retain mouse input",
+        "ERROR: 3 resources still in use at exit (run with --verbose for details)."
+      ]
+    },
+    {
+      "test": "smoke",
+      "exit": 1,
+      "result": [
+        "GODOT_SMOKE: FAIL",
+        "ERROR: TEST FAILURE: enemy defense lengthens battle; sword guard reduces counters"
+      ]
+    },
+    {
+      "test": "trading",
+      "exit": 0,
+      "result": [
+        "GODOT_TRADING: PASS"
+      ]
+    },
+    {
+      "test": "josik_suwon",
+      "exit": 0,
+      "result": [
+        "GODOT_JOSIK_SUWON: PASS"
+      ]
+    },
+    {
+      "test": "combat_updates",
+      "exit": 0,
+      "result": [
+        "GODOT_COMBAT_UPDATES: PASS / balance cases=110"
+      ]
+    },
+    {
+      "test": "faction_favor",
+      "exit": 0,
+      "result": [
+        "GODOT_FACTION_FAVOR: PASS"
+      ]
+    }
+  ],
+  "observations": {
+    "accepted_changsha_marker": "!",
+    "changsha_journal_home": true,
+    "changsha_journal_away": {
+      "listed": false,
+      "status": "active"
+    },
+    "changsha_crossmap_goal": {},
+    "tracking_after_other_dialogue": {
+      "actual": "wuchang_double_grain",
+      "expected": "wuchang_missing_wages",
+      "grain": "shipping",
+      "wages": "inspect"
+    },
+    "expensive_sword_route": {
+      "error": "소지금이 부족합니다. 필요 350문 / 보유 250문",
+      "learnable": true,
+      "money": 250,
+      "stats": {
+        "agility": 14,
+        "constitution": 12,
+        "inner": 12,
+        "insight": 55,
+        "strength": 14
+      }
+    },
+    "affordable_route": {
+      "learned": [
+        "samjae",
+        "cheongpung"
+      ],
+      "money": 300,
+      "stats": {
+        "agility": 14,
+        "constitution": 12,
+        "inner": 12,
+        "insight": 55,
+        "strength": 14
+      },
+      "total": 107
+    },
+    "real_growth_mid_art": {
+      "banseok": {
+        "cost": 26,
+        "damage_vs_ruffian": 157,
+        "first_turn_affordable": false,
+        "raw": 204.0
+      },
+      "gwanak": {
+        "cost": 17,
+        "damage_vs_ruffian": 359,
+        "first_turn_affordable": false,
+        "raw": 442.0
+      },
+      "hoeryu": {
+        "cost": 18,
+        "damage_vs_ruffian": 139,
+        "first_turn_affordable": false,
+        "raw": 182.7
+      },
+      "jungun": {
+        "cost": 24,
+        "damage_vs_ruffian": 354,
+        "first_turn_affordable": false,
+        "raw": 436.0
+      },
+      "paak": {
+        "cost": 22,
+        "damage_vs_ruffian": 163,
+        "first_turn_affordable": false,
+        "raw": 211.2
+      }
+    },
+    "natural_growth_bandit_sentry": {
+      "hp": 272,
+      "moves": [
+        "cheongpung",
+        "cheongpung",
+        "cheongpung"
+      ],
+      "turns": 3,
+      "win": true
+    },
+    "natural_growth_bandit_ringleader": {
+      "hp": 229,
+      "moves": [
+        "cheongpung",
+        "cheongpung",
+        "cheongpung",
+        "cheongpung",
+        "cheongpung"
+      ],
+      "turns": 5,
+      "win": true
+    },
+    "combat_herb_ruffian": {
+      "banseok": {
+        "hp": 155,
+        "moves": [
+          "basic_attack",
+          "basic_attack",
+          "banseok",
+          "basic_attack",
+          "banseok"
+        ],
+        "turns": 5,
+        "win": true
+      },
+      "gwanak": {
+        "hp": 262,
+        "moves": [
+          "basic_attack",
+          "gwanak"
+        ],
+        "turns": 2,
+        "win": true
+      },
+      "hoeryu": {
+        "hp": 159,
+        "moves": [
+          "samjae",
+          "samjae",
+          "samjae",
+          "hoeryu",
+          "samjae",
+          "samjae"
+        ],
+        "turns": 6,
+        "win": true
+      },
+      "jungun": {
+        "hp": 262,
+        "moves": [
+          "basic_attack",
+          "jungun"
+        ],
+        "turns": 2,
+        "win": true
+      },
+      "paak": {
+        "hp": 224,
+        "moves": [
+          "basic_attack",
+          "paak",
+          "basic_attack",
+          "paak"
+        ],
+        "turns": 4,
+        "win": true
+      }
+    },
+    "combat_impostor_ma": {
+      "banseok": {
+        "hp": 117,
+        "moves": [
+          "basic_attack",
+          "basic_attack",
+          "banseok",
+          "basic_attack",
+          "banseok",
+          "basic_attack"
+        ],
+        "turns": 6,
+        "win": true
+      },
+      "gwanak": {
+        "hp": 262,
+        "moves": [
+          "basic_attack",
+          "gwanak"
+        ],
+        "turns": 2,
+        "win": true
+      },
+      "hoeryu": {
+        "hp": 159,
+        "moves": [
+          "samjae",
+          "samjae",
+          "samjae",
+          "hoeryu",
+          "samjae",
+          "samjae"
+        ],
+        "turns": 6,
+        "win": true
+      },
+      "jungun": {
+        "hp": 262,
+        "moves": [
+          "basic_attack",
+          "jungun"
+        ],
+        "turns": 2,
+        "win": true
+      },
+      "paak": {
+        "hp": 224,
+        "moves": [
+          "basic_attack",
+          "paak",
+          "basic_attack",
+          "paak"
+        ],
+        "turns": 4,
+        "win": true
+      }
+    },
+    "road_one_way": {
+      "length": 7098.07347488403,
+      "points": 223,
+      "seconds_at_360": 19.7168707635668
+    },
+    "changsha_available_marker_after_reset": "!"
+  },
+  "smoke_current_expectation": {
+    "temporary_copy_only": true,
+    "original_expected_hp": 244,
+    "observed_hp": 265,
+    "result": [
+      "GODOT_SMOKE: PASS — animation, BGM contexts/loops/mute, story, navigation, physics, combat, reset, realms"
+    ]
+  }
+}
