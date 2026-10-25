@@ -64,6 +64,7 @@ var progress = preload("res://scripts/player_progress.gd").new()
 var money := 0
 var money_label: Label
 var journey_label: Label
+var chapter_goal: Label
 var quest_heading: Label
 var compact_toolbar: Panel
 var continue_button: Button
@@ -189,6 +190,8 @@ func _build_hud() -> void:
 	location=minimap.place_label
 	var mission=UI.panel(top_hud,Rect2(982,68,282,112),Color("101e20ee"))
 	var style=UI.box(Color("101e20ee"));style.border_width_left=3;mission.add_theme_stylebox_override("panel",style)
+	chapter_goal=UI.label(mission,"주요 목표 · 장사를 탐사하세요",Rect2(12,7,258,21),14,UI.GOLD)
+	chapter_goal.hide()
 	quest_heading=UI.label(mission,"지금 할 일",Rect2(12,9,258,25),17,UI.GOLD)
 	quest_heading.add_theme_font_override("font",UI.BRUSH_FONT);quest_heading.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
 	objective=UI.label(mission,"",Rect2(12,40,258,60),14)
@@ -360,6 +363,10 @@ func reset() -> void:
 	bottom_hint.hide()
 	location.text = "동정호 남쪽 · 청류진 나루"
 	objective.text = "첫 표행을 시작하세요."
+	chapter_goal.hide()
+	quest_heading.position.y = 9
+	objective.position.y = 40
+	objective.size.y = 60
 	quest_heading.text = "지금 할 일"
 	title_screen.show()
 
@@ -416,11 +423,16 @@ func _process(_delta: float) -> void:
 	compact_toolbar.visible=exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office"] and state=="explore" and dialogue_lines.is_empty()
 	if state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office"]:
 		location.text = exploration.city_data.name+" · " + exploration.district_at_player()
+		var exploring_changsha: bool = chapter_number == 1 and exploration.area_name == "changsha" and bandit_story.stage == "dormant"
+		chapter_goal.visible = exploring_changsha
+		quest_heading.position.y = 30 if exploring_changsha else 9
+		objective.position.y = 59 if exploring_changsha else 40
+		objective.size.y = 43 if exploring_changsha else 60
 		var goal: Dictionary = quest_navigation.get_goal(exploration)
 		quest_heading.text=goal.quest_title+" · Q" if not goal.is_empty() else "강호행 · Q 의뢰"
 		bottom_hint.hide()
 		objective.text = goal.label if not goal.is_empty() else ("총무당 둘러보기 · 남쪽 출입 지점에서 F 이동" if exploration.area_name=="alliance_office" else "산길을 따라 북쪽 무창으로 · 출입 지점에서 F 이동" if exploration.area_name=="mountain_road" else "무창 둘러보기 · 남쪽 농촌 끝에서 장사 방면" if exploration.area_name=="wuchang" else "시장·골목·나루·성밖 농촌 둘러보기")
-		objective.tooltip_text=quest_heading.text+"\n"+objective.text
+		objective.tooltip_text=(chapter_goal.text+"\n" if exploring_changsha else "")+quest_heading.text+"\n"+objective.text
 	bandit_story.maybe_start()
 	alliance_story.maybe_start()
 

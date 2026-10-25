@@ -15,6 +15,17 @@ func press_f() -> void:
 func run() -> void:
 	game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await process_frame
 	game.options.seen.append_array(["city","dialogue","trade","battle"]);game.start_city();await process_frame
+	game.chapter_number=1
+	await process_frame
+	check(game.chapter_goal.visible and game.chapter_goal.text=="주요 목표 · 장사를 탐사하세요","chapter one shows exploration as main objective")
+	check(game.quest_navigation.track("changsha_cloth","deliver"),"quest can be tracked alongside chapter objective")
+	await process_frame
+	check(game.chapter_goal.visible and game.quest_heading.text.contains("맡겨 둔 옷감"),"quest tracking keeps exploration objective and quest name")
+	game.quest_navigation.clear()
+	game.bandit_story.stage="offered"
+	await process_frame
+	check(not game.chapter_goal.visible and game.objective.position.y==40,"campaign replaces exploration prompt and restores layout")
+	game.bandit_story.stage="dormant"
 	var w=game.exploration;var portal=w.travel_exits[0]
 	var path=w.path_to(portal.position,true);check(not path.is_empty(),"locked portal is still approachable")
 	w.player.position=path[-1];w.player.stop();await physics_frame;await physics_frame
