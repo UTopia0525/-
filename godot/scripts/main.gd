@@ -14,6 +14,7 @@ var music
 var ordinary_quests
 var herbalist_quest
 var artisan_quest
+var duel_quest
 var alliance_visit
 var adventure_ui
 var options
@@ -137,6 +138,7 @@ func _ready() -> void:
 	ordinary_quests=preload("res://scripts/ordinary_quests.gd").new();ordinary_quests.game=self;add_child(ordinary_quests)
 	herbalist_quest=preload("res://scripts/herbalist_quest.gd").new();herbalist_quest.game=self;add_child(herbalist_quest)
 	artisan_quest=preload("res://scripts/artisan_quest.gd").new();artisan_quest.game=self;add_child(artisan_quest)
+	duel_quest=preload("res://scripts/duel_quest.gd").new();duel_quest.game=self;add_child(duel_quest)
 	progress.progress_changed.connect(_progress_changed)
 	battle.sound_requested.connect(options.play)
 	var journal_button=UI.button(top_hud,"의뢰 일지 · Q",Rect2(930,245,150,35))
@@ -262,10 +264,12 @@ func _build_ending() -> void:
 	restart.pressed.connect(reset)
 	ending.hide()
 
-func regional_quests() -> Array:return [herbalist_quest,artisan_quest]
+func regional_quests() -> Array:return [herbalist_quest,artisan_quest,duel_quest]
+func encounters() -> Array:return bandit_story.data.encounters+[herbalist_quest.data.encounter,duel_quest.data.encounter]
 
 func reset() -> void:
 	if is_instance_valid(adventure_ui):adventure_ui.reset()
+	if is_instance_valid(duel_quest):duel_quest.reset()
 	if is_instance_valid(artisan_quest):artisan_quest.reset()
 	if is_instance_valid(herbalist_quest):herbalist_quest.reset()
 	if is_instance_valid(ordinary_quests):ordinary_quests.reset()
@@ -449,6 +453,7 @@ func interact() -> void:
 	if npc.is_empty():
 		return
 	if preload("res://scripts/overland_travel.gd").use(self,npc):return
+	if duel_quest.handle_interaction(str(npc.id)):return
 	if artisan_quest.handle_interaction(str(npc.id)):return
 	if herbalist_quest.handle_interaction(str(npc.id)):return
 	if alliance_visit.handle_interaction(str(npc.id)):return
@@ -517,12 +522,16 @@ func _on_victory(hp: int) -> void:
 	adventure_ui.record_result(true)
 
 func _on_defeat() -> void:
-	if herbalist_quest.in_battle():herbalist_quest.after_defeat()
+	if duel_quest.in_battle():duel_quest.after_defeat()
+	elif herbalist_quest.in_battle():herbalist_quest.after_defeat()
 	elif bandit_story.in_battle():bandit_story.after_defeat()
 	adventure_ui.record_result(false)
 
 func _finish_victory(hp: int) -> void:
 	if state != "battle": return
+	if duel_quest.in_battle():
+		duel_quest.after_victory()
+		return
 	if herbalist_quest.in_battle():
 		herbalist_quest.after_victory()
 		return

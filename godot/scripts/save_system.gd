@@ -46,7 +46,7 @@ func capture() -> Dictionary:
 	var nodes = {"top_hud":game.top_hud, "bottom_hint":game.bottom_hint, "caption":game.story_caption, "exploration":w, "ending":game.ending, "overview":game.city_overview, "visual":game.story_visual}
 	var visibility := {}
 	for id in nodes: visibility[id] = nodes[id].visible
-	return {"schema":3, "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
+	return {"schema":3, "duel_quest":game.duel_quest.snapshot(), "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
 		"chapter":game.chapter_number, "money":game.money, "talked_captain":game.talked_captain,
 		"world":{"layout_version":2 if w.area_name=="mountain_road" else 1, "area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
@@ -56,7 +56,7 @@ func capture() -> Dictionary:
 		"ui":{"visible":visibility, "location":game.location.text, "objective":game.objective.text, "hint":game.bottom_hint.text, "caption":game.story_caption.text, "ending_hp":game.ending_hp.text},
 		"visual":{"mode":game.story_visual.mode, "phase":game.story_visual.phase, "paused":game.story_visual.paused},
 		"choice":game.pending_choice, "service":game.city_service.service.duplicate(true), "service_tab":game.city_service.selected_tab, "pending_service":game.pending_service_id,
-		"battle":{"encounter_id":game.battle.encounter.get("id", ""), "weapon_id":game.battle.equipped_weapon_id, "weapon_type":game.battle.equipped_weapon_type, "inner_power":game.battle.qi.inner_power, "qi":game.battle.qi.amount, "player_hp":game.battle.player_hp, "enemy_hp":game.battle.enemy_hp, "turn":game.battle.turn, "selected":game.battle.selected, "selected_action":game.battle.selected_action, "enemy_qi":game.battle.enemy_qi.amount, "enemy_intent":game.battle.enemy_intent, "enemy_guard":game.battle.enemy_guard},
+		"battle":{"ready_turns":game.battle.ready_turns.duplicate(),"enemy_ready_turns":game.battle.enemy_ready_turns.duplicate(),"encounter_id":game.battle.encounter.get("id", ""), "weapon_id":game.battle.equipped_weapon_id, "weapon_type":game.battle.equipped_weapon_type, "inner_power":game.battle.qi.inner_power, "qi":game.battle.qi.amount, "player_hp":game.battle.player_hp, "enemy_hp":game.battle.enemy_hp, "turn":game.battle.turn, "selected":game.battle.selected, "selected_action":game.battle.selected_action, "enemy_qi":game.battle.enemy_qi.amount, "enemy_intent":game.battle.enemy_intent, "enemy_guard":game.battle.enemy_guard},
 		"music":{"track":game.music.current_track, "enabled":game.music.enabled}}
 
 func path(slot: int) -> String: return ROOT + "/slot_%02d.json" % slot
@@ -113,6 +113,8 @@ func validate(d) -> bool:
 	if d.has("alliance_visit") and not game.alliance_visit.valid(d.alliance_visit):return false
 	if d.has("herbalist_quest") and not game.herbalist_quest.valid(d.herbalist_quest):return false
 	if d.has("artisan_quest") and not game.artisan_quest.valid(d.artisan_quest):return false
+	if d.has("duel_quest") and not game.duel_quest.valid(d.duel_quest):return false
+	if d.has("duel_quest") and d.duel_quest.phase=="completed" and d.schema==3 and "josik_suwon" not in d.progress.learned:return false
 	for field in ["world", "prologue", "chapter_one", "navigation", "dialogue", "ui", "visual", "service", "battle", "music"]:
 		if not d.get(field) is Dictionary: return false
 	if d.get("state") not in ["explore", "story", "choice", "service", "battle", "end"]: return false
@@ -172,13 +174,22 @@ func validate(d) -> bool:
 	if d.state == "service" and d.service.is_empty(): return false
 	var enemy_maximum := 150
 	var encounter_id = d.battle.get("encounter_id", "")
-	if encounter_id not in ["", "bandit_sentry", "bandit_ringleader", "herb_ruffian"]: return false
-	for definition in (game.bandit_story.data.encounters + [game.herbalist_quest.data.encounter]):
+	if encounter_id not in ["", "bandit_sentry", "bandit_ringleader", "herb_ruffian", "training_student"]: return false
+	for definition in game.encounters():
 		if definition.id == encounter_id: enemy_maximum = int(definition.max_hp)
 	if d.state=="battle" and encounter_id=="herb_ruffian" and d.get("herbalist_quest",{}).get("phase")!="rescue":return false
+	if d.get("duel_quest",{}).get("phase")=="battle" and (d.state!="battle" or encounter_id!="training_student"):return false
+	if d.state=="battle" and encounter_id=="training_student" and d.get("duel_quest",{}).get("phase")!="battle":return false
 	if d.has("bandit_story") and d.bandit_story.stage in ["battle_one", "battle_two"]:
 		if d.state != "battle" or encounter_id != game.bandit_story.data.encounters[0 if d.bandit_story.stage == "battle_one" else 1].id: return false
 	if not is_number(d.battle.get("player_hp"), 0, 300) or not is_number(d.battle.get("enemy_hp"), 0, enemy_maximum) or not is_number(d.battle.get("turn"), 1, 10000) or not d.battle.get("selected") is bool: return false
+	for key in ["ready_turns","enemy_ready_turns"]:
+		var cooldowns=d.battle.get(key,{})
+		if not cooldowns is Dictionary:return false
+		for id in cooldowns:
+			if not id is String or not game.progress.arts.definitions.has(id):return false
+			var duration: int=int(game.progress.arts.get_skill(id).get("cooldown_turns",0))
+			if duration<=0 or not game.progress.whole(cooldowns[id],0,int(d.battle.turn)+duration+1):return false
 	if d.battle.has("selected_action"):
 		if d.battle.selected_action not in ["", "basic_attack", "basic_defense"] and not game.battle.martial_arts.definitions.has(d.battle.selected_action): return false
 		if d.schema == 3 and d.state == "battle" and d.battle.selected_action not in ["", "basic_attack", "basic_defense"] and d.battle.selected_action not in d.progress.loadout: return false
@@ -195,17 +206,18 @@ func validate(d) -> bool:
 	if d.battle.has("enemy_qi") or d.battle.has("enemy_intent"):
 		if not game.progress.whole(d.battle.get("enemy_qi"),0,500): return false
 		var allowed: Array = ["basic_attack","basic_defense","bandit_chop"]
-		for definition in (game.bandit_story.data.encounters + [game.herbalist_quest.data.encounter]):
+		for definition in game.encounters():
 			if definition.id == encounter_id: allowed = ["basic_attack","basic_defense"] + definition.skills
 		if d.battle.get("enemy_intent") not in allowed: return false
 		var stats := {"strength":12,"agility":12,"constitution":5,"inner":6,"insight":5}
 		var enemy_weapon := "thickback_saber"
-		for definition in (game.bandit_story.data.encounters + [game.herbalist_quest.data.encounter]):
+		for definition in game.encounters():
 			if definition.id == encounter_id:
 				stats = definition.stats
 				enemy_weapon = definition.weapon
 		var enemy_action: Dictionary = game.battle.combat.action(d.battle.enemy_intent,stats,enemy_weapon)
 		if enemy_action.is_empty() or (d.state == "battle" and enemy_action.cost > d.battle.enemy_qi): return false
+		if d.state=="battle" and game.battle.combat.cooldown_remaining(d.battle.enemy_intent,int(d.battle.turn),d.battle.get("enemy_ready_turns",{}))>0:return false
 	return game.music.TRACKS.has(d.music.get("track")) and d.music.get("enabled") is bool
 
 func is_number(value, lower: float, upper: float) -> bool:
@@ -226,7 +238,7 @@ func load_slot(slot: int) -> bool:
 	if d.has("bandit_story"): game.bandit_story.restore(d.bandit_story)
 	if d.has("alliance_visit"):game.alliance_visit.restore(d.alliance_visit)
 	var encounter: Dictionary = {}
-	for definition in (game.bandit_story.data.encounters + [game.herbalist_quest.data.encounter]):
+	for definition in game.encounters():
 		if definition.id == d.battle.get("encounter_id", ""): encounter = definition
 	game.battle.set_encounter(encounter)
 	if d.battle.has("weapon_id"): game.battle.equip_weapon_item(d.battle.weapon_id)
@@ -234,6 +246,7 @@ func load_slot(slot: int) -> bool:
 	game.talked_captain = d.talked_captain
 	game.herbalist_quest.restore(d.get("herbalist_quest",{"phase":"available"}))
 	game.artisan_quest.restore(d.get("artisan_quest",{"phase":"available"}))
+	game.duel_quest.restore(d.get("duel_quest",{"phase":"available","result":""}))
 	game.herbalist_quest.battle_active=d.state=="battle" and d.battle.get("encounter_id","")=="herb_ruffian"
 	game.exploration.load_area(d.world.area)
 	game.exploration.player.position = Vector2(d.world.position[0], d.world.position[1])
@@ -288,6 +301,8 @@ func load_slot(slot: int) -> bool:
 		game.battle.player_hp = int(d.battle.player_hp)
 		game.battle.enemy_hp = int(d.battle.enemy_hp)
 		game.battle.turn = int(d.battle.turn)
+		game.battle.ready_turns=d.battle.get("ready_turns",{}).duplicate()
+		game.battle.enemy_ready_turns=d.battle.get("enemy_ready_turns",{}).duplicate()
 		if d.battle.has("enemy_qi"):
 			game.battle.enemy_qi.restore(int(game.battle.enemy_stats.inner),int(d.battle.enemy_qi))
 			game.battle.enemy_intent = d.battle.enemy_intent

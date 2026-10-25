@@ -6,6 +6,7 @@ var definitions: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("r
 
 func _init() -> void:
 	definitions.merge(JSON.parse_string(FileAccess.get_file_as_string("res://data/alliance_martial_arts.json")))
+	definitions.merge(JSON.parse_string(FileAccess.get_file_as_string("res://data/support_martial_arts.json")))
 
 func get_skill(id: String) -> Dictionary:
 	if id == "basic_attack": return {"name":"기본공격", "description":"내기를 소모하지 않고 공격합니다.", "damage_coefficients":{"strength":1,"agility":1,"inner":1}, "qi_cost":0, "required_weapon_type":null, "weapon_style":"basic", "requirements":{"stats":{},"minimum_total":0}}

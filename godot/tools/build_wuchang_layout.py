@@ -87,7 +87,7 @@ obj('west_barracks','home',[1010,220,150,134]);obj('east_barracks','home',[1700,
 obj('alliance_main_hall','alliance_hall',[1300,105,360,300]);landmark('main_hall','무림맹 회의당',[1480,430])
 obj('commander_quarters','government',[1000,105,155,136]);obj('strategist_office','government',[1700,100,155,136])
 for i,(x,y) in enumerate([(990,715),(1830,720),(1230,240),(1640,250),(365,790)]):obj(f'courtyard_tree_{i}','tree',[x,y,57,64])
-landmark('training','대연무장',[1480,565]);landmark('market','상점가',[780,1215]);landmark('workshops','공방거리',[1500,1400]);landmark('martial','무관 앞뜰',[1370,1170]);landmark('government','관아 앞',[1760,1280]);landmark('harbor','장강 나루',[250,950]);landmark('homes','주거 골목',[535,430]);landmark('inns','객잔 거리',[780,850]);landmark('plaza','중앙 광장',[1100,945])
+landmark('training','대연무장',[1480,565]);landmark('market','상점가',[780,1215]);landmark('workshops','공방거리',[1500,1400]);landmark('martial','무관 연무장',[1370,1170]);landmark('government','관아 앞',[1760,1280]);landmark('harbor','장강 나루',[250,950]);landmark('homes','주거 골목',[535,430]);landmark('inns','객잔 거리',[780,850]);landmark('plaza','중앙 광장',[1100,945])
 # Rural approach beyond the existing south wall; the old city is not rescaled.
 district('farmland','남문 밖 농촌',[600,1480,1180,420],[1100,1870])
 road([[1100,1480],[1100,1870]],58)

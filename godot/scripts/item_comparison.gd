@@ -6,7 +6,9 @@ static func weapon(progress,id: String,equipped: String) -> String:
 static func art(progress,id: String,equipped: String) -> Array[String]:
 	var lines: Array[String]=[];var skill: Dictionary=progress.arts.get_skill(id)
 	if id in ["basic_attack","basic_defense"]:return lines
-	lines.append("무기 보정 전 위력 %.0f · 삼재검법 대비 %+.0f" % [progress.arts.raw_damage(id,progress.stats),progress.arts.raw_damage(id,progress.stats)-progress.arts.raw_damage("samjae",progress.stats)])
+	if skill.weapon_style=="support":
+		lines.append("내기 고정%d 회복 · 상대 피해%d%% 감소 · 사용 후%d턴 재사용 불가" % [skill.qi_restore,skill.guard_percent,skill.cooldown_turns])
+	else:lines.append("무기 보정 전 위력 %.0f · 삼재검법 대비 %+.0f" % [progress.arts.raw_damage(id,progress.stats),progress.arts.raw_damage(id,progress.stats)-progress.arts.raw_damage("samjae",progress.stats)])
 	var total:=0
 	for value in progress.stats.values():total+=int(value)
 	for key in skill.requirements.stats:

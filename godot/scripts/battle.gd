@@ -14,6 +14,8 @@ var enemy_weapon := "thickback_saber"
 var enemy_skills: Array = ["bandit_chop"]
 var enemy_intent := "basic_attack"
 var enemy_guard := 0
+var ready_turns: Dictionary = {}
+var enemy_ready_turns: Dictionary = {}
 var intent_label: Label
 var intent_icon: TextureRect
 const Actor = preload("res://scripts/battle_actor.gd")
@@ -174,6 +176,7 @@ func set_encounter(value: Dictionary) -> void:
 	enemy_actor.set_weapon(weapons.weapon_type(enemy_weapon))
 
 func begin(inner_power: int = -1) -> void:
+	ready_turns.clear();enemy_ready_turns.clear()
 	records.clear()
 	qi.start(int(player_stats.inner) if inner_power < 0 else inner_power)
 	enemy_qi.start(int(enemy_stats.get("inner", 6)))
@@ -204,6 +207,7 @@ func begin(inner_power: int = -1) -> void:
 	basic_button.grab_focus()
 
 func cancel() -> void:
+	ready_turns.clear();enemy_ready_turns.clear()
 	generation += 1
 	running = false
 	busy = false
@@ -228,13 +232,16 @@ func set_loadout(value: Array) -> void:
 func _has_usable_action() -> bool:
 	for id in loadout:
 		var a: Dictionary = combat.action(str(id), player_stats, equipped_weapon_id)
-		if not a.is_empty() and qi.can_spend(current_qi_cost(str(id))): return true
+		if not a.is_empty() and cooldown_remaining(str(id))==0 and qi.can_spend(current_qi_cost(str(id))): return true
 	return false
+
+func cooldown_remaining(id: String) -> int:return combat.cooldown_remaining(id,turn,ready_turns)
 
 func _update_slots() -> void:
 	for i in range(skill_buttons.size()):
 		var id: String = str(loadout[i])
 		skill_buttons[i].text = "—" if id == "" else str(martial_arts.get_skill(id).name)
+		if cooldown_remaining(id)>0:skill_buttons[i].text += " · 대기 %d턴" % cooldown_remaining(id)
 		Icons.apply(skill_buttons[i], id)
 		skill_buttons[i].disabled = busy or id == ""
 	# Contextual free fallback prevents a soft lock after removing both basic actions.
@@ -268,12 +275,14 @@ func select_skill(id: String) -> void:
 	for key in item.damage_coefficients: terms.append("%s × %d" % [names[key], int(item.damage_coefficients[key])])
 	var a: Dictionary = combat.action(id, player_stats, equipped_weapon_id)
 	detail.text = "다음 적 행동의 피해70% 감소 · 공격하지 않음" if id == "basic_defense" else " + ".join(terms) + "\n현재 방어 전 피해: " + str(a.get("raw",0))
+	if item.weapon_style == "support":detail.text="내기 고정%d 회복 · 다음 상대 행동 피해%d%% 감소\n사용 후 자기 차례%d번 재사용 불가" % [item.qi_restore,item.guard_percent,item.cooldown_turns]
 	if item.weapon_style == "sword": detail.text += " · 다음 적 행동 피해20% 감소"
 	note.text = "내기 소모: %d · %s" % [current_qi_cost(id), martial_arts.weapon_requirement(id)]
-	use_button.disabled = not martial_arts.can_use_with_weapon(id, equipped_weapon_type)
+	use_button.disabled = not martial_arts.can_use_with_weapon(id, equipped_weapon_type) or cooldown_remaining(id)>0
+	if cooldown_remaining(id)>0:note.text += " · 재사용까지 %d턴" % cooldown_remaining(id)
 
 func _prepare_enemy() -> void:
-	enemy_intent = combat.enemy_plan(enemy_stats,enemy_weapon,enemy_skills,enemy_qi.amount,turn)
+	enemy_intent = combat.enemy_plan(enemy_stats,enemy_weapon,enemy_skills,enemy_qi.amount,turn,enemy_ready_turns)
 	_update_intent()
 
 func _update_intent() -> void:
@@ -294,6 +303,9 @@ func use_selected() -> void:
 	if not is_basic and not martial_arts.can_use_with_weapon(selected_action, equipped_weapon_type):
 		note.text = martial_arts.weapon_requirement(selected_action)
 		return
+	if cooldown_remaining(selected_action)>0:
+		note.text="재사용까지 %d턴 남았습니다." % cooldown_remaining(selected_action)
+		return
 	var cost: int = current_qi_cost(selected_action)
 	if not try_spend_qi(cost):
 		note.text = "내기가 부족합니다. 필요 %d / 현재 %d" % [cost, qi.amount] if cost >= 0 else "기술의 내기 비용을 확인해 주세요."
@@ -302,6 +314,8 @@ func use_selected() -> void:
 	var opponent_action: Dictionary = combat.action(enemy_intent,enemy_stats,enemy_weapon)
 	var action_name: String = str(player_action.name)
 	var raw: float = float(player_action.raw)
+	var restored: int=combat.commit_support(player_action,qi,ready_turns,turn)
+	if int(player_action.get("qi_restore",0))>0:log_action("도원",action_name+" · 내기 회복",0,-restored,int(player_action.guard),qi.amount,"recovery")
 	busy = true
 	basic_button.disabled = true
 	for button in skill_buttons: button.disabled = true
@@ -319,7 +333,7 @@ func use_selected() -> void:
 	await get_tree().create_timer(Rules.DEMO_ATTACK_DELAY, false).timeout
 	if token != generation:
 		return
-	var active_enemy_guard: int = combat.BASIC_GUARD if enemy_intent == "basic_defense" else enemy_guard
+	var active_enemy_guard: int = int(opponent_action.guard) if float(opponent_action.raw)==0 else enemy_guard
 	var hit: int = combat.damage(raw, enemy_constitution, enemy_weapon, active_enemy_guard)
 	enemy_guard = 0
 	log_action("도원",action_name,hit,cost,active_enemy_guard,qi.amount)
@@ -328,7 +342,7 @@ func use_selected() -> void:
 	if raw > 0: sound_requested.emit("hit" if hit > 0 else "block")
 	if hit > 0: enemy_actor.hurt()
 	_float_damage(hit, false)
-	detail.text = "방어 태세를 취했습니다." if raw == 0 else "%s 명중.\n%s에게 %d의 피해를 주었습니다." % [action_name, enemy_name.text, hit]
+	detail.text = ("내기 %d 회복 · 방어 태세를 취했습니다." % restored if int(player_action.get("qi_restore",0))>0 else "방어 태세를 취했습니다.") if raw == 0 else "%s 명중.\n%s에게 %d의 피해를 주었습니다." % [action_name, enemy_name.text, hit]
 	await get_tree().create_timer(Rules.DEMO_TURN_DELAY, false).timeout
 	if token != generation:
 		return
@@ -340,6 +354,8 @@ func use_selected() -> void:
 		return
 	# Pay the locked enemy action only when the living actor actually takes its turn.
 	enemy_qi.spend(int(opponent_action.cost))
+	var enemy_restored: int=combat.commit_support(opponent_action,enemy_qi,enemy_ready_turns,turn)
+	if int(opponent_action.get("qi_restore",0))>0:log_action(enemy_name.text,opponent_action.name+" · 내기 회복",0,-enemy_restored,int(opponent_action.guard),enemy_qi.amount,"recovery")
 	# A sword guard begins after the attack, protecting against the next player action.
 	if opponent_action.raw > 0: enemy_guard = int(opponent_action.guard)
 	turn_label.text = "상대의 차례"

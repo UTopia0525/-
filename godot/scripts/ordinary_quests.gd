@@ -104,7 +104,8 @@ func _after_dialogue() -> void:
 			game.adventure_ui.notify("의뢰 완료 · %d문 · 오성+%d" % [int(reward.money),int(game.progress.stats.insight)-before],"quest")
 	refresh_world()
 func is_target(npc: String) -> bool:
-	if is_instance_valid(game.artisan_quest) and game.artisan_quest.is_target(npc):return true
+	for quest in game.regional_quests():
+		if is_instance_valid(quest) and quest.has_method("is_target") and quest.is_target(npc):return true
 	for id in definitions:
 		if status(id)!="active":continue
 		for goal in game.quest_navigation.definitions[id].stages[stage_for(id)].goals:

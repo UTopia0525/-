@@ -11,8 +11,13 @@ func start(value: int) -> void:
 	changed.emit()
 
 func recover_turn() -> void:
-	amount = mini(MAXIMUM, amount + inner_power)
+	recover(inner_power)
+
+func recover(value: int) -> int:
+	var before:=amount
+	amount=mini(MAXIMUM,amount+maxi(0,value))
 	changed.emit()
+	return amount-before
 
 func can_spend(cost: int) -> bool:
 	return cost >= 0 and cost <= amount

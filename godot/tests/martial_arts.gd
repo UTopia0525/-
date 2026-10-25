@@ -8,7 +8,7 @@ func check(ok: bool, message: String) -> void:
 		push_error("MARTIAL_ARTS: " + message)
 func _initialize() -> void:
 	var arts = CATALOGUE.new()
-	check(arts.definitions.size() == 16, "eleven introductory plus five alliance arts")
+	check(arts.definitions.size() == 17, "eleven introductory, five alliance, one support art")
 	check(arts.qi_cost("samjae") == 10 and arts.raw_damage("samjae", RULES.STARTING_STATS) == 50, "confirmed Samjae cost and formula")
 	check(arts.can_learn("samjae", RULES.STARTING_STATS), "baseline known skill remains valid")
 	var names: Array = []
@@ -16,7 +16,7 @@ func _initialize() -> void:
 		var skill: Dictionary = arts.get_skill(id)
 		check(not names.has(skill.name), "unique skill names")
 		names.append(skill.name)
-		check(skill.acquisition == (null if id == "samjae" else "alliance_instructor" if skill.get("grade","")=="intermediate" else "city_instructor"), "starting technique or instructor acquisition")
+		check(skill.acquisition == ("wuchang_training_duel" if id=="josik_suwon" else null if id == "samjae" else "alliance_instructor" if skill.get("grade","")=="intermediate" else "city_instructor"), "starting technique or instructor acquisition")
 		var required = skill.required_weapon_type
 		if required != null:
 			check(arts.can_use_with_weapon(id, required), "matching weapon accepted: " + id)
@@ -24,6 +24,9 @@ func _initialize() -> void:
 				if wrong != required: check(not arts.can_use_with_weapon(id, wrong), "wrong or unequipped weapon blocked: " + id)
 		else:
 			check(arts.can_use_with_weapon(id, "none") and arts.can_use_with_weapon(id, "sword"), "unrestricted hand arts do not invent equipment bans")
+		if skill.weapon_style=="support":
+			check(arts.can_learn(id,RULES.STARTING_STATS) and arts.raw_damage(id,RULES.STARTING_STATS)==0 and skill.qi_restore==40 and skill.guard_percent==20 and skill.cooldown_turns==3,"universal reward support has fixed approved effects")
+			continue
 		if id == "samjae" or skill.get("grade","")=="intermediate": continue
 		check(not arts.can_learn(id, RULES.STARTING_STATS), "starting stats do not qualify: " + id)
 		check(arts.raw_damage(id, RULES.STARTING_STATS) > 50, "higher baseline formula than Samjae: " + id)
