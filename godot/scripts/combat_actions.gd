@@ -3,7 +3,7 @@ extends RefCounted
 const Rules = preload("res://scripts/rules.gd")
 const Arts = preload("res://scripts/martial_arts.gd")
 const Weapons = preload("res://scripts/weapons.gd")
-const BASIC_GUARD := 70
+const BASIC_GUARD := 20
 const SWORD_GUARD := 20
 var arts = Arts.new()
 var weapons = Weapons.new()
@@ -14,7 +14,7 @@ func action(id: String, stats: Dictionary, weapon: String) -> Dictionary:
 	if id == "basic_defense": return {"id":id,"name":"기본방어","raw":0.0,"cost":0,"guard":BASIC_GUARD}
 	if not arts.can_use_with_weapon(id, weapons.weapon_type(weapon)): return {}
 	var skill := arts.get_skill(id)
-	return {"id":id,"name":skill.name,"raw":weapons.attack_damage(arts.raw_damage(id,stats),weapon,skill),"cost":weapons.qi_cost(skill.qi_cost,weapon,skill),"guard":int(skill.get("guard_percent",SWORD_GUARD if skill.weapon_style == "sword" else 0)),"qi_restore":int(skill.get("qi_restore",0)),"cooldown_turns":int(skill.get("cooldown_turns",0))}
+	return {"id":id,"name":skill.name,"raw":weapons.attack_damage(arts.raw_damage(id,stats),weapon,skill),"cost":weapons.qi_cost(skill.qi_cost,weapon,skill),"guard":int(skill.get("guard_percent",SWORD_GUARD if skill.weapon_style == "sword" else 0)),"qi_restore":arts.qi_recovery(id,stats),"cooldown_turns":int(skill.get("cooldown_turns",0))}
 func cooldown_remaining(id: String, current_turn: int, ready_turns: Dictionary) -> int:
 	return maxi(0,int(ready_turns.get(id,0))-current_turn)
 func commit_support(action_data: Dictionary, resource, ready_turns: Dictionary, current_turn: int) -> int:

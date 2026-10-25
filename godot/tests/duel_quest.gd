@@ -81,7 +81,7 @@ func run() -> void:
 	check(game.herbalist_quest.snapshot()==other_herb and game.artisan_quest.snapshot()==other_artisan,"other simultaneous quests unchanged")
 	await roundtrip(5)
 	game.player_menu.open_menu("martial");game.player_menu.select_item("josik_suwon")
-	check(game.player_menu.detail.text.contains("40") and game.player_menu.detail.text.contains("20%"),"K explains recovery and defense")
+	check(game.player_menu.detail.text.contains("200%") and game.player_menu.detail.text.contains("20%"),"K explains recovery and defense")
 	var found:=false
 	for button in game.player_menu.rows.get_children():
 		if button is Button and "조식수원공" in button.text:found=button.icon!=null

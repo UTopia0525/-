@@ -10,7 +10,7 @@ func _init() -> void:
 
 func get_skill(id: String) -> Dictionary:
 	if id == "basic_attack": return {"name":"기본공격", "description":"내기를 소모하지 않고 공격합니다.", "damage_coefficients":{"strength":1,"agility":1,"inner":1}, "qi_cost":0, "required_weapon_type":null, "weapon_style":"basic", "requirements":{"stats":{},"minimum_total":0}}
-	if id == "basic_defense": return {"name":"기본방어", "description":"다음 적 행동의 피해를70% 줄입니다. 내기 소모 없이 턴 종료 시 정상 회복합니다.", "damage_coefficients":{}, "qi_cost":0, "required_weapon_type":null, "weapon_style":"basic", "requirements":{"stats":{},"minimum_total":0}}
+	if id == "basic_defense": return {"name":"기본방어", "description":"다음 적 행동의 피해를20% 줄입니다. 내기 소모 없이 턴 종료 시 정상 회복합니다.", "damage_coefficients":{}, "qi_cost":0, "required_weapon_type":null, "weapon_style":"basic", "requirements":{"stats":{},"minimum_total":0}}
 	return definitions.get(id, {}).duplicate(true)
 
 func can_learn(id: String, stats: Dictionary) -> bool:
@@ -32,6 +32,10 @@ func raw_damage(id: String, stats: Dictionary) -> float:
 	for stat in definitions[id].damage_coefficients:
 		amount += float(stats.get(stat, 0)) * float(definitions[id].damage_coefficients[stat])
 	return amount
+
+func qi_recovery(id: String, stats: Dictionary) -> int:
+	var skill: Dictionary=get_skill(id)
+	return int(skill.get("qi_restore",0))+floori(float(stats.get("inner",0))*float(skill.get("qi_restore_inner_percent",0))/100.0)
 
 func qi_cost(id: String) -> int:
 	return int(definitions[id].qi_cost) if definitions.has(id) else -1

@@ -25,7 +25,7 @@ func _initialize() -> void:
 		else:
 			check(arts.can_use_with_weapon(id, "none") and arts.can_use_with_weapon(id, "sword"), "unrestricted hand arts do not invent equipment bans")
 		if skill.weapon_style=="support":
-			check(arts.can_learn(id,RULES.STARTING_STATS) and arts.raw_damage(id,RULES.STARTING_STATS)==0 and skill.qi_restore==40 and skill.guard_percent==20 and skill.cooldown_turns==3,"universal reward support has fixed approved effects")
+			check(arts.can_learn(id,RULES.STARTING_STATS) and arts.raw_damage(id,RULES.STARTING_STATS)==0 and skill.qi_restore_inner_percent==200 and arts.qi_recovery(id,RULES.STARTING_STATS)==20 and skill.guard_percent==20 and skill.cooldown_turns==3,"universal reward support has fixed approved effects")
 			continue
 		if id == "samjae" or skill.get("grade","")=="intermediate": continue
 		check(not arts.can_learn(id, RULES.STARTING_STATS), "starting stats do not qualify: " + id)

@@ -89,7 +89,7 @@ func run() -> void:
 	var b = game.battle
 	check(b.enemy_qi.amount==8 and b.enemy_intent=="basic_attack" and b.intent_label.text.contains("적이 공격을 하려고 한다"),"enemy starts at inner power and telegraphs before input")
 	b.select_skill("basic_defense");b.use_selected();b.use_selected();await wait_turn()
-	check(b.turn==2 and b.player_hp==294 and b.enemy_qi.amount==16 and b.enemy_intent=="basic_attack","defense, enemy recovery and costly next intent")
+	check(b.turn==2 and b.player_hp==283 and b.enemy_qi.amount==16 and b.enemy_intent=="basic_attack","defense, enemy recovery and costly next intent")
 	var intent: String = b.enemy_intent;var amount: int = b.enemy_qi.amount
 	check(preload("res://tests/legacy_save_fixture.gd").write(game, 10) and game.save_system.load_slot(10),"save/load enemy combat state")
 	check(b.enemy_qi.amount==amount and b.enemy_intent==intent and b.selected_action=="basic_defense","save preserves locked enemy intent, qi and defense selection")
@@ -113,7 +113,7 @@ func run() -> void:
 	b.select_basic_attack();b.use_selected();await wait_turn()
 	check(b.enemy_hp==468 and b.enemy_guard==20,"enemy sword guard protects the next player attack")
 	b.select_basic_attack();b.use_selected();await wait_turn()
-	check(b.enemy_hp==463 and b.enemy_guard==0,"enemy basic defense replaces rather than adds to sword guard")
+	check(b.enemy_hp==454 and b.enemy_guard==0,"enemy basic defense replaces rather than adds to sword guard")
 	game.reset();game.start_city()
 	check(game.save_system.validate(game.save_system.capture()),"new game after a boss resets stale enemy intent for saves")
 	game.progress.stats = {"strength":12,"agility":14,"constitution":12,"inner":14,"insight":55}

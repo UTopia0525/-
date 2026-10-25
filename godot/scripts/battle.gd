@@ -274,8 +274,8 @@ func select_skill(id: String) -> void:
 	if int(item.get("base_damage",0)) > 0: terms.append(str(int(item.base_damage)))
 	for key in item.damage_coefficients: terms.append("%s × %d" % [names[key], int(item.damage_coefficients[key])])
 	var a: Dictionary = combat.action(id, player_stats, equipped_weapon_id)
-	detail.text = "다음 적 행동의 피해70% 감소 · 공격하지 않음" if id == "basic_defense" else " + ".join(terms) + "\n현재 방어 전 피해: " + str(a.get("raw",0))
-	if item.weapon_style == "support":detail.text="내기 고정%d 회복 · 다음 상대 행동 피해%d%% 감소\n사용 후 자기 차례%d번 재사용 불가" % [item.qi_restore,item.guard_percent,item.cooldown_turns]
+	detail.text = "다음 적 행동의 피해20% 감소 · 공격하지 않음" if id == "basic_defense" else " + ".join(terms) + "\n현재 방어 전 피해: " + str(a.get("raw",0))
+	if item.weapon_style == "support":detail.text="내공의%d%%만큼 내기 회복 · 현재 %d\n다음 상대 행동 피해%d%% 감소 · 사용 후%d턴 재사용 불가" % [item.qi_restore_inner_percent,a.qi_restore,item.guard_percent,item.cooldown_turns]
 	if item.weapon_style == "sword": detail.text += " · 다음 적 행동 피해20% 감소"
 	note.text = "내기 소모: %d · %s" % [current_qi_cost(id), martial_arts.weapon_requirement(id)]
 	use_button.disabled = not martial_arts.can_use_with_weapon(id, equipped_weapon_type) or cooldown_remaining(id)>0
