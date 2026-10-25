@@ -7,10 +7,10 @@ static var ACTORS = {
 	"bandit_officer": {"name":"정 포두", "extra":"male_middle"},
 	"bandit_messenger": {"name":"포졸", "extra":"male_young", "portrait":"res://assets/portraits/story/constable-duty.png"},
 	"bandit_farmer": {"name":"피해 농민", "extra":"male_elder"},
-	"bandit_raider": {"name":"길목 산적", "extra":"male_middle"},
-	"bandit_leader": {"name":"산적 우두머리", "extra":"male_middle"},
+	"bandit_raider": {"name":"길목 산적", "extra":"male_middle", "portrait":"res://assets/portraits/archetypes/bandit.png"},
+	"bandit_leader": {"name":"산적 우두머리", "extra":"male_middle", "portrait":"res://assets/portraits/archetypes/bandit-sentry.png"},
 	"cloth_merchant": {"name": "포목상", "extra": "female_middle"},
-	"pirate": {"name": "흑린채 수적", "extra": "male_middle"},
+	"pirate": {"name": "흑린채 수적", "extra": "male_middle", "portrait":"res://assets/portraits/archetypes/water-bandit.png"},
 	"recipient": {"name": "수령인", "extra": "male_common_b"},
 	"city_merchant": {"name": "장사꾼", "extra": "male_young", "portrait": "res://assets/portraits/services/merchant.png"},
 	"city_artisan": {"name": "장인", "extra": "female_middle", "portrait": "res://assets/portraits/services/artisan.png"},
@@ -37,6 +37,12 @@ func _init() -> void:
 	var civil=JSON.parse_string(FileAccess.get_file_as_string("res://data/wuchang_residents.json"))
 	for entry in civil.npcs:
 		ACTORS[entry.id]={"name":entry.name,"basic_portrait":entry.basic_portrait} if entry.has("basic_portrait") else {"name":entry.name,"extra":entry.extra,"portrait":"res://assets/portraits/wuchang/"+str(entry.id).trim_prefix("wc_")+".png"}
+	var qingya=JSON.parse_string(FileAccess.get_file_as_string("res://data/qingya_characters.json"))
+	for entry in qingya.npcs:
+		var actor={"name":entry.name}
+		for key in ["basic_portrait","extra","portrait"]:
+			if entry.has(key):actor[key]=entry[key]
+		ACTORS[entry.id]=actor
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	position = Vector2(24, 125)
 	size = Vector2(1232, 410)

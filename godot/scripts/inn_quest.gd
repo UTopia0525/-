@@ -16,7 +16,7 @@ var signature:=""
 
 func _ready() -> void:
 	game.PORTRAITS.ACTORS[WORKER]={"name":"양복","basic_portrait":"male_common_a"}
-	game.PORTRAITS.ACTORS[WARRIOR]={"name":"장만길","basic_portrait":"male_common_b"}
+	game.PORTRAITS.ACTORS[WARRIOR]={"name":"장만길","basic_portrait":"male_common_b","portrait":"res://assets/portraits/archetypes/wanderer.png"}
 	game.quest_navigation.definitions[ID]={"title":data.title,"stages":{
 		"offer":{"label":"객잔 주인 도삼랑에게 시비 중재 의뢰 묻기","goals":[]},
 		"listen":{"label":"객잔 앞 양복과 장만길에게 각각 사정 듣기","goals":[]},

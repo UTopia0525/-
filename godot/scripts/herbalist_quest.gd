@@ -13,7 +13,7 @@ var signature := ""
 
 func _ready() -> void:
 	game.PORTRAITS.ACTORS.herb_gatherer = {"name":"임소평", "basic_portrait":"male_young"}
-	game.PORTRAITS.ACTORS.herb_ruffian = {"name":"구칠", "basic_portrait":"male_common_a"}
+	game.PORTRAITS.ACTORS.herb_ruffian = {"name":"구칠", "basic_portrait":"male_common_a", "portrait":"res://assets/portraits/archetypes/bandit.png"}
 	game.quest_navigation.definitions[ID] = {"title":data.title,"stages":{
 		"offer":{"label":"무창 상점가의 유백초에게 일거리 묻기","goals":[]},
 		"search":{"label":"남쪽 산길 첫 굽이의 약초 꾸러미 조사","goals":[]},

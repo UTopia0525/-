@@ -1,0 +1,211 @@
+{
+  "name": "산촌 삼거리와 청애채 인물",
+  "status": "registered_dialogue_cast_not_world_placed",
+  "policy": "주민은 기본18장, 일반 산적은 새 산적 전용2종, 마운표는 기존 전용 원본을 재사용한다.",
+  "npcs": [
+    {
+      "id": "qy_ren_shoutian",
+      "name": "임수전",
+      "age": 46,
+      "role": "수탈 피해 농민·사건 의뢰인",
+      "area": "qingya_hamlet",
+      "post": "삼거리 남동쪽 공터",
+      "basic_portrait": "male_farmer",
+      "frame": 4,
+      "personality": "성실하고 말수가 적다. 가족의 끼니와 붙잡힌 동생 걱정에 망연자실해 있다.",
+      "background": "마을에서 곡식농사를 짓는다. 이미 몫을 냈는데도 산적들이 다시 곡식을 가져갔다.",
+      "relations": "임수의의 형. 양백안의 만류를 이해하면서도 더는 버티기 어렵다.",
+      "speech_habit": "말끝을 흐리다가 가족 이야기가 나오면 목소리가 굳어진다.",
+      "story_role": "첫 노란 느낌표와 선택적 수락의 창구. 토벌 뒤 주민들이 모은200문을 전달할 인물.",
+      "dialogue": [
+        [
+          "qy_ren_shoutian",
+          "이번 몫은 벌써 냈소. 그런데 지난번 것은 길을 지킨 값이고, 이번 것은 산채에서 먹을 양식이라더군……."
+        ],
+        [
+          "qy_ren_shoutian",
+          "빈 독을 들여다본다고 쌀이 생길 리도 없는데, 자꾸 뚜껑을 열어보게 되오."
+        ]
+      ]
+    },
+    {
+      "id": "qy_liang_boan",
+      "name": "양백안",
+      "age": 68,
+      "role": "마을 어른",
+      "area": "qingya_hamlet",
+      "post": "공동 창고 앞",
+      "basic_portrait": "male_elder",
+      "frame": 4,
+      "personality": "신중하고 완고하다. 산적을 미워하지만 마을에 남을 사람들의 안전부터 따진다.",
+      "background": "과거 저항 뒤에 닥친 보복을 기억한다. 청애채가 외부 도적을 막았다는 사실도 알고 있다.",
+      "relations": "임수전을 아끼지만 석소만의 성급한 저항에는 거듭 제동을 건다.",
+      "speech_habit": "질문으로 상대가 떠난 뒤의 일을 되묻는다.",
+      "story_role": "도원의 개입을 만류하고 보복과 보호 공백에 대한 불안을 전달한다.",
+      "dialogue": [
+        [
+          "qy_liang_boan",
+          "칼을 뽑기 전에 한 가지만 묻겠소. 소협은 내일도 여기 있을 거요?"
+        ],
+        [
+          "qy_liang_boan",
+          "그놈들을 두둔하는 게 아니오. 소협이 떠난 뒤에도 우린 이 땅에서 살아야 한다는 말이지."
+        ]
+      ]
+    },
+    {
+      "id": "qy_zhou_guiniang",
+      "name": "주계랑",
+      "age": 43,
+      "role": "농가 주민·살림 담당",
+      "area": "qingya_hamlet",
+      "post": "우물 옆 집 앞",
+      "basic_portrait": "female_middle",
+      "frame": 5,
+      "personality": "현실적이고 단단하다. 공포 때문에 이웃을 탓하지 않으며, 낯선 협객도 쉽게 믿지 않는다.",
+      "background": "남은 곡식을 이웃과 나누고 있다. 산적이 막아낸 다른 약탈자들을 기억하지만 지금의 징수도 견디기 어렵다.",
+      "relations": "임수전 집에 잡곡을 나눠주며 석소만에게 다친 손을 쉬라고 잔소리한다.",
+      "speech_habit": "말보다 오늘 저녁과 내일의 끼니를 구체적으로 이야기한다.",
+      "story_role": "산채에 의존하면서도 수탈당하는 주민의 생활을 보여준다.",
+      "dialogue": [
+        [
+          "qy_zhou_guiniang",
+          "그놈들이 다른 도적을 쫓아낸 건 맞아요. 그렇다고 우리 솥까지 비워도 된다는 말은 아니잖아요."
+        ],
+        [
+          "qy_zhou_guiniang",
+          "도와주시려거든 먼저 사정부터 들어주세요. 큰소리 뒤에 남는 건 늘 우리 몫이었으니까."
+        ]
+      ]
+    },
+    {
+      "id": "qy_shi_xiaoman",
+      "name": "석소만",
+      "age": 23,
+      "role": "나무꾼·저항을 원하는 청년",
+      "area": "qingya_hamlet",
+      "post": "남서쪽 가옥 장작더미 옆",
+      "basic_portrait": "male_young",
+      "frame": 7,
+      "personality": "울분이 많지만 무모한 영웅은 아니다. 가족에게 피해가 갈까 봐 자신의 분노도 두려워한다.",
+      "background": "장작을 팔아 살지만 산채의 별도 징수로 수입이 줄었다. 항의하고 싶어도 혼자서는 나서지 못했다.",
+      "relations": "양백안과 자주 다투고, 주계랑에게는 속내를 털어놓는다.",
+      "speech_habit": "처음에는 말을 세게 했다가 가족 이야기에 목소리를 낮춘다.",
+      "story_role": "주민 전체가 현상 유지를 원하는 것은 아님을 보여준다. 별도의 자립 경로를 열지는 않는다.",
+      "dialogue": [
+        [
+          "qy_shi_xiaoman",
+          "오늘 내주면 내일은 안 온답니까? 그 말을 믿고 버틴 게 벌써 몇 해요."
+        ],
+        [
+          "qy_shi_xiaoman",
+          "……그래도 내 말만 듣고 나서진 마시오. 우리 집에도 늙은 어머니가 계시오."
+        ]
+      ]
+    },
+    {
+      "id": "qy_ren_shouyi",
+      "name": "임수의",
+      "age": 34,
+      "role": "붙잡힌 주민",
+      "area": "qingya_camp",
+      "post": "동쪽 인질 창고",
+      "basic_portrait": "male_common_a",
+      "frame": 4,
+      "personality": "불의를 참기 어렵지만 형과 이웃에게 피해를 줄까 뒤늦게 두려워한다.",
+      "background": "추가 징수에 항의하러 갔다가 돌아오지 못했다. 그의 석방 조건과 최종 행방은 후속 사건 원고에서 결정한다.",
+      "relations": "임수전의 동생. 형에게 걱정을 끼친 것을 마음에 걸려 한다.",
+      "speech_habit": "자기 처지보다 집에 남은 사람들의 안부를 먼저 묻는다.",
+      "story_role": "산채의 강압을 직접 보여주는 증언자. 구출·석방·미토벌 후 처우는 이번 인물 등록으로 확정하지 않는다.",
+      "dialogue": [
+        [
+          "qy_ren_shouyi",
+          "형님은…… 아직 마을에 계시오? 또 혼자 창고 앞에 앉아 있는 건 아니오?"
+        ],
+        [
+          "qy_ren_shouyi",
+          "추가로 걷을 곡식이 없다고 했을 뿐이오. 그 말조차 여기서는 대든 것이 되더군."
+        ]
+      ]
+    },
+    {
+      "id": "qy_hou_liu",
+      "name": "후육",
+      "age": 38,
+      "role": "청애채 징수 산적",
+      "area": "qingya_hamlet",
+      "post": "사건 중 북쪽 지선에서 방문",
+      "basic_portrait": "male_middle",
+      "frame": 6,
+      "personality": "거칠고 뻔뻔하다. 채주의 보호를 핑계 삼아 약한 사람에게 위세를 부린다.",
+      "background": "청애채의 곡식과 물자 징수를 맡는다. 일반 산적 전용1번 그림을 재사용하는 별개의 인물이다.",
+      "relations": "마운표의 이름을 앞세워 징수하며 정괴와 교대로 길목을 지킨다.",
+      "speech_habit": "받아가는 것을 빼앗는 일이 아니라 약속된 몫이라고 부른다.",
+      "story_role": "산촌 최초 충돌의 대화 상대. 평상시 주민 풀에 넣지 않고 사건 때만 방문하도록 계획한다.",
+      "dialogue": [
+        [
+          "qy_hou_liu",
+          "길을 지키는 데도 쌀이 든다. 우리 몫을 내놓으라는데 무슨 말이 그리 많아?"
+        ],
+        [
+          "qy_hou_liu",
+          "지나가는 협객이면 갈 길이나 가시오. 이 마을과 청애채 사이의 일이니."
+        ]
+      ],
+      "portrait": "res://assets/portraits/archetypes/bandit.png"
+    },
+    {
+      "id": "qy_ding_kui",
+      "name": "정괴",
+      "age": 32,
+      "role": "청애채 문지기",
+      "area": "qingya_camp",
+      "post": "남쪽 정문 옆",
+      "basic_portrait": "male_common_b",
+      "frame": 6,
+      "personality": "과묵하고 경계심이 강하다. 직접 명령받지 않은 싸움은 피하지만 길을 쉽게 열어주지 않는다.",
+      "background": "정문과 인질 창고 바깥의 경비를 맡는다. 일반 산적 전용2번 그림을 사용한다.",
+      "relations": "후육의 큰소리를 못마땅해하지만 채주의 지시에는 따른다.",
+      "speech_habit": "용건부터 짧게 묻고 긴 해명에는 답을 아낀다.",
+      "story_role": "산채 진입과 채주 면담의 안내 창구. 조건을 확인하기 전 자동 전투를 걸지 않도록 계획한다.",
+      "dialogue": [
+        [
+          "qy_ding_kui",
+          "멈추시오. 여긴 청애채요. 누구를 만나러 왔소?"
+        ],
+        [
+          "qy_ding_kui",
+          "할 말이 있으면 용건부터 밝히시오. 칼부터 찾는 손님은 들이지 않소."
+        ]
+      ],
+      "portrait": "res://assets/portraits/archetypes/bandit-sentry.png"
+    },
+    {
+      "id": "qy_ma_yunpiao",
+      "name": "마운표",
+      "age": 41,
+      "role": "청애채 채주·녹림 총채주 후보",
+      "area": "qingya_camp",
+      "post": "북쪽 채주 처소 앞",
+      "portrait": "res://assets/portraits/greenwood/maunpyo.png",
+      "portrait_source": "assets/portraits/greenwood/maunpyo.png",
+      "extra": "male_middle",
+      "frame": 6,
+      "personality": "기존 설정 유지: 호방하고 행동이 빠르며 과시욕과 경쟁심이 강하다. 지킬 수 있는 것보다 큰 약속을 한다.",
+      "background": "기존 청애채 채주 설정과 반석진각공을 유지한다. 새로운 전투 수치는 부여하지 않는다.",
+      "relations": "자신이 산촌을 보호한다고 주장하며 주민들의 의존을 지배의 근거로 삼는다.",
+      "speech_habit": "웃으며 말을 트지만 자신의 공로를 부정당하면 어조가 굳어진다.",
+      "story_role": "토벌/현상 유지 선택의 핵심 대면 인물. 토벌 후 생사는 아직 미정이다.",
+      "dialogue": [
+        [
+          "qy_ma_yunpiao",
+          "먼 길 오느라 수고했네. 자, 앉게. 내 이름부터 욕하고 왔더라도 할 말은 들어주지."
+        ],
+        [
+          "qy_ma_yunpiao",
+          "내가 길을 지키는 동안 다른 놈들이 함부로 내려오지 못했네. 그 일까지 없었던 셈 치지는 말게."
+        ]
+      ]
+    }
+  ]
+}

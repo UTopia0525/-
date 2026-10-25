@@ -26,6 +26,14 @@ func run() -> void:
 			for quest in data.quests:inspect(quest.lines)
 		else:
 			for lines in data.scenes.values():inspect(lines)
+	var expected_portraits={"bandit_raider":"bandit.png","bandit_leader":"bandit-sentry.png","herb_ruffian":"bandit.png","pirate":"water-bandit.png","inn_warrior":"wanderer.png","qy_hou_liu":"bandit.png","qy_ding_kui":"bandit-sentry.png"}
+	for id in expected_portraits:
+		var path="res://assets/portraits/archetypes/"+expected_portraits[id]
+		check(game.dialogue_cast.texture_for(game.PORTRAITS.ACTORS[id]).resource_path==path,"dedicated archetype is used in existing dialogue: "+id)
+		check(game.dialogue_cast.framing.profiles.has(path),"dedicated face framing: "+id)
+	inspect([["hero","산채의 두 사람"],["qy_hou_liu","징수 산적"],["qy_ding_kui","문지기"]])
+	inspect([["hero","약초꾼을 찾아왔다"],["herb_gatherer","임소평"],["herb_ruffian","구칠"]])
+	inspect([["hero","양쪽 말을 듣겠다"],["inn_worker","양복"],["inn_warrior","장만길"]])
 	game.start_story()
 	game.say([["captain","이미 읽은 이야기 [강호]"],["sailor","서로 다른 얼굴을 가진 두 사람"],["hero","FUTURE_SECRET"]],game._captain_done)
 	# Plain literal text is supported; use Hangul in the real visible fixture.

@@ -166,6 +166,36 @@
       "eye_y": 253,
       "eye_to_chin": 135,
       "natural_facing": "left"
+    },
+    "res://assets/portraits/greenwood/maunpyo.png": {
+      "face_x": 590,
+      "eye_y": 175,
+      "eye_to_chin": 100,
+      "natural_facing": "right"
+    },
+    "res://assets/portraits/archetypes/bandit.png": {
+      "face_x": 595,
+      "eye_y": 305,
+      "eye_to_chin": 185,
+      "natural_facing": "right"
+    },
+    "res://assets/portraits/archetypes/bandit-sentry.png": {
+      "face_x": 585,
+      "eye_y": 320,
+      "eye_to_chin": 185,
+      "natural_facing": "right"
+    },
+    "res://assets/portraits/archetypes/water-bandit.png": {
+      "face_x": 610,
+      "eye_y": 335,
+      "eye_to_chin": 205,
+      "natural_facing": "right"
+    },
+    "res://assets/portraits/archetypes/wanderer.png": {
+      "face_x": 590,
+      "eye_y": 320,
+      "eye_to_chin": 185,
+      "natural_facing": "right"
     }
   }
 }

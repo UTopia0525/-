@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-26",
+  "generator": "image_gen",
+  "images": [
+    {
+      "path": "res://assets/portraits/archetypes/bandit.png",
+      "source_original": "exec-ed9aa0fb-2f32-4727-8700-2f6b91d1ffbd.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "538971634373ebd1ffd52a2723cb2500382128956fe8de5a6ee918e910b3d756"
+    },
+    {
+      "path": "res://assets/portraits/archetypes/bandit-sentry.png",
+      "source_original": "exec-2c58e653-24cb-4012-8d25-e48487fad60e.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8b0d4095b74bc66c3298883b194633bb389eb9b71623a10eac1ff16c1d678743"
+    },
+    {
+      "path": "res://assets/portraits/archetypes/water-bandit.png",
+      "source_original": "exec-e0ac87a4-960b-4b3c-890c-d76596e2c803.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "f6b3de50e8d9db837c9151a29e161ce4ddd781ff090cb93eeff3d9ae330d46d4"
+    },
+    {
+      "path": "res://assets/portraits/archetypes/wanderer.png",
+      "source_original": "exec-69e3044d-f9b5-43e1-8428-db6c30b6e9ec.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "3eacfe0c4056ef487327e4649eb34fbb3cb4b243354262a5cfc96429de1a3202"
+    }
+  ]
+}
