@@ -31,7 +31,7 @@ func run() -> void:
 	check(not city.path_to(city.travel_exits[0].position).is_empty(),"Changsha spawn reaches eastern farmland portal")
 	await exit_to("mountain_road")
 	check(city.ambient_nodes.is_empty() and city.npcs.is_empty(),"road adds no NPCs")
-	check(city.map_bounds.size==Vector2(4096,5120) and city.player.display_height==140,"half height retains horizontal size and actor proportions")
+	check(city.map_bounds.size==Vector2(2560,3200) and city.player.display_height==140,"compact road retains actor proportions")
 	var arrival=city.player.position
 	await press_f()
 	check(city.area_name=="mountain_road" and city.player.position.distance_to(arrival)<1,"F away from a portal never transfers")
@@ -47,8 +47,8 @@ func run() -> void:
 	var last: Vector2=city.player.position
 	var east_seen=false
 	for point in path:
-		if point.x>2700:east_seen=true
-		if point.y<4250:check(east_seen,"horizontal eastern leg comes before northern leg")
+		if point.x>city.city_point([675,0]).x:east_seen=true
+		if point.y<city.city_point([0,1062.5]).y:check(east_seen,"horizontal eastern leg comes before northern leg")
 		check(city.can_stand(point),"path clears mountain edge and props")
 		check(not city.player.test_move(Transform2D(0,last),point-last),"actual feet traverse every road path segment")
 		last=point
@@ -62,13 +62,13 @@ func run() -> void:
 	check(game.save_system.load_slot(1),"road save loads")
 	check(city.area_name=="mountain_road" and city.can_stand(city.player.position),"restored mountain position is valid")
 	city.player.position=city.city_point([650,450]);city.player.stop()
-	var legacy=game.save_system.capture();legacy.world.erase("layout_version");legacy.world.position[1]*=2
+	var legacy=game.save_system.capture();legacy.world.erase("layout_version");legacy.world.position[0]*=1.6;legacy.world.position[1]*=3.2
 	var expected: Vector2=city.player.position
 	var file=FileAccess.open(game.save_system.path(3),FileAccess.WRITE);file.store_string(JSON.stringify(legacy));file.close()
 	check(game.save_system.load_slot(3),"original long road save still loads")
 	check(city.player.position.is_equal_approx(expected),"old north/south position migrates even from inside new height")
-	check(game.save_system.capture().world.layout_version==2,"loaded position is tagged to prevent double migration")
-	var invalid=game.save_system.capture();invalid.world.position=[100,5121]
+	check(game.save_system.capture().world.layout_version==3,"loaded position is tagged to prevent double migration")
+	var invalid=game.save_system.capture();invalid.world.position=[100,3201]
 	check(not game.save_system.validate(invalid),"new map coordinate bounds validated")
 	await exit_to("wuchang")
 	check(city.ambient_nodes.size()==13 and city.npcs.is_empty(),"Wuchang has ten civilians and three alliance members")

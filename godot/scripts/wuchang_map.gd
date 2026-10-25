@@ -2,6 +2,7 @@ extends Node2D
 ## Shared layered regional map for Wuchang and the connecting mountain road.
 const SCENERY=preload("res://scripts/city_scenery.gd")
 const CELL=32
+var navigation_cell:float=32.0
 var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://assets/maps/wuchang/layout.json"))
 var prefabs: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://assets/maps/changsha/layered/prefabs.json"))
 var actors: Node2D
@@ -44,26 +45,26 @@ func can_stand(p: Vector2,radius: float=16) -> bool:
 	return true
 func _inside(p: Vector2,radius: float) -> bool:return walk_bounds.grow(-radius).has_point(p)
 func _build_navigation() -> void:
-	astar.region=Rect2i(Vector2i.ZERO,Vector2i((map_bounds.size/CELL).ceil()));astar.cell_size=Vector2(CELL,CELL);astar.offset=Vector2(CELL,CELL)/2
+	astar.region=Rect2i(Vector2i.ZERO,Vector2i((map_bounds.size/navigation_cell).ceil()));astar.cell_size=Vector2(navigation_cell,navigation_cell);astar.offset=Vector2(navigation_cell,navigation_cell)/2
 	astar.diagonal_mode=AStarGrid2D.DIAGONAL_MODE_NEVER;astar.update()
 	# Dynamic entry barriers and moved residents must not leave stale solid cells.
 	astar.fill_solid_region(astar.region,false)
 	for y in range(astar.region.size.y):
 		for x in range(astar.region.size.x):
-			var p=Vector2(x*CELL+CELL/2,y*CELL+CELL/2)
+			var p=Vector2(x*navigation_cell+navigation_cell/2,y*navigation_cell+navigation_cell/2)
 			if not _inside(p,32):astar.set_point_solid(Vector2i(x,y))
 	for bounds in blockers:
-		var grown=bounds.grow(16+float(CELL)/2)
-		var low=Vector2i((grown.position/float(CELL)).floor()).max(Vector2i.ZERO)
-		var high=Vector2i((grown.end/float(CELL)).ceil()).min(astar.region.end-Vector2i.ONE)
+		var grown=bounds.grow(16+float(navigation_cell)/2)
+		var low=Vector2i((grown.position/float(navigation_cell)).floor()).max(Vector2i.ZERO)
+		var high=Vector2i((grown.end/float(navigation_cell)).ceil()).min(astar.region.end-Vector2i.ONE)
 		for y in range(low.y,high.y+1):
 			for x in range(low.x,high.x+1):astar.set_point_solid(Vector2i(x,y))
 	for resident in resident_positions:
-		for y in range(maxi(0,int((resident.y-64)/CELL)),mini(astar.region.end.y,int((resident.y+64)/CELL)+1)):
-			for x in range(maxi(0,int((resident.x-64)/CELL)),mini(astar.region.end.x,int((resident.x+64)/CELL)+1)):
+		for y in range(maxi(0,int((resident.y-64)/navigation_cell)),mini(astar.region.end.y,int((resident.y+64)/navigation_cell)+1)):
+			for x in range(maxi(0,int((resident.x-64)/navigation_cell)),mini(astar.region.end.x,int((resident.x+64)/navigation_cell)+1)):
 				if astar.get_point_position(Vector2i(x,y)).distance_to(resident)<=48:astar.set_point_solid(Vector2i(x,y))
 func _cell(p: Vector2) -> Vector2i:
-	var cell=Vector2i((p/float(CELL)).floor())
+	var cell=Vector2i((p/float(navigation_cell)).floor())
 	if astar.is_in_boundsv(cell) and not astar.is_point_solid(cell):return cell
 	for radius in range(1,5):
 		for y in range(-radius,radius+1):
