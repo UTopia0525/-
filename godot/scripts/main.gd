@@ -173,6 +173,11 @@ func _setup_input() -> void:
 			var event = InputEventKey.new()
 			event.physical_keycode = code
 			InputMap.action_add_event(action, event)
+	# Some forwarded keyboard events contain only the logical F code. Keep the
+	# physical binding for Korean layouts, and accept that event shape as well.
+	var logical_interact = InputEventKey.new()
+	logical_interact.keycode = KEY_F
+	InputMap.action_add_event("interact", logical_interact)
 
 func _build_hud() -> void:
 	top_hud = Control.new()

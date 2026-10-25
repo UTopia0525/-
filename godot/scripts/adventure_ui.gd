@@ -277,6 +277,6 @@ func _input(event: InputEvent) -> void:
 	elif mode=="choice" and event.keycode==KEY_ESCAPE:
 		if heading.text.begins_with("의뢰"):secondary_action()
 		else:close_menu()
-	elif event.keycode==KEY_ESCAPE or (mode=="journal" and event.keycode==KEY_Q) or (mode=="favor" and event.keycode==KEY_R) or (mode=="help" and event.keycode==KEY_F2) or (mode in ["result","log"] and event.keycode in [KEY_L,KEY_F,KEY_ENTER]):close_menu()
+	elif event.keycode==KEY_ESCAPE or (mode=="journal" and event.keycode==KEY_Q) or (mode=="favor" and event.keycode==KEY_R) or (mode=="help" and event.keycode==KEY_F2) or (mode in ["result","log"] and (event.is_action_pressed("interact") or event.keycode in [KEY_L,KEY_ENTER])):close_menu()
 	else:handled=false
 	if handled:get_viewport().set_input_as_handled()
