@@ -3,7 +3,7 @@ extends RefCounted
 const BODY_FONT = preload("res://assets/fonts/ink_body.tres")
 const BRUSH_FONT = preload("res://assets/fonts/ink_brush.tres")
 
-const EXPLORATION_HINT="WASD/방향키 이동 · F 대화/거래/조사 · Q 의뢰 · I 소지품 · K 무공 · TAB 지도 · F2 도움말 · ESC 설정"
+const EXPLORATION_HINT="WASD/방향키 이동 · F 대화/거래/조사 · Q 의뢰 · I 소지품 · K 무공 · R 호의도 · TAB 지도 · F2 도움말 · ESC 설정"
 
 const GOLD = Color("d9b879")
 const TEXT = Color("eee8d8")

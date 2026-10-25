@@ -12,7 +12,9 @@ var loadout: Array
 var inventory: Dictionary
 var consumed: Dictionary
 const FACTIONS = {"murim_alliance":"무림맹"}
+const FAVOR_MAX=100
 var faction_favor: Dictionary = {}
+var known_factions: Array = []
 var fame := 0
 var error := ""
 
@@ -21,6 +23,7 @@ func _init() -> void: reset()
 func reset() -> void:
 	fame = 0
 	faction_favor = {"murim_alliance":0}
+	known_factions=[]
 	stats = RULES.STARTING_STATS.duplicate()
 	owned_weapons = ["plain_iron_sword"]
 	learned = ["samjae"]
@@ -103,12 +106,13 @@ func favor_for(faction: String) -> int:return int(faction_favor.get(faction,0))
 
 func add_favor(faction: String, amount: int) -> bool:
 	if not FACTIONS.has(faction) or not whole(favor_for(faction)+amount,-1000000000,1000000000):return false
-	faction_favor[faction]=favor_for(faction)+amount
+	faction_favor[faction]=clampi(favor_for(faction)+amount,0,FAVOR_MAX)
+	if favor_for(faction)>0 and faction not in known_factions:known_factions.append(faction)
 	progress_changed.emit({"event":"favor","id":faction,"amount":amount})
 	return true
 
 func snapshot() -> Dictionary:
-	return {"faction_favor":faction_favor.duplicate(), "fame":fame, "stats":stats.duplicate(), "weapons":owned_weapons.duplicate(), "learned":learned.duplicate(), "loadout":loadout.duplicate(), "inventory":inventory.duplicate(), "consumed":consumed.duplicate()}
+	return {"known_factions":known_factions.duplicate(), "faction_favor":faction_favor.duplicate(), "fame":fame, "stats":stats.duplicate(), "weapons":owned_weapons.duplicate(), "learned":learned.duplicate(), "loadout":loadout.duplicate(), "inventory":inventory.duplicate(), "consumed":consumed.duplicate()}
 
 func valid(data) -> bool:
 	if not data is Dictionary: return false
@@ -117,6 +121,13 @@ func valid(data) -> bool:
 		if not data.faction_favor is Dictionary:return false
 		for faction in data.faction_favor:
 			if not FACTIONS.has(faction) or not whole(data.faction_favor[faction],-1000000000,1000000000):return false
+	if data.has("known_factions"):
+		if not data.known_factions is Array:return false
+		for faction in data.known_factions:
+			if not faction is String or not FACTIONS.has(faction) or data.known_factions.count(faction)!=1:return false
+		for faction in data.get("faction_favor",{}):
+			if not whole(data.faction_favor[faction],0,FAVOR_MAX):return false
+			if data.faction_favor[faction]>0 and faction not in data.known_factions:return false
 	for key in ["stats", "inventory", "consumed"]:
 		if not data.get(key) is Dictionary: return false
 	for key in ["weapons", "learned", "loadout"]:
@@ -143,6 +154,10 @@ func restore(data: Dictionary) -> void:
 	fame = int(data.get("fame", 0))
 	faction_favor={"murim_alliance":0}
 	faction_favor.merge(data.get("faction_favor",{}),true)
+	known_factions=data.get("known_factions",[]).duplicate()
+	for faction in faction_favor:
+		faction_favor[faction]=clampi(int(faction_favor[faction]),0,FAVOR_MAX)
+		if faction_favor[faction]>0 and faction not in known_factions:known_factions.append(faction)
 	stats = data.stats.duplicate()
 	owned_weapons = data.weapons.duplicate()
 	learned = data.learned.duplicate()

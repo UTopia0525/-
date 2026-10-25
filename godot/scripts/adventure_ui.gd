@@ -3,6 +3,7 @@ extends Control
 const UI=preload("res://scripts/ui.gd")
 const HELP=[
 ["길과 인물","WASD / 방향키로 이동합니다. 맵의 인물·사물은 가까이에서 F로 상호작용하며, 마우스는 메뉴 선택에 사용합니다. 가까운 대화 대상의 발밑에 금색 표시가 생깁니다. F는 대화·거래·조사 키입니다. 건물과 담장을 돌아가고 열린 문의 가운데를 통과하세요."],
+["세력 호의도 · R","R로 세력 호의도 창을 엽니다. 호의도를 얻은 세력부터 목록에 나타나며, 현재 수치를 최대100인 막대로 보여 줍니다. R 또는 ESC로 닫습니다."],
 ["의뢰 · Q","Q로 의뢰 일지를 엽니다. 진행 중·수락 가능·완료를 나누어 볼 수 있습니다. 노란 !는 의뢰를 줄 인물, 노란 ?는 달성을 마치고 보고를 기다리는 인물입니다. 조건만 채워서는 보상을 받지 못하며 완료 대화를 마쳐야 합니다. 일반 의뢰는 서로 독립적입니다."],
 ["지도와 시설","TAB으로 전체 지도를 엽니다. 약=영약 상인, 장=무기 장인, 무=무공 교관입니다. 시설 안내 버튼을 누르면 미니맵이 해당 인물을 가리킵니다. 의뢰 일지에서 다시 의뢰를 추적하면 시설 안내가 끝납니다."],
 ["거래와 소지품 · I","시설 앞에서 F로 대화하면 거래합니다. 물건을 선택해 현재 장비와 비교하고 구매 후 남을 돈을 확인하세요. 구매만으로 장착·복용되지는 않습니다. I 소지품에서 무기를 장착하고 영약을 복용하세요. 같은 영약은 평생 10개까지, 오성은 영약으로 오르지 않습니다."],
@@ -66,6 +67,25 @@ func open_journal() -> void:
 		return
 	if game.state!="explore" or not game.dialogue_lines.is_empty() or game.city_service.visible or game.city_overview.visible or not can_open():return
 	game.player_menu.close_menu();open_shell("journal");set_filter("active")
+func open_favor() -> void:
+	if window.visible:
+		if mode=="favor":close_menu()
+		return
+	if game.state!="explore" or not game.dialogue_lines.is_empty() or game.city_service.visible or game.city_overview.visible or not can_open():return
+	game.player_menu.close_menu();open_shell("favor")
+	heading.text="세력 호의도 · R";primary.hide();secondary.hide()
+	body.text="아직 인연을 쌓은 세력이 없습니다." if game.progress.known_factions.is_empty() else "강호에서 쌓은 인연을 살펴봅니다.\n\n세력마다 호의도가 따로 쌓이며, 최대100입니다."
+	for faction in game.progress.known_factions:
+		var value: int=game.progress.favor_for(faction)
+		var box=VBoxContainer.new();rows.add_child(box)
+		var label=UI.label(box,"%s  %d / 100" % [game.progress.FACTIONS[faction],value],Rect2(0,0,310,38),20,UI.GOLD)
+		label.custom_minimum_size=Vector2(310,38)
+		var bar=ProgressBar.new();bar.min_value=0;bar.max_value=game.progress.FAVOR_MAX;bar.value=value;bar.show_percentage=false;bar.custom_minimum_size=Vector2(310,20);bar.mouse_filter=Control.MOUSE_FILTER_IGNORE
+		var background=StyleBoxFlat.new();background.bg_color=Color("112017")
+		var fill=StyleBoxFlat.new();fill.bg_color=Color("b89554")
+		bar.add_theme_stylebox_override("background",background)
+		bar.add_theme_stylebox_override("fill",fill)
+		box.add_child(bar)
 func open_shell(kind: String,pause_world: bool=true) -> void:
 	if window.visible:
 		return_settings=false
@@ -241,6 +261,6 @@ func _input(event: InputEvent) -> void:
 	elif mode=="choice" and event.keycode==KEY_ESCAPE:
 		if heading.text.begins_with("의뢰"):secondary_action()
 		else:close_menu()
-	elif event.keycode==KEY_ESCAPE or (mode=="journal" and event.keycode==KEY_Q) or (mode=="help" and event.keycode==KEY_F2) or (mode in ["result","log"] and event.keycode in [KEY_L,KEY_F,KEY_ENTER]):close_menu()
+	elif event.keycode==KEY_ESCAPE or (mode=="journal" and event.keycode==KEY_Q) or (mode=="favor" and event.keycode==KEY_R) or (mode=="help" and event.keycode==KEY_F2) or (mode in ["result","log"] and event.keycode in [KEY_L,KEY_F,KEY_ENTER]):close_menu()
 	else:handled=false
 	if handled:get_viewport().set_input_as_handled()

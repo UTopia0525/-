@@ -28,7 +28,7 @@ func run() -> void:
 	drain();focus(q.GIVER);q.handle_interaction(q.GIVER)
 	while game.dialogue_index<game.dialogue_lines.size()-1:game.advance_dialogue()
 	game.advance_dialogue();await shot("thanks")
-	drain();game.player_menu.open_menu("inventory");await shot("favor")
+	drain();game.adventure_ui.open_favor();await shot("favor")
 	game.reset();await create_timer(.5).timeout
 	for voice in game.music.players:voice.stop();voice.stream=null
 	for voice in game.options.voices:voice.stop();voice.stream=null

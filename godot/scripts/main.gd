@@ -147,6 +147,8 @@ func _ready() -> void:
 	battle.sound_requested.connect(options.play)
 	var journal_button=UI.button(top_hud,"의뢰 일지 · Q",Rect2(930,245,150,35))
 	journal_button.pressed.connect(adventure_ui.open_journal)
+	var favor_button=UI.button(top_hud,"세력 호의도 · R",Rect2(930,295,150,35))
+	favor_button.pressed.connect(adventure_ui.open_favor)
 	var help_button=UI.button(top_hud,"도움말 · F2",Rect2(1100,245,150,35))
 	help_button.pressed.connect(adventure_ui.open_help)
 	var log_button=UI.button(battle,"교전 기록 · L",Rect2(915,145,205,35))
@@ -565,6 +567,8 @@ func _finish_victory(hp: int) -> void:
 func _input(event: InputEvent) -> void:
 	if is_instance_valid(adventure_ui) and adventure_ui.window.visible:return
 	if event is InputEventKey and event.pressed and not event.echo and not settings_menu.window.visible:
+		if event.keycode==KEY_R:
+			adventure_ui.open_favor();get_viewport().set_input_as_handled();return
 		if event.keycode==KEY_Q:
 			adventure_ui.open_journal();get_viewport().set_input_as_handled();return
 		if event.keycode==KEY_F2:

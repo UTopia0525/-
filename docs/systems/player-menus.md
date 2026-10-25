@@ -21,3 +21,5 @@
 ![K 무공 편성](../../godot/screenshots/icons-martial.png)
 
 구현은`godot/scripts/player_menu.gd`, 키 등록과 모달 제어는`main.gd`다. `tests/onboarding_menus.gd`와 `tests/capture_onboarding_menus.gd`로 검증·화면 확인한다.
+
+세력 호의도는 R 전용 창으로 분리했다. 호의도를 얻은 세력만 현재값/100과 막대로 표시한다. [호의도 규칙](faction-favor.md).
