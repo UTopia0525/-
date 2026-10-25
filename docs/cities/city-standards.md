@@ -13,6 +13,10 @@
 
 공통 구역 목록은 `godot/data/city_standards.json`에, 도시별 구역·시설 NPC는 해당 도시의 `layout.json`에 저장한다. `category`가 공통 구역을 식별하며 한 종류의 주거구역이 여러 블록에 나뉠 수 있다. 관아·객잔 등의 구체 기능은 아직 정하지 않았다.
 
+## 시설 NPC의 기본 이미지
+
+앞으로 모든 도시에 상인·장인·교관을 배치한다. 각 직업은 **장사형/무창형2종 중1종**을 선택하고 해당 도시의 인물로 고정한다. 이름과 설정은 별도로 부여하며, 대화·거래창이 같은 그림을 사용한다. 원본 파일은 복제하지 않고 [직업별 공용 이미지 목록](../characters/service-npc-gallery.md)과 `godot/data/service_npc_portraits.json`을 참조한다. 현재 두 도시의 배치는 유지한다.
+
 ## 장사
 
 최신 배경과 NPC 충돌·배치는 [장사 거리 미술과 충돌 수정](changsha-redesign.md)을 따른다. 아래 시설 좌표는 해당 수정 이후 배치다. 실제 거래 기능은 [거래 시스템](../systems/city-trading.md)에 정리했다.

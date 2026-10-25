@@ -22,6 +22,7 @@
 | 산적 토벌 | [진행](story/chapter-01-bandit-campaign.md), [원고](story/chapter-01-bandit-dialogues.md) | `scripts/bandit_story.gd`, `data/changsha_bandit_story.json` | `bandit_story.gd` |
 | 편의 8종·Q/F2/L | [입구·동작·검증](systems/adventure-usability.md) | `scripts/adventure_ui.gd`, `game_options.gd`, `item_comparison.gd`, `interaction_indicator.gd` | `adventure_features.gd` |
 | 저장·설정 | [규칙](systems/save-slots.md) | `scripts/save_system.gd`, `settings_menu.gd` | `save_restrictions.gd`, `saves.gd` |
+| 시설 NPC 그림 재사용 | [직업별2종 목록](characters/service-npc-gallery.md), [제작 원칙](characters/creation-guidelines.md) | `data/service_npc_portraits.json`, `data/city_standards.json` | 원본 경로·기존 도시 배정 확인 |
 | 기본 NPC 그림 재사용 | [제작 원칙](characters/creation-guidelines.md) | `data/basic_npc_portraits.json`, `scripts/dialogue_portraits.gd` | `basic_npc_portraits.gd`, `conversation_tools.gd` |
 | 대화·미술·UI | [초상화](systems/dialogue-portraits.md), [기록·중복 방지](systems/layered-city-and-conversation.md), [UI](systems/wuxia-ui-style.md), [모션](systems/battle-motion.md) | `scripts/dialogue_portraits.gd`, `dialogue_history.gd`, `battle_actor.gd`, `data/portrait_framing.json` | `conversation_tools.gd`, `dialogue.gd`, `ink_ui.gd`, `battle_motion.gd` |
 | 세계관·인물 | [세력](factions.md), [통합](factions-overview.md), [인물 제작 원칙](characters/creation-guidelines.md) | `docs/factions/`, `docs/characters/`, `assets/portraits/` | 관련 문서·이미지 확인 |

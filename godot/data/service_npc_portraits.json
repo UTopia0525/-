@@ -1,0 +1,80 @@
+{
+  "policy": "앞으로 모든 도시에 상인·장인·교관을 배치하고 각 직업의 기존 이미지2종 중1종을 선택한다. 별도 사용자 지시 없이 새 직업 초상화를 생성하지 않는다. 이름·설정·인물ID는 이미지와 분리하며 선정은 도시 제작 시 고정한다. 대화와 거래에 같은 그림을 적용한다.",
+  "roles": {
+    "merchant": {
+      "name": "상인",
+      "service_id": "city_merchant",
+      "service_kind": "market",
+      "district": "상점가",
+      "variants": [
+        {
+          "id": "merchant_a",
+          "portrait": "res://assets/portraits/services/merchant.png",
+          "source_actor": "city_merchant",
+          "label": "장사 상인형"
+        },
+        {
+          "id": "merchant_b",
+          "portrait": "res://assets/portraits/wuchang/liu_baicao.png",
+          "source_actor": "wc_liu_baicao",
+          "basic_portrait": "female_herbalist",
+          "label": "유백초형"
+        }
+      ]
+    },
+    "artisan": {
+      "name": "장인",
+      "service_id": "city_artisan",
+      "service_kind": "workshop",
+      "district": "공방거리",
+      "variants": [
+        {
+          "id": "artisan_a",
+          "portrait": "res://assets/portraits/services/artisan.png",
+          "source_actor": "city_artisan",
+          "label": "장사 장인형"
+        },
+        {
+          "id": "artisan_b",
+          "portrait": "res://assets/portraits/wuchang/shi_dayong.png",
+          "source_actor": "wc_shi_dayong",
+          "basic_portrait": "male_blacksmith",
+          "label": "석대용형"
+        }
+      ]
+    },
+    "instructor": {
+      "name": "교관",
+      "service_id": "city_instructor",
+      "service_kind": "training",
+      "district": "무관 앞",
+      "variants": [
+        {
+          "id": "instructor_a",
+          "portrait": "res://assets/portraits/services/instructor.png",
+          "source_actor": "city_instructor",
+          "label": "장사 교관형"
+        },
+        {
+          "id": "instructor_b",
+          "portrait": "res://assets/portraits/wuchang/lin_zhengshan.png",
+          "source_actor": "wc_lin_zhengshan",
+          "basic_portrait": "male_instructor",
+          "label": "임정산형"
+        }
+      ]
+    }
+  },
+  "current_assignments": {
+    "changsha": {
+      "merchant": "merchant_a",
+      "artisan": "artisan_a",
+      "instructor": "instructor_a"
+    },
+    "wuchang": {
+      "merchant": "merchant_b",
+      "artisan": "artisan_b",
+      "instructor": "instructor_b"
+    }
+  }
+}

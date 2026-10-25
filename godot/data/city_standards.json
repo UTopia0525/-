@@ -7,5 +7,7 @@
     {"category": "inn", "name": "객잔"},
     {"category": "residential", "name": "주거구역"}
   ],
+  "service_portrait_catalog": "res://data/service_npc_portraits.json",
+  "required_service_roles": ["merchant", "artisan", "instructor"],
   "optional_district_policy": "사용자가 지정한 구역 또는 도시 특성에 맞는 구역을 추가한다."
 }
