@@ -1,5 +1,5 @@
 extends Node
-## Gate/NPC foundation only. Invitation, escort and reward selection are not connected.
+## Gate access and visit closure; main-story events live in alliance_story.gd.
 const PHASES=["unverified","visiting","training_complete","closed"]
 const GATE_ART=Rect2(1405,854,150,50)
 var game
@@ -19,8 +19,7 @@ func snapshot() -> Dictionary:return {"phase":phase}
 func valid(value) -> bool:return value is Dictionary and value.get("phase") in PHASES
 func restore(value: Dictionary) -> void:phase=value.phase;armed=true
 func admitted() -> bool:return phase in ["visiting","training_complete"]
-# The later story must call these only after its own invitation/teaching callbacks.
-# No current NPC dialogue invokes them or grants a reward.
+# Admission and closure are committed by the main-story dialogue callbacks.
 func grant_visit() -> bool:
 	if phase!="unverified":return false
 	phase="visiting";_refresh_gate();return true
@@ -62,6 +61,9 @@ func _process(_delta: float) -> void:
 		armed=false;_guard_dialogue("alliance_guard_right" if w.player.position.x>1480*4 else "alliance_guard_left")
 func _guard_dialogue(speaker: String="alliance_guard_left") -> void:
 	armed=false
+	var story=game.get("alliance_story")
+	if is_instance_valid(story) and story.stage_id=="invited" and phase=="unverified":
+		story.begin_gate(speaker);return
 	var scene="guard_closed" if phase=="closed" else "guard_visiting" if admitted() else "guard_after_bandits" if game.bandit_story.stage=="completed" else "guard_unverified"
 	var lines: Array=data.scenes[scene].duplicate(true)
 	if speaker=="alliance_guard_right":
@@ -73,5 +75,8 @@ func handle_interaction(id: String) -> bool:
 	if id in ["alliance_guard_left","alliance_guard_right"]:_guard_dialogue(id);return true
 	if id not in ["heo_mungyu","gwak_jinseok"]:return false
 	var prefix="heo" if id=="heo_mungyu" else "gwak"
+	var story=game.get("alliance_story")
+	if id=="gwak_jinseok" and is_instance_valid(story) and story.stage_id=="steward":
+		game.say(data.scenes.gwak_idle);return true
 	var suffix="trained" if phase=="training_complete" else "visiting" if phase=="visiting" else "idle"
 	game.say(data.scenes[prefix+"_"+suffix]);return true

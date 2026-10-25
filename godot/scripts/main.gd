@@ -18,6 +18,7 @@ var duel_quest
 var inn_quest
 var impostor_quest
 var alliance_visit
+var alliance_story
 var adventure_ui
 var options
 var dialogue_next: Button
@@ -143,6 +144,7 @@ func _ready() -> void:
 	duel_quest=preload("res://scripts/duel_quest.gd").new();duel_quest.game=self;add_child(duel_quest)
 	inn_quest=preload("res://scripts/inn_quest.gd").new();inn_quest.game=self;add_child(inn_quest)
 	impostor_quest=preload("res://scripts/impostor_quest.gd").new();impostor_quest.game=self;add_child(impostor_quest)
+	alliance_story=preload("res://scripts/alliance_story.gd").new();alliance_story.game=self;add_child(alliance_story)
 	progress.progress_changed.connect(_progress_changed)
 	battle.sound_requested.connect(options.play)
 	var journal_button=UI.button(top_hud,"의뢰 일지 · Q",Rect2(930,245,150,35))
@@ -270,11 +272,12 @@ func _build_ending() -> void:
 	restart.pressed.connect(reset)
 	ending.hide()
 
-func regional_quests() -> Array:return [herbalist_quest,artisan_quest,duel_quest,inn_quest,impostor_quest]
+func regional_quests() -> Array:return [alliance_story,herbalist_quest,artisan_quest,duel_quest,inn_quest,impostor_quest]
 func encounters() -> Array:return bandit_story.data.encounters+[herbalist_quest.data.encounter,duel_quest.data.encounter,inn_quest.data.encounter,impostor_quest.data.encounter]
 
 func reset() -> void:
 	if is_instance_valid(adventure_ui):adventure_ui.reset()
+	if is_instance_valid(alliance_story):alliance_story.reset()
 	if is_instance_valid(impostor_quest):impostor_quest.reset()
 	if is_instance_valid(inn_quest):inn_quest.reset()
 	if is_instance_valid(duel_quest):duel_quest.reset()
@@ -380,6 +383,7 @@ func _process(_delta: float) -> void:
 		var goal: Dictionary = quest_navigation.get_goal(exploration)
 		objective.text = goal.quest_title + " · " + goal.label if not goal.is_empty() else ("총무당 둘러보기 · 남쪽 출입 지점에서 F 이동" if exploration.area_name=="alliance_office" else "산길을 따라 북쪽 무창으로 · 출입 지점에서 F 이동" if exploration.area_name=="mountain_road" else "무창 둘러보기 · 남쪽 농촌 끝에서 장사 방면" if exploration.area_name=="wuchang" else "시장·골목·나루·성밖 농촌 둘러보기")
 	bandit_story.maybe_start()
+	alliance_story.maybe_start()
 
 func toggle_city_map() -> void:
 	if not dialogue_lines.is_empty() or state != "explore" or player_menu.visible: return
@@ -461,6 +465,7 @@ func interact() -> void:
 	if npc.is_empty():
 		return
 	if preload("res://scripts/overland_travel.gd").use(self,npc):return
+	if alliance_story.handle_interaction(str(npc.id)):return
 	if impostor_quest.handle_interaction(str(npc.id)):return
 	if inn_quest.handle_interaction(str(npc.id)):return
 	if duel_quest.handle_interaction(str(npc.id)):return

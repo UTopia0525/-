@@ -130,7 +130,7 @@ func set_filter(value: String) -> void:
 	for quest in game.regional_quests():
 		var quest_status: String=quest.status()
 		if (filter=="active" and quest_status in ["active","ready"]) or filter==quest_status:
-			if quest_status!="available" or game.exploration.area_name=="wuchang":add_quest_row(quest.ID,quest_status,quest.stage(),"일반 의뢰")
+			if quest_status!="available" or game.exploration.area_name=="wuchang":add_quest_row(quest.ID,quest_status,quest.stage(),"메인 이야기" if quest.ID==game.alliance_story.ID else "일반 의뢰")
 	var story=game.bandit_story
 	if story.stage!="dormant":
 		var state: String="completed" if story.stage=="completed" else "active"
@@ -167,6 +167,8 @@ func primary_action() -> void:
 			var callback:=first_choice
 			close_menu()
 			if callback.is_valid():callback.call()
+		"teaching":
+			if not primary.disabled:game.alliance_story.confirm_art(selected)
 		"options":open_help(true)
 		_:close_menu()
 func secondary_action() -> void:
@@ -176,6 +178,20 @@ func secondary_action() -> void:
 		if callback.is_valid():callback.call()
 func choose(title: String,text: String,a: String,yes: Callable,b: String,no: Callable) -> void:
 	open_shell("choice");heading.text=title;body.text=text+"\n\n1 / 2 또는 버튼으로 선택합니다.";primary.text=a;secondary.text=b;secondary.show();first_choice=yes;second_choice=no;primary.grab_focus()
+func open_teaching() -> void:
+	open_shell("teaching");heading.text="곽진석 · 중급 무공 전수"
+	primary.text="이 무공 선택";primary.disabled=true
+	body.text="다섯 길 가운데 한 문을 전수받습니다.\n목록에서 무공을 골라 살펴보세요.\n\n학습 능력치 제한은 없습니다. 실전에는 해당 무기와 내기가 필요합니다.\nK에서 전투 초식을 편성하고 I에서 무기를 갖추세요."
+	for id in game.alliance_story.ARTS:
+		var art: Dictionary=game.progress.arts.get_skill(id)
+		row(str(art.name)+( " · 이미 익힘" if id in game.progress.learned else ""),select_teaching.bind(id))
+		preload("res://scripts/catalog_icons.gd").apply(rows.get_child(-1),id)
+func select_teaching(id: String) -> void:
+	if mode!="teaching" or id not in game.alliance_story.ARTS:return
+	selected=id
+	var art: Dictionary=game.progress.arts.get_skill(id)
+	body.text="%s\n\n%s\n\n%s\n기본 내기 소모: %d\n현재 능력치 기준 위력: %d (무기·상대 방어 보정 전)\n\n이번 방문에서는 한 문만 전수받습니다.\n학습 능력치 제한은 없습니다. 습득 뒤 K에서 편성하세요." % [art.name,art.description,game.progress.arts.weapon_requirement(id),art.qi_cost,int(game.progress.arts.raw_damage(id,game.progress.stats))]
+	primary.disabled=id in game.progress.learned;primary.text="이미 익힌 무공" if primary.disabled else "이 무공 선택"
 func open_help(from_settings: bool=false) -> void:
 	if game.dialogue_history.visible:return
 	if game.player_menu.visible:game.player_menu.close_menu()

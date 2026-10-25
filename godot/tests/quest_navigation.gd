@@ -22,12 +22,12 @@ func run() -> void:
 		for road in city.city_data.road_centers:
 			check(not Rect2(road[0], road[1], road[2], road[3]).has_point(npc.position / 4), "resident avoids road center")
 	check(actors == 11, "all eleven active quest residents placed")
-	check(nav.definitions.size() == 15, "fourteen side quests and the bandit campaign have destinations")
+	check(nav.definitions.size() == 16, "fourteen side quests, the bandit campaign and alliance story have destinations")
 	for id in nav.definitions:
 		for stage in nav.definitions[id].stages:
 			check(nav.track(id, stage), "valid quest stage")
 			var goal: Dictionary = nav.get_goal(city)
-			if id==game.impostor_quest.ID:
+			if id in [game.impostor_quest.ID,game.alliance_story.ID]:
 				check(goal.is_empty(),"locked post-teaching quest reveals no destination")
 				continue
 			check(not goal.is_empty(), "stage resolves to a destination")

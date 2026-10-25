@@ -14,6 +14,7 @@
 | 무창 장인의 이름값 | [진행·원고·검증](quests/wuchang-artisan.md) | `scripts/artisan_quest.gd`, `data/wuchang_artisan_quest.json` | `artisan_quest.gd` |
 | 무창 약초꾼 의뢰 | [진행·원고·난이도](quests/wuchang-herbalist.md) | `scripts/herbalist_quest.gd`, `data/wuchang_herbalist_quest.json` | `herbalist_quest.gd` |
 | 도시 간 육로 | [산길·출입·지도·저장](cities/changsha-wuchang-road.md) | `scripts/overland_travel.gd`, `mountain_road_map.gd`, `assets/maps/changsha-wuchang/layout.json` | `overland_travel.gd`, `capture_overland.gd` |
+| 무림맹 초대·중급 전수 메인 | [실제 진행·대사·검증](story/alliance-main-story.md) | `scripts/alliance_story.gd`, `data/alliance_story.json`, `alliance_visit.gd` | `alliance_story.gd`, `bandit_story.gd`, `alliance_visit.gd` |
 | 무림맹 경비·총관·교관 | [인물](characters/alliance-headquarters.md), [출입·진행 구분](story/alliance-visit-foundation.md) | `data/alliance_characters.json`, `scripts/alliance_visit.gd` | `alliance_visit.gd`, `capture_alliance_visit.gd` |
 | 무창 민간 주민 | [8인 설정·대사·그림](characters/wuchang-civilians.md) | `data/wuchang_residents.json`, `scripts/exploration.gd`, `dialogue_portraits.gd` | `wuchang_residents.gd`, `capture_wuchang_residents.gd` |
 | 맵 미술 통일 | [산길·무창·총무당](cities/regional-map-art.md) | `scripts/*ground.gd`, `assets/maps/*/ground.png` | `map_art.gd`, `capture_map_art.gd` |
