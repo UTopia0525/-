@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-26",
+  "generator": "image_gen",
+  "images": [
+    {
+      "file": "hamlet-junction.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "f7d27dab5e7d8eac29ab48d41f9a87f6f290db0adb678d9f773b1560632b6ba7",
+      "source_original": "exec-2d58f0ad-16bd-41ff-9637-aa8830638013.png",
+      "purpose": "visual_design_only_not_runtime_ground"
+    },
+    {
+      "file": "qingya-camp.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "ad7bf8430480518006eeac4ab9a5cdc320478846d5967631de2638d3f82e7d69",
+      "source_original": "exec-445d9fba-2479-451d-8ece-dfde1bc3116e.png",
+      "purpose": "visual_design_only_not_runtime_ground"
+    }
+  ]
+}
