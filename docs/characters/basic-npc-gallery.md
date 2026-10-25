@@ -11,4 +11,6 @@
 | **13. 남성 · 교관 (임정산)**<br>[![남성 · 교관 (임정산)](../../godot/assets/portraits/wuchang/lin_zhengshan.png)](../../godot/assets/portraits/wuchang/lin_zhengshan.png)<br>`male_instructor` | **14. 여성 · 객잔 주인 (도삼랑)**<br>[![여성 · 객잔 주인 (도삼랑)](../../godot/assets/portraits/wuchang/du_sanniang.png)](../../godot/assets/portraits/wuchang/du_sanniang.png)<br>`female_innkeeper` | **15. 남성 · 포두 (육정호)**<br>[![남성 · 포두 (육정호)](../../godot/assets/portraits/wuchang/lu_zhenghao.png)](../../godot/assets/portraits/wuchang/lu_zhenghao.png)<br>`male_constable` |
 | **16. 남성 · 하역반장 (오덕수)**<br>[![남성 · 하역반장 (오덕수)](../../godot/assets/portraits/wuchang/wu_deshu.png)](../../godot/assets/portraits/wuchang/wu_deshu.png)<br>`male_dockworker` | **17. 여성 · 노년 주민 (정씨 할머니)**<br>[![여성 · 노년 주민 (정씨 할머니)](../../godot/assets/portraits/wuchang/grandmother_zheng.png)](../../godot/assets/portraits/wuchang/grandmother_zheng.png)<br>`female_elder_seamstress` | **18. 남성 · 농부 (주계복)**<br>[![남성 · 농부 (주계복)](../../godot/assets/portraits/wuchang/zhou_jifu.png)](../../godot/assets/portraits/wuchang/zhou_jifu.png)<br>`male_farmer` |
 
+**2026-10-25:** 04번 청년 남성과09번 청년 여성은 일반 주민에 맞춰 더 평범한 인상으로 교체했다. 같은 공용 그림을 쓰는 기존 인물에게도 적용된다.
+
 기준: [게임의 기본 NPC 이미지 목록](../../godot/data/basic_npc_portraits.json).
