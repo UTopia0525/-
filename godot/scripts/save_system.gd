@@ -46,7 +46,7 @@ func capture() -> Dictionary:
 	var nodes = {"top_hud":game.top_hud, "bottom_hint":game.bottom_hint, "caption":game.story_caption, "exploration":w, "ending":game.ending, "overview":game.city_overview, "visual":game.story_visual}
 	var visibility := {}
 	for id in nodes: visibility[id] = nodes[id].visible
-	return {"schema":3, "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
+	return {"schema":3, "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
 		"chapter":game.chapter_number, "money":game.money, "talked_captain":game.talked_captain,
 		"world":{"layout_version":2 if w.area_name=="mountain_road" else 1, "area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
@@ -112,6 +112,7 @@ func validate(d) -> bool:
 	if d.has("bandit_story") and not game.bandit_story.valid(d.bandit_story): return false
 	if d.has("alliance_visit") and not game.alliance_visit.valid(d.alliance_visit):return false
 	if d.has("herbalist_quest") and not game.herbalist_quest.valid(d.herbalist_quest):return false
+	if d.has("artisan_quest") and not game.artisan_quest.valid(d.artisan_quest):return false
 	for field in ["world", "prologue", "chapter_one", "navigation", "dialogue", "ui", "visual", "service", "battle", "music"]:
 		if not d.get(field) is Dictionary: return false
 	if d.get("state") not in ["explore", "story", "choice", "service", "battle", "end"]: return false
@@ -232,6 +233,7 @@ func load_slot(slot: int) -> bool:
 	else: game.battle.equip_weapon(d.battle.get("weapon_type", "sword"))
 	game.talked_captain = d.talked_captain
 	game.herbalist_quest.restore(d.get("herbalist_quest",{"phase":"available"}))
+	game.artisan_quest.restore(d.get("artisan_quest",{"phase":"available"}))
 	game.herbalist_quest.battle_active=d.state=="battle" and d.battle.get("encounter_id","")=="herb_ruffian"
 	game.exploration.load_area(d.world.area)
 	game.exploration.player.position = Vector2(d.world.position[0], d.world.position[1])

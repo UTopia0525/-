@@ -119,6 +119,8 @@ func load_area(value: String) -> void:
 	if is_instance_valid(visit):visit.install(self)
 	var herbalist=get_parent().get("herbalist_quest")
 	if is_instance_valid(herbalist):herbalist.refresh_world()
+	var artisan=get_parent().get("artisan_quest")
+	if is_instance_valid(artisan):artisan.refresh_world()
 	camera.set_map_bounds(map_bounds)
 	camera.snap_to_player()
 

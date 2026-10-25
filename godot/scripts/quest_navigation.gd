@@ -31,8 +31,8 @@ func get_goal(world) -> Dictionary:
 	if not facility_id.is_empty() and world.area_name in ["changsha","wuchang"]:
 		for npc in world.ambient_nodes:
 			if npc.get_meta("service_id","")==facility_id:return {"position":npc.position,"label":npc.get_meta("display_name")+"에게 이동","quest_title":"시설 안내","goal_id":facility_id,"quest_id":"","stage_id":"facility"}
-	var herbalist=get_parent().get("herbalist_quest")
-	if is_instance_valid(herbalist) and quest_id==herbalist.ID:return herbalist.goal(world)
+	for quest in get_parent().regional_quests():
+		if is_instance_valid(quest) and quest_id==quest.ID:return quest.goal(world)
 	if quest_id.is_empty() or world.area_name != "changsha":
 		return {}
 	var effective_stage = stage_id

@@ -39,7 +39,7 @@ func run() -> void:
 		world.player.position=path[-1];world.player.stop();await physics_frame
 		check(world.nearest().get("id","")==entry.id,"F picks intended civilian: "+entry.name)
 		game.interact()
-		if entry.id=="wc_liu_baicao":game.adventure_ui.secondary_action()
+		if entry.id in ["wc_liu_baicao","wc_shi_dayong"]:game.adventure_ui.secondary_action()
 		check(game.dialogue_cast.active_actor==entry.id and game.dialogue_name.text.begins_with(entry.name),"speaker name is correct")
 		check(game.dialogue_backdrop.visible,"Wuchang dialogue dims background")
 		var actor=game.PORTRAITS.ACTORS[entry.id]

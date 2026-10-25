@@ -13,6 +13,7 @@ var battle
 var music
 var ordinary_quests
 var herbalist_quest
+var artisan_quest
 var alliance_visit
 var adventure_ui
 var options
@@ -135,6 +136,7 @@ func _ready() -> void:
 	adventure_ui=preload("res://scripts/adventure_ui.gd").new();adventure_ui.game=self;ui_root.add_child(adventure_ui)
 	ordinary_quests=preload("res://scripts/ordinary_quests.gd").new();ordinary_quests.game=self;add_child(ordinary_quests)
 	herbalist_quest=preload("res://scripts/herbalist_quest.gd").new();herbalist_quest.game=self;add_child(herbalist_quest)
+	artisan_quest=preload("res://scripts/artisan_quest.gd").new();artisan_quest.game=self;add_child(artisan_quest)
 	progress.progress_changed.connect(_progress_changed)
 	battle.sound_requested.connect(options.play)
 	var journal_button=UI.button(top_hud,"의뢰 일지 · Q",Rect2(930,245,150,35))
@@ -260,8 +262,11 @@ func _build_ending() -> void:
 	restart.pressed.connect(reset)
 	ending.hide()
 
+func regional_quests() -> Array:return [herbalist_quest,artisan_quest]
+
 func reset() -> void:
 	if is_instance_valid(adventure_ui):adventure_ui.reset()
+	if is_instance_valid(artisan_quest):artisan_quest.reset()
 	if is_instance_valid(herbalist_quest):herbalist_quest.reset()
 	if is_instance_valid(ordinary_quests):ordinary_quests.reset()
 	if is_instance_valid(settings_menu): settings_menu.close_menu()
@@ -444,6 +449,7 @@ func interact() -> void:
 	if npc.is_empty():
 		return
 	if preload("res://scripts/overland_travel.gd").use(self,npc):return
+	if artisan_quest.handle_interaction(str(npc.id)):return
 	if herbalist_quest.handle_interaction(str(npc.id)):return
 	if alliance_visit.handle_interaction(str(npc.id)):return
 	if ordinary_quests.handle_interaction(str(npc.id)): return

@@ -104,13 +104,15 @@ func _after_dialogue() -> void:
 			game.adventure_ui.notify("의뢰 완료 · %d문 · 오성+%d" % [int(reward.money),int(game.progress.stats.insight)-before],"quest")
 	refresh_world()
 func is_target(npc: String) -> bool:
+	if is_instance_valid(game.artisan_quest) and game.artisan_quest.is_target(npc):return true
 	for id in definitions:
 		if status(id)!="active":continue
 		for goal in game.quest_navigation.definitions[id].stages[stage_for(id)].goals:
 			if goal.get("npc_id","")==npc:return true
 	return false
 func marker_for(npc: String) -> String:
-	if npc=="wc_liu_baicao" and is_instance_valid(game.herbalist_quest):return game.herbalist_quest.marker_for(npc)
+	for quest in game.regional_quests():
+		if is_instance_valid(quest) and npc==quest.GIVER:return quest.marker_for(npc)
 	for id in definitions:
 		if definitions[id].giver==npc:
 			return "?" if status(id)=="ready" else "!" if status(id) in ["available","active"] else ""

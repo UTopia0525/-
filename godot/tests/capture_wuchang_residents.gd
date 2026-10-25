@@ -15,7 +15,7 @@ func run() -> void:
 		world.player.position=path[-1];world.player.stop();world.camera.snap_to_player();await process_frame
 		await shot("wuchang-npc-"+str(entry.id).trim_prefix("wc_"))
 		game.interact()
-		if entry.id=="wc_liu_baicao":game.adventure_ui.secondary_action()
+		if entry.id in ["wc_liu_baicao","wc_shi_dayong"]:game.adventure_ui.secondary_action()
 		await shot("wuchang-dialogue-"+str(entry.id).trim_prefix("wc_"))
 		while not game.dialogue_lines.is_empty():game.advance_dialogue()
 		if game.city_service.visible:

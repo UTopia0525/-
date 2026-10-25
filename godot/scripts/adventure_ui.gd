@@ -107,10 +107,10 @@ func set_filter(value: String) -> void:
 		for id in game.ordinary_quests.definitions:
 			var state: String=game.ordinary_quests.status(id)
 			if (filter=="active" and state in ["active","ready"]) or filter==state:add_quest_row(id,state,"offer" if state=="available" else game.ordinary_quests.stage_for(id),"일반 의뢰")
-	var herb=game.herbalist_quest
-	var herb_status: String=herb.status()
-	if (filter=="active" and herb_status in ["active","ready"]) or filter==herb_status:
-		if herb_status!="available" or game.exploration.area_name=="wuchang":add_quest_row(herb.ID,herb_status,herb.stage(),"일반 의뢰")
+	for quest in game.regional_quests():
+		var quest_status: String=quest.status()
+		if (filter=="active" and quest_status in ["active","ready"]) or filter==quest_status:
+			if quest_status!="available" or game.exploration.area_name=="wuchang":add_quest_row(quest.ID,quest_status,quest.stage(),"일반 의뢰")
 	var story=game.bandit_story
 	if story.stage!="dormant":
 		var state: String="completed" if story.stage=="completed" else "active"
@@ -128,11 +128,13 @@ func select_quest(id: String) -> void:
 		return
 	selected=id;var data: Dictionary=entries[id];var nav: Dictionary=game.quest_navigation.definitions[id]
 	var reward: String="500문 · 오성+5 · 명성+5 (귀환 보고 후)" if id==game.bandit_story.QUEST_ID else "%d문 · 오성+5 (상한100)" % int(game.trade_intro.rewards.quests.get(id,{"money":0}).money)
-	if id==game.herbalist_quest.ID:reward=game.herbalist_quest.reward_label()
+	for quest in game.regional_quests():
+		if id==quest.ID:reward=quest.reward_label().trim_prefix("보수 ")
 	var who: String="연계 대화에서 받은 용건"
-	if id==game.herbalist_quest.ID:who="유백초 · 무창 약재상"
+	for quest in game.regional_quests():
+		if id==quest.ID:who=game.PORTRAITS.ACTORS[quest.GIVER].name
 	if game.ordinary_quests.definitions.has(id):who=game.PORTRAITS.ACTORS[game.ordinary_quests.definitions[id].giver].name
-	body.text="%s\n%s · %s\n\n의뢰인: %s\n\n%s\n\n보수: %s\n\n%s" % [nav.title,data.kind,{"active":"진행 중","available":"수락 가능","ready":"달성 · 완료 보고 대기","completed":"완료"}[data.status],who,"이미 마친 의뢰입니다." if data.status=="completed" else nav.stages[data.stage].label,reward,"일지에서 수락하지 않습니다. 의뢰인에게 F로 말을 걸어 직접 맡으세요." if data.status=="available" else "보상을 받으려면 완료 대화를 끝내야 합니다."]
+	body.text="%s\n%s · %s\n\n의뢰인: %s\n\n%s\n\n보수: %s\n\n%s" % [nav.title,data.kind,{"active":"진행 중","available":"수락 가능","ready":"달성 · 완료 보고 대기","completed":"완료"}[data.status],who,"이미 마친 의뢰입니다." if data.status=="completed" else nav.stages[data.stage].label,reward,"보수를 받았습니다." if data.status=="completed" else "일지에서 수락하지 않습니다. 의뢰인에게 F로 말을 걸어 직접 맡으세요." if data.status=="available" else "보상을 받으려면 완료 대화를 끝내야 합니다."]
 	if game.ordinary_quests.records.has(id):body.add_text("\n\n현재 달성 %d/%d" % [game.ordinary_quests.records[id].done.size(),game.ordinary_quests.definitions[id].steps.size()])
 	primary.disabled=data.status=="completed"
 	primary.text="의뢰인 위치 안내" if data.status=="available" else "이 의뢰 추적"
