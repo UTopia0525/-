@@ -63,7 +63,7 @@ func run() -> void:
 	await shot("quest-icons-changsha")
 	game.adventure_ui.toast.hide();game.toggle_city_map();await shot("quest-map-changsha");game.toggle_city_map()
 	game.ui_root.hide();concept(false);await shot("ui-concept-ink-gold");concept(true);await shot("ui-concept-paper-seal");layer.free();game.ui_root.show()
-	preload("res://scripts/overland_travel.gd").use(game,{"travel":{"area":"wuchang","arrival":[760,1190]}})
+	game.start_wuchang();game.exploration.player.position=game.exploration.safe_player_position(game.exploration.city_point([760,1190]));game.exploration.camera.snap_to_player()
 	await shot("quest-icons-wuchang");game.adventure_ui.toast.hide();game.toggle_city_map();await shot("quest-map-wuchang");game.toggle_city_map()
 	game.adventure_ui.open_journal();game.adventure_ui.set_filter("available");await shot("quest-journal-global");game.adventure_ui.close_menu()
 	game.start_battle();game.battle.select_skill("basic_defense");game.battle.use_selected()

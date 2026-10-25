@@ -63,6 +63,9 @@ var pending_choice := ""
 var progress = preload("res://scripts/player_progress.gd").new()
 var money := 0
 var money_label: Label
+var journey_label: Label
+var quest_heading: Label
+var compact_toolbar: Panel
 var continue_button: Button
 var dialogue_lines: Array = []
 var dialogue_index: int = 0
@@ -153,12 +156,6 @@ func _ready() -> void:
 	grain_quest=preload("res://scripts/grain_quest.gd").new();grain_quest.game=self;add_child(grain_quest)
 	progress.progress_changed.connect(_progress_changed)
 	battle.sound_requested.connect(options.play)
-	var journal_button=UI.button(top_hud,"의뢰 일지 · Q",Rect2(930,245,150,35))
-	journal_button.pressed.connect(adventure_ui.open_journal)
-	var favor_button=UI.button(top_hud,"세력 호의도 · R",Rect2(930,295,150,35))
-	favor_button.pressed.connect(adventure_ui.open_favor)
-	var help_button=UI.button(top_hud,"도움말 · F2",Rect2(1100,245,150,35))
-	help_button.pressed.connect(adventure_ui.open_help)
 	var log_button=UI.button(battle,"교전 기록 · L",Rect2(915,145,205,35))
 	log_button.pressed.connect(adventure_ui.open_log)
 	reset()
@@ -183,26 +180,43 @@ func _build_hud() -> void:
 	top_hud = Control.new()
 	top_hud.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui_root.add_child(top_hud)
-	var purse = UI.panel(top_hud, Rect2(930, 99, 324, 36), Color("13231eea"))
-	money_label = UI.label(purse, "소지금  0문", Rect2(12, 4, 300, 28), 18, UI.GOLD)
-	money_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	var inventory_button = UI.button(top_hud, "소지품 · I", Rect2(930, 195, 150, 35))
-	inventory_button.pressed.connect(func(): player_menu.open_menu("inventory"))
-	var arts_button = UI.button(top_hud, "무공 · K", Rect2(1100, 195, 150, 35))
-	arts_button.pressed.connect(func(): player_menu.open_menu("martial"))
-	minimap = MINIMAP.new()
-	top_hud.add_child(minimap)
-	minimap.bind_world(exploration)
-	minimap.quest_navigation = quest_navigation
-	location = minimap.place_label
-	var mission_panel = UI.panel(top_hud, Rect2(822, 24, 432, 66), Color("13231edb"))
-	UI.label(mission_panel, "지금 할 일", Rect2(16, 7, 400, 20), 12, UI.GOLD)
-	objective = UI.label(mission_panel, "", Rect2(16, 30, 400, 27), 16)
-	objective.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	bottom_hint = UI.label(ui_root, "WASD / 방향키  이동     ·     F  대화     ·     M  음악     ·     F1  처음부터", Rect2(24, 680, 1230, 27), 14, Color("f1dfb4"))
-	bottom_hint.add_theme_color_override("font_shadow_color", Color("11211a"))
-	bottom_hint.add_theme_constant_override("shadow_offset_x", 2)
-	bottom_hint.add_theme_constant_override("shadow_offset_y", 2)
+	var purse = UI.panel(top_hud, Rect2(1024,16,240,34),Color("101e20ee"))
+	money_label = UI.label(purse,"",Rect2(10,6,220,22),14,UI.TEXT)
+	money_label.horizontal_alignment=HORIZONTAL_ALIGNMENT_RIGHT
+	var journey=UI.panel(top_hud,Rect2(218,16,310,34),Color("101e20ee"))
+	journey_label=UI.label(journey,"도원 · 강호행",Rect2(12,6,286,22),14,UI.TEXT)
+	minimap=MINIMAP.new();top_hud.add_child(minimap);minimap.bind_world(exploration);minimap.quest_navigation=quest_navigation
+	location=minimap.place_label
+	var mission=UI.panel(top_hud,Rect2(982,68,282,112),Color("101e20ee"))
+	var style=UI.box(Color("101e20ee"));style.border_width_left=3;mission.add_theme_stylebox_override("panel",style)
+	quest_heading=UI.label(mission,"지금 할 일",Rect2(12,9,258,25),17,UI.GOLD)
+	quest_heading.add_theme_font_override("font",UI.BRUSH_FONT);quest_heading.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
+	objective=UI.label(mission,"",Rect2(12,40,258,60),14)
+	objective.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	objective.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
+	compact_toolbar=UI.panel(top_hud,Rect2(316,666,648,38),Color("101e20ee"))
+	var labels=["I  소지품","K  무공","Q  의뢰","R  세력","TAB  지도","ESC  설정","F2  도움말"]
+	for i in range(labels.size()):
+		var button=UI.button(compact_toolbar,labels[i],Rect2(5+i*91,4,89,30))
+		button.add_theme_font_size_override("font_size",13)
+		for style_name in ["normal","hover","hover_pressed","pressed","disabled","focus"]:
+			var compact=button.get_theme_stylebox(style_name).duplicate()
+			compact.set_content_margin(SIDE_LEFT,6);compact.set_content_margin(SIDE_RIGHT,6)
+			compact.set_content_margin(SIDE_TOP,3);compact.set_content_margin(SIDE_BOTTOM,3)
+			button.add_theme_stylebox_override(style_name,compact)
+		button.pressed.connect(_hud_action.bind(i))
+	bottom_hint=UI.label(ui_root,UI.EXPLORATION_HINT,Rect2(24,680,1230,27),14,UI.TEXT)
+	bottom_hint.add_theme_color_override("font_shadow_color",Color("11211a"));bottom_hint.add_theme_constant_override("shadow_offset_x",2);bottom_hint.add_theme_constant_override("shadow_offset_y",2)
+
+func _hud_action(index: int) -> void:
+	match index:
+		0:player_menu.open_menu("inventory")
+		1:player_menu.open_menu("martial")
+		2:adventure_ui.open_journal()
+		3:adventure_ui.open_favor()
+		4:toggle_city_map()
+		5:settings_menu.open_menu()
+		6:adventure_ui.open_help()
 
 func _build_dialogue() -> void:
 	dialogue_backdrop = ColorRect.new()
@@ -268,7 +282,10 @@ func _build_title() -> void:
 
 func start_wuchang() -> void:
 	start_city()
-	preload("res://scripts/overland_travel.gd").use(self,{"travel":{"area":"wuchang","arrival":[1100,1790]}})
+	# The explicit title-screen preview is separate from departing Changsha in play.
+	exploration.load_area("wuchang")
+	exploration.player.position=exploration.safe_player_position(exploration.city_point([1100,1790]))
+	exploration.player.stop();exploration.camera.snap_to_player();exploration.set_active(true)
 
 func _build_ending() -> void:
 	ending = _full_overlay(Color(0.035, 0.07, 0.055, 0.94))
@@ -343,6 +360,7 @@ func reset() -> void:
 	bottom_hint.hide()
 	location.text = "동정호 남쪽 · 청류진 나루"
 	objective.text = "첫 표행을 시작하세요."
+	quest_heading.text = "지금 할 일"
 	title_screen.show()
 
 func start_story() -> void:
@@ -391,11 +409,18 @@ func enter_city(at_port: bool = false) -> void:
 	adventure_ui.tip("city","Q 의뢰 일지 · 노란 ! 대화로 의뢰 수락")
 
 func _process(_delta: float) -> void:
-	money_label.text = "소지금 %d문 · 명성 %d" % [money, progress.fame]
+	money_label.text = "%d문 · 명성 %d" % [money, progress.fame]
+	var total:=0
+	for value in progress.stats.values():total+=int(value)
+	journey_label.text=("제%d장 · " % chapter_number if prologue.active or prologue.completed else "")+"도원 · "+("절정까지 %d" % (100-total) if total<100 else progress.RULES.realm(total))
+	compact_toolbar.visible=exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office"] and state=="explore" and dialogue_lines.is_empty()
 	if state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office"]:
 		location.text = exploration.city_data.name+" · " + exploration.district_at_player()
 		var goal: Dictionary = quest_navigation.get_goal(exploration)
-		objective.text = goal.quest_title + " · " + goal.label if not goal.is_empty() else ("총무당 둘러보기 · 남쪽 출입 지점에서 F 이동" if exploration.area_name=="alliance_office" else "산길을 따라 북쪽 무창으로 · 출입 지점에서 F 이동" if exploration.area_name=="mountain_road" else "무창 둘러보기 · 남쪽 농촌 끝에서 장사 방면" if exploration.area_name=="wuchang" else "시장·골목·나루·성밖 농촌 둘러보기")
+		quest_heading.text=goal.quest_title+" · Q" if not goal.is_empty() else "강호행 · Q 의뢰"
+		bottom_hint.hide()
+		objective.text = goal.label if not goal.is_empty() else ("총무당 둘러보기 · 남쪽 출입 지점에서 F 이동" if exploration.area_name=="alliance_office" else "산길을 따라 북쪽 무창으로 · 출입 지점에서 F 이동" if exploration.area_name=="mountain_road" else "무창 둘러보기 · 남쪽 농촌 끝에서 장사 방면" if exploration.area_name=="wuchang" else "시장·골목·나루·성밖 농촌 둘러보기")
+		objective.tooltip_text=quest_heading.text+"\n"+objective.text
 	bandit_story.maybe_start()
 	alliance_story.maybe_start()
 

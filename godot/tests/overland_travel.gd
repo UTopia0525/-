@@ -21,7 +21,7 @@ func exit_to(area: String) -> void:
 	check(false,"missing exit to "+area)
 func run() -> void:
 	game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await process_frame
-	game.start_city();game.money=700
+	game.start_city();game.bandit_story.stage="completed";game.bandit_story.reward_granted=true;game.alliance_story.stage_id="invited";game.money=700
 	game.ordinary_quests.accept(str(game.ordinary_quests.definitions.keys()[0]))
 	while not game.dialogue_lines.is_empty():game.advance_dialogue()
 	await physics_frame

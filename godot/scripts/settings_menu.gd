@@ -1,6 +1,7 @@
 extends Control
 const UI = preload("res://scripts/ui.gd")
 var game
+var gear: Button
 var window: Control
 var slots: Array[Button] = []
 var selected := 1
@@ -17,7 +18,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var gear = UI.button(self, "설정 · ESC", Rect2(1135, 145, 120, 35))
+	gear = UI.button(self, "설정 · ESC", Rect2(1135, 145, 120, 35))
 	gear.pressed.connect(open_menu)
 	window = Control.new()
 	window.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -141,3 +142,8 @@ func _input(event: InputEvent) -> void:
 			if confirmation.visible: confirmation.hide()
 			else: close_menu()
 			get_viewport().set_input_as_handled()
+
+func _process(_delta: float) -> void:
+	var compact_world=game.exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office"]
+	gear.visible=game.state not in ["explore","story"] or not compact_world
+	gear.position=Vector2(1135,198) if game.state in ["explore","story"] else Vector2(1135,145)

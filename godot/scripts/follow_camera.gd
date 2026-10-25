@@ -1,7 +1,7 @@
 extends Camera2D
 
 # The camera follows the player's body, not the bottom of their feet.
-@export_range(1.0, 3.0, 0.25) var exploration_zoom: float = 1.5
+@export_range(0.5, 3.0, 0.1) var exploration_zoom: float = 1.2
 @export var focus_height: float = 36.0
 var map_bounds: Rect2 = Rect2(0, 0, 1280, 720)
 

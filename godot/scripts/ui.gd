@@ -9,19 +9,19 @@ const GOLD = Color("d9b879")
 const TEXT = Color("eee8d8")
 const MUTED = Color("b2bca8")
 
-static func box(fill: Color = Color("14231ef5"), border: Color = Color("967e51")) -> StyleBoxFlat:
+static func box(fill: Color = Color("101e20ee"), border: Color = Color("c8ad75")) -> StyleBoxFlat:
 	var style = StyleBoxFlat.new()
 	style.bg_color = fill
 	style.border_color = border
 	style.set_border_width_all(1)
-	style.set_corner_radius_all(4)
+	style.set_corner_radius_all(2)
 	style.content_margin_left = 18
 	style.content_margin_right = 18
 	style.content_margin_top = 12
 	style.content_margin_bottom = 12
 	return style
 
-static func panel(parent: Node, area: Rect2, fill: Color = Color("14231ef5")) -> Panel:
+static func panel(parent: Node, area: Rect2, fill: Color = Color("101e20ee")) -> Panel:
 	var node = Panel.new()
 	node.position = area.position
 	node.size = area.size
@@ -48,8 +48,8 @@ static func button(parent: Node, text: String, area: Rect2, primary: bool = fals
 	node.position = area.position
 	node.size = area.size
 	node.add_theme_font_size_override("font_size", 18)
-	node.add_theme_stylebox_override("normal", box(Color("d2b273") if primary else Color("26372df5")))
-	var hover := box(Color("f2d79a") if primary else Color("4b6049"), Color("ffe0a0"))
+	node.add_theme_stylebox_override("normal", box(Color("d2b273") if primary else Color("203b36f2")))
+	var hover := box(Color("f2d79a") if primary else Color("35564d"), Color("ffe0a0"))
 	hover.set_border_width_all(2)
 	node.add_theme_stylebox_override("hover", hover)
 	node.add_theme_stylebox_override("hover_pressed", hover)

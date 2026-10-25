@@ -1,6 +1,6 @@
 # 작업별 색인
 
-최신 변경: [전역 의뢰·지도 표식·경제/적 조정](systems/quest-world-update.md), [UI 비교 시안2종](ui/ui-concepts.md). 이전 [진행 점검](reviews/playthrough-2026-10-25.md)은 당시 결과이며, 의뢰·표식은 최신 구현을 따른다.
+최신 변경: [작은 A안 HUD·넓어진 시야·장사 통행 제한](ui/compact-a.md), [전역 의뢰와 지도 표식](systems/quest-world-update.md). 이전 비교 시안과 검토는 당시 기록이다.
 
 현재 상태는 [CLI 인계](CLI_HANDOFF.md), 실행은 [Godot 안내](../godot/README.md)를 참고한다. 아래 경로는 저장소 루트 기준이다. 문서와 관련 소스만 먼저 읽고 필요한 검사를 선택한다.
 

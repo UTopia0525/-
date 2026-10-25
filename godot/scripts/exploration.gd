@@ -8,7 +8,7 @@ const FOOT_RADIUS = Metrics.PLAYER_RADIUS
 const CITIZEN_RADIUS = Metrics.CITIZEN_RADIUS
 const CITIZEN_BOUNDS=Metrics.CITIZEN_BOUNDS
 @export var map_bounds: Rect2 = Rect2(0, 0, 1280, 720)
-@export_range(1.0, 3.0, 0.25) var camera_zoom: float = 1.5
+@export_range(0.5, 3.0, 0.1) var camera_zoom: float = 1.2
 var camera: Camera2D
 var regional_map: Node2D
 var travel_exits: Array[Dictionary]=[]
@@ -145,7 +145,7 @@ func _load_regional(value: String) -> void:
 	city_data.ground_texture="res://assets/maps/"+("changsha-wuchang" if value=="mountain_road" else "alliance-office" if value=="alliance_office" else "wuchang")+"/ground.png"
 	for district in city_data.districts:
 		district.bounds=district.rect;district.category={"market":"market","workshops":"workshops","martial":"martial_hall"}.get(district.get("id",""),"regional")
-	map_bounds=regional_map.map_bounds;camera.exploration_zoom=1.0
+	map_bounds=regional_map.map_bounds;camera.exploration_zoom=0.8
 	background.texture=load(city_data.ground_texture)
 	# The cached floor contains terrain only. Independent props retain shared Y sorting.
 	regional_map.get_child(0).hide()
@@ -186,7 +186,7 @@ func _load_regional(value: String) -> void:
 func _load_changsha() -> void:
 	city_data = JSON.parse_string(FileAccess.get_file_as_string("res://assets/maps/changsha/layout.json"))
 	map_bounds = Rect2(0, 0, city_data.world_size[0], city_data.world_size[1])
-	camera.exploration_zoom = 1.0
+	camera.exploration_zoom = 0.8
 	background.texture = load(city_data.ground_texture)
 	walk_regions.clear()
 	blockers.clear()
@@ -519,6 +519,9 @@ func set_active(value: bool) -> void:
 func _process(_delta: float) -> void:
 	var target = nearest() if active else {}
 	for exit in travel_exits:
+		var locked=not preload("res://scripts/overland_travel.gd").blocked_reason(get_parent(),exit.travel.area).is_empty()
+		exit.name="통행 제한 · 토벌 보고 후 출발" if locked else exit.open_name
+		exit.portal_label.text=exit.name
 		exit.node.set_available(not target.is_empty() and target.id==exit.id)
 	hint.visible = not target.is_empty()
 	indicator.visible = not target.is_empty() and not target.has("travel")
@@ -528,4 +531,4 @@ func _process(_delta: float) -> void:
 	if not target.is_empty():
 		hint.add_theme_color_override("font_color",Color("9de5ff") if target.has("travel") else UI.GOLD)
 		hint.position = target.position + Vector2(-75, 20 if target.has("travel") else 14)
-		hint.text = "F  이동" if target.has("travel") else "F  조사" if str(target.id).begins_with("quest_goal:") else "F  승선" if target.id == "boarding" else ("F  거래" if target.has("service_id") else "F  대화")
+		hint.text = ("F  통행 확인" if not preload("res://scripts/overland_travel.gd").blocked_reason(get_parent(),target.travel.area).is_empty() else "F  이동") if target.has("travel") else "F  조사" if str(target.id).begins_with("quest_goal:") else "F  승선" if target.id == "boarding" else ("F  거래" if target.has("service_id") else "F  대화")

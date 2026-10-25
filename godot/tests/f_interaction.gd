@@ -43,6 +43,7 @@ func run() -> void:
 	await drain();check(game.city_service.visible,"logical-only F opens real shop")
 	await press();check(game.city_service.visible and game.dialogue_lines.is_empty(),"F does not interact behind shop")
 	game.city_service.close_counter()
+	game.bandit_story.stage="completed";game.bandit_story.reward_granted=true;game.alliance_story.stage_id="invited"
 	var portal=game.exploration.travel_exits[0]
 	await approach(portal.position,portal.id);await press()
 	check(game.exploration.area_name=="mountain_road","logical-only F travels from Changsha")

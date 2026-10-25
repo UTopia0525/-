@@ -12,7 +12,7 @@ func travel(area: String,point: Array) -> void:
 	preload("res://scripts/overland_travel.gd").use(game,{"travel":{"area":area,"arrival":point}})
 func run() -> void:
 	game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await process_frame
-	game.options.seen.append_array(["city","dialogue","trade","battle"]);game.start_city()
+	game.options.seen.append_array(["city","dialogue","trade","battle"]);game.start_city();game.bandit_story.stage="completed";game.bandit_story.reward_granted=true;game.alliance_story.stage_id="invited"
 	var nav=game.quest_navigation;var ui=game.adventure_ui;var w=game.exploration
 	game.ordinary_quests.accept("changsha_baskets");drain()
 	game.ordinary_quests.accept("changsha_pages");drain()

@@ -13,10 +13,14 @@ static func install(world) -> void:
 		var label_y=64 if world.map_bounds.end.x-marker.position.x<340 else -164
 		var label=preload("res://scripts/ui.gd").label(marker,link.name,Rect2(-180,label_y,360,32),20,Color("9de5ff"))
 		label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;label.add_theme_color_override("font_outline_color",Color("14231e"));label.add_theme_constant_override("outline_size",5)
-		world.travel_exits.append({"id":link.id,"name":link.name,"position":marker.position,"node":marker,"frame":-1,"travel":link,"important":true})
+		world.travel_exits.append({"id":link.id,"name":link.name,"position":marker.position,"node":marker,"frame":-1,"travel":link,"important":true,"portal_label":label,"open_name":link.name})
 static func use(game,entry: Dictionary) -> bool:
 	if not entry.has("travel"):return false
 	var link: Dictionary=entry.travel
+	var reason=blocked_reason(game,link.area)
+	if not reason.is_empty():
+		game.say([["hero",reason]])
+		return true
 	game.exploration.set_active(false)
 	game.exploration.load_area(link.area)
 	game.exploration.player.position=game.exploration.safe_player_position(game.exploration.city_point(link.arrival))
@@ -25,3 +29,9 @@ static func use(game,entry: Dictionary) -> bool:
 	game.ordinary_quests.refresh_world()
 	game.adventure_ui.notify(game.exploration.city_data.name+"에 들어섰습니다.","confirm")
 	return true
+
+static func blocked_reason(game,destination: String) -> String:
+	if game.exploration.area_name!="changsha" or destination=="changsha":return ""
+	if game.bandit_story.stage=="completed" and game.bandit_story.reward_granted:return ""
+	if game.bandit_story.stage=="report":return "도적은 물리쳤지만 아직 정 포두께 보고하지 않았다. 관아에서 보수를 받고 통행이 풀리면 떠나자."
+	return "도적들 때문에 성밖 통행이 막혀 있다. 장사에서 근기를 쌓아 절정에 오르고 새 무공을 익힌 뒤, 토벌을 마쳐 정 포두께 보고해야 떠날 수 있겠군."

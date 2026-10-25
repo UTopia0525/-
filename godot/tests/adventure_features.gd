@@ -78,7 +78,7 @@ func run() -> void:
 			quests.handle_interaction(quests.definitions[id].giver);ui.secondary_action();drain()
 			check(game.money==paid,"family branches have identical reward")
 		else:quests.handle_interaction(quests.definitions[id].giver);drain()
-	check(game.money==700 and game.progress.stats.insight==22,"six normal quests pay approved total 700 and insight12")
+	check(game.money==800 and game.progress.stats.insight==22,"six normal quests pay approved total 800 and insight12")
 	game.toggle_city_map()
 	await process_frame
 	for marker in game.city_overview.actor_markers:

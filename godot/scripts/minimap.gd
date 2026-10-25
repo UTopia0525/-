@@ -1,7 +1,7 @@
 extends Panel
 ## Local, north-up terrain map. Marker coordinates come from live world positions.
 const UI = preload("res://scripts/ui.gd")
-const VIEW_SIZE = Vector2(240, 150)
+const VIEW_SIZE = Vector2(168, 100)
 const WORLD_WIDTH = 1920.0
 var exploration
 var quest_navigation
@@ -27,29 +27,25 @@ class MapView extends Control:
 		owner_map.draw_map(self)
 
 func _ready() -> void:
-	position = Vector2(24, 24)
-	size = Vector2(264, 290)
+	position = Vector2(16, 16)
+	size = Vector2(188, 174)
 	mouse_filter = Control.MOUSE_FILTER_STOP
-	add_theme_stylebox_override("panel", UI.box(Color("12221bf5")))
-	place_label = UI.label(self, "", Rect2(12, 9, 240, 26), 16, UI.TEXT)
+	add_theme_stylebox_override("panel", UI.box(Color("101e20ee")))
+	place_label = UI.label(self, "", Rect2(10,6,168,22),14, UI.TEXT)
 	place_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	map_view = MapView.new()
 	map_view.owner_map = self
-	map_view.position = Vector2(12, 42)
+	map_view.position = Vector2(10,32)
 	map_view.size = VIEW_SIZE
 	map_view.clip_contents = true
 	map_view.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	map_view.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	add_child(map_view)
-	UI.label(self, "▲ 나", Rect2(12, 198, 55, 22), 13, UI.GOLD)
-	UI.label(self, "● 주민", Rect2(73, 198, 70, 22), 13, Color("81f0cf"))
-	UI.label(self, "◆ 목표", Rect2(164, 198, 80, 22), 13, QUEST_COLOR)
-	var north = UI.label(map_view, "N ↑", Rect2(106, 2, 28, 20), 12, UI.TEXT)
-	north.add_theme_color_override("font_outline_color", Color.BLACK)
-	north.add_theme_constant_override("outline_size", 4)
-	facility_legend=UI.label(self,"약 상인 · 장 장인 · 무 교관",Rect2(12,225,240,22),13,UI.GOLD)
-	quest_label = UI.label(self, "추적 중인 퀘스트 없음", Rect2(12, 254, 240, 22), 13, UI.MUTED)
-	quest_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	UI.label(self,"▲ 나   ! 의뢰   ? 보고",Rect2(10,136,168,18),11,UI.GOLD)
+	var north=UI.label(map_view,"N ↑",Rect2(140,0,28,18),11,UI.TEXT)
+	north.add_theme_color_override("font_outline_color",Color.BLACK);north.add_theme_constant_override("outline_size",3)
+	facility_legend=UI.label(self,"약 상인  장 장인  무 교관",Rect2(10,153,168,18),11,UI.MUTED)
+	quest_label=UI.label(self,"",Rect2(0,0,0,0),12,UI.MUTED);quest_label.hide()
 
 func bind_world(world) -> void:
 	exploration = world
@@ -58,7 +54,7 @@ func bind_world(world) -> void:
 func refresh() -> void:
 	if not is_instance_valid(exploration):
 		return
-	facility_legend.text="약 상인 · 장 장인 · 무 교관" if not exploration.city_data.get("services",[]).is_empty() else "○ 푸른 포탈 · 가까이에서 F 이동"
+	facility_legend.text="약 상인  장 장인  무 교관" if not exploration.city_data.get("services",[]).is_empty() else "○ 포탈 · 가까이에서 F"
 	var bounds: Rect2 = exploration.map_bounds
 	var ratio = VIEW_SIZE.x / VIEW_SIZE.y
 	var width = minf(WORLD_WIDTH, minf(bounds.size.x, bounds.size.y * ratio))

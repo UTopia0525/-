@@ -47,7 +47,7 @@ func capture() -> Dictionary:
 	var visibility := {}
 	for id in nodes: visibility[id] = nodes[id].visible
 	return {"schema":3, "plaque_quest":game.plaque_quest.snapshot(), "grain_quest":game.grain_quest.snapshot(), "wages_quest":game.wages_quest.snapshot(), "alliance_story":game.alliance_story.snapshot(), "impostor_quest":game.impostor_quest.snapshot(), "inn_quest":game.inn_quest.snapshot(), "duel_quest":game.duel_quest.snapshot(), "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
-		"chapter":game.chapter_number, "money":game.money, "talked_captain":game.talked_captain,
+		"chapter":game.chapter_number, "money":game.money, "changsha_reward_revision":1, "talked_captain":game.talked_captain,
 		"world":{"layout_version":2 if w.area_name=="mountain_road" else 1, "area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
 		"chapter_one":game.chapter_one.snapshot().merged({"started":game.chapter_one.intro_started}),
@@ -105,6 +105,7 @@ func read_slot(slot: int) -> Dictionary:
 
 func validate(d) -> bool:
 	if not d is Dictionary: return false
+	if d.has("changsha_reward_revision") and not game.progress.whole(d.changsha_reward_revision,0,1):return false
 	if d.get("schema") != 1 and d.get("schema") != 2 and d.get("schema") != 3: return false
 	if d.schema == 3 and not game.progress.valid(d.get("progress")): return false
 	if d.has("ordinary_quests") and not game.ordinary_quests.valid(d.ordinary_quests):return false
@@ -253,7 +254,8 @@ func load_slot(slot: int) -> bool:
 	game.reset()
 	game.state = d.state
 	game.chapter_number = int(d.chapter)
-	game.money = int(d.money)
+	var adjustment=reward_adjustment(d)
+	game.money = int(d.money)+adjustment
 	if d.schema == 3: game.progress.restore(d.progress)
 	game.battle.player_stats = game.progress.stats.duplicate()
 	game.battle.set_loadout(game.progress.loadout)
@@ -367,4 +369,13 @@ func load_slot(slot: int) -> bool:
 		game.city_overview.open_for(game.exploration, game.quest_navigation.get_goal(game.exploration))
 	game.music.play_track(d.music.track)
 	game.music.set_enabled(d.music.enabled)
+	if adjustment>0:game.adventure_ui.notify("장사 의뢰 보수 조정 차액 · +%d문" % adjustment,"coin")
 	return true
+
+func reward_adjustment(data: Dictionary) -> int:
+	if int(data.get("changsha_reward_revision",0))>=1:return 0
+	var adjustment:=0
+	var records: Dictionary=data.get("ordinary_quests",{}).get("records",{})
+	for id in ["changsha_pages","changsha_waterway"]:
+		if records.get(id,{}).get("status")=="completed":adjustment+=50
+	return adjustment
