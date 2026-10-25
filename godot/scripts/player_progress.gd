@@ -11,6 +11,8 @@ var learned: Array
 var loadout: Array
 var inventory: Dictionary
 var consumed: Dictionary
+const FACTIONS = {"murim_alliance":"무림맹"}
+var faction_favor: Dictionary = {}
 var fame := 0
 var error := ""
 
@@ -18,6 +20,7 @@ func _init() -> void: reset()
 
 func reset() -> void:
 	fame = 0
+	faction_favor = {"murim_alliance":0}
 	stats = RULES.STARTING_STATS.duplicate()
 	owned_weapons = ["plain_iron_sword"]
 	learned = ["samjae"]
@@ -96,12 +99,24 @@ func assign(id: String, slot: int) -> bool:
 	progress_changed.emit({"event":"loadout","id":id,"slot":slot})
 	return true
 
+func favor_for(faction: String) -> int:return int(faction_favor.get(faction,0))
+
+func add_favor(faction: String, amount: int) -> bool:
+	if not FACTIONS.has(faction) or not whole(favor_for(faction)+amount,-1000000000,1000000000):return false
+	faction_favor[faction]=favor_for(faction)+amount
+	progress_changed.emit({"event":"favor","id":faction,"amount":amount})
+	return true
+
 func snapshot() -> Dictionary:
-	return {"fame":fame, "stats":stats.duplicate(), "weapons":owned_weapons.duplicate(), "learned":learned.duplicate(), "loadout":loadout.duplicate(), "inventory":inventory.duplicate(), "consumed":consumed.duplicate()}
+	return {"faction_favor":faction_favor.duplicate(), "fame":fame, "stats":stats.duplicate(), "weapons":owned_weapons.duplicate(), "learned":learned.duplicate(), "loadout":loadout.duplicate(), "inventory":inventory.duplicate(), "consumed":consumed.duplicate()}
 
 func valid(data) -> bool:
 	if not data is Dictionary: return false
 	if data.has("fame") and not whole(data.fame, 0, 1000000000): return false
+	if data.has("faction_favor"):
+		if not data.faction_favor is Dictionary:return false
+		for faction in data.faction_favor:
+			if not FACTIONS.has(faction) or not whole(data.faction_favor[faction],-1000000000,1000000000):return false
 	for key in ["stats", "inventory", "consumed"]:
 		if not data.get(key) is Dictionary: return false
 	for key in ["weapons", "learned", "loadout"]:
@@ -126,6 +141,8 @@ func whole(value, minimum: int, maximum: int) -> bool:
 
 func restore(data: Dictionary) -> void:
 	fame = int(data.get("fame", 0))
+	faction_favor={"murim_alliance":0}
+	faction_favor.merge(data.get("faction_favor",{}),true)
 	stats = data.stats.duplicate()
 	owned_weapons = data.weapons.duplicate()
 	learned = data.learned.duplicate()

@@ -207,6 +207,7 @@ func select_result(index: int) -> void:
 표행·의뢰 보수는 해당 이야기의 인도·보고 후 지급합니다.\n다음 전투는 체력과 시작 내기를 새로 갖춥니다." % [result.enemy,result.turns,result.player_hp] if result.won else "패배 · %s\n산적 토벌은 퇴각 대화를 마친 뒤 I/K로 정비하고 동문에서 다시 출정할 수 있습니다.\n0장/전투 체험은 전투창의 다시 도전으로 재개합니다." % result.enemy
 	if not result.won and result.enemy=="구칠":note="패배 · 구칠\n약초 꾸러미가 있던 곳으로 물러났습니다. 조사 진도는 유지됩니다.\nI/K에서 정비한 뒤 약초꾼이 있는 곳에서 F로 다시 도전하세요.\n다음 전투는 체력과 시작 내기를 새로 갖춥니다."
 	if result.enemy=="유소강":note=("승리" if result.won else "패배")+" · 연무장 대련\n대련을 마쳤습니다. 임정산에게 보고하면 승패와 관계없이 조식수원공을 전수받습니다."
+	if result.enemy=="마응칠":note="승리 · 육정호에게 보고한 뒤 송지겸의 감사를 받으세요." if result.won else "패배 · 조사 진도는 유지됩니다. I/K에서 정비 후 나루 창고 뒤에서 다시 도전하세요."
 	if result.enemy=="장만길":note=("승리 · 도삼랑에게 해결 결과를 보고하세요. 보수는 보고 후150문입니다." if result.won else "패배 · 비무를 중단했습니다. 말로 중재하거나 I/K에서 정비 후 다시 도전할 수 있습니다. 아직 보수는 지급되지 않았습니다.")
 	render_events(result.events,note)
 func render_events(events: Array,note: String) -> void:

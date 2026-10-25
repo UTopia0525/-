@@ -102,6 +102,7 @@ func refresh() -> void:
  var realm: String = "절정까지 %d" % [100 - total] if total < 100 else p.RULES.realm(total)
  heading.text = "소지품 · I" if mode == "inventory" else "익힌 무공과 초식 편성 · K"
  summary.text = "소지금 %d문  |  근력%d · 기민%d · 근골%d · 내공%d · 오성%d\n합계%d / 500 · %s  |  장착: %s" % [game.money, s.strength, s.agility, s.constitution, s.inner, s.insight, total, realm, weapon_name()]
+ summary.text += "\n명성 %d  |  무림맹 호의도 %d" % [p.fame,p.favor_for("murim_alliance")]
  for i in range(3):
   tabs[i].visible = mode == "inventory"
   tabs[i].disabled = category == ["weapon", "elixir", "quest"][i]
