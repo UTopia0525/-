@@ -51,6 +51,7 @@ func run() -> void:
 		var choices=game.dialogue_cast.portrait_choices.values()
 		check(choices.size()==2 and choices[0]!=choices[1],"speaker and player portraits stay distinct")
 		drain()
+		if entry.id=="wc_du_sanniang":game.adventure_ui.secondary_action();drain()
 		if entry.has("service_id"):
 			check(game.state=="service" and game.city_service.service.actor_id==entry.id,"greeting opens correct person's counter")
 			check(game.city_service.portrait.texture.resource_path==actor.portrait,"counter keeps resident portrait")

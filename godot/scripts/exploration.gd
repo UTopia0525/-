@@ -123,6 +123,8 @@ func load_area(value: String) -> void:
 	if is_instance_valid(artisan):artisan.refresh_world()
 	var duel=get_parent().get("duel_quest")
 	if is_instance_valid(duel):duel.refresh_world()
+	var inn=get_parent().get("inn_quest")
+	if is_instance_valid(inn):inn.refresh_world()
 	camera.set_map_bounds(map_bounds)
 	camera.snap_to_player()
 

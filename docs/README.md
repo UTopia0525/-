@@ -7,6 +7,7 @@
 | 0장·분기 | [진행](story/chapter-00-implementation.md), [원고](story/chapter-00-dialogues.md) | `scripts/prologue.gd`, `data/prologue_dialogues.json` | `prologue.gd`, `chapter_one.gd` |
 | 도입 의뢰3종 | [진행·보상](quests/trade-intro.md) | `scripts/trade_intro.gd`, `data/trade_intro.json` | `onboarding_menus.gd` |
 | 일반 의뢰6종 | [실제 진행·표식](systems/adventure-usability.md), [목록](quests/changsha.md), [흐름](quests/quest-flow.md), [원고](quests/changsha-dialogues.md) | `data/normal_quests.json`, `scripts/ordinary_quests.gd`, `quest_navigation.gd` | `adventure_features.gd`, `quest_navigation.gd` |
+| 무창 객잔 시비 | [진행·분기·원고](quests/wuchang-inn.md) | `scripts/inn_quest.gd`, `data/wuchang_inn_quest.json` | `inn_quest.gd`, `capture_inn_quest.gd` |
 | 무창 대련·조식수원공 | [진행·전수·제한](quests/wuchang-duel-proposal.md) | `scripts/duel_quest.gd`, `data/wuchang_duel_quest.json`, `data/support_martial_arts.json`, `scripts/combat_actions.gd` | `duel_quest.gd`, `josik_suwon.gd` |
 | 무창 장인의 이름값 | [진행·원고·검증](quests/wuchang-artisan.md) | `scripts/artisan_quest.gd`, `data/wuchang_artisan_quest.json` | `artisan_quest.gd` |
 | 무창 약초꾼 의뢰 | [진행·원고·난이도](quests/wuchang-herbalist.md) | `scripts/herbalist_quest.gd`, `data/wuchang_herbalist_quest.json` | `herbalist_quest.gd` |

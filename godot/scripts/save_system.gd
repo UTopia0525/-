@@ -46,7 +46,7 @@ func capture() -> Dictionary:
 	var nodes = {"top_hud":game.top_hud, "bottom_hint":game.bottom_hint, "caption":game.story_caption, "exploration":w, "ending":game.ending, "overview":game.city_overview, "visual":game.story_visual}
 	var visibility := {}
 	for id in nodes: visibility[id] = nodes[id].visible
-	return {"schema":3, "duel_quest":game.duel_quest.snapshot(), "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
+	return {"schema":3, "inn_quest":game.inn_quest.snapshot(), "duel_quest":game.duel_quest.snapshot(), "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
 		"chapter":game.chapter_number, "money":game.money, "talked_captain":game.talked_captain,
 		"world":{"layout_version":2 if w.area_name=="mountain_road" else 1, "area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
@@ -114,6 +114,7 @@ func validate(d) -> bool:
 	if d.has("herbalist_quest") and not game.herbalist_quest.valid(d.herbalist_quest):return false
 	if d.has("artisan_quest") and not game.artisan_quest.valid(d.artisan_quest):return false
 	if d.has("duel_quest") and not game.duel_quest.valid(d.duel_quest):return false
+	if d.has("inn_quest") and not game.inn_quest.valid(d.inn_quest):return false
 	if d.has("duel_quest") and d.duel_quest.phase=="completed" and d.schema==3 and "josik_suwon" not in d.progress.learned:return false
 	for field in ["world", "prologue", "chapter_one", "navigation", "dialogue", "ui", "visual", "service", "battle", "music"]:
 		if not d.get(field) is Dictionary: return false
@@ -174,12 +175,14 @@ func validate(d) -> bool:
 	if d.state == "service" and d.service.is_empty(): return false
 	var enemy_maximum := 150
 	var encounter_id = d.battle.get("encounter_id", "")
-	if encounter_id not in ["", "bandit_sentry", "bandit_ringleader", "herb_ruffian", "training_student"]: return false
+	if encounter_id not in ["", "bandit_sentry", "bandit_ringleader", "herb_ruffian", "training_student", "inn_warrior"]: return false
 	for definition in game.encounters():
 		if definition.id == encounter_id: enemy_maximum = int(definition.max_hp)
 	if d.state=="battle" and encounter_id=="herb_ruffian" and d.get("herbalist_quest",{}).get("phase")!="rescue":return false
 	if d.get("duel_quest",{}).get("phase")=="battle" and (d.state!="battle" or encounter_id!="training_student"):return false
 	if d.state=="battle" and encounter_id=="training_student" and d.get("duel_quest",{}).get("phase")!="battle":return false
+	if d.get("inn_quest",{}).get("phase")=="battle" and (d.state!="battle" or encounter_id!="inn_warrior"):return false
+	if d.state=="battle" and encounter_id=="inn_warrior" and d.get("inn_quest",{}).get("phase")!="battle":return false
 	if d.has("bandit_story") and d.bandit_story.stage in ["battle_one", "battle_two"]:
 		if d.state != "battle" or encounter_id != game.bandit_story.data.encounters[0 if d.bandit_story.stage == "battle_one" else 1].id: return false
 	if not is_number(d.battle.get("player_hp"), 0, 300) or not is_number(d.battle.get("enemy_hp"), 0, enemy_maximum) or not is_number(d.battle.get("turn"), 1, 10000) or not d.battle.get("selected") is bool: return false
@@ -247,6 +250,7 @@ func load_slot(slot: int) -> bool:
 	game.herbalist_quest.restore(d.get("herbalist_quest",{"phase":"available"}))
 	game.artisan_quest.restore(d.get("artisan_quest",{"phase":"available"}))
 	game.duel_quest.restore(d.get("duel_quest",{"phase":"available","result":""}))
+	game.inn_quest.restore(d.get("inn_quest",{"phase":"available","heard":[],"branch":"","defeats":0}))
 	game.herbalist_quest.battle_active=d.state=="battle" and d.battle.get("encounter_id","")=="herb_ruffian"
 	game.exploration.load_area(d.world.area)
 	game.exploration.player.position = Vector2(d.world.position[0], d.world.position[1])
