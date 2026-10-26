@@ -46,7 +46,8 @@ func run() -> void:
 	game.progress.learned.append("gwanak");q.refresh_world();check(not q.eligible(),"learning an art alone is insufficient")
 	game.progress.learned.erase("gwanak");qualify();q.refresh_world()
 	check(q.status()=="available" and q.marker_for(q.GIVER)=="!","teaching unlocks exclamation")
-	check(game.PORTRAITS.ACTORS[q.GIVER].basic_portrait=="male_young","Lu uses a young common portrait")
+	check(game.dialogue_cast.texture_for(game.PORTRAITS.ACTORS[q.GIVER]).resource_path=="res://assets/portraits/haomun/lu-xiaozhuan.png","Lu uses the dedicated portrait in dialogue")
+	check(actor(q.GIVER).get_child(1).texture.atlas.resource_path=="res://assets/characters/lu-xiaozhuan.png","Lu uses the dedicated exploration sprite")
 	for id in [q.GIVER,"jin_yulan"]:
 		var a=actor(id)
 		check(is_instance_valid(a),"civilian contact exists")

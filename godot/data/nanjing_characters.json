@@ -14,8 +14,19 @@
       "frame": 7,
       "quest_actor": true,
       "character_profile": {
-        "personality": "붙임성 있는 객잔 점소이. 손님의 끼니와 사정을 잘 기억하며 동료의 이름을 함부로 팔지 않는다. 구휼의 이상을 도원에게 알리지만 정보의 출처를 모두 밝히지는 않는다."
-      }
+        "personality": "붙임성 있는 객잔 점소이. 손님의 끼니와 사정을 잘 기억하며 동료의 이름을 함부로 팔지 않는다. 구휼의 이상을 도원에게 알리지만 정보의 출처를 모두 밝히지는 않는다.",
+        "background": "남경 객잔에서 점소이로 일하며 사람들의 왕래와 생활의 변화를 살피는 하오문 연락 인물. 손님에게는 평범한 종업원으로 보인다.",
+        "appearance": "올리브색 두건과 짧은 조끼, 베이지색 저고리와 갈색 앞치마. 어깨에 흰 수건을 걸치고 작은 찻주전자를 든다. 붙임성 있는 미소와 관찰하는 눈빛."
+      },
+      "portrait": "res://assets/portraits/haomun/lu-xiaozhuan.png",
+      "hidden_affiliation": "haomun",
+      "sprite_texture": "res://assets/characters/lu-xiaozhuan.png",
+      "sprite_region": [
+        239,
+        181,
+        549,
+        1248
+      ]
     },
     {
       "id": "namgung_yeonseo",

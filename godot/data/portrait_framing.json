@@ -196,6 +196,12 @@
       "eye_y": 320,
       "eye_to_chin": 185,
       "natural_facing": "right"
+    },
+    "res://assets/portraits/haomun/lu-xiaozhuan.png": {
+      "face_x": 565,
+      "eye_y": 260,
+      "eye_to_chin": 160,
+      "natural_facing": "right"
     }
   }
 }

@@ -1,0 +1,14 @@
+{
+  "portrait": {
+    "source": "/workspace/generated_images/exec-749e0af1-1bb7-4f79-b930-1bbf29affb41.png",
+    "target": "godot/assets/portraits/haomun/lu-xiaozhuan.png",
+    "sha256": "6d84003da6c9957a30e007dbf9b8d61bbab5c9d8eb40949125118616926710c4",
+    "method": "image_gen; original copied unchanged; sprite uses runtime AtlasTexture region"
+  },
+  "sprite": {
+    "source": "/workspace/generated_images/exec-b5150a6d-9352-47d8-a865-e88a21740b54.png",
+    "target": "godot/assets/characters/lu-xiaozhuan.png",
+    "sha256": "d84539ce3ce476912ad01cda19223f4d6859e9e6fd5f08a867a5c9df66f04859",
+    "method": "image_gen; original copied unchanged; sprite uses runtime AtlasTexture region"
+  }
+}
