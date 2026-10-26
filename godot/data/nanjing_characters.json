@@ -7,8 +7,8 @@
       "role": "점소이",
       "post": "점소이",
       "point": [
-        820,
-        620.45
+        880,
+        724
       ],
       "basic_portrait": "male_young",
       "frame": 7,
@@ -24,8 +24,8 @@
       "role": "남궁세가",
       "post": "남궁세가",
       "point": [
-        705,
-        320.78
+        399,
+        267
       ],
       "basic_portrait": "female_young",
       "frame": 5,
@@ -33,7 +33,11 @@
       "character_profile": {
         "personality": "차분하고 꼼꼼하며 민초를 돕지만 가문의 일에 외부인이 개입하는 것은 경계한다. 도원의 공적을 확인한 뒤 협력을 청한다."
       },
-      "portrait": "res://assets/portraits/namgung/yeonseo.png"
+      "portrait": "res://assets/portraits/namgung/yeonseo.png",
+      "arrest_point": [
+        382,
+        334
+      ]
     },
     {
       "id": "jin_yulan",
@@ -42,8 +46,8 @@
       "role": "접객 담당",
       "post": "접객 담당",
       "point": [
-        1450,
-        900
+        1190,
+        970
       ],
       "basic_portrait": "female_middle",
       "frame": 5,
@@ -59,8 +63,8 @@
       "role": "하역 인부",
       "post": "하역 인부",
       "point": [
-        650,
-        890
+        634,
+        991
       ],
       "basic_portrait": "male_farmer",
       "frame": 6,
@@ -76,8 +80,8 @@
       "role": "상단 관사",
       "post": "상단 관사",
       "point": [
-        630,
-        109.74
+        323,
+        324
       ],
       "basic_portrait": "male_middle",
       "frame": 4,

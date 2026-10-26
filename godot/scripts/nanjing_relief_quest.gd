@@ -117,7 +117,7 @@ func refresh_world() -> void:
 		if entry.id==GIVER and phase in ["missing","completed"]:continue
 		if entry.id=="nj_he_mansik" and phase!="witness":continue
 		if entry.id=="nj_zhao_desheng" and phase!="arrest":continue
-		if entry.id==LADY and phase=="arrest":entry.point=[580,190]
+		if entry.id==LADY and phase=="arrest":entry.point=entry.arrest_point
 		w._populate_residents([entry])
 		var actor=w.ambient_nodes.back();nodes.append(actor)
 		var tag=w.occlusion_roots.pop_back();tag.reparent(actor);tag.position=Vector2.ZERO

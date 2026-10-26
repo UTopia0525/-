@@ -6,8 +6,8 @@
       "role": "약재상",
       "post": "약재상",
       "point": [
-        975,
-        455.84
+        808,
+        508
       ],
       "basic_portrait": "female_herbalist",
       "frame": 5,
@@ -27,8 +27,8 @@
       "role": "장인",
       "post": "장인",
       "point": [
-        370,
-        599.35
+        350,
+        498
       ],
       "basic_portrait": "male_blacksmith",
       "frame": 4,
@@ -48,8 +48,8 @@
       "role": "교관",
       "post": "교관",
       "point": [
-        1410,
-        620.45
+        1325,
+        715
       ],
       "basic_portrait": "male_middle",
       "frame": 6,
@@ -70,8 +70,8 @@
       "role": "포졸",
       "post": "포졸",
       "point": [
-        1150,
-        329.22
+        1255,
+        496
       ],
       "basic_portrait": "male_constable",
       "frame": 4,
@@ -91,8 +91,8 @@
       "role": "객잔 주인",
       "post": "객잔 주인",
       "point": [
-        940,
-        620.45
+        785,
+        724
       ],
       "basic_portrait": "female_innkeeper",
       "frame": 5,
@@ -111,8 +111,8 @@
       "role": "하역 인부",
       "post": "하역 인부",
       "point": [
-        250,
-        329.22
+        390,
+        270
       ],
       "basic_portrait": "male_dockworker",
       "frame": 6,
@@ -131,8 +131,8 @@
       "role": "창고 서리",
       "post": "창고 서리",
       "point": [
-        600,
-        329.22
+        350,
+        220
       ],
       "basic_portrait": "male_common_b",
       "frame": 7,
@@ -151,8 +151,8 @@
       "role": "뱃사공",
       "post": "뱃사공",
       "point": [
-        510,
-        820
+        482,
+        883
       ],
       "basic_portrait": "male_middle",
       "frame": 6,
@@ -171,8 +171,8 @@
       "role": "주민",
       "post": "주민",
       "point": [
-        340,
-        890
+        285,
+        994
       ],
       "basic_portrait": "female_elder",
       "frame": 5,
@@ -191,8 +191,8 @@
       "role": "노점상",
       "post": "노점상",
       "point": [
-        290,
-        455.84
+        390,
+        555
       ],
       "basic_portrait": "male_young",
       "frame": 7,
@@ -211,8 +211,8 @@
       "role": "서적상",
       "post": "서적상",
       "point": [
-        900,
-        308.12
+        966,
+        286
       ],
       "basic_portrait": "male_elder",
       "frame": 6,
@@ -231,8 +231,8 @@
       "role": "찻집 일꾼",
       "post": "찻집 일꾼",
       "point": [
-        1320,
-        900
+        1410,
+        932
       ],
       "basic_portrait": "female_common_a",
       "frame": 5,

@@ -1,12 +1,34 @@
 {
   "ground": {
-    "source": "/workspace/generated_images/exec-32e24bbc-ac26-4a82-be71-b8f07b4c8dbd.png",
-    "sha256": "d2b8767aa5b686dc2155d4058966ae7affff11734086ef7cde2608c8d6e27d6a",
-    "method": "image_gen original copied without raster edits; independent scenery rendered in Godot"
+    "source": "/workspace/generated_images/exec-6b0c5b8c-bba8-4676-b991-84717297d49c.png",
+    "sha256": "4f6f4b5ce63ce3c28750a3541f49cafbfe8fb33029beaec405c4adbd3e684184",
+    "method": "image_gen edit from original city reference; exact source file copied; sprites selected by runtime AtlasTexture, no raster postprocessing"
   },
   "yeonseo": {
     "source": "assets/portraits/namgung/yeonseo.png",
     "target": "godot/assets/portraits/namgung/yeonseo.png",
     "sha256": "2539ad990040867d8b005d41cb74d34d55330a180b84af8596fbaf5c25ffec89"
+  },
+  "previous_ground": {
+    "source": "/workspace/generated_images/exec-32e24bbc-ac26-4a82-be71-b8f07b4c8dbd.png",
+    "sha256": "d2b8767aa5b686dc2155d4058966ae7affff11734086ef7cde2608c8d6e27d6a",
+    "method": "image_gen original copied without raster edits; independent scenery rendered in Godot"
+  },
+  "reference": "docs/cities/designs/nanjing-npc-preview.png",
+  "layout_version": 2,
+  "buildings": {
+    "source": "/workspace/generated_images/exec-762e4446-cb29-4cd6-acee-630a39c57679.png",
+    "sha256": "e9f0f5e28f3ec8a62477a2f835669c25afca35c3a4e12b7ff04d0b2dd9aa2384",
+    "method": "image_gen edit from original city reference; exact source file copied; sprites selected by runtime AtlasTexture, no raster postprocessing"
+  },
+  "landmarks": {
+    "source": "/workspace/generated_images/exec-bfa85355-4932-4a2a-8a90-be4a895c5251.png",
+    "sha256": "ac492641e1a12452445afc0f9705e3fff093837f830537df630922ce368e5bcb",
+    "method": "image_gen edit from original city reference; exact source file copied; sprites selected by runtime AtlasTexture, no raster postprocessing"
+  },
+  "imperial_wall": {
+    "source": "/workspace/generated_images/exec-b8706224-ef17-42a5-b3e0-12f9097dab89.png",
+    "sha256": "438a3160cb1f266608948d961c6177149f015ffafceec74ceff19ac112c8a599",
+    "method": "image_gen edit from original city reference; exact source file copied; sprites selected by runtime AtlasTexture, no raster postprocessing"
   }
 }

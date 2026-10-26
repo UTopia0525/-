@@ -105,6 +105,13 @@ func run() -> void:
 		for b in w.scenery_bounds:check(not Rect2(a.position+w.CITIZEN_BOUNDS.position,w.CITIZEN_BOUNDS.size).intersects(b),"NPC body avoids buildings "+str(a.name))
 	for id in ["nj_merchant","nj_artisan","nj_instructor"]:
 		await approach(id);drain();check(game.state=="service" and game.city_service.service.actor_id==id,"service portrait and counter "+id);game.city_service.close_counter()
+	# Old layout saves must preserve quest/rewards and avoid newly moved water/buildings.
+	var legacy=game.save_system.capture();legacy.world.layout_version=1;legacy.world.position=[2700,2000]
+	var file=FileAccess.open(game.save_system.path(8),FileAccess.WRITE);file.store_string(JSON.stringify(legacy));file.close()
+	var paid_money: int=game.money
+	check(game.save_system.load_slot(8),"old Nanjing layout save loads")
+	check(q.phase=="completed" and game.money==paid_money and game.progress.favor_for("namgung")==10,"old layout migration preserves story and rewards")
+	check(w.player.position.distance_to(w.city_point(w.city_data.spawn))<200 and w.can_stand(w.player.position),"old layout relocates to clear western entry")
 	# Existing schema3 saves without the new quest remain readable.
 	var old=game.save_system.capture();old.erase("nanjing_relief_quest");check(game.save_system.validate(old),"old save without new field validates")
 	var bad=game.save_system.capture();bad.nanjing_relief_quest.phase="unknown";check(not game.save_system.validate(bad),"unknown phases rejected")

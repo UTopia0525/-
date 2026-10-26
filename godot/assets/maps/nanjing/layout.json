@@ -1,494 +1,1176 @@
 {
   "name": "남경 · 응천부",
+  "layout_version": 2,
+  "reference": "docs/cities/designs/nanjing-npc-preview.png",
   "art_size": [
     1536,
     1024
   ],
   "world_size": [
-    4608,
-    3072
+    6144,
+    4096
   ],
   "spawn": [
-    240,
-    430.52
+    255,
+    530
   ],
   "walk_bounds": [
-    180,
-    38,
-    1332,
-    960
+    36,
+    75,
+    1464,
+    930
   ],
   "ground_script": "res://scripts/qingya_ground.gd",
   "ground_texture": "res://assets/maps/nanjing/ground.png",
   "objects": [
     {
-      "id": "warehouse_250_80",
-      "prefab": "warehouse",
+      "id": "northwest_0",
+      "prefab": "nj_warehouse",
       "rect": [
         250,
-        67.53,
-        150,
-        92.85999999999999
+        78,
+        125,
+        112
       ]
     },
     {
-      "id": "warehouse_250_230",
-      "prefab": "warehouse",
+      "id": "northwest_1",
+      "prefab": "nj_warehouse",
       "rect": [
-        250,
-        194.16,
-        150,
-        92.85
+        245,
+        225,
+        125,
+        83
       ]
     },
     {
-      "id": "warehouse_450_80",
-      "prefab": "warehouse",
-      "rect": [
-        450,
-        67.53,
-        150,
-        92.85999999999999
-      ]
-    },
-    {
-      "id": "warehouse_450_230",
-      "prefab": "warehouse",
-      "rect": [
-        450,
-        194.16,
-        150,
-        92.85
-      ]
-    },
-    {
-      "id": "home_690_80",
-      "prefab": "home",
-      "rect": [
-        690,
-        67.53,
-        130,
-        92.85999999999999
-      ]
-    },
-    {
-      "id": "home_690_230",
-      "prefab": "home",
-      "rect": [
-        690,
-        194.16,
-        130,
-        92.85
-      ]
-    },
-    {
-      "id": "home_850_80",
-      "prefab": "home",
-      "rect": [
-        850,
-        67.53,
-        130,
-        92.85999999999999
-      ]
-    },
-    {
-      "id": "home_850_230",
-      "prefab": "home",
-      "rect": [
-        850,
-        194.16,
-        130,
-        92.85
-      ]
-    },
-    {
-      "id": "government",
-      "prefab": "government",
-      "rect": [
-        1060,
-        177.27,
-        150,
-        109.73999999999998
-      ]
-    },
-    {
-      "id": "government_side",
-      "prefab": "home",
-      "rect": [
-        1290,
-        194.16,
-        155,
-        92.85
-      ]
-    },
-    {
-      "id": "martial",
-      "prefab": "martial_hall",
-      "rect": [
-        1300,
-        472.73,
-        170,
-        118.17999999999995
-      ]
-    },
-    {
-      "id": "inn",
-      "prefab": "inn",
-      "rect": [
-        820,
-        472.73,
-        170,
-        118.17999999999995
-      ]
-    },
-    {
-      "id": "workshop",
-      "prefab": "workshop",
-      "rect": [
-        260,
-        472.73,
-        140,
-        105.51999999999998
-      ]
-    },
-    {
-      "id": "workshop_side",
-      "prefab": "warehouse",
+      "id": "northwest_2",
+      "prefab": "nj_townhouse",
       "rect": [
         460,
-        472.73,
-        160,
-        92.85000000000002
+        75,
+        102,
+        112
       ]
     },
     {
-      "id": "market_shop",
-      "prefab": "home",
+      "id": "northwest_3",
+      "prefab": "nj_home",
       "rect": [
-        825,
-        325.0,
-        145,
-        84.42000000000002
+        585,
+        75,
+        105,
+        100
       ]
     },
     {
-      "id": "stall_690_425",
-      "prefab": "stall_a",
+      "id": "northwest_4",
+      "prefab": "nj_townhouse",
       "rect": [
-        690,
-        358.77,
-        70,
-        42.200000000000045
+        465,
+        206,
+        105,
+        100
       ]
     },
     {
-      "id": "stall_940_425",
-      "prefab": "stall_a",
-      "rect": [
-        940,
-        358.77,
-        70,
-        42.200000000000045
-      ]
-    },
-    {
-      "id": "stall_1120_555",
-      "prefab": "stall_a",
-      "rect": [
-        1120,
-        468.51,
-        70,
-        42.19999999999999
-      ]
-    },
-    {
-      "id": "stall_1120_660",
-      "prefab": "stall_a",
-      "rect": [
-        1120,
-        557.14,
-        70,
-        42.210000000000036
-      ]
-    },
-    {
-      "id": "south_home_260",
-      "prefab": "home",
-      "rect": [
-        260,
-        770,
-        135,
-        95
-      ]
-    },
-    {
-      "id": "south_home_590",
-      "prefab": "home",
+      "id": "northwest_5",
+      "prefab": "nj_home",
       "rect": [
         590,
-        770,
-        135,
-        95
+        213,
+        108,
+        92
       ]
     },
     {
-      "id": "south_home_860",
-      "prefab": "home",
+      "id": "north_east_0",
+      "prefab": "nj_home",
       "rect": [
-        860,
-        770,
-        135,
-        95
+        760,
+        72,
+        106,
+        85
       ]
     },
     {
-      "id": "south_home_1150",
-      "prefab": "home",
+      "id": "north_east_1",
+      "prefab": "nj_home",
       "rect": [
-        1150,
-        770,
-        135,
-        95
+        894,
+        72,
+        105,
+        85
       ]
     },
     {
-      "id": "south_home_1340",
-      "prefab": "home",
+      "id": "north_east_2",
+      "prefab": "nj_home",
       "rect": [
-        1340,
-        770,
-        135,
-        95
+        1040,
+        74,
+        112,
+        80
       ]
     },
     {
-      "id": "music_house",
-      "prefab": "inn",
+      "id": "north_east_3",
+      "prefab": "nj_home",
       "rect": [
-        1330,
-        770,
-        160,
+        1160,
+        75,
+        105,
+        90
+      ]
+    },
+    {
+      "id": "north_east_4",
+      "prefab": "nj_bookshop",
+      "rect": [
+        780,
+        170,
+        130,
+        75
+      ]
+    },
+    {
+      "id": "north_east_5",
+      "prefab": "nj_bookshop",
+      "rect": [
+        920,
+        170,
+        133,
+        75
+      ]
+    },
+    {
+      "id": "north_east_6",
+      "prefab": "nj_bookshop",
+      "rect": [
+        1065,
+        170,
+        123,
+        75
+      ]
+    },
+    {
+      "id": "north_east_7",
+      "prefab": "nj_bookshop",
+      "rect": [
+        1200,
+        170,
+        105,
+        75
+      ]
+    },
+    {
+      "id": "craft_0",
+      "prefab": "nj_workshop",
+      "rect": [
+        245,
+        335,
+        120,
+        105
+      ]
+    },
+    {
+      "id": "craft_1",
+      "prefab": "nj_workshop",
+      "rect": [
+        455,
+        334,
+        120,
         110
       ]
     },
     {
-      "id": "well",
-      "prefab": "well",
+      "id": "craft_2",
+      "prefab": "nj_shop",
       "rect": [
-        650,
-        820,
-        40,
+        590,
+        333,
+        103,
+        108
+      ]
+    },
+    {
+      "id": "craft_3",
+      "prefab": "nj_shop",
+      "rect": [
+        252,
+        444,
+        100,
+        66
+      ]
+    },
+    {
+      "id": "craft_4",
+      "prefab": "nj_shop",
+      "rect": [
+        461,
+        447,
+        105,
+        62
+      ]
+    },
+    {
+      "id": "market_shop_0",
+      "prefab": "nj_shop",
+      "rect": [
+        760,
+        295,
+        120,
+        92
+      ]
+    },
+    {
+      "id": "market_shop_1",
+      "prefab": "nj_shop",
+      "rect": [
+        900,
+        294,
+        105,
+        98
+      ]
+    },
+    {
+      "id": "market_shop_2",
+      "prefab": "nj_shop",
+      "rect": [
+        760,
+        407,
+        107,
+        94
+      ]
+    },
+    {
+      "id": "market_shop_3",
+      "prefab": "nj_shop",
+      "rect": [
+        910,
+        414,
+        96,
+        85
+      ]
+    },
+    {
+      "id": "market_stalls_0",
+      "prefab": "nj_stalls",
+      "rect": [
+        605,
+        440,
+        95,
+        57
+      ]
+    },
+    {
+      "id": "market_stalls_1",
+      "prefab": "nj_stalls",
+      "rect": [
+        1020,
+        430,
+        90,
+        60
+      ]
+    },
+    {
+      "id": "market_stalls_2",
+      "prefab": "nj_stalls",
+      "rect": [
+        1000,
+        300,
+        80,
+        56
+      ]
+    },
+    {
+      "id": "market_stalls_3",
+      "prefab": "nj_stalls",
+      "rect": [
+        775,
+        391,
+        90,
         40
       ]
     },
     {
-      "id": "palace_wall_1040",
+      "id": "main_inn",
+      "prefab": "nj_inn",
+      "rect": [
+        607,
+        546,
+        322,
+        154
+      ]
+    },
+    {
+      "id": "government_hall",
+      "prefab": "nj_government",
+      "rect": [
+        1085,
+        290,
+        205,
+        185
+      ]
+    },
+    {
+      "id": "martial_hall",
+      "prefab": "nj_martial",
+      "rect": [
+        1220,
+        548,
+        170,
+        137
+      ]
+    },
+    {
+      "id": "qinhuai_music_house",
+      "prefab": "nj_tea_house",
+      "rect": [
+        1110,
+        792,
+        170,
+        155
+      ]
+    },
+    {
+      "id": "alley_house_0",
+      "prefab": "nj_sidehome",
+      "rect": [
+        130,
+        558,
+        102,
+        90
+      ]
+    },
+    {
+      "id": "alley_house_1",
+      "prefab": "nj_townhouse",
+      "rect": [
+        255,
+        552,
+        119,
+        80
+      ]
+    },
+    {
+      "id": "alley_house_2",
+      "prefab": "nj_home",
+      "rect": [
+        135,
+        662,
+        97,
+        88
+      ]
+    },
+    {
+      "id": "alley_house_3",
+      "prefab": "nj_home",
+      "rect": [
+        252,
+        657,
+        116,
+        93
+      ]
+    },
+    {
+      "id": "alley_house_4",
+      "prefab": "nj_sidehome",
+      "rect": [
+        455,
+        552,
+        110,
+        98
+      ]
+    },
+    {
+      "id": "alley_house_5",
+      "prefab": "nj_townhouse",
+      "rect": [
+        455,
+        675,
+        110,
+        74
+      ]
+    },
+    {
+      "id": "alley_house_6",
+      "prefab": "nj_home",
+      "rect": [
+        1000,
+        549,
+        100,
+        100
+      ]
+    },
+    {
+      "id": "alley_house_7",
+      "prefab": "nj_home",
+      "rect": [
+        1000,
+        666,
+        99,
+        83
+      ]
+    },
+    {
+      "id": "alley_house_8",
+      "prefab": "nj_sidehome",
+      "rect": [
+        1120,
+        560,
+        80,
+        90
+      ]
+    },
+    {
+      "id": "alley_house_9",
+      "prefab": "nj_townhouse",
+      "rect": [
+        1120,
+        675,
+        80,
+        70
+      ]
+    },
+    {
+      "id": "alley_house_10",
+      "prefab": "nj_home",
+      "rect": [
+        240,
+        890,
+        115,
+        84
+      ]
+    },
+    {
+      "id": "alley_house_11",
+      "prefab": "nj_home",
+      "rect": [
+        460,
+        895,
+        105,
+        82
+      ]
+    },
+    {
+      "id": "alley_house_12",
+      "prefab": "nj_sidehome",
+      "rect": [
+        585,
+        896,
+        105,
+        78
+      ]
+    },
+    {
+      "id": "alley_house_13",
+      "prefab": "nj_townhouse",
+      "rect": [
+        800,
+        898,
+        105,
+        85
+      ]
+    },
+    {
+      "id": "alley_house_14",
+      "prefab": "nj_home",
+      "rect": [
+        950,
+        899,
+        98,
+        80
+      ]
+    },
+    {
+      "id": "alley_house_15",
+      "prefab": "nj_home",
+      "rect": [
+        1090,
+        900,
+        83,
+        78
+      ]
+    },
+    {
+      "id": "alley_house_16",
+      "prefab": "nj_sidehome",
+      "rect": [
+        1390,
+        907,
+        97,
+        78
+      ]
+    },
+    {
+      "id": "gov_back_1040",
       "prefab": "wall_h",
       "rect": [
         1040,
-        67.53,
-        70,
-        37.989999999999995
+        300,
+        64,
+        27
       ]
     },
     {
-      "id": "palace_wall_1110",
+      "id": "gov_back_1102",
       "prefab": "wall_h",
       "rect": [
-        1110,
-        67.53,
-        70,
-        37.989999999999995
+        1102,
+        300,
+        64,
+        27
       ]
     },
     {
-      "id": "palace_wall_1180",
+      "id": "gov_back_1164",
       "prefab": "wall_h",
       "rect": [
-        1180,
-        67.53,
-        70,
-        37.989999999999995
+        1164,
+        300,
+        64,
+        27
       ]
     },
     {
-      "id": "palace_wall_1250",
+      "id": "gov_back_1226",
       "prefab": "wall_h",
       "rect": [
-        1250,
-        67.53,
-        70,
-        37.989999999999995
+        1226,
+        300,
+        64,
+        27
       ]
     },
     {
-      "id": "palace_wall_1320",
+      "id": "gov_back_1288",
       "prefab": "wall_h",
       "rect": [
-        1320,
-        67.53,
-        70,
-        37.989999999999995
+        1288,
+        300,
+        64,
+        27
       ]
     },
     {
-      "id": "palace_wall_1390",
+      "id": "gov_back_1350",
       "prefab": "wall_h",
       "rect": [
-        1390,
-        67.53,
-        70,
-        37.989999999999995
+        1350,
+        300,
+        64,
+        27
       ]
     },
     {
-      "id": "palace_wall_1460",
+      "id": "dojo_back_1050",
       "prefab": "wall_h",
       "rect": [
-        1460,
-        67.53,
-        70,
-        37.989999999999995
+        1050,
+        553,
+        64,
+        27
       ]
     },
     {
-      "id": "tree_215_70",
-      "prefab": "tree",
+      "id": "dojo_back_1112",
+      "prefab": "wall_h",
       "rect": [
-        215,
-        59.09,
-        48,
-        54.86999999999999
+        1112,
+        553,
+        64,
+        27
       ]
     },
     {
-      "id": "tree_620_250",
-      "prefab": "tree",
+      "id": "dojo_back_1174",
+      "prefab": "wall_h",
       "rect": [
-        620,
-        211.04,
-        48,
-        54.87000000000003
+        1174,
+        553,
+        64,
+        27
       ]
     },
     {
-      "id": "tree_240_400",
-      "prefab": "tree",
+      "id": "dojo_back_1236",
+      "prefab": "wall_h",
       "rect": [
-        240,
-        337.66,
-        48,
-        54.86999999999995
+        1236,
+        553,
+        64,
+        27
       ]
     },
     {
-      "id": "tree_630_580",
-      "prefab": "tree",
+      "id": "dojo_back_1298",
+      "prefab": "wall_h",
       "rect": [
-        630,
-        489.61,
-        48,
-        54.870000000000005
+        1298,
+        553,
+        64,
+        27
       ]
     },
     {
-      "id": "tree_1000_80",
-      "prefab": "tree",
+      "id": "dojo_back_1360",
+      "prefab": "wall_h",
       "rect": [
-        1000,
-        67.53,
-        48,
-        54.870000000000005
+        1360,
+        553,
+        64,
+        27
       ]
     },
     {
-      "id": "tree_1000_600",
-      "prefab": "tree",
+      "id": "compound_side_1040_330",
+      "prefab": "wall_v",
       "rect": [
-        1000,
-        506.49,
-        48,
-        54.870000000000005
+        1040,
+        330,
+        24,
+        135
       ]
     },
     {
-      "id": "tree_1450_390",
-      "prefab": "tree",
+      "id": "compound_side_1350_320",
+      "prefab": "wall_v",
       "rect": [
-        1450,
-        329.22,
-        48,
-        54.86999999999995
+        1350,
+        320,
+        24,
+        145
       ]
     },
     {
-      "id": "tree_650_870",
-      "prefab": "tree",
+      "id": "compound_side_1050_585",
+      "prefab": "wall_v",
       "rect": [
-        650,
-        790,
-        48,
+        1050,
+        585,
+        24,
+        140
+      ]
+    },
+    {
+      "id": "compound_side_1395_585",
+      "prefab": "wall_v",
+      "rect": [
+        1395,
+        585,
+        24,
+        140
+      ]
+    },
+    {
+      "id": "dojo_open_gate",
+      "prefab": "nj_courtyard_gate",
+      "rect": [
+        1150,
+        686,
+        100,
         65
       ]
     },
     {
-      "id": "tree_1120_890",
-      "prefab": "tree",
+      "id": "north_wall_280",
+      "prefab": "wall_h",
       "rect": [
-        1120,
-        810,
-        48,
-        65
+        280,
+        22,
+        66,
+        40
       ]
     },
     {
-      "id": "cargo_240_200",
-      "prefab": "cargo",
+      "id": "north_wall_344",
+      "prefab": "wall_h",
       "rect": [
-        240,
-        168.83,
-        45,
-        30.389999999999986
+        344,
+        22,
+        66,
+        40
       ]
     },
     {
-      "id": "cargo_600_200",
-      "prefab": "cargo",
+      "id": "north_wall_408",
+      "prefab": "wall_h",
+      "rect": [
+        408,
+        22,
+        66,
+        40
+      ]
+    },
+    {
+      "id": "north_wall_472",
+      "prefab": "wall_h",
+      "rect": [
+        472,
+        22,
+        66,
+        40
+      ]
+    },
+    {
+      "id": "north_wall_536",
+      "prefab": "wall_h",
+      "rect": [
+        536,
+        22,
+        66,
+        40
+      ]
+    },
+    {
+      "id": "north_wall_600",
+      "prefab": "wall_h",
       "rect": [
         600,
-        168.83,
-        45,
-        30.389999999999986
+        22,
+        66,
+        40
       ]
     },
     {
-      "id": "cargo_260_350",
-      "prefab": "cargo",
+      "id": "north_wall_664",
+      "prefab": "wall_h",
       "rect": [
+        664,
+        22,
+        66,
+        40
+      ]
+    },
+    {
+      "id": "north_wall_728",
+      "prefab": "wall_h",
+      "rect": [
+        728,
+        22,
+        66,
+        40
+      ]
+    },
+    {
+      "id": "north_wall_792",
+      "prefab": "wall_h",
+      "rect": [
+        792,
+        22,
+        66,
+        40
+      ]
+    },
+    {
+      "id": "north_wall_856",
+      "prefab": "wall_h",
+      "rect": [
+        856,
+        22,
+        66,
+        40
+      ]
+    },
+    {
+      "id": "north_wall_920",
+      "prefab": "wall_h",
+      "rect": [
+        920,
+        22,
+        66,
+        40
+      ]
+    },
+    {
+      "id": "north_wall_984",
+      "prefab": "wall_h",
+      "rect": [
+        984,
+        22,
+        66,
+        40
+      ]
+    },
+    {
+      "id": "north_wall_1048",
+      "prefab": "wall_h",
+      "rect": [
+        1048,
+        22,
+        66,
+        40
+      ]
+    },
+    {
+      "id": "north_wall_1112",
+      "prefab": "wall_h",
+      "rect": [
+        1112,
+        22,
+        66,
+        40
+      ]
+    },
+    {
+      "id": "north_wall_1176",
+      "prefab": "wall_h",
+      "rect": [
+        1176,
+        22,
+        66,
+        40
+      ]
+    },
+    {
+      "id": "north_wall_1240",
+      "prefab": "wall_h",
+      "rect": [
+        1240,
+        22,
+        66,
+        40
+      ]
+    },
+    {
+      "id": "west_wall_98",
+      "prefab": "wall_v",
+      "rect": [
+        202,
+        98,
+        25,
+        70
+      ]
+    },
+    {
+      "id": "west_wall_164",
+      "prefab": "wall_v",
+      "rect": [
+        202,
+        164,
+        25,
+        70
+      ]
+    },
+    {
+      "id": "west_wall_230",
+      "prefab": "wall_v",
+      "rect": [
+        202,
+        230,
+        25,
+        70
+      ]
+    },
+    {
+      "id": "west_wall_296",
+      "prefab": "wall_v",
+      "rect": [
+        202,
+        296,
+        25,
+        70
+      ]
+    },
+    {
+      "id": "west_city_gate",
+      "prefab": "nj_west_gate",
+      "rect": [
+        80,
+        360,
+        180,
+        220
+      ]
+    },
+    {
+      "id": "west_south_wall_560",
+      "prefab": "wall_v",
+      "rect": [
+        88,
+        560,
+        24,
+        68
+      ]
+    },
+    {
+      "id": "west_south_wall_622",
+      "prefab": "wall_v",
+      "rect": [
+        88,
+        622,
+        24,
+        68
+      ]
+    },
+    {
+      "id": "west_south_wall_684",
+      "prefab": "wall_v",
+      "rect": [
+        88,
+        684,
+        24,
+        68
+      ]
+    },
+    {
+      "id": "garden_tree_0",
+      "prefab": "tree",
+      "rect": [
+        220,
+        125,
+        32,
+        42
+      ]
+    },
+    {
+      "id": "garden_tree_1",
+      "prefab": "tree",
+      "rect": [
+        400,
+        90,
+        30,
+        42
+      ]
+    },
+    {
+      "id": "garden_tree_2",
+      "prefab": "tree",
+      "rect": [
+        704,
+        90,
+        27,
+        40
+      ]
+    },
+    {
+      "id": "garden_tree_3",
+      "prefab": "tree",
+      "rect": [
+        716,
         260,
-        295.45,
-        45,
-        30.389999999999986
+        27,
+        42
       ]
     },
     {
-      "id": "cargo_570_350",
-      "prefab": "cargo",
+      "id": "garden_tree_4",
+      "prefab": "tree",
       "rect": [
-        570,
-        295.45,
-        45,
-        30.389999999999986
+        1310,
+        250,
+        28,
+        44
       ]
     },
     {
-      "id": "cargo_490_690",
+      "id": "garden_tree_5",
+      "prefab": "tree",
+      "rect": [
+        550,
+        320,
+        23,
+        34
+      ]
+    },
+    {
+      "id": "garden_tree_6",
+      "prefab": "tree",
+      "rect": [
+        1010,
+        270,
+        26,
+        38
+      ]
+    },
+    {
+      "id": "garden_tree_7",
+      "prefab": "tree",
+      "rect": [
+        1375,
+        544,
+        26,
+        40
+      ]
+    },
+    {
+      "id": "garden_tree_8",
+      "prefab": "tree",
+      "rect": [
+        225,
+        720,
+        25,
+        38
+      ]
+    },
+    {
+      "id": "garden_tree_9",
+      "prefab": "willow",
+      "rect": [
+        455,
+        850,
+        28,
+        50
+      ]
+    },
+    {
+      "id": "garden_tree_10",
+      "prefab": "willow",
+      "rect": [
+        1090,
+        850,
+        25,
+        44
+      ]
+    },
+    {
+      "id": "garden_tree_11",
+      "prefab": "willow",
+      "rect": [
+        1380,
+        840,
+        30,
+        55
+      ]
+    },
+    {
+      "id": "cargo_0",
       "prefab": "cargo",
       "rect": [
-        490,
-        582.47,
-        45,
-        30.389999999999986
+        242,
+        190,
+        23,
+        25
+      ]
+    },
+    {
+      "id": "cargo_1",
+      "prefab": "cargo",
+      "rect": [
+        370,
+        200,
+        23,
+        25
+      ]
+    },
+    {
+      "id": "cargo_2",
+      "prefab": "cargo",
+      "rect": [
+        238,
+        300,
+        23,
+        25
+      ]
+    },
+    {
+      "id": "cargo_3",
+      "prefab": "cargo",
+      "rect": [
+        372,
+        305,
+        23,
+        25
+      ]
+    },
+    {
+      "id": "cargo_4",
+      "prefab": "cargo",
+      "rect": [
+        270,
+        445,
+        23,
+        25
+      ]
+    },
+    {
+      "id": "cargo_5",
+      "prefab": "cargo",
+      "rect": [
+        350,
+        445,
+        23,
+        25
+      ]
+    },
+    {
+      "id": "cargo_6",
+      "prefab": "cargo",
+      "rect": [
+        460,
+        428,
+        23,
+        25
+      ]
+    },
+    {
+      "id": "cargo_7",
+      "prefab": "cargo",
+      "rect": [
+        563,
+        430,
+        23,
+        25
+      ]
+    },
+    {
+      "id": "cargo_8",
+      "prefab": "cargo",
+      "rect": [
+        980,
+        448,
+        23,
+        25
+      ]
+    },
+    {
+      "id": "cargo_9",
+      "prefab": "cargo",
+      "rect": [
+        1040,
+        515,
+        23,
+        25
+      ]
+    },
+    {
+      "id": "south_well",
+      "prefab": "well",
+      "rect": [
+        630,
+        941,
+        30,
+        28
+      ]
+    },
+    {
+      "id": "imperial_east_wall",
+      "prefab": "nj_imperial_wall",
+      "rect": [
+        1270,
+        -5,
+        245,
+        535
+      ]
+    },
+    {
+      "id": "yangtze_sailboat_north",
+      "prefab": "nj_dock",
+      "rect": [
+        16,
+        92,
+        123,
+        160
+      ]
+    },
+    {
+      "id": "yangtze_sailboat_south",
+      "prefab": "nj_dock",
+      "rect": [
+        7,
+        260,
+        119,
+        145
       ]
     }
   ],
@@ -497,112 +1179,112 @@
       "id": "harbor",
       "name": "장강 나루·창고거리",
       "rect": [
-        180,
-        32.08,
-        510,
-        346.1
+        36,
+        75,
+        405,
+        260
       ],
       "label": [
-        435.0,
-        274.35
+        295,
+        240
       ]
     },
     {
       "id": "residential",
-      "name": "주거구역",
+      "name": "주거구역·서책거리",
       "rect": [
-        690,
-        32.08,
-        320,
-        346.1
+        442,
+        65,
+        870,
+        247
       ],
       "label": [
-        850.0,
-        274.35
+        810,
+        170
       ]
     },
     {
       "id": "government",
       "name": "관아·황성 외곽",
       "rect": [
-        1010,
-        32.08,
-        502,
-        346.1
+        1020,
+        290,
+        445,
+        235
       ],
       "label": [
-        1261.0,
-        274.35
+        1190,
+        407
       ]
     },
     {
       "id": "workshops",
       "name": "공방거리",
       "rect": [
-        180,
-        455.84,
-        510,
-        185.71999999999997
+        218,
+        328,
+        500,
+        190
       ],
       "label": [
-        435.0,
-        585.8439999999999
+        413,
+        435
       ]
     },
     {
       "id": "market",
       "name": "상점가",
       "rect": [
-        690,
-        354.55,
-        320,
-        118.18
+        718,
+        287,
+        302,
+        235
       ],
       "label": [
-        850.0,
-        437.276
+        846,
+        470
       ]
     },
     {
       "id": "inn",
       "name": "객잔",
       "rect": [
-        690,
-        472.73,
-        320,
-        168.82999999999993
+        440,
+        540,
+        570,
+        213
       ],
       "label": [
-        850.0,
-        590.911
+        770,
+        628
       ]
     },
     {
       "id": "martial",
       "name": "무관·연무장",
       "rect": [
-        1010,
-        455.84,
-        502,
-        185.71999999999997
+        1020,
+        540,
+        440,
+        213
       ],
       "label": [
-        1261.0,
-        585.8439999999999
+        1245,
+        660
       ]
     },
     {
       "id": "qinhuai",
       "name": "진회하·수변 골목",
       "rect": [
-        180,
-        770,
-        1332,
-        148
+        36,
+        750,
+        1464,
+        254
       ],
       "label": [
-        846.0,
-        873.6
+        945,
+        910
       ]
     }
   ],
@@ -610,120 +1292,603 @@
     {
       "points": [
         [
-          200,
-          430.52
+          40,
+          530
         ],
         [
           1500,
-          430.52
+          530
         ]
       ],
-      "width": 54
+      "width": 30
     },
     {
       "points": [
         [
-          775,
-          33.77
+          420,
+          75
         ],
         [
-          775,
-          900
+          420,
+          998
         ]
       ],
-      "width": 50
+      "width": 28
     },
     {
       "points": [
         [
-          415,
-          33.77
+          733,
+          75
         ],
         [
-          415,
-          900
+          754,
+          990
         ]
       ],
-      "width": 40
+      "width": 28
     },
     {
       "points": [
         [
-          1230,
-          42.21
+          975,
+          75
         ],
         [
-          1230,
-          900
+          975,
+          990
         ]
       ],
-      "width": 40
+      "width": 28
     },
     {
       "points": [
         [
-          225,
-          303.9
+          1390,
+          320
         ],
         [
-          1490,
-          303.9
+          1390,
+          740
         ]
       ],
-      "width": 40
+      "width": 25
     },
     {
       "points": [
         [
-          225,
-          607.79
+          235,
+          315
         ],
         [
-          1490,
-          607.79
+          1320,
+          315
         ]
       ],
-      "width": 35
+      "width": 23
     },
     {
       "points": [
         [
-          225,
+          230,
+          710
+        ],
+        [
+          1420,
+          710
+        ]
+      ],
+      "width": 25
+    },
+    {
+      "points": [
+        [
+          240,
           880
         ],
         [
-          1490,
+          1180,
           880
         ]
       ],
-      "width": 35
+      "width": 23
     }
   ],
   "terrain_blockers": [
     [
-      225,
-      650,
-      171,
-      120
+      36,
+      75,
+      145,
+      305
     ],
     [
-      475,
-      650,
-      213,
-      120
+      36,
+      564,
+      38,
+      140
     ],
     [
-      742,
-      650,
-      238,
-      120
+      50,
+      780,
+      332,
+      65
     ],
     [
-      1040,
-      650,
-      472,
-      120
+      449,
+      800,
+      268,
+      58
+    ],
+    [
+      784,
+      818,
+      500,
+      63
+    ],
+    [
+      1354,
+      846,
+      146,
+      52
+    ],
+    [
+      1415,
+      75,
+      85,
+      370
+    ],
+    [
+      1330,
+      75,
+      206,
+      60
+    ],
+    [
+      1352,
+      133,
+      184,
+      60
+    ],
+    [
+      1374,
+      191,
+      162,
+      60
+    ],
+    [
+      1396,
+      249,
+      140,
+      60
+    ],
+    [
+      1418,
+      307,
+      118,
+      60
+    ],
+    [
+      1440,
+      365,
+      96,
+      60
+    ],
+    [
+      1462,
+      423,
+      74,
+      60
     ]
   ],
-  "npcs": []
+  "npcs": [],
+  "prefabs": {
+    "nj_home": {
+      "texture": "res://assets/maps/nanjing/buildings.png",
+      "source": [
+        45,
+        100,
+        280,
+        225
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.11,
+          0.53,
+          0.78,
+          0.43
+        ]
+      ]
+    },
+    "nj_townhouse": {
+      "texture": "res://assets/maps/nanjing/buildings.png",
+      "source": [
+        448,
+        16,
+        240,
+        312
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.11,
+          0.53,
+          0.78,
+          0.43
+        ]
+      ]
+    },
+    "nj_shop": {
+      "texture": "res://assets/maps/nanjing/buildings.png",
+      "source": [
+        785,
+        60,
+        302,
+        270
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.11,
+          0.53,
+          0.78,
+          0.43
+        ]
+      ]
+    },
+    "nj_warehouse": {
+      "texture": "res://assets/maps/nanjing/buildings.png",
+      "source": [
+        1165,
+        75,
+        360,
+        252
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.11,
+          0.53,
+          0.78,
+          0.43
+        ]
+      ]
+    },
+    "nj_workshop": {
+      "texture": "res://assets/maps/nanjing/buildings.png",
+      "source": [
+        10,
+        365,
+        335,
+        290
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.11,
+          0.53,
+          0.78,
+          0.43
+        ]
+      ]
+    },
+    "nj_inn": {
+      "texture": "res://assets/maps/nanjing/buildings.png",
+      "source": [
+        338,
+        358,
+        475,
+        303
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.11,
+          0.53,
+          0.78,
+          0.43
+        ]
+      ]
+    },
+    "nj_government": {
+      "texture": "res://assets/maps/nanjing/buildings.png",
+      "source": [
+        818,
+        353,
+        387,
+        310
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.11,
+          0.53,
+          0.78,
+          0.43
+        ]
+      ]
+    },
+    "nj_martial": {
+      "texture": "res://assets/maps/nanjing/buildings.png",
+      "source": [
+        1202,
+        388,
+        330,
+        273
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.11,
+          0.53,
+          0.78,
+          0.43
+        ]
+      ]
+    },
+    "nj_tea_house": {
+      "texture": "res://assets/maps/nanjing/buildings.png",
+      "source": [
+        10,
+        665,
+        345,
+        330
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.11,
+          0.53,
+          0.78,
+          0.43
+        ]
+      ]
+    },
+    "nj_bookshop": {
+      "texture": "res://assets/maps/nanjing/buildings.png",
+      "source": [
+        370,
+        720,
+        490,
+        270
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.11,
+          0.53,
+          0.78,
+          0.43
+        ]
+      ]
+    },
+    "nj_sidehome": {
+      "texture": "res://assets/maps/nanjing/buildings.png",
+      "source": [
+        900,
+        660,
+        225,
+        340
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.11,
+          0.53,
+          0.78,
+          0.43
+        ]
+      ]
+    },
+    "nj_shrine": {
+      "texture": "res://assets/maps/nanjing/buildings.png",
+      "source": [
+        1180,
+        720,
+        350,
+        280
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.11,
+          0.53,
+          0.78,
+          0.43
+        ]
+      ]
+    },
+    "nj_wall_h": {
+      "texture": "res://assets/maps/nanjing/landmarks.png",
+      "source": [
+        1060,
+        288,
+        470,
+        205
+      ],
+      "kind": "wall",
+      "footprints": [
+        [
+          0.02,
+          0.43,
+          0.96,
+          0.54
+        ]
+      ]
+    },
+    "nj_wall_v": {
+      "texture": "res://assets/maps/nanjing/landmarks.png",
+      "source": [
+        45,
+        540,
+        200,
+        415
+      ],
+      "kind": "wall",
+      "footprints": [
+        [
+          0.22,
+          0.05,
+          0.61,
+          0.92
+        ]
+      ]
+    },
+    "nj_stalls": {
+      "texture": "res://assets/maps/nanjing/landmarks.png",
+      "source": [
+        262,
+        693,
+        510,
+        240
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.04,
+          0.48,
+          0.92,
+          0.48
+        ]
+      ]
+    },
+    "nj_dock": {
+      "texture": "res://assets/maps/nanjing/landmarks.png",
+      "source": [
+        770,
+        555,
+        305,
+        415
+      ],
+      "kind": "cargo",
+      "footprints": [
+        [
+          0.12,
+          0.7,
+          0.75,
+          0.28
+        ]
+      ]
+    },
+    "nj_courtyard_gate": {
+      "texture": "res://assets/maps/nanjing/landmarks.png",
+      "source": [
+        1070,
+        605,
+        460,
+        355
+      ],
+      "kind": "gate",
+      "footprints": [
+        [
+          0.12,
+          0.77,
+          0.14,
+          0.23
+        ],
+        [
+          0.74,
+          0.77,
+          0.14,
+          0.23
+        ]
+      ]
+    },
+    "nj_west_gate": {
+      "texture": "res://assets/maps/nanjing/imperial-wall.png",
+      "source": [
+        1080,
+        180,
+        410,
+        500
+      ],
+      "kind": "gate",
+      "footprints": [
+        [
+          0.15,
+          0.15,
+          0.5,
+          0.4
+        ],
+        [
+          0.7,
+          0.88,
+          0.25,
+          0.12
+        ]
+      ]
+    },
+    "nj_imperial_wall": {
+      "texture": "res://assets/maps/nanjing/imperial-wall.png",
+      "source": [
+        603,
+        0,
+        375,
+        1024
+      ],
+      "kind": "wall",
+      "footprints": [
+        [
+          0.09,
+          0.0,
+          0.24,
+          0.11
+        ],
+        [
+          0.15666666666666668,
+          0.1,
+          0.24,
+          0.11
+        ],
+        [
+          0.22333333333333333,
+          0.2,
+          0.24,
+          0.11
+        ],
+        [
+          0.29,
+          0.3,
+          0.24,
+          0.11
+        ],
+        [
+          0.3566666666666667,
+          0.4,
+          0.24,
+          0.11
+        ],
+        [
+          0.42333333333333334,
+          0.5,
+          0.24,
+          0.11
+        ],
+        [
+          0.49,
+          0.6,
+          0.24,
+          0.11
+        ],
+        [
+          0.5566666666666666,
+          0.7,
+          0.24,
+          0.11
+        ],
+        [
+          0.6233333333333333,
+          0.8,
+          0.24,
+          0.11
+        ],
+        [
+          0.69,
+          0.9,
+          0.24,
+          0.11
+        ]
+      ]
+    }
+  }
 }
