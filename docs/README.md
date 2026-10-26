@@ -2,7 +2,7 @@
 
 최신 변경: [주요 전투 사망·타이틀 복귀](systems/combat-death.md), [산촌·청애채 선택 의뢰](quests/qingya-village.md), [BGM 반복 재생 유지](systems/bgm-loop.md), [산길 이동 단축·발 교차 보행](systems/short-road-and-stride.md), [작은 A안 HUD](ui/compact-a.md). 이전 비교 시안과 검토는 당시 기록이다.
 
-이야기 검토: [남경 선택형 이야기 초안](story/nanjing-outline.md) — 게임 미구현.
+이야기 검토: [남경 구휼 사건 이야기 초안](story/nanjing-outline.md) — 게임 미구현.
 
 시안 검토: [남경 전체 이미지·기본 NPC12명·세력 인물 후보](cities/nanjing-preview.md) — 게임 미구현.
 
