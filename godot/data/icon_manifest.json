@@ -281,5 +281,29 @@
       500,
       660
     ]
+  },
+  "waterfront_rope": {
+    "atlas": "waterfront-quest",
+    "cell": 0,
+    "cols": 2,
+    "rows": 1,
+    "source": [
+      25,
+      160,
+      810,
+      610
+    ]
+  },
+  "waterfront_grain": {
+    "atlas": "waterfront-quest",
+    "cell": 1,
+    "cols": 2,
+    "rows": 1,
+    "source": [
+      900,
+      80,
+      870,
+      720
+    ]
   }
 }

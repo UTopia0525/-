@@ -141,6 +141,8 @@ func load_area(value: String) -> void:
 	if is_instance_valid(silk):silk.refresh_world()
 	var relief=get_parent().get("nanjing_relief_quest")
 	if is_instance_valid(relief):relief.refresh_world()
+	var waterfront=get_parent().get("waterfront_quest")
+	if is_instance_valid(waterfront):waterfront.refresh_world()
 	var levy=get_parent().get("levy_quest")
 	if is_instance_valid(levy):levy.refresh_world()
 	var qingya=get_parent().get("qingya_quest")

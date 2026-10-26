@@ -65,4 +65,4 @@
 - [남경 일반 의뢰3 · 빌려준 책, 돌아오지 않는 사람 / 서적 사용 학습](quests/nanjing-book.md)
 
 - [남경 일반 의뢰4 · 관의 이름을 빌린 자](quests/nanjing-levy.md)
-- [다음 전투 의뢰 구상 · 끊어진 계선줄 (미구현)](quests/nanjing-waterfront-combat-proposal.md)
+- [남경 일반 의뢰5 · 끊어진 계선줄 (전투 구현)](quests/nanjing-waterfront.md)

@@ -19,6 +19,7 @@ var plaque_quest
 var grain_quest
 var qingya_quest
 var cart_quest
+var waterfront_quest
 var levy_quest
 var book_quest
 var silk_quest
@@ -168,6 +169,7 @@ func _ready() -> void:
 	cart_quest=preload("res://scripts/cart_quest.gd").new();cart_quest.game=self;add_child(cart_quest)
 	book_quest=preload("res://scripts/book_quest.gd").new();book_quest.game=self;add_child(book_quest)
 	levy_quest=preload("res://scripts/levy_quest.gd").new();levy_quest.game=self;add_child(levy_quest)
+	waterfront_quest=preload("res://scripts/waterfront_quest.gd").new();waterfront_quest.game=self;add_child(waterfront_quest)
 	progress.progress_changed.connect(_progress_changed)
 	battle.sound_requested.connect(options.play)
 	var log_button=UI.button(battle,"교전 기록 · L",Rect2(915,145,205,35))
@@ -317,12 +319,13 @@ func _build_ending() -> void:
 	restart.pressed.connect(reset)
 	ending.hide()
 
-func regional_quests() -> Array:return [levy_quest,book_quest,cart_quest,silk_quest,nanjing_relief_quest,qingya_quest,alliance_story,herbalist_quest,artisan_quest,wages_quest,plaque_quest,grain_quest,duel_quest,inn_quest,impostor_quest]
-func encounters() -> Array:return qingya_quest.data.encounters+qingya_quest.data.get("legacy_encounters",[])+bandit_story.data.encounters+[herbalist_quest.data.encounter,duel_quest.data.encounter,inn_quest.data.encounter,impostor_quest.data.encounter]
+func regional_quests() -> Array:return [waterfront_quest,levy_quest,book_quest,cart_quest,silk_quest,nanjing_relief_quest,qingya_quest,alliance_story,herbalist_quest,artisan_quest,wages_quest,plaque_quest,grain_quest,duel_quest,inn_quest,impostor_quest]
+func encounters() -> Array:return qingya_quest.data.encounters+qingya_quest.data.get("legacy_encounters",[])+bandit_story.data.encounters+[waterfront_quest.data.encounter,herbalist_quest.data.encounter,duel_quest.data.encounter,inn_quest.data.encounter,impostor_quest.data.encounter]
 
 func reset() -> void:
 	if is_instance_valid(death_screen):death_screen.dismiss()
 	if is_instance_valid(adventure_ui):adventure_ui.reset()
+	if is_instance_valid(waterfront_quest):waterfront_quest.reset()
 	if is_instance_valid(levy_quest):levy_quest.reset()
 	if is_instance_valid(book_quest):book_quest.reset()
 	if is_instance_valid(cart_quest):cart_quest.reset()
@@ -537,6 +540,7 @@ func interact() -> void:
 	if npc.is_empty():
 		return
 	if preload("res://scripts/overland_travel.gd").use(self,npc):return
+	if waterfront_quest.handle_interaction(str(npc.id)):return
 	if levy_quest.handle_interaction(str(npc.id)):return
 	if book_quest.handle_interaction(str(npc.id)):return
 	if cart_quest.handle_interaction(str(npc.id)):return
@@ -650,6 +654,9 @@ func enter_game_over() -> void:
 
 func _finish_victory(hp: int) -> void:
 	if state != "battle": return
+	if waterfront_quest.in_battle():
+		waterfront_quest.after_victory()
+		return
 	if qingya_quest.in_battle():
 		qingya_quest.after_victory()
 		return
