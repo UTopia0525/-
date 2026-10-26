@@ -26,12 +26,9 @@ func run() -> void:
 	preload("res://scripts/overland_travel.gd").use(game,{"travel":{"area":"qingya_camp","arrival":[768,600]}})
 	check(game.save_system.write_slot(1),"manual pre-battle save exists")
 	var path=game.save_system.path(1);var original=FileAccess.get_file_as_string(path)
-	for index in [1,0]:
-		if index==0:
-			check(game.save_system.load_slot(1),"can reload earlier save from title")
-			q.phase="confront"
-		q.phase="fight_chief" if index==1 else "fight_sentry"
-		game.start_battle(q.data.encounters[index])
+	for index in [0]:
+		q.phase="fight_chief"
+		game.start_battle(q.data.encounters[0])
 		game.battle.player_hp=1
 		game.battle.select_skill("basic_defense");game.battle.use_selected()
 		var deadline=Time.get_ticks_msec()+8000
@@ -50,12 +47,14 @@ func run() -> void:
 		await wait_for_screen()
 		check(absf(game.battle.player_actor.rotation)>1,"hero visibly falls before ending")
 		check(not game.settings_menu.gear.visible,"settings button hidden during death")
-		if index==1:await press(KEY_F)
+		if index==0:await press(KEY_F)
 		else:game.death_screen.return_button.pressed.emit();await process_frame
 		check(game.state=="title" and game.title_screen.visible and not game.death_screen.visible,"F/button returns to original title")
 		check(game.battle.player_hp==300 and game.battle.player_actor.rotation==0,"new session clears death presentation")
 		check(game.qingya_quest.phase=="available" and not game.exploration.active,"runtime cleared without automatic retry")
 		check(FileAccess.get_file_as_string(path)==original,"manual save remains unchanged")
+	check(game.save_system.load_slot(1),"can reload pre-infiltration save from title")
+	game.reset()
 	# Nonlethal loss still advances the training quest instead of killing the hero.
 	game.start_wuchang();game.duel_quest.phase="battle";game.start_battle(game.duel_quest.data.encounter);game.battle.player_hp=0;game._on_defeat()
 	check(game.state=="explore" and game.duel_quest.phase=="ready" and not game.death_screen.visible,"training duel retains nonlethal report path")

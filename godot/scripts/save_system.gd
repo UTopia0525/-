@@ -102,9 +102,27 @@ func read_slot(slot: int) -> Dictionary:
 	if slot < 1 or slot > SLOT_COUNT: return {}
 	if not FileAccess.file_exists(path(slot)): return {}
 	var parsed = JSON.parse_string(FileAccess.get_file_as_string(path(slot)))
+	parsed=_upgrade_qingya_battle(parsed)
 	return parsed if validate(parsed) else {}
 
+func _upgrade_qingya_battle(value):
+	# Retired boss metadata may remain even in a completed exploration save.
+	if not value is Dictionary or not value.get("qingya_quest") is Dictionary or not value.get("battle") is Dictionary:return value
+	if value.qingya_quest.get("version",1)!=1 or value.battle.get("encounter_id") not in ["qingya_chief","qingya_sentry"]:return value
+	if value.battle.encounter_id=="qingya_sentry" and value.get("state")!="battle":return value
+	if not is_number(value.battle.get("enemy_hp"),0,460):return value
+	var migrated: Dictionary=value.duplicate(true)
+	migrated.battle.encounter_id="qingya_chief"
+	migrated.battle.enemy_hp=minf(float(migrated.battle.enemy_hp),280.0)
+	migrated.battle.enemy_intent="basic_attack"
+	migrated.battle.enemy_ready_turns={}
+	if migrated.get("state")=="battle" and migrated.get("world") is Dictionary:
+		migrated.qingya_quest.phase="fight_chief";migrated.qingya_quest.admitted=true;migrated.qingya_quest.captive_heard=true
+		migrated.world.area="qingya_camp";migrated.world.position=[3540,1950];migrated.world.layout_version=1
+	return migrated
+
 func validate(d) -> bool:
+	d=_upgrade_qingya_battle(d)
 	if not d is Dictionary: return false
 	if d.has("changsha_reward_revision") and not game.progress.whole(d.changsha_reward_revision,0,1):return false
 	if d.get("schema") != 1 and d.get("schema") != 2 and d.get("schema") != 3: return false

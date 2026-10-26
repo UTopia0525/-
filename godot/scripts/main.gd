@@ -308,7 +308,7 @@ func _build_ending() -> void:
 	ending.hide()
 
 func regional_quests() -> Array:return [qingya_quest,alliance_story,herbalist_quest,artisan_quest,wages_quest,plaque_quest,grain_quest,duel_quest,inn_quest,impostor_quest]
-func encounters() -> Array:return qingya_quest.data.encounters+bandit_story.data.encounters+[herbalist_quest.data.encounter,duel_quest.data.encounter,inn_quest.data.encounter,impostor_quest.data.encounter]
+func encounters() -> Array:return qingya_quest.data.encounters+qingya_quest.data.get("legacy_encounters",[])+bandit_story.data.encounters+[herbalist_quest.data.encounter,duel_quest.data.encounter,inn_quest.data.encounter,impostor_quest.data.encounter]
 
 func reset() -> void:
 	if is_instance_valid(death_screen):death_screen.dismiss()

@@ -47,12 +47,15 @@ func investigation() -> void:
 	check(game.qingya_quest.phase=="confront","all testimony enables first confrontation")
 func audience() -> void:
 	await interact("travel:camp");await settle()
-	check(game.exploration.area_name=="qingya_camp","north portal enters camp")
-	check(target("qy_ren_shouyi").is_empty(),"captive is not reachable before admission")
-	await interact("qy_ding_kui");drain();await settle()
-	await interact("qy_ren_shouyi");drain();await settle()
-	await interact("qy_ma_yunpiao");drain()
-	check(game.qingya_quest.phase=="decision" and game.adventure_ui.window.visible,"chief opens two final paths")
+	check(game.exploration.area_name=="qingya_camp","north portal reaches camp outskirts")
+	check(target("qy_ma_yunpiao").is_empty(),"Ma Yunpiao is not a defeatable quest actor")
+	check(target("qy_ren_shouyi").is_empty() and target("qy_ding_kui").is_empty(),"prisoner and jailer hidden until infiltration")
+	check(not game.exploration.can_stand(game.exploration.city_point([768,850])),"front gate is physically closed")
+	await interact("qingya_stealth:enter");drain();await settle()
+	check(game.qingya_quest.admitted and game.qingya_quest.inside_fence(),"F side gap moves hero inside camp")
+	await interact("qingya_stealth:prison");drain()
+	check(game.qingya_quest.phase=="decision" and game.adventure_ui.window.visible,"prison dialogue opens rescue or withdraw choice")
+	check(game.quest_navigation.get_goal(game.exploration).get("goal_id")=="qingya_stealth:exit","other tracked quests guide through side exit instead of sealed front gate")
 func win_fight() -> void:
 	var limit=20
 	while game.state=="battle" and limit>0:
@@ -64,6 +67,7 @@ func run() -> void:
 	game.options.seen.append_array(["city","dialogue","trade","battle"])
 	await init_world()
 	var q=game.qingya_quest;var world=game.exploration
+	check(q.data.encounters.size()==1 and q.data.encounters[0].name=="정괴","exactly one active encounter, a common jailer")
 	await interact("travel:qingya");await settle()
 	check(world.area_name=="qingya_hamlet" and q.phase=="available","walking in does not accept quest")
 	check(world.ambient_nodes.size()==4,"four residents before event")
@@ -75,14 +79,15 @@ func run() -> void:
 	await investigation()
 	check(game.quest_navigation.quest_id=="wuchang_missing_herbalist","parallel progress preserves selected quest")
 	check(game.save_system.write_slot(1),"save before first confrontation")
-	await interact("qy_hou_liu");drain();game.adventure_ui.primary_action();drain();await settle()
-	check(q.phase=="camp","can proceed without first battle")
+	await interact("qy_hou_liu");drain();await settle()
+	check(q.phase=="camp","village confrontation has no battle")
 	await audience()
 	close_choice()
 	check(game.save_system.write_slot(2) and game.save_system.load_slot(2),"save and restore before irreversible branch")
 	q=game.qingya_quest;world=game.exploration
-	await interact("qy_ma_yunpiao");drain();game.adventure_ui.secondary_action();game.adventure_ui.primary_action();drain();await settle()
+	await interact("qingya_stealth:prison");drain();game.adventure_ui.secondary_action();game.adventure_ui.primary_action();drain();await settle()
 	check(q.phase=="ready" and q.branch=="maintain","confirmed noncombat branch")
+	await interact("qingya_stealth:exit");await settle()
 	await interact("travel:hamlet");await settle()
 	var cash=game.money;var insight=game.progress.stats.insight
 	await interact(q.GIVER)
@@ -96,12 +101,17 @@ func run() -> void:
 	check(game.save_system.load_slot(2),"rewind to decision")
 	q=game.qingya_quest;world=game.exploration
 	game.progress.stats.strength=100;game.progress.stats.agility=100;game.progress.stats.inner=100
-	await interact("qy_ma_yunpiao");drain();game.adventure_ui.primary_action();game.adventure_ui.primary_action();drain()
-	check(game.state=="battle" and q.phase=="fight_chief","chief battle starts with matching quest state")
+	await interact("qingya_stealth:prison");drain();game.adventure_ui.primary_action();game.adventure_ui.primary_action();drain()
+	check(game.battle.encounter.name=="정괴" and game.state=="battle" and q.phase=="fight_chief","single jailer battle starts with matching quest state")
 	check(not game.save_system.write_slot(9),"combat saving blocked")
-	await win_fight();drain();await settle()
-	check(q.phase=="ready" and q.branch=="assault","actual committed attacks complete chief battle")
-	await interact("travel:hamlet");await settle()
+	await win_fight()
+	check(world.area_name=="qingya_camp" and not game.dialogue_lines.is_empty(),"rescue conversation stays at prison before final line")
+	while game.dialogue_index<game.dialogue_lines.size()-1:game.advance_dialogue()
+	check(world.area_name=="qingya_camp","no early scene transition during rescue dialogue")
+	game.advance_dialogue();await settle()
+	check(not target("qy_ren_shouyi").is_empty(),"rescued resident is placed back in village")
+	check(q.phase=="ready" and q.branch=="assault","actual attacks defeat the common jailer")
+	check(world.area_name=="qingya_hamlet","rescue dialogue automatically cuts back to village")
 	check(not q.ruined,"first return before reward is intact")
 	game.progress.stats.agility=20
 	cash=game.money;var before=game.progress.stats.agility
@@ -131,16 +141,20 @@ func run() -> void:
 	check(q.regret_seen and q.ruin_checks.size()==3,"three investigations complete regret dialogue")
 	check(game.money==reward_money and game.progress.stats==stats,"aftermath awards nothing")
 	check(game.save_system.write_slot(5) and game.save_system.load_slot(5) and q.ruined and q.regret_seen,"ruins and regret survive save restore")
+	var legacy_completed=game.save_system.capture();legacy_completed.qingya_quest.erase("version");legacy_completed.battle.enemy_intent="banseok_jingak";legacy_completed.battle.enemy_qi=20
+	check(game.save_system.validate(legacy_completed),"old completed boss save with retired martial intent validates")
+	var legacy_file=FileAccess.open(game.save_system.path(8),FileAccess.WRITE);legacy_file.store_string(JSON.stringify(legacy_completed));legacy_file.close()
+	var old_money=game.money
+	check(game.save_system.load_slot(8) and q.phase=="completed" and q.regret_seen and game.money==old_money,"old completion and rewards survive retired enemy metadata")
 	var invalid=q.snapshot();invalid.branch="maintain";check(not q.valid(invalid),"inconsistent ruined peaceful branch rejected")
-	# Earlier confrontation can also be completed by actual combat.
+	# Existing pre-chief saves migrate to the new infiltration without re-paying rewards.
 	check(game.save_system.load_slot(1),"rewind to confrontation")
 	q=game.qingya_quest
-	await interact("qy_hou_liu");drain();game.adventure_ui.secondary_action()
-	check(not q.in_battle() and game.adventure_ui.window.visible,"sentry battle warns about death before committing")
-	game.adventure_ui.primary_action()
-	check(q.in_battle(),"first collision can fight after warning")
-	game.battle.player_stats.strength=100;game.battle.player_stats.agility=100
-	await win_fight();drain();await settle();check(q.phase=="camp","actual sentry battle unlocks audience")
+	await interact("qy_hou_liu");drain();await settle()
+	check(q.phase=="camp" and game.state=="explore","early bandit confrontation cannot start another fight")
+	var legacy=q.snapshot();legacy.erase("version");legacy.phase="decision";legacy.admitted=true;legacy.captive_heard=true
+	check(q.valid(legacy),"old decision snapshot remains valid")
+	q.restore(legacy);check(q.phase=="camp" and not q.admitted and not q.captive_heard,"old uncompleted audience migrates to infiltration")
 	# Older saves have no quest field and get a clean unaccepted incident.
 	game.reset();game.start_city();await settle()
 	var old=game.save_system.capture();old.erase("qingya_quest")

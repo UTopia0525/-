@@ -22,6 +22,11 @@
       "file": "godot/assets/icons/banseok_jingak.png",
       "source_original": "exec-9f1948b5-785c-46cd-bf3e-50bcc8f03fc0.png",
       "sha256": "59e881d41c6896a769e739835276c502f8f4fa8266ddf7705870b6dcdd386628"
+    },
+    {
+      "file": "godot/assets/battle/qingya-prison-empty.png",
+      "source_original": "exec-4a75c09d-0757-4209-aa83-243caead63f6.png",
+      "sha256": "49aade2a70273594883dea1a22e529d863773891acc9e408342f2afac26ac136"
     }
   ]
 }

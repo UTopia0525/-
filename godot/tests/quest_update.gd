@@ -65,7 +65,7 @@ func run() -> void:
 	var combat=preload("res://scripts/combat_actions.gd").new()
 	var enemies=game.encounters()+[{"id":"tutorial","stats":{"strength":12,"agility":12,"constitution":5,"inner":6,"insight":5},"weapon":"thickback_saber","skills":["bandit_chop","soemok"]}]
 	for e in enemies:
-		var expected_art="banseok_jingak" if e.id=="qingya_chief" else "soemok"
+		var expected_art="soemok"
 		check(expected_art in e.skills,"appropriate martial art assigned: "+e.id)
 		var amount: int=e.stats.inner;var used:=false
 		for turn in range(1,13):

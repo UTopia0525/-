@@ -8,7 +8,7 @@ func shot(name: String) -> void:
 func run() -> void:
 	root.size=Vector2i(1280,720);game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await process_frame
 	game.options.seen.append_array(["city","dialogue","battle"])
-	game.start_wuchang();game.qingya_quest.phase="fight_chief";game.start_battle(game.qingya_quest.data.encounters[1])
+	game.start_wuchang();game.qingya_quest.phase="fight_chief";game.start_battle(game.qingya_quest.data.encounters[0])
 	game.battle.player_hp=0;game.battle._update_hp(true);game._on_defeat()
 	await create_timer(.5).timeout;await shot("death-fall")
 	while not game.death_screen.ready_to_return:await process_frame

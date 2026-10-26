@@ -2,6 +2,7 @@ extends SceneTree
 var game
 func _initialize() -> void:run.call_deferred()
 func shot(name: String) -> void:
+	game.adventure_ui.pending_toasts.clear();game.adventure_ui.toast.hide()
 	await create_timer(.2).timeout;await RenderingServer.frame_post_draw
 	assert(root.get_texture().get_image().save_png("res://screenshots/"+name+".png")==OK)
 func full(area: String,ruined: bool,name: String) -> void:
@@ -18,6 +19,19 @@ func run() -> void:
 	game.qingya_quest.handle_interaction("qy_ren_shoutian");await shot("qingya-quest-intro")
 	while not game.dialogue_lines.is_empty():game.advance_dialogue()
 	game.adventure_ui.close_menu()
+	var q=game.qingya_quest
+	q.phase="camp";q.heard=q.INVESTIGATORS.keys();game.quest_navigation.track(q.ID,"camp")
+	preload("res://scripts/overland_travel.gd").use(game,{"travel":{"area":"qingya_camp","arrival":[90,540]}})
+	await shot("qingya-stealth-entry")
+	q._admit();game.exploration.player.position=game.exploration.safe_player_position(game.exploration.city_point([1210,660]));game.exploration.camera.snap_to_player()
+	q.handle_interaction("qingya_stealth:prison");await shot("qingya-prison-dialogue")
+	while not game.dialogue_lines.is_empty():game.advance_dialogue()
+	game.adventure_ui.close_menu();q._assault()
+	while not game.dialogue_lines.is_empty():game.advance_dialogue()
+	await shot("qingya-jailer-battle")
+	game._on_victory(300)
+	while not game.dialogue_lines.is_empty():game.advance_dialogue()
+	await shot("qingya-rescue-return")
 	await full("qingya_hamlet",false,"qingya-hamlet-full")
 	await full("qingya_camp",false,"qingya-camp-full")
 	await full("qingya_hamlet",true,"qingya-hamlet-ruined")
