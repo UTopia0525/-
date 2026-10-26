@@ -19,7 +19,7 @@ func run() -> void:
 	await create_timer(.25).timeout;await RenderingServer.frame_post_draw
 	assert(city.get_texture().get_image().save_png("res://screenshots/nanjing-city-life.png")==OK)
 	city.queue_free()
-	for district in [["market",[885,510]],["craft",[392,430]],["government",[1210,495]],["waterfront",[1320,958]]]:
+	for district in [["market",[885,510]],["craft",[392,430]],["government",[1210,495]],["waterfront",[1320,958]],["palace-corner",[1430,535]]]:
 		game.exploration.player.position=game.exploration.safe_player_position(game.exploration.city_point(district[1]));game.exploration.player.stop();game.exploration.camera.snap_to_player()
 		await shot("nanjing-"+str(district[0])+"-play")
 	game.exploration.player.position=game.exploration.safe_player_position(game.exploration.city_point([870,735]));game.exploration.camera.snap_to_player()

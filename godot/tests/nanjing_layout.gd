@@ -13,6 +13,8 @@ func run() -> void:
 	for p in [[560,825],[1020,855],[1435,867]]:check(not w.can_stand(w.city_point(p)),"river blocks walking "+str(p))
 	# The riverside landing now opens directly into the city thoroughfare.
 	for x in range(110,261,5):check(w.can_stand(w.city_point([x,530])),"open quay entrance "+str(x))
+	for x in range(1380,1496,15):check(w.can_stand(w.city_point([x,530])),"avenue remains outside palace corner "+str(x))
+	for pt in [[1450,560],[1450,600],[1430,680]]:check(w.can_stand(w.city_point(pt)),"south turning palace verge "+str(pt))
 	w.player.position=w.city_point([255,530])
 	for npc in w.ambient_nodes:check(not w.path_to(npc.position,true).is_empty(),"every civilian/quest actor reachable "+str(npc.name))
 	check(not w.scenery_nodes.any(func(n):return n.name=="west_city_gate"),"no palace gate/wall fragment at the river landing")

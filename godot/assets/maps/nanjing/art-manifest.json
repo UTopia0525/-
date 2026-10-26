@@ -1,8 +1,8 @@
 {
   "ground": {
-    "source": "/workspace/generated_images/exec-0e8461b4-f0c4-44c2-b349-2457eb48dcea.png",
-    "sha256": "8fd5c5d3f98fb8a35b54b18fad1f478409b88a7d5513f0d67b5255568ac5a490",
-    "method": "image_gen terrain edit: district-specific urban paving, compacted yards; copied unchanged"
+    "source": "/workspace/generated_images/exec-3521ea00-aff9-4544-bb8e-c6f1e9c35057.png",
+    "sha256": "a50a577e17060a0c021cc334e63183c4573c1cb45d8ed7111b62c9b4b60bdf1c",
+    "method": "image_gen eastern forecourt/turning apron edit, copied unchanged"
   },
   "yeonseo": {
     "source": "assets/portraits/namgung/yeonseo.png",
@@ -40,5 +40,15 @@
     "source": "/workspace/generated_images/exec-5d741cd0-6e11-4377-8ade-bc962142b095.png",
     "sha256": "81bd94c80cc8e1b296ee51099627887e330bdda05c4bcf998ed1c320763befa1",
     "method": "image_gen transparent atlas; cropped only at runtime with AtlasTexture"
+  },
+  "pre_corner_ground": {
+    "source": "/workspace/generated_images/exec-0e8461b4-f0c4-44c2-b349-2457eb48dcea.png",
+    "sha256": "8fd5c5d3f98fb8a35b54b18fad1f478409b88a7d5513f0d67b5255568ac5a490",
+    "method": "image_gen terrain edit: district-specific urban paving, compacted yards; copied unchanged"
+  },
+  "imperial_corner": {
+    "source": "/workspace/generated_images/exec-ca38fffa-e9d6-4823-a4a9-055efbd54d57.png",
+    "sha256": "26eb6d04c7e371595f4e62f07979dacbc60e7c41142b1c10ae11f5721b1326a9",
+    "method": "image_gen unified transparent L-shaped masonry wall, no raster postprocessing"
   }
 }
