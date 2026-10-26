@@ -2,6 +2,7 @@ extends SceneTree
 var game
 func _initialize() -> void:run.call_deferred()
 func shot(name: String) -> void:
+	await create_timer(.25).timeout
 	await RenderingServer.frame_post_draw
 	assert(root.get_texture().get_image().save_png("res://screenshots/"+name+".png")==OK)
 func run() -> void:
