@@ -64,6 +64,7 @@ func _ready() -> void:
 	window.hide()
 
 func open_menu() -> void:
+	if game.state=="game_over":return
 	if window.visible: return
 	game.player_menu.close_menu()
 	game.exploration.player.stop()
@@ -145,5 +146,5 @@ func _input(event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	var compact_world=game.exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp"]
-	gear.visible=game.state not in ["explore","story"] or not compact_world
+	gear.visible=game.state!="game_over" and (game.state not in ["explore","story"] or not compact_world)
 	gear.position=Vector2(1135,198) if game.state in ["explore","story"] else Vector2(1135,145)

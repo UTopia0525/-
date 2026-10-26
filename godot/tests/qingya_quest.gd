@@ -99,9 +99,6 @@ func run() -> void:
 	await interact("qy_ma_yunpiao");drain();game.adventure_ui.primary_action();game.adventure_ui.primary_action();drain()
 	check(game.state=="battle" and q.phase=="fight_chief","chief battle starts with matching quest state")
 	check(not game.save_system.write_slot(9),"combat saving blocked")
-	game._on_defeat();drain();await settle()
-	check(q.phase=="decision" and q.branch=="","chief defeat does not commit outcome or reward")
-	await interact("qy_ma_yunpiao");drain();game.adventure_ui.primary_action();game.adventure_ui.primary_action();drain()
 	await win_fight();drain();await settle()
 	check(q.phase=="ready" and q.branch=="assault","actual committed attacks complete chief battle")
 	await interact("travel:hamlet");await settle()
@@ -135,14 +132,14 @@ func run() -> void:
 	check(game.money==reward_money and game.progress.stats==stats,"aftermath awards nothing")
 	check(game.save_system.write_slot(5) and game.save_system.load_slot(5) and q.ruined and q.regret_seen,"ruins and regret survive save restore")
 	var invalid=q.snapshot();invalid.branch="maintain";check(not q.valid(invalid),"inconsistent ruined peaceful branch rejected")
-	# Earlier confrontation: defeat is retryable, and an actual battle can clear it.
+	# Earlier confrontation can also be completed by actual combat.
 	check(game.save_system.load_slot(1),"rewind to confrontation")
 	q=game.qingya_quest
 	await interact("qy_hou_liu");drain();game.adventure_ui.secondary_action()
-	check(q.in_battle(),"first collision can fight")
-	game._on_defeat();drain();await settle();check(q.phase=="confront","defeat returns to retryable phase")
-	await interact("qy_hou_liu");drain();game.adventure_ui.secondary_action()
-	game.progress.stats.strength=100;game.battle.player_stats.strength=100;game.battle.player_stats.agility=100
+	check(not q.in_battle() and game.adventure_ui.window.visible,"sentry battle warns about death before committing")
+	game.adventure_ui.primary_action()
+	check(q.in_battle(),"first collision can fight after warning")
+	game.battle.player_stats.strength=100;game.battle.player_stats.agility=100
 	await win_fight();drain();await settle();check(q.phase=="camp","actual sentry battle unlocks audience")
 	# Older saves have no quest field and get a clean unaccepted incident.
 	game.reset();game.start_city();await settle()

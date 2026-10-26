@@ -18,6 +18,7 @@ var wages_quest
 var plaque_quest
 var grain_quest
 var qingya_quest
+var death_screen
 var duel_quest
 var inn_quest
 var impostor_quest
@@ -161,6 +162,7 @@ func _ready() -> void:
 	battle.sound_requested.connect(options.play)
 	var log_button=UI.button(battle,"교전 기록 · L",Rect2(915,145,205,35))
 	log_button.pressed.connect(adventure_ui.open_log)
+	death_screen=preload("res://scripts/death_screen.gd").new();death_screen.game=self;ui_root.add_child(death_screen)
 	reset()
 
 func _setup_input() -> void:
@@ -309,6 +311,7 @@ func regional_quests() -> Array:return [qingya_quest,alliance_story,herbalist_qu
 func encounters() -> Array:return qingya_quest.data.encounters+bandit_story.data.encounters+[herbalist_quest.data.encounter,duel_quest.data.encounter,inn_quest.data.encounter,impostor_quest.data.encounter]
 
 func reset() -> void:
+	if is_instance_valid(death_screen):death_screen.dismiss()
 	if is_instance_valid(adventure_ui):adventure_ui.reset()
 	if is_instance_valid(qingya_quest):qingya_quest.reset()
 	if is_instance_valid(grain_quest):grain_quest.reset()
@@ -591,10 +594,16 @@ func start_battle(encounter: Dictionary = {}) -> void:
 	adventure_ui.tip("battle","행동을 고른 뒤 사용으로 실행 · L 교전 기록")
 
 func _on_victory(hp: int) -> void:
+	if state!="battle":return
 	_finish_victory(hp)
 	adventure_ui.record_result(true)
 
 func _on_defeat() -> void:
+	if state!="battle":return
+	if preload("res://scripts/combat_outcome.gd").defeat_policy(battle.encounter)=="death":
+		adventure_ui.record_result(false,false)
+		enter_game_over()
+		return
 	if qingya_quest.in_battle():qingya_quest.after_defeat()
 	elif impostor_quest.in_battle():impostor_quest.after_defeat()
 	elif inn_quest.in_battle():inn_quest.after_defeat()
@@ -602,6 +611,22 @@ func _on_defeat() -> void:
 	elif herbalist_quest.in_battle():herbalist_quest.after_defeat()
 	elif bandit_story.in_battle():bandit_story.after_defeat()
 	adventure_ui.record_result(false)
+
+func enter_game_over() -> void:
+	if state!="battle":return
+	state="game_over"
+	get_tree().paused=false
+	adventure_ui.dismiss();adventure_ui.toast.hide();player_menu.dismiss();settings_menu.close_menu()
+	dialogue_history.close_history();city_overview.hide();city_service.dismiss()
+	dialogue_lines.clear();dialogue_done=Callable();dialogue_panel.hide();dialogue_cast.clear()
+	top_hud.hide();bottom_hint.hide();ending.hide();choice_screen.hide();story_visual.hide();story_caption.hide()
+	exploration.set_active(false);exploration.hide();exploration.camera.enabled=false
+	battle.generation+=1;battle.running=false;battle.busy=false
+	battle.use_button.disabled=true
+	for button in battle.skill_buttons:button.disabled=true
+	battle.basic_button.disabled=true;battle.enemy_actor.stop();battle.player_actor.fall()
+	music.play_track("title")
+	death_screen.present()
 
 func _finish_victory(hp: int) -> void:
 	if state != "battle": return
@@ -632,6 +657,11 @@ func _finish_victory(hp: int) -> void:
 	ending.show()
 
 func _input(event: InputEvent) -> void:
+	if state=="game_over":
+		if event is InputEventKey and event.pressed and not event.echo:
+			if event.is_action_pressed("interact") or event.keycode in [KEY_ENTER,KEY_KP_ENTER]:death_screen.return_to_title()
+			get_viewport().set_input_as_handled()
+		return
 	if is_instance_valid(adventure_ui) and adventure_ui.window.visible:return
 	if event is InputEventKey and event.pressed and not event.echo and not settings_menu.window.visible:
 		if event.keycode==KEY_R:

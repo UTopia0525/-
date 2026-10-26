@@ -1,6 +1,6 @@
 # 작업별 색인
 
-최신 변경: [산촌·청애채 선택 의뢰](quests/qingya-village.md), [BGM 반복 재생 유지](systems/bgm-loop.md), [산길 이동 단축·발 교차 보행](systems/short-road-and-stride.md), [작은 A안 HUD](ui/compact-a.md). 이전 비교 시안과 검토는 당시 기록이다.
+최신 변경: [주요 전투 사망·타이틀 복귀](systems/combat-death.md), [산촌·청애채 선택 의뢰](quests/qingya-village.md), [BGM 반복 재생 유지](systems/bgm-loop.md), [산길 이동 단축·발 교차 보행](systems/short-road-and-stride.md), [작은 A안 HUD](ui/compact-a.md). 이전 비교 시안과 검토는 당시 기록이다.
 
 현재 상태는 [CLI 인계](CLI_HANDOFF.md), 실행은 [Godot 안내](../godot/README.md)를 참고한다. 아래 경로는 저장소 루트 기준이다. 문서와 관련 소스만 먼저 읽고 필요한 검사를 선택한다.
 
@@ -32,6 +32,7 @@
 | 장사 주민 정리·이름 | [의뢰 관련11인 설정](characters/changsha-quest-residents.md) | `assets/maps/changsha/layout.json`, `scripts/ordinary_quests.gd`, `main.gd` | `changsha_residents.gd`, `quest_navigation.gd`, `adventure_features.gd` |
 | 도시·충돌 | [인물 비율·이동](systems/exploration-scale.md), [도시 기준](cities/city-standards.md), [현재 장사·오브젝트](systems/layered-city-and-conversation.md) | `scripts/exploration.gd`, `city_scenery.gd`, `assets/maps/changsha/layout.json` | `layered_city.gd`, `city_collision.gd`, `changsha.gd`, `city_services.gd` |
 | 거래·I/K·성장 | [거래](systems/city-trading.md), [정비창](systems/player-menus.md) | `scripts/player_progress.gd`, `city_service.gd`, `player_menu.gd` | `trading.gd`, `onboarding_menus.gd` |
+| 사망·전투 결과 | [기본 사망/기존 예외/타이틀 복귀](systems/combat-death.md) | `scripts/combat_outcome.gd`, `death_screen.gd`, `main.gd` | `death_flow.gd` |
 | 전투·아이콘 | [현재 규칙](systems/combat-actions-and-icons.md), [창법](systems/spear-balance.md) | `scripts/battle.gd`, `combat_actions.gd`, `data/icon_manifest.json` | `combat_updates.gd`, `spear_balance.gd` |
 | 무림맹 중급 무공5종 | [설정·수치·전수 구분](martial-arts/alliance-intermediate.md) | `data/alliance_martial_arts.json`, `scripts/martial_arts.gd` | `alliance_arts.gd`, `combat_updates.gd` |
 | 무공·무기·내기 | [무공](martial-arts/basic-attacks.md), [무기](systems/weapons.md), [내기](systems/inner-qi.md) | `data/basic_martial_arts.json`, `weapons.json`, `scripts/inner_qi.gd` | `martial_arts.gd`, `weapons.gd`, `weapon_requirements.gd`, `inner_qi.gd` |

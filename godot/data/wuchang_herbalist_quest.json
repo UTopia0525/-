@@ -28,7 +28,8 @@
       "bandit_chop",
       "bandit_heavy_chop",
       "soemok"
-    ]
+    ],
+    "defeat_outcome": "retry"
   },
   "scenes": {
     "intro": [

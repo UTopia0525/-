@@ -19,7 +19,8 @@
       "skills": [
         "soemok",
         "bandit_chop"
-      ]
+      ],
+      "defeat_outcome": "death"
     },
     {
       "id": "qingya_chief",
@@ -37,7 +38,8 @@
       "weapon": "none",
       "skills": [
         "banseok_jingak"
-      ]
+      ],
+      "defeat_outcome": "death"
     }
   ],
   "scenes": {
@@ -253,12 +255,6 @@
       [
         "qy_ren_shoutian",
         "그렇다면 다행이오. ……우리도 괜찮아야 할 텐데."
-      ]
-    ],
-    "loss": [
-      [
-        "hero",
-        "……내 뜻만으로 넘어설 상대는 아니군. 물러나 몸을 추스르자. 준비를 마치면 다시 올 수 있다."
       ]
     ],
     "gate": [

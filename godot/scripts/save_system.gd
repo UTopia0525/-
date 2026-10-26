@@ -28,6 +28,7 @@ func callback_from(value: Dictionary) -> Callable:
 	return Callable(game if value.owner == "main" else game.get(value.owner), value.method)
 
 func blocked_reason() -> String:
+	if game.state=="game_over":return "사망한 진행은 저장할 수 없습니다. 처음 화면으로 돌아가세요."
 	if game.adventure_ui.window.visible:return "의뢰 일지·도움말·기록 창을 닫은 뒤 저장하세요."
 	if game.player_menu.visible: return "소지품·무공 창을 닫은 뒤 저장하세요."
 	if game.state == "title": return "플레이를 시작한 뒤 저장할 수 있습니다."

@@ -8,6 +8,7 @@ const HELP=[
 ["지도와 시설","TAB으로 전체 지도를 엽니다. 약=영약 상인, 장=무기 장인, 무=무공 교관입니다. 시설 안내 버튼을 누르면 미니맵이 해당 인물을 가리킵니다. 의뢰 일지에서 다시 의뢰를 추적하면 시설 안내가 끝납니다."],
 ["거래와 소지품 · I","시설 앞에서 F로 대화하면 거래합니다. 물건을 선택해 현재 장비와 비교하고 구매 후 남을 돈을 확인하세요. 구매만으로 장착·복용되지는 않습니다. I 소지품에서 무기를 장착하고 영약을 복용하세요. 같은 영약은 평생 10개까지, 오성은 영약으로 오르지 않습니다."],
 ["무공과 편성 · K","K에서 익힌 무공과 실전에 쓸 네 칸을 정합니다. 기본공격·기본방어도 바꿀 수 있습니다. 검법·도법·창법은 해당 무기가, 권법·장법은 맨손이 필요합니다. 교관에게 배울 때 부족한 능력치와 합계를 확인하세요."],
+["실전의 죽음","주요 실전에서 패배하면 도원이 사망합니다. 종료 화면에서 F/Enter 또는 버튼을 눌러 처음 화면으로 돌아간 뒤 이전 저장을 불러올 수 있습니다. 전투 전에 진행을 저장하세요. 대련과 기존 재도전 전투는 별도 규칙을 따릅니다."],
 ["교전과 기록 · L","무공 선택 후 사용을 눌러 실행합니다. 선택만으로 턴은 지나지 않습니다. 기본방어는 다음 적 행동의 피해 20%를 줄입니다. 검법은 사용 후 다음 적 행동 피해를 20% 줄이며 중첩하지 않습니다. 적의 예고는 기세만 알려 줍니다. L 교전 기록은 이미 실행된 기술과 피해·내기만 보여 줍니다."],
 ["성장과 내기","근력·기민·근골·내공·오성은 각 0~100입니다. 합계 100/200/300/400/500에서 절정/초절정/화경/현경/자연경이 됩니다. 매 전투 체력은 300, 내기는 내공만큼으로 시작하며 교전 후 살아 있으면 내공만큼 회복합니다. 내기 상한은 500입니다."],
 ["대화·저장·설정","대화 중 H는 지금까지 읽은 대사 기록입니다. 미래 대사나 미선택 분기는 보여 주지 않습니다. ESC 설정에서 탐험·분기 선택창을 저장할 수 있습니다. 대화·거래·전투 중 새 저장은 불가합니다. 환경 설정에서 BGM/효과음 음량·화면 모드·대화와 도움말 글자 크기를 바꿉니다. F2로 도움말을 다시 엽니다."]]
@@ -225,10 +226,10 @@ func _show_next_toast() -> void:
 func tip(id: String,text: String) -> void:
 	if id in game.options.seen:return
 	game.options.seen.append(id);game.options.persist();notify(text+"\nF2 도움말에서 다시 볼 수 있습니다.","confirm")
-func record_result(won: bool) -> void:
+func record_result(won: bool,show_summary: bool=true) -> void:
 	results.append({"won":won,"enemy":game.battle.enemy_name.text,"turns":game.battle.turn,"events":game.battle.records.duplicate(true),"player_hp":game.battle.player_hp})
 	if results.size()>10:results.pop_front()
-	open_log(true)
+	if show_summary:open_log(true)
 func open_log(automatic: bool=false) -> void:
 	if game.settings_menu.window.visible or game.dialogue_history.visible:return
 	open_shell("result" if automatic else "log",not automatic);heading.text="교전 기록 · L";primary.text="이야기로 돌아가기" if automatic else "닫기"

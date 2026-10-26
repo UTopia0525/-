@@ -37,7 +37,8 @@
       "bandit_chop",
       "bandit_heavy_chop",
       "soemok"
-    ]
+    ],
+    "defeat_outcome": "nonlethal"
   },
   "scenes": {
     "intro": [

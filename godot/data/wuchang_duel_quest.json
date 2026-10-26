@@ -27,7 +27,8 @@
     "skills": [
       "bandit_chop",
       "soemok"
-    ]
+    ],
+    "defeat_outcome": "nonlethal"
   },
   "scenes": {
     "intro": [

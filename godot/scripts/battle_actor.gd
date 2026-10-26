@@ -132,6 +132,13 @@ func defend(hold: float = .55) -> void:
 	motion.tween_callback(set_pose.bind("ready"))
 	motion.tween_callback(_idle)
 
+func fall() -> void:
+	_prepare_motion();set_pose("hit")
+	motion=create_tween().set_parallel(true)
+	motion.tween_property(self,"rotation",-1.15 if not enemy_side else 1.15,.65).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	motion.tween_property(self,"position",home+Vector2(45,30),.65)
+	motion.tween_property(sprite,"modulate",Color(.48,.40,.40,.9),.65)
+
 func stop() -> void:
 	reset_motion()
 	_kill(breath)

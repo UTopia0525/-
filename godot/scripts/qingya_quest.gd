@@ -91,9 +91,10 @@ func _heard(id: String) -> void:
 	if id not in heard:heard.append(id)
 	if heard.size()==3:phase="confront";game.adventure_ui.notify("북쪽 길로 징수 산적이 찾아왔다.","quest")
 	track();refresh_world()
-func _confront_choice() -> void:game.adventure_ui.choose("징수 산적과 대면","여기서의 대응은 최종 해결 방향을 정하지 않습니다.","채주에게 직접 듣겠소",_pass,"그 자루에서 손을 떼시오",_fight_sentry)
+func _confront_choice() -> void:game.adventure_ui.choose("징수 산적과 대면","여기서의 대응은 최종 해결 방향을 정하지 않습니다.","채주에게 직접 듣겠소",_pass,"그 자루에서 손을 떼시오 (전투)",_warn_sentry)
 func _pass() -> void:play("pass",_enter_camp)
 func _enter_camp() -> void:phase="camp";track();refresh_world()
+func _warn_sentry() -> void:game.adventure_ui.choose("청애채 산적 · 실전","이 전투에서 패배하면 도원이 사망합니다. 싸움 전에 정비하고 진행을 저장할 수 있습니다.","맞서 싸운다",_fight_sentry,"지금은 칼을 거둔다",_later)
 func _fight_sentry() -> void:
 	if phase!="confront":return
 	phase="fight_sentry";game.start_battle(data.encounters[0])
@@ -101,8 +102,8 @@ func _admit() -> void:admitted=true;track();refresh_world()
 func _captive_done() -> void:captive_heard=true;track();refresh_world()
 func _decision() -> void:
 	phase="decision";track();refresh_world()
-	game.adventure_ui.choose("떠나는 자, 남는 자","청애채를 토벌할지, 개입을 거두고 현상을 유지할지 선택합니다. 결정을 내리기 전 창을 닫고 정비·저장한 뒤 다시 대화할 수 있습니다.","청애채를 토벌한다",_confirm_assault,"개입을 거두고 돌아간다",_confirm_maintain)
-func _confirm_assault() -> void:game.adventure_ui.choose("토벌 확인","승리하면 청애채의 징수는 중단됩니다. 도원이 떠난 뒤까지 지켜줄 수 있는지는 알 수 없습니다.","토벌한다",_assault,"더 생각한다",_later)
+	game.adventure_ui.choose("떠나는 자, 남는 자","청애채를 토벌할지, 개입을 거두고 현상을 유지할지 선택합니다. 청애채 전투에서 패배하면 사망합니다. 결정을 내리기 전 창을 닫고 정비·저장한 뒤 다시 대화할 수 있습니다.","청애채를 토벌한다",_confirm_assault,"개입을 거두고 돌아간다",_confirm_maintain)
+func _confirm_assault() -> void:game.adventure_ui.choose("토벌 확인","패배하면 도원이 사망하고 여정이 끝납니다. 승리하면 청애채의 징수는 중단됩니다. 도원이 떠난 뒤까지 지켜줄 수 있는지는 알 수 없습니다.","토벌한다",_assault,"더 생각한다",_later)
 func _confirm_maintain() -> void:game.adventure_ui.choose("현상 유지 확인","싸움을 거두면 청애채와 주민들의 관계는 그대로 남습니다.","칼을 거둔다",_maintain,"더 생각한다",_later)
 func _later() -> void:game.say([["hero","섣불리 정할 일은 아니다. 마음을 정리한 뒤 다시 오자."]])
 func _assault() -> void:
@@ -119,8 +120,7 @@ func after_victory() -> void:
 	if chief:branch="assault"
 	_resume();play("chief_win" if chief else "sentry_win",_after_battle)
 func after_defeat() -> void:
-	phase="decision" if phase=="fight_chief" else "confront"
-	_resume();play("loss",_after_battle)
+	game.enter_game_over()
 func _resume() -> void:
 	game.battle.hide();game.state="explore";game.exploration.show();game.exploration.camera.enabled=true;game.exploration.camera.snap_to_player();game.top_hud.show();game.music.play_track("voyage")
 func _after_battle() -> void:track();refresh_world()
