@@ -394,46 +394,6 @@
       ]
     },
     {
-      "id": "alley_house_6",
-      "prefab": "nj_home",
-      "rect": [
-        1000,
-        549,
-        100,
-        100
-      ]
-    },
-    {
-      "id": "alley_house_7",
-      "prefab": "nj_home",
-      "rect": [
-        1000,
-        666,
-        99,
-        83
-      ]
-    },
-    {
-      "id": "alley_house_8",
-      "prefab": "nj_sidehome",
-      "rect": [
-        1120,
-        560,
-        80,
-        90
-      ]
-    },
-    {
-      "id": "alley_house_9",
-      "prefab": "nj_townhouse",
-      "rect": [
-        1120,
-        675,
-        80,
-        70
-      ]
-    },
-    {
       "id": "alley_house_10",
       "prefab": "nj_home",
       "rect": [
@@ -1542,6 +1502,16 @@
         23,
         37
       ]
+    },
+    {
+      "id": "imperial_south_return",
+      "prefab": "nj_imperial_wall_h",
+      "rect": [
+        1460,
+        375,
+        260,
+        155
+      ]
     }
   ],
   "districts": [
@@ -2491,6 +2461,24 @@
           0.73,
           0.7,
           0.23
+        ]
+      ]
+    },
+    "nj_imperial_wall_h": {
+      "texture": "res://assets/maps/nanjing/landmarks.png",
+      "source": [
+        486,
+        196,
+        262,
+        300
+      ],
+      "kind": "wall",
+      "footprints": [
+        [
+          0.02,
+          0.73,
+          0.96,
+          0.27
         ]
       ]
     }

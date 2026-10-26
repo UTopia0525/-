@@ -54,3 +54,7 @@
 ![주민을 포함한 남경](../../godot/screenshots/nanjing-city-life.png)
 
 [시장 플레이](../../godot/screenshots/nanjing-market-play.png) · [공방 플레이](../../godot/screenshots/nanjing-craft-play.png) · [관아 플레이](../../godot/screenshots/nanjing-government-play.png) · [수변 플레이](../../godot/screenshots/nanjing-waterfront-play.png)
+
+## 무관 겹침과 황성 외벽 마감
+
+무관의 서쪽·북쪽 담장을 가로지르던 민가4동(`alley_house_6`~`alley_house_9`)을 제거해 연무장 공간으로 정리했다. 무관 본관·교관·훈련 도구·출입문은 유지한다. 황성 측면 외벽의 남단에는 같은 붉은 벽 계열의 가로벽을 연결해 동쪽 화면 경계 너머로 이어지게 했다. 새 벽도 독립 그림과 충돌을 사용하고, 기존 저장 위치에는 공통 안전 위치 보정이 적용된다. `nanjing_layout.gd`로 모든 주민 접근과 성문·다리 통행을 확인했다.
