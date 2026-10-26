@@ -233,5 +233,17 @@
       460,
       610
     ]
+  },
+  "cart_axle": {
+    "atlas": "cart-quest",
+    "cell": 0,
+    "cols": 3,
+    "rows": 1,
+    "source": [
+      30,
+      330,
+      400,
+      400
+    ]
   }
 }

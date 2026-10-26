@@ -1155,7 +1155,7 @@
     },
     {
       "id": "capital_12",
-      "prefab": "capital_grain_cart",
+      "prefab": "quest_cart_broken",
       "rect": [
         265,
         315,
@@ -2473,6 +2473,42 @@
           0.7,
           0.74,
           0.27
+        ]
+      ]
+    },
+    "quest_cart_broken": {
+      "texture": "res://assets/icons/cart-quest.png",
+      "source": [
+        435,
+        180,
+        500,
+        645
+      ],
+      "kind": "cargo",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "quest_cart_waiting": {
+      "texture": "res://assets/icons/cart-quest.png",
+      "source": [
+        955,
+        180,
+        580,
+        650
+      ],
+      "kind": "cargo",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
         ]
       ]
     }

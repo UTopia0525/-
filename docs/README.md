@@ -57,3 +57,5 @@
 인물: [육소전 전용 초상화·탐험 도트](characters/lu-xiaozhuan.md).
 
 남경 일반 의뢰: [비단 한 필의 값](quests/nanjing-silk.md).
+
+남경 일반 의뢰2: [한 수레의 무게](quests/nanjing-cart.md).

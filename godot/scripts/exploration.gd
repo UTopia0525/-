@@ -135,6 +135,8 @@ func load_area(value: String) -> void:
 	if is_instance_valid(plaque):plaque.refresh_world()
 	var grain=get_parent().get("grain_quest")
 	if is_instance_valid(grain):grain.refresh_world()
+	var cart=get_parent().get("cart_quest")
+	if is_instance_valid(cart):cart.refresh_world()
 	var silk=get_parent().get("silk_quest")
 	if is_instance_valid(silk):silk.refresh_world()
 	var relief=get_parent().get("nanjing_relief_quest")
