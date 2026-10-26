@@ -794,86 +794,6 @@
       ]
     },
     {
-      "id": "west_wall_98",
-      "prefab": "wall_v",
-      "rect": [
-        202,
-        98,
-        25,
-        70
-      ]
-    },
-    {
-      "id": "west_wall_164",
-      "prefab": "wall_v",
-      "rect": [
-        202,
-        164,
-        25,
-        70
-      ]
-    },
-    {
-      "id": "west_wall_230",
-      "prefab": "wall_v",
-      "rect": [
-        202,
-        230,
-        25,
-        70
-      ]
-    },
-    {
-      "id": "west_wall_296",
-      "prefab": "wall_v",
-      "rect": [
-        202,
-        296,
-        25,
-        70
-      ]
-    },
-    {
-      "id": "west_city_gate",
-      "prefab": "nj_west_gate",
-      "rect": [
-        80,
-        360,
-        180,
-        220
-      ]
-    },
-    {
-      "id": "west_south_wall_560",
-      "prefab": "wall_v",
-      "rect": [
-        88,
-        560,
-        24,
-        68
-      ]
-    },
-    {
-      "id": "west_south_wall_622",
-      "prefab": "wall_v",
-      "rect": [
-        88,
-        622,
-        24,
-        68
-      ]
-    },
-    {
-      "id": "west_south_wall_684",
-      "prefab": "wall_v",
-      "rect": [
-        88,
-        684,
-        24,
-        68
-      ]
-    },
-    {
       "id": "garden_tree_0",
       "prefab": "tree",
       "rect": [
@@ -1517,7 +1437,7 @@
   "districts": [
     {
       "id": "harbor",
-      "name": "장강 나루·창고거리",
+      "name": "장강 나루·하역 창고",
       "rect": [
         36,
         75,
@@ -1525,8 +1445,8 @@
         260
       ],
       "label": [
-        295,
-        240
+        290,
+        235
       ]
     },
     {
@@ -2131,30 +2051,6 @@
           0.77,
           0.14,
           0.23
-        ]
-      ]
-    },
-    "nj_west_gate": {
-      "texture": "res://assets/maps/nanjing/imperial-wall.png",
-      "source": [
-        1080,
-        180,
-        410,
-        500
-      ],
-      "kind": "gate",
-      "footprints": [
-        [
-          0.15,
-          0.15,
-          0.5,
-          0.4
-        ],
-        [
-          0.7,
-          0.88,
-          0.25,
-          0.12
         ]
       ]
     },
