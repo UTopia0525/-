@@ -5,6 +5,7 @@ const RULES = preload("res://scripts/rules.gd")
 var definitions: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/basic_martial_arts.json"))
 
 func _init() -> void:
+	definitions.merge(JSON.parse_string(FileAccess.get_file_as_string("res://data/quest_martial_arts.json")))
 	definitions.merge(JSON.parse_string(FileAccess.get_file_as_string("res://data/alliance_martial_arts.json")))
 	definitions.merge(JSON.parse_string(FileAccess.get_file_as_string("res://data/support_martial_arts.json")))
 

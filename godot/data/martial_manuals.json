@@ -1,0 +1,9 @@
+{
+  "swaerang_manual": {
+    "name": "쇄랑도결",
+    "hanja": "碎浪刀訣",
+    "teaches": "swaerang",
+    "consumable": true,
+    "description": "소학겸이 오래 간직한 남색 선장의 도법 필사본. 사용하면 중급 쇄랑도법을 익히며 서책 1권을 소모한다. 학습 조건은 없으나 출수에는 도가 필요하다. 이미 익혔다면 소모하지 않는다."
+  }
+}

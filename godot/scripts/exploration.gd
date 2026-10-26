@@ -185,6 +185,7 @@ func _load_regional(value: String) -> void:
 			for i in range(road.points.size()-1):
 				var a=Vector2(road.points[i][0],road.points[i][1]);var b=Vector2(road.points[i+1][0],road.points[i+1][1]);var r=Rect2(a.min(b),a.max(b)-a.min(b)).grow(float(road.width)/2)
 				city_data.road_centers.append([r.position.x,r.position.y,r.size.x,r.size.y])
+		if value=="nanjing" and is_instance_valid(get_parent().book_quest):get_parent().book_quest.prepare_residents(city_data.residents)
 		_populate_residents(city_data.residents)
 		regional_map.resident_positions.assign(ambient_nodes.map(func(n):return n.position))
 		regional_map._build_navigation()

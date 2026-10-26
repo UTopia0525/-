@@ -11,6 +11,8 @@ var learned: Array
 var loadout: Array
 var inventory: Dictionary
 var consumed: Dictionary
+var manual_definitions: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/martial_manuals.json"))
+var manuals: Dictionary = {}
 const FACTIONS = {"murim_alliance":"무림맹","namgung":"남궁세가"}
 const FAVOR_MAX=100
 var faction_favor: Dictionary = {}
@@ -28,6 +30,7 @@ func reset() -> void:
 	owned_weapons = ["plain_iron_sword"]
 	learned = ["samjae"]
 	loadout = ["basic_attack", "basic_defense", "samjae", ""]
+	manuals = {}
 	inventory = {}
 	consumed = {}
 	for id in elixirs:
@@ -93,6 +96,23 @@ func consume(id: String) -> bool:
 	progress_changed.emit({"event":"consume","id":id})
 	return true
 
+func grant_manual(id: String) -> bool:
+	if not manual_definitions.has(id):return false
+	manuals[id]=int(manuals.get(id,0))+1
+	return true
+
+func use_manual(id: String) -> bool:
+	if not manual_definitions.has(id) or int(manuals.get(id,0))<=0:
+		error="보유한 서책이 없습니다.";return false
+	var art: String=manual_definitions[id].teaches
+	if art in learned:
+		error="이미 익힌 무공이므로 서책을 소모하지 않았습니다.";return false
+	if not arts.can_learn(art,stats):
+		error="이 무공의 학습 조건을 갖추지 못했습니다.";return false
+	learned.append(art);manuals[id]-=1;error=""
+	progress_changed.emit({"event":"manual_learn","id":art,"kind":"art"})
+	return true
+
 func assign(id: String, slot: int) -> bool:
 	if slot < 0 or slot >= 4 or (id != "" and id not in learned and id not in ["basic_attack", "basic_defense"]): return false
 	# Moving an assigned technique leaves its old slot empty, preserving four distinct slots.
@@ -112,10 +132,13 @@ func add_favor(faction: String, amount: int) -> bool:
 	return true
 
 func snapshot() -> Dictionary:
-	return {"known_factions":known_factions.duplicate(), "faction_favor":faction_favor.duplicate(), "fame":fame, "stats":stats.duplicate(), "weapons":owned_weapons.duplicate(), "learned":learned.duplicate(), "loadout":loadout.duplicate(), "inventory":inventory.duplicate(), "consumed":consumed.duplicate()}
+	return {"manuals":manuals.duplicate(), "known_factions":known_factions.duplicate(), "faction_favor":faction_favor.duplicate(), "fame":fame, "stats":stats.duplicate(), "weapons":owned_weapons.duplicate(), "learned":learned.duplicate(), "loadout":loadout.duplicate(), "inventory":inventory.duplicate(), "consumed":consumed.duplicate()}
 
 func valid(data) -> bool:
 	if not data is Dictionary: return false
+	if not data.get("manuals",{}) is Dictionary:return false
+	for id in data.get("manuals",{}):
+		if not manual_definitions.has(id) or not whole(data.manuals[id],0,1000000):return false
 	if data.has("fame") and not whole(data.fame, 0, 1000000000): return false
 	if data.has("faction_favor"):
 		if not data.faction_favor is Dictionary:return false
@@ -151,6 +174,7 @@ func whole(value, minimum: int, maximum: int) -> bool:
 	return typeof(value) in [TYPE_INT, TYPE_FLOAT] and is_finite(value) and value == floor(value) and value >= minimum and value <= maximum
 
 func restore(data: Dictionary) -> void:
+	manuals=data.get("manuals",{}).duplicate()
 	fame = int(data.get("fame", 0))
 	faction_favor={"murim_alliance":0}
 	faction_favor.merge(data.get("faction_favor",{}),true)

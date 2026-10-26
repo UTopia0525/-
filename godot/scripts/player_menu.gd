@@ -31,9 +31,9 @@ func _ready() -> void:
  inventory.pressed.connect(switch_mode.bind("inventory"))
  var martial = UI.button(panel, "무공 · K", Rect2(920, 15, 155, 40))
  martial.pressed.connect(switch_mode.bind("martial"))
- for i in range(3):
-  var button = UI.button(panel, ["무기", "영약", "의뢰 물품"][i], Rect2(25 + i * 142, 137, 132, 38))
-  button.pressed.connect(select_category.bind(["weapon", "elixir", "quest"][i]))
+ for i in range(4):
+  var button = UI.button(panel, ["무기", "영약", "서적", "의뢰 물품"][i], Rect2(25 + i * 108, 137, 102, 38))
+  button.pressed.connect(select_category.bind(["weapon", "elixir", "manual", "quest"][i]))
   tabs.append(button)
  basic_label = UI.label(panel, "기본공격·기본방어도 바꿀 수 있습니다.\n실전에 펼칠 초식 네 가지를 갖추세요.", Rect2(25, 137, 430, 53), 17, UI.GOLD)
  var scroll := ScrollContainer.new()
@@ -103,9 +103,9 @@ func refresh() -> void:
  heading.text = "소지품 · I" if mode == "inventory" else "익힌 무공과 초식 편성 · K"
  summary.text = "소지금 %d문  |  근력%d · 기민%d · 근골%d · 내공%d · 오성%d\n합계%d / 500 · %s  |  장착: %s" % [game.money, s.strength, s.agility, s.constitution, s.inner, s.insight, total, realm, weapon_name()]
  summary.text += "\n명성 %d" % p.fame
- for i in range(3):
+ for i in range(4):
   tabs[i].visible = mode == "inventory"
-  tabs[i].disabled = category == ["weapon", "elixir", "quest"][i]
+  tabs[i].disabled = category == ["weapon", "elixir", "manual", "quest"][i]
  basic_label.visible = mode == "martial"
  for child in rows.get_children():
   rows.remove_child(child)
@@ -116,6 +116,9 @@ func refresh() -> void:
   "elixir":
    for id in p.inventory:
     if p.inventory[id] > 0: ids.append(id)
+  "manual":
+   for id in p.manuals:
+    if p.manuals[id] > 0: ids.append(id)
   "quest": ids = game.trade_intro.quest_items()
   "art": ids = ["basic_attack", "basic_defense"] + p.learned.duplicate()
  for id in ids:
@@ -123,6 +126,7 @@ func refresh() -> void:
   match category:
    "weapon": text = ("맨손" if id == "none" else str(p.weapons.get_weapon(id).name)) + (" · 장착 중" if id == game.battle.equipped_weapon_id else "")
    "elixir": text = "%s · %d개" % [p.elixirs[id].name, p.inventory[id]]
+   "manual": text = "%s · %d권" % [p.manual_definitions[id].name, p.manuals[id]]
    "art":
     text = str(p.arts.get_skill(id).name)
     if id in p.loadout: text += " · 편성%d" % [p.loadout.find(id) + 1]
@@ -161,6 +165,12 @@ func update_detail() -> void:
    detail.text = "%s\n\n%s\n\n근력+%d · 기민+%d · 근골+%d · 내공+%d\n오성 상승 없음 · 보유%d · 누적 복용%d/10" % [item.name, item.description, gains.strength, gains.agility, gains.constitution, gains.inner, p.inventory[selected_id], p.consumed[selected_id]]
    action.text = "1개 복용"
    action.disabled = p.inventory[selected_id] <= 0
+  "manual":
+   var item: Dictionary = p.manual_definitions[selected_id]
+   detail.text = "%s\n\n%s\n\n보유 %d권 · I에서 사용 후 K에서 편성" % [item.name,item.description,p.manuals.get(selected_id,0)]
+   action.text = "서책 1권을 사용해 무공 습득"
+   action.disabled = int(p.manuals.get(selected_id,0))<=0 or item.teaches in p.learned
+   if item.teaches in p.learned: detail.text += "\n이미 익힌 무공 · 소모하지 않음"
   "quest":
    detail.text = selected_id + "\n\n현재 연계 의뢰의 전달 물품입니다.\n미니맵에 표시된 상대에게 F로 말을 걸어 전달하세요."
    action.text = "대화로 전달"
@@ -187,9 +197,10 @@ func apply_selection() -> void:
   "weapon":
    if selected_id == "none" or selected_id in p.owned_weapons: ok = game.battle.equip_weapon_item(selected_id)
   "elixir": ok = p.consume(selected_id)
+  "manual": ok = p.use_manual(selected_id)
   "art":
    ok = p.assign("" if selected_id == "clear" else selected_id, target_slot)
    game.battle.set_loadout(p.loadout)
  refresh()
  if ok and category=="weapon":game.adventure_ui.notify("장비를 바꾸었습니다.","confirm")
- feedback.text = "적용했습니다." if ok else (p.error if category == "elixir" else "적용할 수 없습니다.")
+ feedback.text = ("무공을 익혔습니다. K에서 편성하세요." if category=="manual" else "적용했습니다.") if ok else (p.error if category in ["elixir","manual"] else "적용할 수 없습니다.")

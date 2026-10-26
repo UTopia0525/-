@@ -61,3 +61,5 @@
 남경 일반 의뢰2: [한 수레의 무게](quests/nanjing-cart.md).
 
 검토: [서적 의뢰 보상 쇄랑도법·서적/아이콘 시안](martial-arts/swaerang-proposal.md) — 게임 미구현.
+
+- [남경 일반 의뢰3 · 빌려준 책, 돌아오지 않는 사람 / 서적 사용 학습](quests/nanjing-book.md)

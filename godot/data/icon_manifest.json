@@ -245,5 +245,29 @@
       400,
       400
     ]
+  },
+  "swaerang_manual": {
+    "atlas": "swaerang",
+    "cell": 0,
+    "cols": 2,
+    "rows": 1,
+    "source": [
+      0,
+      90,
+      775,
+      850
+    ]
+  },
+  "swaerang": {
+    "atlas": "swaerang",
+    "cell": 0,
+    "cols": 2,
+    "rows": 1,
+    "source": [
+      790,
+      130,
+      746,
+      840
+    ]
   }
 }

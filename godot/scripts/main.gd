@@ -19,6 +19,7 @@ var plaque_quest
 var grain_quest
 var qingya_quest
 var cart_quest
+var book_quest
 var silk_quest
 var nanjing_relief_quest
 var death_screen
@@ -164,6 +165,7 @@ func _ready() -> void:
 	nanjing_relief_quest=preload("res://scripts/nanjing_relief_quest.gd").new();nanjing_relief_quest.game=self;add_child(nanjing_relief_quest)
 	silk_quest=preload("res://scripts/silk_quest.gd").new();silk_quest.game=self;add_child(silk_quest)
 	cart_quest=preload("res://scripts/cart_quest.gd").new();cart_quest.game=self;add_child(cart_quest)
+	book_quest=preload("res://scripts/book_quest.gd").new();book_quest.game=self;add_child(book_quest)
 	progress.progress_changed.connect(_progress_changed)
 	battle.sound_requested.connect(options.play)
 	var log_button=UI.button(battle,"교전 기록 · L",Rect2(915,145,205,35))
@@ -313,12 +315,13 @@ func _build_ending() -> void:
 	restart.pressed.connect(reset)
 	ending.hide()
 
-func regional_quests() -> Array:return [cart_quest,silk_quest,nanjing_relief_quest,qingya_quest,alliance_story,herbalist_quest,artisan_quest,wages_quest,plaque_quest,grain_quest,duel_quest,inn_quest,impostor_quest]
+func regional_quests() -> Array:return [book_quest,cart_quest,silk_quest,nanjing_relief_quest,qingya_quest,alliance_story,herbalist_quest,artisan_quest,wages_quest,plaque_quest,grain_quest,duel_quest,inn_quest,impostor_quest]
 func encounters() -> Array:return qingya_quest.data.encounters+qingya_quest.data.get("legacy_encounters",[])+bandit_story.data.encounters+[herbalist_quest.data.encounter,duel_quest.data.encounter,inn_quest.data.encounter,impostor_quest.data.encounter]
 
 func reset() -> void:
 	if is_instance_valid(death_screen):death_screen.dismiss()
 	if is_instance_valid(adventure_ui):adventure_ui.reset()
+	if is_instance_valid(book_quest):book_quest.reset()
 	if is_instance_valid(cart_quest):cart_quest.reset()
 	if is_instance_valid(silk_quest):silk_quest.reset()
 	if is_instance_valid(nanjing_relief_quest):nanjing_relief_quest.reset()
@@ -531,6 +534,7 @@ func interact() -> void:
 	if npc.is_empty():
 		return
 	if preload("res://scripts/overland_travel.gd").use(self,npc):return
+	if book_quest.handle_interaction(str(npc.id)):return
 	if cart_quest.handle_interaction(str(npc.id)):return
 	if silk_quest.handle_interaction(str(npc.id)):return
 	if nanjing_relief_quest.handle_interaction(str(npc.id)):return
@@ -806,5 +810,6 @@ func _progress_changed(event: Dictionary) -> void:
 	var name: String=progress.weapons.get_weapon(event.id).get("name",event.id) if event.get("kind")=="weapon" else progress.arts.get_skill(event.id).get("name",event.id) if event.get("kind")=="art" else progress.elixirs.get(event.id,{}).get("name",event.id)
 	match event.event:
 		"purchase":adventure_ui.notify(("무공 습득 · " if event.kind=="art" else "구매 완료 · ")+name+" · -%d문" % int(event.price),"learn" if event.kind=="art" else "coin")
+		"manual_learn":adventure_ui.notify("무공 습득 · "+name+" · K에서 편성하세요.","learn")
 		"consume":adventure_ui.notify("영약 복용 · "+name,"confirm")
 		"loadout":adventure_ui.notify("초식 편성을 바꾸었습니다.","confirm")
