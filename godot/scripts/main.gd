@@ -18,6 +18,7 @@ var wages_quest
 var plaque_quest
 var grain_quest
 var qingya_quest
+var silk_quest
 var nanjing_relief_quest
 var death_screen
 var duel_quest
@@ -160,6 +161,7 @@ func _ready() -> void:
 	grain_quest=preload("res://scripts/grain_quest.gd").new();grain_quest.game=self;add_child(grain_quest)
 	qingya_quest=preload("res://scripts/qingya_quest.gd").new();qingya_quest.game=self;add_child(qingya_quest)
 	nanjing_relief_quest=preload("res://scripts/nanjing_relief_quest.gd").new();nanjing_relief_quest.game=self;add_child(nanjing_relief_quest)
+	silk_quest=preload("res://scripts/silk_quest.gd").new();silk_quest.game=self;add_child(silk_quest)
 	progress.progress_changed.connect(_progress_changed)
 	battle.sound_requested.connect(options.play)
 	var log_button=UI.button(battle,"교전 기록 · L",Rect2(915,145,205,35))
@@ -309,12 +311,13 @@ func _build_ending() -> void:
 	restart.pressed.connect(reset)
 	ending.hide()
 
-func regional_quests() -> Array:return [nanjing_relief_quest,qingya_quest,alliance_story,herbalist_quest,artisan_quest,wages_quest,plaque_quest,grain_quest,duel_quest,inn_quest,impostor_quest]
+func regional_quests() -> Array:return [silk_quest,nanjing_relief_quest,qingya_quest,alliance_story,herbalist_quest,artisan_quest,wages_quest,plaque_quest,grain_quest,duel_quest,inn_quest,impostor_quest]
 func encounters() -> Array:return qingya_quest.data.encounters+qingya_quest.data.get("legacy_encounters",[])+bandit_story.data.encounters+[herbalist_quest.data.encounter,duel_quest.data.encounter,inn_quest.data.encounter,impostor_quest.data.encounter]
 
 func reset() -> void:
 	if is_instance_valid(death_screen):death_screen.dismiss()
 	if is_instance_valid(adventure_ui):adventure_ui.reset()
+	if is_instance_valid(silk_quest):silk_quest.reset()
 	if is_instance_valid(nanjing_relief_quest):nanjing_relief_quest.reset()
 	if is_instance_valid(qingya_quest):qingya_quest.reset()
 	if is_instance_valid(grain_quest):grain_quest.reset()
@@ -525,6 +528,7 @@ func interact() -> void:
 	if npc.is_empty():
 		return
 	if preload("res://scripts/overland_travel.gd").use(self,npc):return
+	if silk_quest.handle_interaction(str(npc.id)):return
 	if nanjing_relief_quest.handle_interaction(str(npc.id)):return
 	if qingya_quest.handle_interaction(str(npc.id)):return
 	if alliance_story.handle_interaction(str(npc.id)):return

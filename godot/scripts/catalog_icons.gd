@@ -10,7 +10,7 @@ static func texture(id: String) -> Texture2D:
 	var result := AtlasTexture.new()
 	result.atlas = sheet
 	var cell := sheet.get_size() / Vector2(float(data.cols),float(data.get("rows",data.cols)))
-	result.region = Rect2(Vector2(int(data.cell) % int(data.cols), int(data.cell) / int(data.cols)) * cell, cell)
+	result.region = Rect2(data.source[0],data.source[1],data.source[2],data.source[3]) if data.has("source") else Rect2(Vector2(int(data.cell) % int(data.cols), int(data.cell) / int(data.cols)) * cell, cell)
 	cache[id] = result
 	return result
 static func apply(button: Button, id: String, width: int = 40) -> void:

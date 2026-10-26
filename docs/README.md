@@ -55,3 +55,5 @@
 남경 주민: [일반 주민20명 이름·설정](characters/nanjing-residents.md).
 
 인물: [육소전 전용 초상화·탐험 도트](characters/lu-xiaozhuan.md).
+
+남경 일반 의뢰: [비단 한 필의 값](quests/nanjing-silk.md).

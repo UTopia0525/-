@@ -209,5 +209,29 @@
     "atlas": "banseok_jingak",
     "cell": 0,
     "cols": 1
+  },
+  "silk_sample": {
+    "atlas": "silk-quest",
+    "cell": 0,
+    "cols": 3,
+    "rows": 1,
+    "source": [
+      10,
+      350,
+      470,
+      420
+    ]
+  },
+  "silk_offcuts": {
+    "atlas": "silk-quest",
+    "cell": 0,
+    "cols": 3,
+    "rows": 1,
+    "source": [
+      485,
+      260,
+      460,
+      610
+    ]
   }
 }

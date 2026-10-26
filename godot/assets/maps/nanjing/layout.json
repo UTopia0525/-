@@ -1412,6 +1412,16 @@
         344,
         516
       ]
+    },
+    {
+      "id": "silk_cloth_chest",
+      "prefab": "silk_chest",
+      "rect": [
+        663,
+        179,
+        30,
+        28
+      ]
     }
   ],
   "districts": [
@@ -2445,6 +2455,24 @@
           0.77,
           0.4,
           0.23
+        ]
+      ]
+    },
+    "silk_chest": {
+      "texture": "res://assets/icons/silk-quest.png",
+      "source": [
+        943,
+        115,
+        590,
+        775
+      ],
+      "kind": "cargo",
+      "footprints": [
+        [
+          0.13,
+          0.7,
+          0.74,
+          0.27
         ]
       ]
     }

@@ -130,7 +130,7 @@ func set_filter(value: String) -> void:
 	for quest in game.regional_quests():
 		var quest_status: String=quest.status()
 		if (filter=="active" and quest_status in ["active","ready"]) or filter==quest_status:
-			add_quest_row(quest.ID,quest_status,quest.stage(),"메인 이야기" if quest.ID==game.alliance_story.ID else "남경 · 구휼 사건" if quest.ID==game.nanjing_relief_quest.ID else "산촌 · 일반 의뢰" if quest.ID==game.qingya_quest.ID else "무창 · 일반 의뢰")
+			add_quest_row(quest.ID,quest_status,quest.stage(),"메인 이야기" if quest.ID==game.alliance_story.ID else "남경 · 일반 의뢰" if quest.ID==game.silk_quest.ID else "남경 · 구휼 사건" if quest.ID==game.nanjing_relief_quest.ID else "산촌 · 일반 의뢰" if quest.ID==game.qingya_quest.ID else "무창 · 일반 의뢰")
 	var story=game.bandit_story
 	if story.stage!="dormant":
 		var state: String="completed" if story.stage=="completed" else "active"
@@ -156,6 +156,11 @@ func select_quest(id: String) -> void:
 	if game.ordinary_quests.definitions.has(id):who=game.PORTRAITS.ACTORS[game.ordinary_quests.definitions[id].giver].name
 	body.text="%s\n%s · %s\n\n의뢰인: %s\n\n%s\n\n보수: %s\n\n%s" % [nav.title,data.kind,{"active":"진행 중","available":"수락 가능","ready":"달성 · 완료 보고 대기","completed":"완료"}[data.status],who,"이미 마친 의뢰입니다." if data.status=="completed" else nav.stages[data.stage].label,reward,"보수를 받았습니다." if data.status=="completed" else "일지에서 수락하지 않습니다. 의뢰인에게 F로 말을 걸어 직접 맡으세요." if data.status=="available" else "보상을 받으려면 완료 대화를 끝내야 합니다."]
 	if game.ordinary_quests.records.has(id):body.add_text("\n\n현재 달성 %d/%d" % [game.ordinary_quests.records[id].done.size(),game.ordinary_quests.definitions[id].steps.size()])
+	for quest in game.regional_quests():
+		if id==quest.ID and quest.has_method("journal_items"):
+			for item in quest.journal_items():
+				body.add_text("\n\n"+str(item.name)+"\n")
+				body.add_image(preload("res://scripts/catalog_icons.gd").texture(item.id),64,64)
 	primary.disabled=data.status=="completed"
 	primary.text="의뢰인 위치 안내" if data.status=="available" else "이 의뢰 추적"
 func primary_action() -> void:
