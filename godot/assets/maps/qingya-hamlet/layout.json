@@ -1,0 +1,584 @@
+{
+  "name": "삼거리 산촌",
+  "art_size": [
+    1536,
+    1024
+  ],
+  "world_size": [
+    4608,
+    3072
+  ],
+  "spawn": [
+    110,
+    530
+  ],
+  "walk_bounds": [
+    24,
+    24,
+    1488,
+    976
+  ],
+  "ground_script": "res://scripts/qingya_ground.gd",
+  "ground_texture": "res://assets/maps/qingya-hamlet/ground.png",
+  "objects": [
+    {
+      "id": "house_nw",
+      "prefab": "home",
+      "rect": [
+        370,
+        235,
+        230,
+        200
+      ]
+    },
+    {
+      "id": "house_ne",
+      "prefab": "home",
+      "rect": [
+        1110,
+        255,
+        230,
+        200
+      ]
+    },
+    {
+      "id": "house_sw",
+      "prefab": "home",
+      "rect": [
+        335,
+        620,
+        230,
+        200
+      ]
+    },
+    {
+      "id": "house_se",
+      "prefab": "rural_hut",
+      "rect": [
+        1115,
+        620,
+        230,
+        200
+      ]
+    },
+    {
+      "id": "grain_store",
+      "prefab": "camp_warehouse",
+      "rect": [
+        440,
+        50,
+        225,
+        170
+      ]
+    },
+    {
+      "id": "well",
+      "prefab": "rural_well",
+      "rect": [
+        960,
+        365,
+        76,
+        90
+      ]
+    },
+    {
+      "id": "tree_0",
+      "prefab": "tree",
+      "rect": [
+        89,
+        95,
+        110,
+        130
+      ]
+    },
+    {
+      "id": "tree_1",
+      "prefab": "tree",
+      "rect": [
+        188,
+        85,
+        110,
+        130
+      ]
+    },
+    {
+      "id": "tree_2",
+      "prefab": "tree",
+      "rect": [
+        114,
+        270,
+        110,
+        130
+      ]
+    },
+    {
+      "id": "tree_3",
+      "prefab": "tree",
+      "rect": [
+        1381,
+        80,
+        110,
+        130
+      ]
+    },
+    {
+      "id": "tree_4",
+      "prefab": "tree",
+      "rect": [
+        1404,
+        245,
+        110,
+        130
+      ]
+    },
+    {
+      "id": "tree_5",
+      "prefab": "tree",
+      "rect": [
+        128,
+        850,
+        110,
+        130
+      ]
+    },
+    {
+      "id": "tree_6",
+      "prefab": "tree",
+      "rect": [
+        286,
+        895,
+        110,
+        130
+      ]
+    },
+    {
+      "id": "tree_7",
+      "prefab": "tree",
+      "rect": [
+        538,
+        895,
+        110,
+        130
+      ]
+    },
+    {
+      "id": "tree_8",
+      "prefab": "tree",
+      "rect": [
+        960,
+        895,
+        110,
+        130
+      ]
+    },
+    {
+      "id": "tree_9",
+      "prefab": "tree",
+      "rect": [
+        1384,
+        860,
+        110,
+        130
+      ]
+    },
+    {
+      "id": "tree_10",
+      "prefab": "tree",
+      "rect": [
+        988,
+        70,
+        110,
+        130
+      ]
+    },
+    {
+      "id": "rock_0",
+      "prefab": "rock",
+      "rect": [
+        40,
+        170,
+        100,
+        85
+      ]
+    },
+    {
+      "id": "rock_1",
+      "prefab": "rock",
+      "rect": [
+        210,
+        165,
+        100,
+        85
+      ]
+    },
+    {
+      "id": "rock_2",
+      "prefab": "rock",
+      "rect": [
+        1330,
+        90,
+        100,
+        85
+      ]
+    },
+    {
+      "id": "rock_3",
+      "prefab": "rock",
+      "rect": [
+        1420,
+        350,
+        100,
+        85
+      ]
+    },
+    {
+      "id": "rock_4",
+      "prefab": "rock",
+      "rect": [
+        90,
+        660,
+        100,
+        85
+      ]
+    },
+    {
+      "id": "rock_5",
+      "prefab": "rock",
+      "rect": [
+        30,
+        850,
+        100,
+        85
+      ]
+    },
+    {
+      "id": "rock_6",
+      "prefab": "rock",
+      "rect": [
+        470,
+        900,
+        100,
+        85
+      ]
+    },
+    {
+      "id": "rock_7",
+      "prefab": "rock",
+      "rect": [
+        990,
+        880,
+        100,
+        85
+      ]
+    },
+    {
+      "id": "rock_8",
+      "prefab": "rock",
+      "rect": [
+        1395,
+        900,
+        100,
+        85
+      ]
+    }
+  ],
+  "prefabs": {
+    "camp_hall": {
+      "texture": "res://assets/maps/qingya-camp/props.png",
+      "source": [
+        5,
+        62,
+        445,
+        305
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.08,
+          0.55,
+          0.84,
+          0.42
+        ]
+      ]
+    },
+    "camp_warehouse": {
+      "texture": "res://assets/maps/qingya-camp/props.png",
+      "source": [
+        455,
+        75,
+        380,
+        270
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.08,
+          0.55,
+          0.84,
+          0.42
+        ]
+      ]
+    },
+    "camp_hut": {
+      "texture": "res://assets/maps/qingya-camp/props.png",
+      "source": [
+        846,
+        83,
+        344,
+        277
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.08,
+          0.55,
+          0.84,
+          0.42
+        ]
+      ]
+    },
+    "rural_hut": {
+      "texture": "res://assets/maps/qingya-camp/props.png",
+      "source": [
+        1193,
+        76,
+        342,
+        277
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.08,
+          0.55,
+          0.84,
+          0.42
+        ]
+      ]
+    },
+    "palisade_h": {
+      "texture": "res://assets/maps/qingya-camp/props.png",
+      "source": [
+        8,
+        468,
+        410,
+        161
+      ],
+      "kind": "prop",
+      "footprints": [
+        [
+          0.02,
+          0.55,
+          0.96,
+          0.25
+        ]
+      ]
+    },
+    "palisade_v": {
+      "texture": "res://assets/maps/qingya-camp/props.png",
+      "source": [
+        477,
+        450,
+        322,
+        176
+      ],
+      "kind": "prop",
+      "footprints": [
+        [
+          0.3,
+          0.03,
+          0.35,
+          0.94
+        ]
+      ]
+    },
+    "watchtower": {
+      "texture": "res://assets/maps/qingya-camp/props.png",
+      "source": [
+        903,
+        370,
+        180,
+        302
+      ],
+      "kind": "prop",
+      "footprints": [
+        [
+          0.08,
+          0.55,
+          0.84,
+          0.42
+        ]
+      ]
+    },
+    "camp_gate": {
+      "texture": "res://assets/maps/qingya-camp/props.png",
+      "source": [
+        1200,
+        409,
+        324,
+        238
+      ],
+      "kind": "gate",
+      "footprints": [
+        [
+          0.06,
+          0.45,
+          0.18,
+          0.5
+        ],
+        [
+          0.76,
+          0.45,
+          0.18,
+          0.5
+        ]
+      ]
+    },
+    "ruined_home": {
+      "texture": "res://assets/maps/qingya-camp/props.png",
+      "source": [
+        14,
+        690,
+        430,
+        272
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.08,
+          0.55,
+          0.84,
+          0.42
+        ]
+      ]
+    },
+    "ruined_store": {
+      "texture": "res://assets/maps/qingya-camp/props.png",
+      "source": [
+        454,
+        696,
+        384,
+        258
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.08,
+          0.55,
+          0.84,
+          0.42
+        ]
+      ]
+    },
+    "broken_fence": {
+      "texture": "res://assets/maps/qingya-camp/props.png",
+      "source": [
+        852,
+        758,
+        338,
+        177
+      ],
+      "kind": "prop",
+      "footprints": [
+        [
+          0.02,
+          0.55,
+          0.96,
+          0.25
+        ]
+      ]
+    },
+    "rural_well": {
+      "texture": "res://assets/maps/qingya-camp/props.png",
+      "source": [
+        1236,
+        729,
+        253,
+        210
+      ],
+      "kind": "prop",
+      "footprints": [
+        [
+          0.08,
+          0.55,
+          0.84,
+          0.42
+        ]
+      ]
+    },
+    "rock": {
+      "texture": "res://assets/maps/changsha-wuchang/rock.png",
+      "source": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "kind": "rock",
+      "footprints": [
+        [
+          0.12,
+          0.55,
+          0.76,
+          0.39
+        ]
+      ]
+    }
+  },
+  "terrain_blockers": [],
+  "districts": [
+    {
+      "id": "hamlet",
+      "name": "삼거리 산촌",
+      "rect": [
+        0,
+        0,
+        1536,
+        1024
+      ]
+    }
+  ],
+  "services": [],
+  "residents": [],
+  "road_centers": [
+    [
+      24,
+      495,
+      1488,
+      75
+    ],
+    [
+      742,
+      24,
+      76,
+      471
+    ]
+  ],
+  "roads": [
+    {
+      "points": [
+        [
+          24,
+          530
+        ],
+        [
+          1512,
+          530
+        ]
+      ],
+      "width": 75
+    },
+    {
+      "points": [
+        [
+          780,
+          24
+        ],
+        [
+          780,
+          530
+        ]
+      ],
+      "width": 76
+    }
+  ]
+}

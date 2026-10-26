@@ -1,6 +1,6 @@
 # 작업별 색인
 
-최신 변경: [BGM 반복 재생 유지](systems/bgm-loop.md), [산길 이동 단축·발 교차 보행](systems/short-road-and-stride.md), [작은 A안 HUD](ui/compact-a.md). 이전 비교 시안과 검토는 당시 기록이다.
+최신 변경: [산촌·청애채 선택 의뢰](quests/qingya-village.md), [BGM 반복 재생 유지](systems/bgm-loop.md), [산길 이동 단축·발 교차 보행](systems/short-road-and-stride.md), [작은 A안 HUD](ui/compact-a.md). 이전 비교 시안과 검토는 당시 기록이다.
 
 현재 상태는 [CLI 인계](CLI_HANDOFF.md), 실행은 [Godot 안내](../godot/README.md)를 참고한다. 아래 경로는 저장소 루트 기준이다. 문서와 관련 소스만 먼저 읽고 필요한 검사를 선택한다.
 
@@ -24,9 +24,10 @@
 | 무림맹 경비·총관·교관 | [인물](characters/alliance-headquarters.md), [출입·진행 구분](story/alliance-visit-foundation.md) | `data/alliance_characters.json`, `scripts/alliance_visit.gd` | `alliance_visit.gd`, `capture_alliance_visit.gd` |
 | 무창 민간 주민 | [8인 설정·대사·그림](characters/wuchang-civilians.md) | `data/wuchang_residents.json`, `scripts/exploration.gd`, `dialogue_portraits.gd` | `wuchang_residents.gd`, `capture_wuchang_residents.gd` |
 | 맵 미술 통일 | [산길·무창·총무당](cities/regional-map-art.md) | `scripts/*ground.gd`, `assets/maps/*/ground.png` | `map_art.gd`, `capture_map_art.gd` |
+| 산촌·청애채 의뢰 | [진행·보상·폐허·검사](quests/qingya-village.md) | `scripts/qingya_quest.gd`, `qingya_map.gd`, `data/qingya_quest.json` | `qingya_quest.gd`, `qingya_balance.gd` |
 | 산적·수적·낭인 그림 | [전용4장·기존 적용처](characters/role-portraits.md) | `scripts/dialogue_portraits.gd`, `herbalist_quest.gd`, `inn_quest.gd` | `conversation_tools.gd`, `basic_npc_portraits.gd` |
 | 산촌·청애채 인물 | [8인 설정·이미지 배정](characters/qingya-cast.md) | `data/qingya_characters.json`, `dialogue_portraits.gd` | `basic_npc_portraits.gd` |
-| 산촌·청애채 디자인 | [2개 맵 구도·확정 분기](cities/qingya-maps.md) | 디자인 시안, 본게임 미연결 | 후속 맵 구현 시 검사 |
+| 산촌·청애채 디자인 | [2개 맵 구도·확정 분기](cities/qingya-maps.md) | 시안 보존, 본게임 구현은 위 의뢰 행 참고 | 후속 맵 구현 시 검사 |
 | 무창·무림맹 지도 | [배치·답사·범위](cities/wuchang.md), [조직 설정](factions/murim-alliance.md) | `scripts/wuchang_map.gd`, `wuchang_preview.gd`, `wuchang_ground.gd`, `assets/maps/wuchang/layout.json` | `wuchang.gd`, `capture_wuchang.gd` |
 | 장사 주민 정리·이름 | [의뢰 관련11인 설정](characters/changsha-quest-residents.md) | `assets/maps/changsha/layout.json`, `scripts/ordinary_quests.gd`, `main.gd` | `changsha_residents.gd`, `quest_navigation.gd`, `adventure_features.gd` |
 | 도시·충돌 | [인물 비율·이동](systems/exploration-scale.md), [도시 기준](cities/city-standards.md), [현재 장사·오브젝트](systems/layered-city-and-conversation.md) | `scripts/exploration.gd`, `city_scenery.gd`, `assets/maps/changsha/layout.json` | `layered_city.gd`, `city_collision.gd`, `changsha.gd`, `city_services.gd` |

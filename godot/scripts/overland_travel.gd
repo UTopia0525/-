@@ -1,10 +1,12 @@
 extends RefCounted
-const AREAS=["changsha","mountain_road","wuchang","alliance_office"]
+const AREAS=["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp"]
 const LINKS={
  "changsha":[{"id":"travel:road_east","name":"무창 방면 산길 →","point":[1490,510],"area":"mountain_road","arrival":[125,1175]}],
  "mountain_road":[{"id":"travel:changsha","name":"← 장사 동쪽 농촌","point":[80,1175],"area":"changsha","arrival":[1440,510]}, {"id":"travel:wuchang","name":"↑ 무창 남쪽 농촌","point":[740,64],"area":"wuchang","arrival":[1100,1790]}],
  "alliance_office":[{"id":"travel:office_exit","name":"무림맹 외원으로","point":[256,321],"area":"wuchang","arrival":[1077,795]}],
- "wuchang":[{"id":"travel:office_entry","name":"총무당 · 들어가기","point":[1077,775],"area":"alliance_office","arrival":[256,289]}, {"id":"travel:road_south","name":"↓ 장사 방면 산길","point":[1100,1840],"area":"mountain_road","arrival":[740,110]}]}
+ "qingya_hamlet":[{"id":"travel:wuchang","name":"← 무창","point":[70,530],"area":"wuchang","arrival":[1920,945]},{"id":"travel:camp","name":"↑ 청애채","point":[780,60],"area":"qingya_camp","arrival":[768,930]},{"id":"travel:nanjing","name":"남경 방면 · 준비 중 →","point":[1470,530],"area":"nanjing","arrival":[0,0]}],
+ "qingya_camp":[{"id":"travel:hamlet","name":"↓ 삼거리 산촌","point":[768,960],"area":"qingya_hamlet","arrival":[780,115]}],
+ "wuchang":[{"id":"travel:office_entry","name":"총무당 · 들어가기","point":[1077,775],"area":"alliance_office","arrival":[256,289]}, {"id":"travel:road_south","name":"↓ 장사 방면 산길","point":[1100,1840],"area":"mountain_road","arrival":[740,110]},{"id":"travel:qingya","name":"산촌·청애채 방면 →","point":[1948,945],"area":"qingya_hamlet","arrival":[135,530]}]}
 static func install(world) -> void:
 	world.travel_exits.clear()
 	for link in LINKS.get(world.area_name,[]):
@@ -22,15 +24,18 @@ static func use(game,entry: Dictionary) -> bool:
 		game.say([["hero",reason]])
 		return true
 	game.exploration.set_active(false)
+	game.qingya_quest.before_travel(game.exploration.area_name,link.area)
+	game.qingya_quest.on_arrive(link.area)
 	game.exploration.load_area(link.area)
 	game.exploration.player.position=game.exploration.safe_player_position(game.exploration.city_point(link.arrival))
 	game.exploration.player.stop();game.exploration.camera.snap_to_player()
-	game.exploration.set_active(true);game.music.play_track("voyage" if link.area=="mountain_road" else "dock")
+	game.exploration.set_active(true);game.music.play_track("voyage" if link.area in ["mountain_road","qingya_hamlet","qingya_camp"] else "dock")
 	game.ordinary_quests.refresh_world()
 	game.adventure_ui.notify(game.exploration.city_data.name+"에 들어섰습니다.","confirm")
 	return true
 
 static func blocked_reason(game,destination: String) -> String:
+	if destination=="nanjing":return "남경으로 이어지는 길은 아직 준비 중이다. 지금은 산촌과 청애채를 둘러보자."
 	if game.exploration.area_name!="changsha" or destination=="changsha":return ""
 	if game.bandit_story.stage=="completed" and game.bandit_story.reward_granted:return ""
 	if game.bandit_story.stage=="report":return "도적은 물리쳤지만 아직 정 포두께 보고하지 않았다. 관아에서 보수를 받고 통행이 풀리면 떠나자."

@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-26",
+  "generator": "image_gen",
+  "original_pixels_preserved": true,
+  "files": [
+    {
+      "file": "godot/assets/maps/qingya-hamlet/ground.png",
+      "source_original": "exec-b81a797b-722b-479d-947c-82cb199ccdd9.png",
+      "sha256": "e82faf31a98ef67bfd2a8c03846d33c26ed96b23023054bbf628fe72b93e08e4"
+    },
+    {
+      "file": "godot/assets/maps/qingya-camp/ground.png",
+      "source_original": "exec-3521a04b-c792-4202-8fd9-0255b03130a3.png",
+      "sha256": "985797023e57ec6d11e7b42f6c9e4779741dfd2704ca41e2589fdd4edcd76b35"
+    },
+    {
+      "file": "godot/assets/maps/qingya-camp/props.png",
+      "source_original": "exec-111fbdef-84c4-4f9f-ac79-2f55e56b8662.png",
+      "sha256": "5ed759546d968c5bbb61925702b25b100216381ead1696e7faf21c02fd393118"
+    },
+    {
+      "file": "godot/assets/icons/banseok_jingak.png",
+      "source_original": "exec-9f1948b5-785c-46cd-bf3e-50bcc8f03fc0.png",
+      "sha256": "59e881d41c6896a769e739835276c502f8f4fa8266ddf7705870b6dcdd386628"
+    }
+  ]
+}

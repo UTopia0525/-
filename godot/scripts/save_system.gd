@@ -46,7 +46,7 @@ func capture() -> Dictionary:
 	var nodes = {"top_hud":game.top_hud, "bottom_hint":game.bottom_hint, "caption":game.story_caption, "exploration":w, "ending":game.ending, "overview":game.city_overview, "visual":game.story_visual}
 	var visibility := {}
 	for id in nodes: visibility[id] = nodes[id].visible
-	return {"schema":3, "plaque_quest":game.plaque_quest.snapshot(), "grain_quest":game.grain_quest.snapshot(), "wages_quest":game.wages_quest.snapshot(), "alliance_story":game.alliance_story.snapshot(), "impostor_quest":game.impostor_quest.snapshot(), "inn_quest":game.inn_quest.snapshot(), "duel_quest":game.duel_quest.snapshot(), "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
+	return {"schema":3, "qingya_quest":game.qingya_quest.snapshot(), "plaque_quest":game.plaque_quest.snapshot(), "grain_quest":game.grain_quest.snapshot(), "wages_quest":game.wages_quest.snapshot(), "alliance_story":game.alliance_story.snapshot(), "impostor_quest":game.impostor_quest.snapshot(), "inn_quest":game.inn_quest.snapshot(), "duel_quest":game.duel_quest.snapshot(), "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
 		"chapter":game.chapter_number, "money":game.money, "changsha_reward_revision":1, "talked_captain":game.talked_captain,
 		"world":{"layout_version":3 if w.area_name=="mountain_road" else 1, "area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
@@ -118,6 +118,7 @@ func validate(d) -> bool:
 			if d.get("alliance_visit",{}).get("phase") not in ["training_complete","closed"]:return false
 		if d.alliance_story.stage in ["steward","instructor"] and d.get("alliance_visit",{}).get("phase")!="visiting":return false
 	if d.has("alliance_visit") and not game.alliance_visit.valid(d.alliance_visit):return false
+	if d.has("qingya_quest") and not game.qingya_quest.valid(d.qingya_quest):return false
 	if d.has("herbalist_quest") and not game.herbalist_quest.valid(d.herbalist_quest):return false
 	if d.has("plaque_quest") and not game.plaque_quest.valid(d.plaque_quest):return false
 	if d.has("grain_quest") and not game.grain_quest.valid(d.grain_quest):return false
@@ -139,12 +140,12 @@ func validate(d) -> bool:
 	if d.get("state") not in ["explore", "story", "choice", "service", "battle", "end"]: return false
 	if not d.get("saved_at") is String or not is_number(d.get("money"), 0, 1000000000) or not is_number(d.get("chapter"), 0, 1): return false
 	if not d.get("talked_captain") is bool or d.get("choice") not in ["", "treasure", "rescue"]: return false
-	if d.world.get("area") not in ["dock", "deck", "changsha", "mountain_road", "wuchang", "alliance_office"]: return false
+	if d.world.get("area") not in ["dock", "deck", "changsha", "mountain_road", "wuchang", "alliance_office", "qingya_hamlet", "qingya_camp"]: return false
 	var layout_version=d.world.get("layout_version",1)
 	if not is_number(layout_version,1,3) or float(layout_version) not in [1.0,2.0,3.0]:return false
 	var pos = d.world.get("position")
 	if not pos is Array or pos.size() != 2: return false
-	var limit: Vector2={"changsha":Vector2(6144,4096),"mountain_road":(Vector2(2560,3200) if layout_version==3 else Vector2(4096,5120 if layout_version==2 else 10240)),"wuchang":Vector2(8192,7680),"alliance_office":Vector2(2048,1440)}.get(d.world.area,Vector2(1280,720))
+	var limit: Vector2={"changsha":Vector2(6144,4096),"mountain_road":(Vector2(2560,3200) if layout_version==3 else Vector2(4096,5120 if layout_version==2 else 10240)),"wuchang":Vector2(8192,7680),"alliance_office":Vector2(2048,1440),"qingya_hamlet":Vector2(4608,3072),"qingya_camp":Vector2(4608,3072)}.get(d.world.area,Vector2(1280,720))
 	if not is_number(pos[0], 0, limit.x) or not is_number(pos[1], 0, limit.y): return false
 	if d.world.get("facing") not in ["up", "down", "left", "right"] or not d.world.get("active") is bool: return false
 	var p = d.prologue
@@ -193,7 +194,7 @@ func validate(d) -> bool:
 	if d.state == "service" and d.service.is_empty(): return false
 	var enemy_maximum := 150
 	var encounter_id = d.battle.get("encounter_id", "")
-	if encounter_id not in ["", "bandit_sentry", "bandit_ringleader", "herb_ruffian", "training_student", "inn_warrior", "impostor_ma"]: return false
+	if encounter_id not in ["", "bandit_sentry", "bandit_ringleader", "herb_ruffian", "training_student", "inn_warrior", "impostor_ma", "qingya_sentry", "qingya_chief"]: return false
 	for definition in game.encounters():
 		if definition.id == encounter_id: enemy_maximum = int(definition.max_hp)
 	if d.state=="battle" and encounter_id=="herb_ruffian" and d.get("herbalist_quest",{}).get("phase")!="rescue":return false
@@ -203,6 +204,9 @@ func validate(d) -> bool:
 	if d.state=="battle" and encounter_id=="inn_warrior" and d.get("inn_quest",{}).get("phase")!="battle":return false
 	if d.get("impostor_quest",{}).get("phase")=="battle" and (d.state!="battle" or encounter_id!="impostor_ma"):return false
 	if d.state=="battle" and encounter_id=="impostor_ma" and d.get("impostor_quest",{}).get("phase")!="battle":return false
+	var qphase=d.get("qingya_quest",{}).get("phase","")
+	if qphase in ["fight_sentry","fight_chief"] and (d.state!="battle" or encounter_id!=("qingya_sentry" if qphase=="fight_sentry" else "qingya_chief")):return false
+	if d.state=="battle" and encounter_id in ["qingya_sentry","qingya_chief"] and qphase!=("fight_sentry" if encounter_id=="qingya_sentry" else "fight_chief"):return false
 	if d.has("bandit_story") and d.bandit_story.stage in ["battle_one", "battle_two"]:
 		if d.state != "battle" or encounter_id != game.bandit_story.data.encounters[0 if d.bandit_story.stage == "battle_one" else 1].id: return false
 	if not is_number(d.battle.get("player_hp"), 0, 300) or not is_number(d.battle.get("enemy_hp"), 0, enemy_maximum) or not is_number(d.battle.get("turn"), 1, 10000) or not d.battle.get("selected") is bool: return false
@@ -275,6 +279,7 @@ func load_slot(slot: int) -> bool:
 			for id in game.alliance_story.ARTS:
 				if id in game.progress.learned:story={"stage":"completed","received_art":id};break
 	game.alliance_story.restore(story)
+	if d.has("qingya_quest"):game.qingya_quest.restore(d.qingya_quest)
 	game.herbalist_quest.restore(d.get("herbalist_quest",{"phase":"available"}))
 	game.plaque_quest.restore(d.get("plaque_quest",{"phase":"available","checked":[]}))
 	game.grain_quest.restore(d.get("grain_quest",{"phase":"available"}))
@@ -290,7 +295,7 @@ func load_slot(slot: int) -> bool:
 		var previous_layout=int(d.world.get("layout_version",1))
 		if previous_layout==1:game.exploration.player.position.y*=.5
 		if previous_layout<3:game.exploration.player.position*=.625
-	if d.world.area in ["changsha","mountain_road","wuchang","alliance_office"]:
+	if d.world.area in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp"]:
 		game.exploration.player.position = game.exploration.safe_player_position(game.exploration.player.position)
 	game.exploration.player.facing = d.world.facing
 	game.exploration.player.stop()

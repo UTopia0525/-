@@ -17,6 +17,7 @@ var artisan_quest
 var wages_quest
 var plaque_quest
 var grain_quest
+var qingya_quest
 var duel_quest
 var inn_quest
 var impostor_quest
@@ -155,6 +156,7 @@ func _ready() -> void:
 	wages_quest=preload("res://scripts/wages_quest.gd").new();wages_quest.game=self;add_child(wages_quest)
 	plaque_quest=preload("res://scripts/plaque_quest.gd").new();plaque_quest.game=self;add_child(plaque_quest)
 	grain_quest=preload("res://scripts/grain_quest.gd").new();grain_quest.game=self;add_child(grain_quest)
+	qingya_quest=preload("res://scripts/qingya_quest.gd").new();qingya_quest.game=self;add_child(qingya_quest)
 	progress.progress_changed.connect(_progress_changed)
 	battle.sound_requested.connect(options.play)
 	var log_button=UI.button(battle,"교전 기록 · L",Rect2(915,145,205,35))
@@ -303,11 +305,12 @@ func _build_ending() -> void:
 	restart.pressed.connect(reset)
 	ending.hide()
 
-func regional_quests() -> Array:return [alliance_story,herbalist_quest,artisan_quest,wages_quest,plaque_quest,grain_quest,duel_quest,inn_quest,impostor_quest]
-func encounters() -> Array:return bandit_story.data.encounters+[herbalist_quest.data.encounter,duel_quest.data.encounter,inn_quest.data.encounter,impostor_quest.data.encounter]
+func regional_quests() -> Array:return [qingya_quest,alliance_story,herbalist_quest,artisan_quest,wages_quest,plaque_quest,grain_quest,duel_quest,inn_quest,impostor_quest]
+func encounters() -> Array:return qingya_quest.data.encounters+bandit_story.data.encounters+[herbalist_quest.data.encounter,duel_quest.data.encounter,inn_quest.data.encounter,impostor_quest.data.encounter]
 
 func reset() -> void:
 	if is_instance_valid(adventure_ui):adventure_ui.reset()
+	if is_instance_valid(qingya_quest):qingya_quest.reset()
 	if is_instance_valid(grain_quest):grain_quest.reset()
 	if is_instance_valid(plaque_quest):plaque_quest.reset()
 	if is_instance_valid(wages_quest):wages_quest.reset()
@@ -420,8 +423,8 @@ func _process(_delta: float) -> void:
 	var total:=0
 	for value in progress.stats.values():total+=int(value)
 	journey_label.text=("제%d장 · " % chapter_number if prologue.active or prologue.completed else "")+"도원 · "+("절정까지 %d" % (100-total) if total<100 else progress.RULES.realm(total))
-	compact_toolbar.visible=exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office"] and state=="explore" and dialogue_lines.is_empty()
-	if state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office"]:
+	compact_toolbar.visible=exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp"] and state=="explore" and dialogue_lines.is_empty()
+	if state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp"]:
 		location.text = exploration.city_data.name+" · " + exploration.district_at_player()
 		var exploring_changsha: bool = chapter_number == 1 and exploration.area_name == "changsha" and bandit_story.stage == "dormant"
 		chapter_goal.visible = exploring_changsha
@@ -431,7 +434,7 @@ func _process(_delta: float) -> void:
 		var goal: Dictionary = quest_navigation.get_goal(exploration)
 		quest_heading.text=goal.quest_title+" · Q" if not goal.is_empty() else "강호행 · Q 의뢰"
 		bottom_hint.hide()
-		objective.text = goal.label if not goal.is_empty() else ("총무당 둘러보기 · 남쪽 출입 지점에서 F 이동" if exploration.area_name=="alliance_office" else "산길을 따라 북쪽 무창으로 · 출입 지점에서 F 이동" if exploration.area_name=="mountain_road" else "무창 둘러보기 · 남쪽 농촌 끝에서 장사 방면" if exploration.area_name=="wuchang" else "시장·골목·나루·성밖 농촌 둘러보기")
+		objective.text = goal.label if not goal.is_empty() else ("총무당 둘러보기 · 남쪽 출입 지점에서 F 이동" if exploration.area_name=="alliance_office" else "산길을 따라 북쪽 무창으로 · 출입 지점에서 F 이동" if exploration.area_name=="mountain_road" else "무창 둘러보기 · 남쪽 농촌 끝에서 장사 방면" if exploration.area_name=="wuchang" else "삼거리 산촌 · 북쪽 청애채 / 서쪽 무창 / 동쪽 남경 방면" if exploration.area_name=="qingya_hamlet" else "청애채 · 남쪽 정문으로 산촌에 돌아가기" if exploration.area_name=="qingya_camp" else "시장·골목·나루·성밖 농촌 둘러보기")
 		objective.tooltip_text=(chapter_goal.text+"\n" if exploring_changsha else "")+quest_heading.text+"\n"+objective.text
 	bandit_story.maybe_start()
 	alliance_story.maybe_start()
@@ -516,6 +519,7 @@ func interact() -> void:
 	if npc.is_empty():
 		return
 	if preload("res://scripts/overland_travel.gd").use(self,npc):return
+	if qingya_quest.handle_interaction(str(npc.id)):return
 	if alliance_story.handle_interaction(str(npc.id)):return
 	if plaque_quest.handle_interaction(str(npc.id)):return
 	if grain_quest.handle_interaction(str(npc.id)):return
@@ -591,7 +595,8 @@ func _on_victory(hp: int) -> void:
 	adventure_ui.record_result(true)
 
 func _on_defeat() -> void:
-	if impostor_quest.in_battle():impostor_quest.after_defeat()
+	if qingya_quest.in_battle():qingya_quest.after_defeat()
+	elif impostor_quest.in_battle():impostor_quest.after_defeat()
 	elif inn_quest.in_battle():inn_quest.after_defeat()
 	elif duel_quest.in_battle():duel_quest.after_defeat()
 	elif herbalist_quest.in_battle():herbalist_quest.after_defeat()
@@ -600,6 +605,9 @@ func _on_defeat() -> void:
 
 func _finish_victory(hp: int) -> void:
 	if state != "battle": return
+	if qingya_quest.in_battle():
+		qingya_quest.after_victory()
+		return
 	if impostor_quest.in_battle():
 		impostor_quest.after_victory()
 		return
@@ -676,7 +684,7 @@ func _input(event: InputEvent) -> void:
 				toggle_city_map()
 			get_viewport().set_input_as_handled()
 			return
-		if event.keycode == KEY_TAB and state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office"]:
+		if event.keycode == KEY_TAB and state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp"]:
 			toggle_city_map()
 			get_viewport().set_input_as_handled()
 		elif event.keycode == KEY_M:

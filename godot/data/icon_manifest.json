@@ -204,5 +204,10 @@
     "atlas": "soemok",
     "cell": 0,
     "cols": 1
+  },
+  "banseok_jingak": {
+    "atlas": "banseok_jingak",
+    "cell": 0,
+    "cols": 1
   }
 }

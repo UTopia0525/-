@@ -18,6 +18,6 @@
 - [장사 산적 토벌](../../godot/screenshots/role-bandit-dialogue.png)
 - [0장 수적 등장](../../godot/screenshots/role-water-bandit-dialogue.png)
 - [무창 객잔 장만길](../../godot/screenshots/role-wanderer-dialogue.png)
-- [두 산적을 함께 표시](../../godot/screenshots/role-bandit-pair-dialogue.png) — 청애채 인물 등록을 확인하는 대화 표시 예시이며 새 맵/의뢰가 구현되었다는 의미는 아니다.
+- [두 산적을 함께 표시](../../godot/screenshots/role-bandit-pair-dialogue.png) — 청애채 인물 등록을 확인하는 대화 표시 예시이며 이 캡처는 인물 등록 단계의 예시이며 이후 산촌·청애채 의뢰에서 실제 배치했다.
 
 기존 `conversation_tools.gd`에서 실제0장/장사 이야기 대사와 약초꾼·객잔·청애채 인물을 통해 새 그림의 연결·중복 방지·대화 기록/과거 대화 저장 읽기를 확인한다. `basic_npc_portraits.gd`에서 기본18장 구성, 신규8인의 그림과 화자 강조를 확인한다. 캡처는 `capture_role_portraits.gd`로 실제 Godot 렌더러에서 출력한다. 배포용 데모/실행 파일은 만들지 않았다.

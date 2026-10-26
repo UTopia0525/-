@@ -65,14 +65,15 @@ func run() -> void:
 	var combat=preload("res://scripts/combat_actions.gd").new()
 	var enemies=game.encounters()+[{"id":"tutorial","stats":{"strength":12,"agility":12,"constitution":5,"inner":6,"insight":5},"weapon":"thickback_saber","skills":["bandit_chop","soemok"]}]
 	for e in enemies:
-		check("soemok" in e.skills,"lower art assigned: "+e.id)
+		var expected_art="banseok_jingak" if e.id=="qingya_chief" else "soemok"
+		check(expected_art in e.skills,"appropriate martial art assigned: "+e.id)
 		var amount: int=e.stats.inner;var used:=false
 		for turn in range(1,13):
 			var plan=combat.enemy_plan(e.stats,e.weapon,e.skills,amount,turn)
 			var a=combat.action(plan,e.stats,e.weapon)
 			check(a.cost<=amount,"enemy respects qi: "+e.id)
-			used=used or plan=="soemok";amount=mini(500,amount-int(a.cost)+int(e.stats.inner))
-		check(used,"enemy actually uses learned lower art: "+e.id)
+			used=used or plan==expected_art;amount=mini(500,amount-int(a.cost)+int(e.stats.inner))
+		check(used,"enemy actually uses learned martial art: "+e.id)
 	game.start_battle();var b=game.battle
 	check(not b.executed_icon.visible,"enemy icon is hidden before an executed move")
 	b.select_skill("basic_defense");b.use_selected()

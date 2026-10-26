@@ -56,5 +56,25 @@
         "inner": 6
       }
     }
+  },
+  "banseok_jingak": {
+    "name": "반석진각공",
+    "description": "단단한 하체와 허리로 짧게 파고들어 발차기를 잇는 청애채 채주의 외공.",
+    "weapon_style": "fist",
+    "required_weapon_type": "none",
+    "damage_coefficients": {
+      "strength": 3,
+      "agility": 2,
+      "inner": 2
+    },
+    "qi_cost": 18,
+    "requirements": {
+      "minimum_total": 70,
+      "stats": {
+        "strength": 18,
+        "agility": 14,
+        "inner": 14
+      }
+    }
   }
 }

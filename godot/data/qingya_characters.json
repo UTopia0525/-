@@ -1,6 +1,6 @@
 {
   "name": "산촌 삼거리와 청애채 인물",
-  "status": "registered_dialogue_cast_not_world_placed",
+  "status": "implemented_in_qingya_quest",
   "policy": "주민은 기본18장, 일반 산적은 새 산적 전용2종, 마운표는 기존 전용 원본을 재사용한다.",
   "npcs": [
     {
@@ -192,7 +192,7 @@
       "extra": "male_middle",
       "frame": 6,
       "personality": "기존 설정 유지: 호방하고 행동이 빠르며 과시욕과 경쟁심이 강하다. 지킬 수 있는 것보다 큰 약속을 한다.",
-      "background": "기존 청애채 채주 설정과 반석진각공을 유지한다. 새로운 전투 수치는 부여하지 않는다.",
+      "background": "기존 청애채 채주 설정과 반석진각공을 유지한다. 실제 의뢰 전투 수치는 qingya_quest.json의 조우 자료를 따른다.",
       "relations": "자신이 산촌을 보호한다고 주장하며 주민들의 의존을 지배의 근거로 삼는다.",
       "speech_habit": "웃으며 말을 트지만 자신의 공로를 부정당하면 어조가 굳어진다.",
       "story_role": "토벌/현상 유지 선택의 핵심 대면 인물. 토벌 후 생사는 아직 미정이다.",
