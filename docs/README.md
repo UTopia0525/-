@@ -51,3 +51,5 @@
 위 표의 `scripts/`, `data/`, `assets/maps/`는 `godot/` 아래다. 같은 셀에서 생략한 파일의 폴더는 앞 파일과 같다.
 
 기타 자료: [이전 웹 데모](../demo/README.md), [인물 갤러리](REFERENCE_GALLERY.md), [저장소 사용법·정리 기록](REPOSITORY_GUIDE.md). `reviews/`의 제안·결과와 `archive/`의 과거 기록은 관련 작업에서만 읽는다.
+
+남경 주민: [일반 주민20명 이름·설정](characters/nanjing-residents.md).
