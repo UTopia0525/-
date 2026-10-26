@@ -47,7 +47,7 @@ func capture() -> Dictionary:
 	var nodes = {"top_hud":game.top_hud, "bottom_hint":game.bottom_hint, "caption":game.story_caption, "exploration":w, "ending":game.ending, "overview":game.city_overview, "visual":game.story_visual}
 	var visibility := {}
 	for id in nodes: visibility[id] = nodes[id].visible
-	return {"schema":3, "book_quest":game.book_quest.snapshot(), "cart_quest":game.cart_quest.snapshot(), "silk_quest":game.silk_quest.snapshot(), "nanjing_relief_quest":game.nanjing_relief_quest.snapshot(), "qingya_quest":game.qingya_quest.snapshot(), "plaque_quest":game.plaque_quest.snapshot(), "grain_quest":game.grain_quest.snapshot(), "wages_quest":game.wages_quest.snapshot(), "alliance_story":game.alliance_story.snapshot(), "impostor_quest":game.impostor_quest.snapshot(), "inn_quest":game.inn_quest.snapshot(), "duel_quest":game.duel_quest.snapshot(), "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
+	return {"schema":3, "levy_quest":game.levy_quest.snapshot(), "book_quest":game.book_quest.snapshot(), "cart_quest":game.cart_quest.snapshot(), "silk_quest":game.silk_quest.snapshot(), "nanjing_relief_quest":game.nanjing_relief_quest.snapshot(), "qingya_quest":game.qingya_quest.snapshot(), "plaque_quest":game.plaque_quest.snapshot(), "grain_quest":game.grain_quest.snapshot(), "wages_quest":game.wages_quest.snapshot(), "alliance_story":game.alliance_story.snapshot(), "impostor_quest":game.impostor_quest.snapshot(), "inn_quest":game.inn_quest.snapshot(), "duel_quest":game.duel_quest.snapshot(), "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
 		"chapter":game.chapter_number, "money":game.money, "changsha_reward_revision":1, "talked_captain":game.talked_captain,
 		"world":{"layout_version":3 if w.area_name=="mountain_road" else 2 if w.area_name=="nanjing" else 1, "area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
@@ -137,6 +137,7 @@ func validate(d) -> bool:
 			if d.get("alliance_visit",{}).get("phase") not in ["training_complete","closed"]:return false
 		if d.alliance_story.stage in ["steward","instructor"] and d.get("alliance_visit",{}).get("phase")!="visiting":return false
 	if d.has("alliance_visit") and not game.alliance_visit.valid(d.alliance_visit):return false
+	if d.has("levy_quest") and not game.levy_quest.valid(d.levy_quest):return false
 	if d.has("book_quest") and not game.book_quest.valid(d.book_quest):return false
 	if d.has("cart_quest") and not game.cart_quest.valid(d.cart_quest):return false
 	if d.has("silk_quest") and not game.silk_quest.valid(d.silk_quest):return false
@@ -307,6 +308,7 @@ func load_slot(slot: int) -> bool:
 			for id in game.alliance_story.ARTS:
 				if id in game.progress.learned:story={"stage":"completed","received_art":id};break
 	game.alliance_story.restore(story)
+	game.levy_quest.restore(d.get("levy_quest",{"phase":"available"}))
 	game.book_quest.restore(d.get("book_quest",{"phase":"available"}))
 	game.cart_quest.restore(d.get("cart_quest",{"phase":"available"}))
 	game.silk_quest.restore(d.get("silk_quest",{"phase":"available"}))

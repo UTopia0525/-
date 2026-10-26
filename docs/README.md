@@ -63,3 +63,6 @@
 검토: [서적 의뢰 보상 쇄랑도법·서적/아이콘 시안](martial-arts/swaerang-proposal.md) — 게임 미구현.
 
 - [남경 일반 의뢰3 · 빌려준 책, 돌아오지 않는 사람 / 서적 사용 학습](quests/nanjing-book.md)
+
+- [남경 일반 의뢰4 · 관의 이름을 빌린 자](quests/nanjing-levy.md)
+- [다음 전투 의뢰 구상 · 끊어진 계선줄 (미구현)](quests/nanjing-waterfront-combat-proposal.md)

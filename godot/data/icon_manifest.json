@@ -269,5 +269,17 @@
       746,
       840
     ]
+  },
+  "levy_receipt": {
+    "atlas": "levy-quest",
+    "cell": 0,
+    "cols": 2,
+    "rows": 1,
+    "source": [
+      80,
+      170,
+      500,
+      660
+    ]
   }
 }

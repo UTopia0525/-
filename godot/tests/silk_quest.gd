@@ -46,7 +46,9 @@ func run() -> void:
 		if phase=="ready":break
 		if phase in ["market","vendor","neighbor"]:
 			await approach(q.CHEST);drain();check(q.phase==phase,"cannot loot chest without completed permission")
-		await approach(q.target());check(not game.dialogue_lines.is_empty(),"F opens scene "+phase)
+		await approach(q.target())
+		if phase=="vendor":game.adventure_ui.secondary_action()
+		check(not game.dialogue_lines.is_empty(),"F opens scene "+phase)
 		check(q.phase==phase and not game.save_system.write_slot(9),"commit only at dialogue end; saves blocked")
 		drain()
 	check(game.money==cash and q.marker_for(q.GIVER)=="?","no expense/early pay; report question mark")
@@ -60,7 +62,10 @@ func run() -> void:
 	for stat in stats:check(int(game.progress.stats[stat])==int(stats[stat]),"no stat reward "+stat)
 	check(game.progress.fame==fame and game.progress.faction_favor==favor,"no fame/favor rewards")
 	await save_restore();check(q.marker_for(q.GIVER)=="" and q.journal_items().is_empty(),"completed clears markers/items")
-	for id in [q.GIVER,q.VENDOR,q.NEIGHBOR]:await approach(id);drain();check(q.phase=="completed","post-completion smalltalk")
+	for id in [q.GIVER,q.VENDOR,q.NEIGHBOR]:
+		await approach(id)
+		if id==q.VENDOR:game.adventure_ui.secondary_action()
+		drain();check(q.phase=="completed","post-completion smalltalk")
 	var old=game.save_system.capture();old.erase("silk_quest");check(game.save_system.validate(old),"old saves accepted")
 	var bad=game.save_system.capture();bad.silk_quest.phase="invalid";check(not game.save_system.validate(bad),"invalid phase rejected")
 	q.phase="ready";q._begin_approval();game.reset();await create_timer(1.0).timeout
