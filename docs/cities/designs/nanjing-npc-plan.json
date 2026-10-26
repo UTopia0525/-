@@ -1,0 +1,120 @@
+{
+  "status": "image_design_only_not_implemented",
+  "period": "1390년경 · 명 수도 응천부(남경)",
+  "entry": "서문 · 무창/삼거리 산촌 방면",
+  "notes": [
+    "이미지상의 번호는 NPC 식별용이며 게임 HUD/의뢰 표식이 아니다.",
+    "위치/이름/성격은 검토용 초안이다. NPC 데이터·거래·포탈·퀘스트는 게임에 등록하지 않는다.",
+    "세력 관련 인물은 구상만 하고 이번 기본 NPC 배치에서 제외한다."
+  ],
+  "npcs": [
+    {
+      "number": 1,
+      "name_proposal": "심유란",
+      "role": "약재·영약 상인",
+      "placement": "상점가 약방 앞",
+      "portrait_choice": "merchant_b",
+      "existing_portrait": "res://assets/portraits/wuchang/liu_baicao.png",
+      "personality_proposal": "약재 향을 맡으며 손님의 피로부터 살피는 차분한 상인."
+    },
+    {
+      "number": 2,
+      "name_proposal": "유철생",
+      "role": "병장기 장인",
+      "placement": "공방거리 대장간 앞",
+      "portrait_choice": "artisan_b",
+      "existing_portrait": "res://assets/portraits/wuchang/shi_dayong.png",
+      "personality_proposal": "관청 주문과 강호인의 주문을 함께 받지만 손에 맞는 병장기를 먼저 따지는 장인."
+    },
+    {
+      "number": 3,
+      "name_proposal": "조원식",
+      "role": "무관 교관",
+      "placement": "무관 입구 옆",
+      "portrait_choice": "instructor_a",
+      "existing_portrait": "res://assets/portraits/services/instructor.png",
+      "personality_proposal": "기본 자세를 중시하고 성급한 실전 경험을 경계하는 교관."
+    },
+    {
+      "number": 4,
+      "name_proposal": "장세평",
+      "role": "포졸",
+      "placement": "관아 정문 옆",
+      "portrait_choice": "constable",
+      "existing_portrait": "res://assets/portraits/story/constable-duty.png",
+      "personality_proposal": "수도에서 벌어지는 무인의 사사로운 다툼을 경계하는 관아 차역."
+    },
+    {
+      "number": 5,
+      "name_proposal": "하삼랑",
+      "role": "객잔 주인",
+      "placement": "객잔 문 옆",
+      "portrait_choice": "female_innkeeper",
+      "existing_portrait": "res://assets/portraits/wuchang/du_sanniang.png",
+      "personality_proposal": "투숙객의 체면을 지키면서도 밥값과 손님 안전에는 단호하다."
+    },
+    {
+      "number": 6,
+      "name_proposal": "곽만재",
+      "role": "하역 인부",
+      "placement": "장강 나루 작업장 가장자리",
+      "portrait_choice": "male_dockworker",
+      "existing_portrait": "res://assets/portraits/wuchang/wu_deshu.png",
+      "personality_proposal": "배마다 다른 인부들의 사정을 알고 있는 숙련 하역꾼."
+    },
+    {
+      "number": 7,
+      "name_proposal": "윤문식",
+      "role": "창고 서리",
+      "placement": "창고 출입문 옆",
+      "portrait_choice": "male_common_b",
+      "existing_portrait": "res://assets/portraits/extras/male_common_b.png",
+      "personality_proposal": "물품 수량과 인장에 꼼꼼하지만 책임을 떠맡는 것은 두려워한다."
+    },
+    {
+      "number": 8,
+      "name_proposal": "오강",
+      "role": "뱃사공",
+      "placement": "진회하 작은 나루",
+      "portrait_choice": "male_middle",
+      "existing_portrait": "res://assets/portraits/extras/male_middle.png",
+      "personality_proposal": "날씨와 물살을 살피며 승객의 소란스러운 이야기를 흘려듣는 척한다."
+    },
+    {
+      "number": 9,
+      "name_proposal": "위씨 할머니",
+      "role": "주민",
+      "placement": "남쪽 주거골목 집 앞",
+      "portrait_choice": "female_elder",
+      "existing_portrait": "res://assets/portraits/extras/female_elder.png",
+      "personality_proposal": "골목의 오래된 이웃들을 챙기고 부유한 집의 사정에도 밝다."
+    },
+    {
+      "number": 10,
+      "name_proposal": "정소복",
+      "role": "노점상",
+      "placement": "서문 안쪽 길가",
+      "portrait_choice": "male_young",
+      "existing_portrait": "res://assets/portraits/extras/male_young.png",
+      "personality_proposal": "큰길을 막지 않는 자리에서 행인에게 간식과 길 안내를 판다."
+    },
+    {
+      "number": 11,
+      "name_proposal": "소학겸",
+      "role": "서적상",
+      "placement": "서책거리 점포 앞",
+      "portrait_choice": "male_elder",
+      "existing_portrait": "res://assets/portraits/extras/male_elder.png",
+      "personality_proposal": "책을 사지 않아도 읽고 가라며 사람을 붙잡는 나이 든 서적상."
+    },
+    {
+      "number": 12,
+      "name_proposal": "임소아",
+      "role": "찻집 일꾼",
+      "placement": "진회하 동쪽 수변 찻집 앞(기루 인근)",
+      "portrait_choice": "female_common_a",
+      "existing_portrait": "res://assets/portraits/extras/female_common_a.png",
+      "personality_proposal": "손님을 잘 기억하지만 모든 소문을 믿지는 않는 젊은 일꾼."
+    }
+  ]
+}
