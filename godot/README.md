@@ -88,3 +88,7 @@ try {
 - [장사–무창 산길·왕복·저장](../docs/cities/changsha-wuchang-road.md)
 
 - [무창 민간 주민8명·대사·초상화](../docs/characters/wuchang-civilians.md)
+
+## 남경 구휼 의뢰
+
+무창 동쪽→삼거리 산촌 동쪽 포탈→남경 객잔의 육소전에게 F. 무림맹에서 중급 무공을 전수받은 뒤 수락할 수 있으며, 범인 인계 후500문·남궁세가 호의도+10을 받는다. [진행과 실제 화면](../docs/quests/nanjing-relief.md). 별도 데모 내보내기 없이 F5로 실행한다.

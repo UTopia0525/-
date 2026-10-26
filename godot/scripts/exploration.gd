@@ -69,7 +69,7 @@ func load_area(value: String) -> void:
 	regional_map=null
 	area_name = value
 	player.stop()
-	player.set_display_height(float(player.animation_metadata.target_height) if value in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp"] else Metrics.PROLOGUE_HEIGHT)
+	player.set_display_height(float(player.animation_metadata.target_height) if value in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing"] else Metrics.PROLOGUE_HEIGHT)
 	camera.set_focus_height(player.display_height*Metrics.CAMERA_FOCUS_RATIO)
 	for entry in npcs:
 		entry.node.free()
@@ -90,7 +90,7 @@ func load_area(value: String) -> void:
 	city_data = {}
 	map_bounds = Rect2(0, 0, 1280, 720)
 	camera.exploration_zoom = camera_zoom
-	if value in ["mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp"]:
+	if value in ["mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing"]:
 		_load_regional(value)
 	elif value == "changsha":
 		_load_changsha()
@@ -135,20 +135,24 @@ func load_area(value: String) -> void:
 	if is_instance_valid(plaque):plaque.refresh_world()
 	var grain=get_parent().get("grain_quest")
 	if is_instance_valid(grain):grain.refresh_world()
+	var relief=get_parent().get("nanjing_relief_quest")
+	if is_instance_valid(relief):relief.refresh_world()
 	var qingya=get_parent().get("qingya_quest")
 	if is_instance_valid(qingya):qingya.refresh_world()
 	camera.set_map_bounds(map_bounds)
 	camera.snap_to_player()
 
 func _load_regional(value: String) -> void:
-	if value in ["qingya_hamlet","qingya_camp"]:
+	if value=="nanjing":
+		regional_map=preload("res://scripts/nanjing_map.gd").new()
+	elif value in ["qingya_hamlet","qingya_camp"]:
 		regional_map=preload("res://scripts/qingya_map.gd").new(value,get_parent().qingya_quest.ruined)
 	else:
 		regional_map=load("res://scripts/"+("mountain_road_map.gd" if value=="mountain_road" else "alliance_office_map.gd" if value=="alliance_office" else "wuchang_map.gd")).new()
 	add_child(regional_map)
 	city_data=regional_map.data.duplicate(true)
 	city_data.ground_texture="res://assets/maps/"+("changsha-wuchang" if value=="mountain_road" else "alliance-office" if value=="alliance_office" else "wuchang")+"/ground.png"
-	if value in ["qingya_hamlet","qingya_camp"]:city_data.ground_texture=regional_map.data.ground_texture
+	if value in ["qingya_hamlet","qingya_camp","nanjing"]:city_data.ground_texture=regional_map.data.ground_texture
 	for district in city_data.districts:
 		district.bounds=district.rect;district.category={"market":"market","workshops":"workshops","martial":"martial_hall"}.get(district.get("id",""),"regional")
 	map_bounds=regional_map.map_bounds;camera.exploration_zoom=0.8
@@ -167,11 +171,11 @@ func _load_regional(value: String) -> void:
 		art_tiles.append({"texture":load(prefab.texture),"source":Rect2(prefab.source[0],prefab.source[1],prefab.source[2],prefab.source[3]),"target":target})
 	art_tiles.sort_custom(func(a,b):return a.target.end.y<b.target.end.y)
 	player.position=city_point(city_data.spawn)
-	if value=="wuchang":
-		var civil=JSON.parse_string(FileAccess.get_file_as_string("res://data/wuchang_residents.json"))
+	if value in ["wuchang","nanjing"]:
+		var civil=JSON.parse_string(FileAccess.get_file_as_string("res://data/"+value+"_residents.json"))
 		city_data.residents=civil.npcs;city_data.services=civil.services
 		var faction=JSON.parse_string(FileAccess.get_file_as_string("res://data/alliance_characters.json"))
-		city_data.residents.append_array(faction.npcs.filter(func(n):return n.area==value))
+		if value=="wuchang":city_data.residents.append_array(faction.npcs.filter(func(n):return n.area==value))
 		city_data.road_centers=[]
 		for road in city_data.roads:
 			for i in range(road.points.size()-1):
@@ -243,7 +247,7 @@ func _populate_residents(entries: Array) -> void:
 		citizen.set_meta("frame", entry.frame)
 		citizen.set_meta("service_id", entry.get("service_id", ""))
 		citizen.set_meta("story_actor", entry.get("story_actor", false))
-		citizen.set_meta("show_name",entry.has("service_id") or entry.get("story_actor",false) or entry.has("character_profile") or area_name=="wuchang")
+		citizen.set_meta("show_name",entry.has("service_id") or entry.get("story_actor",false) or entry.has("character_profile") or area_name in ["wuchang","nanjing"])
 		# Use the same foot baseline as the player for Y sorting.
 		decorations.add_child(citizen)
 		ambient_nodes.append(citizen)
@@ -394,7 +398,7 @@ func safe_player_position(preferred: Vector2) -> Vector2:
 				if absi(x) != ring and absi(y) != ring: continue
 				var candidate := preferred + Vector2(x, y) * 20.0
 				if can_stand(candidate): return candidate
-	return city_point(city_data.spawn) if area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp"] else preferred
+	return city_point(city_data.spawn) if area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing"] else preferred
 
 func path_to(point: Vector2, interaction: bool = false) -> PackedVector2Array:
 	if is_instance_valid(regional_map):
@@ -533,7 +537,7 @@ func _process(_delta: float) -> void:
 	indicator.visible = not target.is_empty() and not target.has("travel")
 	if not target.is_empty():
 		indicator.position=target.position
-		indicator.set_body_height((Metrics.CITIZEN_HEIGHT if area_name in ["changsha","wuchang","mountain_road","alliance_office"] else Metrics.PROLOGUE_HEIGHT) if target.frame>=0 else 0.0)
+		indicator.set_body_height((Metrics.CITIZEN_HEIGHT if area_name in ["changsha","wuchang","mountain_road","alliance_office","qingya_hamlet","qingya_camp","nanjing"] else Metrics.PROLOGUE_HEIGHT) if target.frame>=0 else 0.0)
 	if not target.is_empty():
 		hint.add_theme_color_override("font_color",Color("9de5ff") if target.has("travel") else UI.GOLD)
 		hint.position = target.position + Vector2(-75, 20 if target.has("travel") else 14)

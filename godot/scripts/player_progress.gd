@@ -11,7 +11,7 @@ var learned: Array
 var loadout: Array
 var inventory: Dictionary
 var consumed: Dictionary
-const FACTIONS = {"murim_alliance":"무림맹"}
+const FACTIONS = {"murim_alliance":"무림맹","namgung":"남궁세가"}
 const FAVOR_MAX=100
 var faction_favor: Dictionary = {}
 var known_factions: Array = []

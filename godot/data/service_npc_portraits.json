@@ -75,6 +75,11 @@
       "merchant": "merchant_b",
       "artisan": "artisan_b",
       "instructor": "instructor_b"
+    },
+    "nanjing": {
+      "merchant": "merchant_b",
+      "artisan": "artisan_b",
+      "instructor": "instructor_a"
     }
   }
 }

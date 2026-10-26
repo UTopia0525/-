@@ -1,0 +1,275 @@
+{
+  "npcs": [
+    {
+      "id": "nj_merchant",
+      "name": "심유란",
+      "role": "약재상",
+      "post": "약재상",
+      "point": [
+        975,
+        455.84
+      ],
+      "basic_portrait": "female_herbalist",
+      "frame": 5,
+      "quest_actor": false,
+      "character_profile": {},
+      "dialogue": [
+        [
+          "nj_merchant",
+          "여독이 얼굴에 남았군요. 영약은 백문, 같은 약은 평생 열 알까지입니다. 몸부터 돌보세요."
+        ]
+      ],
+      "service_id": "city_merchant"
+    },
+    {
+      "id": "nj_artisan",
+      "name": "유철생",
+      "role": "장인",
+      "post": "장인",
+      "point": [
+        370,
+        599.35
+      ],
+      "basic_portrait": "male_blacksmith",
+      "frame": 4,
+      "quest_actor": false,
+      "character_profile": {},
+      "dialogue": [
+        [
+          "nj_artisan",
+          "황성에 납품할 물건도 강호인의 병장기도 날을 속일 수는 없소. 손에 맞는 것을 고르시오."
+        ]
+      ],
+      "service_id": "city_artisan"
+    },
+    {
+      "id": "nj_instructor",
+      "name": "조원식",
+      "role": "교관",
+      "post": "교관",
+      "point": [
+        1410,
+        620.45
+      ],
+      "basic_portrait": "male_middle",
+      "frame": 6,
+      "quest_actor": false,
+      "character_profile": {},
+      "dialogue": [
+        [
+          "nj_instructor",
+          "초식을 많이 아는 것과 제대로 펼치는 것은 다르오. 한 문 전수에 삼백오십문이오."
+        ]
+      ],
+      "service_id": "city_instructor",
+      "portrait": "res://assets/portraits/services/instructor.png"
+    },
+    {
+      "id": "nj_constable",
+      "name": "장세평",
+      "role": "포졸",
+      "post": "포졸",
+      "point": [
+        1150,
+        329.22
+      ],
+      "basic_portrait": "male_constable",
+      "frame": 4,
+      "quest_actor": false,
+      "character_profile": {},
+      "dialogue": [
+        [
+          "nj_constable",
+          "여기는 천자께서 계신 도성이오. 억울한 일은 관아에 고하고, 길에서 함부로 칼을 뽑지는 마시오."
+        ]
+      ],
+      "portrait": "res://assets/portraits/story/constable-duty.png"
+    },
+    {
+      "id": "nj_innkeeper",
+      "name": "하삼랑",
+      "role": "객잔 주인",
+      "post": "객잔 주인",
+      "point": [
+        940,
+        620.45
+      ],
+      "basic_portrait": "female_innkeeper",
+      "frame": 5,
+      "quest_actor": false,
+      "character_profile": {},
+      "dialogue": [
+        [
+          "nj_innkeeper",
+          "장사꾼도 무인도 밥을 굶으면 기운을 못 쓰지요. 묵을 방을 찾으세요, 아니면 사람을 찾으세요?"
+        ]
+      ]
+    },
+    {
+      "id": "nj_dockworker",
+      "name": "곽만재",
+      "role": "하역 인부",
+      "post": "하역 인부",
+      "point": [
+        250,
+        329.22
+      ],
+      "basic_portrait": "male_dockworker",
+      "frame": 6,
+      "quest_actor": false,
+      "character_profile": {},
+      "dialogue": [
+        [
+          "nj_dockworker",
+          "쌀자루는 어깨에 메면 다 같은 무게요. 누구 이름이 찍혔든 받을 이에게 가야지."
+        ]
+      ]
+    },
+    {
+      "id": "nj_clerk",
+      "name": "윤문식",
+      "role": "창고 서리",
+      "post": "창고 서리",
+      "point": [
+        600,
+        329.22
+      ],
+      "basic_portrait": "male_common_b",
+      "frame": 7,
+      "quest_actor": false,
+      "character_profile": {},
+      "dialogue": [
+        [
+          "nj_clerk",
+          "입고 수량은 여기 적혀 있습니다. 불출 뒤의 일은 상단 관사가 맡고요."
+        ]
+      ]
+    },
+    {
+      "id": "nj_boatman",
+      "name": "오강",
+      "role": "뱃사공",
+      "post": "뱃사공",
+      "point": [
+        510,
+        820
+      ],
+      "basic_portrait": "male_middle",
+      "frame": 6,
+      "quest_actor": false,
+      "character_profile": {},
+      "dialogue": [
+        [
+          "nj_boatman",
+          "진회하 물살이 잔잔하다고 마음까지 놓지는 마시오. 건너실 때는 다리를 쓰시오."
+        ]
+      ]
+    },
+    {
+      "id": "nj_grandmother",
+      "name": "위씨 할머니",
+      "role": "주민",
+      "post": "주민",
+      "point": [
+        340,
+        890
+      ],
+      "basic_portrait": "female_elder",
+      "frame": 5,
+      "quest_actor": false,
+      "character_profile": {},
+      "dialogue": [
+        [
+          "nj_grandmother",
+          "누가 왔다 가는지는 몰라도, 오늘 끼니가 있는 집과 없는 집은 보이지요."
+        ]
+      ]
+    },
+    {
+      "id": "nj_vendor",
+      "name": "정소복",
+      "role": "노점상",
+      "post": "노점상",
+      "point": [
+        290,
+        455.84
+      ],
+      "basic_portrait": "male_young",
+      "frame": 7,
+      "quest_actor": false,
+      "character_profile": {},
+      "dialogue": [
+        [
+          "nj_vendor",
+          "먼 길 오셨소? 객잔은 길 따라 동쪽, 대장간은 이 골목 아래요."
+        ]
+      ]
+    },
+    {
+      "id": "nj_bookseller",
+      "name": "소학겸",
+      "role": "서적상",
+      "post": "서적상",
+      "point": [
+        900,
+        308.12
+      ],
+      "basic_portrait": "male_elder",
+      "frame": 6,
+      "quest_actor": false,
+      "character_profile": {},
+      "dialogue": [
+        [
+          "nj_bookseller",
+          "서책은 사지 않아도 좋소. 한 줄 읽고 쉬어 가시오. 길에만 뜻이 있는 것은 아니니."
+        ]
+      ]
+    },
+    {
+      "id": "nj_tea_worker",
+      "name": "임소아",
+      "role": "찻집 일꾼",
+      "post": "찻집 일꾼",
+      "point": [
+        1320,
+        900
+      ],
+      "basic_portrait": "female_common_a",
+      "frame": 5,
+      "quest_actor": false,
+      "character_profile": {},
+      "dialogue": [
+        [
+          "nj_tea_worker",
+          "물가에서 들은 소문이라고 모두 흘려보낼 이야기는 아니지요. 차 한 잔 드릴까요?"
+        ]
+      ]
+    }
+  ],
+  "services": [
+    {
+      "id": "city_merchant",
+      "npc_id": "nj_merchant",
+      "actor_id": "nj_merchant",
+      "kind": "market",
+      "title": "남경 약재점",
+      "name": "심유란"
+    },
+    {
+      "id": "city_artisan",
+      "npc_id": "nj_artisan",
+      "actor_id": "nj_artisan",
+      "kind": "workshop",
+      "title": "남경 공방",
+      "name": "유철생"
+    },
+    {
+      "id": "city_instructor",
+      "npc_id": "nj_instructor",
+      "actor_id": "nj_instructor",
+      "kind": "training",
+      "title": "남경 무관",
+      "name": "조원식"
+    }
+  ]
+}

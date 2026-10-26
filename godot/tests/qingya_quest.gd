@@ -73,7 +73,7 @@ func run() -> void:
 	check(world.ambient_nodes.size()==4,"four residents before event")
 	check(not game.ordinary_quests.marker_for(q.GIVER).is_empty(),"available quest marker exposed to maps")
 	check(not world.path_to(world.city_point([1470,530]),true).is_empty(),"west-east road remains passable without quest")
-	check(not Travel.blocked_reason(game,"nanjing").is_empty(),"unbuilt Nanjing destination cannot load as deck")
+	check(Travel.blocked_reason(game,"nanjing").is_empty() and "nanjing" in Travel.AREAS,"Nanjing destination now has a playable regional map")
 	game.quest_navigation.track("wuchang_missing_herbalist","offer")
 	check(not game.quest_navigation.get_goal(world).is_empty(),"old quest guides back from new region")
 	await investigation()

@@ -114,7 +114,9 @@ func is_target(npc: String) -> bool:
 	return false
 func marker_for(npc: String) -> String:
 	for quest in game.regional_quests():
-		if is_instance_valid(quest) and npc==quest.GIVER:return quest.marker_for(npc)
+		if is_instance_valid(quest):
+			var symbol: String=quest.marker_for(npc)
+			if not symbol.is_empty():return symbol
 	if game.trade_intro.active() and game.trade_intro.current().npc==npc:return "?"
 	for id in definitions:
 		if definitions[id].giver==npc:
@@ -129,7 +131,7 @@ func _refresh_target_icons() -> void:
 		var is_giver:=false
 		for q in game.regional_quests():
 			if id==q.GIVER:is_giver=true
-		if w.area_name=="changsha" or is_giver:continue
+		if w.area_name=="changsha" or is_giver or not marker_for(id).is_empty():continue
 		if not is_target(id):continue
 		present[id]=true
 		if not target_marks.has(id):

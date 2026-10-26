@@ -1,0 +1,12 @@
+{
+  "ground": {
+    "source": "/workspace/generated_images/exec-32e24bbc-ac26-4a82-be71-b8f07b4c8dbd.png",
+    "sha256": "d2b8767aa5b686dc2155d4058966ae7affff11734086ef7cde2608c8d6e27d6a",
+    "method": "image_gen original copied without raster edits; independent scenery rendered in Godot"
+  },
+  "yeonseo": {
+    "source": "assets/portraits/namgung/yeonseo.png",
+    "target": "godot/assets/portraits/namgung/yeonseo.png",
+    "sha256": "2539ad990040867d8b005d41cb74d34d55330a180b84af8596fbaf5c25ffec89"
+  }
+}

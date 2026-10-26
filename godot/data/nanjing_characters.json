@@ -1,0 +1,91 @@
+{
+  "npcs": [
+    {
+      "id": "lu_xiaozhuan",
+      "name": "육소전",
+      "age": 26,
+      "role": "점소이",
+      "post": "점소이",
+      "point": [
+        820,
+        620.45
+      ],
+      "basic_portrait": "male_young",
+      "frame": 7,
+      "quest_actor": true,
+      "character_profile": {
+        "personality": "붙임성 있는 객잔 점소이. 손님의 끼니와 사정을 잘 기억하며 동료의 이름을 함부로 팔지 않는다. 구휼의 이상을 도원에게 알리지만 정보의 출처를 모두 밝히지는 않는다."
+      }
+    },
+    {
+      "id": "namgung_yeonseo",
+      "name": "남궁연서",
+      "age": 20,
+      "role": "남궁세가",
+      "post": "남궁세가",
+      "point": [
+        705,
+        320.78
+      ],
+      "basic_portrait": "female_young",
+      "frame": 5,
+      "quest_actor": true,
+      "character_profile": {
+        "personality": "차분하고 꼼꼼하며 민초를 돕지만 가문의 일에 외부인이 개입하는 것은 경계한다. 도원의 공적을 확인한 뒤 협력을 청한다."
+      },
+      "portrait": "res://assets/portraits/namgung/yeonseo.png"
+    },
+    {
+      "id": "jin_yulan",
+      "name": "진옥란",
+      "age": 41,
+      "role": "접객 담당",
+      "post": "접객 담당",
+      "point": [
+        1450,
+        900
+      ],
+      "basic_portrait": "female_middle",
+      "frame": 5,
+      "quest_actor": true,
+      "character_profile": {
+        "personality": "기루의 접객을 맡으며 종사자와 찾아오는 이들의 안전을 중시한다. 숨은 인부에게 연결해 준다."
+      }
+    },
+    {
+      "id": "nj_he_mansik",
+      "name": "허만식",
+      "age": 38,
+      "role": "하역 인부",
+      "post": "하역 인부",
+      "point": [
+        650,
+        890
+      ],
+      "basic_portrait": "male_farmer",
+      "frame": 6,
+      "quest_actor": true,
+      "character_profile": {
+        "personality": "가족의 생계를 빌미로 거짓 수령 확인에 가담한 뒤 누명을 두려워해 숨었다."
+      }
+    },
+    {
+      "id": "nj_zhao_desheng",
+      "name": "조덕승",
+      "age": 46,
+      "role": "상단 관사",
+      "post": "상단 관사",
+      "point": [
+        630,
+        109.74
+      ],
+      "basic_portrait": "male_middle",
+      "frame": 4,
+      "quest_actor": true,
+      "character_profile": {
+        "personality": "구휼 운송을 맡아 곡식을 빼돌리고 인부에게 책임을 떠넘긴 실무 책임자. 증거 앞에서는 거래를 핑계로 도망치려 한다."
+      }
+    }
+  ],
+  "nameplate_policy": "이름과 겉직업만 표시한다. 육소전과 진옥란의 조직 소속은 머리 위에 표시하지 않는다."
+}
