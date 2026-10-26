@@ -1,8 +1,8 @@
 {
   "ground": {
-    "source": "/workspace/generated_images/exec-6b0c5b8c-bba8-4676-b991-84717297d49c.png",
-    "sha256": "4f6f4b5ce63ce3c28750a3541f49cafbfe8fb33029beaec405c4adbd3e684184",
-    "method": "image_gen edit from original city reference; exact source file copied; sprites selected by runtime AtlasTexture, no raster postprocessing"
+    "source": "/workspace/generated_images/exec-0e8461b4-f0c4-44c2-b349-2457eb48dcea.png",
+    "sha256": "8fd5c5d3f98fb8a35b54b18fad1f478409b88a7d5513f0d67b5255568ac5a490",
+    "method": "image_gen terrain edit: district-specific urban paving, compacted yards; copied unchanged"
   },
   "yeonseo": {
     "source": "assets/portraits/namgung/yeonseo.png",
@@ -30,5 +30,15 @@
     "source": "/workspace/generated_images/exec-b8706224-ef17-42a5-b3e0-12f9097dab89.png",
     "sha256": "438a3160cb1f266608948d961c6177149f015ffafceec74ceff19ac112c8a599",
     "method": "image_gen edit from original city reference; exact source file copied; sprites selected by runtime AtlasTexture, no raster postprocessing"
+  },
+  "capital_ground_previous": {
+    "source": "/workspace/generated_images/exec-6b0c5b8c-bba8-4676-b991-84717297d49c.png",
+    "sha256": "4f6f4b5ce63ce3c28750a3541f49cafbfe8fb33029beaec405c4adbd3e684184",
+    "method": "image_gen edit from original city reference; exact source file copied; sprites selected by runtime AtlasTexture, no raster postprocessing"
+  },
+  "capital_props": {
+    "source": "/workspace/generated_images/exec-5d741cd0-6e11-4377-8ade-bc962142b095.png",
+    "sha256": "81bd94c80cc8e1b296ee51099627887e330bdda05c4bcf998ed1c320763befa1",
+    "method": "image_gen transparent atlas; cropped only at runtime with AtlasTexture"
   }
 }

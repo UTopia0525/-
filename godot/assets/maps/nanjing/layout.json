@@ -375,7 +375,7 @@
     },
     {
       "id": "alley_house_4",
-      "prefab": "nj_sidehome",
+      "prefab": "nj_shop",
       "rect": [
         455,
         552,
@@ -1172,6 +1172,376 @@
         119,
         145
       ]
+    },
+    {
+      "id": "capital_0",
+      "prefab": "capital_silk",
+      "rect": [
+        764,
+        388,
+        53,
+        42
+      ]
+    },
+    {
+      "id": "capital_1",
+      "prefab": "capital_produce",
+      "rect": [
+        847,
+        391,
+        46,
+        36
+      ]
+    },
+    {
+      "id": "capital_2",
+      "prefab": "capital_silk",
+      "rect": [
+        960,
+        380,
+        47,
+        38
+      ]
+    },
+    {
+      "id": "capital_3",
+      "prefab": "capital_produce",
+      "rect": [
+        680,
+        471,
+        45,
+        34
+      ]
+    },
+    {
+      "id": "capital_4",
+      "prefab": "capital_silk",
+      "rect": [
+        1014,
+        468,
+        50,
+        38
+      ]
+    },
+    {
+      "id": "capital_5",
+      "prefab": "capital_books",
+      "rect": [
+        797,
+        253,
+        47,
+        35
+      ]
+    },
+    {
+      "id": "capital_6",
+      "prefab": "capital_books",
+      "rect": [
+        1102,
+        250,
+        46,
+        35
+      ]
+    },
+    {
+      "id": "capital_7",
+      "prefab": "capital_books",
+      "rect": [
+        1210,
+        251,
+        48,
+        35
+      ]
+    },
+    {
+      "id": "capital_8",
+      "prefab": "capital_forge",
+      "rect": [
+        367,
+        387,
+        37,
+        31
+      ]
+    },
+    {
+      "id": "capital_9",
+      "prefab": "capital_forge",
+      "rect": [
+        568,
+        462,
+        31,
+        33
+      ]
+    },
+    {
+      "id": "capital_10",
+      "prefab": "capital_bales",
+      "rect": [
+        260,
+        190,
+        35,
+        28
+      ]
+    },
+    {
+      "id": "capital_11",
+      "prefab": "capital_bales",
+      "rect": [
+        330,
+        314,
+        36,
+        27
+      ]
+    },
+    {
+      "id": "capital_12",
+      "prefab": "capital_grain_cart",
+      "rect": [
+        265,
+        315,
+        44,
+        30
+      ]
+    },
+    {
+      "id": "capital_13",
+      "prefab": "capital_grain_cart",
+      "rect": [
+        236,
+        192,
+        35,
+        25
+      ]
+    },
+    {
+      "id": "capital_14",
+      "prefab": "capital_laundry",
+      "rect": [
+        563,
+        174,
+        36,
+        25
+      ]
+    },
+    {
+      "id": "capital_15",
+      "prefab": "capital_laundry",
+      "rect": [
+        655,
+        314,
+        39,
+        26
+      ]
+    },
+    {
+      "id": "capital_16",
+      "prefab": "capital_laundry",
+      "rect": [
+        812,
+        985,
+        39,
+        25
+      ]
+    },
+    {
+      "id": "capital_17",
+      "prefab": "capital_dummy",
+      "rect": [
+        1240,
+        689,
+        21,
+        41
+      ]
+    },
+    {
+      "id": "capital_18",
+      "prefab": "capital_rack",
+      "rect": [
+        1363,
+        690,
+        29,
+        37
+      ]
+    },
+    {
+      "id": "capital_19",
+      "prefab": "capital_tea",
+      "rect": [
+        1005,
+        740,
+        38,
+        39
+      ]
+    },
+    {
+      "id": "capital_21",
+      "prefab": "capital_tea",
+      "rect": [
+        1385,
+        887,
+        39,
+        38
+      ]
+    },
+    {
+      "id": "capital_22",
+      "prefab": "capital_planter",
+      "rect": [
+        1062,
+        468,
+        26,
+        30
+      ]
+    },
+    {
+      "id": "capital_23",
+      "prefab": "capital_planter",
+      "rect": [
+        1318,
+        466,
+        26,
+        30
+      ]
+    },
+    {
+      "id": "capital_24",
+      "prefab": "capital_planter",
+      "rect": [
+        605,
+        703,
+        25,
+        29
+      ]
+    },
+    {
+      "id": "capital_25",
+      "prefab": "capital_planter",
+      "rect": [
+        942,
+        704,
+        25,
+        29
+      ]
+    },
+    {
+      "id": "capital_26",
+      "prefab": "capital_planter",
+      "rect": [
+        1110,
+        941,
+        23,
+        28
+      ]
+    },
+    {
+      "id": "capital_lantern_0",
+      "prefab": "capital_lantern",
+      "rect": [
+        725,
+        462,
+        30,
+        47
+      ]
+    },
+    {
+      "id": "capital_lantern_1",
+      "prefab": "capital_lantern",
+      "rect": [
+        1000,
+        470,
+        30,
+        47
+      ]
+    },
+    {
+      "id": "capital_lantern_2",
+      "prefab": "capital_lantern",
+      "rect": [
+        605,
+        671,
+        30,
+        47
+      ]
+    },
+    {
+      "id": "capital_lantern_3",
+      "prefab": "capital_lantern",
+      "rect": [
+        942,
+        673,
+        30,
+        47
+      ]
+    },
+    {
+      "id": "capital_lantern_4",
+      "prefab": "capital_lantern",
+      "rect": [
+        1080,
+        710,
+        30,
+        47
+      ]
+    },
+    {
+      "id": "capital_lantern_5",
+      "prefab": "capital_lantern",
+      "rect": [
+        1397,
+        730,
+        30,
+        47
+      ]
+    },
+    {
+      "id": "capital_lantern_6",
+      "prefab": "capital_lantern",
+      "rect": [
+        1090,
+        910,
+        30,
+        47
+      ]
+    },
+    {
+      "id": "capital_lantern_7",
+      "prefab": "capital_lantern",
+      "rect": [
+        1285,
+        932,
+        30,
+        47
+      ]
+    },
+    {
+      "id": "capital_lantern_8",
+      "prefab": "capital_lantern",
+      "rect": [
+        1270,
+        459,
+        30,
+        47
+      ]
+    },
+    {
+      "id": "capital_lion_left",
+      "prefab": "capital_lion",
+      "rect": [
+        1089,
+        472,
+        23,
+        37
+      ]
+    },
+    {
+      "id": "capital_lion_right",
+      "prefab": "capital_lion",
+      "rect": [
+        1286,
+        472,
+        23,
+        37
+      ]
     }
   ],
   "districts": [
@@ -1889,6 +2259,244 @@
           0.11
         ]
       ]
+    },
+    "capital_silk": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        5,
+        0,
+        400,
+        320
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_produce": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        418,
+        3,
+        342,
+        317
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_grain_cart": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        778,
+        50,
+        385,
+        280
+      ],
+      "kind": "cargo",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_bales": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        1180,
+        25,
+        350,
+        300
+      ],
+      "kind": "cargo",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_lantern": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        22,
+        322,
+        280,
+        355
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_forge": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        336,
+        343,
+        430,
+        333
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_books": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        781,
+        347,
+        386,
+        326
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_lion": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        1180,
+        399,
+        166,
+        269
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_laundry": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        10,
+        691,
+        390,
+        310
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_dummy": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        434,
+        699,
+        150,
+        290
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_rack": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        580,
+        682,
+        220,
+        300
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_tea": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        810,
+        673,
+        340,
+        337
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_planter": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        1180,
+        677,
+        345,
+        330
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
     }
+  },
+  "ambience": {
+    "description": "붉은 등롱/비단 시장, 어두운 공방, 하역 짐수레, 서책 진열, 관아 석수, 수변 찻자리",
+    "crowd_prefix": "nj_crowd_"
   }
 }

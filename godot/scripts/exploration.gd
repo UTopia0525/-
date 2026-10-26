@@ -247,7 +247,7 @@ func _populate_residents(entries: Array) -> void:
 		citizen.set_meta("frame", entry.frame)
 		citizen.set_meta("service_id", entry.get("service_id", ""))
 		citizen.set_meta("story_actor", entry.get("story_actor", false))
-		citizen.set_meta("show_name",entry.has("service_id") or entry.get("story_actor",false) or entry.has("character_profile") or area_name in ["wuchang","nanjing"])
+		citizen.set_meta("show_name",entry.get("show_name",entry.has("service_id") or entry.get("story_actor",false) or entry.has("character_profile") or area_name in ["wuchang","nanjing"]))
 		# Use the same foot baseline as the player for Y sorting.
 		decorations.add_child(citizen)
 		ambient_nodes.append(citizen)

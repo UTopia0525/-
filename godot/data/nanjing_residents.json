@@ -244,6 +244,166 @@
           "물가에서 들은 소문이라고 모두 흘려보낼 이야기는 아니지요. 차 한 잔 드릴까요?"
         ]
       ]
+    },
+    {
+      "id": "nj_crowd_port_worker",
+      "name": "왕복생",
+      "role": "하역 인부",
+      "post": "하역 인부",
+      "point": [
+        390,
+        205
+      ],
+      "basic_portrait": "male_dockworker",
+      "frame": 6,
+      "quest_actor": false,
+      "show_name": false,
+      "dialogue": [
+        [
+          "nj_crowd_port_worker",
+          "수레가 들어오니 길 가장자리로 붙으시오. 수도의 쌀값은 이 나루에서 먼저 움직인다오."
+        ]
+      ]
+    },
+    {
+      "id": "nj_crowd_silk_buyer",
+      "name": "유소란",
+      "role": "포목 손님",
+      "post": "포목 손님",
+      "point": [
+        585,
+        510
+      ],
+      "basic_portrait": "female_common_b",
+      "frame": 5,
+      "quest_actor": false,
+      "show_name": false,
+      "dialogue": [
+        [
+          "nj_crowd_silk_buyer",
+          "이 비단은 햇볕 아래서 다시 봐야겠어요. 남경 물건이라고 모두 좋은 것은 아니니까요."
+        ]
+      ]
+    },
+    {
+      "id": "nj_crowd_market_runner",
+      "name": "전길",
+      "role": "심부름꾼",
+      "post": "심부름꾼",
+      "point": [
+        888,
+        510
+      ],
+      "basic_portrait": "male_young",
+      "frame": 7,
+      "quest_actor": false,
+      "show_name": false,
+      "dialogue": [
+        [
+          "nj_crowd_market_runner",
+          "장사꾼 부르는 소리에 정신이 없지요? 짐을 잃으면 저잣거리 입구에서부터 찾아보세요."
+        ]
+      ]
+    },
+    {
+      "id": "nj_crowd_inn_guest",
+      "name": "석문수",
+      "role": "객잔 손님",
+      "post": "객잔 손님",
+      "point": [
+        586,
+        740
+      ],
+      "basic_portrait": "male_common_b",
+      "frame": 4,
+      "quest_actor": false,
+      "show_name": false,
+      "dialogue": [
+        [
+          "nj_crowd_inn_guest",
+          "방 하나 얻으려면 해 지기 전에 와야 하오. 객잔이 크다고 빈방이 늘 있는 건 아니더군."
+        ]
+      ]
+    },
+    {
+      "id": "nj_crowd_book_buyer",
+      "name": "진학명",
+      "role": "서생",
+      "post": "서생",
+      "point": [
+        858,
+        285
+      ],
+      "basic_portrait": "male_young",
+      "frame": 7,
+      "quest_actor": false,
+      "show_name": false,
+      "dialogue": [
+        [
+          "nj_crowd_book_buyer",
+          "새 판본이 나왔다길래 왔소. 이 거리에서는 묵은 책도 그냥 지나치기가 어렵군."
+        ]
+      ]
+    },
+    {
+      "id": "nj_crowd_clerk_runner",
+      "name": "장원",
+      "role": "관아 심부름꾼",
+      "post": "관아 심부름꾼",
+      "point": [
+        1100,
+        282
+      ],
+      "basic_portrait": "male_middle",
+      "frame": 4,
+      "quest_actor": false,
+      "show_name": false,
+      "dialogue": [
+        [
+          "nj_crowd_clerk_runner",
+          "장부를 맡기고 다시 나루로 가야 하오. 도성의 문서는 어찌 매일 쌓이는지."
+        ]
+      ]
+    },
+    {
+      "id": "nj_crowd_alley_neighbor",
+      "name": "주씨 아주머니",
+      "role": "주민",
+      "post": "주민",
+      "point": [
+        714,
+        278
+      ],
+      "basic_portrait": "female_middle",
+      "frame": 5,
+      "quest_actor": false,
+      "show_name": false,
+      "dialogue": [
+        [
+          "nj_crowd_alley_neighbor",
+          "큰길은 북적여도 이 안쪽은 살림하는 골목이에요. 빨래 밑으로 지날 땐 머리를 조심해요."
+        ]
+      ]
+    },
+    {
+      "id": "nj_crowd_quay_guest",
+      "name": "윤소영",
+      "role": "나루 손님",
+      "post": "나루 손님",
+      "point": [
+        800,
+        890
+      ],
+      "basic_portrait": "female_common_a",
+      "frame": 5,
+      "quest_actor": false,
+      "show_name": false,
+      "dialogue": [
+        [
+          "nj_crowd_quay_guest",
+          "저녁에는 물 위로 등불이 번진답니다. 낮의 저잣거리와는 또 다른 남경이지요."
+        ]
+      ]
     }
   ],
   "services": [
