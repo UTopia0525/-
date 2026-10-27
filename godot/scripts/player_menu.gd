@@ -1,6 +1,9 @@
 extends "res://scripts/paper_menu_base.gd"
 ## Live possessions and four-slot preparation in the approved paper layout.
 var game
+var tactics=preload("res://scripts/martial_tactics.gd").new()
+var martial_metrics: Array[Label]=[]
+var range_preview: Control
 var mode:="inventory"
 var category:="all"
 var selected_id:=""
@@ -81,11 +84,11 @@ func refresh() -> void:
  progress=game.progress;var old_scroll=0
  if is_instance_valid(list_scroll):old_scroll=list_scroll.scroll_vertical
  if is_instance_valid(content):remove_child(content);content.queue_free()
- tabs.clear();slots.clear();content=Control.new();content.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);add_child(content)
+ tabs.clear();slots.clear();martial_metrics.clear();range_preview=null;content=Control.new();content.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);add_child(content)
  var shade=ColorRect.new();shade.color=Color("0a1515ba");shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);content.add_child(shade)
  box(content,Rect2(48,29,1184,666),Color("080e0ed9"),Color("786b50"),5);paper(Rect2(58,36,1164,648),Color("eee5cf"))
  heading=text(content,"소지품" if mode=="inventory" else "무공",Rect2(88,53,240,52),38,INK,true)
- text(content,"여정에 필요한 것들을 갖추다" if mode=="inventory" else "실전에 펼칠 네 가지 초식",Rect2(245,66,500,30),17,MUTED)
+ text(content,"여정에 필요한 것들을 갖추다" if mode=="inventory" else "실전에 펼칠 네 가지 초식 · 행동력 / 내기 / 범위",Rect2(245,66,500,30),17,MUTED)
  var total=0
  for value in progress.stats.values():total+=int(value)
  text(content,"도원 · "+progress.RULES.realm(total),Rect2(840,64,190,30),18,INK)
@@ -187,56 +190,8 @@ func update_inventory_detail(kind: String) -> void:
    if item.teaches in p.learned:detail.add_text("\n이미 익힌 무공 · 소모하지 않음")
   "quest":detail.text="의뢰 전달 물품입니다. 목표 인물에게 F로 말을 걸어 전달하세요.";action.text="대화로 전달";action.disabled=true
 func build_martial(ids: Array) -> void:
- for i in range(4):
-  var pos=Vector2(90+i*277,139);var id: String=progress.loadout[i]
-  var slot=button("",Rect2(pos,Vector2(261,113)));slots.append(slot);selected_style(slot,i==target_slot);slot.pressed.connect(select_slot.bind(i))
-  slot.icon=Icons.texture(id);slot.expand_icon=true;slot.add_theme_constant_override("icon_max_width",1)
-  icon(slot,id,Rect2(11,13,82,82));text(slot,str(i+1),Rect2(220,9,30,25),16,MUTED)
-  text(slot,"비어 있음" if id.is_empty() else str(progress.arts.get_skill(id).name),Rect2(106,44,150,36),19,INK)
-  slot.tooltip_text="%d번 칸 · %s" % [i+1,"비어 있음" if id.is_empty() else progress.arts.get_skill(id).name]
- for i in range(7):
-  var value=["all","sword","saber","spear","fist","palm","support"][i]
-  var tab=button(["전체","검","도","창","권","장","보조"][i],Rect2(90+i*68,277,62,32),false);UI.selection(tab,art_filter==value,true,true);tabs.append(tab);tab.pressed.connect(select_filter.bind(value))
- scroll_area(Rect2(90,331,480,273),false)
- for id in ids:
-  var row=button(str(progress.arts.get_skill(id).name),Rect2(0,0,466,59));row.reparent(rows);row.custom_minimum_size=Vector2(466,59);row.icon=Icons.texture(id);row.expand_icon=true;row.icon_alignment=HORIZONTAL_ALIGNMENT_LEFT;row.alignment=HORIZONTAL_ALIGNMENT_LEFT
-  row.add_theme_constant_override("icon_max_width",50);row.add_theme_constant_override("h_separation",22);selected_style(row,id==selected_id);UI.item_highlight(row);row.set_meta("item_id",id)
-  row.tooltip_text=str(progress.arts.get_skill(id).description);row.pressed.connect(select_item.bind(str(id)))
-  if id in progress.loadout:text(row,"편성 %d" % [progress.loadout.find(id)+1],Rect2(366,18,91,23),14,TEAL)
- var clear=button("선택한 편성 칸 비우기",Rect2(0,0,466,43));clear.reparent(rows);clear.custom_minimum_size=Vector2(466,43);clear.pressed.connect(select_item.bind("clear"))
- if ids.is_empty():text(rows,"해당 종류의 익힌 무공이 없습니다.",Rect2(0,0,460,38),17,MUTED)
- line(Rect2(595,279,1,325))
- action=button("선택하세요",Rect2(635,565,525,44),true);action.pressed.connect(apply_selection)
- detail=rich(Rect2(635,478,525,75))
- if selected_id.is_empty():detail.text="익힌 무공과 편성할 칸을 고르세요.";action.disabled=true;return
- if selected_id=="clear":
-  text(content,"초식 비우기",Rect2(633,278,370,46),33,INK,true);detail.text="선택한 칸만 비웁니다. 기본공격·기본방어도 바꿀 수 있습니다.";action.text="%d번 칸 비우기" % [target_slot+1];return
- var item: Dictionary=progress.arts.get_skill(selected_id)
- text(content,item_name(selected_id),Rect2(633,278,380,46),31,INK,true)
- text(content,{"sword":"검법","saber":"도법","spear":"창법","fist":"권법","palm":"장법","support":"보조 무공","basic":"기본 행동"}.get(item.weapon_style,"무공")+" / "+{"intermediate":"중급","low":"하급"}.get(item.get("grade",""),"기본"),Rect2(635,327,350,25),16,MUTED)
- icon(content,selected_id,Rect2(1049,276,110,95))
- var outcome: Dictionary=game.battle.combat.action(selected_id,progress.stats,game.battle.equipped_weapon_id)
- var cost=progress.weapons.qi_cost(int(item.qi_cost),game.battle.equipped_weapon_id,item)
- var support=item.weapon_style=="support"
- var raw=progress.arts.raw_damage(selected_id,progress.stats)
- if selected_id=="basic_attack":raw=progress.RULES.basic_attack_damage(progress.stats)
- var values=[str(progress.arts.qi_recovery(selected_id,progress.stats)) if support else "20%" if selected_id=="basic_defense" else str(int(raw)),str(cost),{"sword":"검","saber":"도","spear":"창","none":"맨손"}.get(item.get("required_weapon_type"),"제한 없음")]
- for i in range(3):
-  var pos=Vector2(635+i*180,378);box(content,Rect2(pos,Vector2(165,84)),Color("e4dac4"))
-  text(content,["회복 내기" if support else "피해 감소" if selected_id=="basic_defense" else "위력 · 보정 전","내기 소모","필요 무기"][i],Rect2(pos+Vector2(13,8),Vector2(143,24)),14,MUTED)
-  text(content,values[i],Rect2(pos+Vector2(13,35),Vector2(143,40)),27,INK)
- detail.text="내공의%d%%만큼 내기 회복 · 피해%d%% 감소 · 재사용 %d턴" % [int(item.get("qi_restore_inner_percent",0)),int(item.get("guard_percent",0)),int(item.get("cooldown_turns",0))] if support else ""
- if not outcome.is_empty() and not support and selected_id!="basic_defense":detail.add_text("현재 장비 적용 위력 %.0f (방어 전)" % outcome.raw)
+ preload("res://scripts/martial_menu_panel.gd").build(self,ids)
 
- var names={"strength":"근력","agility":"기민","constitution":"근골","inner":"내공","insight":"오성"};var terms=[]
- if int(item.get("base_damage",0))>0:terms.append(str(int(item.base_damage)))
- for key in item.damage_coefficients:terms.append("%s×%d" % [names[key],int(item.damage_coefficients[key])])
- if not terms.is_empty():detail.add_text("\n"+" + ".join(terms))
- if not progress.arts.can_use_with_weapon(selected_id,game.battle.equipped_weapon_type):
-  detail.push_color(Color("9c4b3d"));detail.add_text("\n! "+progress.arts.weapon_requirement(selected_id)+" · I에서 장비를 바꾸세요.");detail.pop()
- if item.get("requirements",{}).get("minimum_total",-1)==0 and item.requirements.stats.is_empty():detail.add_text("\n능력치·경지 학습 조건 없음")
- detail.add_text("\n"+item.name+" · "+str(item.description))
- action.text="%d번 칸에 편성" % [target_slot+1]
 func update_detail() -> void:refresh()
 func apply_selection() -> void:
  if not is_instance_valid(action) or action.disabled or not visible or game.state!="explore":return
@@ -255,8 +210,17 @@ func apply_selection() -> void:
 func focus_selection() -> void:
  if not is_instance_valid(rows):return
  for child in rows.get_children():
-  if child is Button and str(child.get_meta("item_id",""))==selected_id:child.grab_focus();return
+  if child is Button and str(child.get_meta("item_id",""))==selected_id:
+   child.grab_focus()
+   if mode=="martial":_reveal_martial_selection.call_deferred(selected_id)
+   return
  if is_instance_valid(action) and not action.disabled:action.grab_focus()
+func _reveal_martial_selection(expected: String) -> void:
+ await get_tree().process_frame
+ if not visible or mode!="martial" or selected_id!=expected or not is_instance_valid(rows) or not is_instance_valid(list_scroll):return
+ for child in rows.get_children():
+  if child is Control and str(child.get_meta("item_id",""))==expected:
+   list_scroll.ensure_control_visible(child);return
 func handle_key(event: InputEventKey) -> void:
  var focused=get_viewport().gui_get_focus_owner()
  if not is_instance_valid(focused) or not is_ancestor_of(focused):focus_selection();focused=get_viewport().gui_get_focus_owner()
