@@ -18,6 +18,8 @@ I 소지품에서 장착한 검·도·창·맨손을 탐험 캐릭터와 전투 
 
 ## 실제 플레이 화면
 
+소지품에서 실제 창 장착 후 WASD 이동으로 재확인한 새 캡처: [뒤](../../godot/screenshots/spear-back-live-up.png) · [앞](../../godot/screenshots/spear-back-live-down.png) · [왼쪽](../../godot/screenshots/spear-back-live-left.png) · [오른쪽](../../godot/screenshots/spear-back-live-right.png). 기존 비교 파일과 다른 이름으로 저장해 구별한다. 뒤에서는 창대/고정 끈, 앞/옆에서는 몸 뒤 가림을 확인했다. `capture_spear_back_live.gd`로 재생성한다.
+
 | 종류 | 탐험 | 전투 |
 | --- | --- | --- |
 | 검 | [화면](../../godot/screenshots/equipment-field-sword.png) | [화면](../../godot/screenshots/equipment-battle-sword.png) |
