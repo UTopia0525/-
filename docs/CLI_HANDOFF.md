@@ -4,6 +4,8 @@
 
 ## 검토 중인 시안
 
+- [전투 UI 색상3안](ui/battle-palette-candidates.md): A 먹빛 청록/B 청회색/C 흑갈색·동빛의 실제 렌더. 사용자 채택 대기이며 런타임 기본 베이지는 유지한다.
+
 
 - 남경의 이전 [도시 시안](cities/nanjing-preview.md)과 [이야기 기획](story/nanjing-outline.md)은 아래 구현 문서를 함께 따른다.
 
