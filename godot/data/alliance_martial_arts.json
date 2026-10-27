@@ -7,10 +7,8 @@
     "weapon_style": "sword",
     "required_weapon_type": "sword",
     "damage_coefficients": {
-      "strength": 5,
-      "agility": 4,
-      "constitution": 2,
-      "inner": 2
+      "strength": 10,
+      "inner": 3
     },
     "base_damage": 0,
     "qi_cost": 18,
@@ -21,8 +19,9 @@
     "acquisition": "alliance_instructor",
     "price": null,
     "price_currency": "mun",
-    "description": "검로를 원으로 되감아 상대의 빈틈을 베고 곧바로 수세를 잇는다. 출수 후 다음 적 공격의 피해20% 감소.",
-    "status": "implemented"
+    "description": "검로를 되감아 상대의 빈틈을 베고 곧바로 수세를 잇는 검법. 출수 후 피해20% 감소.",
+    "status": "implemented",
+    "action_cost": 50
   },
   "paak": {
     "name": "파악도법",
@@ -32,12 +31,11 @@
     "weapon_style": "saber",
     "required_weapon_type": "saber",
     "damage_coefficients": {
-      "strength": 7,
-      "agility": 5,
-      "constitution": 2
+      "strength": 13,
+      "inner": 3
     },
     "base_damage": 0,
-    "qi_cost": 22,
+    "qi_cost": 28,
     "requirements": {
       "stats": {},
       "minimum_total": 0
@@ -45,8 +43,9 @@
     "acquisition": "alliance_instructor",
     "price": null,
     "price_currency": "mun",
-    "description": "허리와 하체의 힘을 도날에 모아 바위산을 가르듯 내려벤다. 방어보다 한 번의 강한 출수에 집중한다.",
-    "status": "implemented"
+    "description": "허리와 하체의 힘을 도날에 모아 바위산을 가르듯 내려베는 도법.",
+    "status": "implemented",
+    "action_cost": 85
   },
   "gwanak": {
     "name": "관악창법",
@@ -56,12 +55,11 @@
     "weapon_style": "spear",
     "required_weapon_type": "spear",
     "damage_coefficients": {
-      "strength": 2,
-      "agility": 3,
+      "strength": 3,
       "inner": 1
     },
     "base_damage": 360,
-    "qi_cost": 18,
+    "qi_cost": 44,
     "requirements": {
       "stats": {},
       "minimum_total": 0
@@ -69,8 +67,9 @@
     "acquisition": "alliance_instructor",
     "price": null,
     "price_currency": "mun",
-    "description": "창대를 타고 모은 힘을 한 점에 터뜨린다. 높은 고정 위력으로 익힌 직후 강력하며 능력치 성장 계수는 낮다. 창의 내기 절감 효과를 받는다.",
-    "status": "implemented"
+    "description": "창대를 타고 모은 힘을 한 점에 터뜨린다. 높은 고정 위력360과 낮은 성장 계수로 익힌 직후 강력하며 창의 내기 절감 효과를 받는다.",
+    "status": "implemented",
+    "action_cost": 65
   },
   "banseok": {
     "name": "반석권법",
@@ -80,12 +79,11 @@
     "weapon_style": "fist",
     "required_weapon_type": "none",
     "damage_coefficients": {
-      "strength": 6,
-      "constitution": 4,
-      "inner": 6
+      "strength": 5,
+      "inner": 14
     },
     "base_damage": 0,
-    "qi_cost": 26,
+    "qi_cost": 30,
     "requirements": {
       "stats": {},
       "minimum_total": 0
@@ -93,8 +91,9 @@
     "acquisition": "alliance_instructor",
     "price": null,
     "price_currency": "mun",
-    "description": "반석처럼 중심을 세우고 근력과 단단한 몸, 내기를 한 주먹에 겹쳐 싣는다. 맨손으로 펼친다.",
-    "status": "implemented"
+    "description": "반석처럼 중심을 세우고 내기를 한 주먹에 겹쳐 싣는다. 맨손으로 펼친다.",
+    "status": "implemented",
+    "action_cost": 65
   },
   "jungun": {
     "name": "중운장법",
@@ -104,12 +103,11 @@
     "weapon_style": "palm",
     "required_weapon_type": "none",
     "damage_coefficients": {
-      "strength": 2,
-      "inner": 9,
-      "insight": 5
+      "strength": 4,
+      "inner": 15
     },
     "base_damage": 0,
-    "qi_cost": 24,
+    "qi_cost": 34,
     "requirements": {
       "stats": {},
       "minimum_total": 0
@@ -117,7 +115,8 @@
     "acquisition": "alliance_instructor",
     "price": null,
     "price_currency": "mun",
-    "description": "겹겹이 쌓인 구름처럼 내기를 손바닥에 모아 밀어낸다. 내공과 오성의 성장이 장력으로 이어진다. 맨손으로 펼친다.",
-    "status": "implemented"
+    "description": "겹겹이 쌓인 구름처럼 내기를 손바닥에 모아 펼친다. 내공의 성장이 장력으로 이어진다. 맨손으로 펼친다.",
+    "status": "implemented",
+    "action_cost": 75
   }
 }

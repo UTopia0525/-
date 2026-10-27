@@ -104,7 +104,7 @@ func read_slot(slot: int) -> Dictionary:
 	var json = JSON.new()
 	if json.parse(FileAccess.get_file_as_string(path(slot))) != OK:return {}
 	var parsed = json.data
-	parsed=_upgrade_qingya_battle(parsed)
+	parsed=_upgrade_martial_arts(_upgrade_qingya_battle(parsed))
 	return parsed if validate(parsed) else {}
 
 func _upgrade_qingya_battle(value):
@@ -123,8 +123,17 @@ func _upgrade_qingya_battle(value):
 		migrated.world.area="qingya_camp";migrated.world.position=[3540,1950];migrated.world.layout_version=1
 	return migrated
 
+func _upgrade_martial_arts(value):
+	if not value is Dictionary:return value
+	var upgraded: Dictionary=value.duplicate(true)
+	if upgraded.has("progress"):upgraded.progress=game.progress.arts.upgrade_progress(upgraded.progress)
+	if upgraded.get("battle") is Dictionary and upgraded.battle.has("selected_action"):
+		var id=upgraded.battle.selected_action
+		if id is String:upgraded.battle.selected_action=game.progress.arts.RETIRED.get(id,id)
+	return upgraded
+
 func validate(d) -> bool:
-	d=_upgrade_qingya_battle(d)
+	d=_upgrade_martial_arts(_upgrade_qingya_battle(d))
 	if not d is Dictionary: return false
 	if d.has("changsha_reward_revision") and not game.progress.whole(d.changsha_reward_revision,0,1):return false
 	if d.get("schema") != 1 and d.get("schema") != 2 and d.get("schema") != 3: return false

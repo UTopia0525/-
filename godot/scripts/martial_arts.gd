@@ -1,6 +1,7 @@
 extends RefCounted
 ## Learning, damage, costs and equipment conditions. Eligibility does not grant a skill.
 const WEAPON_NAMES = {"none":"맨손", "sword":"검", "saber":"도", "spear":"창"}
+const RETIRED = {"swaeam":"cheongpung", "jingak":"cheolsan"}
 const RULES = preload("res://scripts/rules.gd")
 var definitions: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/basic_martial_arts.json"))
 
@@ -53,3 +54,22 @@ func weapon_requirement(id: String) -> String:
 	var required = definitions[id].required_weapon_type
 	if required == "none": return "무기 해제 필요(맨손)"
 	return "필요 무기: 없음" if required == null else "필요 무기: " + str(WEAPON_NAMES[required])
+
+static func upgrade_progress(data):
+	# Map retired arts once, preserving slot positions and rejecting malformed source arrays.
+	if not data is Dictionary or not data.get("learned") is Array or not data.get("loadout") is Array:return data
+	for key in ["learned","loadout"]:
+		for id in data[key]:
+			if not id is String or (id!="" and data[key].count(id)>1):return data
+	for id in data.loadout:
+		if id in RETIRED and id not in data.learned:return data
+	var upgraded: Dictionary=data.duplicate(true)
+	upgraded.learned=[]
+	for id in data.learned:
+		var current=RETIRED.get(id,id)
+		if current not in upgraded.learned:upgraded.learned.append(current)
+	upgraded.loadout=[]
+	for id in data.loadout:
+		var current=RETIRED.get(id,id)
+		upgraded.loadout.append("" if current!="" and current in upgraded.loadout else current)
+	return upgraded

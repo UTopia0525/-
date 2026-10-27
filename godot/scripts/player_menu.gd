@@ -67,7 +67,7 @@ func visible_ids() -> Array:
  var p=game.progress;var result=[]
  if mode=="martial":
   for id in ["basic_attack","basic_defense"]+p.learned:
-   if art_filter=="all" or p.arts.get_skill(id).weapon_style==art_filter:result.append(id)
+   if art_filter=="all" or p.arts.get_skill(id).weapon_style==art_filter or (art_filter=="unarmed" and p.arts.get_skill(id).weapon_style in ["fist","palm"]):result.append(id)
   return result
  if category in ["all","weapon"]:result.append_array(p.owned_weapons+["none"])
  if category in ["all","elixir"]:

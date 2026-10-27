@@ -35,22 +35,21 @@ func _initialize() -> void:
 	baseline.arts.definitions.yeonhwan.damage_coefficients={"strength":3,"agility":5,"inner":3}
 	baseline.arts.definitions.yeonhwan.erase("base_damage")
 	baseline.arts.definitions.yeonhwan.qi_cost=34
-	check(revised.arts.get_skill("gwanpung").get("base_damage")==120 and revised.arts.qi_cost("gwanpung")==18,"live Gwanpung catalogue uses the applied patch")
-	check(revised.arts.get_skill("yeonhwan").get("base_damage")==160 and revised.arts.qi_cost("yeonhwan")==28,"live Yeonhwan catalogue uses the applied patch")
+	check(revised.arts.get_skill("gwanpung").get("base_damage")==200 and revised.arts.qi_cost("gwanpung")==30,"live Gwanpung catalogue uses the applied patch")
+	check(revised.arts.get_skill("yeonhwan").get("base_damage")==240 and revised.arts.qi_cost("yeonhwan")==40,"live Yeonhwan catalogue uses the applied patch")
 	var early := {"strength":20,"agility":20,"constitution":20,"inner":20,"insight":20}
 	var late := {"strength":80,"agility":80,"constitution":80,"inner":80,"insight":80}
 	for id in ["gwanpung","yeonhwan"]:
 		check(revised.action(id,early,"balanced_spear").raw > baseline.action(id,early,"balanced_spear").raw,"early spear burst improves: "+id)
 		check(revised.action(id,late,"flowing_cloud_spear").raw < revised.action("yusu",late,"hundredfold_sword").raw,"ordinary spear falls behind late sword scaling: "+id)
 		check(revised.action(id,late,"flowing_cloud_spear").raw < revised.action("hoepung",late,"heavy_steel_saber").raw,"ordinary spear falls behind late saber scaling: "+id)
-		check(revised.action(id,late,"flowing_cloud_spear").raw < revised.action("jingak",late,"none").raw,"ordinary spear falls behind late fist scaling: "+id)
-	check(turns(revised,early,"balanced_spear",["yeonhwan"],240,15).turns==2 and turns(baseline,early,"balanced_spear",["yeonhwan"],240,15).turns==4,"Yeonhwan removes an early qi stall")
-	check(revised.action("yeonhwan",{"strength":10,"agility":15,"constitution":10,"inner":13,"insight":22},"balanced_spear").cost==26,"minimum-inner Yeonhwan becomes affordable after one free action")
+		check(revised.action(id,late,"flowing_cloud_spear").raw < revised.action("cheolsan",late,"none").raw,"ordinary spear falls behind late fist scaling: "+id)
+	check(revised.action("yeonhwan",early,"balanced_spear").cost==36,"high qi cost is reduced by spear equipment")
 	var report := {"scope":"균등 능력치 비교는 성장 가정. 후반 적·상위 무공은 미구현이므로 실제 후반 전투 보장이 아님.","duels":[],"scaling":[]}
 	for value in [15,20,30,60,80,100]:
 		var stats := {"strength":value,"agility":value,"constitution":value,"inner":value,"insight":value}
 		var scaling := {"stat_each":value,"arts":{}}
-		for id in ["cheongpung","yusu","swaeam","danseok","hoepung","gwanpung","yeonhwan","cheolsan","jingak","ungi"]:
+		for id in ["cheongpung","yusu","danseok","hoepung","gwanpung","yeonhwan","cheolsan","ungi"]:
 			var style: String = revised.arts.get_skill(id).required_weapon_type
 			var weapon: String = {"sword":"hundredfold_sword","saber":"heavy_steel_saber","spear":"flowing_cloud_spear","none":"none"}[style]
 			scaling.arts[id] = {"eligible":revised.arts.can_learn(id,stats),"before":baseline.action(id,stats,weapon).raw,"after":revised.action(id,stats,weapon).raw}
@@ -58,7 +57,7 @@ func _initialize() -> void:
 	for value in [15,20,30]:
 		var stats := {"strength":value,"agility":value,"constitution":value,"inner":value,"insight":value}
 		for hp in [240,480,720]:
-			for entry in [{"weapon":"refined_sword","skills":["cheongpung","yusu","swaeam"]},{"weapon":"thickback_saber","skills":["danseok","hoepung"]},{"weapon":"balanced_spear","skills":["gwanpung"]},{"weapon":"balanced_spear","skills":["yeonhwan"]},{"weapon":"none","skills":["cheolsan","jingak","ungi"]}]:
+			for entry in [{"weapon":"refined_sword","skills":["cheongpung","yusu"]},{"weapon":"thickback_saber","skills":["danseok","hoepung"]},{"weapon":"balanced_spear","skills":["gwanpung"]},{"weapon":"balanced_spear","skills":["yeonhwan"]},{"weapon":"none","skills":["cheolsan","ungi"]}]:
 				var available: Array = []
 				for id in entry.skills:
 					if revised.arts.can_learn(id,stats): available.append(id)

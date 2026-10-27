@@ -7,12 +7,11 @@
     "weapon_style": "saber",
     "required_weapon_type": "saber",
     "damage_coefficients": {
-      "strength": 8,
-      "agility": 5,
-      "constitution": 2
+      "strength": 14,
+      "inner": 3
     },
     "base_damage": 0,
-    "qi_cost": 22,
+    "qi_cost": 32,
     "requirements": {
       "stats": {},
       "minimum_total": 0
@@ -20,7 +19,8 @@
     "acquisition": "quest_manual",
     "price": null,
     "price_currency": "mun",
-    "description": "밀려오는 파도를 부수듯 무게를 실어 연달아 베는 도법. 파악도법보다 근력의 쓰임이 깊다. 도를 장착해야 펼칠 수 있다.",
-    "status": "implemented"
+    "description": "밀려오는 파도를 부수듯 무게를 실어 베는 도법. 파악도법보다 근력의 쓰임이 깊다.",
+    "status": "implemented",
+    "action_cost": 90
   }
 }

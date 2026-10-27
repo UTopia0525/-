@@ -18,9 +18,9 @@ static func build(m,ids: Array) -> void:
    m.text(slot,"행동 %s · 내기 %d" % [m.tactics.action_cost_text(id),qi_cost(m,id)],Rect2(85,52,163,23),13,m.TEAL)
    m.text(slot,m.tactics.summary_text(id),Rect2(85,77,163,22),13,m.MUTED)
   slot.tooltip_text="%d번 편성 · %s" % [i+1,"비어 있음" if id.is_empty() else m.progress.arts.get_skill(id).name]
- for i in range(7):
-  var value=["all","sword","saber","spear","fist","palm","support"][i]
-  var tab=m.button(["전체","검","도","창","권","장","보조"][i],Rect2(90+i*68,277,62,32))
+ for i in range(6):
+  var value=["all","sword","saber","spear","unarmed","support"][i]
+  var tab=m.button(["전체","검","도","창","맨손","보조"][i],Rect2(90+i*68,277,62,32))
   UI.selection(tab,m.art_filter==value,true,true);m.tabs.append(tab);tab.pressed.connect(m.select_filter.bind(value))
  m.scroll_area(Rect2(90,331,480,273),false)
  for id in ids:
@@ -55,8 +55,14 @@ static func build(m,ids: Array) -> void:
  m.box(m.content,Rect2(635,423,250,132),Color("e8dfcd"))
  m.range_preview=RangePreview.new();m.range_preview.position=Vector2(635,423);m.range_preview.size=Vector2(250,132);m.content.add_child(m.range_preview)
  m.range_preview.configure(m.tactics.preview(id));m.range_preview.tooltip_text="오른쪽으로 펼치는 범위 예시입니다. 지형과 점유에 따라 이동이 막힐 수 있습니다."
- m.text(m.content,"7×5 범위 · 초안",Rect2(635,404,250,18),11,m.MUTED)
- var body=str(tactics.description)+"\n\n"+str(tactics.target)
+ m.text(m.content,"7×5 범위 · 설계",Rect2(635,404,250,18),11,m.MUTED)
+ var grade={"introductory":"입문","low":"하급","intermediate":"중급"}.get(item.get("grade",""),"기본")
+ var body=str(grade)+" · "+str(tactics.target)+"\n"+str(tactics.description)
+ if not item.damage_coefficients.is_empty():
+  var parts: Array[String]=[]
+  if int(item.get("base_damage",0))>0:parts.append(str(int(item.base_damage)))
+  for key in item.damage_coefficients:parts.append({"strength":"근력","inner":"내공","agility":"기민"}.get(key,key)+"×"+str(item.damage_coefficients[key]))
+  body+="\n위력 "+" + ".join(parts)
  if item.weapon_style=="support":body+="\n내공의 %d%% 내기 회복\n피해 %d%% 감소 · 재사용 %d턴" % [int(item.get("qi_restore_inner_percent",0)),int(item.get("guard_percent",0)),int(item.get("cooldown_turns",0))]
  elif item.weapon_style=="sword" or id=="basic_defense":body+="\n피해 20% 감소"
  if item.get("requirements",{}).get("minimum_total",-1)==0 and item.requirements.stats.is_empty():body+="\n능력치·경지 학습 조건 없음"

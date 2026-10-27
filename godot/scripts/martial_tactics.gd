@@ -30,9 +30,11 @@ func preview(id: String) -> Dictionary:
  if int(t.advance)>0:moves.append(caster)
  if int(t.retreat)>0:moves.append(origin-Vector2i(int(t.retreat),0))
  if int(t.push)>0:
-  var target=caster+Vector2i.RIGHT
-  for i in range(int(t.push)):moves.append(target+Vector2i(i+1,0))
-  if t.follow:moves.append(target)
+  for target in attacks:
+   for i in range(int(t.push)):
+    var point: Vector2i=target+Vector2i(i+1,0)
+    if point not in moves:moves.append(point)
+   if t.follow and target not in moves:moves.append(target)
  if t.has("move_offsets"):
   moves.clear()
   for offset in t.move_offsets:moves.append(origin+Vector2i(offset[0],offset[1]))

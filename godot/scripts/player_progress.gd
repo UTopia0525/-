@@ -135,6 +135,7 @@ func snapshot() -> Dictionary:
 	return {"manuals":manuals.duplicate(), "known_factions":known_factions.duplicate(), "faction_favor":faction_favor.duplicate(), "fame":fame, "stats":stats.duplicate(), "weapons":owned_weapons.duplicate(), "learned":learned.duplicate(), "loadout":loadout.duplicate(), "inventory":inventory.duplicate(), "consumed":consumed.duplicate()}
 
 func valid(data) -> bool:
+	data=arts.upgrade_progress(data)
 	if not data is Dictionary: return false
 	if not data.get("manuals",{}) is Dictionary:return false
 	for id in data.get("manuals",{}):
@@ -174,6 +175,7 @@ func whole(value, minimum: int, maximum: int) -> bool:
 	return typeof(value) in [TYPE_INT, TYPE_FLOAT] and is_finite(value) and value == floor(value) and value >= minimum and value <= maximum
 
 func restore(data: Dictionary) -> void:
+	data=arts.upgrade_progress(data)
 	manuals=data.get("manuals",{}).duplicate()
 	fame = int(data.get("fame", 0))
 	faction_favor={"murim_alliance":0}

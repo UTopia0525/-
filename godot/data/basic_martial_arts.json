@@ -4,8 +4,8 @@
     "kind": "attack",
     "weapon_style": "sword",
     "damage_coefficients": {
-      "strength": 3,
-      "agility": 2
+      "strength": 4,
+      "inner": 1
     },
     "qi_cost": 10,
     "requirements": {
@@ -13,19 +13,22 @@
       "minimum_total": 0
     },
     "acquisition": null,
-    "description": "세 기본 자세로 중심을 잡아 베고 찌르는 입문 검법.",
-    "status": "user_confirmed",
+    "description": "세 기본 자세로 중심을 잡아 베고 찌르는 입문 검법. 출수 후 피해20% 감소.",
+    "status": "implemented",
     "required_weapon_type": "sword",
     "price": null,
-    "price_currency": "mun"
+    "price_currency": "mun",
+    "grade": "introductory",
+    "base_damage": 0,
+    "action_cost": 40
   },
   "cheongpung": {
     "name": "청풍검법",
     "kind": "attack",
     "weapon_style": "sword",
     "damage_coefficients": {
-      "strength": 3,
-      "agility": 3
+      "strength": 5,
+      "inner": 1
     },
     "qi_cost": 12,
     "requirements": {
@@ -38,20 +41,22 @@
       "minimum_total": 60
     },
     "acquisition": "city_instructor",
-    "description": "검 끝의 흔들림을 줄이고 빠르게 한 선을 그어 베는 검법.",
-    "status": "proposal",
+    "description": "가벼운 검로에 근력을 실어 빈틈을 베고 수세를 잇는 검법. 출수 후 피해20% 감소.",
+    "status": "implemented",
     "required_weapon_type": "sword",
     "price": 350,
-    "price_currency": "mun"
+    "price_currency": "mun",
+    "grade": "low",
+    "base_damage": 0,
+    "action_cost": 45
   },
   "yusu": {
     "name": "유수검법",
     "kind": "attack",
     "weapon_style": "sword",
     "damage_coefficients": {
-      "strength": 2,
-      "agility": 3,
-      "inner": 2
+      "strength": 4,
+      "inner": 3
     },
     "qi_cost": 14,
     "requirements": {
@@ -63,45 +68,24 @@
       "minimum_total": 60
     },
     "acquisition": "city_instructor",
-    "description": "힘을 억지로 멈추지 않고 몸의 흐름과 내기를 검 끝에 잇는 검법.",
-    "status": "proposal",
+    "description": "흐르는 물처럼 검로를 돌려 힘과 내기를 고르게 잇는 검법. 출수 후 피해20% 감소.",
+    "status": "implemented",
     "required_weapon_type": "sword",
     "price": 350,
-    "price_currency": "mun"
-  },
-  "swaeam": {
-    "name": "쇄암검법",
-    "kind": "attack",
-    "weapon_style": "sword",
-    "damage_coefficients": {
-      "strength": 5,
-      "constitution": 2
-    },
-    "qi_cost": 20,
-    "requirements": {
-      "stats": {
-        "strength": 18,
-        "constitution": 14,
-        "inner": 12
-      },
-      "minimum_total": 70
-    },
-    "acquisition": "city_instructor",
-    "description": "단단히 버틴 하체를 바탕으로 무거운 일격을 내려치는 검법.",
-    "status": "proposal",
-    "required_weapon_type": "sword",
-    "price": 350,
-    "price_currency": "mun"
+    "price_currency": "mun",
+    "grade": "low",
+    "base_damage": 0,
+    "action_cost": 45
   },
   "danseok": {
     "name": "단석도법",
     "kind": "attack",
     "weapon_style": "saber",
     "damage_coefficients": {
-      "strength": 4,
-      "agility": 2
+      "strength": 9,
+      "inner": 2
     },
-    "qi_cost": 16,
+    "qi_cost": 20,
     "requirements": {
       "stats": {
         "strength": 16,
@@ -111,21 +95,24 @@
       "minimum_total": 60
     },
     "acquisition": "city_instructor",
-    "description": "도의 무게를 실어 짧고 깊게 내려베는 도법.",
-    "status": "proposal",
+    "description": "도날에 근력을 집중해 바위를 쪼개듯 무겁게 내려베는 도법.",
+    "status": "implemented",
     "required_weapon_type": "saber",
     "price": 350,
-    "price_currency": "mun"
+    "price_currency": "mun",
+    "grade": "low",
+    "base_damage": 0,
+    "action_cost": 75
   },
   "hoepung": {
     "name": "회풍도법",
     "kind": "attack",
     "weapon_style": "saber",
     "damage_coefficients": {
-      "strength": 3,
-      "agility": 4
+      "strength": 8,
+      "inner": 2
     },
-    "qi_cost": 20,
+    "qi_cost": 24,
     "requirements": {
       "stats": {
         "strength": 14,
@@ -135,11 +122,14 @@
       "minimum_total": 70
     },
     "acquisition": "city_instructor",
-    "description": "몸을 돌려 모은 힘을 넓은 베기 한 번으로 풀어내는 도법.",
-    "status": "proposal",
+    "description": "몸을 돌려 모은 힘을 큰 베기로 풀어내는 도법.",
+    "status": "implemented",
     "required_weapon_type": "saber",
     "price": 350,
-    "price_currency": "mun"
+    "price_currency": "mun",
+    "grade": "low",
+    "base_damage": 0,
+    "action_cost": 85
   },
   "gwanpung": {
     "name": "관풍창법",
@@ -147,10 +137,9 @@
     "weapon_style": "spear",
     "damage_coefficients": {
       "strength": 2,
-      "agility": 3,
-      "insight": 1
+      "inner": 1
     },
-    "qi_cost": 18,
+    "qi_cost": 30,
     "requirements": {
       "stats": {
         "strength": 12,
@@ -160,12 +149,14 @@
       "minimum_total": 60
     },
     "acquisition": "city_instructor",
-    "description": "긴 창의 간격을 살려 상대의 움직임을 읽고 곧게 찌르는 창법. 기본 위력120으로 초반에 강하지만 능력치 성장 효율은 낮다.",
-    "status": "proposal",
+    "description": "긴 창의 간격을 살려 곧게 꿰뚫는 창법. 고정 위력200과 낮은 성장 계수로 초반에 강하다.",
+    "status": "implemented",
     "required_weapon_type": "spear",
     "price": 350,
     "price_currency": "mun",
-    "base_damage": 120
+    "base_damage": 200,
+    "grade": "low",
+    "action_cost": 60
   },
   "yeonhwan": {
     "name": "연환창법",
@@ -173,10 +164,9 @@
     "weapon_style": "spear",
     "damage_coefficients": {
       "strength": 2,
-      "agility": 3,
       "inner": 1
     },
-    "qi_cost": 28,
+    "qi_cost": 40,
     "requirements": {
       "stats": {
         "agility": 15,
@@ -186,23 +176,24 @@
       "minimum_total": 70
     },
     "acquisition": "city_instructor",
-    "description": "허초와 실초를 이어 마지막 찌르기에 내기를 집중하는 창법. 기본 위력160의 강한 일격을 내지만 초급 초식의 성장 효율에는 한계가 있다.",
-    "status": "proposal",
+    "description": "허초와 실초를 잇는 창법. 고정 위력240의 강한 일격을 내지만 내기 소모가 크다.",
+    "status": "implemented",
     "required_weapon_type": "spear",
     "price": 350,
     "price_currency": "mun",
-    "base_damage": 160
+    "base_damage": 240,
+    "grade": "low",
+    "action_cost": 70
   },
   "cheolsan": {
     "name": "철산권법",
     "kind": "attack",
     "weapon_style": "fist",
     "damage_coefficients": {
-      "strength": 4,
-      "constitution": 3,
-      "inner": 3
+      "strength": 3,
+      "inner": 9
     },
-    "qi_cost": 18,
+    "qi_cost": 20,
     "requirements": {
       "stats": {
         "strength": 14,
@@ -212,47 +203,24 @@
       "minimum_total": 80
     },
     "acquisition": "city_instructor",
-    "description": "굳게 선 몸 전체의 힘을 짧은 주먹에 싣는 권법.",
-    "status": "proposal",
+    "description": "주먹에 내기를 응축해 짧고 강하게 터뜨리는 권법.",
+    "status": "implemented",
     "required_weapon_type": "none",
     "price": 350,
-    "price_currency": "mun"
-  },
-  "jingak": {
-    "name": "진각권법",
-    "kind": "attack",
-    "weapon_style": "fist",
-    "damage_coefficients": {
-      "strength": 4,
-      "constitution": 2,
-      "inner": 5
-    },
-    "qi_cost": 26,
-    "requirements": {
-      "stats": {
-        "strength": 16,
-        "constitution": 16,
-        "inner": 24
-      },
-      "minimum_total": 90
-    },
-    "acquisition": "city_instructor",
-    "description": "발을 굳게 디뎌 얻은 힘과 내기를 한 주먹으로 뻗는 권법.",
-    "status": "proposal",
-    "required_weapon_type": "none",
-    "price": 350,
-    "price_currency": "mun"
+    "price_currency": "mun",
+    "grade": "low",
+    "base_damage": 0,
+    "action_cost": 55
   },
   "ungi": {
     "name": "운기장법",
     "kind": "attack",
     "weapon_style": "palm",
     "damage_coefficients": {
-      "strength": 1,
-      "inner": 7,
-      "insight": 3
+      "strength": 2,
+      "inner": 10
     },
-    "qi_cost": 28,
+    "qi_cost": 26,
     "requirements": {
       "stats": {
         "inner": 26,
@@ -261,10 +229,13 @@
       "minimum_total": 90
     },
     "acquisition": "city_instructor",
-    "description": "호흡으로 모은 내기를 손바닥에 집중해 밀어내는 장법.",
-    "status": "proposal",
+    "description": "호흡으로 모은 내기를 손바닥에 집중해 펼치는 장법.",
+    "status": "implemented",
     "required_weapon_type": "none",
     "price": 350,
-    "price_currency": "mun"
+    "price_currency": "mun",
+    "grade": "low",
+    "base_damage": 0,
+    "action_cost": 65
   }
 }
