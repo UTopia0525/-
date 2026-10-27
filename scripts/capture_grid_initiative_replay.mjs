@@ -1,22 +1,26 @@
-// Run against a task-owned Chromium with --remote-debugging-port=9223.
-import {writeFileSync} from 'node:fs';
+// Run against the task-owned local HTTP server8765 and Chromium9223.
+import {writeFileSync,mkdirSync,readFileSync,rmSync} from 'node:fs';
 import {resolve} from 'node:path';
-const pages=await (await fetch('http://127.0.0.1:9223/json')).json();
-const page=pages.find(p=>p.type==='page');
+const pages=await (await fetch('http://127.0.0.1:9223/json')).json(),page=pages.find(p=>p.type==='page');
 const ws=new WebSocket(page.webSocketDebuggerUrl);await new Promise(r=>ws.addEventListener('open',r,{once:true}));
-let next=0;const pending=new Map();const errors=[];
+let next=0;const pending=new Map(),errors=[];
 ws.addEventListener('message',e=>{const m=JSON.parse(e.data);if(m.method==='Runtime.exceptionThrown')errors.push(m.params.exceptionDetails.text);if(pending.has(m.id)){pending.get(m.id)(m);pending.delete(m.id)}});
-function call(method,params={}){return new Promise((resolve,reject)=>{const id=++next;const timeout=setTimeout(()=>reject(new Error('CDP timeout: '+method)),12000);pending.set(id,m=>{clearTimeout(timeout);m.error?reject(new Error(JSON.stringify(m.error))):resolve(m.result)});ws.send(JSON.stringify({id,method,params}))})}
+function call(method,params={}){return new Promise((resolve,reject)=>{const id=++next,timeout=setTimeout(()=>reject(new Error('CDP timeout: '+method)),12000);pending.set(id,m=>{clearTimeout(timeout);m.error?reject(new Error(JSON.stringify(m.error))):resolve(m.result)});ws.send(JSON.stringify({id,method,params}))})}
 async function evaluate(expression){const r=await call('Runtime.evaluate',{expression,returnByValue:true});if(r.exceptionDetails)throw new Error(JSON.stringify(r.exceptionDetails));return r.result.value}
-await call('Runtime.enable');await call('Page.enable');await call('Emulation.setDeviceMetricsOverride',{width:1440,height:1200,deviceScaleFactor:1,mobile:false});
-await call('Page.navigate',{url:'http://127.0.0.1:8765/index.html'});
-let ready=false;for(let i=0;i<40;i++){ready=await evaluate("document.body?.dataset.ready==='true'");if(ready)break;await new Promise(r=>setTimeout(r,200))}if(!ready)throw new Error('Replay did not initialize: '+errors.join(','));
-const audited=await evaluate(`(()=>{let n=0;for(const c of data.cases){$('profile').value=c.control?'control':c.profile;$('hp').value=String(c.hp_scale);$('layout').value=c.layout.id;$('recovery').value=c.recovery;selectCase();if(current!==c)throw Error('Wrong case');for(const i of [0,c.frames.length-1]){frame=i;render();if($('board').children.length!==35)throw Error('Grid size');if(document.querySelectorAll('.token').length!==2)throw Error('Actor count')}n++}return n})()`);
-if(audited!==31||errors.length)throw new Error('Replay audit: '+JSON.stringify({audited,errors}));
-for(const [hp,index,name] of [[1,3,'actual'],[4,7,'endurance']]){
- await evaluate(`$('profile').value='agility';$('hp').value='${hp}';$('layout').value='centre';$('recovery').value='clock';selectCase();frame=${index};render()`);
- await new Promise(r=>setTimeout(r,200));
- const r=await call('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});
- writeFileSync(resolve('prototypes/grid-initiative-simulation/'+name+'.png'),Buffer.from(r.data,'base64'));
-}
-console.log('GRID_REPLAY_BROWSER: PASS / '+audited+' selectable cases / 35 cells / 2 actors');ws.close();
+async function ready(){for(let i=0;i<50;i++){if(await evaluate("document.body?.dataset.ready==='true'"))return;await new Promise(r=>setTimeout(r,100))}throw new Error('Editor did not initialize: '+errors.join(','))}
+await call('Runtime.enable');await call('Page.enable');await call('Emulation.setDeviceMetricsOverride',{width:1440,height:1600,deviceScaleFactor:1,mobile:false});
+await call('Page.navigate',{url:'http://127.0.0.1:8765/index.html'});await ready();
+const audited=await evaluate(`(()=>{let n=0;for(let i=0;i<data.cases.length;i++){simApp.loadPreset(i);const c=data.cases[i],r=simApp.result;for(const k of ['winner','player_hp','player_actions','enemy_actions','beats'])if(r[k]!==c[k])throw Error('Fixture UI mismatch '+i+' '+k);for(const f of [0,r.frames.length-1]){simApp.showFrame(f);if($('board').children.length!==35||document.querySelectorAll('.token').length!==2)throw Error('Grid')}n++}simApp.loadPreset(0);return n})()`);
+await evaluate(`$('agility-0').value='70';$('agility-0').dispatchEvent(new Event('input',{bubbles:true}));if(simApp.result.stats.agility!==50||!$('dirty').textContent.includes('설정 변경됨'))throw Error('Dirty settings');$('calculate').click();if(simApp.result.stats.agility!==70)throw Error('Player stat edit');$('agility-1').value='60';$('hp-1').value='1800';$('calculate').click();if(simApp.result.config.actors[1].stats.agility!==60||simApp.result.config.actors[1].max_hp!==1800)throw Error('Enemy edit');`);
+await evaluate(`$('weapon-1').value='balanced_spear';$('skill-1-0').value='gwanpung';$('calculate').click();if(simApp.result.config.actors[1].weapon!=='balanced_spear'||!simApp.result.frames.some(f=>f.actor===1&&f.id==='gwanpung'))throw Error('Enemy skill/weapon edit');`);
+await evaluate(`$('weapon-0').value='none';$('skill-0-0').value='banseok';$('skill-0-1').value='ungi';$('calculate').click();if(simApp.result.config.actors[0].skills[0]!=='banseok'||!simApp.result.frames.some(f=>f.id==='banseok'||f.id==='ungi'))throw Error('Skill editing');const r=simApp.result;$('agility-0').value='101';$('calculate').click();if(!$('errors').textContent||simApp.result!==r)throw Error('Invalid input modified result');simApp.loadPreset(0);$('x-1').value=$('x-0').value;$('y-1').value=$('y-0').value;$('calculate').click();if(!$('errors').textContent.includes('달라야'))throw Error('Overlap accepted');simApp.loadPreset(0);$('name-0').value='<img src=x onerror=1>';$('calculate').click();if(document.querySelector('#build img'))throw Error('Name HTML injection');simApp.loadPreset(0);`);
+const example=await evaluate(`(()=>{const c=simApp.readConfig();c.actors[0].stats.agility=66;c.actors[1].stats.agility=45;c.actors[1].max_hp=1120;return {schema:1,config:c}})()`);
+writeFileSync('/tmp/grid-editor-import.json',JSON.stringify(example));const doc=await call('DOM.getDocument'),query=await call('DOM.querySelector',{nodeId:doc.root.nodeId,selector:'#import-config'});await call('DOM.setFileInputFiles',{nodeId:query.nodeId,files:['/tmp/grid-editor-import.json']});
+let imported=false;for(let i=0;i<40;i++){imported=await evaluate('simApp.result.config.actors[0].stats.agility===66&&simApp.result.config.actors[1].stats.agility===45');if(imported)break;await new Promise(r=>setTimeout(r,100))}if(!imported)throw new Error('Config file import failed');
+await call('Page.reload');await ready();if(!await evaluate('simApp.result.config.actors[0].stats.agility===66'))throw new Error('Local settings not restored');
+mkdirSync('/tmp/grid-editor-downloads',{recursive:true});await call('Browser.setDownloadBehavior',{behavior:'allow',downloadPath:'/tmp/grid-editor-downloads'});rmSync('/tmp/grid-editor-downloads/murim-grid-config.json',{force:true});await evaluate("$('export-config').click()");
+let exported;for(let i=0;i<30;i++){try{exported=JSON.parse(readFileSync('/tmp/grid-editor-downloads/murim-grid-config.json'));break}catch{await new Promise(r=>setTimeout(r,100))}}if(exported?.config.actors[0].stats.agility!==66)throw new Error('Config export failed');
+await evaluate(`simApp.loadPreset(15);$('skill-0-0').value='paak';$('skill-0-1').value='danseok';$('skill-0-2').value='hoepung';$('skill-0-3').value='josik_suwon';$('calculate').click();`);
+for(const [open,name]of [[true,'editor-configurable'],[false,'editor-replay']]){await evaluate(`$('settings').open=${open};simApp.showFrame(Math.min(7,simApp.result.frames.length-1));window.scrollTo(0,0)`);await new Promise(r=>setTimeout(r,150));const r=await call('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});writeFileSync(resolve('prototypes/grid-initiative-simulation/'+name+'.png'),Buffer.from(r.data,'base64'))}
+// Keep this isolated browser on the original default, not the test name/config.
+await evaluate('simApp.loadPreset(0)');if(errors.length)throw new Error(errors.join(','));console.log('GRID_EDITOR_BROWSER: PASS / '+audited+' exact presets / both stats, weapons and skills / validation, name escaping, import/export, local restore / 35 cells');ws.close();

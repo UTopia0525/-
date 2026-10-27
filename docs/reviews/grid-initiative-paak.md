@@ -4,6 +4,8 @@
 
 ## 실행 가능한 리플레이
 
+후속 업데이트로 [양쪽 캐릭터를 편집하는 전투 실험실](../../prototypes/grid-initiative-simulation/README.md)이 되었다. 아래 표와 초기 캡처는 당시31개 고정 조건의 결과이며, 현재 도구에서 설정을 바꾸면 새로 계산한다. 기존 조건도 다시 불러올 수 있다.
+
 [독립 HTML](../../prototypes/grid-initiative-simulation/index.html)을 다운로드해서 브라우저로 열면 이전/다음·재생·시점 막대, 캐릭터 유형/시작 위치/적 체력/내기 회복 방식을 비교할 수 있다. HTML에 계산 데이터를 포함했으므로 설치나 서버가 필요 없다. GitHub 코드 화면에서는 HTML이 실행되지 않으므로 파일 우측 위 Download raw file 버튼으로 저장한다.
 
 ![실제 정괴 전투 종료](../../prototypes/grid-initiative-simulation/actual.png)
