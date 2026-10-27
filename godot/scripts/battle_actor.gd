@@ -18,6 +18,7 @@ var frame_data: Dictionary = {}
 var textures: Dictionary = {}
 var display_scale := 1.0
 var cell_width := 0.0
+var walker: Node2D
 
 func configure(is_enemy: bool, weapon: String, foot: Vector2) -> void:
 	enemy_side = is_enemy
@@ -67,6 +68,7 @@ func _kill(tween: Tween) -> void:
 	if tween and tween.is_valid(): tween.kill()
 
 func reset_motion() -> void:
+	if is_instance_valid(walker):walker.finish();walker=null
 	_kill(motion);_kill(flash);_kill(breath)
 	position = home
 	rotation = 0

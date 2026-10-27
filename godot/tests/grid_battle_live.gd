@@ -17,9 +17,12 @@ func run() -> void:
  b.begin();await wait_player()
  check(b.grid.field.width==9 and b.grid.field.height==6 and b.grid_ui.visible,"production scene uses variable grid")
  check(b.status_cards[0].gauge.text.contains("행동력") and b.status_cards[1].gauge.text.contains("행동력"),"both actors show gauge")
- check(b.status_cards[0].stats.text.contains("오성"),"five existing stats remain visible")
+ check(b.status_cards[0].gauge.tooltip_text.contains("오성"),"five existing stats remain available in status tooltip")
  check(b.intent_label.text=="" and not b.intent_label.visible,"old attack forecast removed")
+ b.animation_time=.2
  var initial=b.grid.units[0].position;b.commit("move",initial+Vector2i.RIGHT)
+ await create_timer(.025).timeout
+ check(is_instance_valid(b.player_actor.walker) and not b.player_actor.sprite.visible,"movement uses articulated walking layer")
  await wait_player();check(b.grid.units[0].position==initial+Vector2i.RIGHT,"live movement updates model and actor")
  var old=b.grid.units[0].gauge;b.select_skill("hoeryu");check(b.grid.units[0].gauge==old,"selection spends nothing")
  check(b.metrics.text.contains("행동력 50"),"HUD shows actual action cost")

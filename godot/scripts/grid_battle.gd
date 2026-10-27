@@ -11,7 +11,7 @@ var field_label: Label
 var choice="move"
 var facing=Vector2i.RIGHT
 var awaiting_player=false
-var animation_time=.28
+var animation_time=.48
 func _ready() -> void:
  super._ready()
  # Retain legacy widgets for old save fields, but render only the new grid HUD.
@@ -23,9 +23,14 @@ func _ready() -> void:
 func begin(inner_power: int=-1) -> void:
  awaiting_player=false;grid=null
  super.begin(inner_power)
+ var backdrop=encounter.get("premium_background",encounter.get("background_texture","res://assets/battle/premium/river-deck.png" if encounter.is_empty() else "res://assets/battle/premium/bamboo-court.png"))
+ if backdrop=="res://assets/battle/deck-empty.png":backdrop="res://assets/battle/premium/river-deck.png"
+ if backdrop=="res://assets/battle/road-empty.png":backdrop="res://assets/battle/premium/bamboo-court.png"
+ scene_image.texture=load(backdrop);scene_image.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR
  grid=preload("res://scripts/grid_combat.gd").new()
  grid.combat=combat
  grid.setup(encounter.get("field",{}),{"stats":player_stats.duplicate(),"weapon":equipped_weapon_id,"hp":player_hp,"max_hp":Rules.PLAYER_MAX_HP,"skills":loadout.filter(func(id):return id!="")}, {"stats":enemy_stats.duplicate(),"weapon":enemy_weapon,"hp":enemy_hp,"max_hp":enemy_max_hp,"skills":enemy_skills.duplicate()})
+ _update_status_portrait()
  choice="move";facing=Vector2i.RIGHT;grid_ui.show();board.show();player_actor.scale=Vector2.ONE*.25;enemy_actor.scale=Vector2.ONE*.31
  _place_actors();refresh_grid();_start_grid.call_deferred(generation)
 func _start_grid(token: int) -> void:
@@ -93,6 +98,8 @@ func _input(event: InputEvent) -> void:
  var code=event.physical_keycode if event.physical_keycode!=0 else event.keycode
  var directions={KEY_W:Vector2i.UP,KEY_UP:Vector2i.UP,KEY_S:Vector2i.DOWN,KEY_DOWN:Vector2i.DOWN,KEY_A:Vector2i.LEFT,KEY_LEFT:Vector2i.LEFT,KEY_D:Vector2i.RIGHT,KEY_RIGHT:Vector2i.RIGHT}
  if code in directions:facing=directions[code];choice="move";selected=false;selected_action="";commit("move",grid.units[0].position+facing);get_viewport().set_input_as_handled()
+ elif code==KEY_B:utility(2);get_viewport().set_input_as_handled()
+ elif code==KEY_G:utility(3);get_viewport().set_input_as_handled()
  elif code==KEY_R:utility(1);get_viewport().set_input_as_handled()
  elif code in [KEY_1,KEY_2,KEY_3,KEY_4]:select_slot(code-KEY_1);get_viewport().set_input_as_handled()
  elif code==KEY_ENTER or code==KEY_SPACE:use_selected();get_viewport().set_input_as_handled()
@@ -114,15 +121,20 @@ func _present(event: Dictionary,token: int) -> void:
  qi.restore(int(player_stats.inner),grid.units[0].qi);enemy_qi.restore(int(enemy_stats.inner),grid.units[1].qi)
  var moving=event.id=="move" or event.before!=unit.position
  var attack=float(combat.action(event.id,unit.stats,unit.weapon).get("raw",0))>0
+ if attack:_basic_fx("attack",actor.home+Vector2(unit.facing)*34+Vector2(0,-30),Vector2(unit.facing))
+ elif event.id not in ["move","wait"]:_basic_fx("guard",actor.home+Vector2(0,-35),Vector2(unit.facing))
  if moving:
-  actor.home=board.foot(unit.position);actor.motion=actor.create_tween();actor.motion.tween_property(actor,"position",actor.home,animation_time*.65)
+  actor.walker=preload("res://scripts/battle_step.gd").new();actor.add_child(actor.walker);actor.walker.configure(actor,animation_time)
+  actor.home=board.foot(unit.position);actor.motion=actor.create_tween();actor.motion.tween_property(actor,"position",actor.home,animation_time*.9).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+  _basic_fx("step",board.foot(event.before),Vector2(unit.facing))
   if attack:actor.motion.tween_callback(actor.set_pose.bind("strike"));sound_requested.emit("attack_"+actor.weapon_type)
  elif attack:
   actor.set_pose("windup");sound_requested.emit("attack_"+actor.weapon_type)
   var tween=actor.create_tween();actor.motion=tween;tween.tween_property(actor,"position",actor.home+Vector2(unit.facing)*18,animation_time*.4)
   tween.tween_callback(actor.set_pose.bind("strike"));tween.tween_property(actor,"position",actor.home,animation_time*.4)
  else:actor.defend(animation_time)
- if event.damage>0:victim.hurt();sound_requested.emit("hit")
+ if event.damage>0:
+  victim.hurt();sound_requested.emit("hit");_basic_fx("hit",victim.home+Vector2(0,-32),Vector2(unit.facing))
  elif event.id not in ["move","wait"]:sound_requested.emit("block")
  log_action(name,str(label),event.damage,event.qi_cost,event.guard_used,unit.qi)
  refresh_grid(true)
@@ -152,10 +164,11 @@ func refresh_grid(animate: bool=false) -> void:
   card.gauge.text="행동력 %d  · 충전 +%d / 박" % [unit.gauge,int(stats.agility)+grid.SPEED_BASE]
   card.weapon.text=str(weapons.get_weapon(unit.weapon).get("name","맨손"))+(" · 방어 %d%%" % unit.guard if unit.guard>0 else "")
   card.stats.text="근력 %d   기민 %d   근골 %d   내공 %d   오성 %d" % [stats.strength,stats.agility,stats.constitution,stats.inner,stats.insight]
+  card.gauge.tooltip_text=card.stats.text
  status_cards[1].name.text=str(encounter.get("name","흑린채 수적"))
  status_cards[1].name.tooltip_text=str(encounter.get("faction","흑린채 · 일반 수적"))
- phase_label.text="出手 · 도원의 차례" if awaiting_player else "對陣 · 교전 진행"
- clock_label.text="행동 시작 100 이상 · 행동마다 비용 지불\n충전 %d박 · 방어는 다음 자기 행동까지" % grid.tick
+ phase_label.text="도원의 차례" if awaiting_player else "상대의 차례"
+ clock_label.text="행동력 100 이상에서 출수 · 충전 %d박" % grid.tick
  field_label.text="%d × %d  ·  %s" % [grid.field.width,grid.field.height,{Vector2i.RIGHT:"동쪽 →",Vector2i.DOWN:"남쪽 ↓",Vector2i.LEFT:"서쪽 ←",Vector2i.UP:"북쪽 ↑"}.get(facing,"")]
  var id=choice
  heading.text={"move":"보법 · 한 걸음 이동","wait":"숨 고르기"}.get(id,martial_arts.get_skill(id).get("name","초식 선택"))
@@ -167,9 +180,10 @@ func refresh_grid(animate: bool=false) -> void:
  use_button.disabled=busy or not awaiting_player or not problem.is_empty() or id=="move"
  for index in range(4):
   var skill=str(loadout[index]);var button=skill_buttons[index]
-  button.text="비어 있는 초식" if skill=="" else "%s\n행동 %d · 내기 %d" % [martial_arts.get_skill(skill).name,grid.cost(skill),current_qi_cost(skill)]
-  Icons.apply(button,skill,38);button.disabled=busy or skill=="";UI.selection(button,choice==skill and skill!="")
- for button in utility_buttons:button.disabled=busy
+  button.text="비어 있는 초식" if skill=="" else str(martial_arts.get_skill(skill).name)
+  Icons.apply(button,skill,30);button.disabled=busy or skill=="";preload("res://scripts/battle_art_skin.gd").selection(button,choice==skill and skill!="")
+ for button in utility_buttons:
+  button.disabled=busy;preload("res://scripts/battle_art_skin.gd").selection(button,choice=="move")
  board.queue_redraw()
 func _update_slots() -> void:
  if grid==null:super._update_slots()
@@ -179,3 +193,19 @@ func _update_hp(animate: bool=false) -> void:
  else:refresh_grid(animate)
 func _refresh_availability() -> void:
  if grid!=null and running:refresh_grid()
+
+func _basic_fx(kind: String,point: Vector2,direction: Vector2) -> void:
+ var effect=preload("res://scripts/battle_basic_fx.gd").new();effect.kind=kind;effect.position=point;effect.direction=direction;effect.token=generation
+ add_child(effect);move_child(effect,grid_ui.get_index())
+
+func _update_status_portrait() -> void:
+ var portraits=preload("res://scripts/dialogue_portraits.gd")
+ var id=str(encounter.get("portrait_actor",encounter.get("id","pirate")))
+ id={"bandit_sentry":"bandit_raider","bandit_ringleader":"bandit_leader","qingya_chief":"bandit_raider","herb_ruffian":"bandit_raider"}.get(id,id)
+ var actor=portraits.ACTORS.get(id,portraits.ACTORS["bandit_raider"] if str(encounter.get("name","")).contains("산적") else portraits.ACTORS["recipient"])
+ var resolver=portraits.new();var texture=resolver.texture_for(actor);resolver.free()
+ var atlas=AtlasTexture.new();atlas.atlas=texture;atlas.region=Rect2(0,0,texture.get_width(),texture.get_height()*.64)
+ status_cards[1].portrait.texture=atlas
+
+func _exit_tree() -> void:
+ preload("res://scripts/battle_art_skin.gd").sources.clear()

@@ -38,6 +38,7 @@ func run() -> void:
   await process_frame
  check(game.state=="game_over" and not b.running,"lethal grid defeat reaches original game-over screen")
  game.get_tree().paused=false
+ b.cancel();await create_timer(.12).timeout
  for v in game.music.players:v.stop();v.stream=null
  for v in game.options.voices:v.stop();v.stream=null
  game.queue_free();await process_frame
