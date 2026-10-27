@@ -1,0 +1,321 @@
+{
+  "captures": [
+    {
+      "base": [
+        1280,
+        720
+      ],
+      "camera_view": "(3080.0, 1938.4)",
+      "camera_zoom": 0.800000011920929,
+      "image": [
+        1280,
+        720
+      ],
+      "logical_view": [
+        1280.0,
+        720.0
+      ],
+      "mode": 0,
+      "name": "final-changsha-720",
+      "scale_aspect": 1,
+      "scale_mode": 1,
+      "window": [
+        1280,
+        720
+      ]
+    },
+    {
+      "base": [
+        1280,
+        720
+      ],
+      "camera_view": "(3080.0, 1938.4)",
+      "camera_zoom": 0.800000011920929,
+      "image": [
+        1920,
+        1080
+      ],
+      "logical_view": [
+        1280.0,
+        720.0
+      ],
+      "mode": 0,
+      "name": "final-changsha-1080",
+      "scale_aspect": 1,
+      "scale_mode": 1,
+      "window": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "base": [
+        1280,
+        720
+      ],
+      "camera_view": "(3080.0, 1938.4)",
+      "camera_zoom": 0.800000011920929,
+      "image": [
+        2560,
+        1440
+      ],
+      "logical_view": [
+        1280.0,
+        720.0
+      ],
+      "mode": 0,
+      "name": "final-changsha-1440",
+      "scale_aspect": 1,
+      "scale_mode": 1,
+      "window": [
+        2560,
+        1440
+      ]
+    },
+    {
+      "base": [
+        1280,
+        720
+      ],
+      "camera_view": "(3080.0, 1938.4)",
+      "camera_zoom": 0.800000011920929,
+      "image": [
+        2560,
+        1440
+      ],
+      "logical_view": [
+        1280.0,
+        720.0
+      ],
+      "mode": 0,
+      "name": "final-inventory-1440",
+      "scale_aspect": 1,
+      "scale_mode": 1,
+      "window": [
+        2560,
+        1440
+      ]
+    },
+    {
+      "base": [
+        1280,
+        720
+      ],
+      "camera_view": "(3080.0, 1938.4)",
+      "camera_zoom": 0.800000011920929,
+      "image": [
+        2560,
+        1440
+      ],
+      "logical_view": [
+        1280.0,
+        720.0
+      ],
+      "mode": 0,
+      "name": "final-martial-1440",
+      "scale_aspect": 1,
+      "scale_mode": 1,
+      "window": [
+        2560,
+        1440
+      ]
+    },
+    {
+      "base": [
+        1280,
+        720
+      ],
+      "camera_view": "(3080.0, 1938.4)",
+      "camera_zoom": 0.800000011920929,
+      "image": [
+        2560,
+        1440
+      ],
+      "logical_view": [
+        1280.0,
+        720.0
+      ],
+      "mode": 0,
+      "name": "final-dialogue-large-1440",
+      "scale_aspect": 1,
+      "scale_mode": 1,
+      "window": [
+        2560,
+        1440
+      ]
+    },
+    {
+      "base": [
+        1280,
+        720
+      ],
+      "camera_view": "(4400.0, 7098.4)",
+      "camera_zoom": 0.800000011920929,
+      "image": [
+        2560,
+        1440
+      ],
+      "logical_view": [
+        1280.0,
+        720.0
+      ],
+      "mode": 0,
+      "name": "final-wuchang-1440",
+      "scale_aspect": 1,
+      "scale_mode": 1,
+      "window": [
+        2560,
+        1440
+      ]
+    },
+    {
+      "base": [
+        1280,
+        720
+      ],
+      "camera_view": "(3080.0, 1978.4)",
+      "camera_zoom": 0.800000011920929,
+      "image": [
+        2560,
+        1440
+      ],
+      "logical_view": [
+        1280.0,
+        720.0
+      ],
+      "mode": 0,
+      "name": "final-nanjing-1440",
+      "scale_aspect": 1,
+      "scale_mode": 1,
+      "window": [
+        2560,
+        1440
+      ]
+    },
+    {
+      "base": [
+        1280,
+        720
+      ],
+      "camera_view": "(3080.0, 1978.4)",
+      "camera_zoom": 0.800000011920929,
+      "image": [
+        2560,
+        1440
+      ],
+      "logical_view": [
+        1280.0,
+        720.0
+      ],
+      "mode": 3,
+      "name": "final-fullscreen-1440",
+      "scale_aspect": 1,
+      "scale_mode": 1,
+      "window": [
+        2560,
+        1440
+      ]
+    }
+  ],
+  "layouts": [
+    {
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "stretch": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+      "window": [
+        1280,
+        720
+      ],
+      "zoom": 0.800000011920929
+    },
+    {
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "stretch": "[X: (1.5, 0.0), Y: (0.0, 1.5), O: (0.0, 0.0)]",
+      "window": [
+        1920,
+        1080
+      ],
+      "zoom": 0.800000011920929
+    },
+    {
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "stretch": "[X: (2.0, 0.0), Y: (0.0, 2.0), O: (0.0, 0.0)]",
+      "window": [
+        2560,
+        1440
+      ],
+      "zoom": 0.800000011920929
+    },
+    {
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "stretch": "[X: (1.25, 0.0), Y: (0.0, 1.25), O: (0.0, 0.0)]",
+      "window": [
+        1600,
+        900
+      ],
+      "zoom": 0.800000011920929
+    },
+    {
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "stretch": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (0.0, 0.0)]",
+      "window": [
+        1280,
+        800
+      ],
+      "zoom": 0.800000011920929
+    },
+    {
+      "logical": [
+        1280.0,
+        720.0
+      ],
+      "stretch": "[X: (1.5, 0.0), Y: (0.0, 1.5), O: (0.0, 0.0)]",
+      "window": [
+        2560,
+        1080
+      ],
+      "zoom": 0.800000011920929
+    }
+  ],
+  "layout_checks": 150,
+  "renderer": "Godot 4.6.3 GL Compatibility / Linux X11 virtual display",
+  "source_pixels_at_1440p": {
+    "changsha": 6.4,
+    "wuchang": 10.121389961389962,
+    "nanjing": 6.4
+  },
+  "terrain_stability": [
+    {
+      "changed_over_2_levels": 0,
+      "height": 720,
+      "maximum_channel_error": 0,
+      "patch_pixels": 4096
+    },
+    {
+      "changed_over_2_levels": 0,
+      "height": 1080,
+      "maximum_channel_error": 0,
+      "patch_pixels": 4096
+    },
+    {
+      "changed_over_2_levels": 0,
+      "height": 1440,
+      "maximum_channel_error": 0,
+      "patch_pixels": 4096
+    }
+  ]
+}

@@ -113,6 +113,7 @@ func load_area(value: String) -> void:
 		_add_npc("deck-sailor", "허만복", Vector2(540, 320), 6)
 	background.position = map_bounds.position
 	background.scale = map_bounds.size / background.texture.get_size()
+	preload("res://scripts/terrain_rendering.gd").apply(background,area_name,map_bounds)
 	if not is_instance_valid(regional_map):_build_collision_and_navigation()
 	preload("res://scripts/overland_travel.gd").install(self)
 	var visit=get_parent().get("alliance_visit")

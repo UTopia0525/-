@@ -3,7 +3,7 @@ exports/
 *.tmp
 
 # Reference screenshots are not runtime assets.
-/screenshots/*.png.import
+/screenshots/**/*.png.import
 # These command-line tools are loaded by path, not by generated UID.
 /tests/capture.gd.uid
 /tests/smoke.gd.uid

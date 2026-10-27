@@ -42,6 +42,7 @@
 | 무공·무기·내기 | [무공](martial-arts/basic-attacks.md), [무기](systems/weapons.md), [내기](systems/inner-qi.md) | `data/basic_martial_arts.json`, `weapons.json`, `scripts/inner_qi.gd` | `martial_arts.gd`, `weapons.gd`, `weapon_requirements.gd`, `inner_qi.gd` |
 | 산적 토벌 | [진행](story/chapter-01-bandit-campaign.md), [원고](story/chapter-01-bandit-dialogues.md) | `scripts/bandit_story.gd`, `data/changsha_bandit_story.json` | `bandit_story.gd` |
 | 편의 8종·Q/F2/L | [입구·동작·검증](systems/adventure-usability.md) | `scripts/adventure_ui.gd`, `game_options.gd`, `item_comparison.gd`, `interaction_indicator.gd` | `adventure_features.gd` |
+| 해상도·바닥 표시 | [720/1080/1440p·실제 캡처](ui/resolution-audit.md) | `scripts/terrain_rendering.gd`, `shaders/terrain_detail.gdshader` | `resolution_layout.gd`, `capture_resolution_audit.gd`, `map_art.gd`, `prologue_f_input.gd` |
 | 보행·통로 | [거리 기반 사방 보행·문 점검](systems/walk-and-passages.md) | `scripts/player.gd` | `walk_passages.gd`, `road_stride.gd`, `movement_scale.gd`, `wuchang.gd`, `side_stride_render.gd` |
 | 탐험 HUD | [목표·이름·표식·알림](ui/exploration-hud.md) | `scripts/exploration_hud.gd`, `minimap.gd`, `adventure_ui.gd` | `exploration_hud.gd`, `capture_exploration_hud.gd`, `quest_update.gd`, `compact_hud_gate.gd` |
 | UI 상태 표시 | [선택·포커스·사용 불가](ui/interaction-states.md) | `scripts/ui.gd`, `paper_menu_base.gd` 및 각 메뉴 | `ui_states.gd`, `capture_ui_states.gd`, `paper_menu_live.gd`, `trading.gd`, `combat_updates.gd` |
