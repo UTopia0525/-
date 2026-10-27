@@ -2,6 +2,8 @@
 
 [시뮬레이터 HTML](index.html) · [편집 화면](editor-configurable.png) · [재생 화면](editor-replay.png) · [기존31개 실험 보고서](../../docs/reviews/grid-initiative-paak.md)
 
+후속 [행동별 게이지 비용·다음 자기 행동까지 방어](../../docs/systems/grid-action-timing.md)는 아직 이 시뮬레이터에 반영하지 않았다. 현재 계산은 아래에 기록한 기존 실험 규칙을 사용한다.
+
 ## 사용하는 방법
 
 1. `index.html`의 GitHub 화면 우측 위 **Download raw file**로 HTML 파일을 저장한다. GitHub의 코드 화면에서는 실행되지 않는다.
