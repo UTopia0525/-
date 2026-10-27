@@ -17,6 +17,9 @@ func run() -> void:
   check(menu.martial_metrics.size()==3 and menu.martial_metrics[0].text=="미정","unapproved action costs remain pending: "+id)
   var skill=p.arts.get_skill(id);var qi=p.weapons.qi_cost(int(skill.qi_cost),game.battle.equipped_weapon_id,skill)
   check(menu.martial_metrics[1].text==str(qi),"display actual equipment-adjusted qi: "+id)
+  check(menu.martial_metrics[2].text=="도식 참고","range uses the diagram, not a fixed distance label: "+id)
+  for row in menu.rows.get_children():
+   if row is Button:check(not row.text.contains("인접1칸"),"list does not impose adjacent-one-cell labels")
   var model=menu.range_preview.model
   check(model.known,"all existing learned arts have range metadata: "+id)
   for point in model.attacks+model.moves:check(point.x>=0 and point.x<7 and point.y>=0 and point.y<5,"preview fits7x5: "+id)
@@ -30,6 +33,9 @@ func run() -> void:
  menu.tactics.entries.samjae.action_cost=60;menu.select_item("samjae")
  check(menu.martial_metrics[0].text=="60" and game.battle.current_qi_cost("samjae")==10,"future action metadata displays separately from actual qi")
  menu.tactics.entries.samjae.action_cost=null
+ menu.tactics.entries.samjae.attack_offsets=[[1,-1],[3,0],[-1,1]];menu.select_item("samjae")
+ check(menu.range_preview.model.attacks.size()==3 and Vector2i(4,2) in menu.range_preview.model.attacks,"custom attack positions do not rely on one-cell labels")
+ menu.tactics.entries.samjae.erase("attack_offsets")
  var desired=["basic_attack","samjae","cheongpung","josik_suwon"]
  for i in range(4):menu.select_slot(i);menu.select_item(desired[i]);menu.apply_selection()
  check(p.loadout==desired and game.battle.loadout==desired,"four chosen arts reach production loadout")

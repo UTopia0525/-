@@ -25,7 +25,7 @@ static func build(m,ids: Array) -> void:
  m.scroll_area(Rect2(90,331,480,273),false)
  for id in ids:
   var item=m.progress.arts.get_skill(id)
-  var row=m.button("%s\n행동 %s · 내기 %d · %s" % [item.name,m.tactics.action_cost_text(id),qi_cost(m,id),m.tactics.range_text(id)],Rect2(0,0,466,68))
+  var row=m.button("%s\n행동 %s · 내기 %d" % [item.name,m.tactics.action_cost_text(id),qi_cost(m,id)],Rect2(0,0,466,68))
   row.reparent(m.rows);row.custom_minimum_size=Vector2(466,68);row.clip_text=true;row.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
   row.add_theme_font_size_override("font_size",16);row.icon=Icons.texture(id);row.expand_icon=true;row.icon_alignment=HORIZONTAL_ALIGNMENT_LEFT;row.alignment=HORIZONTAL_ALIGNMENT_LEFT
   row.add_theme_constant_override("icon_max_width",44);row.add_theme_constant_override("h_separation",12)
@@ -46,7 +46,7 @@ static func build(m,ids: Array) -> void:
  m.text(m.content,str(item.name),Rect2(633,273,440,41),29,m.INK,true)
  m.text(m.content,{"sword":"검법","saber":"도법","spear":"창법","fist":"권법","palm":"장법","support":"보조 무공","basic":"기본 행동"}.get(item.weapon_style,"무공")+" · "+m.progress.arts.weapon_requirement(id),Rect2(635,315,440,24),14,m.MUTED)
  m.icon(m.content,id,Rect2(1087,274,74,67))
- var values=[m.tactics.action_cost_text(id),str(qi_cost(m,id)),m.tactics.range_text(id)]
+ var values=[m.tactics.action_cost_text(id),str(qi_cost(m,id)),"도식 참고"]
  for i in range(3):
   var pos=Vector2(635+i*180,346);m.box(m.content,Rect2(pos,Vector2(165,57)),Color("e4dac4"))
   m.text(m.content,["행동력 소모","내기 소모","기술 범위"][i],Rect2(pos+Vector2(11,4),Vector2(143,20)),12,m.MUTED)
