@@ -101,6 +101,12 @@ func set_display_height(height: float) -> void:
 func _play(animation_name: String) -> void:
 	if sprite.animation != animation_name:
 		sprite.play(animation_name)
+	if animation_name.begins_with("walk_"):
+		# All directions share a distance-driven cycle. Slow wall sliding must
+		# slow the legs too; neither direction uses a free-running frame timer.
+		sprite.pause()
+		var count=sprite.sprite_frames.get_frame_count(animation_name)
+		sprite.frame=mini(count-1,floori(gait_phase/TAU*count))
 	_align_frame()
 
 func _physics_process(_delta: float) -> void:
