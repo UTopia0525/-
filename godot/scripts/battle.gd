@@ -118,7 +118,7 @@ func _ready() -> void:
 	executed_icon=TextureRect.new();executed_icon.position=Vector2(18,10);executed_icon.size=Vector2(34,34)
 	executed_icon.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;description_panel.add_child(executed_icon);executed_icon.hide()
 	detail = UI.label(description_panel, "", Rect2(18, 53, 565, 62), 17)
-	note = UI.label(description_panel, "", Rect2(18, 125, 390, 30), 12, UI.MUTED)
+	note = UI.label(description_panel, "", Rect2(18, 125, 415, 30), 14, UI.MUTED)
 	use_button = UI.button(description_panel, "사용  ↵", Rect2(450, 119, 140, 38), true)
 	use_button.pressed.connect(use_selected)
 	var slots = UI.panel(self, Rect2(650, 525, 605, 171))
@@ -126,7 +126,7 @@ func _ready() -> void:
 	for index in range(4):
 		var point := Vector2(18 + (index % 2) * 292, 40 + (index / 2) * 63)
 		var button = UI.button(slots, "—", Rect2(point, Vector2(277, 54)))
-		button.toggle_mode = true
+		button.toggle_mode = false
 		button.pressed.connect(select_slot.bind(index))
 		skill_buttons.append(button)
 	basic_button = skill_buttons[0]
@@ -238,6 +238,14 @@ func _has_usable_action() -> bool:
 		if not a.is_empty() and cooldown_remaining(str(id))==0 and qi.can_spend(current_qi_cost(str(id))): return true
 	return false
 
+func action_problem(id: String) -> String:
+	if id.is_empty():return "비어 있는 칸입니다."
+	if not martial_arts.can_use_with_weapon(id,equipped_weapon_type):return martial_arts.weapon_requirement(id)+" · 현재 "+{"sword":"검","saber":"도","spear":"창","none":"맨손"}.get(equipped_weapon_type,"장비 없음")
+	if cooldown_remaining(id)>0:return "%d턴 뒤 사용 가능" % cooldown_remaining(id)
+	var cost=current_qi_cost(id)
+	if not qi.can_spend(cost):return "내기 %d 부족 · 필요 %d / 현재 %d" % [maxi(0,cost-qi.amount),cost,qi.amount]
+	return ""
+
 func cooldown_remaining(id: String) -> int:return combat.cooldown_remaining(id,turn,ready_turns)
 
 func _update_slots() -> void:
@@ -247,6 +255,11 @@ func _update_slots() -> void:
 		if cooldown_remaining(id)>0:skill_buttons[i].text += " · 대기 %d턴" % cooldown_remaining(id)
 		Icons.apply(skill_buttons[i], id)
 		skill_buttons[i].disabled = busy or id == ""
+		skill_buttons[i].tooltip_text=action_problem(id)
+		UI.selection(skill_buttons[i],selected_action==id and not id.is_empty())
+		if not id.is_empty() and cooldown_remaining(id)==0:
+			if not martial_arts.can_use_with_weapon(id,equipped_weapon_type):skill_buttons[i].text+=" · 장비 필요"
+			elif not qi.can_spend(current_qi_cost(id)):skill_buttons[i].text+=" · 내기 부족"
 	# Contextual free fallback prevents a soft lock after removing both basic actions.
 	if running and not busy and not _has_usable_action():
 		skill_buttons[0].text = "임시 기본공격 · 내기 부족/장비 불일치"
@@ -270,7 +283,9 @@ func select_skill(id: String) -> void:
 	if item.is_empty(): return
 	selected = true
 	selected_action = id
-	for i in range(skill_buttons.size()): skill_buttons[i].button_pressed = loadout[i] == id
+	for i in range(skill_buttons.size()):
+		skill_buttons[i].set_pressed_no_signal(false)
+		UI.selection(skill_buttons[i],loadout[i]==id or (i==0 and id=="basic_attack" and not _has_usable_action()))
 	heading.text = item.name
 	_show_action_icon(id)
 	var names := {"strength":"근력", "agility":"기민", "constitution":"근골", "inner":"내공", "insight":"오성"}
@@ -282,8 +297,10 @@ func select_skill(id: String) -> void:
 	if item.weapon_style == "support":detail.text="내공의%d%%만큼 내기 회복 · 현재 %d\n다음 상대 행동 피해%d%% 감소 · 사용 후%d턴 재사용 불가" % [item.qi_restore_inner_percent,a.qi_restore,item.guard_percent,item.cooldown_turns]
 	if item.weapon_style == "sword": detail.text += " · 다음 적 행동 피해20% 감소"
 	note.text = "내기 소모: %d · %s" % [current_qi_cost(id), martial_arts.weapon_requirement(id)]
-	use_button.disabled = not martial_arts.can_use_with_weapon(id, equipped_weapon_type) or cooldown_remaining(id)>0
-	if cooldown_remaining(id)>0:note.text += " · 재사용까지 %d턴" % cooldown_remaining(id)
+	var problem=action_problem(id)
+	UI.unavailable(use_button,problem)
+	note.text="내기 %d → %d · 소모 %d" % [qi.amount,maxi(0,qi.amount-current_qi_cost(id)),current_qi_cost(id)] if problem.is_empty() else problem
+	use_button.text="사용  ↵" if problem.is_empty() else "사용 불가"
 
 func _prepare_enemy() -> void:
 	enemy_intent = combat.enemy_plan(enemy_stats,enemy_weapon,enemy_skills,enemy_qi.amount,turn,enemy_ready_turns)
@@ -459,6 +476,12 @@ func try_spend_qi(cost: int) -> bool:
 func _update_qi() -> void:
 	qi_text.text = "내기   %d / %d    (+%d/턴)" % [qi.amount, qi.MAXIMUM, qi.inner_power]
 	qi_bar.value = qi.amount
+	_refresh_availability.call_deferred()
+
+func _refresh_availability() -> void:
+	if running and not busy:
+		_update_slots()
+		if selected:refresh_selection()
 
 func equip_weapon(type: String) -> bool:
 	if not weapons.DEFAULT_BY_TYPE.has(type): return false
@@ -470,7 +493,8 @@ func equip_weapon_item(id: String) -> bool:
 	equipped_weapon_type = weapons.weapon_type(id)
 	if is_instance_valid(player_actor): player_actor.set_weapon(equipped_weapon_type)
 	if is_instance_valid(weapon_label): weapon_label.text = "장착 무기 · " + str(weapons.get_weapon(id).get("name", "맨손"))
-	if running and selected: refresh_selection()
+	if running and selected:
+		_update_slots();refresh_selection()
 	return true
 
 func current_qi_cost(skill_id: String) -> int:

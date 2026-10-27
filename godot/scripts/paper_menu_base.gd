@@ -19,11 +19,11 @@ func line(rect: Rect2) -> void:box(content,rect,LINE)
 func button(value: String,rect: Rect2,primary: bool=false) -> Button:
  var b=Button.new();b.text=value;b.position=rect.position;b.size=rect.size;b.add_theme_font_override("font",UI.BODY_FONT);b.add_theme_font_size_override("font_size",18)
  for state in ["normal","hover","pressed","focus","disabled"]:
-  var style=StyleBoxFlat.new();style.bg_color=TEAL.lightened(.1) if state in ["hover","pressed"] else TEAL if primary else Color("e7ddc6");style.border_color=Color("af9b70") if state=="focus" else LINE;style.set_border_width_all(1);style.set_corner_radius_all(3)
+  var style=StyleBoxFlat.new();style.bg_color=Color("eee6d2") if state in ["hover","pressed"] and not primary else TEAL.lightened(.1) if state in ["hover","pressed"] else TEAL if primary else Color("e7ddc6");style.border_color=Color("af9b70") if state=="focus" else LINE;style.set_border_width_all(1);style.set_corner_radius_all(3)
   if state=="focus":style.bg_color=Color.TRANSPARENT;style.set_border_width_all(2)
   if state=="disabled":style.bg_color=Color("ddd7c8")
   b.add_theme_stylebox_override(state,style)
- b.add_theme_color_override("font_color",Color("f5eedb") if primary else INK);b.add_theme_color_override("font_hover_color",Color("f5eedb"));b.add_theme_color_override("font_disabled_color",Color("8f8b7f"));content.add_child(b);return b
+ b.add_theme_color_override("font_color",Color("f5eedb") if primary else INK);b.add_theme_color_override("font_hover_color",Color("f5eedb") if primary else INK);b.add_theme_color_override("font_disabled_color",Color("8f8b7f"));content.add_child(b);b.set_meta("primary",primary);UI.selection(b,false,true);return b
 func paper(rect: Rect2,color: Color) -> void:
  var node=ColorRect.new();node.position=rect.position;node.size=rect.size
  var material=ShaderMaterial.new()

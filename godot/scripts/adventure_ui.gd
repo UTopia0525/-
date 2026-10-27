@@ -111,15 +111,17 @@ func reset() -> void:
 	if toast_tween and toast_tween.is_valid():toast_tween.kill()
 func clear_rows() -> void:
 	for child in rows.get_children():rows.remove_child(child);child.queue_free()
-func row(text: String,callback: Callable) -> void:
+func row(text: String,callback: Callable) -> Button:
 	var button=UI.button(rows,text,Rect2(0,0,310,52));button.custom_minimum_size=Vector2(310,52);button.add_theme_font_size_override("font_size",16);button.pressed.connect(callback);button.pressed.connect(func():game.options.play("confirm"))
+	return button
 func set_filter(value: String) -> void:
 	filter=value;selected="";heading.text="의뢰 일지 · Q";clear_rows();entries.clear();body.text="의뢰를 골라 현재 용건과 품삯을 확인하세요.";primary.text="이 의뢰 추적";primary.disabled=true
-	for i in range(3):filter_buttons[i].disabled=["active","available","completed"][i]==filter
+	for i in range(3):
+		filter_buttons[i].disabled=false;UI.selection(filter_buttons[i],["active","available","completed"][i]==filter,false,true)
 	var prologue_state: String="completed" if game.prologue.completed else "active"
 	if (game.prologue.active or game.prologue.completed) and filter==prologue_state:
 		entries["prologue_record"]={"status":prologue_state}
-		row("0장 · 표행의 기록",select_quest.bind("prologue_record"))
+		row("0장 · 표행의 기록",select_quest.bind("prologue_record")).set_meta("quest_id","prologue_record")
 	for id in game.trade_intro.IDS:
 		var record: Dictionary=game.chapter_one.accepted_quests.get(id,{})
 		if record.is_empty():continue
@@ -139,8 +141,11 @@ func set_filter(value: String) -> void:
 	if entries.is_empty():body.text={"active":"진행 중인 의뢰가 없습니다.\n수락 가능 목록을 살피거나 시설에서 강호행을 준비하세요.","available":"지금 받을 수 있는 일반 의뢰가 없습니다.\n진행 중인 용건과 성장·정비를 살펴보세요.","completed":"아직 마친 의뢰가 없습니다.\n노란 ! 인물에게 일거리를 물어보세요."}[filter]
 func add_quest_row(id: String,state: String,stage: String,kind: String) -> void:
 	entries[id]={"status":state,"stage":stage,"kind":kind}
-	row(("◆ " if game.quest_navigation.quest_id==id else "")+("? " if state=="ready" else "! " if state=="available" else "")+game.quest_navigation.definitions[id].title,select_quest.bind(id))
+	var button=row(("추적 중 · " if game.quest_navigation.quest_id==id else "")+("? " if state=="ready" else "! " if state=="available" else "")+game.quest_navigation.definitions[id].title,select_quest.bind(id))
+	button.set_meta("quest_id",id)
 func select_quest(id: String) -> void:
+	for button in rows.get_children():
+		if button is Button:UI.selection(button,button.get_meta("quest_id","")==id)
 	if id=="prologue_record":
 		selected=id;primary.disabled=true;primary.text="이야기의 목표 안내를 따르세요"
 		var history: String="현재 할 일: "+game.objective.text+"\n\n보수는 표행의 결과에 따라 이야기에서 확인됩니다."
@@ -190,10 +195,12 @@ func open_teaching() -> void:
 	body.text="다섯 길 가운데 한 문을 전수받습니다.\n목록에서 무공을 골라 살펴보세요.\n\n학습 능력치 제한은 없습니다. 실전에는 해당 무기와 내기가 필요합니다.\nK에서 전투 초식을 편성하고 I에서 무기를 갖추세요."
 	for id in game.alliance_story.ARTS:
 		var art: Dictionary=game.progress.arts.get_skill(id)
-		row(str(art.name)+( " · 이미 익힘" if id in game.progress.learned else ""),select_teaching.bind(id))
+		row(str(art.name)+( " · 이미 익힘" if id in game.progress.learned else ""),select_teaching.bind(id)).set_meta("art_id",id)
 		preload("res://scripts/catalog_icons.gd").apply(rows.get_child(-1),id)
 func select_teaching(id: String) -> void:
 	if mode!="teaching" or id not in game.alliance_story.ARTS:return
+	for button in rows.get_children():
+		if button is Button:UI.selection(button,button.get_meta("art_id","")==id)
 	selected=id
 	var art: Dictionary=game.progress.arts.get_skill(id)
 	body.text="%s\n\n%s\n\n%s\n기본 내기 소모: %d\n현재 능력치 기준 위력: %d (무기·상대 방어 보정 전)\n\n이번 방문에서는 한 문만 전수받습니다.\n학습 능력치 제한은 없습니다. 습득 뒤 K에서 편성하세요." % [art.name,art.description,game.progress.arts.weapon_requirement(id),art.qi_cost,int(game.progress.arts.raw_damage(id,game.progress.stats))]

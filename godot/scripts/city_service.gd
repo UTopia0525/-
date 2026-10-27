@@ -83,7 +83,8 @@ func select_tab(index: int) -> void:
 	if index not in [0, 1]: return
 	selected_tab = index
 	selected_id = ""
-	for i in range(tabs.size()): tabs[i].disabled = i == index
+	for i in range(tabs.size()):
+		tabs[i].disabled=false;UI.selection(tabs[i],i==index,false,true)
 	refresh_list()
 	update_detail()
 
@@ -112,16 +113,18 @@ func refresh_list() -> void:
 			"training":
 				if selected_tab == 0 and p.arts.get_skill(id).get("price") == null: continue
 				text = str(p.arts.get_skill(id).name)
+				if selected_tab==1 and id in p.loadout:text+=" · 편성 %d" % [p.loadout.find(id)+1]
 				if selected_tab == 0: text += " · " + ("습득 완료" if id in p.learned else "350문")
 		var button = UI.button(rows, text, Rect2(0, 0, 365, 43))
 		button.custom_minimum_size = Vector2(365, 50)
 		Icons.apply(button, str(id))
 		button.add_theme_font_size_override("font_size", 16)
+		button.set_meta("item_id",str(id));UI.selection(button,str(id)==selected_id)
 		button.pressed.connect(select_item.bind(str(id)))
 	if service.kind == "training" and selected_tab == 1:
 		var clear = UI.button(rows, "선택한 칸 비우기", Rect2(0, 0, 365, 43))
 		clear.custom_minimum_size = Vector2(365, 43)
-		clear.pressed.connect(select_item.bind("clear"))
+		clear.set_meta("item_id","clear");UI.selection(clear,selected_id=="clear");clear.pressed.connect(select_item.bind("clear"))
 
 func weapon_stock() -> Array:
 	var stock: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/city_weapon_stock.json"))
@@ -137,12 +140,15 @@ func select_item(id: String) -> void:
 	update_detail()
 
 func update_detail() -> void:
+	for row in rows.get_children():
+		if row is Button:UI.selection(row,str(row.get_meta("item_id",""))==selected_id)
 	var p = game.progress
 	var is_loadout: bool = service.kind == "training" and selected_tab == 1
 	message.size.y = 240 if is_loadout else 330
 	for i in range(4):
 		slots[i].visible = is_loadout
-		slots[i].disabled = target_slot == i
+		slots[i].disabled = false
+		UI.selection(slots[i],target_slot==i)
 		Icons.apply(slots[i], str(p.loadout[i]), 24)
 		slots[i].text = "%d: %s" % [i + 1, "비움" if p.loadout[i] == "" else p.arts.get_skill(p.loadout[i]).name]
 		slots[i].add_theme_font_size_override("font_size", 12)
@@ -159,13 +165,20 @@ func update_detail() -> void:
 			message.text = "%s\n\n%s\n\n근력+%d · 기민+%d · 근골+%d · 내공+%d\n오성 상승 없음\n보유%d개 · 누적 복용%d/10개" % [item.name, item.description, g.strength, g.agility, g.constitution, g.inner, p.inventory[selected_id], p.consumed[selected_id]]
 			action.text = "100문 · 1개 구매" if selected_tab == 0 else "1개 복용"
 			if selected_tab == 0: problem = p.issue("elixir", selected_id, game.money)
+			elif int(p.consumed[selected_id])>=int(item.max_lifetime_uses):problem="평생 복용 한도 도달 · 10/10"
 			elif p.inventory[selected_id] <= 0: problem = "보유한 영약이 없습니다."
+			else:
+				var can_gain=false
+				for key in g:
+					if key!="insight" and int(g[key])>0 and int(p.stats[key])<100:can_gain=true
+				if not can_gain:problem="상승할 능력치가 없습니다."
 		"workshop":
 			var item: Dictionary = p.weapons.get_weapon(selected_id)
 			message.text = "맨손으로 전환합니다. 권법·장법을 사용할 수 있습니다." if selected_id == "none" else "%s\n\n%s\n\n공격+%d%% · 받는 피해-%d%%\n해당 창법 내기-%d%%" % [item.name, item.description, item.attack_bonus_percent, item.damage_reduction_percent, item.qi_reduction_percent]
 			action.text = "%d문 · 구매" % item.get("price", 0) if selected_tab == 0 else "장착" if selected_id != "none" else "무기 해제"
 			if selected_tab == 0: problem = p.issue("weapon", selected_id, game.money)
 			if selected_tab==0 and selected_id not in weapon_stock():problem="이 도시에서는 판매하지 않는 병장기입니다."
+			if selected_tab==1 and selected_id==game.battle.equipped_weapon_id:problem="현재 장착 중입니다."
 		"training":
 			if selected_id == "clear": message.text = "선택한 편성 칸을 비웁니다. 기본 행동도 교체할 수 있습니다."
 			else:
@@ -185,7 +198,8 @@ func update_detail() -> void:
 	if selected_tab==0:
 		var kind: String={"market":"elixir","workshop":"weapon","training":"art"}[service.kind]
 		var left: int=game.money-p.price_for(kind,selected_id)
-		balance_preview.text="구매 후 소지금 %d문" % left if left>=0 else "소지금 %d문 부족" % -left
+		balance_preview.text="구매 후 소지금 %d문" % left if left>=0 else "%d문 필요 · %d문 부족" % [p.price_for(kind,selected_id),-left]
+	UI.unavailable(action,problem)
 	if not problem.is_empty():
 		message.push_color(Color("f8a494"));message.add_text("\n\n"+problem);message.pop()
 		action.disabled = true
@@ -208,13 +222,14 @@ func transact() -> void:
 				feedback.text = "영약을 복용했습니다. 능력치가 영구 상승했습니다." if ok else p.error
 			"workshop":
 				if selected_id == "none" or selected_id in p.owned_weapons: ok = game.battle.equip_weapon_item(selected_id)
-				feedback.text = "장비를 바꾸었습니다." if ok else "장착할 수 없습니다."
+				feedback.text = ("맨손으로 전환했습니다." if selected_id=="none" else str(p.weapons.get_weapon(selected_id).name)+"을 장착했습니다.") if ok else "장착할 수 없습니다."
 			"training":
 				ok = p.assign("" if selected_id == "clear" else selected_id, target_slot)
 				feedback.text = "편성했습니다. 네 칸 모두 교체할 수 있습니다." if ok else "편성할 수 없습니다."
 	if ok and selected_tab==1 and service.kind=="workshop":game.adventure_ui.notify("장비를 바꾸었습니다.","confirm")
 	refresh_list()
 	update_detail()
+	if ok:UI.applied(feedback)
 
 func close_counter() -> void:
 	hide()

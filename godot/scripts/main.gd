@@ -790,7 +790,7 @@ func show_story_choice() -> void:
 	pending_choice = ""
 	story_visual.paused = true
 	choice_confirm.disabled = true
-	for button in choice_buttons: button.modulate = Color.WHITE
+	for button in choice_buttons: UI.selection(button,false)
 	choice_screen.show()
 	choice_screen.grab_focus()
 
@@ -799,7 +799,7 @@ func select_story_choice(value: String) -> void:
 	pending_choice = value
 	choice_confirm.disabled = false
 	for index in range(2):
-		choice_buttons[index].modulate = UI.GOLD if ["treasure", "rescue"][index] == value else Color.WHITE
+		UI.selection(choice_buttons[index],["treasure", "rescue"][index]==value)
 
 func confirm_story_choice() -> void:
 	if state == "choice" and not pending_choice.is_empty():

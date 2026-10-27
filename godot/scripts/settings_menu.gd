@@ -87,15 +87,15 @@ func select_slot(value: int) -> void:
 	refresh()
 
 func refresh() -> void:
-	save_tab.disabled = mode == "save"
-	load_tab.disabled = mode == "load"
+	save_tab.disabled=false;UI.selection(save_tab,mode=="save",false,true)
+	load_tab.disabled=false;UI.selection(load_tab,mode=="load",false,true)
 	for index in range(slots.size()):
 		var data: Dictionary = game.save_system.read_slot(index + 1)
 		var exists = FileAccess.file_exists(game.save_system.path(index + 1))
 		var summary = "빈 저장 칸" if not exists else "읽을 수 없는 저장"
 		if not data.is_empty(): summary = "%s · %s" % [game.save_system.saved_time(data, game.save_system.path(index + 1)), area_name(data.world.area)]
 		slots[index].text = "%02d   %s" % [index + 1, summary]
-		slots[index].modulate = UI.GOLD if index + 1 == selected else Color.WHITE
+		UI.selection(slots[index],index+1==selected)
 	var data: Dictionary = game.save_system.read_slot(selected)
 	details.text = "저장 칸 %02d\n" % selected
 	if data.is_empty():

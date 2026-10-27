@@ -76,8 +76,7 @@ func visible_ids() -> Array:
  if category in ["all","quest"]:result.append_array(game.trade_intro.quest_items())
  return result
 func selected_style(b: Button,chosen: bool) -> void:
- if not chosen:return
- var style=StyleBoxFlat.new();style.bg_color=Color("d7dfd3");style.border_color=TEAL;style.set_border_width_all(2);style.set_corner_radius_all(3);b.add_theme_stylebox_override("normal",style)
+ UI.selection(b,chosen,true)
 func refresh() -> void:
  progress=game.progress;var old_scroll=0
  if is_instance_valid(list_scroll):old_scroll=list_scroll.scroll_vertical
@@ -119,11 +118,13 @@ func build_inventory(ids: Array) -> void:
  line(Rect2(352,146,1,463));line(Rect2(747,147,1,460))
  for i in range(5):
   var value=["all","weapon","elixir","manual","quest"][i]
-  var tab=button(["전체","무기","영약","서적","의뢰"][i],Rect2(377+i*71,143,65,35),category==value);tabs.append(tab);tab.pressed.connect(select_category.bind(value))
+  var tab=button(["전체","무기","영약","서적","의뢰"][i],Rect2(377+i*71,143,65,35),false);UI.selection(tab,category==value,true,true);tabs.append(tab);tab.pressed.connect(select_category.bind(value))
  scroll_area(Rect2(379,199,351,348),true)
  for id in ids:
   var cell=button("",Rect2(0,0,103,103));cell.reparent(rows);cell.custom_minimum_size=Vector2(103,103);cell.tooltip_text=item_name(id);cell.set_meta("item_id",id)
   icon(cell,str(id),Rect2(12,10,80,79));selected_style(cell,id==selected_id);UI.item_highlight(cell)
+  if id==game.battle.equipped_weapon_id:
+   box(cell,Rect2(6,5,72,22),TEAL);text(cell,"장착 중",Rect2(12,5,66,22),13,Color("f5eedb"))
   if id=="none":text(cell,"맨손",Rect2(23,35,80,30),18,INK)
   var count=int(progress.inventory.get(id,0)) if item_kind(id)=="elixir" else int(progress.manuals.get(id,0)) if item_kind(id)=="manual" else 0
   if count>0:
@@ -162,14 +163,27 @@ func update_inventory_detail(kind: String) -> void:
    var comparison=rich(Rect2(802,479,350,47));comparison.add_theme_font_size_override("normal_font_size",15)
    comparison.text="공격 보정 %+.0f%%p · 피해 감소 %+.0f%%p\n창법 내기 절감 %+.0f%%p" % [attack,reduction,qi]
    action.text="맨손으로 전환" if selected_id=="none" else item_name(selected_id)+" 장착";action.disabled=selected_id==game.battle.equipped_weapon_id
+   if action.disabled:action.text="장착 중";action.tooltip_text="현재 손에 쥔 병장기입니다."
   "elixir":
    var item: Dictionary=p.elixirs[selected_id];var gains: Dictionary=item.permanent_stat_gains
    detail.text="%s\n\n근력 +%d  기민 +%d\n근골 +%d  내공 +%d\n\n보유 %d개 · 누적 복용 %d/10\n오성 상승 없음" % [item.description,gains.strength,gains.agility,gains.constitution,gains.inner,p.inventory.get(selected_id,0),p.consumed[selected_id]]
-   action.text="영약 1개 복용";action.disabled=int(p.inventory.get(selected_id,0))<=0
+   action.text="영약 1개 복용"
+   var reason=""
+   if int(p.consumed[selected_id])>=int(item.max_lifetime_uses):reason="평생 복용 한도 도달 · 10/10"
+   elif int(p.inventory.get(selected_id,0))<=0:reason="보유한 영약이 없습니다."
+   else:
+    var can_gain=false
+    for key in gains:
+     if key!="insight" and int(gains[key])>0 and int(p.stats[key])<100:can_gain=true
+    if not can_gain:reason="상승할 능력치가 없습니다."
+   UI.unavailable(action,reason)
+   if not reason.is_empty():detail.add_text("\n! "+reason)
   "manual":
    var item: Dictionary=p.manual_definitions[selected_id]
    detail.text=str(item.description)+"\n\n보유 %d권 · 사용 후 K에서 편성" % p.manuals.get(selected_id,0)
-   action.text="서책 1권 사용 · 무공 습득";action.disabled=int(p.manuals.get(selected_id,0))<=0 or item.teaches in p.learned
+   action.text="서책 1권 사용 · 무공 습득";action.disabled=int(p.manuals.get(selected_id,0))<=0 or item.teaches in p.learned or not p.arts.can_learn(item.teaches,p.stats)
+   if not p.arts.can_learn(item.teaches,p.stats):detail.add_text("\n! 학습 조건이 부족합니다.")
+   action.tooltip_text="이미 익혔거나 보유 수량·학습 조건을 확인하세요." if action.disabled else ""
    if item.teaches in p.learned:detail.add_text("\n이미 익힌 무공 · 소모하지 않음")
   "quest":detail.text="의뢰 전달 물품입니다. 목표 인물에게 F로 말을 걸어 전달하세요.";action.text="대화로 전달";action.disabled=true
 func build_martial(ids: Array) -> void:
@@ -182,7 +196,7 @@ func build_martial(ids: Array) -> void:
   slot.tooltip_text="%d번 칸 · %s" % [i+1,"비어 있음" if id.is_empty() else progress.arts.get_skill(id).name]
  for i in range(7):
   var value=["all","sword","saber","spear","fist","palm","support"][i]
-  var tab=button(["전체","검","도","창","권","장","보조"][i],Rect2(90+i*68,277,62,32),art_filter==value);tabs.append(tab);tab.pressed.connect(select_filter.bind(value))
+  var tab=button(["전체","검","도","창","권","장","보조"][i],Rect2(90+i*68,277,62,32),false);UI.selection(tab,art_filter==value,true,true);tabs.append(tab);tab.pressed.connect(select_filter.bind(value))
  scroll_area(Rect2(90,331,480,273),false)
  for id in ids:
   var row=button(str(progress.arts.get_skill(id).name),Rect2(0,0,466,59));row.reparent(rows);row.custom_minimum_size=Vector2(466,59);row.icon=Icons.texture(id);row.expand_icon=true;row.icon_alignment=HORIZONTAL_ALIGNMENT_LEFT;row.alignment=HORIZONTAL_ALIGNMENT_LEFT
@@ -233,9 +247,10 @@ func apply_selection() -> void:
   "elixir":ok=progress.consume(selected_id)
   "manual":ok=progress.use_manual(selected_id)
   "art":ok=progress.assign("" if selected_id=="clear" else selected_id,target_slot);game.battle.set_loadout(progress.loadout)
- message=("무공을 익혔습니다. K에서 편성하세요." if kind=="manual" else "적용했습니다.") if ok else progress.error if kind in ["elixir","manual"] else "적용할 수 없습니다."
+ message=("무공을 익혔습니다. K에서 편성하세요." if kind=="manual" else "%d번 칸에 편성했습니다." % [target_slot+1] if kind=="art" else item_name(selected_id)+" 장착 완료" if kind=="weapon" else "영약을 복용했습니다.") if ok else progress.error if kind in ["elixir","manual"] else "적용할 수 없습니다."
  if ok and kind=="weapon":game.adventure_ui.notify("장비를 바꾸었습니다.","confirm")
  refresh()
+ if ok:UI.applied(feedback)
 
 func focus_selection() -> void:
  if not is_instance_valid(rows):return
