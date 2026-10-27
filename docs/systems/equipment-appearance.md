@@ -1,0 +1,35 @@
+# 장착 무기와 캐릭터 외형
+
+I 소지품에서 장착한 검·도·창·맨손을 탐험 캐릭터와 전투 캐릭터에 함께 표시한다. 같은 종류의 무기는 등급에 관계없이 같은 외형을 사용한다. 무기별 능력치·조건·가격은 변경하지 않았다.
+
+![방향별 탐험 외형과 전투 준비 자세](../../godot/screenshots/equipment-visual-overview.png)
+
+## 표시 방식
+
+- 검: 기존 검/검집이 있는 사방 보행 그림을 유지한다.
+- 도: 무기 없는 몸체에 넓고 휘어진 도집을 허리에 표시한다.
+- 창: 무기 없는 몸체에 긴 창을 손 위치에 표시한다.
+- 맨손: 검과 검집을 제거한 몸체만 표시한다.
+- 몸체와 별개로 그리는 도/창은 발 교차 변형에 휘지 않는다. 캐릭터 전체는 기존 발밑 Y정렬/건물 가림을 따른다. 발밑 충돌, 속도, 몸체 크기는 유지한다.
+- 전투는 기존 무기별 준비/공격 준비/출수/피격 그림을 장착 종류에 맞춰 선택한다. 전투 진입 때도 실제 장착 종류를 다시 적용한다.
+- 대화용 도원 초상화는 특정 무기 없는 기존 그림을 유지한다.
+
+장착 변경과 저장 불러오기는 `battle.weapon_equipped` 신호를 통해 탐험 몸체에도 반영한다. 별도의 외형 저장 필드는 추가하지 않고 기존 장착 아이템 ID에서 복원한다. 새 여정은 기본 검 외형으로 돌아간다.
+
+## 실제 플레이 화면
+
+| 종류 | 탐험 | 전투 |
+| --- | --- | --- |
+| 검 | [화면](../../godot/screenshots/equipment-field-sword.png) | [화면](../../godot/screenshots/equipment-battle-sword.png) |
+| 도 | [화면](../../godot/screenshots/equipment-field-saber.png) | [화면](../../godot/screenshots/equipment-battle-saber.png) |
+| 창 | [화면](../../godot/screenshots/equipment-field-spear.png) | [화면](../../godot/screenshots/equipment-battle-spear.png) |
+| 맨손 | [화면](../../godot/screenshots/equipment-field-none.png) | [화면](../../godot/screenshots/equipment-battle-none.png) |
+
+## 미술 자료와 검증
+
+`hero_walk_unarmed.png`는 기존 16개 보행 자세에서 검/검집을 제거한 생성 편집 그림이다. `carried_weapons.png`는 별도 생성한 투명 도집/창 그림이다. 생성 원본은 작업 환경의 `/workspace/generated_images/exec-7b015936-334f-4b4e-afa6-69a01ca91c24.png`, `/workspace/generated_images/exec-419595fe-c573-4246-ab9a-c84a80f6046c.png`에 보관했다. 프레임 JSON은 알파 영역을 읽어 발밑/머리 위치를 맞춘 메타데이터이며 픽셀을 다시 그리지 않았다.
+
+- `equipment_visuals.gd`: I 실제 장착, 네 종류의 사방 보행/정지 크기, 발밑 충돌/속도, 저장/불러오기, 전투 진입과 네 자세, 새 여정 복원.
+- `battle_motion.gd`: 네 무기의 실제 공격/복귀와 피격·효과음·체력 표시 회귀 검사. 렌더 캡처와 병행한 첫 실행은 0.2초 고정 시점 검사 한 곳이 실패했으며, 캡처 종료 후 단독 재검사는 통과했다.
+- `road_stride.gd`, `paper_menu_live.gd`: 보행 및 실제 소지품/무공 메뉴 회귀 검사.
+- `capture_equipment_visuals.gd`, `capture_equipment_overview.gd`: 실제 Godot 렌더 캡처. 사용자 저장과 분리된 XDG 폴더에서 실행한다.

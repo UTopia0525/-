@@ -116,6 +116,7 @@ func _ready() -> void:
 	battle.hide()
 	battle.victory.connect(_on_victory)
 	battle.defeat.connect(_on_defeat)
+	battle.weapon_equipped.connect(exploration.player.set_equipped_weapon)
 	quest_navigation = QUEST_NAVIGATION.new()
 	quest_navigation.name = "QuestNavigation"
 	add_child(quest_navigation)

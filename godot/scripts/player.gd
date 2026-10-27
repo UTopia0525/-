@@ -10,26 +10,35 @@ var side_mesh: MeshInstance2D
 var side_material: ShaderMaterial
 var side_direction := ""
 var gait_phase := 0.0
+var equipped_weapon_id := "plain_iron_sword"
+var equipped_weapon_type := "sword"
+var carried_equipment
+var body_key := "sword"
+var body_definitions: Dictionary = {}
+var animation_sets: Dictionary = {}
+var walking_sheet: Texture2D = preload("res://assets/animation/hero_walk.png")
 
 func _ready() -> void:
 	animation_metadata = JSON.parse_string(FileAccess.get_file_as_string("res://assets/animation/hero_walk_frames.json"))
+	body_definitions={"sword":animation_metadata,"clean":JSON.parse_string(FileAccess.get_file_as_string("res://assets/animation/hero_walk_unarmed_frames.json"))}
 	display_height=float(animation_metadata.target_height)
 	sprite = AnimatedSprite2D.new()
 	sprite.centered = false
 	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	sprite.sprite_frames = _build_animations()
+	animation_sets.sword=sprite.sprite_frames
 	sprite.frame_changed.connect(_align_frame)
 	add_child(sprite)
 	side_mesh=MeshInstance2D.new();side_mesh.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
 	side_mesh.texture=preload("res://assets/animation/hero_walk.png")
 	side_material=ShaderMaterial.new();side_material.shader=preload("res://scripts/side_walk.gdshader")
 	side_mesh.material=side_material;add_child(side_mesh)
+	carried_equipment=preload("res://scripts/carried_equipment.gd").new();add_child(carried_equipment);move_child(carried_equipment,0)
 	_play("idle_" + facing)
 
 func _build_animations() -> SpriteFrames:
 	var frames = SpriteFrames.new()
 	frames.remove_animation("default")
-	var walking_sheet: Texture2D = preload("res://assets/animation/hero_walk.png")
 	for direction in ["down", "left", "right", "up"]:
 		var poses: Dictionary = animation_metadata.directions[direction]
 		var walking = "walk_" + direction
@@ -46,6 +55,18 @@ func _build_animations() -> SpriteFrames:
 		# proportioned sheet that changes head/body size at every stop.
 		frames.add_frame(idle, _atlas(walking_sheet, poses.walk[0].region))
 	return frames
+
+func set_equipped_weapon(id: String,kind: String) -> void:
+	equipped_weapon_id=id;equipped_weapon_type=kind if kind in ["sword","saber","spear","none"] else "none"
+	var next_key="sword" if equipped_weapon_type=="sword" else "clean"
+	var moving=str(sprite.animation).begins_with("walk_")
+	if next_key!=body_key:
+		body_key=next_key;animation_metadata=body_definitions[body_key]
+		walking_sheet=load("res://assets/animation/hero_walk.png" if body_key=="sword" else "res://assets/animation/hero_walk_unarmed.png")
+		if not animation_sets.has(body_key):animation_sets[body_key]=_build_animations()
+		sprite.sprite_frames=animation_sets[body_key];side_mesh.texture=walking_sheet;side_direction=""
+	carried_equipment.set_weapon(equipped_weapon_type)
+	_play(("walk_" if moving else "idle_")+facing)
 
 func _atlas(sheet: Texture2D, region: Array) -> AtlasTexture:
 	var texture = AtlasTexture.new()
@@ -69,6 +90,8 @@ func _align_frame() -> void:
 		side_mesh.scale=sprite.scale
 		side_material.set_shader_parameter("gait_phase",gait_phase)
 		side_material.set_shader_parameter("walking",1.0 if walking else 0.0)
+
+	if is_instance_valid(carried_equipment):carried_equipment.update_pose(facing,gait_phase,walking,display_height)
 
 func _build_side_mesh(info: Dictionary) -> void:
 	var size=Vector2(info.region[2],info.region[3]);var pivot=Vector2(info.pivot[0],info.pivot[1])

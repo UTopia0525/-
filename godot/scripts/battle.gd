@@ -1,4 +1,5 @@
 extends Control
+signal weapon_equipped(id: String,kind: String)
 
 signal victory(remaining_hp: int)
 signal defeat
@@ -179,6 +180,8 @@ func set_encounter(value: Dictionary) -> void:
 	enemy_actor.set_weapon(weapons.weapon_type(enemy_weapon))
 
 func begin(inner_power: int = -1) -> void:
+	player_actor.set_weapon(equipped_weapon_type)
+	weapon_equipped.emit(equipped_weapon_id,equipped_weapon_type)
 	ready_turns.clear();enemy_ready_turns.clear()
 	records.clear()
 	qi.start(int(player_stats.inner) if inner_power < 0 else inner_power)
@@ -492,6 +495,7 @@ func equip_weapon_item(id: String) -> bool:
 	equipped_weapon_id = id
 	equipped_weapon_type = weapons.weapon_type(id)
 	if is_instance_valid(player_actor): player_actor.set_weapon(equipped_weapon_type)
+	weapon_equipped.emit(equipped_weapon_id,equipped_weapon_type)
 	if is_instance_valid(weapon_label): weapon_label.text = "장착 무기 · " + str(weapons.get_weapon(id).get("name", "맨손"))
 	if running and selected:
 		_update_slots();refresh_selection()
