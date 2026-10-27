@@ -1,16 +1,17 @@
 {
   "saber": {
+    "texture": "res://assets/animation/sheathed_thickback_saber.png",
     "region": [
-      99,
-      231,
-      471,
-      742
+      107,
+      81,
+      905,
+      1102
     ],
     "grip": [
-      121,
-      249
+      256,
+      332
     ],
-    "height_ratio": 0.6,
+    "height_ratio": 0.45,
     "tilt": 0
   },
   "spear": {

@@ -11,7 +11,7 @@ func _ready() -> void:
  z_index=0
  sprite=Sprite2D.new();sprite.centered=false;sprite.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;add_child(sprite)
  for id in definitions:
-  var r=definitions[id].region;var atlas=AtlasTexture.new();atlas.atlas=SHEET;atlas.region=Rect2(r[0],r[1],r[2],r[3]);textures[id]=atlas
+  var r=definitions[id].region;var atlas=AtlasTexture.new();atlas.atlas=load(definitions[id].texture) if definitions[id].has("texture") else SHEET;atlas.region=Rect2(r[0],r[1],r[2],r[3]);textures[id]=atlas
  set_weapon(weapon_type)
 func set_weapon(kind: String) -> void:
  weapon_type=kind;visible=kind in definitions;back_strap=false;queue_redraw()
