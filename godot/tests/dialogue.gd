@@ -86,7 +86,7 @@ func _check_dialogues(game) -> void:
 	check(not game.dialogue_backdrop.visible, "battle entry removes city shade")
 	game.reset()
 	game.start_story()
-	check(not game.dialogue_backdrop.visible, "non-city opening does not acquire city shade")
+	check(game.dialogue_backdrop.visible, "opening dialogue shares the paper UI backdrop")
 	game.reset()
 
 func _check_framing_and_facing(game) -> void:

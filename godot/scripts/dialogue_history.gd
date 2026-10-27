@@ -15,9 +15,10 @@ func _ready() -> void:
 	shade.color = Color("07100bef")
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(shade)
-	var panel = UI.panel(self, Rect2(130, 50, 1020, 620))
-	UI.label(panel, "이번 대화 · 지난 이야기", Rect2(28, 16, 700, 42), 30, UI.GOLD)
-	UI.label(panel, "지금까지 나눈 말만 기록됩니다. 휠로 위아래를 살펴보세요.", Rect2(28, 64, 950, 30), 17, UI.MUTED)
+	var panel=preload("res://scripts/paper_dialogue_panel.gd").new();panel.position=Vector2(130,50);panel.size=Vector2(1020,620);add_child(panel)
+	var painter=preload("res://scripts/paper_menu_base.gd").new();painter.content=panel
+	painter.text(panel,"이번 대화 · 지난 이야기",Rect2(28,16,950,42),30,painter.INK,true)
+	painter.text(panel,"지금까지 나눈 말만 기록됩니다. 휠로 위아래를 살펴보세요.",Rect2(28,64,950,30),17,painter.MUTED)
 	transcript = RichTextLabel.new()
 	transcript.position = Vector2(30, 110)
 	transcript.size = Vector2(960, 430)
@@ -27,9 +28,10 @@ func _ready() -> void:
 	transcript.scroll_active = true
 	transcript.add_theme_font_override("normal_font", UI.BODY_FONT)
 	transcript.add_theme_font_size_override("normal_font_size", 21)
-	transcript.add_theme_color_override("default_color", UI.TEXT)
+	transcript.add_theme_color_override("default_color", Color("293c38"))
 	panel.add_child(transcript)
-	var close = UI.button(panel, "대화로 돌아가기 · H / ESC", Rect2(610, 556, 380, 42), true)
+	var close = painter.button("대화로 돌아가기 · H / ESC", Rect2(610, 556, 380, 42), true)
+	painter.free()
 	close.pressed.connect(close_history)
 	hide()
 
@@ -41,7 +43,7 @@ func open_history() -> void:
 		var line: Array = game.dialogue_lines[index]
 		var speaker: String = game.PORTRAITS.ACTORS[line[0]].name
 		if line.size() > 2 and line[2] is String: speaker += " · " + str(line[2])
-		transcript.push_color(UI.GOLD)
+		transcript.push_color(Color("244f4b"))
 		transcript.add_text(speaker + "\n")
 		transcript.pop()
 		transcript.add_text(str(line[1]) + "\n\n")

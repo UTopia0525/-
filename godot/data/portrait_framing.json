@@ -202,6 +202,12 @@
       "eye_y": 260,
       "eye_to_chin": 160,
       "natural_facing": "right"
+    },
+    "res://assets/portraits/namgung/yeonseo.png": {
+      "face_x": 620,
+      "eye_y": 300,
+      "eye_to_chin": 160,
+      "natural_facing": "right"
     }
   }
 }

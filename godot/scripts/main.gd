@@ -33,6 +33,12 @@ var alliance_story
 var adventure_ui
 var options
 var dialogue_next: Button
+var dialogue_badge: Panel
+var dialogue_rule: Panel
+var dialogue_history_button: Button
+var dialogue_hint: Label
+var dialogue_layout_pending:=false
+var dialogue_reserved_height:=81.0
 var ui_layer: CanvasLayer
 var ui_root: Control
 var dialogue_music_cues: Dictionary = {}
@@ -240,7 +246,7 @@ func _hud_action(index: int) -> void:
 func _build_dialogue() -> void:
 	dialogue_backdrop = ColorRect.new()
 	dialogue_backdrop.name = "CityDialogueBackdrop"
-	dialogue_backdrop.color = Color(0, 0, 0, 0.55)
+	dialogue_backdrop.color = Color(0.025, 0.045, 0.04, 0.64)
 	dialogue_backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	dialogue_backdrop.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui_root.add_child(dialogue_backdrop)
@@ -251,17 +257,22 @@ func _build_dialogue() -> void:
 	story_caption.hide()
 	dialogue_cast = PORTRAITS.new()
 	ui_root.add_child(dialogue_cast)
-	dialogue_panel = UI.panel(ui_root, Rect2(24, 535, 1232, 160))
-	dialogue_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	dialogue_panel=preload("res://scripts/paper_dialogue_panel.gd").new()
+	dialogue_panel.position=Vector2(49,525);dialogue_panel.size=Vector2(1182,173)
+	ui_root.add_child(dialogue_panel);dialogue_panel.mouse_filter=Control.MOUSE_FILTER_STOP
 	dialogue_panel.visibility_changed.connect(_update_dialogue_backdrop)
-	dialogue_name = UI.label(dialogue_panel, "", Rect2(24, 14, 970, 30), 22, UI.GOLD)
-	dialogue_text = UI.label(dialogue_panel, "", Rect2(24, 55, 1065, 83), 21)
-	dialogue_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	var next = UI.button(dialogue_panel, "다음 ▾", Rect2(1125, 106, 90, 38))
-	dialogue_next=next
-	next.pressed.connect(advance_dialogue)
-	var history_button = UI.button(dialogue_panel, "대화 기록 · H", Rect2(1010, 3, 205, 34))
-	history_button.pressed.connect(func(): dialogue_history.open_history())
+	var painter=preload("res://scripts/paper_menu_base.gd").new();painter.content=dialogue_panel
+	dialogue_badge=painter.box(dialogue_panel,Rect2(37,-14,201,39),painter.TEAL,Color("8d805f"),2)
+	dialogue_name=painter.text(dialogue_panel,"",Rect2(51,-11,173,32),25,Color("f3e8d2"),true)
+	dialogue_text=painter.text(dialogue_panel,"",Rect2(42,39,1091,81),21,painter.INK)
+	dialogue_text.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;dialogue_text.text_overrun_behavior=TextServer.OVERRUN_NO_TRIMMING
+	dialogue_text.minimum_size_changed.connect(_schedule_dialogue_layout)
+	dialogue_rule=painter.box(dialogue_panel,Rect2(42,117,1090,1),painter.LINE)
+	dialogue_hint=painter.text(dialogue_panel,"F  다음 대사",Rect2(43,129,175,25),15,painter.MUTED)
+	dialogue_history_button=painter.button("H  지난 대화",Rect2(210,127,166,29))
+	dialogue_history_button.pressed.connect(func():dialogue_history.open_history())
+	dialogue_next=painter.button("다음  ▸",Rect2(1033,126,100,29),true);dialogue_next.pressed.connect(advance_dialogue)
+	painter.free()
 	dialogue_panel.hide()
 	dialogue_cast.clear()
 
@@ -270,7 +281,7 @@ func _update_dialogue_backdrop() -> void:
 	# Keep quest notifications above the dialogue text instead of obscuring it.
 	if is_instance_valid(adventure_ui):adventure_ui.toast.position.y=50 if dialogue_panel.visible else 590
 	# Shade the city and HUD, keeping portraits, captions and dialogue above it.
-	dialogue_backdrop.visible = dialogue_panel.visible and exploration.area_name in ["changsha","wuchang","mountain_road","alliance_office","qingya_hamlet","qingya_camp","nanjing"] and not story_visual.visible
+	dialogue_backdrop.visible = dialogue_panel.visible and not story_visual.visible
 
 func _full_overlay(color: Color) -> Control:
 	var overlay = Control.new()
@@ -477,6 +488,7 @@ func say(lines: Array, done: Callable = Callable(), listeners: Array = ["hero"])
 	exploration.set_active(false)
 	# Keep playback independent: reset/load must never clear reusable scene data.
 	dialogue_lines = lines.duplicate(true)
+	_reserve_dialogue_space()
 	dialogue_music_cues = {}
 	dialogue_index = 0
 	dialogue_done = done
@@ -510,6 +522,7 @@ func _show_line() -> void:
 		var previous: String = str(dialogue_lines[dialogue_index - 1][0])
 		if previous != "hero": staging["to"] = previous
 	dialogue_cast.set_speaker(line[0], staging)
+	_layout_dialogue()
 
 func advance_dialogue() -> void:
 	if is_instance_valid(adventure_ui) and adventure_ui.window.visible and adventure_ui.mode=="result":adventure_ui.dismiss()
@@ -825,3 +838,45 @@ func _progress_changed(event: Dictionary) -> void:
 		"manual_learn":adventure_ui.notify("무공 습득 · "+name+" · K에서 편성하세요.","learn")
 		"consume":adventure_ui.notify("영약 복용 · "+name,"confirm")
 		"loadout":adventure_ui.notify("초식 편성을 바꾸었습니다.","confirm")
+
+func _schedule_dialogue_layout() -> void:
+	if dialogue_layout_pending:return
+	dialogue_layout_pending=true;_layout_dialogue.call_deferred()
+func _layout_dialogue() -> void:
+	dialogue_layout_pending=false
+	if not is_instance_valid(dialogue_text) or not is_instance_valid(dialogue_badge):return
+	var needed=dialogue_text.get_line_count()*dialogue_text.get_line_height()+4
+	var height=clampf(maxf(float(needed),dialogue_reserved_height),81.0,410.0)+92.0
+	dialogue_panel.position=Vector2(49,698-height);dialogue_panel.size=Vector2(1182,height)
+	dialogue_text.size=Vector2(1091,height-92)
+	dialogue_rule.position.y=height-56;dialogue_hint.position.y=height-44
+	dialogue_history_button.position.y=height-46;dialogue_next.position.y=height-47
+	var width=clampf(dialogue_name.get_theme_font("font").get_string_size(dialogue_name.text,HORIZONTAL_ALIGNMENT_LEFT,-1,25).x+28,201,600)
+	dialogue_badge.size.x=width;dialogue_name.size.x=width-28
+	dialogue_cast.position.y=minf(143,maxf(25,dialogue_panel.position.y-110))
+	var available=maxf(70,dialogue_panel.position.y-dialogue_cast.position.y-10)
+	if not is_equal_approx(dialogue_cast.size.y,available):
+		var participants=[]
+		for id in dialogue_cast.portraits:
+			var actor=PORTRAITS.ACTORS[id].duplicate();actor.id=id;participants.append(actor)
+		var active: String=dialogue_cast.active_actor
+		dialogue_cast.size=Vector2(1280,available)
+		if not participants.is_empty():
+			dialogue_cast.set_participants(participants)
+			if active!="" and not dialogue_lines.is_empty():
+				var line=dialogue_lines[dialogue_index];var staging={}
+				if line.size()>2 and line[2] is Dictionary:staging=line[2]
+				if line.size()>3 and line[3] is Dictionary:staging=line[3]
+				if not staging.has("to") and active=="hero" and dialogue_index>0 and dialogue_lines[dialogue_index-1][0]!="hero":staging=staging.merged({"to":dialogue_lines[dialogue_index-1][0]})
+				dialogue_cast.set_speaker(active,staging)
+
+func _reserve_dialogue_space() -> void:
+	dialogue_reserved_height=81.0
+	if not is_instance_valid(dialogue_text):return
+	var font=dialogue_text.get_theme_font("font")
+	var font_size=dialogue_text.get_theme_font_size("font_size")
+	for line in dialogue_lines:
+		var paragraph=TextParagraph.new();paragraph.width=1091
+		paragraph.break_flags=TextServer.BREAK_MANDATORY|TextServer.BREAK_WORD_BOUND|TextServer.BREAK_ADAPTIVE
+		paragraph.add_string(str(line[1]),font,font_size)
+		dialogue_reserved_height=maxf(dialogue_reserved_height,paragraph.get_line_count()*dialogue_text.get_line_height()+8)

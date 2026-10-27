@@ -38,10 +38,7 @@ func apply() -> void:
 		if DisplayServer.window_get_mode()!=wanted:DisplayServer.window_set_mode(wanted)
 	var font_changed: bool=game.dialogue_text.get_theme_font_size("font_size")!=body_size
 	game.dialogue_text.add_theme_font_size_override("font_size",body_size)
-	var large:=body_size==24
-	game.dialogue_panel.position.y=495 if large else 535;game.dialogue_panel.size.y=200 if large else 160
-	game.dialogue_text.size.y=123 if large else 83;game.dialogue_cast.size.y=370 if large else 410
-	game.dialogue_next.position.y=146 if large else 106
+	game._reserve_dialogue_space();game._layout_dialogue()
 	var participants: Array=[]
 	for id in game.dialogue_cast.portraits:
 		var actor: Dictionary=game.PORTRAITS.ACTORS[id].duplicate();actor.id=id;participants.append(actor)

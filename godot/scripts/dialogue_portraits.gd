@@ -23,7 +23,7 @@ static var ACTORS = {
 }
 const FRAME_SHADER = preload("res://shaders/dialogue_portrait.gdshader")
 var framing: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/portrait_framing.json"))
-const DIM = Color(0.32, 0.32, 0.32, 1.0)
+const DIM = Color(0.48, 0.50, 0.49, 1.0)
 var portraits: Dictionary = {}
 var actor_names: Dictionary = {}
 var active_actor: String = ""
@@ -44,8 +44,8 @@ func _init() -> void:
 			if entry.has(key):actor[key]=entry[key]
 		ACTORS[entry.id]=actor
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	position = Vector2(24, 125)
-	size = Vector2(1232, 410)
+	position = Vector2(0, 143)
+	size = Vector2(1280, 372)
 
 func texture_for(actor: Dictionary) -> Texture2D:
 	if actor.get("portrait_unavailable", false): return null
@@ -130,38 +130,37 @@ func allocate_portraits(participants: Array) -> Array:
 func set_participants(participants: Array) -> void:
 	clear()
 	participants = allocate_portraits(participants)
-	var columns: int = mini(4, participants.size())
-	var rows: int = ceili(participants.size() / 4.0)
-	if columns == 0:
-		return
-	var row_height = size.y / rows
-	for index in range(participants.size()):
-		var actor: Dictionary = participants[index]
-		var id: String = actor.id
-		if portraits.has(id):
-			continue
-		var column: int = index % columns
-		var row: int = index / columns
-		var in_row: int = mini(columns, participants.size() - row * columns)
-		var slot_width = minf(340.0, size.x / in_row)
-		var portrait = TextureRect.new()
-		portrait.name = id
-		portrait.position = Vector2((size.x - slot_width * in_row) / 2.0 + column * slot_width, row * row_height)
-		portrait.size = Vector2(slot_width, row_height - 26)
-		portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		portrait.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		portrait.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		apply_framing(portrait, actor)
-		portrait_choices[id] = portrait.texture.resource_path if portrait.texture else ""
-		source_facing[id] = framing.profiles.get(portrait_choices[id], {}).get("natural_facing", "right")
-		add_child(portrait)
-		portraits[id] = portrait
-		var label = UI.label(self, actor.get("name", id), Rect2(portrait.position + Vector2(0, row_height - 26), Vector2(slot_width, 26)), 16)
-		label.add_theme_color_override("font_outline_color", Color("12201c"))
-		label.add_theme_constant_override("outline_size", 6)
-		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		actor_names[id] = label
+	# Stable sides are assigned by identity, never by the current speaker.
+	var has_hero=participants.any(func(actor):return actor.id=="hero")
+	var others=participants.filter(func(actor):return actor.id!="hero") if has_hero else participants
+	var opponent_index=0
+	var rows=maxi(1,ceili(others.size()/6.0))
+	var height=size.y/rows
+	for actor in participants:
+		var id: String=actor.id
+		if portraits.has(id):continue
+		var x=61.0;var width=310.0;var y=0.0
+		if id!="hero" or not has_hero:
+			var count=mini(6,others.size()-(opponent_index/6)*6)
+			var column=opponent_index%6
+			y=(opponent_index/6)*height
+			if has_hero:
+				width=320.0 if count==1 else 285.0 if count==2 else 260.0 if count==3 else 800.0/count
+				x=870.0 if count==1 else 681.0+column*242 if count==2 else 526.0+column*218 if count==3 else 430.0+column*width
+			else:
+				width=minf(340.0,1180.0/count);x=(size.x-width*count)/2.0+column*width
+			opponent_index+=1
+		var portrait=TextureRect.new();portrait.name=id
+		portrait.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;portrait.mouse_filter=Control.MOUSE_FILTER_IGNORE
+		add_child(portrait);portrait.position=Vector2(x,y);portrait.size=Vector2(width,height)
+		portrait.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
+		apply_framing(portrait,actor)
+		portrait_choices[id]=portrait.texture.resource_path if portrait.texture else ""
+		source_facing[id]=framing.profiles.get(portrait_choices[id],{}).get("natural_facing","right")
+		portraits[id]=portrait
+		var label=UI.label(self,actor.get("name",id),Rect2(x,y+height-32,width,31),18,Color("ead8ad"))
+		label.add_theme_color_override("font_outline_color",Color("13221d"));label.add_theme_constant_override("outline_size",4);label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;label.z_index=2
+		actor_names[id]=label
 	show()
 	set_speaker("")
 
@@ -181,8 +180,9 @@ func set_speaker(id: String, staging: Dictionary = {}) -> void:
 	for actor_id in portraits:
 		var view: TextureRect = portraits[actor_id]
 		view.self_modulate = Color.WHITE if actor_id == id else DIM
+		view.z_index=1 if actor_id==id else 0
 		actor_names[actor_id].self_modulate = Color.WHITE if actor_id == id else Color(0.65, 0.65, 0.65)
-		var target: String = addressed if actor_id == id else id
+		var target: String = addressed if actor_id == id else "hero" if portraits.has("hero") and actor_id!="hero" else id
 		var desired: String = str(source_facing[actor_id])
 		if portraits.has(target) and target != actor_id:
 			var from_x: float = view.position.x + view.size.x / 2.0

@@ -68,3 +68,5 @@
 - [남경 일반 의뢰5 · 끊어진 계선줄 (전투 구현)](quests/nanjing-waterfront.md)
 
 - [I/K 한지 UI 실장 · 소지품/무공](ui/paper-menu-live.md)
+
+- [한지 대화창 일괄 적용 · 도원 왼쪽/상대 오른쪽](ui/paper-dialogue-live.md)
