@@ -144,4 +144,4 @@ func _input(event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	var compact_world=game.exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing"]
 	gear.visible=game.state not in ["title","game_over"] and (game.state not in ["explore","story"] or not compact_world)
-	gear.position=Vector2(1135,198) if game.state in ["explore","story"] else Vector2(1135,145)
+	gear.position=Vector2(1135,224) if game.state=="battle" else Vector2(1135,198) if game.state in ["explore","story"] else Vector2(1135,145)

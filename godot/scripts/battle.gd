@@ -54,6 +54,9 @@ var running: bool = false
 var generation: int = 0
 var turn: int = 1
 var scene_image: TextureRect
+var enemy_qi_text: Label
+var enemy_qi_bar: ProgressBar
+var metrics: Label
 var enemy_text: Label
 var player_text: Label
 var enemy_bar
@@ -76,70 +79,19 @@ func _ready() -> void:
 	scene_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	scene_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	scene_image.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	scene_image.size = Vector2(1280, 510)
+	scene_image.size = Vector2(1280, 720)
 	add_child(scene_image)
 	player_actor = Actor.new()
 	player_actor.strike_started.connect(func():
 		if running and busy: sound_requested.emit("attack_"+player_actor.weapon_type))
 	add_child(player_actor)
-	player_actor.configure(false, equipped_weapon_type, Vector2(350,490))
+	player_actor.configure(false, equipped_weapon_type, Vector2(465,510))
 	enemy_actor = Actor.new()
 	enemy_actor.strike_started.connect(func():
 		if running and busy: sound_requested.emit("attack_"+enemy_actor.weapon_type))
 	add_child(enemy_actor)
-	enemy_actor.configure(true, "saber", Vector2(945,300))
-	var enemy_panel = UI.panel(self, Rect2(24, 24, 390, 140))
-	enemy_faction = UI.label(enemy_panel, "흑린채 · 일반 수적", Rect2(18, 10, 285, 24), 13, UI.GOLD)
-	enemy_name = UI.label(enemy_panel, "흑린채 수적", Rect2(18, 34, 285, 32), 24)
-	enemy_text = UI.label(enemy_panel, "", Rect2(18, 71, 355, 22), 16)
-	enemy_bar = _health_bar(enemy_panel, Rect2(18, 103, 354, 20), Rules.ENEMY_MAX_HP)
-	var intent_panel = UI.panel(self, Rect2(430, 24, 450, 82))
-	intent_label = UI.label(intent_panel, "", Rect2(18, 12, 414, 58), 24, UI.GOLD)
-	intent_icon = TextureRect.new()
-	intent_icon.position = Vector2(12,14)
-	intent_icon.size = Vector2(52,52)
-	intent_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	intent_panel.add_child(intent_icon)
-	var player_panel = UI.panel(self, Rect2(925, 293, 330, 200))
-	weapon_label = UI.label(player_panel, "장착 무기 · 무문철검", Rect2(18, 10, 295, 24), 13, UI.GOLD)
-	UI.label(player_panel, "도원", Rect2(18, 34, 295, 32), 24)
-	player_text = UI.label(player_panel, "", Rect2(18, 71, 295, 22), 16)
-	player_bar = _health_bar(player_panel, Rect2(18, 103, 294, 20), Rules.PLAYER_MAX_HP)
-	qi_text = UI.label(player_panel, "", Rect2(18, 136, 295, 22), 16, Color("a3dfe8"))
-	qi_bar = _health_bar(player_panel, Rect2(18, 165, 294, 9), qi.MAXIMUM, false)
-	var qi_fill = UI.box(Color("4eabbc"), Color("92d1dc"))
-	for side in [SIDE_LEFT, SIDE_TOP, SIDE_RIGHT, SIDE_BOTTOM]: qi_fill.set_content_margin(side, 0)
-	qi_bar.add_theme_stylebox_override("fill", qi_fill)
-	qi.changed.connect(_update_qi)
-	_update_qi()
-	turn_label = UI.label(self, "나의 차례", Rect2(1065, 22, 190, 32), 16, UI.GOLD)
-	turn_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	var description_panel = UI.panel(self, Rect2(24, 525, 610, 171))
-	heading = UI.label(description_panel, "펼칠 무공을 고르시오", Rect2(18, 12, 565, 30), 23, UI.GOLD)
-	executed_icon=TextureRect.new();executed_icon.position=Vector2(18,10);executed_icon.size=Vector2(34,34)
-	executed_icon.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;description_panel.add_child(executed_icon);executed_icon.hide()
-	detail = UI.label(description_panel, "", Rect2(18, 53, 565, 62), 17)
-	note = UI.label(description_panel, "", Rect2(18, 125, 415, 30), 14, UI.MUTED)
-	use_button = UI.button(description_panel, "사용  ↵", Rect2(450, 119, 140, 38), true)
-	use_button.pressed.connect(use_selected)
-	var slots = UI.panel(self, Rect2(650, 525, 605, 171))
-	UI.label(slots, "초식 네 자리 · 탐험 중 K로 정비", Rect2(18, 8, 550, 24), 14, UI.GOLD)
-	for index in range(4):
-		var point := Vector2(18 + (index % 2) * 292, 40 + (index / 2) * 63)
-		var button = UI.button(slots, "—", Rect2(point, Vector2(277, 54)))
-		button.toggle_mode = false
-		button.pressed.connect(select_slot.bind(index))
-		skill_buttons.append(button)
-	basic_button = skill_buttons[0]
-	select_button = skill_buttons[2]
-	_update_slots()
-	damage_label = UI.label(self, "", Rect2(930, 190, 200, 65), 48, Color("ff4f55"))
-	damage_label.add_theme_color_override("font_shadow_color", Color("151018"))
-	damage_label.add_theme_color_override("font_outline_color", Color("1d1018"))
-	damage_label.add_theme_constant_override("outline_size", 5)
-	damage_label.add_theme_constant_override("shadow_offset_x", 3)
-	damage_label.add_theme_constant_override("shadow_offset_y", 3)
-	damage_label.hide()
+	enemy_actor.configure(true, "saber", Vector2(825,320))
+	preload("res://scripts/battle_hud.gd").build(self)
 
 func _health_bar(parent: Node, area: Rect2, maximum: int, damage_trail: bool = true) -> ProgressBar:
 	var bar = DamageBar.new() if damage_trail else ProgressBar.new()
@@ -147,6 +99,7 @@ func _health_bar(parent: Node, area: Rect2, maximum: int, damage_trail: bool = t
 	bar.size = area.size
 	bar.max_value = maximum
 	bar.show_percentage = false
+	bar.add_theme_font_size_override("font_size",1)
 	bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var background_style = UI.box(Color("0d1612"), Color("555f48"))
 	var fill_style = UI.box(Color("bc5745"), Color("d58a63"))
@@ -158,6 +111,7 @@ func _health_bar(parent: Node, area: Rect2, maximum: int, damage_trail: bool = t
 	bar.add_theme_stylebox_override("background", background_style)
 	bar.add_theme_stylebox_override("fill", fill_style)
 	parent.add_child(bar)
+	bar.size=area.size
 	return bar
 
 func set_encounter(value: Dictionary) -> void:
@@ -203,6 +157,7 @@ func begin(inner_power: int = -1) -> void:
 	use_button.disabled = true
 	use_button.text = "사용  ↵"
 	damage_label.hide()
+	metrics.text = ""
 	heading.text = "펼칠 무공을 고르시오"
 	detail.text = "오른쪽 무공을 클릭하면 설명을 확인합니다."
 	note.text = "선택만으로는 턴을 소모하지 않습니다."
@@ -254,19 +209,20 @@ func cooldown_remaining(id: String) -> int:return combat.cooldown_remaining(id,t
 func _update_slots() -> void:
 	for i in range(skill_buttons.size()):
 		var id: String = str(loadout[i])
-		skill_buttons[i].text = "—" if id == "" else str(martial_arts.get_skill(id).name)
-		if cooldown_remaining(id)>0:skill_buttons[i].text += " · 대기 %d턴" % cooldown_remaining(id)
-		Icons.apply(skill_buttons[i], id)
+		var item: Dictionary = martial_arts.get_skill(id)
+		var status = ""
+		if cooldown_remaining(id)>0: status="대기 %d턴" % cooldown_remaining(id)
+		elif not id.is_empty() and not martial_arts.can_use_with_weapon(id,equipped_weapon_type):status="장비 필요"
+		elif not id.is_empty() and not qi.can_spend(current_qi_cost(id)):status="내기 부족"
+		skill_buttons[i].text = "비어 있는 초식\n탐험 중 K에서 편성" if id.is_empty() else "%s\n내기 %d%s" % [item.name,current_qi_cost(id),(" · "+status) if not status.is_empty() else ""]
+		Icons.apply(skill_buttons[i], id,44)
 		skill_buttons[i].disabled = busy or id == ""
 		skill_buttons[i].tooltip_text=action_problem(id)
 		UI.selection(skill_buttons[i],selected_action==id and not id.is_empty())
-		if not id.is_empty() and cooldown_remaining(id)==0:
-			if not martial_arts.can_use_with_weapon(id,equipped_weapon_type):skill_buttons[i].text+=" · 장비 필요"
-			elif not qi.can_spend(current_qi_cost(id)):skill_buttons[i].text+=" · 내기 부족"
 	# Contextual free fallback prevents a soft lock after removing both basic actions.
 	if running and not busy and not _has_usable_action():
-		skill_buttons[0].text = "임시 기본공격 · 내기 부족/장비 불일치"
-		Icons.apply(skill_buttons[0], "basic_attack")
+		skill_buttons[0].text = "임시 기본공격\n내기 0 · 장비/내기 확인"
+		Icons.apply(skill_buttons[0], "basic_attack",44)
 		skill_buttons[0].disabled = false
 
 func select_slot(index: int) -> void:
@@ -296,13 +252,20 @@ func select_skill(id: String) -> void:
 	if int(item.get("base_damage",0)) > 0: terms.append(str(int(item.base_damage)))
 	for key in item.damage_coefficients: terms.append("%s × %d" % [names[key], int(item.damage_coefficients[key])])
 	var a: Dictionary = combat.action(id, player_stats, equipped_weapon_id)
-	detail.text = "다음 적 행동의 피해20% 감소 · 공격하지 않음" if id == "basic_defense" else " + ".join(terms) + "\n현재 방어 전 피해: " + str(a.get("raw",0))
-	if item.weapon_style == "support":detail.text="내공의%d%%만큼 내기 회복 · 현재 %d\n다음 상대 행동 피해%d%% 감소 · 사용 후%d턴 재사용 불가" % [item.qi_restore_inner_percent,a.qi_restore,item.guard_percent,item.cooldown_turns]
-	if item.weapon_style == "sword": detail.text += " · 다음 적 행동 피해20% 감소"
-	note.text = "내기 소모: %d · %s" % [current_qi_cost(id), martial_arts.weapon_requirement(id)]
+	metrics.text="방어 전 위력 %d · 내기 %d · %s" % [a.get("raw",0),current_qi_cost(id),martial_arts.weapon_requirement(id)]
+	detail.text="피해 산식  " + " + ".join(terms)
+	if id=="basic_defense":
+		metrics.text="방어 · 내기 0 · 무기 무관"
+		detail.text="다음 적 행동의 피해20% 감소 · 공격하지 않음\n턴 종료 시 내공만큼 내기 정상 회복"
+	elif item.weapon_style=="support":
+		metrics.text="운기 · 내기 %d · 무기 무관" % current_qi_cost(id)
+		detail.text="내공의%d%%만큼 내기 회복 · 현재 %d\n다음 상대 행동 피해%d%% 감소 · 사용 후%d턴 재사용 불가" % [item.qi_restore_inner_percent,a.qi_restore,item.guard_percent,item.cooldown_turns]
+	elif item.weapon_style=="sword":detail.text+="\n출수 후 다음 적 행동의 피해20% 감소"
 	var problem=action_problem(id)
 	UI.unavailable(use_button,problem)
-	note.text="내기 %d → %d · 소모 %d" % [qi.amount,maxi(0,qi.amount-current_qi_cost(id)),current_qi_cost(id)] if problem.is_empty() else problem
+	var after_qi=mini(qi.MAXIMUM,maxi(0,qi.amount-current_qi_cost(id))+int(a.get("qi_restore",0)))
+	note.text="사용 직후 내기 %d → %d" % [qi.amount,after_qi] if problem.is_empty() else problem
+	note.add_theme_color_override("font_color",Color("766f5e") if problem.is_empty() else Color("9c4032"))
 	use_button.text="사용  ↵" if problem.is_empty() else "사용 불가"
 
 func _prepare_enemy() -> void:
@@ -346,6 +309,7 @@ func use_selected() -> void:
 	use_button.disabled = true
 	var token = generation
 	turn_label.text = "나의 수비" if selected_action == "basic_defense" else "나의 출수"
+	metrics.text = ""
 	detail.text = action_name + "을 펼칩니다."
 	note.text = ""
 	if raw > 0:
@@ -438,8 +402,9 @@ func use_selected() -> void:
 	use_button.grab_focus()
 
 func _update_hp(animate: bool = false) -> void:
-	enemy_text.text = "체력 %d/%d · 내기 %d/500 (+%d)" % [enemy_hp, enemy_max_hp, enemy_qi.amount, enemy_qi.inner_power]
-	player_text.text = "체력   %d / %d" % [player_hp, Rules.PLAYER_MAX_HP]
+	enemy_text.text = "%d / %d" % [enemy_hp, enemy_max_hp]
+	_update_enemy_qi()
+	player_text.text = "%d / %d" % [player_hp, Rules.PLAYER_MAX_HP]
 	enemy_bar.set_health(enemy_hp, enemy_max_hp, animate)
 	player_bar.set_health(player_hp, Rules.PLAYER_MAX_HP, animate)
 
@@ -458,7 +423,7 @@ func _float_damage(value: int, on_player: bool) -> void:
 	float_tween.tween_property(damage_label, "modulate:a", 0.0, 0.65)
 
 func _reset_presentation() -> void:
-	if is_instance_valid(executed_icon):executed_icon.hide();heading.position.x=18
+	if is_instance_valid(executed_icon):executed_icon.hide();heading.position.x=16;heading.size.x=516;metrics.text=""
 	if float_tween and float_tween.is_valid(): float_tween.kill()
 	if is_instance_valid(damage_label): damage_label.hide()
 	player_actor.reset_motion()
@@ -468,8 +433,8 @@ func _reset_presentation() -> void:
 
 func _show_action_icon(id: String) -> void:
 	executed_icon.texture=Icons.texture(id);executed_icon.visible=executed_icon.texture!=null
-	heading.position.x=62 if executed_icon.visible else 18
-	heading.size.x=520 if executed_icon.visible else 565
+	heading.position.x=72 if executed_icon.visible else 16
+	heading.size.x=460 if executed_icon.visible else 516
 
 func try_spend_qi(cost: int) -> bool:
 	# Called once when an attack/defence action is committed, never on preview.
@@ -477,9 +442,13 @@ func try_spend_qi(cost: int) -> bool:
 	return qi.spend(cost)
 
 func _update_qi() -> void:
-	qi_text.text = "내기   %d / %d    (+%d/턴)" % [qi.amount, qi.MAXIMUM, qi.inner_power]
+	qi_text.text = "%d / %d  (+%d/턴)" % [qi.amount, qi.MAXIMUM, qi.inner_power]
 	qi_bar.value = qi.amount
 	_refresh_availability.call_deferred()
+
+func _update_enemy_qi() -> void:
+	enemy_qi_text.text="%d / 500  (+%d/턴)" % [enemy_qi.amount,enemy_qi.inner_power]
+	enemy_qi_bar.value=enemy_qi.amount
 
 func _refresh_availability() -> void:
 	if running and not busy:
@@ -496,7 +465,7 @@ func equip_weapon_item(id: String) -> bool:
 	equipped_weapon_type = weapons.weapon_type(id)
 	if is_instance_valid(player_actor): player_actor.set_weapon(equipped_weapon_type)
 	weapon_equipped.emit(equipped_weapon_id,equipped_weapon_type)
-	if is_instance_valid(weapon_label): weapon_label.text = "장착 무기 · " + str(weapons.get_weapon(id).get("name", "맨손"))
+	if is_instance_valid(weapon_label): weapon_label.text = str(weapons.get_weapon(id).get("name", "맨손"))
 	if running and selected:
 		_update_slots();refresh_selection()
 	return true

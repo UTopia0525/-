@@ -181,7 +181,7 @@ func _ready() -> void:
 	waterfront_quest=preload("res://scripts/waterfront_quest.gd").new();waterfront_quest.game=self;add_child(waterfront_quest)
 	progress.progress_changed.connect(_progress_changed)
 	battle.sound_requested.connect(options.play)
-	var log_button=UI.button(battle,"교전 기록 · L",Rect2(915,145,205,35))
+	var log_button=UI.button(battle,"교전 기록 · L",Rect2(912,224,205,32))
 	log_button.pressed.connect(adventure_ui.open_log)
 	death_screen=preload("res://scripts/death_screen.gd").new();death_screen.game=self;ui_root.add_child(death_screen)
 	exploration_hud=preload("res://scripts/exploration_hud.gd").new();exploration_hud.game=self;add_child(exploration_hud)

@@ -37,6 +37,7 @@
 | 도시·충돌 | [인물 비율·이동](systems/exploration-scale.md), [도시 기준](cities/city-standards.md), [현재 장사·오브젝트](systems/layered-city-and-conversation.md) | `scripts/exploration.gd`, `city_scenery.gd`, `assets/maps/changsha/layout.json` | `layered_city.gd`, `city_collision.gd`, `changsha.gd`, `city_services.gd` |
 | 거래·I/K·성장 | [거래](systems/city-trading.md), [정비창](systems/player-menus.md) | `scripts/player_progress.gd`, `city_service.gd`, `player_menu.gd` | `trading.gd`, `onboarding_menus.gd` |
 | 사망·전투 결과 | [기본 사망/기존 예외/타이틀 복귀](systems/combat-death.md) | `scripts/combat_outcome.gd`, `death_screen.gd`, `main.gd` | `death_flow.gd` |
+| 전투 HUD | [체력·내기·기세·무공 선택](ui/battle-hud.md) | `scripts/battle_hud.gd`, `scripts/battle.gd` | `ui_states.gd`, `combat_updates.gd`, `battle_motion.gd`, `capture_battle_hud.gd` |
 | 전투·아이콘 | [현재 규칙](systems/combat-actions-and-icons.md), [창법](systems/spear-balance.md) | `scripts/battle.gd`, `combat_actions.gd`, `data/icon_manifest.json` | `combat_updates.gd`, `spear_balance.gd` |
 | 무림맹 중급 무공5종 | [설정·수치·전수 구분](martial-arts/alliance-intermediate.md) | `data/alliance_martial_arts.json`, `scripts/martial_arts.gd` | `alliance_arts.gd`, `combat_updates.gd` |
 | 무공·무기·내기 | [무공](martial-arts/basic-attacks.md), [무기](systems/weapons.md), [내기](systems/inner-qi.md) | `data/basic_martial_arts.json`, `weapons.json`, `scripts/inner_qi.gd` | `martial_arts.gd`, `weapons.gd`, `weapon_requirements.gd`, `inner_qi.gd` |
