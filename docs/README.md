@@ -42,6 +42,7 @@
 | 무공·무기·내기 | [무공](martial-arts/basic-attacks.md), [무기](systems/weapons.md), [내기](systems/inner-qi.md) | `data/basic_martial_arts.json`, `weapons.json`, `scripts/inner_qi.gd` | `martial_arts.gd`, `weapons.gd`, `weapon_requirements.gd`, `inner_qi.gd` |
 | 산적 토벌 | [진행](story/chapter-01-bandit-campaign.md), [원고](story/chapter-01-bandit-dialogues.md) | `scripts/bandit_story.gd`, `data/changsha_bandit_story.json` | `bandit_story.gd` |
 | 편의 8종·Q/F2/L | [입구·동작·검증](systems/adventure-usability.md) | `scripts/adventure_ui.gd`, `game_options.gd`, `item_comparison.gd`, `interaction_indicator.gd` | `adventure_features.gd` |
+| 타이틀 | [화면·이어하기·불러오기](ui/title-live.md) | `scripts/title_screen.gd`, `save_system.gd` | `title_screen.gd`, `capture_title.gd`, `saves.gd`, `death_flow.gd` |
 | 저장·설정 | [규칙](systems/save-slots.md) | `scripts/save_system.gd`, `settings_menu.gd` | `save_restrictions.gd`, `saves.gd` |
 | 시설 NPC 그림 재사용 | [직업별2종 목록](characters/service-npc-gallery.md), [제작 원칙](characters/creation-guidelines.md) | `data/service_npc_portraits.json`, `data/city_standards.json` | 원본 경로·기존 도시 배정 확인 |
 | 기본 NPC 그림 재사용 | [제작 원칙](characters/creation-guidelines.md) | `data/basic_npc_portraits.json`, `scripts/dialogue_portraits.gd` | `basic_npc_portraits.gd`, `conversation_tools.gd` |

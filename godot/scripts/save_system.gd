@@ -101,7 +101,9 @@ func write_slot(slot: int) -> bool:
 func read_slot(slot: int) -> Dictionary:
 	if slot < 1 or slot > SLOT_COUNT: return {}
 	if not FileAccess.file_exists(path(slot)): return {}
-	var parsed = JSON.parse_string(FileAccess.get_file_as_string(path(slot)))
+	var json = JSON.new()
+	if json.parse(FileAccess.get_file_as_string(path(slot))) != OK:return {}
+	var parsed = json.data
 	parsed=_upgrade_qingya_battle(parsed)
 	return parsed if validate(parsed) else {}
 
@@ -428,3 +430,37 @@ func reward_adjustment(data: Dictionary) -> int:
 	for id in ["changsha_pages","changsha_waterway"]:
 		if records.get(id,{}).get("status")=="completed":adjustment+=50
 	return adjustment
+
+# Presentation metadata only: do not expose quest objectives or branch spoilers.
+func area_name(id: String) -> String:
+	return {"dock":"청류진 나루", "deck":"호송선", "changsha":"장사", "mountain_road":"장사–무창 산길", "wuchang":"무창", "alliance_office":"총무당", "qingya_hamlet":"삼거리 산촌", "qingya_camp":"청애채", "nanjing":"남경"}.get(id, "이름 없는 길")
+
+func saved_time(data: Dictionary, file_path: String) -> String:
+	var value = data.get("saved_at", "")
+	var stamp: String = value if value is String else ""
+	if stamp.length() >= 19 and stamp.substr(0, 4).is_valid_int():
+		return stamp.left(19).replace("T", " ")
+	var local_epoch = FileAccess.get_modified_time(file_path) + int(Time.get_time_zone_from_system().bias) * 60
+	return Time.get_datetime_string_from_unix_time(local_epoch).replace("T", " ")
+
+func title_entries() -> Array[Dictionary]:
+	var entries: Array[Dictionary] = []
+	for slot in range(1, SLOT_COUNT + 1):
+		var data = read_slot(slot)
+		if not data.is_empty():
+			entries.append({"slot":slot, "kind":"manual", "time":saved_time(data, path(slot)), "place":area_name(data.world.area)})
+	var checkpoint = game.prologue.read_checkpoint()
+	if not checkpoint.is_empty():
+		entries.append({"slot":0, "kind":"auto", "time":saved_time(checkpoint, game.prologue.SAVE_PATH), "place":"장사"})
+	entries.sort_custom(func(a, b):
+		if a.time == b.time:return a.slot > b.slot
+		return a.time > b.time)
+	return entries
+
+func load_title_entry(entry: Dictionary) -> bool:
+	if entry.get("kind") == "manual": return load_slot(int(entry.get("slot", 0)))
+	if entry.get("kind") == "auto" and not game.prologue.read_checkpoint().is_empty():
+		game.prologue.resume()
+		return true
+	error = "저장 파일을 읽을 수 없습니다. 다른 저장을 골라 주세요."
+	return false

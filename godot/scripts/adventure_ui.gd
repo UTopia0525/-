@@ -102,7 +102,8 @@ func close_menu() -> void:
 	if not window.visible:return
 	window.hide();get_tree().paused=prior_pause;first_choice=Callable();second_choice=Callable()
 	var back:=return_settings;return_settings=false
-	if back:game.settings_menu.open_menu()
+	if back and game.state != "title":game.settings_menu.open_menu()
+	elif game.state == "title":game.title_screen.restore_focus()
 func dismiss() -> void:
 	return_settings=false;close_menu()
 func reset() -> void:
@@ -216,7 +217,7 @@ func open_options() -> void:
 	for text in ["작게 · 18","보통 · 21","크게 · 24"]:sizes.add_item(text)
 	sizes.select([18,21,24].find(game.options.body_size));sizes.item_selected.connect(func(index):game.options.update("size",index));options_box.add_child(sizes)
 	var full=CheckButton.new();full.text="전체 화면";full.button_pressed=game.options.fullscreen;full.toggled.connect(func(value):game.options.update("fullscreen",value));options_box.add_child(full)
-	row("저장과 불러오기",close_menu);row("조작 도움말",open_help.bind(true))
+	row("타이틀로 돌아가기" if game.state == "title" else "저장과 불러오기",close_menu);row("조작 도움말",open_help.bind(game.state != "title"))
 func notify(text: String,sound: String="confirm") -> void:
 	notifications.append(text)
 	if notifications.size()>50:notifications.pop_front()

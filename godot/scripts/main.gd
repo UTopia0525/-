@@ -294,21 +294,10 @@ func _full_overlay(color: Color) -> Control:
 	return overlay
 
 func _build_title() -> void:
-	title_screen = _full_overlay(Color(0.035, 0.07, 0.055, 0.65))
-	UI.label(title_screen, "序章 · 첫 표행", Rect2(110, 120, 700, 35), 20, UI.GOLD)
-	UI.label(title_screen, "가라앉은\n약속", Rect2(105, 172, 850, 220), 78, Color("f3e5c8"))
-	UI.label(title_screen, "출항을 기다리는 작은 나루.\n당신의 첫 표행이 시작됩니다.", Rect2(113, 420, 750, 75), 22)
-	var start = UI.button(title_screen, "표행 시작  →", Rect2(112, 538, 230, 58), true)
-	start.pressed.connect(start_story)
-	var quick = UI.button(title_screen, "전투만 체험", Rect2(365, 538, 200, 58))
-	quick.pressed.connect(start_battle)
-	var city = UI.button(title_screen, "장사 자유 탐방", Rect2(588, 538, 230, 58))
-	city.pressed.connect(start_city)
-	continue_button = UI.button(title_screen, "0장 이후 이어하기", Rect2(842, 538, 250, 58))
-	continue_button.pressed.connect(prologue.resume)
-	UI.label(title_screen, "첫 표행에서 장사 입성까지 · 강호로 나아가는 여정", Rect2(113, 628, 700, 30), 14, UI.MUTED)
-	var wuchang=UI.button(title_screen,"무창 자유 탐방",Rect2(842,618,250,45))
-	wuchang.pressed.connect(start_wuchang)
+	title_screen = preload("res://scripts/title_screen.gd").new()
+	title_screen.game = self
+	ui_root.add_child(title_screen)
+	continue_button = title_screen.resume_button
 
 func start_wuchang() -> void:
 	start_city()
@@ -367,7 +356,7 @@ func reset() -> void:
 	choice_screen.hide()
 	story_visual.hide()
 	story_caption.hide()
-	continue_button.disabled = prologue.read_checkpoint().is_empty()
+	title_screen.refresh()
 	dialogue_done = Callable()
 	city_service.dismiss()
 	quest_navigation.clear()
@@ -697,6 +686,9 @@ func _finish_victory(hp: int) -> void:
 	ending.show()
 
 func _input(event: InputEvent) -> void:
+	if state == "title" and not settings_menu.window.visible and not adventure_ui.window.visible:
+		if title_screen.handle_input(event): get_viewport().set_input_as_handled()
+		return
 	if state=="game_over":
 		if event is InputEventKey and event.pressed and not event.echo:
 			if event.is_action_pressed("interact") or event.keycode in [KEY_ENTER,KEY_KP_ENTER]:death_screen.return_to_title()

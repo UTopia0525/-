@@ -109,7 +109,7 @@ func _finish() -> void:
 func save_checkpoint() -> void:
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file:
-		file.store_string(JSON.stringify({"version":2, "chapter_one":game.chapter_one.snapshot(), "chapter_00_complete":true, "branch":branch, "payment_received":payment_received, "money":game.money}))
+		file.store_string(JSON.stringify({"saved_at":Time.get_datetime_string_from_system(false, true), "version":2, "chapter_one":game.chapter_one.snapshot(), "chapter_00_complete":true, "branch":branch, "payment_received":payment_received, "money":game.money}))
 		game.continue_button.disabled = false
 	else:
 		game.objective.text = "저장하지 못했습니다. 현재 진행은 계속할 수 있습니다."
@@ -117,7 +117,9 @@ func save_checkpoint() -> void:
 
 func read_checkpoint() -> Dictionary:
 	if not FileAccess.file_exists(SAVE_PATH): return {}
-	var data = JSON.parse_string(FileAccess.get_file_as_string(SAVE_PATH))
+	var json = JSON.new()
+	if json.parse(FileAccess.get_file_as_string(SAVE_PATH)) != OK: return {}
+	var data = json.data
 	if not data is Dictionary: return {}
 	var version = data.get("version")
 	if typeof(version) not in [TYPE_FLOAT, TYPE_INT]: return {}

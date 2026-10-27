@@ -93,7 +93,7 @@ func refresh() -> void:
 		var data: Dictionary = game.save_system.read_slot(index + 1)
 		var exists = FileAccess.file_exists(game.save_system.path(index + 1))
 		var summary = "빈 저장 칸" if not exists else "읽을 수 없는 저장"
-		if not data.is_empty(): summary = "%d장 · %s · %s" % [int(data.chapter), area_name(data.world.area), data.saved_at]
+		if not data.is_empty(): summary = "%s · %s" % [game.save_system.saved_time(data, game.save_system.path(index + 1)), area_name(data.world.area)]
 		slots[index].text = "%02d   %s" % [index + 1, summary]
 		slots[index].modulate = UI.GOLD if index + 1 == selected else Color.WHITE
 	var data: Dictionary = game.save_system.read_slot(selected)
@@ -101,17 +101,14 @@ func refresh() -> void:
 	if data.is_empty():
 		details.text += "비어 있거나 불러올 수 없는 저장 칸입니다."
 	else:
-		var branch_name: String = {"":"선택 전", "treasure":"귀물 보전", "rescue":"인명 구조"}[data.prologue.branch]
-		var situation: String = {"explore":"탐험", "story":"대화 진행", "choice":"분기 선택 직전", "battle":"전투 · 내 차례", "service":"시설 이용", "end":"전투 체험 완료"}[data.state]
-		details.text += "%d장 · %s\n%s\n%s\n소지금 %d문\n%s" % [int(data.chapter), area_name(data.world.area), situation, branch_name, int(data.money), data.saved_at]
-		details.text += "\n" + (data.ui.caption if not data.ui.caption.is_empty() else data.ui.objective)
+		details.text += "저장 시각\n%s\n\n저장 장소\n%s" % [game.save_system.saved_time(data, game.save_system.path(selected)), area_name(data.world.area)]
 	action.text = "이 칸에 저장" if mode == "save" else "이 저장 불러오기"
 	var reason: String = game.save_system.blocked_reason() if mode == "save" else ""
 	action.disabled = not reason.is_empty() if mode == "save" else data.is_empty()
 	status.text = reason if not reason.is_empty() else ("탐험 중이나 분기 선택 전에 다른 칸에 저장할 수 있습니다." if mode == "save" else "선택한 저장 시점으로 돌아갑니다.")
 
 func area_name(id: String) -> String:
-	return {"dock":"청류진 나루", "deck":"호송선", "changsha":"장사", "mountain_road":"장사–무창 산길", "wuchang":"무창", "alliance_office":"총무당", "qingya_hamlet":"삼거리 산촌", "qingya_camp":"청애채"}.get(id, id)
+	return game.save_system.area_name(id)
 
 func request_action() -> void:
 	if action.disabled: return
@@ -146,5 +143,5 @@ func _input(event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	var compact_world=game.exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing"]
-	gear.visible=game.state!="game_over" and (game.state not in ["explore","story"] or not compact_world)
+	gear.visible=game.state not in ["title","game_over"] and (game.state not in ["explore","story"] or not compact_world)
 	gear.position=Vector2(1135,198) if game.state in ["explore","story"] else Vector2(1135,145)
