@@ -27,8 +27,20 @@ Godot의 **표행 시작**으로 나루 인사 → 승선 → 갑판 보고 → 
 - `python scripts/export_prologue_dialogue.py`: 원고의 대사 156줄을 25개 장면 JSON으로 내보낸다. 게임은 Markdown을 직접 해석하지 않는다. 해당 스크립트는 개발용이며 Windows 사용자가 실행할 필요는 없다.
 - `godot/data/prologue_dialogues.json`: 실행 대사·속말/회상 표시·장면 제목.
 - `godot/scripts/prologue.gd`: 분기·장면 순서·일회 보수·항구 연결·완료 체크포인트.
-- `godot/scripts/story_visual.gd`: 기존 나루/갑판 그림의 색조와 Godot의 수면·잔해·귀물함 도형을 사용한 컷신. 새 고해상도 침몰 일러스트나 별도 애니메이션 영화는 제작하지 않았다.
+- `godot/scripts/story_visual.gd`: 나루/갑판 컷신과 전용 침몰 배경을 표시한다. 강물의 선·잔해 사각형 대신 `assets/story/sinking-escort-ship.png`를 사용한다. 기존 전투 갑판을 참조한 정지 일러스트로, 기울어 물이 차는 호송선/부서진 돛/널빤지·밧줄/왼쪽 귀물함/오른쪽 허만복을 표현한다.
 - 대화에는 공용 초상화를 사용하고 발언자만 밝게 표시한다. 수적·수령인은 별도 정체나 전투 스탯을 부여하지 않는다.
+
+## 침몰 선택 화면
+
+선택지 아래 보수·생존·귀물 소실 결과를 미리 보여 주던 설명을 제거했다. 행동 문구와 현재의 위급한 상황만 표시한다. 도원의 속말/기억을 포함한 기존 대사, 분기 후 결과, 보상은 유지한다.
+
+선택 UI는 상단 상황 설명/하단 행동과 명시 확정 버튼으로 나누어 중앙의 침몰 장면과 양쪽 대상을 드러낸다. 전체 화면을 가리던 진한 덮개를 줄이고 문구 뒤에만 읽기용 패널을 둔다. 기본 선택 없음·시간 제한 없음·선택 중 진행 정지·F 확정 방지·저장/불러오기 규칙은 같다. 강물 컷신의 중복 제목/안내를 숨긴다.
+
+![실제 선택 화면](../../godot/screenshots/prologue-sinking-choice.png)
+
+[1440p 실제 캡처](../../godot/screenshots/prologue-sinking-choice-1440.png) · [생성한 배경 원본](../../godot/assets/story/sinking-escort-ship.png). 생성 원본은 작업 환경의 `/workspace/generated_images/exec-70724fd9-f39f-4a1f-8725-e417a5ce6783.png`에 보관한다.
+
+`tests/prologue.gd`에서 결과 안내 부재/전용 배경 표시/양쪽 결말·3000문 지급 시점·중복 방지를 확인하고 `tests/saves.gd`에서 미확정 분기 저장 복원을 검사한다. `tests/capture_prologue_choice.gd`는 실제 첫 전투를 마친 후 선택 화면을720p/1440p로 캡처한다. 모두 사용자 저장과 분리한 XDG 폴더를 쓴다.
 
 ## 검증과 실제 화면
 

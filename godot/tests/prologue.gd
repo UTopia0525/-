@@ -47,6 +47,10 @@ func run() -> void:
 		drain()
 		check(game.state == "choice" and not game.exploration.active, "sinking locks movement at decision")
 		check(game.prologue.branch.is_empty() and game.choice_confirm.disabled, "no default moral choice")
+		check(game.story_visual.picture.visible and game.story_visual.picture.texture.resource_path.ends_with("sinking-escort-ship.png"), "decision shows sinking ship artwork")
+		check(game.story_visual.paused and not game.story_visual.note.visible and not game.story_caption.visible, "decision keeps scene still without duplicate captions")
+		for label in game.choice_screen.find_children("*", "Label", true, false):
+			check(not label.text.contains("보수") and not label.text.contains("3,000") and not label.text.contains("구한다 ·"), "choice descriptions never disclose outcomes")
 		key(KEY_F)
 		check(game.state == "choice", "F cannot accidentally confirm")
 		key(KEY_1 if branch == "treasure" else KEY_2)

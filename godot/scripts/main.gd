@@ -757,27 +757,31 @@ func _input(event: InputEvent) -> void:
 				get_viewport().set_input_as_handled()
 
 func _build_story_choice() -> void:
-	choice_screen = _full_overlay(Color("09181aef"))
+	choice_screen = _full_overlay(Color("07151b1a"))
 	choice_screen.focus_mode = Control.FOCUS_ALL
-	UI.label(choice_screen, "한쪽으로만 뻗을 수 있는 손", Rect2(180, 90, 980, 50), 32, UI.GOLD)
+	UI.panel(choice_screen, Rect2(56, 20, 1168, 170), Color("081c24c9"))
+	UI.label(choice_screen, "한쪽으로만 뻗을 수 있는 손", Rect2(80, 36, 1100, 50), 32, UI.GOLD)
 	var intro = UI.label(choice_screen, "귀물함은 왼쪽 물살로, 허만복은 반대편 잔해 아래로 떠밀려간다.
-먼저 한쪽에 닿으면 다른 쪽으로 돌아갈 시간은 없다.", Rect2(180, 160, 950, 75), 21)
+먼저 한쪽에 닿으면 다른 쪽으로 돌아갈 시간은 없다.", Rect2(80, 105, 1100, 70), 21)
 	intro.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	UI.panel(choice_screen, Rect2(56, 548, 1168, 152), Color("081c24ed"))
 	for index in range(2):
-		var button = UI.button(choice_screen, ["1  귀물함을 향해 헤엄친다", "2  허만복에게 손을 뻗는다"][index], Rect2(180, 275 + index * 110, 920, 55))
+		var button = UI.button(choice_screen, ["1  귀물함을 향해 헤엄친다", "2  허만복에게 손을 뻗는다"][index], Rect2(80 + index * 572, 565, 548, 58))
 		button.pressed.connect(select_story_choice.bind(["treasure", "rescue"][index]))
 		choice_buttons.append(button)
-		UI.label(choice_screen, ["인도 시 보수 3,000문 · 허만복에게 돌아갈 시간은 없다.", "허만복을 구한다 · 귀물을 잃고 인도 보수는 받지 못한다."][index], Rect2(198, 335 + index * 110, 900, 35), 18)
-	choice_confirm = UI.button(choice_screen, "선택한 행동을 실행 · Enter", Rect2(640, 520, 460, 58))
+	choice_confirm = UI.button(choice_screen, "선택한 행동을 실행 · Enter", Rect2(800, 635, 400, 48))
 	choice_confirm.pressed.connect(confirm_story_choice)
-	UI.label(choice_screen, "방향키 / 1·2 또는 클릭으로 선택 → Enter / 실행 버튼으로 확정
-선택 중에는 시간이 흐르지 않습니다. F키로 확정되지 않습니다.", Rect2(180, 610, 950, 65), 17, UI.MUTED)
+	UI.label(choice_screen, "방향키 / 1·2 / 클릭으로 선택 · 선택 중에는 시간이 흐르지 않습니다.
+Enter / 실행 버튼으로 확정 · F키로는 확정되지 않습니다.", Rect2(80, 635, 690, 52), 16, UI.MUTED)
 	choice_screen.hide()
 
 func show_story_choice() -> void:
 	state = "choice"
 	pending_choice = ""
+	if story_visual.mode != "river" or not story_visual.visible: story_visual.present("river")
 	story_visual.paused = true
+	story_caption.hide()
+	bottom_hint.hide()
 	choice_confirm.disabled = true
 	for button in choice_buttons: UI.selection(button,false)
 	choice_screen.show()
