@@ -1,37 +1,11 @@
-extends Control
-## Review-only UI rendered with shipped portraits, icons, fonts and catalogue data.
-const UI=preload("res://scripts/ui.gd")
-const Icons=preload("res://scripts/catalog_icons.gd")
-const INK=Color("293c38")
-const MUTED=Color("7d7769")
-const TEAL=Color("244f4b")
-const LINE=Color("c5b79c")
+extends "res://scripts/paper_menu_base.gd"
+## Archived review layout; production uses scripts/player_menu.gd.
 var mode:="inventory"
-var content: Control
 var progress=preload("res://scripts/player_progress.gd").new()
 func _ready() -> void:
  set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
  progress.stats={"strength":20,"agility":20,"constitution":20,"inner":20,"insight":20}
  show_mode(mode)
-func box(parent: Node,rect: Rect2,color: Color,border: Color=Color.TRANSPARENT,radius: int=3) -> Panel:
- var panel=Panel.new();panel.position=rect.position;panel.size=rect.size
- var style=StyleBoxFlat.new();style.bg_color=color;style.border_color=border;style.set_border_width_all(1);style.set_corner_radius_all(radius)
- panel.add_theme_stylebox_override("panel",style);parent.add_child(panel);return panel
-func text(parent: Node,value: String,rect: Rect2,size: int=18,color: Color=INK,brush: bool=false) -> Label:
- var node=Label.new();node.text=value;node.position=rect.position;node.size=rect.size;node.add_theme_font_override("font",UI.BRUSH_FONT if brush else UI.BODY_FONT);node.add_theme_font_size_override("font_size",size);node.add_theme_color_override("font_color",color);parent.add_child(node);return node
-func icon(parent: Node,id: String,rect: Rect2) -> TextureRect:
- var node=TextureRect.new();node.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;node.texture=Icons.texture(id);node.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED;parent.add_child(node);node.position=rect.position;node.size=rect.size;return node
-func line(rect: Rect2) -> void:box(content,rect,LINE)
-func button(value: String,rect: Rect2,primary: bool=false) -> Button:
- var b=Button.new();b.text=value;b.position=rect.position;b.size=rect.size;b.add_theme_font_override("font",UI.BODY_FONT);b.add_theme_font_size_override("font_size",18)
- for state in ["normal","hover","pressed","focus"]:
-  var style=StyleBoxFlat.new();style.bg_color=TEAL.lightened(.1) if state in ["hover","pressed"] else TEAL if primary else Color("e7ddc6");style.border_color=Color("af9b70") if state=="focus" else LINE;style.set_border_width_all(1);style.set_corner_radius_all(3);b.add_theme_stylebox_override(state,style)
- b.add_theme_color_override("font_color",Color("f5eedb") if primary else INK);b.add_theme_color_override("font_hover_color",Color("f5eedb"));content.add_child(b);return b
-func paper(rect: Rect2,color: Color) -> void:
- var node=ColorRect.new();node.position=rect.position;node.size=rect.size
- var material=ShaderMaterial.new();var shader=Shader.new()
- shader.code="shader_type canvas_item; uniform vec4 paper_color : source_color; void fragment(){ vec2 p=floor(UV*vec2(1300.0,760.0)); float n=fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453); float edge=pow(abs(UV.x-.5)*2.0,8.0)+pow(abs(UV.y-.5)*2.0,8.0); COLOR=vec4(paper_color.rgb+(n-.5)*.035-edge*.025,1.0); }"
- material.shader=shader;material.set_shader_parameter("paper_color",color);node.material=material;content.add_child(node)
 func show_mode(value: String) -> void:
  mode=value
  if content!=null:remove_child(content);content.queue_free()

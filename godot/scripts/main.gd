@@ -710,6 +710,7 @@ func _input(event: InputEvent) -> void:
 			elif event.keycode == KEY_ESCAPE: player_menu.close_menu()
 			elif event.keycode == KEY_F1: reset()
 			elif event.keycode == KEY_M: music.toggle()
+			else: player_menu.handle_key(event)
 			get_viewport().set_input_as_handled()
 			return
 		if event.is_action_pressed("inventory") or event.is_action_pressed("martial_menu"):
