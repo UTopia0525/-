@@ -56,7 +56,7 @@ func _ready() -> void:
 	hint.add_theme_constant_override("shadow_offset_y", 2)
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	indicator=preload("res://scripts/interaction_indicator.gd").new()
-	indicator.z_index=5
+	indicator.z_index=0
 	decorations.add_child(indicator)
 	indicator.hide()
 	load_area("dock")
@@ -254,6 +254,7 @@ func _populate_residents(entries: Array) -> void:
 		citizen.set_meta("display_name", entry.name)
 		citizen.set_meta("quest_actor", entry.quest_actor)
 		citizen.set_meta("post", entry.post)
+		citizen.set_meta("hud_role",entry.get("role", "장인" if entry.has("service_id") and entry.service_id=="city_artisan" else "상인" if entry.has("service_id") and entry.service_id=="city_merchant" else "교관" if entry.has("service_id") else "주민"))
 		citizen.set_meta("frame", entry.frame)
 		citizen.set_meta("service_id", entry.get("service_id", ""))
 		citizen.set_meta("story_actor", entry.get("story_actor", false))
@@ -261,16 +262,18 @@ func _populate_residents(entries: Array) -> void:
 		# Use the same foot baseline as the player for Y sorting.
 		decorations.add_child(citizen)
 		ambient_nodes.append(citizen)
-		if citizen.get_meta("show_name"):
-			var marker = Node2D.new()
-			marker.set_meta("npc_id",entry.id)
-			marker.position = citizen.position
-			var tag = UI.label(marker, entry.name + (" · "+str(entry.role) if entry.get("alliance_actor",false) or entry.has("character_profile") else "") + (" · 토벌" if entry.get("story_actor", false) and not entry.get("alliance_actor",false) else " · 거래" if entry.has("service_id") else ""), Rect2(-105, -Metrics.CITIZEN_HEIGHT-Metrics.NAME_GAP, 210, 26), 15, UI.GOLD)
-			tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-			tag.add_theme_color_override("font_outline_color", Color("12201c"))
-			tag.add_theme_constant_override("outline_size", 5)
-			decorations.add_child(marker)
-			occlusion_roots.append(marker)
+		var marker = Node2D.new()
+		marker.set_meta("npc_id",entry.id)
+		marker.position = citizen.position
+		var tag = UI.label(marker, entry.name + (" · "+str(entry.role) if entry.get("alliance_actor",false) or entry.has("character_profile") else "") + (" · 토벌" if entry.get("story_actor", false) and not entry.get("alliance_actor",false) else " · 거래" if entry.has("service_id") else ""), Rect2(-105, -Metrics.CITIZEN_HEIGHT-Metrics.NAME_GAP, 210, 26), 15, UI.GOLD)
+		tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		tag.add_theme_color_override("font_outline_color", Color("12201c"))
+		tag.add_theme_constant_override("outline_size", 5)
+		decorations.add_child(marker)
+		occlusion_roots.append(marker)
+		tag.set_meta("nameplate",true);tag.set_meta("npc_id",entry.id)
+		citizen.set_meta("nameplate_label",tag)
+		tag.z_index=6
 
 func _build_city_art() -> void:
 	var prefabs: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(city_data.prefabs_path))
@@ -330,6 +333,8 @@ func _add_npc(id: String, title: String, point: Vector2, frame: int) -> void:
 	tag.add_theme_constant_override("shadow_offset_x", 2)
 	tag.add_theme_constant_override("shadow_offset_y", 2)
 	decorations.add_child(body)
+	if frame>=0:
+		body.set_meta("npc_id",id);body.set_meta("display_name",title);body.set_meta("nameplate_label",tag);tag.set_meta("nameplate",true);tag.set_meta("npc_id",id);tag.z_index=6
 	npcs.append({"id": id, "name": title, "position": point, "node": body, "frame": frame})
 
 func point_is_walkable(point: Vector2) -> bool:

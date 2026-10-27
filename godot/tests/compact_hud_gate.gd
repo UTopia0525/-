@@ -17,14 +17,14 @@ func run() -> void:
 	game.options.seen.append_array(["city","dialogue","trade","battle"]);game.start_city();await process_frame
 	game.chapter_number=1
 	await process_frame
-	check(game.chapter_goal.visible and game.chapter_goal.text=="주요 목표 · 장사를 탐사하세요","chapter one shows exploration as main objective")
+	check(not game.chapter_goal.visible and game.objective.text=="장사를 탐사하세요","chapter one shows exploration as main objective")
 	check(game.quest_navigation.track("changsha_cloth","deliver"),"quest can be tracked alongside chapter objective")
 	await process_frame
 	check(game.chapter_goal.visible and game.quest_heading.text.contains("맡겨 둔 옷감"),"quest tracking keeps exploration objective and quest name")
 	game.quest_navigation.clear()
 	game.bandit_story.stage="offered"
 	await process_frame
-	check(not game.chapter_goal.visible and game.objective.position.y==40,"campaign replaces exploration prompt and restores layout")
+	check(not game.chapter_goal.visible and game.objective.text.contains("토벌"),"campaign is primary when no errand is tracked")
 	game.bandit_story.stage="dormant"
 	var w=game.exploration;var portal=w.travel_exits[0]
 	var path=w.path_to(portal.position,true);check(not path.is_empty(),"locked portal is still approachable")
@@ -52,7 +52,7 @@ func run() -> void:
 	check(game.minimap.size==Vector2(188,174),"compact minimap dimensions")
 	await process_frame
 	var buttons=game.compact_toolbar.get_children().filter(func(n):return n is Button)
-	check(buttons.size()==7,"seven compact mouse shortcuts retained")
+	check(buttons.size()==1 and buttons[0].text.contains("F2"),"compact help replaces seven-button toolbar")
 	for i in range(buttons.size()):
 		check(buttons[i].get_global_rect().end.y<=720,"toolbar fits screen")
 		for j in range(i):check(not buttons[i].get_global_rect().intersects(buttons[j].get_global_rect()),"toolbar buttons do not overlap")

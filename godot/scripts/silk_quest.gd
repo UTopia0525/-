@@ -129,7 +129,7 @@ func refresh_world() -> void:
 				if scenery.name=="capital_2":node=scenery;point=scenery.position;break
 		if node==null:continue
 		if is_target(def[0]):
-			var mark=UI.label(w.decorations,"◆",Rect2(point+Vector2(-40,-110),Vector2(80,92)),68,Color("ffcf69"));mark.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;mark.z_index=6;nodes.append(mark)
+			var mark=UI.label(w.decorations,"◆",Rect2(point+Vector2(-40,-110),Vector2(80,92)),68,Color("ffcf69"));mark.set_meta("hud_anchor",point);mark.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;mark.z_index=6;nodes.append(mark)
 		w.objectives.append({"id":def[0],"goal_id":def[0],"name":def[1],"position":point,"node":node,"frame":-1,"important":is_target(def[0])})
 func _process(_delta: float) -> void:refresh_world()
 func snapshot() -> Dictionary:return {"phase":phase}

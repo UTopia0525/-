@@ -80,6 +80,8 @@ var money_label: Label
 var journey_label: Label
 var chapter_goal: Label
 var quest_heading: Label
+var objective_meta: Label
+var exploration_hud
 var compact_toolbar: Panel
 var continue_button: Button
 var dialogue_lines: Array = []
@@ -181,6 +183,7 @@ func _ready() -> void:
 	var log_button=UI.button(battle,"교전 기록 · L",Rect2(915,145,205,35))
 	log_button.pressed.connect(adventure_ui.open_log)
 	death_screen=preload("res://scripts/death_screen.gd").new();death_screen.game=self;ui_root.add_child(death_screen)
+	exploration_hud=preload("res://scripts/exploration_hud.gd").new();exploration_hud.game=self;add_child(exploration_hud)
 	reset()
 
 func _setup_input() -> void:
@@ -219,17 +222,15 @@ func _build_hud() -> void:
 	objective=UI.label(mission,"",Rect2(12,40,258,60),14)
 	objective.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 	objective.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
-	compact_toolbar=UI.panel(top_hud,Rect2(316,666,648,38),Color("101e20ee"))
-	var labels=["I  소지품","K  무공","Q  의뢰","R  세력","TAB  지도","ESC  설정","F2  도움말"]
-	for i in range(labels.size()):
-		var button=UI.button(compact_toolbar,labels[i],Rect2(5+i*91,4,89,30))
-		button.add_theme_font_size_override("font_size",13)
-		for style_name in ["normal","hover","hover_pressed","pressed","disabled","focus"]:
-			var compact=button.get_theme_stylebox(style_name).duplicate()
-			compact.set_content_margin(SIDE_LEFT,6);compact.set_content_margin(SIDE_RIGHT,6)
-			compact.set_content_margin(SIDE_TOP,3);compact.set_content_margin(SIDE_BOTTOM,3)
-			button.add_theme_stylebox_override(style_name,compact)
-		button.pressed.connect(_hud_action.bind(i))
+	objective_meta=UI.label(mission,"",Rect2(12,92,258,17),11,UI.MUTED)
+	compact_toolbar=UI.panel(top_hud,Rect2(1102,674,162,30),Color("101e20ee"))
+	var help=UI.button(compact_toolbar,"조작 안내 · F2",Rect2(4,2,154,26))
+	help.add_theme_font_size_override("font_size",12)
+	for style_name in ["normal","hover","pressed","focus"]:
+		var compact=help.get_theme_stylebox(style_name).duplicate()
+		compact.content_margin_top=2;compact.content_margin_bottom=2;compact.content_margin_left=6;compact.content_margin_right=6
+		help.add_theme_stylebox_override(style_name,compact)
+	help.pressed.connect(_hud_action.bind(6))
 	bottom_hint=UI.label(ui_root,UI.EXPLORATION_HINT,Rect2(24,680,1230,27),14,UI.TEXT)
 	bottom_hint.add_theme_color_override("font_shadow_color",Color("11211a"));bottom_hint.add_theme_constant_override("shadow_offset_x",2);bottom_hint.add_theme_constant_override("shadow_offset_y",2)
 
@@ -444,19 +445,6 @@ func _process(_delta: float) -> void:
 	var total:=0
 	for value in progress.stats.values():total+=int(value)
 	journey_label.text=("제%d장 · " % chapter_number if prologue.active or prologue.completed else "")+"도원 · "+("절정까지 %d" % (100-total) if total<100 else progress.RULES.realm(total))
-	compact_toolbar.visible=exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing"] and state=="explore" and dialogue_lines.is_empty()
-	if state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing"]:
-		location.text = exploration.city_data.name+" · " + exploration.district_at_player()
-		var exploring_changsha: bool = chapter_number == 1 and exploration.area_name == "changsha" and bandit_story.stage == "dormant"
-		chapter_goal.visible = exploring_changsha
-		quest_heading.position.y = 30 if exploring_changsha else 9
-		objective.position.y = 59 if exploring_changsha else 40
-		objective.size.y = 43 if exploring_changsha else 60
-		var goal: Dictionary = quest_navigation.get_goal(exploration)
-		quest_heading.text=goal.quest_title+" · Q" if not goal.is_empty() else "강호행 · Q 의뢰"
-		bottom_hint.hide()
-		objective.text = goal.label if not goal.is_empty() else ("총무당 둘러보기 · 남쪽 출입 지점에서 F 이동" if exploration.area_name=="alliance_office" else "산길을 따라 북쪽 무창으로 · 출입 지점에서 F 이동" if exploration.area_name=="mountain_road" else "무창 둘러보기 · 남쪽 농촌 끝에서 장사 방면" if exploration.area_name=="wuchang" else "삼거리 산촌 · 북쪽 청애채 / 서쪽 무창 / 동쪽 남경 방면" if exploration.area_name=="qingya_hamlet" else "청애채 · 남쪽 정문으로 산촌에 돌아가기" if exploration.area_name=="qingya_camp" else "남경 탐사 · 객잔·창고·진회하 둘러보기" if exploration.area_name=="nanjing" else "시장·골목·나루·성밖 농촌 둘러보기")
-		objective.tooltip_text=(chapter_goal.text+"\n" if exploring_changsha else "")+quest_heading.text+"\n"+objective.text
 	bandit_story.maybe_start()
 	alliance_story.maybe_start()
 

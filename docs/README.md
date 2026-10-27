@@ -42,6 +42,7 @@
 | 무공·무기·내기 | [무공](martial-arts/basic-attacks.md), [무기](systems/weapons.md), [내기](systems/inner-qi.md) | `data/basic_martial_arts.json`, `weapons.json`, `scripts/inner_qi.gd` | `martial_arts.gd`, `weapons.gd`, `weapon_requirements.gd`, `inner_qi.gd` |
 | 산적 토벌 | [진행](story/chapter-01-bandit-campaign.md), [원고](story/chapter-01-bandit-dialogues.md) | `scripts/bandit_story.gd`, `data/changsha_bandit_story.json` | `bandit_story.gd` |
 | 편의 8종·Q/F2/L | [입구·동작·검증](systems/adventure-usability.md) | `scripts/adventure_ui.gd`, `game_options.gd`, `item_comparison.gd`, `interaction_indicator.gd` | `adventure_features.gd` |
+| 탐험 HUD | [목표·이름·표식·알림](ui/exploration-hud.md) | `scripts/exploration_hud.gd`, `minimap.gd`, `adventure_ui.gd` | `exploration_hud.gd`, `capture_exploration_hud.gd`, `quest_update.gd`, `compact_hud_gate.gd` |
 | UI 상태 표시 | [선택·포커스·사용 불가](ui/interaction-states.md) | `scripts/ui.gd`, `paper_menu_base.gd` 및 각 메뉴 | `ui_states.gd`, `capture_ui_states.gd`, `paper_menu_live.gd`, `trading.gd`, `combat_updates.gd` |
 | 타이틀 | [화면·이어하기·불러오기](ui/title-live.md) | `scripts/title_screen.gd`, `save_system.gd` | `title_screen.gd`, `capture_title.gd`, `saves.gd`, `death_flow.gd` |
 | 저장·설정 | [규칙](systems/save-slots.md) | `scripts/save_system.gd`, `settings_menu.gd` | `save_restrictions.gd`, `saves.gd` |

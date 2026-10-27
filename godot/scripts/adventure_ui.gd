@@ -29,6 +29,7 @@ var filter:="active"
 var selected:=""
 var entries: Dictionary={}
 var pending_toasts: Array[String]=[]
+var notification_waiting=false
 var notifications: Array[String]=[]
 var results: Array[Dictionary]=[]
 var prior_pause:=false
@@ -56,7 +57,7 @@ func _ready() -> void:
 	secondary=UI.button(panel,"",Rect2(740,556,350,44));secondary.pressed.connect(secondary_action)
 	var close=UI.button(panel,"닫기 · ESC",Rect2(26,556,325,44));close.pressed.connect(close_menu)
 	options_box=VBoxContainer.new();options_box.position=Vector2(390,120);options_box.size=Vector2(680,350);options_box.add_theme_constant_override("separation",16);panel.add_child(options_box)
-	toast=UI.label(self,"",Rect2(300,590,490,80),17,UI.GOLD);toast.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;toast.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;toast.z_index=-1
+	toast=UI.label(self,"",Rect2(16,604,356,60),17,UI.GOLD);toast.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;toast.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;toast.z_index=-1
 	toast.add_theme_stylebox_override("normal",UI.box(Color("112017f5")));toast.hide();window.hide();apply_font()
 func apply_font() -> void:
 	if is_instance_valid(body):body.add_theme_font_size_override("normal_font_size",game.options.body_size if is_instance_valid(game.options) else 21)
@@ -107,7 +108,7 @@ func close_menu() -> void:
 func dismiss() -> void:
 	return_settings=false;close_menu()
 func reset() -> void:
-	dismiss();results.clear();notifications.clear();pending_toasts.clear();toast.hide()
+	dismiss();results.clear();notifications.clear();pending_toasts.clear();notification_waiting=false;toast.hide()
 	if toast_tween and toast_tween.is_valid():toast_tween.kill()
 func clear_rows() -> void:
 	for child in rows.get_children():rows.remove_child(child);child.queue_free()
@@ -231,9 +232,11 @@ func notify(text: String,sound: String="confirm") -> void:
 	game.options.play(sound)
 	pending_toasts.append(text)
 	if pending_toasts.size()>8:pending_toasts.pop_front()
-	if not toast.visible:_show_next_toast()
+	if not toast.visible and not notification_waiting:_show_next_toast()
 func _show_next_toast() -> void:
-	if pending_toasts.is_empty():toast.hide();return
+	if pending_toasts.is_empty():toast.hide();notification_waiting=false;return
+	if not _notification_ready():toast.hide();notification_waiting=true;return
+	notification_waiting=false
 	toast.text=pending_toasts.pop_front();toast.modulate.a=1;toast.show()
 	toast_tween=create_tween();toast_tween.tween_interval(3);toast_tween.tween_property(toast,"modulate:a",0,.4);toast_tween.tween_callback(_show_next_toast)
 func tip(id: String,text: String) -> void:
@@ -293,3 +296,16 @@ func _input(event: InputEvent) -> void:
 	elif event.keycode==KEY_ESCAPE or (mode=="journal" and event.keycode==KEY_Q) or (mode=="favor" and event.keycode==KEY_R) or (mode=="help" and event.keycode==KEY_F2) or (mode in ["result","log"] and (event.is_action_pressed("interact") or event.keycode in [KEY_L,KEY_ENTER])):close_menu()
 	else:handled=false
 	if handled:get_viewport().set_input_as_handled()
+
+func _notification_ready() -> bool:
+	if not (game.state=="explore" and game.exploration.active and not window.visible and not game.player_menu.visible and not game.settings_menu.window.visible and not game.city_overview.visible):return false
+	var hint=game.exploration.hint
+	if hint.visible:
+		var bounds=Rect2(hint.get_global_transform_with_canvas().origin,hint.size*game.exploration.camera.zoom)
+		if bounds.intersects(toast.get_global_rect().grow(8)):return false
+	return true
+func _process(_delta: float) -> void:
+	if toast.visible and not _notification_ready():
+		if toast_tween and toast_tween.is_valid():toast_tween.kill()
+		pending_toasts.push_front(toast.text);toast.hide();notification_waiting=true
+	if notification_waiting and _notification_ready():_show_next_toast()

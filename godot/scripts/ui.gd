@@ -38,6 +38,7 @@ static func label(parent: Node, text: String, area: Rect2, font_size: int = 20, 
 	node.add_theme_font_size_override("font_size", font_size)
 	if font_size >= 22: node.add_theme_font_override("font", BRUSH_FONT)
 	node.add_theme_color_override("font_color", color)
+	if text in ["!","?"] or text.begins_with("◆") or (text.is_empty() and font_size==68):node.set_meta("quest_marker",true)
 	node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	parent.add_child(node)
 	return node

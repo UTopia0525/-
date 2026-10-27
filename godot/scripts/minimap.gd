@@ -30,6 +30,7 @@ func _ready() -> void:
 	position = Vector2(16, 16)
 	size = Vector2(188, 174)
 	mouse_filter = Control.MOUSE_FILTER_STOP
+	tooltip_text="! 수락 가능 · ? 완료 보고 · 숫자는 가까이 모인 의뢰 수\n주황색 표식은 현재 추적 목표입니다."
 	add_theme_stylebox_override("panel", UI.box(Color("101e20ee")))
 	place_label = UI.label(self, "", Rect2(10,6,168,22),14, UI.TEXT)
 	place_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
@@ -73,7 +74,9 @@ func refresh() -> void:
 			npc_markers.append(project_point(citizen.position))
 			var errands=exploration.get_parent().ordinary_quests
 			var symbol: String=errands.marker_for(citizen.get_meta("npc_id"))
-			if symbol.is_empty() and errands.is_target(citizen.get_meta("npc_id")):symbol="◆"
+			if symbol.is_empty() and errands.is_target(citizen.get_meta("npc_id")):
+				var goal: Dictionary=quest_navigation.get_goal(exploration) if is_instance_valid(quest_navigation) else {}
+				if not goal.is_empty() and citizen.position.distance_to(goal.position)<120:symbol="◆"
 			if not symbol.is_empty():quest_badges.append({"position":project_point(citizen.position),"symbol":symbol})
 			var id: String=citizen.get_meta("service_id", "")
 			if not id.is_empty():facility_markers.append({"id":id,"position":project_point(citizen.position)})
@@ -141,14 +144,17 @@ func draw_map(canvas: Control) -> void:
 		canvas.draw_circle(point,6,Color("102e42"));canvas.draw_arc(point,4,0,TAU,20,Color("50bfff"),2);canvas.draw_circle(point,1.5,Color("c1f6ff"))
 	for point in npc_markers:
 		canvas.draw_circle(point, 4.0, Color("10251e"))
-		canvas.draw_circle(point, 2.8, Color("81f0cf"))
+		canvas.draw_circle(point, 2.8, Color("86ae9e"))
 	for facility in facility_markers:
 		var color: Color={"city_merchant":Color("92dca1"),"city_artisan":Color("e7b777"),"city_instructor":Color("9fc5fc")}[facility.id]
 		canvas.draw_circle(facility.position,8,Color("16261e"));canvas.draw_arc(facility.position,8,0,TAU,20,color,1.5)
 		canvas.draw_string(UI.BODY_FONT,facility.position+Vector2(-5,5),{"city_merchant":"약","city_artisan":"장","city_instructor":"무"}[facility.id],HORIZONTAL_ALIGNMENT_LEFT,-1,12,color)
-	for badge in quest_badges:
-		canvas.draw_string_outline(UI.BODY_FONT,badge.position+Vector2(-7,-8),badge.symbol,HORIZONTAL_ALIGNMENT_LEFT,-1,26,5,Color("14251e"))
-		canvas.draw_string(UI.BODY_FONT,badge.position+Vector2(-7,-8),badge.symbol,HORIZONTAL_ALIGNMENT_LEFT,-1,26,Color("ffe14b"))
+	for badge in badge_groups():
+		canvas.draw_circle(badge.position+Vector2(0,-15),15,Color("14251eee"))
+		var symbol: String=badge.symbol+(str(badge.count) if badge.count>1 else "")
+		var size=20 if badge.count>1 else 26
+		canvas.draw_string_outline(UI.BODY_FONT,badge.position+Vector2(-7,-8),symbol,HORIZONTAL_ALIGNMENT_LEFT,-1,size,4,Color("14251e"))
+		canvas.draw_string(UI.BODY_FONT,badge.position+Vector2(-7,-8),symbol,HORIZONTAL_ALIGNMENT_LEFT,-1,size,Color("dfc27c"))
 	if quest_active:
 		if quest_offscreen:
 			var tangent = Vector2(-quest_direction.y, quest_direction.x)
@@ -165,6 +171,16 @@ func draw_map(canvas: Control) -> void:
 		triangle.append(player_marker + point.rotated(angle))
 	canvas.draw_colored_polygon(triangle, Color("ffdb79"))
 	canvas.draw_rect(Rect2(Vector2.ZERO, VIEW_SIZE), UI.GOLD, false, 1)
+
+func badge_groups() -> Array[Dictionary]:
+	var groups: Array[Dictionary]=[]
+	for badge in quest_badges:
+		var merged=false
+		for group in groups:
+			if group.symbol==badge.symbol and group.position.distance_to(badge.position)<24:
+				group.count+=1;merged=true;break
+		if not merged:groups.append({"position":badge.position.clamp(Vector2(12,28),VIEW_SIZE-Vector2(22,4)),"symbol":badge.symbol,"count":1})
+	return groups
 
 func _process(_delta: float) -> void:
 	if is_visible_in_tree():
