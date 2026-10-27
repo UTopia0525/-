@@ -7,8 +7,8 @@
     "weapon_style": "sword",
     "required_weapon_type": "sword",
     "damage_coefficients": {
-      "strength": 10,
-      "inner": 3
+      "strength": 8,
+      "inner": 2
     },
     "base_damage": 0,
     "qi_cost": 18,
@@ -31,8 +31,8 @@
     "weapon_style": "saber",
     "required_weapon_type": "saber",
     "damage_coefficients": {
-      "strength": 13,
-      "inner": 3
+      "strength": 11,
+      "inner": 2.5
     },
     "base_damage": 0,
     "qi_cost": 28,
@@ -55,10 +55,10 @@
     "weapon_style": "spear",
     "required_weapon_type": "spear",
     "damage_coefficients": {
-      "strength": 3,
-      "inner": 1
+      "strength": 2.5,
+      "inner": 0.8
     },
-    "base_damage": 360,
+    "base_damage": 300,
     "qi_cost": 44,
     "requirements": {
       "stats": {},
@@ -67,7 +67,7 @@
     "acquisition": "alliance_instructor",
     "price": null,
     "price_currency": "mun",
-    "description": "창대를 타고 모은 힘을 한 점에 터뜨린다. 높은 고정 위력360과 낮은 성장 계수로 익힌 직후 강력하며 창의 내기 절감 효과를 받는다.",
+    "description": "창대를 타고 모은 힘을 한 점에 터뜨린다. 높은 고정 위력300과 낮은 성장 계수로 익힌 직후 강력하며 창의 내기 절감 효과를 받는다.",
     "status": "implemented",
     "action_cost": 65
   },
@@ -79,8 +79,8 @@
     "weapon_style": "fist",
     "required_weapon_type": "none",
     "damage_coefficients": {
-      "strength": 5,
-      "inner": 14
+      "strength": 4.5,
+      "inner": 12.5
     },
     "base_damage": 0,
     "qi_cost": 30,
@@ -103,8 +103,8 @@
     "weapon_style": "palm",
     "required_weapon_type": "none",
     "damage_coefficients": {
-      "strength": 4,
-      "inner": 15
+      "strength": 3,
+      "inner": 10
     },
     "base_damage": 0,
     "qi_cost": 34,

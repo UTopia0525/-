@@ -27,7 +27,7 @@
     "kind": "attack",
     "weapon_style": "sword",
     "damage_coefficients": {
-      "strength": 5,
+      "strength": 4.5,
       "inner": 1
     },
     "qi_cost": 12,
@@ -56,7 +56,7 @@
     "weapon_style": "sword",
     "damage_coefficients": {
       "strength": 4,
-      "inner": 3
+      "inner": 2
     },
     "qi_cost": 14,
     "requirements": {
@@ -109,8 +109,8 @@
     "kind": "attack",
     "weapon_style": "saber",
     "damage_coefficients": {
-      "strength": 8,
-      "inner": 2
+      "strength": 5.5,
+      "inner": 1.5
     },
     "qi_cost": 24,
     "requirements": {
@@ -163,8 +163,8 @@
     "kind": "attack",
     "weapon_style": "spear",
     "damage_coefficients": {
-      "strength": 2,
-      "inner": 1
+      "strength": 1.6,
+      "inner": 0.8
     },
     "qi_cost": 40,
     "requirements": {
@@ -176,12 +176,12 @@
       "minimum_total": 70
     },
     "acquisition": "city_instructor",
-    "description": "허초와 실초를 잇는 창법. 고정 위력240의 강한 일격을 내지만 내기 소모가 크다.",
+    "description": "허초와 실초를 잇는 창법. 고정 위력150의 강한 일격을 내지만 내기 소모가 크다.",
     "status": "implemented",
     "required_weapon_type": "spear",
     "price": 350,
     "price_currency": "mun",
-    "base_damage": 240,
+    "base_damage": 150,
     "grade": "low",
     "action_cost": 70
   },
@@ -218,7 +218,7 @@
     "weapon_style": "palm",
     "damage_coefficients": {
       "strength": 2,
-      "inner": 10
+      "inner": 7
     },
     "qi_cost": 26,
     "requirements": {

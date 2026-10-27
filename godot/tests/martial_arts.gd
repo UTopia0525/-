@@ -96,6 +96,10 @@ func check_redesign(arts) -> void:
 			check(combat.action(ids[0],early,"balanced_spear").raw>combat.action(other,early,weapon).raw,"spear has early fixed-force advantage over "+other)
 			check(combat.action(ids[0],late,"balanced_spear").raw<combat.action(other,late,weapon).raw,"higher growth overtakes spear later: "+other)
 	check(combat.action("gwanak",{"strength":20,"inner":20},"balanced_spear").cost==40,"spear equipment still discounts high inner qi cost")
+	for level in [10,20,100]:
+		var stats={"strength":level,"inner":level}
+		for pair in [["hoepung","danseok"],["yeonhwan","gwanpung"],["ungi","cheolsan"],["jungun","banseok"],["swaerang","paak"]]:
+			check(arts.raw_damage(pair[0],stats)<arts.raw_damage(pair[1],stats),"wider coverage has lower per-target damage at "+str(level)+": "+pair[0])
 	var progress=preload("res://scripts/player_progress.gd").new()
 	var old=progress.snapshot();old.learned.append_array(["cheongpung","swaeam","cheolsan","jingak"])
 	old.loadout=["swaeam","cheongpung","jingak","cheolsan"]

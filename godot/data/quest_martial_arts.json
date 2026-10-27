@@ -7,8 +7,8 @@
     "weapon_style": "saber",
     "required_weapon_type": "saber",
     "damage_coefficients": {
-      "strength": 14,
-      "inner": 3
+      "strength": 9.5,
+      "inner": 2
     },
     "base_damage": 0,
     "qi_cost": 32,
@@ -19,7 +19,7 @@
     "acquisition": "quest_manual",
     "price": null,
     "price_currency": "mun",
-    "description": "밀려오는 파도를 부수듯 무게를 실어 베는 도법. 파악도법보다 근력의 쓰임이 깊다.",
+    "description": "밀려오는 파도를 부수듯 무게를 실어 베는 도법. 도날의 힘을 넓게 풀어낸다.",
     "status": "implemented",
     "action_cost": 90
   }

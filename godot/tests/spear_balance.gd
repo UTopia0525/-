@@ -36,11 +36,12 @@ func _initialize() -> void:
 	baseline.arts.definitions.yeonhwan.erase("base_damage")
 	baseline.arts.definitions.yeonhwan.qi_cost=34
 	check(revised.arts.get_skill("gwanpung").get("base_damage")==200 and revised.arts.qi_cost("gwanpung")==30,"live Gwanpung catalogue uses the applied patch")
-	check(revised.arts.get_skill("yeonhwan").get("base_damage")==240 and revised.arts.qi_cost("yeonhwan")==40,"live Yeonhwan catalogue uses the applied patch")
+	check(revised.arts.get_skill("yeonhwan").get("base_damage")==150 and revised.arts.qi_cost("yeonhwan")==40,"live Yeonhwan catalogue uses the applied patch")
 	var early := {"strength":20,"agility":20,"constitution":20,"inner":20,"insight":20}
 	var late := {"strength":80,"agility":80,"constitution":80,"inner":80,"insight":80}
 	for id in ["gwanpung","yeonhwan"]:
-		check(revised.action(id,early,"balanced_spear").raw > baseline.action(id,early,"balanced_spear").raw,"early spear burst improves: "+id)
+		if id=="gwanpung":check(revised.action(id,early,"balanced_spear").raw > baseline.action(id,early,"balanced_spear").raw,"narrow spear keeps its early fixed force")
+		else:check(revised.action(id,early,"balanced_spear").raw < revised.action("gwanpung",early,"balanced_spear").raw,"broad spear trades per-target power for coverage")
 		check(revised.action(id,late,"flowing_cloud_spear").raw < revised.action("yusu",late,"hundredfold_sword").raw,"ordinary spear falls behind late sword scaling: "+id)
 		check(revised.action(id,late,"flowing_cloud_spear").raw < revised.action("hoepung",late,"heavy_steel_saber").raw,"ordinary spear falls behind late saber scaling: "+id)
 		check(revised.action(id,late,"flowing_cloud_spear").raw < revised.action("cheolsan",late,"none").raw,"ordinary spear falls behind late fist scaling: "+id)
