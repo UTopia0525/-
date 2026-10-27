@@ -55,7 +55,7 @@ static func build(m,ids: Array) -> void:
  m.box(m.content,Rect2(635,423,250,132),Color("e8dfcd"))
  m.range_preview=RangePreview.new();m.range_preview.position=Vector2(635,423);m.range_preview.size=Vector2(250,132);m.content.add_child(m.range_preview)
  m.range_preview.configure(m.tactics.preview(id));m.range_preview.tooltip_text="오른쪽으로 펼치는 범위 예시입니다. 지형과 점유에 따라 이동이 막힐 수 있습니다."
- m.text(m.content,"7×5 범위 · 설계",Rect2(635,404,250,18),11,m.MUTED)
+ m.text(m.content,"범위 예시 · 우측",Rect2(635,404,250,18),11,m.MUTED)
  var grade={"introductory":"입문","low":"하급","intermediate":"중급"}.get(item.get("grade",""),"기본")
  var body=str(grade)+" · "+str(tactics.target)+"\n"+str(tactics.description)
  if not item.damage_coefficients.is_empty():
@@ -63,7 +63,7 @@ static func build(m,ids: Array) -> void:
   if int(item.get("base_damage",0))>0:parts.append(str(int(item.base_damage)))
   for key in item.damage_coefficients:parts.append({"strength":"근력","inner":"내공","agility":"기민"}.get(key,key)+"×"+str(item.damage_coefficients[key]))
   body+="\n위력 "+" + ".join(parts)
- if item.weapon_style=="support":body+="\n내공의 %d%% 내기 회복\n피해 %d%% 감소 · 재사용 %d턴" % [int(item.get("qi_restore_inner_percent",0)),int(item.get("guard_percent",0)),int(item.get("cooldown_turns",0))]
+ if item.weapon_style=="support":body+="\n내공의 %d%% 내기 회복\n피해 %d%% 감소 · 재사용 %d행동" % [int(item.get("qi_restore_inner_percent",0)),int(item.get("guard_percent",0)),int(item.get("cooldown_turns",0))]
  elif item.weapon_style=="sword" or id=="basic_defense":body+="\n피해 20% 감소"
  if item.get("requirements",{}).get("minimum_total",-1)==0 and item.requirements.stats.is_empty():body+="\n능력치·경지 학습 조건 없음"
  m.detail.text=body

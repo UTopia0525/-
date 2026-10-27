@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "runtime_grid_enabled": false,
+  "runtime_grid_enabled": true,
   "entries": {
     "samjae": {
       "action_cost": 40,

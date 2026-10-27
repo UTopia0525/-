@@ -606,7 +606,7 @@ func start_battle(encounter: Dictionary = {}) -> void:
 	battle.set_loadout(progress.loadout)
 	battle.set_encounter(encounter)
 	battle.begin()
-	adventure_ui.tip("battle","행동을 고른 뒤 사용으로 실행 · L 교전 기록")
+	adventure_ui.tip("battle","WASD 이동 · 1~4 초식 선택 · R 방향 · Enter 출수 · L 교전 기록")
 
 func _on_victory(hp: int) -> void:
 	if state!="battle":return
@@ -685,7 +685,7 @@ func _input(event: InputEvent) -> void:
 		return
 	if is_instance_valid(adventure_ui) and adventure_ui.window.visible:return
 	if event is InputEventKey and event.pressed and not event.echo and not settings_menu.window.visible:
-		if event.keycode==KEY_R:
+		if event.keycode==KEY_R and state!="battle":
 			adventure_ui.open_favor();get_viewport().set_input_as_handled();return
 		if event.keycode==KEY_Q:
 			adventure_ui.open_journal();get_viewport().set_input_as_handled();return
@@ -750,10 +750,7 @@ func _input(event: InputEvent) -> void:
 				interact()
 				get_viewport().set_input_as_handled()
 			elif state == "battle":
-				if battle.selected:
-					battle.use_selected()
-				else:
-					battle.select_basic_attack()
+				battle.use_selected()
 				get_viewport().set_input_as_handled()
 
 func _build_story_choice() -> void:

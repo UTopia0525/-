@@ -1,7 +1,7 @@
 {
   "josik_suwon": {
     "name": "조식수원공",
-    "description": "호흡을 가다듬어 내공의200%만큼 내기를 회복하고 피해를20% 줄입니다. 사용 후 자기 차례3번 동안 재사용할 수 없습니다.",
+    "description": "호흡을 가다듬어 내공의200%만큼 내기를 회복하고 피해를20% 줄입니다. 사용 후 자기 행동3번 동안 재사용할 수 없습니다.",
     "weapon_style": "support",
     "required_weapon_type": null,
     "damage_coefficients": {},

@@ -1,5 +1,5 @@
 extends RefCounted
-## Display metadata for the new combat design. Never used to charge runtime resources.
+## Shared grid profiles for K previews and live action costs/footprints.
 var entries: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/martial_tactics.json")).entries
 func get_tactics(id: String) -> Dictionary:return entries.get(id,{"action_cost":null,"shape":"unknown","advance":0,"retreat":0,"push":0,"follow":false,"target":"미정","description":"기술 범위를 정하고 있습니다.","status":"pending"}).duplicate(true)
 func action_cost_text(id: String) -> String:
