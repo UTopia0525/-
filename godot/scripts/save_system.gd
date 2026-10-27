@@ -337,7 +337,7 @@ func load_slot(slot: int) -> bool:
 		var previous_layout=int(d.world.get("layout_version",1))
 		if previous_layout==1:game.exploration.player.position.y*=.5
 		if previous_layout<3:game.exploration.player.position*=.625
-	if d.world.area in ["dock","changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing"]:
+	if d.world.area in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing"]:
 		game.exploration.player.position = game.exploration.safe_player_position(game.exploration.player.position)
 	game.exploration.player.facing = d.world.facing
 	game.exploration.player.stop()

@@ -95,18 +95,15 @@ func load_area(value: String) -> void:
 	elif value == "changsha":
 		_load_changsha()
 	elif value == "dock":
-		player.set_display_height(72.0)
-		camera.set_focus_height(72.0*Metrics.CAMERA_FOCUS_RATIO)
-		background.texture = preload("res://assets/maps/prologue-dock/ground.png")
-		walk_regions = [Rect2(85, 75, 610, 565), Rect2(685, 320, 395, 75)]
-		blockers = []
+		background.texture = preload("res://assets/dock.png")
+		walk_regions = [Rect2(85, 300, 650, 325), Rect2(705, 380, 210, 62)]
+		blockers = [Rect2(85, 490, 90, 80), Rect2(600, 570, 65, 60)]
 		player.position = Vector2(370, 510)
 		_add_npc("captain", "서문길", Vector2(640, 380), 4)
 		_add_npc("apothecary", "진소옥", Vector2(290, 315), 5)
 		_add_npc("sailor", "허만복", Vector2(610, 535), 6)
 		_add_npc("clerk", "육승", Vector2(445, 365), 7)
-		_add_npc("boarding", "호송선에 오르기", Vector2(810, 365), -1)
-		preload("res://scripts/prologue_dock_art.gd").install(self)
+		_add_npc("boarding", "호송선에 오르기", Vector2(810, 415), -1)
 	else:
 		background.texture = preload("res://assets/deck.png")
 		walk_regions = [Rect2(500, 215, 280, 365)]
@@ -324,10 +321,10 @@ func _add_npc(id: String, title: String, point: Vector2, frame: int) -> void:
 		sprite.texture = atlas
 		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		sprite.centered=false
-		sprite.scale = Vector2.ONE * ((68.0 if area_name=="dock" else Metrics.PROLOGUE_HEIGHT) / sprite.texture.get_height())
+		sprite.scale = Vector2.ONE * (Metrics.PROLOGUE_HEIGHT / sprite.texture.get_height())
 		sprite.offset=Vector2(-sprite.texture.get_width()/2,-sprite.texture.get_height())
 		body.add_child(sprite)
-	var tag = UI.label(body, title, Rect2(-100, -(68.0 if area_name=="dock" else Metrics.PROLOGUE_HEIGHT)-Metrics.NAME_GAP if frame >= 0 else -25, 200, 28), 14, UI.TEXT)
+	var tag = UI.label(body, title, Rect2(-100, -Metrics.PROLOGUE_HEIGHT-Metrics.NAME_GAP if frame >= 0 else -25, 200, 28), 14, UI.TEXT)
 	tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	tag.add_theme_color_override("font_shadow_color", Color("142019"))
 	tag.add_theme_constant_override("shadow_offset_x", 2)
