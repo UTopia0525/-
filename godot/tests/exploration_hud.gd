@@ -18,6 +18,8 @@ func run() -> void:
  var w=game.exploration;var actor=w.ambient_nodes[0];w.player.position=actor.position+Vector2(0,50);w.camera.snap_to_player();await settle()
  check(w.hint.visible and w.hint.text.contains(str(w.nearest().name)) and w.hint.text.begins_with("F ·"),"F target name and action")
  var tag: Label=actor.get_meta("nameplate_label");check(tag.visible,"near target name visible")
+ check(tag.get_meta("interaction_selected",false) and tag.get_theme_stylebox("normal").bg_color.a>.8,"selected name has a high-contrast plate")
+ check(tag.get_theme_font_size("font_size")==16,"selected name slightly emphasized")
  var mark: Label=game.ordinary_quests.marks[actor.get_meta("npc_id")]
  if mark.visible:check(not mark.get_global_rect().intersects(tag.get_global_rect()),"head symbol separate from name")
  for other in w.ambient_nodes:

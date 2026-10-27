@@ -5,11 +5,19 @@ var game
 var labels: Array[Label]=[]
 var dirty=true
 var revision=-1
+var name_styles: Dictionary={}
 var rendered_names: Array[Label]=[]
 var rendered_badges: Array[Label]=[]
 func _ready() -> void:
 	process_mode=Node.PROCESS_MODE_ALWAYS
 	process_priority=100
+	for chosen in [false,true]:
+		var style=StyleBoxFlat.new()
+		style.bg_color=Color("10221dee") if chosen else Color.TRANSPARENT
+		style.border_color=Color("e7c98b") if chosen else Color.TRANSPARENT
+		style.set_border_width_all(1 if chosen else 0);style.set_corner_radius_all(3)
+		style.content_margin_left=6;style.content_margin_right=6
+		name_styles[chosen]=style
 	get_tree().node_added.connect(_added)
 func _added(node: Node) -> void:
 	if node is Label and is_instance_valid(game.exploration) and game.exploration.is_ancestor_of(node):dirty=true
@@ -83,10 +91,15 @@ func _names(exploring: bool,target: Dictionary) -> void:
 		tag.visible=false
 		var id: String=actor.get_meta("npc_id","")
 		var chosen=id==target.get("id","-")
+		tag.set_meta("interaction_selected",chosen and exploring)
 		if not exploring or actor.position.distance_to(w.player.position)>240:continue
 		if not target.is_empty() and not chosen and actor.position.distance_to(target.position)<200:continue
 		var height=w.Metrics.PROLOGUE_HEIGHT if w.area_name in ["dock","deck"] else w.Metrics.CITIZEN_HEIGHT
-		tag.position=Vector2(-105,-height-30);tag.size=Vector2(210,25)
+		tag.position=Vector2(-109,-height-34);tag.size=Vector2(218,28)
+		if not tag.has_meta("emphasis_applied") or bool(tag.get_meta("emphasis_applied"))!=chosen:
+			tag.add_theme_stylebox_override("normal",name_styles[chosen])
+			tag.add_theme_font_size_override("font_size",16 if chosen else 15)
+			tag.set_meta("emphasis_applied",chosen)
 		tag.text=str(actor.get_meta("display_name",tag.text))+ (" · "+str(actor.get_meta("hud_role")) if actor.has_meta("hud_role") else "")
 		tag.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
 		tag.add_theme_color_override("font_color",UI.GOLD if chosen else UI.TEXT)
