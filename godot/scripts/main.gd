@@ -606,15 +606,18 @@ func start_battle(encounter: Dictionary = {}) -> void:
 	battle.set_loadout(progress.loadout)
 	battle.set_encounter(encounter)
 	battle.begin()
-	adventure_ui.tip("battle","WASD 이동 · 1~4 초식 선택 · R 방향 · Enter 출수 · L 교전 기록")
+	battle.lesson.start(self)
+	if not battle.lesson.active:adventure_ui.tip("battle","WASD 이동 · 1~4 초식 선택 · R 방향 · Enter 출수 · L 교전 기록")
 
 func _on_victory(hp: int) -> void:
 	if state!="battle":return
+	if battle.lesson.active:battle.lesson.finish()
 	_finish_victory(hp)
 	adventure_ui.record_result(true)
 
 func _on_defeat() -> void:
 	if state!="battle":return
+	battle.lesson.stop()
 	if preload("res://scripts/combat_outcome.gd").defeat_policy(battle.encounter)=="death":
 		adventure_ui.record_result(false,false)
 		enter_game_over()

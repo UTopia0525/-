@@ -14,6 +14,7 @@ var awaiting_player=false
 var animation_time=.48
 var opponent_side=1.0
 var range_diagram: Control
+var lesson: Control
 func _ready() -> void:
  super._ready()
  # Retain legacy widgets for old save fields, but render only the new grid HUD.
@@ -22,7 +23,9 @@ func _ready() -> void:
  board=preload("res://scripts/grid_battle_board.gd").new();board.battle=self;board.size=Vector2(1280,720);add_child(board);move_child(board,1)
  preload("res://scripts/grid_battle_hud.gd").build(self)
  move_child(damage_label,get_child_count()-1)
+ lesson=preload("res://scripts/battle_lesson.gd").new();add_child(lesson)
 func begin(inner_power: int=-1) -> void:
+ if is_instance_valid(lesson):lesson.stop()
  awaiting_player=false;grid=null
  super.begin(inner_power)
  var backdrop=encounter.get("premium_background",encounter.get("background_texture","res://assets/battle/premium/river-deck.png" if encounter.is_empty() else "res://assets/battle/premium/bamboo-court.png"))
@@ -56,6 +59,7 @@ func _drive(token: int) -> void:
   await _present(event,token)
 func cancel() -> void:
  awaiting_player=false
+ if is_instance_valid(lesson):lesson.stop()
  super.cancel()
 func _update_intent() -> void:
  if is_instance_valid(intent_label):intent_label.text="";intent_label.hide()
@@ -66,6 +70,7 @@ func select_skill(id: String) -> void:
  if id not in loadout and id!="basic_attack":return
  if martial_arts.get_skill(id).is_empty():return
  selected_action=id;selected=true;choice=id;refresh_grid()
+ lesson.selection(id)
 func use_selected() -> void:
  if not running:
   if player_hp==0 and encounter.is_empty():begin()
@@ -77,6 +82,7 @@ func commit(id: String,destination: Vector2i=Vector2i(-1,-1)) -> void:
  if not awaiting_player or busy or not running:return
  var event=grid.perform(0,id,facing,destination)
  if not event.ok:note.text=event.reason;return
+ lesson.action_done(id)
  awaiting_player=false;busy=true
  var token=generation
  await _present(event,token)
@@ -94,6 +100,7 @@ func utility(index: int) -> void:
   3:choice="wait";selected=false;selected_action=""
  refresh_grid()
 func _input(event: InputEvent) -> void:
+ if not event is InputEventKey:return
  if not visible or not running or busy or not awaiting_player or not event.is_pressed() or event.is_echo():return
  # Menus/help may consume input first; paused gameplay never executes a battle action.
  if get_tree().paused:return
