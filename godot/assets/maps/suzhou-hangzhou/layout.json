@@ -1,0 +1,293 @@
+{
+  "name": "강남 운하길 · 소주 남쪽",
+  "art_size": [
+    1536,
+    1024
+  ],
+  "world_size": [
+    3072,
+    2048
+  ],
+  "spawn": [
+    600,
+    110
+  ],
+  "walk_bounds": [
+    20,
+    20,
+    1496,
+    984
+  ],
+  "ground_script": "res://scripts/qingya_ground.gd",
+  "ground_texture": "res://assets/maps/suzhou-hangzhou/ground.png",
+  "route": [
+    [
+      600,
+      60
+    ],
+    [
+      600,
+      260
+    ],
+    [
+      640,
+      400
+    ],
+    [
+      640,
+      475
+    ],
+    [
+      1020,
+      475
+    ],
+    [
+      1100,
+      610
+    ],
+    [
+      1110,
+      690
+    ],
+    [
+      1200,
+      800
+    ],
+    [
+      1270,
+      930
+    ]
+  ],
+  "half_width": 48,
+  "spur": [
+    [
+      1110,
+      690
+    ],
+    [
+      1030,
+      710
+    ]
+  ],
+  "prefabs": {
+    "sz_bridge": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        1166,
+        135,
+        357,
+        189
+      ],
+      "kind": "bridge",
+      "footprints": [
+        [
+          0.05,
+          0.2,
+          0.9,
+          0.12
+        ],
+        [
+          0.05,
+          0.78,
+          0.9,
+          0.12
+        ]
+      ]
+    },
+    "sz_boat": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        408,
+        806,
+        372,
+        134
+      ],
+      "kind": "cargo",
+      "footprints": [
+        [
+          0.1,
+          0.72,
+          0.8,
+          0.25
+        ]
+      ]
+    },
+    "sz_cargo": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        1164,
+        799,
+        350,
+        168
+      ],
+      "kind": "cargo",
+      "footprints": [
+        [
+          0.1,
+          0.72,
+          0.8,
+          0.25
+        ]
+      ]
+    },
+    "sz_willow": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        38,
+        671,
+        347,
+        330
+      ],
+      "kind": "tree",
+      "footprints": [
+        [
+          0.38,
+          0.82,
+          0.24,
+          0.17
+        ]
+      ]
+    }
+  },
+  "objects": [
+    {
+      "id": "bridge",
+      "prefab": "sz_bridge",
+      "rect": [
+        710,
+        415,
+        270,
+        120
+      ]
+    },
+    {
+      "id": "boat_north",
+      "prefab": "sz_boat",
+      "rect": [
+        800,
+        225,
+        75,
+        30
+      ]
+    },
+    {
+      "id": "boat_quay",
+      "prefab": "sz_boat",
+      "rect": [
+        880,
+        700,
+        75,
+        30
+      ]
+    },
+    {
+      "id": "quay_cargo",
+      "prefab": "sz_cargo",
+      "rect": [
+        1000,
+        610,
+        50,
+        30
+      ]
+    },
+    {
+      "id": "willow_west",
+      "prefab": "sz_willow",
+      "rect": [
+        460,
+        240,
+        65,
+        95
+      ]
+    },
+    {
+      "id": "willow_east",
+      "prefab": "sz_willow",
+      "rect": [
+        1010,
+        290,
+        65,
+        95
+      ]
+    },
+    {
+      "id": "willow_south",
+      "prefab": "sz_willow",
+      "rect": [
+        1040,
+        650,
+        65,
+        95
+      ]
+    },
+    {
+      "id": "willow_field",
+      "prefab": "sz_willow",
+      "rect": [
+        495,
+        720,
+        65,
+        95
+      ]
+    },
+    {
+      "id": "farm",
+      "prefab": "farmhouse",
+      "rect": [
+        260,
+        560,
+        145,
+        110
+      ]
+    }
+  ],
+  "terrain_blockers": [],
+  "districts": [
+    {
+      "id": "north",
+      "name": "소주 남쪽 제방",
+      "rect": [
+        0,
+        0,
+        1536,
+        400
+      ],
+      "label": [
+        580,
+        200
+      ]
+    },
+    {
+      "id": "bridge",
+      "name": "운하 돌다리",
+      "rect": [
+        0,
+        400,
+        1536,
+        200
+      ],
+      "label": [
+        850,
+        475
+      ]
+    },
+    {
+      "id": "south",
+      "name": "나루 · 항주 방면",
+      "rect": [
+        0,
+        600,
+        1536,
+        424
+      ],
+      "label": [
+        1250,
+        850
+      ]
+    }
+  ],
+  "services": [],
+  "residents": [],
+  "roads": [],
+  "road_centers": []
+}

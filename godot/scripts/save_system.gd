@@ -203,12 +203,12 @@ func validate(d) -> bool:
 	if d.get("state") not in ["explore", "story", "choice", "service", "battle", "end"]: return false
 	if not d.get("saved_at") is String or not is_number(d.get("money"), 0, 1000000000) or not is_number(d.get("chapter"), 0, 1): return false
 	if not d.get("talked_captain") is bool or d.get("choice") not in ["", "treasure", "rescue"]: return false
-	if d.world.get("area") not in ["dock", "deck", "changsha", "mountain_road", "wuchang", "alliance_office", "qingya_hamlet", "qingya_camp", "nanjing", "namgung_estate","suzhou","nanjing_suzhou_road","murong_estate"]: return false
+	if d.world.get("area") not in ["dock", "deck", "changsha", "mountain_road", "wuchang", "alliance_office", "qingya_hamlet", "qingya_camp", "nanjing", "namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal"]: return false
 	var layout_version=d.world.get("layout_version",1)
 	if not is_number(layout_version,1,3) or float(layout_version) not in [1.0,2.0,3.0]:return false
 	var pos = d.world.get("position")
 	if not pos is Array or pos.size() != 2: return false
-	var limit: Vector2={"murong_estate":Vector2(4608,3072),"suzhou":Vector2(4608,3072),"nanjing_suzhou_road":Vector2(3840,2560),"changsha":Vector2(6144,4096),"mountain_road":(Vector2(2560,3200) if layout_version==3 else Vector2(4096,5120 if layout_version==2 else 10240)),"wuchang":Vector2(8192,7680),"alliance_office":Vector2(2048,1440),"qingya_hamlet":Vector2(4608,3072),"qingya_camp":Vector2(4608,3072),"namgung_estate":Vector2(4608,3300) if layout_version==3 else Vector2(6912,4608) if layout_version==2 else Vector2(4608,3072),"nanjing":Vector2(6144,4096) if layout_version>=2 else Vector2(4608,3072)}.get(d.world.area,Vector2(1280,720))
+	var limit: Vector2={"suzhou_hangzhou_canal":Vector2(3072,2048),"murong_estate":Vector2(4608,3072),"suzhou":Vector2(4608,3072),"nanjing_suzhou_road":Vector2(3840,2560),"changsha":Vector2(6144,4096),"mountain_road":(Vector2(2560,3200) if layout_version==3 else Vector2(4096,5120 if layout_version==2 else 10240)),"wuchang":Vector2(8192,7680),"alliance_office":Vector2(2048,1440),"qingya_hamlet":Vector2(4608,3072),"qingya_camp":Vector2(4608,3072),"namgung_estate":Vector2(4608,3300) if layout_version==3 else Vector2(6912,4608) if layout_version==2 else Vector2(4608,3072),"nanjing":Vector2(6144,4096) if layout_version>=2 else Vector2(4608,3072)}.get(d.world.area,Vector2(1280,720))
 	if not is_number(pos[0], 0, limit.x) or not is_number(pos[1], 0, limit.y): return false
 	if d.world.get("facing") not in ["up", "down", "left", "right"] or not d.world.get("active") is bool: return false
 	var p = d.prologue
@@ -382,7 +382,7 @@ func load_slot(slot: int) -> bool:
 		var previous_layout=int(d.world.get("layout_version",1))
 		if previous_layout<2:game.exploration.player.position*=1.5
 		if previous_layout<3:game.exploration.player.position*=Vector2(1536.0/2304.0,1100.0/1536.0)
-	if d.world.area in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate"]:
+	if d.world.area in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal"]:
 		game.exploration.player.position = game.exploration.safe_player_position(game.exploration.player.position)
 	game.exploration.player.facing = d.world.facing
 	game.exploration.player.stop()
@@ -476,7 +476,7 @@ func reward_adjustment(data: Dictionary) -> int:
 
 # Presentation metadata only: do not expose quest objectives or branch spoilers.
 func area_name(id: String) -> String:
-	return {"dock":"청류진 나루", "deck":"호송선", "changsha":"장사", "mountain_road":"장사–무창 산길", "wuchang":"무창", "alliance_office":"총무당", "qingya_hamlet":"삼거리 산촌", "qingya_camp":"청애채", "nanjing":"남경", "namgung_estate":"남궁세가", "murong_estate":"모용세가", "suzhou":"소주", "nanjing_suzhou_road":"남경–소주 산길"}.get(id, "이름 없는 길")
+	return {"dock":"청류진 나루", "deck":"호송선", "changsha":"장사", "mountain_road":"장사–무창 산길", "wuchang":"무창", "alliance_office":"총무당", "qingya_hamlet":"삼거리 산촌", "qingya_camp":"청애채", "nanjing":"남경", "namgung_estate":"남궁세가", "murong_estate":"모용세가", "suzhou_hangzhou_canal":"강남 운하길", "suzhou":"소주", "nanjing_suzhou_road":"남경–소주 산길"}.get(id, "이름 없는 길")
 
 func saved_time(data: Dictionary, file_path: String) -> String:
 	var value = data.get("saved_at", "")
