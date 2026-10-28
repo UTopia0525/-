@@ -81,10 +81,11 @@ func after_victory() -> void:
 	if phase!="battle":return
 	phase="ready";_return_to_map();game.say(data.scenes.victory,_resolved)
 func after_defeat() -> void:
-	if phase!="battle":return
-	phase="confront";_return_to_map();game.say(data.scenes.defeat,_retreat)
+	game.enter_game_over()
 func _retreat() -> void:
-	track();refresh_world();game.adventure_ui.notify("조사 진도 유지 · I/K 정비 후 마응칠에게 재도전","quest")
+	# Callback retained only for old post-defeat dialogue saves.
+	track();refresh_world()
+
 func _resolved() -> void:
 	track();refresh_world();game.adventure_ui.notify("사칭범 체포 · 육정호에게 보고","quest")
 func _paid() -> void:

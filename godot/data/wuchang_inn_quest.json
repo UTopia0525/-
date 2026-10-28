@@ -36,7 +36,7 @@
     "skills": [
       "cheolsan"
     ],
-    "defeat_outcome": "nonlethal",
+    "defeat_outcome": "death",
     "ai": {
       "style": "adaptive"
     }

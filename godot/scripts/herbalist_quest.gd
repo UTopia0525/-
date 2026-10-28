@@ -106,11 +106,7 @@ func _rescue_done() -> void:
 	game.adventure_ui.notify("임소평이 무창으로 돌아갔다 · 유백초에게 보고","quest")
 
 func after_defeat() -> void:
-	_return_to_map()
-	# Retreat to the clue, without clearing the investigation or inventing a death timer.
-	game.exploration.player.position=game.exploration.safe_player_position(game.exploration.city_point(data.clue_point)+Vector2(0,-64))
-	game.exploration.player.stop();game.exploration.camera.snap_to_player()
-	game.say(data.scenes.defeat)
+	game.enter_game_over()
 
 func reward_label() -> String:
 	if not data.has("reward"):return "보수는 아직 미정입니다."

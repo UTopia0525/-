@@ -38,7 +38,7 @@
       "cheongpung",
       "yusu"
     ],
-    "defeat_outcome": "retry",
+    "defeat_outcome": "death",
     "ai": {
       "style": "adaptive"
     }

@@ -19,7 +19,7 @@ func run() -> void:
 	check(Outcomes.defeat_policy({"id":"future_main_boss","defeat_outcome":"typo"})=="death","unknown policy cannot silently grant retries")
 	check(Outcomes.defeat_policy({})=="retry","tutorial/practice remains explicit empty-encounter exception")
 	for e in game.encounters():
-		check(Outcomes.defeat_policy(e)==("death" if e.id in ["qingya_chief","qingya_sentry","nanjing_nochil"] else "nonlethal" if e.id in ["training_student","inn_warrior"] else "retry"),"existing encounter policy: "+e.id)
+		check(Outcomes.defeat_policy(e)==("death" if e.id in ["qingya_chief","qingya_sentry","nanjing_nochil","herb_ruffian","inn_warrior","impostor_ma"] else "nonlethal" if e.id in ["training_student"] else "retry"),"existing encounter policy: "+e.id)
 	game.start_wuchang();game.money=321
 	var q=game.qingya_quest
 	q.phase="decision";q.heard=q.INVESTIGATORS.keys();q.admitted=true;q.captive_heard=true

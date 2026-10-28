@@ -1,5 +1,5 @@
 extends Node
-## Hear both accounts, then resolve through guaranteed mediation or nonlethal combat.
+## Hear both accounts, then resolve through mediation or lethal combat.
 const ID="wuchang_inn_quarrel"
 const GIVER="wc_du_sanniang"
 const WORKER="inn_worker"
@@ -72,8 +72,8 @@ func _heard(id: String) -> void:
 	if phase=="deciding":choose_resolution()
 func choose_resolution() -> void:
 	if phase!="deciding" or heard.size()!=2:return
-	var text: String="말로 중재하거나 객잔 옆 빈 마당에서 비무할 수 있습니다. 두 경로의 보수는 150문으로 같습니다."
-	if defeats>0:text="비무에서 물러났습니다. 중재로 해결하거나 정비 후 다시 겨룰 수 있습니다. 보수는 같습니다."
+	var text: String="말로 중재하거나 객잔 옆 빈 마당에서 겨룰 수 있습니다. 싸움에서 패배하면 사망합니다. 두 경로의 보수는 150문으로 같습니다."
+	if defeats>0:text="말로 중재하거나 다시 겨룰 수 있습니다. 이번 싸움에서 패배하면 사망합니다. 보수는 같습니다."
 	game.adventure_ui.choose("객잔 앞 · 어떻게 해결할까",text,"두 사람 모두 사과할 일이 있소",mediate,"나와 손을 맞추시겠소",challenge)
 func mediate() -> void:
 	if phase!="deciding" or heard.size()!=2:return
@@ -98,11 +98,11 @@ func after_victory() -> void:
 	if phase!="battle":return
 	phase="ready";_return_to_map();game.say(data.scenes.victory,_resolved)
 func after_defeat() -> void:
-	if phase!="battle":return
-	defeats+=1;phase="deciding";branch=""
-	_return_to_map();game.say(data.scenes.defeat,_after_retreat)
+	game.enter_game_over()
 func _after_retreat() -> void:
-	track();refresh_world();game.adventure_ui.notify("정비 후 재도전 또는 말로 중재할 수 있습니다.","quest")
+	# Callback retained only for old post-defeat dialogue saves.
+	track();refresh_world()
+
 func _resolved() -> void:
 	track();refresh_world();game.adventure_ui.notify("시비 해결 · 도삼랑에게 보고","quest")
 func _complete() -> void:
