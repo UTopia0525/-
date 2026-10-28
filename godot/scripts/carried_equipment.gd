@@ -21,7 +21,7 @@ func update_pose(facing: String,_phase: float,_walking: bool,height: float) -> v
  if not visible:return
  var data: Dictionary=definitions[weapon_type]
  body_height=height;back_strap=weapon_type=="spear" and facing=="up"
- z_index=1 if weapon_type=="saber" or back_strap else 0
+ z_index=1 if weapon_type in ["sword","saber"] or back_strap else 0
  var sign_value: float
  if weapon_type=="spear":
   # Centre the shaft on the back, with the head above the opposite shoulder.

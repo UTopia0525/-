@@ -15,10 +15,10 @@
     "portrait": "res://assets/portraits/murong/gyeongwon.png",
     "sprite": "res://assets/characters/murong/family.png",
     "sprite_region": [
-      0,
-      20,
-      591,
-      821
+      134,
+      94,
+      456,
+      766
     ]
   },
   "mr_heir": {
@@ -26,10 +26,10 @@
     "portrait": "res://assets/portraits/murong/yuan.png",
     "sprite": "res://assets/characters/murong/family.png",
     "sprite_region": [
-      592,
-      21,
-      591,
-      817
+      667,
+      55,
+      435,
+      805
     ]
   },
   "mr_guard": {
@@ -37,10 +37,10 @@
     "portrait": "res://assets/portraits/murong/guard.png",
     "sprite": "res://assets/characters/murong/family.png",
     "sprite_region": [
-      1184,
-      0,
-      578,
-      887
+      1252,
+      58,
+      374,
+      803
     ]
   },
   "mr_guard_east": {
@@ -48,10 +48,10 @@
     "portrait": "res://assets/portraits/murong/guard.png",
     "sprite": "res://assets/characters/murong/family.png",
     "sprite_region": [
-      1184,
-      0,
-      578,
-      887
+      1252,
+      58,
+      374,
+      803
     ]
   }
 }

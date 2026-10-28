@@ -272,6 +272,114 @@
           0.43
         ]
       ]
+    },
+    "sz_tea": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        16,
+        358,
+        357,
+        314
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.53,
+          0.76,
+          0.43
+        ]
+      ]
+    },
+    "sz_home": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        20,
+        60,
+        327,
+        269
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.53,
+          0.76,
+          0.43
+        ]
+      ]
+    },
+    "sz_dye": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        776,
+        92,
+        368,
+        248
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.53,
+          0.76,
+          0.43
+        ]
+      ]
+    },
+    "sz_rock": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        843,
+        711,
+        280,
+        265
+      ],
+      "kind": "cargo",
+      "footprints": [
+        [
+          0.1,
+          0.72,
+          0.8,
+          0.25
+        ]
+      ]
+    },
+    "hz_market_a": {
+      "texture": "res://assets/maps/hangzhou/market-rows.png",
+      "source": [
+        0,
+        0,
+        1536,
+        480
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.025,
+          0.65,
+          0.95,
+          0.32
+        ]
+      ]
+    },
+    "hz_market_b": {
+      "texture": "res://assets/maps/hangzhou/market-rows.png",
+      "source": [
+        0,
+        480,
+        1536,
+        544
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.025,
+          0.65,
+          0.95,
+          0.32
+        ]
+      ]
     }
   },
   "objects": [
@@ -352,63 +460,6 @@
       }
     },
     {
-      "id": "north_shop_1145",
-      "prefab": "hz_shop",
-      "rect": [
-        1145,
-        285,
-        95,
-        125
-      ],
-      "lot": {
-        "rect": [
-          1137,
-          277,
-          111,
-          153
-        ],
-        "surface": "stone"
-      }
-    },
-    {
-      "id": "north_shop_1295",
-      "prefab": "hz_shop",
-      "rect": [
-        1295,
-        285,
-        120,
-        125
-      ],
-      "lot": {
-        "rect": [
-          1287,
-          277,
-          136,
-          153
-        ],
-        "surface": "stone"
-      }
-    },
-    {
-      "id": "north_shop_1525",
-      "prefab": "hz_shop",
-      "rect": [
-        1525,
-        285,
-        110,
-        125
-      ],
-      "lot": {
-        "rect": [
-          1517,
-          277,
-          126,
-          153
-        ],
-        "surface": "stone"
-      }
-    },
-    {
       "id": "west_inn",
       "prefab": "hz_inn",
       "rect": [
@@ -428,39 +479,20 @@
       }
     },
     {
-      "id": "tea_house",
-      "prefab": "hz_shop",
-      "rect": [
-        800,
-        505,
-        180,
-        125
-      ],
-      "lot": {
-        "rect": [
-          792,
-          497,
-          196,
-          153
-        ],
-        "surface": "stone"
-      }
-    },
-    {
       "id": "music_annex",
-      "prefab": "hz_inn",
+      "prefab": "sz_tea",
       "rect": [
-        510,
-        710,
-        155,
-        115
+        515,
+        720,
+        145,
+        105
       ],
       "lot": {
         "rect": [
-          502,
-          702,
-          171,
-          143
+          507,
+          712,
+          161,
+          133
         ],
         "surface": "stone"
       }
@@ -469,17 +501,17 @@
       "id": "silk_emporium",
       "prefab": "hz_shop",
       "rect": [
-        800,
-        710,
-        180,
-        115
+        815,
+        715,
+        160,
+        110
       ],
       "lot": {
         "rect": [
-          792,
-          702,
-          196,
-          143
+          807,
+          707,
+          176,
+          138
         ],
         "surface": "stone"
       }
@@ -488,17 +520,17 @@
       "id": "lake_workshop",
       "prefab": "hz_workshop",
       "rect": [
-        510,
-        945,
-        155,
-        145
+        530,
+        930,
+        135,
+        150
       ],
       "lot": {
         "rect": [
-          502,
-          937,
-          171,
-          173
+          522,
+          922,
+          151,
+          178
         ],
         "surface": "earth"
       }
@@ -507,461 +539,77 @@
       "id": "artisan_yard",
       "prefab": "hz_workshop",
       "rect": [
-        800,
-        945,
-        180,
-        145
+        840,
+        980,
+        140,
+        110
       ],
       "lot": {
         "rect": [
-          792,
-          937,
-          196,
-          173
-        ],
-        "surface": "earth"
-      }
-    },
-    {
-      "id": "guildhall",
-      "prefab": "hz_guild",
-      "rect": [
-        1305,
-        500,
-        120,
-        125
-      ],
-      "lot": {
-        "rect": [
-          1297,
-          492,
-          136,
-          153
-        ],
-        "surface": "stone"
-      }
-    },
-    {
-      "id": "east_tea",
-      "prefab": "hz_shop",
-      "rect": [
-        1530,
-        500,
-        100,
-        125
-      ],
-      "lot": {
-        "rect": [
-          1522,
-          492,
-          116,
-          153
-        ],
-        "surface": "stone"
-      }
-    },
-    {
-      "id": "perfume_shop",
-      "prefab": "hz_shop",
-      "rect": [
-        1135,
-        505,
-        90,
-        120
-      ],
-      "lot": {
-        "rect": [
-          1127,
-          497,
-          106,
-          148
-        ],
-        "surface": "stone"
-      }
-    },
-    {
-      "id": "home_1135_710",
-      "prefab": "hz_home",
-      "rect": [
-        1135,
-        710,
-        90,
-        115
-      ],
-      "lot": {
-        "rect": [
-          1127,
-          702,
-          106,
-          143
-        ],
-        "surface": "earth"
-      }
-    },
-    {
-      "id": "home_1305_710",
-      "prefab": "hz_home",
-      "rect": [
-        1305,
-        710,
-        120,
-        115
-      ],
-      "lot": {
-        "rect": [
-          1297,
-          702,
-          136,
-          143
-        ],
-        "surface": "earth"
-      }
-    },
-    {
-      "id": "home_1525_710",
-      "prefab": "hz_home",
-      "rect": [
-        1525,
-        710,
-        105,
-        115
-      ],
-      "lot": {
-        "rect": [
-          1517,
-          702,
-          121,
-          143
+          832,
+          972,
+          156,
+          138
         ],
         "surface": "earth"
       }
     },
     {
       "id": "home_1135_950",
-      "prefab": "hz_home",
+      "prefab": "sz_home",
       "rect": [
-        1135,
-        950,
-        90,
-        145
+        1130,
+        960,
+        100,
+        125
       ],
       "lot": {
         "rect": [
-          1127,
-          942,
-          106,
-          173
+          1122,
+          952,
+          116,
+          153
         ],
         "surface": "earth"
       }
     },
     {
       "id": "home_1305_950",
-      "prefab": "hz_home",
+      "prefab": "hz_guild",
       "rect": [
-        1305,
-        950,
+        1310,
+        930,
         120,
-        145
+        165
       ],
       "lot": {
         "rect": [
-          1297,
-          942,
+          1302,
+          922,
           136,
-          173
+          193
         ],
         "surface": "earth"
       }
     },
     {
       "id": "home_1525_950",
-      "prefab": "hz_home",
+      "prefab": "sz_dye",
       "rect": [
-        1525,
-        950,
+        1530,
+        970,
         105,
-        145
+        120
       ],
       "lot": {
         "rect": [
-          1517,
-          942,
+          1522,
+          962,
           121,
-          173
+          148
         ],
         "surface": "earth"
       }
-    },
-    {
-      "id": "stall_0",
-      "prefab": "capital_silk",
-      "rect": [
-        545,
-        390,
-        48,
-        40
-      ]
-    },
-    {
-      "id": "stall_1",
-      "prefab": "capital_produce",
-      "rect": [
-        930,
-        385,
-        48,
-        40
-      ]
-    },
-    {
-      "id": "stall_2",
-      "prefab": "capital_silk",
-      "rect": [
-        1145,
-        380,
-        48,
-        40
-      ]
-    },
-    {
-      "id": "stall_3",
-      "prefab": "capital_produce",
-      "rect": [
-        1325,
-        380,
-        48,
-        40
-      ]
-    },
-    {
-      "id": "stall_4",
-      "prefab": "capital_silk",
-      "rect": [
-        1570,
-        380,
-        48,
-        40
-      ]
-    },
-    {
-      "id": "stall_5",
-      "prefab": "capital_produce",
-      "rect": [
-        980,
-        580,
-        48,
-        40
-      ]
-    },
-    {
-      "id": "stall_6",
-      "prefab": "capital_silk",
-      "rect": [
-        1140,
-        780,
-        48,
-        40
-      ]
-    },
-    {
-      "id": "stall_7",
-      "prefab": "capital_produce",
-      "rect": [
-        1570,
-        780,
-        48,
-        40
-      ]
-    },
-    {
-      "id": "stall_8",
-      "prefab": "capital_silk",
-      "rect": [
-        980,
-        1040,
-        48,
-        40
-      ]
-    },
-    {
-      "id": "stall_9",
-      "prefab": "capital_produce",
-      "rect": [
-        1310,
-        1090,
-        48,
-        40
-      ]
-    },
-    {
-      "id": "lantern_0",
-      "prefab": "capital_lantern",
-      "rect": [
-        495,
-        385,
-        22,
-        44
-      ]
-    },
-    {
-      "id": "lantern_1",
-      "prefab": "capital_lantern",
-      "rect": [
-        990,
-        380,
-        22,
-        44
-      ]
-    },
-    {
-      "id": "lantern_2",
-      "prefab": "capital_lantern",
-      "rect": [
-        1120,
-        380,
-        22,
-        44
-      ]
-    },
-    {
-      "id": "lantern_3",
-      "prefab": "capital_lantern",
-      "rect": [
-        1410,
-        380,
-        22,
-        44
-      ]
-    },
-    {
-      "id": "lantern_4",
-      "prefab": "capital_lantern",
-      "rect": [
-        1600,
-        380,
-        22,
-        44
-      ]
-    },
-    {
-      "id": "lantern_5",
-      "prefab": "capital_lantern",
-      "rect": [
-        666,
-        565,
-        22,
-        44
-      ]
-    },
-    {
-      "id": "lantern_6",
-      "prefab": "capital_lantern",
-      "rect": [
-        1010,
-        565,
-        22,
-        44
-      ]
-    },
-    {
-      "id": "lantern_7",
-      "prefab": "capital_lantern",
-      "rect": [
-        1410,
-        565,
-        22,
-        44
-      ]
-    },
-    {
-      "id": "lantern_8",
-      "prefab": "capital_lantern",
-      "rect": [
-        1610,
-        565,
-        22,
-        44
-      ]
-    },
-    {
-      "id": "lantern_9",
-      "prefab": "capital_lantern",
-      "rect": [
-        666,
-        765,
-        22,
-        44
-      ]
-    },
-    {
-      "id": "lantern_10",
-      "prefab": "capital_lantern",
-      "rect": [
-        1010,
-        765,
-        22,
-        44
-      ]
-    },
-    {
-      "id": "lantern_11",
-      "prefab": "capital_lantern",
-      "rect": [
-        1410,
-        765,
-        22,
-        44
-      ]
-    },
-    {
-      "id": "lantern_12",
-      "prefab": "capital_lantern",
-      "rect": [
-        1610,
-        765,
-        22,
-        44
-      ]
-    },
-    {
-      "id": "lantern_13",
-      "prefab": "capital_lantern",
-      "rect": [
-        666,
-        1030,
-        22,
-        44
-      ]
-    },
-    {
-      "id": "lantern_14",
-      "prefab": "capital_lantern",
-      "rect": [
-        1010,
-        1030,
-        22,
-        44
-      ]
-    },
-    {
-      "id": "lantern_15",
-      "prefab": "capital_lantern",
-      "rect": [
-        1410,
-        1030,
-        22,
-        44
-      ]
-    },
-    {
-      "id": "lantern_16",
-      "prefab": "capital_lantern",
-      "rect": [
-        1610,
-        1030,
-        22,
-        44
-      ]
     },
     {
       "id": "willow_0",
@@ -1092,6 +740,136 @@
         45,
         25
       ]
+    },
+    {
+      "id": "north_market",
+      "prefab": "hz_market_a",
+      "rect": [
+        1130,
+        275,
+        500,
+        145
+      ]
+    },
+    {
+      "id": "market_row_north",
+      "prefab": "hz_market_b",
+      "rect": [
+        1130,
+        505,
+        490,
+        120
+      ]
+    },
+    {
+      "id": "market_row_south",
+      "prefab": "hz_market_a",
+      "rect": [
+        1145,
+        710,
+        440,
+        115
+      ]
+    },
+    {
+      "id": "food_court_stall_0",
+      "prefab": "capital_produce",
+      "rect": [
+        790,
+        540,
+        55,
+        45
+      ]
+    },
+    {
+      "id": "food_court_stall_1",
+      "prefab": "capital_silk",
+      "rect": [
+        870,
+        520,
+        70,
+        45
+      ]
+    },
+    {
+      "id": "food_court_stall_2",
+      "prefab": "capital_produce",
+      "rect": [
+        960,
+        560,
+        50,
+        40
+      ]
+    },
+    {
+      "id": "food_court_stall_3",
+      "prefab": "capital_silk",
+      "rect": [
+        860,
+        590,
+        65,
+        40
+      ]
+    },
+    {
+      "id": "courtyard_lantern_0",
+      "prefab": "capital_lantern",
+      "rect": [
+        535,
+        375,
+        20,
+        44
+      ]
+    },
+    {
+      "id": "courtyard_lantern_1",
+      "prefab": "capital_lantern",
+      "rect": [
+        990,
+        375,
+        20,
+        44
+      ]
+    },
+    {
+      "id": "courtyard_lantern_2",
+      "prefab": "capital_lantern",
+      "rect": [
+        760,
+        565,
+        20,
+        44
+      ]
+    },
+    {
+      "id": "courtyard_lantern_3",
+      "prefab": "capital_lantern",
+      "rect": [
+        1005,
+        505,
+        20,
+        44
+      ]
+    },
+    {
+      "id": "courtyard_lantern_4",
+      "prefab": "capital_lantern",
+      "rect": [
+        500,
+        935,
+        20,
+        44
+      ]
+    },
+    {
+      "id": "courtyard_lantern_5",
+      "prefab": "capital_lantern",
+      "rect": [
+        1610,
+        1090,
+        20,
+        44
+      ]
     }
   ],
   "terrain_blockers": [
@@ -1155,11 +933,25 @@
       "width": 48
     },
     {
-      "id": "east",
+      "id": "wharf_lane",
       "points": [
         [
           1470,
           80
+        ],
+        [
+          1470,
+          230
+        ]
+      ],
+      "width": 52
+    },
+    {
+      "id": "east",
+      "points": [
+        [
+          1470,
+          860
         ],
         [
           1470,
@@ -1173,7 +965,7 @@
       "points": [
         [
           1260,
-          460
+          860
         ],
         [
           1260,
@@ -1340,7 +1132,7 @@
     },
     {
       "id": "market",
-      "name": "상점·상회거리",
+      "name": "시장·상회골목",
       "rect": [
         1025,
         430,
@@ -1381,5 +1173,37 @@
       ]
     }
   ],
-  "landmarks": []
+  "landmarks": [],
+  "shared_courts": [
+    {
+      "rect": [
+        770,
+        500,
+        260,
+        140
+      ],
+      "surface": "stone",
+      "name": "찻거리 먹거리 마당"
+    },
+    {
+      "rect": [
+        1120,
+        265,
+        515,
+        160
+      ],
+      "surface": "earth",
+      "name": "북문 작은 점포길"
+    },
+    {
+      "rect": [
+        1120,
+        495,
+        520,
+        340
+      ],
+      "surface": "earth",
+      "name": "상점들이 이어진 시장골목"
+    }
+  ]
 }

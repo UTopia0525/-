@@ -27,5 +27,20 @@
     ],
     "height_ratio": 1.1,
     "tilt": 0.28
+  },
+  "sword": {
+    "texture": "res://assets/animation/sheathed_straight_sword.png",
+    "region": [
+      91,
+      96,
+      830,
+      1371
+    ],
+    "grip": [
+      264,
+      379
+    ],
+    "height_ratio": 0.52,
+    "tilt": 0
   }
 }

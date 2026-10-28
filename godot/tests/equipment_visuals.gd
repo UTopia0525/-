@@ -16,7 +16,7 @@ func run() -> void:
   game.player_menu.close_menu()
   check(b.equipped_weapon_id==id and p.equipped_weapon_id==id and p.equipped_weapon_type==kind,"I equip updates canonical and field: "+kind)
   check(p.body_key==("sword" if kind=="sword" else "clean"),"body never retains wrong scabbard: "+kind)
-  check(p.carried_equipment.visible==(kind in ["saber","spear"]),"correct rigid equipment layer: "+kind)
+  check(p.carried_equipment.visible==(kind in ["sword","saber","spear"]),"correct rigid equipment layer: "+kind)
   for facing in ["down","up","left","right"]:
    p.facing=facing;p.stop();var scale=p.sprite.scale
    p.gait_phase=PI/2;p._play("walk_"+facing)

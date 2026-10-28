@@ -212,10 +212,10 @@
     "name": "모용경원",
     "texture": "res://assets/characters/murong/family.png",
     "region": [
-      0,
-      20,
-      591,
-      821
+      134,
+      94,
+      456,
+      766
     ],
     "group": "인물·세가 전용"
   },
@@ -223,10 +223,10 @@
     "name": "모용유안",
     "texture": "res://assets/characters/murong/family.png",
     "region": [
-      592,
-      21,
-      591,
-      817
+      667,
+      55,
+      435,
+      805
     ],
     "group": "인물·세가 전용"
   },
@@ -234,10 +234,10 @@
     "name": "모용세가 무사",
     "texture": "res://assets/characters/murong/family.png",
     "region": [
-      1184,
-      0,
-      578,
-      887
+      1252,
+      58,
+      374,
+      803
     ],
     "group": "인물·세가 전용"
   }

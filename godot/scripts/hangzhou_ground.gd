@@ -22,11 +22,13 @@ func _draw() -> void:
  patch(Rect2(1490,0,270,60),"water")
  for r in [Rect2(495,0,540,430),Rect2(495,1190,1230,90),Rect2(1680,65,65,1120)]:patch(r,"grass",Color(.88,.95,.85))
  for o in data.objects:
-  if not o.has("lot"):continue
+  if not o.has("lot") or o.prefab not in ["hz_tower","hz_government","hz_inn","hz_guild"]:continue
   var a=o.lot.rect;var r=Rect2(a[0],a[1],a[2],a[3]);patch(r,o.lot.surface,Color(1.04,1.01,.94))
   if o.prefab=="hz_tower":
    var court=Rect2(r.position.x-30,r.end.y, r.size.x+60,10)
    patch(court,"stone");draw_rect(court,Color("9e9278"),false,1)
+ for c in data.get("shared_courts",[]):
+  var a=c.rect;patch(Rect2(a[0],a[1],a[2],a[3]),c.surface,Color(1.02,1.01,.95))
  for road in data.roads:
   var a=Vector2(road.points[0][0],road.points[0][1]);var b=Vector2(road.points[1][0],road.points[1][1]);var r=Rect2(a.min(b),a.max(b)-a.min(b)).grow(float(road.width)/2)
   patch(r,"stone",Color(.88,.87,.83));draw_rect(r,Color("777668"),false,2)
