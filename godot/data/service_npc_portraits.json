@@ -80,6 +80,11 @@
       "merchant": "merchant_b",
       "artisan": "artisan_b",
       "instructor": "instructor_a"
+    },
+    "suzhou": {
+      "merchant": "merchant_b",
+      "artisan": "artisan_b",
+      "instructor": "instructor_b"
     }
   }
 }

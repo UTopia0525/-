@@ -1,6 +1,6 @@
 # 소주와 남경–소주 산길
 
-NPC·거래·의뢰·모용세가 인물은 아직 배치하지 않은 탐험 맵이다. 기존 도시와 같은 WASD/방향키 이동, F 포탈 상호작용, 미니맵·TAB 전체 지도·설정 및 탐험 중 저장/불러오기를 사용한다. 건물 내부나 태호·모용세가 본가는 이번 범위에 포함하지 않는다.
+소주에 일반 주민14명과 그중 영약·무기·무공 거래 담당3명을 배치했다. [주민 설정·대화·배치](../characters/suzhou-residents.md)를 따른다. 새 의뢰·모용세가 인물은 추가하지 않았다. 기존 도시와 같은 WASD/방향키 이동, F 포탈 상호작용, 미니맵·TAB 전체 지도·설정 및 탐험 중 저장/불러오기를 사용한다. 건물 내부나 태호·모용세가 본가는 이번 범위에 포함하지 않는다.
 
 ## 소주
 
@@ -29,9 +29,9 @@ NPC·거래·의뢰·모용세가 인물은 아직 배치하지 않은 탐험 �
 
 남경 동남쪽 출구[1470,995] ↔ 산길 서쪽[35,460], 산길 동쪽[1500,570] ↔ 소주 서쪽[48,512]. 모두 파란 포탈에 접근해 F로 왕복한다. 남경 출구는 기존 집 뒤의 통행 가능한 남쪽 가장자리로 잡아 건물 위에 겹치지 않게 했다.
 
-`tests/suzhou_maps.gd`: 네 방향 F 상호작용, 포탈 지점/산길 전체 연결, NPC0명, 물 차단/세 다리의 실제 통과, 구역 접근, 건물 충돌, TAB 지도, 두 맵 저장/불러오기 확인. 기존 `tests/saves.gd`, `tests/overland_travel.gd`로 저장과 기존 육로도 점검한다. `tests/capture_suzhou.gd`는 전체 맵과 실제 탐험 화면을 Godot에서 촬영한다.
+`tests/suzhou_maps.gd`: 네 방향 F 상호작용, 포탈 지점/산길 전체 연결, 산길NPC0명/소주14명, 물 차단/세 다리의 실제 통과, 구역 접근, 건물 충돌, TAB 지도, 두 맵 저장/불러오기 확인. 기존 `tests/saves.gd`, `tests/overland_travel.gd`로 저장과 기존 육로도 점검한다. `tests/capture_suzhou.gd`는 전체 맵과 실제 탐험 화면을 Godot에서 촬영한다.
 
-주요 구현은 `scripts/suzhou_map.gd`, `assets/maps/suzhou/layout.json`, `assets/maps/nanjing-suzhou/layout.json`이다. 새 NPC는 사용자 배치 요청 이후 기존 공용 풀/고유 인물 규칙으로 추가한다.
+주요 구현은 `scripts/suzhou_map.gd`, `assets/maps/suzhou/layout.json`, `assets/maps/nanjing-suzhou/layout.json`이다. 현재14명은 사용자 승인에 따라 기존 공용 초상화/도트를 재사용한다.
 
 ### 기존 검사와의 구분
 

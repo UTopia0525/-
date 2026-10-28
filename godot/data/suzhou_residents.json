@@ -1,0 +1,636 @@
+{
+  "name": "소주의 주민 14명",
+  "npcs": [
+    {
+      "id": "sz_herbalist",
+      "name": "석춘매",
+      "age": 46,
+      "gender": "여",
+      "role": "영약 상인",
+      "post": "영약 상인",
+      "point": [
+        375,
+        370
+      ],
+      "frame": 5,
+      "district": "market",
+      "basic_portrait": "female_herbalist",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "약재를 손질해 영약과 상비약을 파는 꼼꼼한 상인. 손님의 안색부터 살피며 약효를 부풀리는 장사를 싫어한다.",
+        "personality": "값을 깎으면 약재 원가부터 차근차근 설명한다.",
+        "relations": "서두례에게 약초 말리는 법을 알려 주었고, 오향란에게는 객잔 손님용 상비약을 보낸다.",
+        "speech_habit": "안색부터 봅시다.",
+        "smalltalk": "안색부터 봅시다. 먼 길을 걸으셨다면 약보다 따뜻한 밥 한 그릇이 먼저일 때도 있어요."
+      },
+      "dialogue": [
+        [
+          "sz_herbalist",
+          "안색부터 봅시다. 먼 길을 걸으셨다면 약보다 따뜻한 밥 한 그릇이 먼저일 때도 있어요."
+        ],
+        [
+          "sz_herbalist",
+          "오향란네 객잔에 상비약을 보냈지요. 낯선 곳에서 앓는 것만큼 서러운 일도 없으니까요."
+        ],
+        [
+          "sz_herbalist",
+          "하급 영약은 한 알에 백문입니다. 같은 약은 평생 열 알까지이니, 드신 수를 살펴 고르세요."
+        ]
+      ],
+      "sprite_texture": "res://assets/characters/wuchang-residents.png",
+      "sprite_region": [
+        86,
+        46,
+        228,
+        450
+      ],
+      "service_id": "city_merchant"
+    },
+    {
+      "id": "sz_smith",
+      "name": "진덕구",
+      "age": 51,
+      "gender": "남",
+      "role": "무기 장인",
+      "post": "무기 장인",
+      "point": [
+        1125,
+        690
+      ],
+      "frame": 4,
+      "district": "workshops",
+      "basic_portrait": "male_blacksmith",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "농기구와 배의 쇠붙이를 만들다가 병장기도 취급하게 된 장인. 손마디가 굵고 말수가 적다.",
+        "personality": "장식보다 균형과 내구성을 중시하며 물건을 함부로 다루면 잔소리가 길어진다.",
+        "relations": "임소교의 가위와 바늘을 손봐 주고, 소교는 그의 작업복을 고쳐 준다.",
+        "speech_habit": "손에 먼저 맞춰 보시오.",
+        "smalltalk": "손에 먼저 맞춰 보시오. 번쩍이는 날이 손목의 무게까지 덜어 주지는 않소."
+      },
+      "dialogue": [
+        [
+          "sz_smith",
+          "손에 먼저 맞춰 보시오. 번쩍이는 날이 손목의 무게까지 덜어 주지는 않소."
+        ],
+        [
+          "sz_smith",
+          "임소교가 소맷자락을 또 꿰매 주었지. 나는 그 집 가위를 갈아 주었고. 서로 손이 가는 일이 있는 법이오."
+        ],
+        [
+          "sz_smith",
+          "검과 도, 창이 있소. 삼백·오백·칠백문짜리니 무게와 균형을 살펴 고르시오."
+        ]
+      ],
+      "sprite_texture": "res://assets/characters/wuchang-residents.png",
+      "sprite_region": [
+        440,
+        37,
+        284,
+        454
+      ],
+      "service_id": "city_artisan"
+    },
+    {
+      "id": "sz_instructor",
+      "name": "백정수",
+      "age": 43,
+      "gender": "남",
+      "role": "교관",
+      "post": "교관",
+      "point": [
+        1400,
+        475
+      ],
+      "frame": 4,
+      "district": "martial",
+      "basic_portrait": "male_instructor",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "오랫동안 상단을 호위하다 소주에 정착한 무인. 평소 느긋하지만 수련생의 자세와 발놀림에는 엄격하다.",
+        "personality": "실력 없이 약한 사람을 위협하는 행실을 용납하지 않는다.",
+        "relations": "진덕구에게 수련용 병장기 수리를 맡기고, 노만강에게 수운 호위 시절의 안부를 묻는다.",
+        "speech_habit": "발끝부터 보시오.",
+        "smalltalk": "발끝부터 보시오. 팔에만 힘을 주면 한 번 출수하고도 중심이 무너지기 쉽소."
+      },
+      "dialogue": [
+        [
+          "sz_instructor",
+          "발끝부터 보시오. 팔에만 힘을 주면 한 번 출수하고도 중심이 무너지기 쉽소."
+        ],
+        [
+          "sz_instructor",
+          "상단을 따라 멀리도 다녔지. 이제는 여기서 배운 이들이 제 몸과 곁사람을 지킬 줄 알면 족하오."
+        ],
+        [
+          "sz_instructor",
+          "한 문 전수에 삼백오십문이오. 익힌 뒤에는 K에서 실전에 쓸 초식을 갖추시오."
+        ]
+      ],
+      "sprite_texture": "res://assets/characters/wuchang-residents.png",
+      "sprite_region": [
+        847,
+        42,
+        219,
+        451
+      ],
+      "service_id": "city_instructor"
+    },
+    {
+      "id": "sz_silk_owner",
+      "name": "하옥주",
+      "age": 39,
+      "gender": "여",
+      "role": "비단 상점 주인",
+      "post": "비단 상점 주인",
+      "point": [
+        632,
+        430
+      ],
+      "frame": 5,
+      "district": "market",
+      "basic_portrait": "female_middle",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "작은 포목점을 번듯한 가게로 키웠으며 옷감 보는 눈과 자부심이 있다.",
+        "personality": "손님에게는 상냥하지만 납품 기한과 대금에는 빈틈이 없다.",
+        "relations": "정소만과 비단 납품을 두고 기한과 염색 품질 사이에서 자주 실랑이한다.",
+        "speech_habit": "빛에 비춰 보세요.",
+        "smalltalk": "빛에 비춰 보세요. 같은 푸른 비단도 실이 고르고 못 고른 것이 여기서 드러나지요."
+      },
+      "dialogue": [
+        [
+          "sz_silk_owner",
+          "빛에 비춰 보세요. 같은 푸른 비단도 실이 고르고 못 고른 것이 여기서 드러나지요."
+        ],
+        [
+          "sz_silk_owner",
+          "정소만은 좋은 색을 내려면 기다려야 한다 하고, 나는 손님께 약속한 날을 지켜야 한다 하지요. 둘 다 틀린 말은 아닌데 말이에요."
+        ],
+        [
+          "sz_silk_owner",
+          "작은 가게에서 이만큼 키웠으니, 내 이름으로 파는 옷감만큼은 부끄럽지 않아야죠."
+        ]
+      ]
+    },
+    {
+      "id": "sz_dyer",
+      "name": "정소만",
+      "age": 28,
+      "gender": "여",
+      "role": "염색 숙련공",
+      "post": "염색 숙련공",
+      "point": [
+        1390,
+        610
+      ],
+      "frame": 5,
+      "district": "workshops",
+      "basic_portrait": "female_common_a",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "염색 장인인 아버지에게 일을 배웠고 손끝에는 늘 푸른 물이 남아 있다.",
+        "personality": "색의 미묘한 차이를 알아주는 사람을 반기며 자기 공방을 여는 것이 꿈이다.",
+        "relations": "하옥주에게 비단을 납품하고, 이웃 공방 견습 곽아성이 스스로 실수를 고치게 도와준다.",
+        "speech_habit": "색은 서두른다고 들지 않아요.",
+        "smalltalk": "손끝이 푸르다고 놀라지 마세요. 씻어도 쉬이 지워지지 않으니 이젠 내 손의 빛깔이려니 해요."
+      },
+      "dialogue": [
+        [
+          "sz_dyer",
+          "손끝이 푸르다고 놀라지 마세요. 씻어도 쉬이 지워지지 않으니 이젠 내 손의 빛깔이려니 해요."
+        ],
+        [
+          "sz_dyer",
+          "하옥주 사장님이 기한을 재촉하시겠지요. 그래도 덜 든 색을 다 됐다고 내보낼 수는 없어요."
+        ],
+        [
+          "sz_dyer",
+          "곽아성이 실을 또 헷갈렸더군요. 제가 대신 고치기보다, 어디가 다른지 스스로 보게 두려고요."
+        ]
+      ]
+    },
+    {
+      "id": "sz_apprentice",
+      "name": "곽아성",
+      "age": 19,
+      "gender": "남",
+      "role": "직조 견습공",
+      "post": "직조 견습공",
+      "point": [
+        1125,
+        745
+      ],
+      "frame": 7,
+      "district": "workshops",
+      "basic_portrait": "male_young",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "농촌에서 일자리를 찾아 올라온 견습공. 도시 생활이 신기하면서도 고향에 보낼 품삯이 마음에 걸린다.",
+        "personality": "성실하지만 실수하면 혼날까 봐 감추려는 버릇이 있다.",
+        "relations": "이웃 공방 정소만에게 조언을 구하지만 잘못을 먼저 말하는 일은 아직 어렵다.",
+        "speech_habit": "금방 익숙해질 겁니다.",
+        "smalltalk": "금방 익숙해질 겁니다. 어제도 그렇게 말했지만, 오늘은 실을 끊지 않고 끝까지 걸었어요."
+      },
+      "dialogue": [
+        [
+          "sz_apprentice",
+          "금방 익숙해질 겁니다. 어제도 그렇게 말했지만, 오늘은 실을 끊지 않고 끝까지 걸었어요."
+        ],
+        [
+          "sz_apprentice",
+          "정소만 누님은 잘못된 데가 눈에 보이신다는데, 제 눈에는 처음엔 다 똑같아 보이더라고요."
+        ],
+        [
+          "sz_apprentice",
+          "이번 품삯은 조금 남겨 집으로 부치려고요. 소주 구경은 다음 달에도 할 수 있겠지요."
+        ]
+      ]
+    },
+    {
+      "id": "sz_boatman",
+      "name": "노만강",
+      "age": 63,
+      "gender": "남",
+      "role": "뱃사공",
+      "post": "뱃사공",
+      "point": [
+        925,
+        975
+      ],
+      "frame": 6,
+      "district": "harbor",
+      "basic_portrait": "male_elder",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "수십 년간 사람과 짐을 실어 나른 뱃사공. 물길과 날씨 이야기를 즐기며 목소리가 걸걸하다.",
+        "personality": "젊은 짐꾼들에게 잔소리하면서도 위험한 일은 자신이 먼저 맡는다.",
+        "relations": "유채령과 새벽마다 선착장에서 만나 서로 타박하면서 짐을 옮겨 준다.",
+        "speech_habit": "물길도 눈치가 있지.",
+        "smalltalk": "물길도 눈치가 있지. 잔잔해 보인다고 짐을 한쪽에 몰아 싣는 놈은 꼭 한 번씩 혼이 나더군."
+      },
+      "dialogue": [
+        [
+          "sz_boatman",
+          "물길도 눈치가 있지. 잔잔해 보인다고 짐을 한쪽에 몰아 싣는 놈은 꼭 한 번씩 혼이 나더군."
+        ],
+        [
+          "sz_boatman",
+          "유채령이 목청을 높여도 성을 내는 건 아니오. 생선은 사람 사정을 봐주며 기다리지 않으니까."
+        ],
+        [
+          "sz_boatman",
+          "젊은것들더러 조심하라 하면 늙은이 걱정이 많다 하지. 그래도 미끄러운 널빤지는 내가 먼저 밟아 봐야 마음이 놓여."
+        ]
+      ]
+    },
+    {
+      "id": "sz_fish_seller",
+      "name": "유채령",
+      "age": 24,
+      "gender": "여",
+      "role": "어물 장수",
+      "post": "어물 장수",
+      "point": [
+        1030,
+        925
+      ],
+      "frame": 5,
+      "district": "harbor",
+      "basic_portrait": "female_young",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "가족이 잡아 온 생선을 새벽부터 파는 어물 장수. 계산이 빠르고 목소리가 크다.",
+        "personality": "생선이 상하기 전에 팔아야 해서 우물쭈물하는 손님을 답답해한다.",
+        "relations": "노만강에게 그날 물길을 묻고, 그의 짐을 대신 받아 정리하기도 한다.",
+        "speech_habit": "눈 맑은 놈부터 보세요.",
+        "smalltalk": "눈 맑은 놈부터 보세요. 아침에 들어온 건데, 해가 더 오르기 전에 내보내야지요."
+      },
+      "dialogue": [
+        [
+          "sz_fish_seller",
+          "눈 맑은 놈부터 보세요. 아침에 들어온 건데, 해가 더 오르기 전에 내보내야지요."
+        ],
+        [
+          "sz_fish_seller",
+          "노만강 어르신은 제 목소리에 물고기도 달아나겠다 하세요. 막상 무거운 광주리는 말없이 들어 주시면서."
+        ],
+        [
+          "sz_fish_seller",
+          "깎아 달라시는 건 괜찮지만, 고른 생선을 또 뒤집어 놓지는 마세요. 저녁상에 오를 놈들이니까요."
+        ]
+      ]
+    },
+    {
+      "id": "sz_clerk",
+      "name": "장문식",
+      "age": 34,
+      "gender": "남",
+      "role": "하급 서리",
+      "post": "하급 서리",
+      "point": [
+        890,
+        200
+      ],
+      "frame": 7,
+      "district": "government",
+      "basic_portrait": "male_common_b",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "관아에서 운송 허가와 물품 신고를 정리하는 하급 서리. 규정과 서식을 입버릇처럼 말한다.",
+        "personality": "일을 늘리고 싶지는 않지만 글을 모르는 주민의 서류를 대신 적어 주기도 한다.",
+        "relations": "주경복이 찻집에서 퍼뜨린 부정확한 소문을 바로잡느라 곤란할 때가 많다.",
+        "speech_habit": "차례대로 적어 주십시오.",
+        "smalltalk": "짐의 종류와 수량을 차례대로 적어 주십시오. 글을 모르시면 말씀으로 불러 주셔도 됩니다. 제가 적지요."
+      },
+      "dialogue": [
+        [
+          "sz_clerk",
+          "짐의 종류와 수량을 차례대로 적어 주십시오. 글을 모르시면 말씀으로 불러 주셔도 됩니다. 제가 적지요."
+        ],
+        [
+          "sz_clerk",
+          "주경복 어르신이 세금이 곱절로 오른다 하셨다고요? 그건 신고서 두 장을 내라는 말을 잘못 들으신 겁니다."
+        ],
+        [
+          "sz_clerk",
+          "서식 한 줄 때문에 두 번 걸음하게 하는 건 나도 싫습니다. 그러니 떠나기 전에 도장부터 확인하시지요."
+        ]
+      ]
+    },
+    {
+      "id": "sz_innkeeper",
+      "name": "오향란",
+      "age": 48,
+      "gender": "여",
+      "role": "객잔 주인",
+      "post": "객잔 주인",
+      "point": [
+        425,
+        680
+      ],
+      "frame": 5,
+      "district": "inn",
+      "basic_portrait": "female_innkeeper",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "남편과 함께 객잔을 운영하며 손님의 빈 밥그릇과 오래 머문 이의 사정을 잘 기억한다.",
+        "personality": "사람을 넉넉히 대하지만 외상 장부 앞에서는 웃음기가 사라진다.",
+        "relations": "서두례에게 오래 채소를 받아 왔고 흉작일에는 객잔 반찬을 바꿔 부담을 덜어 준다.",
+        "speech_habit": "속부터 든든히 하세요.",
+        "smalltalk": "속부터 든든히 하세요. 배고픈 사람은 좋은 방을 내줘도 잠이 얕더라고요."
+      },
+      "dialogue": [
+        [
+          "sz_innkeeper",
+          "속부터 든든히 하세요. 배고픈 사람은 좋은 방을 내줘도 잠이 얕더라고요."
+        ],
+        [
+          "sz_innkeeper",
+          "서두례 어르신 밭에서 잎채소가 덜 났다기에 오늘은 무를 조렸어요. 오래 거래했는데 하루쯤 내가 맞춰야지요."
+        ],
+        [
+          "sz_innkeeper",
+          "외상은 성함을 남겨 주세요. 얼굴을 기억하는 것과 장부를 비워 두는 것은 또 다른 일이랍니다."
+        ]
+      ],
+      "sprite_texture": "res://assets/characters/wuchang-residents.png",
+      "sprite_region": [
+        1220,
+        48,
+        243,
+        448
+      ]
+    },
+    {
+      "id": "sz_storyteller",
+      "name": "주경복",
+      "age": 57,
+      "gender": "남",
+      "role": "찻집 단골",
+      "post": "찻집 단골",
+      "point": [
+        430,
+        740
+      ],
+      "frame": 6,
+      "district": "inn",
+      "basic_portrait": "male_common_a",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "장사를 접은 뒤 운하 찻집에서 시간을 보내는 주민. 도시의 옛 모습과 가게들의 흥망을 기억한다.",
+        "personality": "직접 보았다는 이야기가 많지만 과장이 조금 섞여 있다.",
+        "relations": "장문식과 관아 소문을 두고 자주 티격태격하며, 서두례의 옛 장터 이야기를 즐겨 듣는다.",
+        "speech_habit": "내가 그때 봤는데 말이오.",
+        "smalltalk": "내가 그때 봤는데 말이오. 저 비단집도 처음엔 방 하나에 천 몇 필 놓고 시작했지. 그땐 문턱도 지금보다 낮았어."
+      },
+      "dialogue": [
+        [
+          "sz_storyteller",
+          "내가 그때 봤는데 말이오. 저 비단집도 처음엔 방 하나에 천 몇 필 놓고 시작했지. 그땐 문턱도 지금보다 낮았어."
+        ],
+        [
+          "sz_storyteller",
+          "장문식이 또 내 말을 고쳤다지? 소문이란 게 여러 사람을 건너면 살이 좀 붙기도 하는 법이오."
+        ],
+        [
+          "sz_storyteller",
+          "아, 이건 틀림없소. 비 오는 날 저 가운데 다리가 제일 미끄럽다는 건 내가 몸으로 알아냈거든."
+        ]
+      ]
+    },
+    {
+      "id": "sz_farmer",
+      "name": "서두례",
+      "age": 66,
+      "gender": "여",
+      "role": "채소 농부",
+      "post": "채소 농부",
+      "point": [
+        365,
+        920
+      ],
+      "frame": 5,
+      "district": "farmland",
+      "basic_portrait": "female_elder",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "작은 밭을 일구고 남는 채소를 객잔과 시장에 납품한다. 허리가 굽었어도 일손은 빠르다.",
+        "personality": "도시 사람의 비싼 옷보다 채소값 한 문과 그날의 날씨에 관심이 많다.",
+        "relations": "오향란과 오래 거래했고, 향란이 흉작일의 납품 사정을 봐 준 일을 고맙게 여긴다.",
+        "speech_habit": "잎부터 만지지 마시오.",
+        "smalltalk": "잎부터 만지지 마시오. 부드러운 놈일수록 손이 여러 번 닿으면 쉬이 상하니."
+      },
+      "dialogue": [
+        [
+          "sz_farmer",
+          "잎부터 만지지 마시오. 부드러운 놈일수록 손이 여러 번 닿으면 쉬이 상하니."
+        ],
+        [
+          "sz_farmer",
+          "오향란네는 무를 가져가도 기꺼이 받아 줍디다. 장사는 값을 잘 받는 것도 좋지만 그런 마음이 오래 남아요."
+        ],
+        [
+          "sz_farmer",
+          "저 비단 한 필 값이 밭 한 철 품보다 더 나간다지? 허허, 그래도 비단으로 국을 끓일 수야 있나."
+        ]
+      ],
+      "sprite_texture": "res://assets/characters/wuchang-residents.png",
+      "sprite_region": [
+        860,
+        575,
+        202,
+        401
+      ]
+    },
+    {
+      "id": "sz_gardener",
+      "name": "육시헌",
+      "age": 45,
+      "gender": "남",
+      "role": "정원사",
+      "post": "정원사",
+      "point": [
+        1390,
+        100
+      ],
+      "frame": 4,
+      "district": "garden",
+      "basic_portrait": "male_farmer",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "나무를 다듬고 연못과 태호석을 관리하는 정원사. 차분하며 작은 변화를 잘 알아챈다.",
+        "personality": "돌과 나무를 오래 살피는 일을 좋아하지만 겉모양만 재촉하는 주문에는 속으로 불평한다.",
+        "relations": "노만강에게 물길로 들어오는 돌의 상태를 묻고, 임소교에게 작업용 천을 수선받는다.",
+        "speech_habit": "하루 만에 자라지는 않지요.",
+        "smalltalk": "가지 하나를 잘라도 그다음 봄을 생각해야 합니다. 보기 좋다고 날마다 자르면 나무가 먼저 지치지요."
+      },
+      "dialogue": [
+        [
+          "sz_gardener",
+          "가지 하나를 잘라도 그다음 봄을 생각해야 합니다. 보기 좋다고 날마다 자르면 나무가 먼저 지치지요."
+        ],
+        [
+          "sz_gardener",
+          "태호석은 구멍만 많다고 좋은 게 아닙니다. 어느 쪽에 빛을 놓고 보느냐에 따라 얼굴이 달라집니다."
+        ],
+        [
+          "sz_gardener",
+          "주인어른은 내일 손님이 오니 오늘 새 정원을 만들어 달라 하시더군요. 나무도 하루 만에 자라 주면 좋으련만."
+        ]
+      ],
+      "sprite_texture": "res://assets/characters/wuchang-residents.png",
+      "sprite_region": [
+        1232,
+        524,
+        255,
+        451
+      ]
+    },
+    {
+      "id": "sz_seamstress",
+      "name": "임소교",
+      "age": 31,
+      "gender": "여",
+      "role": "바느질 일꾼",
+      "post": "바느질 일꾼",
+      "point": [
+        555,
+        280
+      ],
+      "frame": 5,
+      "district": "residential",
+      "basic_portrait": "female_common_b",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "주민들의 옷을 고치고 공방의 마무리 일감을 받아 살아가는 바느질 일꾼.",
+        "personality": "남의 말을 잘 들어 주지만 자기 사정은 쉽게 꺼내지 않는다. 오래 입은 옷에 주인의 삶이 남는다고 여긴다.",
+        "relations": "진덕구의 작업복을 고쳐 주고, 덕구는 가위와 바늘을 손봐 준다.",
+        "speech_habit": "아직 더 입을 수 있어요.",
+        "smalltalk": "아직 더 입을 수 있어요. 솔기가 조금 벌어졌을 뿐인데 통째로 버리기는 아깝지요."
+      },
+      "dialogue": [
+        [
+          "sz_seamstress",
+          "아직 더 입을 수 있어요. 솔기가 조금 벌어졌을 뿐인데 통째로 버리기는 아깝지요."
+        ],
+        [
+          "sz_seamstress",
+          "진덕구 장인 옷은 늘 같은 팔꿈치가 닳아요. 매일 같은 자세로 얼마나 오래 일하시는지 옷만 봐도 알겠더라고요."
+        ],
+        [
+          "sz_seamstress",
+          "가위가 잘 들면 손목도 덜 아프지요. 덕구 장인이 날을 봐주신 날에는 밤일도 한결 수월해요."
+        ]
+      ]
+    }
+  ],
+  "services": [
+    {
+      "id": "city_merchant",
+      "npc_id": "sz_herbalist",
+      "actor_id": "sz_herbalist",
+      "kind": "market",
+      "title": "소주 약재점",
+      "name": "석춘매",
+      "greeting_lines": [
+        [
+          "sz_herbalist",
+          "안색부터 봅시다. 먼 길을 걸으셨다면 약보다 따뜻한 밥 한 그릇이 먼저일 때도 있어요."
+        ],
+        [
+          "sz_herbalist",
+          "오향란네 객잔에 상비약을 보냈지요. 낯선 곳에서 앓는 것만큼 서러운 일도 없으니까요."
+        ],
+        [
+          "sz_herbalist",
+          "하급 영약은 한 알에 백문입니다. 같은 약은 평생 열 알까지이니, 드신 수를 살펴 고르세요."
+        ]
+      ]
+    },
+    {
+      "id": "city_artisan",
+      "npc_id": "sz_smith",
+      "actor_id": "sz_smith",
+      "kind": "workshop",
+      "title": "소주 공방",
+      "name": "진덕구",
+      "greeting_lines": [
+        [
+          "sz_smith",
+          "손에 먼저 맞춰 보시오. 번쩍이는 날이 손목의 무게까지 덜어 주지는 않소."
+        ],
+        [
+          "sz_smith",
+          "임소교가 소맷자락을 또 꿰매 주었지. 나는 그 집 가위를 갈아 주었고. 서로 손이 가는 일이 있는 법이오."
+        ],
+        [
+          "sz_smith",
+          "검과 도, 창이 있소. 삼백·오백·칠백문짜리니 무게와 균형을 살펴 고르시오."
+        ]
+      ]
+    },
+    {
+      "id": "city_instructor",
+      "npc_id": "sz_instructor",
+      "actor_id": "sz_instructor",
+      "kind": "training",
+      "title": "소주 무관",
+      "name": "백정수",
+      "greeting_lines": [
+        [
+          "sz_instructor",
+          "발끝부터 보시오. 팔에만 힘을 주면 한 번 출수하고도 중심이 무너지기 쉽소."
+        ],
+        [
+          "sz_instructor",
+          "상단을 따라 멀리도 다녔지. 이제는 여기서 배운 이들이 제 몸과 곁사람을 지킬 줄 알면 족하오."
+        ],
+        [
+          "sz_instructor",
+          "한 문 전수에 삼백오십문이오. 익힌 뒤에는 K에서 실전에 쓸 초식을 갖추시오."
+        ]
+      ]
+    }
+  ]
+}

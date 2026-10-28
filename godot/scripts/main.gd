@@ -565,7 +565,7 @@ func interact() -> void:
 			pending_service_id = service.id
 			say(service.get("greeting_lines",[[service.get("actor_id",service.id), greeting]]), _service_done)
 		return
-	if exploration.area_name in ["wuchang","nanjing"]:
+	if exploration.area_name in ["wuchang","nanjing","suzhou"]:
 		for entry in exploration.city_data.residents:
 			if entry.id==npc.id:say(entry.dialogue);return
 	if exploration.area_name=="changsha" and not npc.has("service_id") and npc.id not in ["bandit_officer","bandit_muster"]:

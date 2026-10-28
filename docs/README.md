@@ -12,6 +12,7 @@
 
 | 작업 | 설명 | 주요 코드·데이터 | 기존 검사 (`godot/tests/`) |
 | --- | --- | --- | --- |
+| 소주 일반 주민14명 | [이름·관계·배치·생활 대화](characters/suzhou-residents.md) | `data/suzhou_residents.json`, `data/service_npc_portraits.json` | `suzhou_residents.gd`, `suzhou_maps.gd` |
 | 소주·남경 동쪽 산길 | [구역·실제 전체 맵·왕복 이동](cities/suzhou.md) | `scripts/suzhou_map.gd`, `assets/maps/suzhou/layout.json`, `assets/maps/nanjing-suzhou/layout.json` | `suzhou_maps.gd`, `capture_suzhou.gd` |
 | 0장·분기 | [진행](story/chapter-00-implementation.md), [원고](story/chapter-00-dialogues.md) | `scripts/prologue.gd`, `data/prologue_dialogues.json` | `prologue.gd`, `chapter_one.gd` |
 | 도입 의뢰3종 | [진행·보상](quests/trade-intro.md) | `scripts/trade_intro.gd`, `data/trade_intro.json` | `onboarding_menus.gd` |

@@ -27,7 +27,7 @@ func run() -> void:
  print("SUZHOU_ROAD_PATH: "+str(path.size())+" waypoints")
  check(game.save_system.write_slot(1) and game.save_system.load_slot(1),"road save/load")
  await travel("travel:suzhou");check(w.area_name=="suzhou","F enters Suzhou west")
- check(w.ambient_nodes.is_empty() and w.npcs.is_empty() and w.city_data.services.is_empty(),"Suzhou no NPCs or trades")
+ check(w.ambient_nodes.size()==14 and w.npcs.is_empty() and w.city_data.services.size()==3,"Suzhou civilian population and services")
  check(w.player.display_height==140 and w.player.speed==360,"shared character size and speed")
  check(not w.can_stand(w.city_point([768,400])),"canal water blocks walking")
  for y in w.city_data.bridges:

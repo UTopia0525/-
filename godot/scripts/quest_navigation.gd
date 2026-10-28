@@ -37,7 +37,7 @@ func get_goal(world) -> Dictionary:
 		for entry in world.travel_exits:
 			if entry.id==("travel:suzhou_road" if world.area_name=="suzhou" else "travel:nanjing"):
 				return {"position":entry.position,"label":"추적 중인 의뢰를 위해 남경 방면 이동","quest_title":definitions.get(quest_id,{}).get("title","의뢰"),"quest_id":quest_id,"stage_id":stage_id,"goal_id":entry.id}
-	if not facility_id.is_empty() and world.area_name in ["changsha","wuchang","nanjing"]:
+	if not facility_id.is_empty() and world.area_name in ["changsha","wuchang","nanjing","suzhou"]:
 		for npc in world.ambient_nodes:
 			if npc.get_meta("service_id","")==facility_id:return {"position":npc.position,"label":npc.get_meta("display_name")+"에게 이동","quest_title":"시설 안내","goal_id":facility_id,"quest_id":"","stage_id":"facility"}
 	if not quest_id.is_empty() and quest_id!="qingya_village" and world.area_name=="qingya_camp" and get_parent().qingya_quest.inside_fence():

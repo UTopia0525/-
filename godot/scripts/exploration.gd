@@ -187,7 +187,7 @@ func _load_regional(value: String) -> void:
 		art_tiles.append({"texture":load(prefab.texture),"source":Rect2(prefab.source[0],prefab.source[1],prefab.source[2],prefab.source[3]),"target":target})
 	art_tiles.sort_custom(func(a,b):return a.target.end.y<b.target.end.y)
 	player.position=city_point(city_data.spawn)
-	if value in ["wuchang","nanjing"]:
+	if value in ["wuchang","nanjing","suzhou"]:
 		var civil=JSON.parse_string(FileAccess.get_file_as_string("res://data/"+value+"_residents.json"))
 		city_data.residents=civil.npcs;city_data.services=civil.services
 		var faction=JSON.parse_string(FileAccess.get_file_as_string("res://data/alliance_characters.json"))
