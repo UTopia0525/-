@@ -229,16 +229,6 @@
         65,
         95
       ]
-    },
-    {
-      "id": "farm",
-      "prefab": "farmhouse",
-      "rect": [
-        260,
-        560,
-        145,
-        110
-      ]
     }
   ],
   "terrain_blockers": [],
