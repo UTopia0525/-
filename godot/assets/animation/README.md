@@ -27,3 +27,7 @@ python tools/measure_walk_sheet.py
 ![걷기/정지 비교](../../screenshots/walk-cycle-side.png)
 
 [동작 GIF](../../screenshots/walk-cycle-side.gif). `tests/capture_walk_cycle.gd`는 실제 Godot 렌더러에서 비교 그림과24장의 미리보기 프레임을 출력한다. GIF는 그 렌더 프레임을 인코딩한 것이다. `tests/side_stride_render.gd`는 네이티브 렌더링에서 좌우 양쪽 발의 픽셀이 변하는지, 정지/걷기 머리와 몸통 픽셀이 동일한지, 멈춘 뒤 원래 중립 자세로 돌아오는지를 검사한다. `road_stride.gd`는 실제 키 입력·배율 고정·충돌 유지도 함께 확인한다.
+
+## 도원 외형 통일
+
+기존 전투 캐릭터를 기준으로 검/검집 보행 시트와 맨손 몸체 시트 모두 긴 검은 묶음머리·푸른 무복·흰 깃·갈색 허리띠·손목 보호구로 수정했다. 삿갓은 사용하지 않는다. `tools/measure_walk_sheet.py`는 두 시트의 투명 영역을 읽어16프레임의 발밑/머리 중심을 재측정하며 기존140 표시 높이와10FPS를 유지한다. 방향별 정지 그림은 해당 보행 첫 프레임을 재사용하며 좌우 발 교차 셰이더·도집/등의 창·발밑 충돌·이동 속도는 유지한다.

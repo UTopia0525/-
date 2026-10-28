@@ -7,8 +7,8 @@
   "profiles": {
     "res://assets/portraits/player/hero.png": {
       "face_x": 585,
-      "eye_y": 320,
-      "eye_to_chin": 185,
+      "eye_y": 315,
+      "eye_to_chin": 170,
       "natural_facing": "right"
     },
     "res://assets/portraits/extras/male_young.png": {
