@@ -12,6 +12,7 @@ var choice="move"
 var facing=Vector2i.RIGHT
 var awaiting_player=false
 var animation_time=.48
+var opponent_side=1.0
 func _ready() -> void:
  super._ready()
  # Retain legacy widgets for old save fields, but render only the new grid HUD.
@@ -31,7 +32,7 @@ func begin(inner_power: int=-1) -> void:
  grid.combat=combat
  grid.setup(encounter.get("field",{}),{"stats":player_stats.duplicate(),"weapon":equipped_weapon_id,"hp":player_hp,"max_hp":Rules.PLAYER_MAX_HP,"skills":loadout.filter(func(id):return id!="")}, {"stats":enemy_stats.duplicate(),"weapon":enemy_weapon,"hp":enemy_hp,"max_hp":enemy_max_hp,"skills":enemy_skills.duplicate()})
  _update_status_portrait()
- choice="move";facing=Vector2i.RIGHT;grid_ui.show();board.show();player_actor.scale=Vector2.ONE*.25;enemy_actor.scale=Vector2.ONE*.31
+ choice="move";facing=Vector2i.RIGHT;opponent_side=1.0;grid_ui.show();board.show();player_actor.scale=Vector2.ONE*.25;enemy_actor.scale=Vector2.ONE*.31
  _place_actors();refresh_grid();_start_grid.call_deferred(generation)
 func _start_grid(token: int) -> void:
  if token!=generation or not running:return
@@ -154,8 +155,7 @@ func _present(event: Dictionary,token: int) -> void:
 func refresh_grid(animate: bool=false) -> void:
  if grid==null or not is_instance_valid(grid_ui):return
  var factor=minf(1.0,minf(board.cell_size().y/60.0,board.cell_size().x/100.0))
- player_actor.scale=Vector2(-.25 if facing.x<0 else .25,.25)*factor
- enemy_actor.scale=Vector2(-.31 if grid.units[1].facing.x>0 else .31,.31)*factor
+ _face_opponent(factor)
  for index in range(2):
   var unit=grid.units[index];var card=status_cards[index];var stats=unit.stats
   card.hp.text="체력 %d / %d" % [unit.hp,unit.max_hp];card.bar.set_health(unit.hp,unit.max_hp,animate)
@@ -209,3 +209,18 @@ func _update_status_portrait() -> void:
 
 func _exit_tree() -> void:
  preload("res://scripts/battle_art_skin.gd").sources.clear()
+
+func _process(_delta: float) -> void:
+ if grid!=null and running and is_visible_in_tree():
+  _face_opponent(minf(1.0,minf(board.cell_size().y/60.0,board.cell_size().x/100.0)))
+
+func _face_opponent(factor: float) -> void:
+ # Art orientation is independent of the selected skill direction. Compare animated
+ # feet so crossing during a step flips at the crossing, not at the committed end cell.
+ if grid.units[0].position.x!=grid.units[1].position.x:
+  var difference=enemy_actor.position.x-player_actor.position.x
+  if absf(difference)>.5:opponent_side=signf(difference)
+ # Same column: retain the last horizontal relationship, including hit recoil.
+ # Hero artwork faces right by default; enemy artwork faces left by default.
+ player_actor.scale=Vector2(.25*opponent_side,.25)*factor
+ enemy_actor.scale=Vector2(.31*opponent_side,.31)*factor
