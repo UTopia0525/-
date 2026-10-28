@@ -14,6 +14,8 @@ var awaiting_player=false
 var animation_time=.48
 var opponent_side=1.0
 var range_diagram: Control
+var support_actor
+var support_label: Label
 var lesson: Control
 func _ready() -> void:
  super._ready()
@@ -24,6 +26,9 @@ func _ready() -> void:
  preload("res://scripts/grid_battle_hud.gd").build(self)
  move_child(damage_label,get_child_count()-1)
  lesson=preload("res://scripts/battle_lesson.gd").new();add_child(lesson)
+ support_actor=preload("res://scripts/battle_actor.gd").new();add_child(support_actor);support_actor.configure(false,"sword",Vector2(220,425));support_actor.scale=Vector2.ONE*.24;support_actor.hide()
+ var support_palette=ShaderMaterial.new();support_palette.shader=preload("res://shaders/namgung_cloth_palette.gdshader");support_actor.sprite.material=support_palette
+ support_label=preload("res://scripts/ui.gd").label(grid_ui,"",Rect2(20,190,245,70),15,Color("d9eafa"));support_label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;support_label.hide()
 func begin(inner_power: int=-1) -> void:
  if is_instance_valid(lesson):lesson.stop()
  awaiting_player=false;grid=null
@@ -34,7 +39,10 @@ func begin(inner_power: int=-1) -> void:
  scene_image.texture=load(backdrop);scene_image.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR
  grid=preload("res://scripts/grid_combat.gd").new()
  grid.combat=combat
- grid.setup(encounter.get("field",{}),{"stats":player_stats.duplicate(),"weapon":equipped_weapon_id,"hp":player_hp,"max_hp":Rules.PLAYER_MAX_HP,"skills":loadout.filter(func(id):return id!="")}, {"stats":enemy_stats.duplicate(),"weapon":enemy_weapon,"hp":enemy_hp,"max_hp":enemy_max_hp,"skills":enemy_skills.duplicate(),"ai":encounter.get("ai",tutorial_enemy.ai if encounter.is_empty() else {"style":"adaptive"}).duplicate()})
+ var field_config: Dictionary=encounter.get("field",{}).duplicate(true);field_config.support=encounter.get("support",{}).duplicate(true)
+ grid.setup(field_config,{"stats":player_stats.duplicate(),"weapon":equipped_weapon_id,"hp":player_hp,"max_hp":Rules.PLAYER_MAX_HP,"skills":loadout.filter(func(id):return id!="")}, {"stats":enemy_stats.duplicate(),"weapon":enemy_weapon,"hp":enemy_hp,"max_hp":enemy_max_hp,"skills":enemy_skills.duplicate(),"ai":encounter.get("ai",tutorial_enemy.ai if encounter.is_empty() else {"style":"adaptive"}).duplicate()})
+ support_actor.visible=not grid.support.is_empty();support_label.visible=support_actor.visible
+ support_actor.reset_motion();support_label.text=("남궁서진 · 협공\n근접 행동 후 협공 · 공세 %d%% 차단" % int(grid.support.get("intercept_percent",0))) if support_actor.visible else ""
  _update_status_portrait()
  choice="move";facing=Vector2i.RIGHT;opponent_side=1.0;grid_ui.show();board.show();player_actor.scale=Vector2.ONE*.25;enemy_actor.scale=Vector2.ONE*.31
  _place_actors();refresh_grid();_start_grid.call_deferred(generation)
@@ -60,6 +68,7 @@ func _drive(token: int) -> void:
 func cancel() -> void:
  awaiting_player=false
  if is_instance_valid(lesson):lesson.stop()
+ if is_instance_valid(support_actor):support_actor.stop();support_actor.hide();support_label.hide()
  super.cancel()
 func _update_intent() -> void:
  if is_instance_valid(intent_label):intent_label.text="";intent_label.hide()
@@ -154,6 +163,16 @@ func _present(event: Dictionary,token: int) -> void:
  await get_tree().create_timer(maxf(.02,animation_time),false).timeout
  if token!=generation or not running:return
  _place_actors();damage_label.hide()
+ if int(event.get("support_blocked",0))>0:
+  support_actor.defend(maxf(.1,animation_time));_basic_fx("guard",player_actor.home+Vector2(0,-35),Vector2.RIGHT)
+  log_action("남궁서진","공세 차단",0,0,0,0);note.text="남궁서진이 공격 피해 %d을 막았다." % int(event.support_blocked)
+ if int(event.get("support_damage",0))>0:
+  support_actor.set_pose("strike");sound_requested.emit("attack_sword");_basic_fx("attack",enemy_actor.home+Vector2(0,-30),Vector2.RIGHT)
+  enemy_actor.hurt();damage_label.position=enemy_actor.home+Vector2(-25,-100);damage_label.text="−%d" % int(event.support_damage);damage_label.modulate.a=1;damage_label.show()
+  log_action("남궁서진","지원 공격",int(event.support_damage),0,0,0);note.text="남궁서진이 틈을 열어 협공했다."
+  await get_tree().create_timer(maxf(.1,animation_time),false).timeout
+  if token!=generation or not running:return
+  support_actor.set_pose("ready");damage_label.hide()
  if grid.winner>=0:
   running=false;busy=false;awaiting_player=false
   if grid.winner==0:victory.emit(player_hp)

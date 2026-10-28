@@ -17,6 +17,7 @@ var artisan_quest
 var wages_quest
 var plaque_quest
 var grain_quest
+var namgung_campaign
 var qingya_quest
 var cart_quest
 var waterfront_quest
@@ -172,6 +173,7 @@ func _ready() -> void:
 	wages_quest=preload("res://scripts/wages_quest.gd").new();wages_quest.game=self;add_child(wages_quest)
 	plaque_quest=preload("res://scripts/plaque_quest.gd").new();plaque_quest.game=self;add_child(plaque_quest)
 	grain_quest=preload("res://scripts/grain_quest.gd").new();grain_quest.game=self;add_child(grain_quest)
+	namgung_campaign=preload("res://scripts/namgung_campaign.gd").new();namgung_campaign.game=self;add_child(namgung_campaign)
 	qingya_quest=preload("res://scripts/qingya_quest.gd").new();qingya_quest.game=self;add_child(qingya_quest)
 	nanjing_relief_quest=preload("res://scripts/nanjing_relief_quest.gd").new();nanjing_relief_quest.game=self;add_child(nanjing_relief_quest)
 	silk_quest=preload("res://scripts/silk_quest.gd").new();silk_quest.game=self;add_child(silk_quest)
@@ -321,12 +323,13 @@ func _build_ending() -> void:
 	restart.pressed.connect(reset)
 	ending.hide()
 
-func regional_quests() -> Array:return [waterfront_quest,levy_quest,book_quest,cart_quest,silk_quest,nanjing_relief_quest,qingya_quest,alliance_story,herbalist_quest,artisan_quest,wages_quest,plaque_quest,grain_quest,duel_quest,inn_quest,impostor_quest]
-func encounters() -> Array:return qingya_quest.data.encounters+qingya_quest.data.get("legacy_encounters",[])+bandit_story.data.encounters+[waterfront_quest.data.encounter,herbalist_quest.data.encounter,duel_quest.data.encounter,inn_quest.data.encounter,impostor_quest.data.encounter]
+func regional_quests() -> Array:return [namgung_campaign,waterfront_quest,levy_quest,book_quest,cart_quest,silk_quest,nanjing_relief_quest,qingya_quest,alliance_story,herbalist_quest,artisan_quest,wages_quest,plaque_quest,grain_quest,duel_quest,inn_quest,impostor_quest]
+func encounters() -> Array:return [namgung_campaign.data.encounter]+qingya_quest.data.encounters+qingya_quest.data.get("legacy_encounters",[])+bandit_story.data.encounters+[waterfront_quest.data.encounter,herbalist_quest.data.encounter,duel_quest.data.encounter,inn_quest.data.encounter,impostor_quest.data.encounter]
 
 func reset() -> void:
 	if is_instance_valid(death_screen):death_screen.dismiss()
 	if is_instance_valid(adventure_ui):adventure_ui.reset()
+	if is_instance_valid(namgung_campaign):namgung_campaign.reset()
 	if is_instance_valid(waterfront_quest):waterfront_quest.reset()
 	if is_instance_valid(levy_quest):levy_quest.reset()
 	if is_instance_valid(book_quest):book_quest.reset()
@@ -531,6 +534,7 @@ func interact() -> void:
 	if npc.is_empty():
 		return
 	if preload("res://scripts/overland_travel.gd").use(self,npc):return
+	if namgung_campaign.handle_interaction(str(npc.id)):return
 	if waterfront_quest.handle_interaction(str(npc.id)):return
 	if levy_quest.handle_interaction(str(npc.id)):return
 	if book_quest.handle_interaction(str(npc.id)):return
@@ -648,6 +652,9 @@ func enter_game_over() -> void:
 
 func _finish_victory(hp: int) -> void:
 	if state != "battle": return
+	if namgung_campaign.in_battle():
+		namgung_campaign.after_victory()
+		return
 	if waterfront_quest.in_battle():
 		waterfront_quest.after_victory()
 		return
@@ -739,7 +746,7 @@ func _input(event: InputEvent) -> void:
 				toggle_city_map()
 			get_viewport().set_input_as_handled()
 			return
-		if event.keycode == KEY_TAB and state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing"]:
+		if event.keycode == KEY_TAB and state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate"]:
 			toggle_city_map()
 			get_viewport().set_input_as_handled()
 		elif event.keycode == KEY_M:

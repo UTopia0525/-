@@ -557,6 +557,37 @@
       "status": "configured",
       "max_reach": 3,
       "distance_metric": "manhattan"
+    },
+    "banseok_jingak": {
+      "action_cost": 70,
+      "shape": "custom",
+      "attack_offsets": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          -1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "advance": 1,
+      "retreat": 0,
+      "push": 1,
+      "follow": false,
+      "target": "범위 전체",
+      "description": "단단한 하체로 한 걸음 파고들어 전방에 각격을 잇고 밀어낸다.",
+      "status": "configured",
+      "preview_origin": [
+        3,
+        2
+      ],
+      "max_reach": 3,
+      "distance_metric": "manhattan"
     }
   }
 }

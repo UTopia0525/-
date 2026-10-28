@@ -169,10 +169,11 @@ func update_inventory_detail(kind: String) -> void:
    if action.disabled:action.text="장착 중";action.tooltip_text="현재 손에 쥔 병장기입니다."
   "elixir":
    var item: Dictionary=p.elixirs[selected_id];var gains: Dictionary=item.permanent_stat_gains
-   detail.text="%s\n\n근력 +%d  기민 +%d\n근골 +%d  내공 +%d\n\n보유 %d개 · 누적 복용 %d/10\n오성 상승 없음" % [item.description,gains.strength,gains.agility,gains.constitution,gains.inner,p.inventory.get(selected_id,0),p.consumed[selected_id]]
+   detail.text="%s\n\n근력 +%d  기민 +%d\n근골 +%d  내공 +%d\n\n보유 %d개 · 누적 복용 %d\n오성 상승 없음" % [item.description,gains.strength,gains.agility,gains.constitution,gains.inner,p.inventory.get(selected_id,0),p.consumed[selected_id]]
+   if item.has("max_lifetime_uses"):detail.text=detail.text.replace("누적 복용 %d" % p.consumed[selected_id],"누적 복용 %d/%d" % [p.consumed[selected_id],int(item.max_lifetime_uses)])
    action.text="영약 1개 복용"
    var reason=""
-   if int(p.consumed[selected_id])>=int(item.max_lifetime_uses):reason="평생 복용 한도 도달 · 10/10"
+   if int(p.consumed[selected_id])>=progress.elixir_limit(selected_id):reason="평생 복용 한도 도달 · 10/10"
    elif int(p.inventory.get(selected_id,0))<=0:reason="보유한 영약이 없습니다."
    else:
     var can_gain=false

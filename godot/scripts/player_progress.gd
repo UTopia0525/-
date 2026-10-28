@@ -20,7 +20,9 @@ var known_factions: Array = []
 var fame := 0
 var error := ""
 
-func _init() -> void: reset()
+func _init() -> void:
+	elixirs.merge(JSON.parse_string(FileAccess.get_file_as_string("res://data/special_elixirs.json")))
+	reset()
 
 func reset() -> void:
 	fame = 0
@@ -51,8 +53,8 @@ func issue(kind: String, id: String, money: int) -> String:
 			if not arts.can_learn(id, stats): return "학습 조건이 부족합니다. 영약과 의뢰로 능력을 기르세요."
 			price = int(arts.get_skill(id).price)
 		"elixir":
-			if not elixirs.has(id): return "판매하지 않는 영약입니다."
-			if int(consumed[id]) + int(inventory[id]) >= int(elixirs[id].max_lifetime_uses): return "복용량과 보유량이 이 영약의 한도10개에 도달했습니다."
+			if not elixirs.has(id) or elixirs[id].get("price")==null: return "판매하지 않는 영약입니다."
+			if int(consumed[id]) + int(inventory[id]) >= elixir_limit(id): return "복용량과 보유량이 이 영약의 한도10개에 도달했습니다."
 			price = int(elixirs[id].price)
 		_: return "잘못된 거래입니다."
 	return "소지금이 부족합니다. 필요 %d문 / 보유 %d문" % [price, money] if money < price else ""
@@ -79,7 +81,7 @@ func consume(id: String) -> bool:
 	if not elixirs.has(id) or int(inventory.get(id, 0)) <= 0:
 		error = "보유한 영약이 없습니다."
 		return false
-	if int(consumed[id]) >= int(elixirs[id].max_lifetime_uses):
+	if int(consumed[id]) >= elixir_limit(id):
 		error = "이 영약은 이미10개 복용했습니다."
 		return false
 	var changed := false
@@ -135,7 +137,7 @@ func snapshot() -> Dictionary:
 	return {"manuals":manuals.duplicate(), "known_factions":known_factions.duplicate(), "faction_favor":faction_favor.duplicate(), "fame":fame, "stats":stats.duplicate(), "weapons":owned_weapons.duplicate(), "learned":learned.duplicate(), "loadout":loadout.duplicate(), "inventory":inventory.duplicate(), "consumed":consumed.duplicate()}
 
 func valid(data) -> bool:
-	data=arts.upgrade_progress(data)
+	data=upgrade_elixirs(arts.upgrade_progress(data))
 	if not data is Dictionary: return false
 	if not data.get("manuals",{}) is Dictionary:return false
 	for id in data.get("manuals",{}):
@@ -160,8 +162,8 @@ func valid(data) -> bool:
 	for key in RULES.STARTING_STATS:
 		if not whole(data.stats.get(key), 0, 100): return false
 	for id in elixirs:
-		if not whole(data.inventory.get(id), 0, 10) or not whole(data.consumed.get(id), 0, 10): return false
-		if data.inventory[id] + data.consumed[id] > elixirs[id].max_lifetime_uses: return false
+		if not whole(data.inventory.get(id), 0, elixir_limit(id)) or not whole(data.consumed.get(id), 0, elixir_limit(id)): return false
+		if data.inventory[id] + data.consumed[id] > elixir_limit(id): return false
 	if "plain_iron_sword" not in data.weapons or "samjae" not in data.learned or data.loadout.size() not in [3,4]: return false
 	for id in data.weapons:
 		if not id is String or not weapons.definitions.has(id) or data.weapons.count(id) != 1: return false
@@ -171,11 +173,20 @@ func valid(data) -> bool:
 		if not id is String or (id != "" and ((id not in data.learned and (data.loadout.size() == 3 or id not in ["basic_attack", "basic_defense"])) or data.loadout.count(id) != 1)): return false
 	return true
 
+func elixir_limit(id: String) -> int:return int(elixirs[id].get("max_lifetime_uses",2147483647))
+
+func upgrade_elixirs(data):
+	if not data is Dictionary or not data.get("inventory") is Dictionary or not data.get("consumed") is Dictionary:return data
+	var upgraded=data.duplicate(true)
+	for id in elixirs:
+		if id=="namgung_cheongcheon_pill" and not upgraded.inventory.has(id) and not upgraded.consumed.has(id):upgraded.inventory[id]=0;upgraded.consumed[id]=0
+	return upgraded
+
 func whole(value, minimum: int, maximum: int) -> bool:
 	return typeof(value) in [TYPE_INT, TYPE_FLOAT] and is_finite(value) and value == floor(value) and value >= minimum and value <= maximum
 
 func restore(data: Dictionary) -> void:
-	data=arts.upgrade_progress(data)
+	data=upgrade_elixirs(arts.upgrade_progress(data))
 	manuals=data.get("manuals",{}).duplicate()
 	fame = int(data.get("fame", 0))
 	faction_favor={"murim_alliance":0}

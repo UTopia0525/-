@@ -6,6 +6,8 @@ static func texture(id: String) -> Texture2D:
 	if cache.has(id): return cache[id]
 	var data: Dictionary = entries.get(id, {})
 	if data.is_empty(): return null
+	if data.has("path"):
+		cache[id]=load(str(data.path));return cache[id]
 	var sheet: Texture2D = load("res://assets/icons/" + str(data.atlas) + ".png")
 	var result := AtlasTexture.new()
 	result.atlas = sheet

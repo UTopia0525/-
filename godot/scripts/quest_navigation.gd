@@ -39,6 +39,9 @@ func get_goal(world) -> Dictionary:
 	if not quest_id.is_empty() and quest_id!="qingya_village" and world.area_name=="qingya_camp" and get_parent().qingya_quest.inside_fence():
 		for entry in world.objectives:
 			if entry.id=="qingya_stealth:exit":return {"position":entry.position,"label":"목책 틈으로 빠져나간 뒤 산촌으로 이동","quest_title":definitions[quest_id].title,"goal_id":entry.id,"quest_id":quest_id,"stage_id":stage_id}
+	if world.area_name=="namgung_estate" and not quest_id.is_empty() and quest_id!="namgung_campaign":
+		for entry in world.travel_exits:
+			if entry.id=="travel:nanjing":return {"position":entry.position,"label":"추적 중인 의뢰를 위해 남경 방면 이동","quest_title":definitions.get(quest_id,{}).get("title","의뢰"),"quest_id":quest_id,"stage_id":stage_id,"goal_id":entry.id}
 	for quest in get_parent().regional_quests():
 		if is_instance_valid(quest) and quest_id==quest.ID:
 			var goal: Dictionary=quest.goal(world)

@@ -305,5 +305,8 @@
       870,
       720
     ]
+  },
+  "namgung_cheongcheon_pill": {
+    "path": "res://assets/icons/namgung-cheongcheon.png"
   }
 }

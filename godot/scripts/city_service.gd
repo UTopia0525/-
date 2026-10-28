@@ -97,7 +97,7 @@ func refresh_list() -> void:
 	summary.text = "소지금 %d문  |  근력%d · 기민%d · 근골%d · 내공%d · 오성%d  |  %s" % [game.money, s.strength, s.agility, s.constitution, s.inner, s.insight, p.RULES.realm(int(s.strength + s.agility + s.constitution + s.inner + s.insight))]
 	var ids: Array = []
 	match service.kind:
-		"market": ids = p.elixirs.keys()
+		"market": ids = p.elixirs.keys().filter(func(id):return p.elixirs[id].get("acquisition")=="city_merchant")
 		"workshop": ids = p.weapons.definitions.keys() if selected_tab == 0 else ["none"] + p.owned_weapons
 		"training": ids = p.arts.definitions.keys() if selected_tab == 0 else ["basic_attack", "basic_defense"] + p.learned.duplicate()
 	if selected_tab==0 and service.kind=="workshop":ids=weapon_stock()

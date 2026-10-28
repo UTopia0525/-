@@ -190,11 +190,12 @@ func clear_world() -> void:
 	game.exploration.objectives=game.exploration.objectives.filter(func(o):return not str(o.id).begins_with("qingya_ruin:") and not str(o.id).begins_with("qingya_stealth:"))
 func refresh_world() -> void:
 	var world=game.exploration
-	var next_signature="%d:%s:%s:%s:%s:%s:%s" % [world.load_revision,world.area_name,phase,heard,admitted,captive_heard,ruined]
+	var next_signature="%d:%s:%s:%s:%s:%s:%s" % [world.load_revision,world.area_name,phase,heard,admitted,captive_heard,str(ruined)+str(game.namgung_campaign.restored())]
 	if signature==next_signature:return
 	signature=next_signature;clear_world()
+	if world.area_name=="qingya_camp" and game.namgung_campaign.camp_open():return
 	if world.area_name not in ["qingya_hamlet","qingya_camp"]:return
-	if world.area_name=="qingya_hamlet" and ruined:
+	if world.area_name=="qingya_hamlet" and ruined and not game.namgung_campaign.restored():
 		for key in RUINS:
 			var node=Node2D.new();node.position=world.safe_player_position(world.city_point(RUINS[key]));world.decorations.add_child(node);nodes.append(node)
 			var mark=UI.label(node,"◆ 조사",Rect2(-70,-65,140,35),24,UI.GOLD);mark.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER

@@ -13,8 +13,10 @@ var tick=0
 var last_actor=1
 var winner=-1
 var continuation=-1
+var support: Dictionary={}
 func setup(config: Dictionary,player: Dictionary,enemy: Dictionary) -> void:
  field.configure(config);units=[];tick=0;last_actor=1;winner=-1;continuation=-1
+ support=config.get("support",{}).duplicate(true)
  for index in range(2):
   var data=(player if index==0 else enemy).duplicate(true)
   data.position=field.player_spawn if index==0 else field.enemy_spawn
@@ -92,6 +94,9 @@ func perform(index: int,id: String,facing: Vector2i,destination: Vector2i=Vector
   unit.position=footprint(index,id,facing).caster
   var damage=0
   if action.raw>0:damage=combat.damage(action.raw,float(foe.stats.constitution),foe.weapon,int(foe.guard))
+  if index==1 and not support.is_empty() and damage>0:
+   var reduced=floori(damage*(1.0-float(support.get("intercept_percent",0))/100.0))
+   event.support_blocked=damage-reduced;damage=reduced
   foe.hp=maxi(0,foe.hp-damage);event.damage=damage
   unit.guard=int(action.guard)
   combat.commit_support(action,unit.resource,unit.ready,unit.actions-1)
@@ -103,6 +108,9 @@ func perform(index: int,id: String,facing: Vector2i,destination: Vector2i=Vector
    var point=unit.position-facing
    if free_cell(point,index):unit.position=point
    else:break
+ if index==0 and id!="wait" and not support.is_empty() and foe.hp>0 and absi(unit.position.x-foe.position.x)+absi(unit.position.y-foe.position.y)<=3:
+  event.support_damage=combat.damage(float(support.get("attack_raw",0)),float(foe.stats.constitution),foe.weapon,int(foe.guard))
+  foe.hp=maxi(0,foe.hp-int(event.support_damage))
  unit.resource.recover_turn();unit.qi=unit.resource.amount
  if foe.hp==0:winner=index
  return event

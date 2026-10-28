@@ -1,0 +1,19 @@
+{
+  "namgung_cheongcheon_pill": {
+    "name": "창천보원단",
+    "grade": "secret",
+    "primary_stat": "balanced",
+    "permanent_stat_gains": {
+      "strength": 3,
+      "agility": 3,
+      "constitution": 3,
+      "inner": 3,
+      "insight": 0
+    },
+    "description": "남궁세가가 비전으로 전하는 보원 영약. 복용하면 근력·기민·근골·내공이 각각3 오른다. 오성은 오르지 않는다.",
+    "acquisition": "namgung_campaign",
+    "price": null,
+    "price_currency": "mun",
+    "status": "implemented"
+  }
+}

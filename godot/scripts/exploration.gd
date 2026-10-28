@@ -69,7 +69,7 @@ func load_area(value: String) -> void:
 	regional_map=null
 	area_name = value
 	player.stop()
-	player.set_display_height(float(player.animation_metadata.target_height) if value in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing"] else Metrics.PROLOGUE_HEIGHT)
+	player.set_display_height(float(player.animation_metadata.target_height) if value in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate"] else Metrics.PROLOGUE_HEIGHT)
 	camera.set_focus_height(player.display_height*Metrics.CAMERA_FOCUS_RATIO)
 	for entry in npcs:
 		entry.node.free()
@@ -90,7 +90,7 @@ func load_area(value: String) -> void:
 	city_data = {}
 	map_bounds = Rect2(0, 0, 1280, 720)
 	camera.exploration_zoom = camera_zoom
-	if value in ["mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing"]:
+	if value in ["mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate"]:
 		_load_regional(value)
 	elif value == "changsha":
 		_load_changsha()
@@ -148,20 +148,24 @@ func load_area(value: String) -> void:
 	if is_instance_valid(levy):levy.refresh_world()
 	var qingya=get_parent().get("qingya_quest")
 	if is_instance_valid(qingya):qingya.refresh_world()
+	var campaign=get_parent().get("namgung_campaign")
+	if is_instance_valid(campaign):campaign.refresh_world()
 	camera.set_map_bounds(map_bounds)
 	camera.snap_to_player()
 
 func _load_regional(value: String) -> void:
-	if value=="nanjing":
+	if value=="namgung_estate":
+		regional_map=preload("res://scripts/namgung_map.gd").new()
+	elif value=="nanjing":
 		regional_map=preload("res://scripts/nanjing_map.gd").new()
 	elif value in ["qingya_hamlet","qingya_camp"]:
-		regional_map=preload("res://scripts/qingya_map.gd").new(value,get_parent().qingya_quest.ruined)
+		regional_map=preload("res://scripts/qingya_map.gd").new(value,get_parent().qingya_quest.ruined,get_parent().namgung_campaign.restored(),get_parent().namgung_campaign.camp_open())
 	else:
 		regional_map=load("res://scripts/"+("mountain_road_map.gd" if value=="mountain_road" else "alliance_office_map.gd" if value=="alliance_office" else "wuchang_map.gd")).new()
 	add_child(regional_map)
 	city_data=regional_map.data.duplicate(true)
 	city_data.ground_texture="res://assets/maps/"+("changsha-wuchang" if value=="mountain_road" else "alliance-office" if value=="alliance_office" else "wuchang")+"/ground.png"
-	if value in ["qingya_hamlet","qingya_camp","nanjing"]:city_data.ground_texture=regional_map.data.ground_texture
+	if value in ["qingya_hamlet","qingya_camp","nanjing","namgung_estate"]:city_data.ground_texture=regional_map.data.ground_texture
 	for district in city_data.districts:
 		district.bounds=district.rect;district.category={"market":"market","workshops":"workshops","martial":"martial_hall"}.get(district.get("id",""),"regional")
 	map_bounds=regional_map.map_bounds;camera.exploration_zoom=0.8
@@ -414,7 +418,7 @@ func safe_player_position(preferred: Vector2) -> Vector2:
 				if absi(x) != ring and absi(y) != ring: continue
 				var candidate := preferred + Vector2(x, y) * 20.0
 				if can_stand(candidate): return candidate
-	return city_point(city_data.spawn) if area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing"] else preferred
+	return city_point(city_data.spawn) if area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate"] else preferred
 
 func path_to(point: Vector2, interaction: bool = false) -> PackedVector2Array:
 	if is_instance_valid(regional_map):
@@ -553,7 +557,7 @@ func _process(_delta: float) -> void:
 	indicator.visible = not target.is_empty() and not target.has("travel")
 	if not target.is_empty():
 		indicator.position=target.position
-		indicator.set_body_height((Metrics.CITIZEN_HEIGHT if area_name in ["changsha","wuchang","mountain_road","alliance_office","qingya_hamlet","qingya_camp","nanjing"] else Metrics.PROLOGUE_HEIGHT) if target.frame>=0 else 0.0)
+		indicator.set_body_height((Metrics.CITIZEN_HEIGHT if area_name in ["changsha","wuchang","mountain_road","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate"] else Metrics.PROLOGUE_HEIGHT) if target.frame>=0 else 0.0)
 	if not target.is_empty():
 		hint.add_theme_color_override("font_color",Color("9de5ff") if target.has("travel") else UI.GOLD)
 		hint.position = target.position + Vector2(-75, 20 if target.has("travel") else 14)

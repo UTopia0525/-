@@ -63,9 +63,8 @@
     "weapon_style": "fist",
     "required_weapon_type": "none",
     "damage_coefficients": {
-      "strength": 3,
-      "agility": 2,
-      "inner": 2
+      "strength": 5,
+      "inner": 3
     },
     "qi_cost": 18,
     "requirements": {

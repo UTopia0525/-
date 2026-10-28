@@ -1,0 +1,392 @@
+{
+  "name": "남궁세가 · 합비 본가",
+  "art_size": [
+    1536,
+    1024
+  ],
+  "world_size": [
+    4608,
+    3072
+  ],
+  "spawn": [
+    768,
+    935
+  ],
+  "walk_bounds": [
+    24,
+    24,
+    1488,
+    976
+  ],
+  "ground_script": "res://scripts/qingya_ground.gd",
+  "ground_texture": "res://assets/maps/namgung-estate/ground.png",
+  "objects": [
+    {
+      "id": "main_hall",
+      "prefab": "government",
+      "rect": [
+        570,
+        135,
+        400,
+        290
+      ]
+    },
+    {
+      "id": "west_wing",
+      "prefab": "home",
+      "rect": [
+        245,
+        240,
+        240,
+        210
+      ]
+    },
+    {
+      "id": "east_wing",
+      "prefab": "home",
+      "rect": [
+        1055,
+        240,
+        240,
+        210
+      ]
+    },
+    {
+      "id": "training_hall",
+      "prefab": "martial_hall",
+      "rect": [
+        1070,
+        470,
+        245,
+        195
+      ]
+    },
+    {
+      "id": "guest_hall",
+      "prefab": "inn",
+      "rect": [
+        230,
+        470,
+        250,
+        195
+      ]
+    },
+    {
+      "id": "ancestral_hall",
+      "prefab": "shrine",
+      "rect": [
+        665,
+        35,
+        210,
+        155
+      ]
+    },
+    {
+      "id": "rear_wall_155",
+      "prefab": "wall_h",
+      "rect": [
+        155,
+        100,
+        205,
+        80
+      ]
+    },
+    {
+      "id": "rear_wall_345",
+      "prefab": "wall_h",
+      "rect": [
+        345,
+        100,
+        205,
+        80
+      ]
+    },
+    {
+      "id": "rear_wall_535",
+      "prefab": "wall_h",
+      "rect": [
+        535,
+        100,
+        205,
+        80
+      ]
+    },
+    {
+      "id": "rear_wall_725",
+      "prefab": "wall_h",
+      "rect": [
+        725,
+        100,
+        205,
+        80
+      ]
+    },
+    {
+      "id": "rear_wall_915",
+      "prefab": "wall_h",
+      "rect": [
+        915,
+        100,
+        205,
+        80
+      ]
+    },
+    {
+      "id": "rear_wall_1105",
+      "prefab": "wall_h",
+      "rect": [
+        1105,
+        100,
+        205,
+        80
+      ]
+    },
+    {
+      "id": "rear_wall_1295",
+      "prefab": "wall_h",
+      "rect": [
+        1295,
+        100,
+        205,
+        80
+      ]
+    },
+    {
+      "id": "west_wall_190",
+      "prefab": "wall_v",
+      "rect": [
+        145,
+        190,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "east_wall_190",
+      "prefab": "wall_v",
+      "rect": [
+        1340,
+        190,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "west_wall_350",
+      "prefab": "wall_v",
+      "rect": [
+        145,
+        350,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "east_wall_350",
+      "prefab": "wall_v",
+      "rect": [
+        1340,
+        350,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "west_wall_510",
+      "prefab": "wall_v",
+      "rect": [
+        145,
+        510,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "east_wall_510",
+      "prefab": "wall_v",
+      "rect": [
+        1340,
+        510,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "west_wall_670",
+      "prefab": "wall_v",
+      "rect": [
+        145,
+        670,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "east_wall_670",
+      "prefab": "wall_v",
+      "rect": [
+        1340,
+        670,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "front_wall_155",
+      "prefab": "wall_h",
+      "rect": [
+        155,
+        680,
+        210,
+        90
+      ]
+    },
+    {
+      "id": "front_wall_345",
+      "prefab": "wall_h",
+      "rect": [
+        345,
+        680,
+        210,
+        90
+      ]
+    },
+    {
+      "id": "front_wall_920",
+      "prefab": "wall_h",
+      "rect": [
+        920,
+        680,
+        210,
+        90
+      ]
+    },
+    {
+      "id": "front_wall_1110",
+      "prefab": "wall_h",
+      "rect": [
+        1110,
+        680,
+        210,
+        90
+      ]
+    },
+    {
+      "id": "main_gate",
+      "prefab": "gate",
+      "rect": [
+        600,
+        625,
+        330,
+        205
+      ]
+    },
+    {
+      "id": "garden_tree_0",
+      "prefab": "tree",
+      "rect": [
+        240,
+        785,
+        110,
+        140
+      ]
+    },
+    {
+      "id": "garden_tree_1",
+      "prefab": "tree",
+      "rect": [
+        500,
+        800,
+        110,
+        140
+      ]
+    },
+    {
+      "id": "garden_tree_2",
+      "prefab": "tree",
+      "rect": [
+        960,
+        790,
+        110,
+        140
+      ]
+    },
+    {
+      "id": "garden_tree_3",
+      "prefab": "tree",
+      "rect": [
+        1250,
+        795,
+        110,
+        140
+      ]
+    },
+    {
+      "id": "garden_tree_4",
+      "prefab": "tree",
+      "rect": [
+        290,
+        70,
+        110,
+        140
+      ]
+    },
+    {
+      "id": "garden_tree_5",
+      "prefab": "tree",
+      "rect": [
+        1190,
+        70,
+        110,
+        140
+      ]
+    },
+    {
+      "id": "west_well",
+      "prefab": "well",
+      "rect": [
+        330,
+        820,
+        95,
+        85
+      ]
+    }
+  ],
+  "prefabs": {},
+  "terrain_blockers": [],
+  "districts": [
+    {
+      "id": "gate",
+      "name": "남궁세가 정문",
+      "rect": [
+        0,
+        760,
+        1536,
+        264
+      ]
+    },
+    {
+      "id": "court",
+      "name": "연무장·외원",
+      "rect": [
+        180,
+        420,
+        1180,
+        340
+      ]
+    },
+    {
+      "id": "halls",
+      "name": "남궁 내원",
+      "rect": [
+        180,
+        0,
+        1180,
+        420
+      ]
+    }
+  ],
+  "services": [],
+  "residents": [],
+  "road_centers": []
+}

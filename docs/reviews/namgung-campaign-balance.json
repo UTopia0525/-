@@ -1,0 +1,72 @@
+[
+  {
+    "hp": 0,
+    "skill": "hoeryu",
+    "support": false,
+    "support_damage": 0,
+    "win": false
+  },
+  {
+    "hp": 187,
+    "skill": "hoeryu",
+    "support": true,
+    "support_damage": 644,
+    "win": true
+  },
+  {
+    "hp": 0,
+    "skill": "paak",
+    "support": false,
+    "support_damage": 0,
+    "win": false
+  },
+  {
+    "hp": 147,
+    "skill": "paak",
+    "support": true,
+    "support_damage": 483,
+    "win": true
+  },
+  {
+    "hp": 0,
+    "skill": "gwanak",
+    "support": false,
+    "support_damage": 0,
+    "win": false
+  },
+  {
+    "hp": 174,
+    "skill": "gwanak",
+    "support": true,
+    "support_damage": 483,
+    "win": true
+  },
+  {
+    "hp": 0,
+    "skill": "banseok",
+    "support": false,
+    "support_damage": 0,
+    "win": false
+  },
+  {
+    "hp": 174,
+    "skill": "banseok",
+    "support": true,
+    "support_damage": 322,
+    "win": true
+  },
+  {
+    "hp": 0,
+    "skill": "jungun",
+    "support": false,
+    "support_damage": 0,
+    "win": false
+  },
+  {
+    "hp": 120,
+    "skill": "jungun",
+    "support": true,
+    "support_damage": 644,
+    "win": true
+  }
+]

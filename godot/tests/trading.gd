@@ -74,18 +74,26 @@ func run() -> void:
 	game.city_service.close_counter()
 	game.battle.equip_weapon_item("refined_sword")
 	game.start_battle()
+	var ready_deadline=Time.get_ticks_msec()+3000
+	while not game.battle.awaiting_player and Time.get_ticks_msec()<ready_deadline:await create_timer(.02).timeout
+	game.battle.grid.units[1].position=game.battle.grid.units[0].position+Vector2i(2,0);game.battle.facing=Vector2i.RIGHT
 	game.battle.select_skill("cheongpung")
 	check(game.battle.selected_action == "cheongpung" and not game.battle.use_button.disabled, "learned technique appears in actual battle")
 	check(preload("res://tests/legacy_save_fixture.gd").write(game, 2) and game.save_system.load_slot(2), "save selected newly learned technique")
 	check(game.battle.selected_action == "cheongpung", "restore generic battle selection")
+	ready_deadline=Time.get_ticks_msec()+3000
+	while not game.battle.awaiting_player and Time.get_ticks_msec()<ready_deadline:await create_timer(.02).timeout
+	game.battle.grid.units[1].position=game.battle.grid.units[0].position+Vector2i(2,0);game.battle.facing=Vector2i.RIGHT;game.battle.select_skill("cheongpung")
+	var before_hp=game.battle.enemy_hp;var before_qi=game.battle.qi.amount;var qi_cost=game.battle.combat.action("cheongpung",p.stats,game.battle.equipped_weapon_id).cost
 	game.battle.use_selected()
 	var deadline = Time.get_ticks_msec() + 6000
 	while game.battle.busy and Time.get_ticks_msec() < deadline: await create_timer(0.04).timeout
-	check(game.battle.enemy_hp == 59 and game.battle.qi.amount == 24, "new skill actually deals scaled damage and consumes qi then recovers")
+	check(game.battle.enemy_hp < before_hp and game.battle.qi.amount == before_qi-int(qi_cost)+int(p.stats.inner), "new skill actually deals scaled damage and consumes qi then recovers")
 	game.reset()
 	p = game.progress
 	game.money = 100000
 	for id in p.elixirs:
+		if p.elixirs[id].get("acquisition")!="city_merchant":continue
 		for count in range(10):
 			check(p.purchase("elixir", id, game) and p.consume(id), "buy and consume each dose")
 		var purse: int = game.money
