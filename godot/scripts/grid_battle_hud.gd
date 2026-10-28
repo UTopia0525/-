@@ -34,6 +34,8 @@ static func build(b) -> void:
  H.text(left,"상하좌우 한 칸 이동",Rect2(22,57,208,24),15)
  H.text(left,"↑\n←   ·   →\n↓",Rect2(52,83,150,70),20,H.TEAL).horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  H.text(left,"R 방향 · B 공격 · G 대기",Rect2(30,165,204,22),12)
+ b.range_diagram=preload("res://scripts/martial_range_preview.gd").new()
+ b.range_diagram.position=Vector2(8,9);b.range_diagram.size=Vector2(236,155);left.add_child(b.range_diagram);b.range_diagram.hide()
  var panel=ArtSkin.panel(b.grid_ui,Rect2(288,551,612,145))
  b.heading=H.text(panel,"발걸음을 고르시오",Rect2(22,12,568,29),24,UI.GOLD)
  b.metrics=H.text(panel,"",Rect2(22,45,568,24),17,UI.TEXT)

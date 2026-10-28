@@ -38,4 +38,4 @@ func preview(id: String) -> Dictionary:
  if t.has("move_offsets"):
   moves.clear()
   for offset in t.move_offsets:moves.append(origin+Vector2i(offset[0],offset[1]))
- return {"origin":origin,"attacks":attacks,"moves":moves,"self_target":t.shape=="self","known":t.shape!="unknown"}
+ return {"id":id,"origin":origin,"caster":caster,"attacks":attacks,"moves":moves,"retreat":t.retreat,"push":t.push,"self_target":t.shape=="self","known":t.shape!="unknown"}

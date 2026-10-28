@@ -54,7 +54,7 @@ static func build(m,ids: Array) -> void:
   m.martial_metrics.append(value)
  m.box(m.content,Rect2(635,423,250,132),Color("e8dfcd"))
  m.range_preview=RangePreview.new();m.range_preview.position=Vector2(635,423);m.range_preview.size=Vector2(250,132);m.content.add_child(m.range_preview)
- m.range_preview.configure(m.tactics.preview(id));m.range_preview.tooltip_text="오른쪽으로 펼치는 범위 예시입니다. 지형과 점유에 따라 이동이 막힐 수 있습니다."
+ m.range_preview.configure(m.tactics.preview(id));m.range_preview.tooltip_text="붉은 칸: 공격 · 청록: 시전자 이동 · 금색: 적 밀침 · 방패: 피해 감소. 오른쪽 출수 예시이며 지형과 점유 판정은 실제 전장을 따릅니다."
  m.text(m.content,"범위 예시 · 우측",Rect2(635,404,250,18),11,m.MUTED)
  var grade={"introductory":"입문","low":"하급","intermediate":"중급"}.get(item.get("grade",""),"기본")
  var body=str(grade)+" · "+str(tactics.target)+"\n"+str(tactics.description)

@@ -11,7 +11,7 @@ func _init() -> void:
 	definitions.merge(JSON.parse_string(FileAccess.get_file_as_string("res://data/support_martial_arts.json")))
 
 func get_skill(id: String) -> Dictionary:
-	if id == "basic_attack": return {"name":"기본공격", "description":"내기를 소모하지 않고 공격합니다.", "damage_coefficients":{"strength":1,"agility":1,"inner":1}, "qi_cost":0, "required_weapon_type":null, "weapon_style":"basic", "requirements":{"stats":{},"minimum_total":0}}
+	if id == "basic_attack": return {"name":"기본공격", "description":"내기를 소모하지 않고 공격합니다.", "damage_coefficients":{"strength":1,"inner":1}, "qi_cost":0, "required_weapon_type":null, "weapon_style":"basic", "requirements":{"stats":{},"minimum_total":0}}
 	if id == "basic_defense": return {"name":"기본방어", "description":"다음 자기 행동 시작까지 받는 피해를20% 줄입니다. 내기 소모 없이 행동 종료 시 정상 회복합니다.", "damage_coefficients":{}, "qi_cost":0, "required_weapon_type":null, "weapon_style":"basic", "requirements":{"stats":{},"minimum_total":0}}
 	return definitions.get(id, {}).duplicate(true)
 

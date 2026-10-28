@@ -108,7 +108,7 @@ def draw(ax, id):
     kinds={'sword':'검','saber':'도','spear':'창','fist':'권','palm':'장','support':'공통'}
     ax.text(-.42,-.86,art['name'],color=INK,size=19,weight='bold',ha='left')
     kind = '공통' if id in ['basic_attack','basic_defense'] else kinds[art['weapon_style']]
-    ax.text(6.4,-.86,f"{grades[art['grade']]} · {kind}",
+    ax.text(6.4,-.86,f"{grades.get(art['grade'],art['grade'])} · {kind}",
         color=GOLD,size=10,ha='right')
     ax.plot([-.45,6.45],[-.59,-.59],color=GOLD,alpha=.55,linewidth=.8)
 
@@ -118,6 +118,7 @@ def page(ids, title, filename):
     fig.subplots_adjust(left=.035,right=.975,bottom=.085,top=.91,wspace=.12,hspace=.18)
     fig.text(.045,.963,title,color=INK,size=25,weight='bold')
     fig.text(.045,.934,'7 × 5  |  실제 공격 칸 데이터 기준  |  시전 방향 →',color=GOLD,size=12)
+    for ax in axes.flat: ax.axis('off')
     for ax,id in zip(axes.flat,ids): draw(ax,id)
     fig.text(.045,.052,'붉은 칸  공격 범위     청록 화살표  시전자 이동     황금 화살표  적 밀침',color=INK,size=12)
     fig.text(.045,.028,'1 → 2 행동 순서    점선: 공격 후 후퇴    방패: 피해 20% 감소    같은 적에게는 1회 타격',color='#a7bdc2',size=10)
@@ -125,8 +126,10 @@ def page(ids, title, filename):
     plt.close(fig)
 
 
-page(['samjae','cheongpung','yusu','danseok','hoepung','gwanpung','yeonhwan','cheolsan','ungi'],
-     '무공 범위 도해 · 입문 / 하급','introductory-low.png')
-page(['hoeryu','paak','gwanak','banseok','jungun','swaerang','josik_suwon','basic_attack','basic_defense'],
-     '무공 범위 도해 · 중급 / 기본 행동','intermediate-basic.png')
-print('Rendered 16 martial arts + 2 basic actions from live tactics data.')
+low = [id for id,art in ARTS.items() if art['grade'] in ['introductory','low']]
+rest = [id for id,art in ARTS.items() if art['grade'] not in ['introductory','low','basic']] + ['basic_attack','basic_defense']
+for ids,title,stem in [(low,'입문 / 하급','introductory-low'),(rest,'중급 이상 / 기본 행동','intermediate-basic')]:
+    for offset in range(0,len(ids),9):
+        suffix = '' if offset == 0 else f'-{offset//9+1}'
+        page(ids[offset:offset+9],f'무공 범위 도해 · {title}',f'{stem}{suffix}.png')
+print(f'Rendered {len(ARTS)} actions from live tactics data.')

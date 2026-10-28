@@ -13,6 +13,7 @@ var facing=Vector2i.RIGHT
 var awaiting_player=false
 var animation_time=.48
 var opponent_side=1.0
+var range_diagram: Control
 func _ready() -> void:
  super._ready()
  # Retain legacy widgets for old save fields, but render only the new grid HUD.
@@ -171,6 +172,9 @@ func refresh_grid(animate: bool=false) -> void:
  clock_label.text="행동력 100 이상에서 출수 · 충전 %d박" % grid.tick
  field_label.text="%d × %d  ·  %s" % [grid.field.width,grid.field.height,{Vector2i.RIGHT:"동쪽 →",Vector2i.DOWN:"남쪽 ↓",Vector2i.LEFT:"서쪽 ←",Vector2i.UP:"북쪽 ↑"}.get(facing,"")]
  var id=choice
+ if is_instance_valid(range_diagram):
+  range_diagram.visible=id not in ["move","wait"]
+  if range_diagram.visible:range_diagram.configure(grid.tactics.preview(id))
  heading.text={"move":"보법 · 한 걸음 이동","wait":"숨 고르기"}.get(id,martial_arts.get_skill(id).get("name","초식 선택"))
  var cost=grid.cost(id);var action=combat.action(id,player_stats,equipped_weapon_id)
  metrics.text="행동력 %d · 내기 %d%s" % [cost,int(action.get("cost",0))," · 위력 %s" % str(snappedf(float(action.raw),.01)) if action.get("raw",0)>0 else ""]
