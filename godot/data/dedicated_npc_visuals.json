@@ -1,0 +1,13 @@
+{
+  "namgung_seojin": {
+    "name": "남궁서진",
+    "portrait": "res://assets/portraits/namgung/seojin.png",
+    "sprite": "res://assets/characters/namgung/seojin.png",
+    "sprite_region": [
+      271,
+      95,
+      645,
+      1232
+    ]
+  }
+}

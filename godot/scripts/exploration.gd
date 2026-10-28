@@ -23,6 +23,7 @@ var blockers: Array[Rect2] = []
 var astar: AStarGrid2D = AStarGrid2D.new()
 var city_data: Dictionary = {}
 var ambient_nodes: Array[Node2D] = []
+var dedicated_visuals: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/dedicated_npc_visuals.json"))
 var art_tiles: Array[Dictionary] = []
 var scenery_bounds: Array[Rect2] = []
 var scenery_nodes: Array[Node2D] = []
@@ -234,7 +235,14 @@ func _load_changsha() -> void:
 	occlusion_roots.append(hall)
 
 func _populate_residents(entries: Array) -> void:
-	for entry in entries:
+	for original in entries:
+		var entry: Dictionary=original.duplicate(true)
+		# A named character's portrait and map sprite travel together across maps.
+		if dedicated_visuals.has(entry.id):
+			var visual: Dictionary=dedicated_visuals[entry.id]
+			entry.sprite_texture=visual.sprite;entry.sprite_region=visual.sprite_region
+			var actor: Dictionary=get_parent().PORTRAITS.ACTORS.get(entry.id,{"name":entry.name}).duplicate()
+			actor.portrait=visual.portrait;get_parent().PORTRAITS.ACTORS[entry.id]=actor
 		var citizen = CharacterBody2D.new()
 		citizen.collision_layer = 2
 		citizen.collision_mask = 3

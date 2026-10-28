@@ -82,3 +82,11 @@ Q 의뢰 일지와 추적·미니맵/전체 지도 목표를 연결했다. 다�
 
 - [전용 무인 초상화](../../godot/assets/portraits/namgung/regular-warrior.png)
 - [맵의 문지기 캐릭터](../../godot/screenshots/namgung-warrior-map.png)
+
+## 남궁서진 전용 탐험 도트
+
+기존 승인 초상화를 유지하고 흰색·연청색 도복, 옥 관식과 허리 장식, 등에 멘 검을 반영한 전용 탐험 도트를 적용했다. 본가와 청애채 모두 같은 인물ID로 공통 등록표를 사용한다. 일반 남궁 무사의 도트와 구분하며 전투 지원 그림은 이번 변경 대상이 아니다.
+
+- [전용 도트](../../godot/assets/characters/namgung/seojin.png)
+- [본가 적용 화면](../../godot/screenshots/namgung-seojin-overworld.png)
+- [청애채 적용 화면](../../godot/screenshots/namgung-seojin-camp.png)
