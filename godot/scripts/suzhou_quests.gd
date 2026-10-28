@@ -26,7 +26,8 @@ func handle_interaction(id: String) -> bool:
  if mq.is_target(id):mq.present();return true
  if game.exploration.area_name=="murong_estate":
   for n in JSON.parse_string(FileAccess.get_file_as_string("res://data/murong_estate_residents.json")).npcs:
-   if n.id==id:game.say(n.dialogue);return true
+   if n.id==id:
+    game.say(mq.data.post.get(id,n.dialogue) if mq.phase=="completed" else n.dialogue);return true
  if game.exploration.area_name!="suzhou":return false
  if id=="sz_extortionist":
   var q=get_quest("suzhou_quay")
@@ -38,7 +39,7 @@ func handle_interaction(id: String) -> bool:
  for q in quests:
   if q.GIVER==id and q.phase=="available" and (q.ID!="suzhou_murong" or q.eligible()):topics.append(["의뢰 · "+str(q.data.title),q.present])
   elif q.GIVER==id and q.phase not in ["completed","ready"] and q.target()!=id:topics.append(["진행 확인 · "+str(q.data.title),q.remind])
-  if q.phase=="completed" and q.data.participants.has(id):post=true
+  if q.phase=="completed" and (q.data.participants.has(id) or q.data.get("post",{}).has(id)):post=true
  if topics.is_empty() and not post:return false
  var spec={}
  for n in people.npcs:
