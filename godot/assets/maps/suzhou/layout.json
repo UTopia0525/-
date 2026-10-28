@@ -1,0 +1,1016 @@
+{
+  "name": "소주 · 운하와 비단의 도시",
+  "art_size": [
+    1536,
+    1024
+  ],
+  "world_size": [
+    4608,
+    3072
+  ],
+  "spawn": [
+    85,
+    512
+  ],
+  "walk_bounds": [
+    24,
+    24,
+    1488,
+    976
+  ],
+  "ground_script": "res://scripts/qingya_ground.gd",
+  "ground_texture": "res://assets/maps/suzhou/ground.png",
+  "objects": [
+    {
+      "id": "north_home_a",
+      "prefab": "sz_home",
+      "rect": [
+        140,
+        70,
+        155,
+        140
+      ]
+    },
+    {
+      "id": "north_home_b",
+      "prefab": "sz_home",
+      "rect": [
+        350,
+        75,
+        155,
+        140
+      ]
+    },
+    {
+      "id": "north_home_c",
+      "prefab": "sz_home",
+      "rect": [
+        540,
+        80,
+        135,
+        130
+      ]
+    },
+    {
+      "id": "silk_shop",
+      "prefab": "sz_silk",
+      "rect": [
+        180,
+        315,
+        175,
+        145
+      ]
+    },
+    {
+      "id": "market_shop",
+      "prefab": "sz_silk",
+      "rect": [
+        440,
+        315,
+        175,
+        145
+      ]
+    },
+    {
+      "id": "canal_teahouse",
+      "prefab": "sz_tea",
+      "rect": [
+        470,
+        575,
+        185,
+        160
+      ]
+    },
+    {
+      "id": "travellers_inn",
+      "prefab": "sz_inn",
+      "rect": [
+        155,
+        570,
+        240,
+        170
+      ]
+    },
+    {
+      "id": "farm_home",
+      "prefab": "sz_home",
+      "rect": [
+        180,
+        820,
+        150,
+        135
+      ]
+    },
+    {
+      "id": "government",
+      "prefab": "nj_government",
+      "rect": [
+        925,
+        65,
+        220,
+        170
+      ]
+    },
+    {
+      "id": "martial_school",
+      "prefab": "nj_martial",
+      "rect": [
+        1170,
+        310,
+        190,
+        150
+      ]
+    },
+    {
+      "id": "east_home",
+      "prefab": "sz_home",
+      "rect": [
+        910,
+        320,
+        155,
+        140
+      ]
+    },
+    {
+      "id": "dye_house",
+      "prefab": "sz_dye",
+      "rect": [
+        900,
+        600,
+        190,
+        155
+      ]
+    },
+    {
+      "id": "silk_mill",
+      "prefab": "sz_dye",
+      "rect": [
+        1170,
+        600,
+        190,
+        155
+      ]
+    },
+    {
+      "id": "garden_pavilion",
+      "prefab": "sz_pavilion",
+      "rect": [
+        1220,
+        65,
+        140,
+        110
+      ]
+    },
+    {
+      "id": "garden_moon_gate",
+      "prefab": "sz_moon_gate",
+      "rect": [
+        1220,
+        170,
+        130,
+        115
+      ]
+    },
+    {
+      "id": "garden_rock",
+      "prefab": "sz_rock",
+      "rect": [
+        1370,
+        150,
+        60,
+        70
+      ]
+    },
+    {
+      "id": "garden_rock_west",
+      "prefab": "sz_rock",
+      "rect": [
+        1160,
+        110,
+        42,
+        60
+      ]
+    },
+    {
+      "id": "dock_boat",
+      "prefab": "sz_boat",
+      "rect": [
+        722,
+        910,
+        95,
+        40
+      ]
+    },
+    {
+      "id": "dock_cargo",
+      "prefab": "sz_cargo",
+      "rect": [
+        835,
+        915,
+        65,
+        55
+      ]
+    },
+    {
+      "id": "dock_cargo_b",
+      "prefab": "sz_cargo",
+      "rect": [
+        1310,
+        875,
+        65,
+        62
+      ]
+    },
+    {
+      "id": "market_silk_stall",
+      "prefab": "capital_silk",
+      "rect": [
+        365,
+        400,
+        65,
+        55
+      ]
+    },
+    {
+      "id": "market_produce",
+      "prefab": "capital_produce",
+      "rect": [
+        90,
+        410,
+        65,
+        55
+      ]
+    },
+    {
+      "id": "forge",
+      "prefab": "capital_forge",
+      "rect": [
+        1390,
+        675,
+        65,
+        55
+      ]
+    },
+    {
+      "id": "training_dummy",
+      "prefab": "capital_dummy",
+      "rect": [
+        1390,
+        395,
+        25,
+        48
+      ]
+    },
+    {
+      "id": "training_rack",
+      "prefab": "capital_rack",
+      "rect": [
+        1385,
+        315,
+        35,
+        45
+      ]
+    },
+    {
+      "id": "canal_bridge_0",
+      "prefab": "sz_bridge",
+      "rect": [
+        688,
+        186,
+        160,
+        90
+      ]
+    },
+    {
+      "id": "canal_bridge_1",
+      "prefab": "sz_bridge",
+      "rect": [
+        688,
+        472,
+        160,
+        90
+      ]
+    },
+    {
+      "id": "canal_bridge_2",
+      "prefab": "sz_bridge",
+      "rect": [
+        688,
+        738,
+        160,
+        90
+      ]
+    },
+    {
+      "id": "willow_0",
+      "prefab": "sz_willow",
+      "rect": [
+        655,
+        80,
+        62,
+        90
+      ]
+    },
+    {
+      "id": "willow_1",
+      "prefab": "sz_willow",
+      "rect": [
+        810,
+        95,
+        62,
+        90
+      ]
+    },
+    {
+      "id": "willow_2",
+      "prefab": "sz_willow",
+      "rect": [
+        650,
+        315,
+        62,
+        90
+      ]
+    },
+    {
+      "id": "willow_3",
+      "prefab": "sz_willow",
+      "rect": [
+        810,
+        340,
+        62,
+        90
+      ]
+    },
+    {
+      "id": "willow_4",
+      "prefab": "sz_willow",
+      "rect": [
+        650,
+        590,
+        62,
+        90
+      ]
+    },
+    {
+      "id": "willow_5",
+      "prefab": "sz_willow",
+      "rect": [
+        815,
+        615,
+        62,
+        90
+      ]
+    },
+    {
+      "id": "willow_6",
+      "prefab": "sz_willow",
+      "rect": [
+        650,
+        865,
+        62,
+        90
+      ]
+    },
+    {
+      "id": "willow_7",
+      "prefab": "sz_willow",
+      "rect": [
+        815,
+        870,
+        62,
+        90
+      ]
+    },
+    {
+      "id": "willow_8",
+      "prefab": "sz_willow",
+      "rect": [
+        80,
+        90,
+        62,
+        90
+      ]
+    },
+    {
+      "id": "willow_9",
+      "prefab": "sz_willow",
+      "rect": [
+        1430,
+        820,
+        62,
+        90
+      ]
+    }
+  ],
+  "prefabs": {
+    "nj_government": {
+      "texture": "res://assets/maps/nanjing/buildings.png",
+      "source": [
+        818,
+        353,
+        387,
+        310
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.11,
+          0.53,
+          0.78,
+          0.43
+        ]
+      ]
+    },
+    "nj_martial": {
+      "texture": "res://assets/maps/nanjing/buildings.png",
+      "source": [
+        1202,
+        388,
+        330,
+        273
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.11,
+          0.53,
+          0.78,
+          0.43
+        ]
+      ]
+    },
+    "capital_silk": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        5,
+        0,
+        400,
+        320
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_produce": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        418,
+        3,
+        342,
+        317
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_lantern": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        22,
+        322,
+        280,
+        355
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_forge": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        336,
+        343,
+        430,
+        333
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_dummy": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        434,
+        699,
+        150,
+        290
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_rack": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        580,
+        682,
+        220,
+        300
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_tea": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        810,
+        673,
+        340,
+        337
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "sz_home": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        20,
+        60,
+        327,
+        269
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.53,
+          0.76,
+          0.43
+        ]
+      ]
+    },
+    "sz_silk": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        401,
+        12,
+        337,
+        326
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.53,
+          0.76,
+          0.43
+        ]
+      ]
+    },
+    "sz_dye": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        776,
+        92,
+        368,
+        248
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.53,
+          0.76,
+          0.43
+        ]
+      ]
+    },
+    "sz_bridge": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        1166,
+        135,
+        357,
+        189
+      ],
+      "kind": "bridge",
+      "footprints": [
+        [
+          0.05,
+          0.2,
+          0.9,
+          0.12
+        ],
+        [
+          0.05,
+          0.78,
+          0.9,
+          0.12
+        ]
+      ]
+    },
+    "sz_tea": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        16,
+        358,
+        357,
+        314
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.53,
+          0.76,
+          0.43
+        ]
+      ]
+    },
+    "sz_inn": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        391,
+        354,
+        462,
+        322
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.53,
+          0.76,
+          0.43
+        ]
+      ]
+    },
+    "sz_pavilion": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        871,
+        364,
+        290,
+        321
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.53,
+          0.76,
+          0.43
+        ]
+      ]
+    },
+    "sz_moon_gate": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        1178,
+        458,
+        344,
+        219
+      ],
+      "kind": "gate",
+      "footprints": [
+        [
+          0.03,
+          0.72,
+          0.19,
+          0.27
+        ],
+        [
+          0.78,
+          0.72,
+          0.19,
+          0.27
+        ]
+      ]
+    },
+    "sz_willow": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        38,
+        671,
+        347,
+        330
+      ],
+      "kind": "tree",
+      "footprints": [
+        [
+          0.38,
+          0.82,
+          0.24,
+          0.17
+        ]
+      ]
+    },
+    "sz_boat": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        408,
+        806,
+        372,
+        134
+      ],
+      "kind": "cargo",
+      "footprints": [
+        [
+          0.1,
+          0.72,
+          0.8,
+          0.25
+        ]
+      ]
+    },
+    "sz_rock": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        843,
+        711,
+        280,
+        265
+      ],
+      "kind": "cargo",
+      "footprints": [
+        [
+          0.1,
+          0.72,
+          0.8,
+          0.25
+        ]
+      ]
+    },
+    "sz_cargo": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        1164,
+        799,
+        350,
+        168
+      ],
+      "kind": "cargo",
+      "footprints": [
+        [
+          0.1,
+          0.72,
+          0.8,
+          0.25
+        ]
+      ]
+    }
+  },
+  "terrain_blockers": [
+    [
+      718,
+      24,
+      100,
+      185
+    ],
+    [
+      718,
+      253,
+      100,
+      242
+    ],
+    [
+      718,
+      539,
+      100,
+      222
+    ],
+    [
+      718,
+      805,
+      100,
+      195
+    ]
+  ],
+  "services": [],
+  "residents": [],
+  "npcs": [],
+  "road_centers": [],
+  "roads": [
+    {
+      "points": [
+        [
+          40,
+          226
+        ],
+        [
+          1490,
+          226
+        ]
+      ],
+      "width": 48
+    },
+    {
+      "points": [
+        [
+          40,
+          512
+        ],
+        [
+          1490,
+          512
+        ]
+      ],
+      "width": 48
+    },
+    {
+      "points": [
+        [
+          40,
+          778
+        ],
+        [
+          1490,
+          778
+        ]
+      ],
+      "width": 48
+    }
+  ],
+  "bridges": [
+    226,
+    512,
+    778
+  ],
+  "landmarks": [],
+  "districts": [
+    {
+      "id": "entrance",
+      "name": "남경 방면·서쪽 농촌",
+      "rect": [
+        24,
+        470,
+        150,
+        530
+      ],
+      "label": [
+        99.0,
+        735.0
+      ]
+    },
+    {
+      "id": "residential",
+      "name": "백벽 주거골목",
+      "rect": [
+        125,
+        24,
+        550,
+        260
+      ],
+      "label": [
+        400.0,
+        154.0
+      ]
+    },
+    {
+      "id": "market",
+      "name": "비단 상점가",
+      "rect": [
+        175,
+        285,
+        510,
+        260
+      ],
+      "label": [
+        430.0,
+        415.0
+      ]
+    },
+    {
+      "id": "inn",
+      "name": "객잔·운하 찻집",
+      "rect": [
+        175,
+        545,
+        510,
+        245
+      ],
+      "label": [
+        430.0,
+        667.5
+      ]
+    },
+    {
+      "id": "government",
+      "name": "소주부 관아",
+      "rect": [
+        870,
+        24,
+        300,
+        260
+      ],
+      "label": [
+        1020.0,
+        154.0
+      ]
+    },
+    {
+      "id": "garden",
+      "name": "정원·장원거리",
+      "rect": [
+        1170,
+        24,
+        342,
+        260
+      ],
+      "label": [
+        1341.0,
+        154.0
+      ]
+    },
+    {
+      "id": "martial",
+      "name": "무관·연무장",
+      "rect": [
+        870,
+        285,
+        642,
+        260
+      ],
+      "label": [
+        1191.0,
+        415.0
+      ]
+    },
+    {
+      "id": "workshops",
+      "name": "염색·직조 공방거리",
+      "rect": [
+        870,
+        545,
+        642,
+        245
+      ],
+      "label": [
+        1191.0,
+        667.5
+      ]
+    },
+    {
+      "id": "harbor",
+      "name": "태호 방면 선착장",
+      "rect": [
+        870,
+        790,
+        642,
+        210
+      ],
+      "label": [
+        1191.0,
+        895.0
+      ]
+    },
+    {
+      "id": "canal",
+      "name": "운하·세 다리",
+      "rect": [
+        685,
+        24,
+        185,
+        976
+      ],
+      "label": [
+        777.5,
+        512.0
+      ]
+    }
+  ]
+}

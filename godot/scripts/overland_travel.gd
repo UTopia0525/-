@@ -1,12 +1,14 @@
 extends RefCounted
-const AREAS=["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate"]
+const AREAS=["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road"]
 const LINKS={
  "changsha":[{"id":"travel:road_east","name":"무창 방면 산길 →","point":[1490,510],"area":"mountain_road","arrival":[125,1175]}],
  "mountain_road":[{"id":"travel:changsha","name":"← 장사 동쪽 농촌","point":[80,1175],"area":"changsha","arrival":[1440,510]}, {"id":"travel:wuchang","name":"↑ 무창 남쪽 농촌","point":[740,64],"area":"wuchang","arrival":[1100,1790]}],
  "alliance_office":[{"id":"travel:office_exit","name":"무림맹 외원으로","point":[256,321],"area":"wuchang","arrival":[1077,795]}],
  "qingya_hamlet":[{"id":"travel:wuchang","name":"← 무창","point":[70,530],"area":"wuchang","arrival":[1920,945]},{"id":"travel:camp","name":"↑ 청애채","point":[780,60],"area":"qingya_camp","arrival":[1152,1480]},{"id":"travel:nanjing","name":"남경 →","point":[1470,530],"area":"nanjing","arrival":[255,530]}],
  "namgung_estate":[{"id":"travel:nanjing","name":"남경 방면 →","point":[768,1070],"area":"nanjing","arrival":[300,160]}],
- "nanjing":[{"id":"travel:namgung","name":"합비 · 남궁세가 방면","point":[300,115],"area":"namgung_estate","arrival":[768,1050]},{"id":"travel:hamlet","name":"← 삼거리 산촌·무창 방면","point":[110,530],"area":"qingya_hamlet","arrival":[1410,530]}],
+ "suzhou":[{"id":"travel:suzhou_road","name":"← 남경 방면 산길","point":[48,512],"area":"nanjing_suzhou_road","arrival":[1450,570]}],
+ "nanjing_suzhou_road":[{"id":"travel:nanjing","name":"← 남경","point":[35,460],"area":"nanjing","arrival":[1470,995]},{"id":"travel:suzhou","name":"소주 →","point":[1500,570],"area":"suzhou","arrival":[85,512]}],
+ "nanjing":[{"id":"travel:suzhou_road","name":"소주 방면 산길 →","point":[1470,995],"area":"nanjing_suzhou_road","arrival":[85,462]},{"id":"travel:namgung","name":"합비 · 남궁세가 방면","point":[300,115],"area":"namgung_estate","arrival":[768,1050]},{"id":"travel:hamlet","name":"← 삼거리 산촌·무창 방면","point":[110,530],"area":"qingya_hamlet","arrival":[1410,530]}],
  "qingya_camp":[{"id":"travel:hamlet","name":"↓ 삼거리 산촌","point":[768,960],"area":"qingya_hamlet","arrival":[780,115]}],
  "wuchang":[{"id":"travel:office_entry","name":"총무당 · 들어가기","point":[1077,775],"area":"alliance_office","arrival":[256,289]}, {"id":"travel:road_south","name":"↓ 장사 방면 산길","point":[1100,1840],"area":"mountain_road","arrival":[740,110]},{"id":"travel:qingya","name":"산촌·청애채 방면 →","point":[1948,945],"area":"qingya_hamlet","arrival":[135,530]}]}
 static func install(world) -> void:
@@ -31,7 +33,7 @@ static func use(game,entry: Dictionary) -> bool:
 	game.exploration.load_area(link.area)
 	game.exploration.player.position=game.exploration.safe_player_position(game.exploration.city_point(link.arrival))
 	game.exploration.player.stop();game.exploration.camera.snap_to_player()
-	game.exploration.set_active(true);game.music.play_track("voyage" if link.area in ["mountain_road","qingya_hamlet","qingya_camp"] else "dock")
+	game.exploration.set_active(true);game.music.play_track("voyage" if link.area in ["mountain_road","qingya_hamlet","qingya_camp","nanjing_suzhou_road"] else "dock")
 	game.ordinary_quests.refresh_world()
 	game.adventure_ui.notify(game.exploration.city_data.name+"에 들어섰습니다.","confirm")
 	return true

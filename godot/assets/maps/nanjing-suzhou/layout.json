@@ -1,0 +1,219 @@
+{
+  "name": "남경–소주 산길 · 강남 구릉",
+  "art_size": [
+    1536,
+    1024
+  ],
+  "world_size": [
+    3840,
+    2560
+  ],
+  "spawn": [
+    85,
+    462
+  ],
+  "walk_bounds": [
+    24,
+    24,
+    1488,
+    976
+  ],
+  "ground_script": "res://scripts/qingya_ground.gd",
+  "ground_texture": "res://assets/maps/nanjing-suzhou/ground.png",
+  "objects": [
+    {
+      "id": "hill_tree_0",
+      "prefab": "tree",
+      "rect": [
+        80,
+        80,
+        85,
+        110
+      ]
+    },
+    {
+      "id": "hill_tree_1",
+      "prefab": "tree",
+      "rect": [
+        300,
+        130,
+        85,
+        110
+      ]
+    },
+    {
+      "id": "hill_tree_2",
+      "prefab": "tree",
+      "rect": [
+        650,
+        80,
+        85,
+        110
+      ]
+    },
+    {
+      "id": "hill_tree_3",
+      "prefab": "tree",
+      "rect": [
+        1030,
+        80,
+        85,
+        110
+      ]
+    },
+    {
+      "id": "hill_tree_4",
+      "prefab": "tree",
+      "rect": [
+        1320,
+        140,
+        85,
+        110
+      ]
+    },
+    {
+      "id": "hill_tree_5",
+      "prefab": "tree",
+      "rect": [
+        80,
+        730,
+        85,
+        110
+      ]
+    },
+    {
+      "id": "hill_tree_6",
+      "prefab": "tree",
+      "rect": [
+        330,
+        760,
+        85,
+        110
+      ]
+    },
+    {
+      "id": "hill_tree_7",
+      "prefab": "tree",
+      "rect": [
+        620,
+        700,
+        85,
+        110
+      ]
+    },
+    {
+      "id": "hill_tree_8",
+      "prefab": "tree",
+      "rect": [
+        950,
+        810,
+        85,
+        110
+      ]
+    },
+    {
+      "id": "hill_tree_9",
+      "prefab": "tree",
+      "rect": [
+        1300,
+        820,
+        85,
+        110
+      ]
+    }
+  ],
+  "prefabs": {},
+  "terrain_blockers": [],
+  "route": [
+    [
+      35,
+      460
+    ],
+    [
+      260,
+      470
+    ],
+    [
+      440,
+      500
+    ],
+    [
+      590,
+      445
+    ],
+    [
+      740,
+      375
+    ],
+    [
+      865,
+      350
+    ],
+    [
+      1020,
+      400
+    ],
+    [
+      1130,
+      510
+    ],
+    [
+      1270,
+      560
+    ],
+    [
+      1500,
+      570
+    ]
+  ],
+  "half_width": 48,
+  "services": [],
+  "residents": [],
+  "npcs": [],
+  "road_centers": [],
+  "landmarks": [],
+  "districts": [
+    {
+      "id": "west",
+      "name": "남경 방면 고갯길",
+      "rect": [
+        0,
+        0,
+        510,
+        1024
+      ],
+      "label": [
+        255.0,
+        512.0
+      ]
+    },
+    {
+      "id": "pass",
+      "name": "강남 구릉·돌고개",
+      "rect": [
+        510,
+        0,
+        510,
+        1024
+      ],
+      "label": [
+        765.0,
+        512.0
+      ]
+    },
+    {
+      "id": "east",
+      "name": "소주 방면 산기슭",
+      "rect": [
+        1020,
+        0,
+        516,
+        1024
+      ],
+      "label": [
+        1278.0,
+        512.0
+      ]
+    }
+  ]
+}

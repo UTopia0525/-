@@ -13,7 +13,7 @@ func configure(spec: Dictionary, prefab: Dictionary, world_scale: Vector2) -> vo
 	collision_layer = 2
 	collision_mask = 3
 	visual_rect = Rect2(Vector2(spec.rect[0], spec.rect[1]) * world_scale, Vector2(spec.rect[2], spec.rect[3]) * world_scale)
-	position = Vector2(visual_rect.get_center().x, visual_rect.end.y)
+	position = Vector2(visual_rect.get_center().x, visual_rect.position.y if prefab.kind=="bridge" else visual_rect.end.y)
 	var atlas := AtlasTexture.new()
 	atlas.atlas = load(prefab.texture)
 	var src: Array = prefab.source

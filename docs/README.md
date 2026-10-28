@@ -12,6 +12,7 @@
 
 | 작업 | 설명 | 주요 코드·데이터 | 기존 검사 (`godot/tests/`) |
 | --- | --- | --- | --- |
+| 소주·남경 동쪽 산길 | [구역·실제 전체 맵·왕복 이동](cities/suzhou.md) | `scripts/suzhou_map.gd`, `assets/maps/suzhou/layout.json`, `assets/maps/nanjing-suzhou/layout.json` | `suzhou_maps.gd`, `capture_suzhou.gd` |
 | 0장·분기 | [진행](story/chapter-00-implementation.md), [원고](story/chapter-00-dialogues.md) | `scripts/prologue.gd`, `data/prologue_dialogues.json` | `prologue.gd`, `chapter_one.gd` |
 | 도입 의뢰3종 | [진행·보상](quests/trade-intro.md) | `scripts/trade_intro.gd`, `data/trade_intro.json` | `onboarding_menus.gd` |
 | 일반 의뢰6종 | [실제 진행·표식](systems/adventure-usability.md), [목록](quests/changsha.md), [흐름](quests/quest-flow.md), [원고](quests/changsha-dialogues.md) | `data/normal_quests.json`, `scripts/ordinary_quests.gd`, `quest_navigation.gd` | `adventure_features.gd`, `quest_navigation.gd` |
