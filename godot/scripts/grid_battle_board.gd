@@ -29,12 +29,16 @@ func _draw() -> void:
   for x in range(model.field.width):
    var point=Vector2i(x,y);var rect=Rect2(box.position+Vector2(point)*step+Vector2(2,2),step-Vector2(4,4))
    var terrain=model.field.cells.get(point,{})
-   var color=Color(0,0,0,.025)
+   var color=Color(0,0,0,.045)
    if terrain.has("color"):color=Color(terrain.color)
    if not model.field.walkable(point):color=Color("373d3bdf")
    if point in attacks:color=Color("b85c4488")
    if battle.choice=="move" and model.free_cell(point,0) and (point-model.units[0].position).abs().x+(point-model.units[0].position).abs().y==1:color=Color("5ba68d80")
-   draw_rect(rect,color);draw_rect(rect,Color("d4c39760"),false,1)
+   draw_rect(rect,color)
+   draw_rect(rect.grow(.5),Color("17251db0"),false,3.0)
+   draw_rect(rect,Color("ead6abe0"),false,1.5)
+   if point in attacks:draw_rect(rect,Color("efac8c"),false,2.0)
+   if battle.choice=="move" and model.free_cell(point,0) and absi(point.x-model.units[0].position.x)+absi(point.y-model.units[0].position.y)==1:draw_rect(rect,Color("c6f0d8"),false,2.5)
    if battle.choice=="move" and model.free_cell(point,0) and absi(point.x-model.units[0].position.x)+absi(point.y-model.units[0].position.y)==1:
     var dir=Vector2(point-model.units[0].position).normalized();var side=Vector2(-dir.y,dir.x);var center=rect.get_center()
     draw_colored_polygon(PackedVector2Array([center+dir*12,center-dir*5+side*7,center-dir*2,center-dir*5-side*7]),Color("d5eed9"))

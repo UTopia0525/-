@@ -27,12 +27,14 @@ func configure(is_enemy: bool, weapon: String, foot: Vector2) -> void:
 		sprite = Sprite2D.new()
 		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		add_child(sprite)
-	var sheet: Texture2D = load("res://assets/battle/enemy-poses.png" if is_enemy else "res://assets/battle/hero-poses.png")
-	var metadata: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/battle/frames.json"))["enemy" if is_enemy else "hero"]
+	var sheet: Texture2D = load("res://assets/battle/enemy-poses.png" if is_enemy else "res://assets/battle/premium/hero-jade-poses.png")
+	var metadata: Dictionary
+	if is_enemy: metadata = JSON.parse_string(FileAccess.get_file_as_string("res://assets/battle/frames.json")).enemy
+	else: metadata = JSON.parse_string(FileAccess.get_file_as_string("res://assets/battle/premium/hero-jade-frames.json"))
 	frame_data = metadata.frames
 	cell_width = float(metadata.cell_width)
 	var side := 300.0 if is_enemy else 380.0
-	display_scale = side / cell_width
+	display_scale = side / cell_width if is_enemy else 320.0 / float(frame_data["0"].region[3])
 	sprite.scale = Vector2.ONE * display_scale
 	sprite.centered = false
 	textures.clear()
@@ -61,7 +63,8 @@ func set_pose(value: String) -> void:
 	sprite.texture = textures[key]
 	var data: Dictionary = frame_data[key]
 	var r: Array = data.region
-	sprite_origin = Vector2((float(r[0])-float(data.cell_x)-cell_width/2.0)*display_scale,(float(r[1])-float(data.foot_y))*display_scale)
+	var anchor_x := float(data.get("foot_x",float(data.cell_x)+cell_width/2.0))
+	sprite_origin = Vector2(float(r[0])-anchor_x,float(r[1])-float(data.foot_y))*display_scale
 	sprite.position = sprite_origin
 
 func _kill(tween: Tween) -> void:
