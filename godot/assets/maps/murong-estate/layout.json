@@ -151,8 +151,8 @@
       "id": "library",
       "prefab": "library",
       "rect": [
-        405,
-        80,
+        370,
+        200,
         170,
         170
       ]
@@ -161,8 +161,8 @@
       "id": "training",
       "prefab": "training",
       "rect": [
-        961,
-        80,
+        996,
+        200,
         170,
         170
       ]
