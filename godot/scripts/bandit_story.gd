@@ -1,4 +1,5 @@
 extends Node
+const STAT_MAX = preload("res://scripts/rules.gd").STAT_MAX
 ## Chapter-one campaign: one automatic notice, two fights, one settlement.
 const QUEST_ID = "changsha_bandit_campaign"
 const STAGES = ["dormant", "notice", "offered", "enrollment", "preparing", "briefing", "battle_one", "after_first", "battle_two", "after_second", "report", "settlement", "completed", "retreat"]
@@ -118,7 +119,7 @@ func _settle() -> void:
 		return
 	game.money += int(data.reward.money)
 	var before: int = int(game.progress.stats.insight)
-	game.progress.stats.insight = mini(100, before + int(data.reward.insight))
+	game.progress.stats.insight = mini(STAT_MAX, before + int(data.reward.insight))
 	game.progress.fame += int(data.reward.fame)
 	game.adventure_ui.notify("토벌 보고 완료 · %d문 · 오성+%d · 명성+%d" % [int(data.reward.money),int(game.progress.stats.insight)-before,int(data.reward.fame)],"quest")
 	reward_granted = true

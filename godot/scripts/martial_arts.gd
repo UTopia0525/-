@@ -1,4 +1,5 @@
 extends RefCounted
+const STAT_MAX = preload("res://scripts/rules.gd").STAT_MAX
 ## Learning, damage, costs and equipment conditions. Eligibility does not grant a skill.
 const WEAPON_NAMES = {"none":"맨손", "sword":"검", "saber":"도", "spear":"창"}
 const RETIRED = {"swaeam":"cheongpung", "jingak":"cheolsan"}
@@ -20,7 +21,7 @@ func can_learn(id: String, stats: Dictionary) -> bool:
 	var total := 0
 	for stat in RULES.STARTING_STATS:
 		if not stats.has(stat) or not (stats[stat] is int or stats[stat] is float): return false
-		if not is_finite(stats[stat]) or stats[stat] < 0 or stats[stat] > 100: return false
+		if not is_finite(stats[stat]) or stats[stat] < 0 or stats[stat] > STAT_MAX: return false
 		total += int(stats[stat])
 	var requirements: Dictionary = definitions[id].requirements
 	if total < int(requirements.minimum_total): return false

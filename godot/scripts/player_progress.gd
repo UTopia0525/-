@@ -1,4 +1,5 @@
 extends RefCounted
+const STAT_MAX = preload("res://scripts/rules.gd").STAT_MAX
 signal progress_changed(event: Dictionary)
 ## Persistent possessions and growth; shop actions validate before spending money.
 const RULES = preload("res://scripts/rules.gd")
@@ -86,12 +87,12 @@ func consume(id: String) -> bool:
 		return false
 	var changed := false
 	for key in elixirs[id].permanent_stat_gains:
-		if key != "insight" and int(elixirs[id].permanent_stat_gains[key]) > 0 and int(stats[key]) < 100: changed = true
+		if key != "insight" and int(elixirs[id].permanent_stat_gains[key]) > 0 and int(stats[key]) < STAT_MAX: changed = true
 	if not changed:
 		error = "상승할 능력치가 없어 복용하지 않았습니다."
 		return false
 	for key in elixirs[id].permanent_stat_gains:
-		if key != "insight": stats[key] = mini(100, int(stats[key]) + int(elixirs[id].permanent_stat_gains[key]))
+		if key != "insight": stats[key] = mini(STAT_MAX, int(stats[key]) + int(elixirs[id].permanent_stat_gains[key]))
 	inventory[id] -= 1
 	consumed[id] += 1
 	error = ""
@@ -160,7 +161,7 @@ func valid(data) -> bool:
 		if not data.get(key) is Array: return false
 	if data.stats.size() != 5 or data.inventory.size() != elixirs.size() or data.consumed.size() != elixirs.size(): return false
 	for key in RULES.STARTING_STATS:
-		if not whole(data.stats.get(key), 0, 100): return false
+		if not whole(data.stats.get(key), 0, STAT_MAX): return false
 	for id in elixirs:
 		if not whole(data.inventory.get(id), 0, elixir_limit(id)) or not whole(data.consumed.get(id), 0, elixir_limit(id)): return false
 		if data.inventory[id] + data.consumed[id] > elixir_limit(id): return false

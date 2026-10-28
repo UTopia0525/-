@@ -119,7 +119,7 @@ func run() -> void:
 	check(not game.save_system.validate(malformed), "reject unknown equipped technique")
 	# A full target-stat cap must not waste owned pills.
 	p = game.progress
-	p.stats = {"strength":100, "agility":100, "constitution":100, "inner":100, "insight":10}
+	p.stats = {"strength":200, "agility":200, "constitution":200, "inner":200, "insight":10}
 	check(p.purchase("elixir", "bear_strength_pill", game), "buy one remaining legal dose")
 	check(not p.consume("bear_strength_pill") and p.inventory.bear_strength_pill == 1 and p.consumed.bear_strength_pill == 0, "all capped stats do not consume a pill")
 	game.reset()

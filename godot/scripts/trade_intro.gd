@@ -1,4 +1,5 @@
 extends Node
+const STAT_MAX = preload("res://scripts/rules.gd").STAT_MAX
 ## Three paid introductions: learning the shops never requires spending money first.
 const IDS = ["changsha_cloth", "changsha_dishes", "changsha_handle"]
 var game
@@ -22,7 +23,7 @@ func _finish_visit() -> void:
  var reward: Dictionary = rewards.quests[quest.id]
  game.money += int(reward.money)
  var before: int = game.progress.stats.insight
- game.progress.stats.insight = mini(100, before + int(reward.stat_gains.insight))
+ game.progress.stats.insight = mini(STAT_MAX, before + int(reward.stat_gains.insight))
  completed.append(quest.id)
  game.adventure_ui.notify("의뢰 완료 · %d문 · 오성+%d" % [reward.money,game.progress.stats.insight-before],"quest")
  game.chapter_one.accepted_quests[quest.id] = {"status":"completed", "stage":"done"}

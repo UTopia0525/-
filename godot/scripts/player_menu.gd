@@ -1,4 +1,5 @@
 extends "res://scripts/paper_menu_base.gd"
+const STAT_MAX = preload("res://scripts/rules.gd").STAT_MAX
 ## Live possessions and four-slot preparation in the approved paper layout.
 var game
 var tactics=preload("res://scripts/martial_tactics.gd").new()
@@ -178,7 +179,7 @@ func update_inventory_detail(kind: String) -> void:
    else:
     var can_gain=false
     for key in gains:
-     if key!="insight" and int(gains[key])>0 and int(p.stats[key])<100:can_gain=true
+     if key!="insight" and int(gains[key])>0 and int(p.stats[key])<STAT_MAX:can_gain=true
     if not can_gain:reason="상승할 능력치가 없습니다."
    UI.unavailable(action,reason)
    if not reason.is_empty():detail.add_text("\n! "+reason)

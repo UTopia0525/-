@@ -1,4 +1,5 @@
 extends Node
+const STAT_MAX = preload("res://scripts/rules.gd").STAT_MAX
 ## Independent errands, explicit acceptance and report-time, exactly-once rewards.
 const UI = preload("res://scripts/ui.gd")
 var game
@@ -100,7 +101,7 @@ func _after_dialogue() -> void:
 			if status(id)!="ready":return
 			var reward: Dictionary=game.trade_intro.rewards.quests[id]
 			var before: int=game.progress.stats.insight
-			game.money+=int(reward.money);game.progress.stats.insight=mini(100,before+int(reward.stat_gains.insight))
+			game.money+=int(reward.money);game.progress.stats.insight=mini(STAT_MAX,before+int(reward.stat_gains.insight))
 			records[id].status="completed";sync_navigation(id)
 			game.adventure_ui.notify("의뢰 완료 · %d문 · 오성+%d" % [int(reward.money),int(game.progress.stats.insight)-before],"quest")
 	refresh_world()

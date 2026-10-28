@@ -86,7 +86,7 @@ func run() -> void:
  check(game.exploration.objectives.all(func(o):return not str(o.id).begins_with("qingya_ruin:")),"old ruin investigations removed")
  q.handle_interaction("qy_ren_shoutian");await settle();check(q.phase=="completed","reunion completes story")
  var stats=game.progress.stats.duplicate();check(game.progress.consume(PILL),"secret elixir consumed")
- for key in ["strength","agility","constitution","inner"]:check(game.progress.stats[key]==mini(100,stats[key]+3),"elixir grows "+key)
+ for key in ["strength","agility","constitution","inner"]:check(game.progress.stats[key]==mini(200,stats[key]+3),"elixir grows "+key)
  check(game.progress.stats.insight==stats.insight and not game.progress.consume(PILL),"no insight or duplicate consumption")
  check(game.save_system.write_slot(6) and game.save_system.load_slot(6),"returned village and consumed elixir persist")
  var preserved=FileAccess.get_file_as_string(game.save_system.path(6));var balance=game.money

@@ -1,4 +1,5 @@
 extends Control
+const STAT_MAX = preload("res://scripts/rules.gd").STAT_MAX
 signal closed
 const Icons = preload("res://scripts/catalog_icons.gd")
 const UI = preload("res://scripts/ui.gd")
@@ -170,7 +171,7 @@ func update_detail() -> void:
 			else:
 				var can_gain=false
 				for key in g:
-					if key!="insight" and int(g[key])>0 and int(p.stats[key])<100:can_gain=true
+					if key!="insight" and int(g[key])>0 and int(p.stats[key])<STAT_MAX:can_gain=true
 				if not can_gain:problem="상승할 능력치가 없습니다."
 		"workshop":
 			var item: Dictionary = p.weapons.get_weapon(selected_id)

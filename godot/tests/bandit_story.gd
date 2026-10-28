@@ -113,9 +113,9 @@ func run() -> void:
 	story.maybe_start()
 	check(game.money == 500 and game.progress.fame == 5 and story.stage == "completed", "revisit and trigger check cannot repeat reward")
 	check(game.save_system.load_slot(7), "rewind to prepayment for cap boundary")
-	game.progress.stats.insight = 99
+	game.progress.stats.insight = 199
 	game.advance_dialogue()
-	check(game.progress.stats.insight == 100 and game.story_caption.text.contains("오성+1"), "report respects insight cap and shows actual increase")
+	check(game.progress.stats.insight == 200 and game.story_caption.text.contains("오성+1"), "report respects insight cap and shows actual increase")
 	drain()
 	game.reset()
 	check(story.stage == "dormant" and game.progress.fame == 0, "new game clears campaign and fame")

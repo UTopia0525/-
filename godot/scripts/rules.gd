@@ -1,6 +1,7 @@
 extends RefCounted
 
 # Approved baseline.
+const STAT_MAX = 200
 const STARTING_STATS = {"strength": 10, "agility": 10, "constitution": 10, "inner": 10, "insight": 10}
 const PLAYER_MAX_HP = 300
 const ENEMY_MAX_HP = 150
@@ -24,7 +25,7 @@ static func samjae_damage() -> float:
 	return STARTING_STATS.strength * 3.0 + STARTING_STATS.agility * 2.0
 
 static func realm(total: int) -> String:
-	if total == 500:
+	if total >= 500:
 		return "자연경"
 	if total >= 400:
 		return "현경"

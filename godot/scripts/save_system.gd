@@ -1,4 +1,5 @@
 extends Node
+const STAT_MAX = preload("res://scripts/rules.gd").STAT_MAX
 ## Versioned manual saves; continuations are explicit allowed methods, never objects/code.
 const SLOT_COUNT = 10
 const ROOT = "user://saves"
@@ -296,7 +297,7 @@ func validate(d) -> bool:
 		if d.battle.has("weapon_type") and game.battle.weapons.weapon_type(d.battle.weapon_id) != d.battle.weapon_type: return false
 	if d.battle.has("weapon_type") and not game.battle.martial_arts.WEAPON_NAMES.has(d.battle.weapon_type): return false
 	if d.schema >= 2:
-		if not is_number(d.battle.get("inner_power"), 0, 100) or not is_number(d.battle.get("qi"), 0, 500): return false
+		if not is_number(d.battle.get("inner_power"), 0, STAT_MAX) or not is_number(d.battle.get("qi"), 0, 500): return false
 	if d.battle.has("enemy_guard"):
 		if not game.progress.whole(d.battle.enemy_guard,0,20): return false
 		if int(d.battle.enemy_guard) not in [0,20]: return false

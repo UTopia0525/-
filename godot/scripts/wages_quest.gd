@@ -1,4 +1,5 @@
 extends Node
+const STAT_MAX = preload("res://scripts/rules.gd").STAT_MAX
 ## A standalone non-combat inquiry; shared dock witness has explicit topic routing.
 const ID="wuchang_missing_wages"
 const GIVER="wc_wu_deshu"
@@ -26,7 +27,7 @@ func status() -> String:return "active" if phase in ["inspect","ledger","decide"
 func stage() -> String:return {"available":"offer","ready":"report","completed":"report"}.get(phase,phase)
 func marker_for(id: String) -> String:return ("!" if phase=="available" else "?" if phase=="ready" else "") if id==GIVER else ""
 func is_target(id: String) -> bool:return (phase=="inspect" and id==BOARD) or (phase in ["ledger","decide"] and id==CLERK) or (phase=="ready" and id==GIVER)
-func reward_label() -> String:return "보수 100문 · 오성+2 (상한100)"
+func reward_label() -> String:return "보수 100문 · 오성+2 (상한200)"
 func track() -> void:game.quest_navigation.update_quest(ID,stage())
 func other_topics() -> Array:
 	var topics=[]
@@ -95,7 +96,7 @@ func _complete() -> void:
 	if phase!="ready":return
 	phase="completed";game.money+=int(data.reward.money)
 	var before: int=int(game.progress.stats.insight)
-	game.progress.stats.insight=mini(100,before+int(data.reward.insight))
+	game.progress.stats.insight=mini(STAT_MAX,before+int(data.reward.insight))
 	if game.quest_navigation.quest_id==ID:game.quest_navigation.clear()
 	refresh_world();game.adventure_ui.notify("의뢰 완료 · 100문 · 오성+%d" % (int(game.progress.stats.insight)-before),"quest")
 func goal(world) -> Dictionary:

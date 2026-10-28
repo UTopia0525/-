@@ -93,8 +93,8 @@ func run() -> void:
 	await interact(q.GIVER)
 	check(game.money==cash and game.progress.stats.insight==insight,"no reward before last report line")
 	drain();await settle()
-	check(q.phase=="completed" and game.money==cash and game.progress.stats.insight==mini(100,insight+5),"maintain pays insight only once")
-	await interact(q.GIVER);drain();check(game.progress.stats.insight==mini(100,insight+5),"repeat report cannot duplicate insight")
+	check(q.phase=="completed" and game.money==cash and game.progress.stats.insight==mini(200,insight+5),"maintain pays insight only once")
+	await interact(q.GIVER);drain();check(game.progress.stats.insight==mini(200,insight+5),"repeat report cannot duplicate insight")
 	await interact("travel:wuchang");await settle();await interact("travel:qingya");await settle()
 	check(not q.ruined and world.ambient_nodes.size()==4,"maintain village survives return")
 	# Rewind to the real pre-choice save and take combat branch.
@@ -120,12 +120,12 @@ func run() -> void:
 	for stat in ["strength","agility","constitution"]:
 		check(game.save_system.load_slot(7),"rewind unpaid reward for "+stat)
 		var old_stats=game.progress.stats.duplicate();q._grant(stat)
-		check(game.money==cash+200 and game.progress.stats[stat]==mini(100,int(old_stats[stat])+5),"stat selection applies exact gain with cap: "+stat)
+		check(game.money==cash+200 and game.progress.stats[stat]==mini(200,int(old_stats[stat])+5),"stat selection applies exact gain with cap: "+stat)
 		for other in old_stats:
 			if other!=stat:check(game.progress.stats[other]==old_stats[other],"unselected stats unchanged")
 	check(game.save_system.load_slot(7),"restore real reward choice")
 	q._choose_stat();game.adventure_ui.secondary_action();game.adventure_ui.primary_action();await settle()
-	check(q.phase=="completed" and game.money==cash+200 and q.reward_stat=="agility" and game.progress.stats.agility==mini(100,before+5),"chosen stat and cash paid once with cap")
+	check(q.phase=="completed" and game.money==cash+200 and q.reward_stat=="agility" and game.progress.stats.agility==mini(200,before+5),"chosen stat and cash paid once with cap")
 	q._grant("strength");check(game.money==cash+200,"repeated callback cannot duplicate money")
 	check(game.save_system.write_slot(3),"intact rewarded village can save")
 	check(game.save_system.load_slot(3) and not q.departed and not q.ruined,"loading does not count as map departure")

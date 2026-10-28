@@ -1,4 +1,5 @@
 extends Node
+const STAT_MAX = preload("res://scripts/rules.gd").STAT_MAX
 ## Optional two-way village incident; rewards and abandoned-village state are persistent.
 const ID="qingya_village"
 const GIVER="qy_ren_shoutian"
@@ -34,7 +35,7 @@ func reset() -> void:
 	clear_world();phase="available";heard=[];admitted=false;captive_heard=false;branch="";reward_stat="";departed=false;ruined=false;ruin_intro=false;ruin_checks=[];regret_seen=false;signature=""
 func status() -> String:return "ready" if phase in ["ready","reward"] else "completed" if phase=="completed" else "available" if phase=="available" else "active"
 func stage() -> String:return {"available":"offer","fight_sentry":"confront","fight_chief":"decision","ready":"report"}.get(phase,phase)
-func reward_label() -> String:return "구출:200문 + 근력/기민/근골 중1종+5 · 개입 포기:오성+5 (상한100)"
+func reward_label() -> String:return "구출:200문 + 근력/기민/근골 중1종+5 · 개입 포기:오성+5 (상한200)"
 func marker_for(id: String) -> String:return ("!" if phase=="available" else "?" if phase in ["ready","reward"] else "") if id==GIVER and not ruined else ""
 func track() -> void:game.quest_navigation.update_quest(ID,stage())
 func in_battle() -> bool:return phase in ["fight_sentry","fight_chief"]
@@ -140,13 +141,13 @@ func _after_battle() -> void:track();refresh_world()
 func _report_done() -> void:
 	if phase!="ready":return
 	if branch=="maintain":
-		game.progress.stats.insight=mini(100,int(game.progress.stats.insight)+5);_complete();game.adventure_ui.notify("의뢰 완료 · 오성+5 (상한100)","quest")
+		game.progress.stats.insight=mini(STAT_MAX,int(game.progress.stats.insight)+5);_complete();game.adventure_ui.notify("의뢰 완료 · 오성+5 (상한200)","quest")
 	else:phase="reward";track();refresh_world();_choose_stat()
-func _choose_stat() -> void:game.adventure_ui.choose("구출 보상 · 능력치 선택","200문과 함께 근력·기민·근골 중 하나를5 올립니다. 선택과 지급은 한 번만 적용됩니다. (상한100)","근력+5",_grant.bind("strength"),"기민 또는 근골",_other_stats)
+func _choose_stat() -> void:game.adventure_ui.choose("구출 보상 · 능력치 선택","200문과 함께 근력·기민·근골 중 하나를5 올립니다. 선택과 지급은 한 번만 적용됩니다. (상한200)","근력+5",_grant.bind("strength"),"기민 또는 근골",_other_stats)
 func _other_stats() -> void:game.adventure_ui.choose("구출 보상 · 능력치 선택","근력은 앞선 선택에서 고를 수 있습니다. 창을 닫았다면 임수전에게 다시 말하세요.","기민+5",_grant.bind("agility"),"근골+5",_grant.bind("constitution"))
 func _grant(stat: String) -> void:
 	if phase!="reward" or stat not in ["strength","agility","constitution"]:return
-	reward_stat=stat;game.money+=200;game.progress.stats[stat]=mini(100,int(game.progress.stats[stat])+5);_complete();game.adventure_ui.notify("의뢰 완료 · 200문 · 선택 능력치+5 (상한100)","quest")
+	reward_stat=stat;game.money+=200;game.progress.stats[stat]=mini(STAT_MAX,int(game.progress.stats[stat])+5);_complete();game.adventure_ui.notify("의뢰 완료 · 200문 · 선택 능력치+5 (상한200)","quest")
 func _complete() -> void:
 	phase="completed"
 	if game.quest_navigation.quest_id==ID:game.quest_navigation.clear()

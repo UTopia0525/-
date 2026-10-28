@@ -1,4 +1,5 @@
 extends RefCounted
+const STAT_MAX = preload("res://scripts/rules.gd").STAT_MAX
 ## Battle resource governed by the inner-power stat; distinct from the stat itself.
 signal changed
 const MAXIMUM := 500
@@ -6,7 +7,7 @@ var inner_power := 0
 var amount := 0
 
 func start(value: int) -> void:
-	inner_power = clampi(value, 0, 100)
+	inner_power = clampi(value, 0, STAT_MAX)
 	amount = inner_power
 	changed.emit()
 
@@ -29,6 +30,6 @@ func spend(cost: int) -> bool:
 	return true
 
 func restore(value: int, remaining: int) -> void:
-	inner_power = clampi(value, 0, 100)
+	inner_power = clampi(value, 0, STAT_MAX)
 	amount = clampi(remaining, 0, MAXIMUM)
 	changed.emit()
