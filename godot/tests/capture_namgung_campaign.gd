@@ -10,14 +10,14 @@ func run() -> void:
  game.options.seen.append_array(["city","battle","dialogue","trade"]);game.start_wuchang()
  var q=game.qingya_quest;q.phase="completed";q.ruined=true;q.regret_seen=true;q.ruin_intro=true
  game.waterfront_quest.phase="completed";game.progress.add_favor("namgung",10)
- var n=game.namgung_campaign;n._travel("namgung_estate",[1460,1490]);n.phase="preparing";n.refresh_world();await shot("namgung-estate-play")
- game.exploration.player.position=game.exploration.safe_player_position(game.exploration.city_point([920,1470]));game.exploration.camera.snap_to_player();await shot("namgung-warrior-map")
+ var n=game.namgung_campaign;n._travel("namgung_estate",[1050,1055]);n.phase="preparing";n.refresh_world();await shot("namgung-estate-play")
+ game.exploration.player.position=game.exploration.safe_player_position(game.exploration.city_point([610,1050]));game.exploration.camera.snap_to_player();await shot("namgung-warrior-map")
  game.interact();await shot("namgung-gatekeeper")
  while not game.dialogue_lines.is_empty():game.advance_dialogue()
- var view=SubViewport.new();view.world_2d=World2D.new();view.size=Vector2i(2304,1536);view.render_target_update_mode=SubViewport.UPDATE_ALWAYS;root.add_child(view)
+ var view=SubViewport.new();view.world_2d=World2D.new();view.size=Vector2i(1536,1100);view.render_target_update_mode=SubViewport.UPDATE_ALWAYS;root.add_child(view)
  var map=preload("res://scripts/namgung_map.gd").new();map.scale=Vector2.ONE/3;view.add_child(map);await create_timer(.3).timeout;await RenderingServer.frame_post_draw
  assert(view.get_texture().get_image().save_png("res://screenshots/namgung-estate-full.png")==OK);view.queue_free();await process_frame
- game.exploration.player.position=game.exploration.safe_player_position(game.exploration.city_point([1460,1490]));game.exploration.camera.snap_to_player()
+ game.exploration.player.position=game.exploration.safe_player_position(game.exploration.city_point([1050,1055]));game.exploration.camera.snap_to_player()
  game.say(n.data.scenes.intro);await shot("namgung-seojin-dialogue")
  while not game.dialogue_lines.is_empty():game.advance_dialogue()
  n.phase="battle";game.progress.stats={"strength":20,"agility":20,"constitution":20,"inner":20,"insight":20};game.progress.learned.append("hoeryu");game.progress.loadout=["basic_attack","basic_defense","hoeryu",""]

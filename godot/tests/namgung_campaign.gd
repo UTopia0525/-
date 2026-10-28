@@ -48,7 +48,7 @@ func run() -> void:
   var solo=sim(id,false);var aided=sim(id,true);results.append(solo);results.append(aided)
   check(aided.win and aided.support_damage>0,"middle art clears with visible support: "+id)
  print("NAMGUNG_BALANCE "+JSON.stringify(results))
- q._travel("namgung_estate",[1152,1485]);check(game.exploration.area_name=="namgung_estate","estate reachable")
+ q._travel("namgung_estate",[768,1050]);check(game.exploration.area_name=="namgung_estate","estate reachable")
  check(game.exploration.regional_map.can_stand(game.exploration.player.position),"estate spawn clear")
  check(game.save_system.write_slot(1) and game.save_system.load_slot(1),"estate save/load")
  q=game.namgung_campaign
@@ -72,7 +72,7 @@ func run() -> void:
   await create_timer(.02).timeout
  await settle();check(q.phase=="report" and game.state=="explore","actual supported battle victory clears camp")
  check(game.top_hud.visible and game.exploration.camera.enabled,"exploration HUD and camera restored after battle")
- q._travel("namgung_estate",[1152,1485]);var money=game.money
+ q._travel("namgung_estate",[768,1050]);var money=game.money
  q.handle_interaction(q.GIVER);await settle();check(q.phase=="return" and game.money==money+1000 and game.progress.inventory[PILL]==1 and game.progress.faction_favor.namgung==40,"reward exactly once with30favor at dialogue end")
  check(game.exploration.regional_map.data.admission_open,"paying immediately opens existing estate without village revisit")
  q._paid();check(game.money==money+1000 and game.progress.inventory[PILL]==1 and game.progress.faction_favor.namgung==40,"duplicate money, pill and favor blocked")

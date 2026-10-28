@@ -31,7 +31,7 @@ func run() -> void:
  game.options.seen.append_array(["city","battle","dialogue","trade"]);game.start_wuchang()
  var q=game.qingya_quest;q.phase="completed";q.branch="assault";q.reward_stat="strength";q.departed=true;q.ruined=true;q.ruin_intro=true;q.ruin_checks=["store","home","place"];q.regret_seen=true;q.heard=q.INVESTIGATORS.keys();q.admitted=true;q.captive_heard=true
  game.waterfront_quest.phase="completed";game.progress.add_favor("namgung",10)
- var n=game.namgung_campaign;n.phase="preparing";n._travel("namgung_estate",[1460,1490]);n.refresh_world();verify()
+ var n=game.namgung_campaign;n.phase="preparing";n._travel("namgung_estate",[1050,1055]);n.refresh_world();verify()
  await shot("namgung-seojin-overworld")
  check(game.save_system.write_slot(1) and game.save_system.load_slot(1),"estate save restores")
  verify();n=game.namgung_campaign;n.phase="camp";n._travel("qingya_camp",[970,790]);n.refresh_world();verify()
