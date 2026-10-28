@@ -451,7 +451,7 @@ func _process(_delta: float) -> void:
 	money_label.text = "%d문 · 명성 %d" % [money, progress.fame]
 	var total:=0
 	for value in progress.stats.values():total+=int(value)
-	journey_label.text=("제%d장 · " % chapter_number if prologue.active or prologue.completed else "")+"도원 · "+("능력치 합계100까지 %d" % (100-total) if total<100 else progress.RULES.realm(total))
+	journey_label.text=("제%d장 · " % chapter_number if prologue.active or prologue.completed else "")+"도원 · "+("능력치 합계 %d" % total)
 	bandit_story.maybe_start()
 	alliance_story.maybe_start()
 

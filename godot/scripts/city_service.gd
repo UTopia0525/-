@@ -95,7 +95,7 @@ func refresh_list() -> void:
 		child.queue_free()
 	var p = game.progress
 	var s: Dictionary = p.stats
-	summary.text = "소지금 %d문  |  근력%d · 기민%d · 근골%d · 내공%d · 오성%d  |  %s" % [game.money, s.strength, s.agility, s.constitution, s.inner, s.insight, p.RULES.realm(int(s.strength + s.agility + s.constitution + s.inner + s.insight))]
+	summary.text = "소지금 %d문  |  근력%d · 기민%d · 근골%d · 내공%d · 오성%d  |  합계 %d" % [game.money, s.strength, s.agility, s.constitution, s.inner, s.insight, int(s.strength + s.agility + s.constitution + s.inner + s.insight)]
 	var ids: Array = []
 	match service.kind:
 		"market": ids = p.elixirs.keys().filter(func(id):return p.elixirs[id].get("acquisition")=="city_merchant")

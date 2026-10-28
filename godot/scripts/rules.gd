@@ -24,6 +24,7 @@ static func basic_attack_damage(stats: Dictionary = STARTING_STATS) -> float:
 static func samjae_damage() -> float:
 	return STARTING_STATS.strength * 3.0 + STARTING_STATS.agility * 2.0
 
+# Legacy terminology only; not displayed or used for current progression gates.
 static func realm(total: int) -> String:
 	if total >= 500:
 		return "자연경"

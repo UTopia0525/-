@@ -92,7 +92,7 @@ func refresh() -> void:
  text(content,"여정에 필요한 것들을 갖추다" if mode=="inventory" else "실전에 펼칠 네 가지 초식 · 행동력 / 내기 / 범위",Rect2(245,66,500,30),17,MUTED)
  var total=0
  for value in progress.stats.values():total+=int(value)
- text(content,"도원 · "+progress.RULES.realm(total),Rect2(840,64,190,30),18,INK)
+ text(content,"도원 · 합계 %d" % total,Rect2(840,64,190,30),18,INK)
  text(content,"◎ %d문" % game.money,Rect2(1040,64,170,30),19,INK)
  line(Rect2(88,113,1104,1));line(Rect2(88,639,1104,1))
  button("소지품  I",Rect2(88,648,122,28),mode=="inventory").pressed.connect(switch_mode.bind("inventory"))
