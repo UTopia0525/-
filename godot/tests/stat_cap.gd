@@ -37,9 +37,10 @@ func run() -> void:
  p.reset();game.chapter_one.intro_complete=true;game.chapter_number=1
  p.learned.append("hoeryu")
  for key in p.stats:p.stats[key]=20
- check(game.bandit_story.eligible(),"campaign unlocks at total100")
+ check(not game.bandit_story.eligible(),"campaign blocked at total100 (samryu)")
+ p.stats.strength=21;check(game.bandit_story.eligible(),"campaign unlocks at total101 (iryu)")
  p.stats.strength=19;check(not game.bandit_story.eligible(),"campaign blocked at total99")
- p.stats.strength=20;p.learned.erase("hoeryu");check(not game.bandit_story.eligible(),"new art still required")
+ p.stats.strength=21;p.learned.erase("hoeryu");check(not game.bandit_story.eligible(),"new art still required")
  game.queue_free();await process_frame
  if not failed:print("STAT_CAP: PASS")
  quit(1 if failed else 0)

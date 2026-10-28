@@ -3,7 +3,7 @@
   "working_title": "길을 지킬 사람들",
   "chapter": 1,
   "trigger": {
-    "minimum_stat_total": 100,
+    "minimum_stat_total": 101,
     "minimum_new_arts": 1,
     "exclude_arts": [
       "samjae"

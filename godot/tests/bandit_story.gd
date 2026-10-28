@@ -38,7 +38,7 @@ func run() -> void:
 	await process_frame
 	game.start_city()
 	var story = game.bandit_story
-	game.progress.stats = {"strength":20, "agility":20, "constitution":20, "inner":20, "insight":20}
+	game.progress.stats = {"strength":21, "agility":20, "constitution":20, "inner":20, "insight":20}
 	game.progress.learned.append("cheongpung")
 	check(not story.eligible(), "city preview does not bypass chapter zero")
 	game.chapter_number = 1
@@ -53,7 +53,9 @@ func run() -> void:
 	game.progress.stats.strength = 19
 	check(not story.eligible(), "99 total does not meet realm threshold")
 	game.progress.stats.strength = 20
-	check(story.eligible(), "exact 100 and a new art qualify")
+	check(not story.eligible(), "100 total is still samryu")
+	game.progress.stats.strength = 21
+	check(story.eligible(), "exact 101 and a new art qualify")
 	game.settings_menu.open_menu()
 	story.maybe_start()
 	check(story.stage == "dormant", "settings does not get interrupted")

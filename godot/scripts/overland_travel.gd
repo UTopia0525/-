@@ -42,4 +42,4 @@ static func blocked_reason(game,destination: String) -> String:
 	if game.exploration.area_name!="changsha" or destination=="changsha":return ""
 	if game.bandit_story.stage=="completed" and game.bandit_story.reward_granted:return ""
 	if game.bandit_story.stage=="report":return "도적은 물리쳤지만 아직 정 포두께 보고하지 않았다. 관아에서 보수를 받고 통행이 풀리면 떠나자."
-	return "도적들 때문에 성밖 통행이 막혀 있다. 장사에서 근기를 쌓아 다섯 능력치의 총합을100 이상으로 높이고 새 무공을 익힌 뒤, 토벌을 마쳐 정 포두께 보고해야 떠날 수 있겠군."
+	return "도적들 때문에 성밖 통행이 막혀 있다. 장사에서 근기를 쌓아 다섯 능력치의 총합을101 이상으로 높여 이류에 이르고 새 무공을 익힌 뒤, 토벌을 마쳐 정 포두께 보고해야 떠날 수 있겠군."
