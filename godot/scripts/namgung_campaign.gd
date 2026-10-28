@@ -7,8 +7,10 @@ var phase="available"
 var data=JSON.parse_string(FileAccess.get_file_as_string("res://data/namgung_campaign.json"))
 var nodes: Array=[]
 var signature=""
+var gate_warned=false
 func _ready() -> void:
  game.PORTRAITS.ACTORS[GIVER]={"name":"남궁서진","portrait":"res://assets/portraits/namgung/seojin.png"}
+ game.PORTRAITS.ACTORS["ng_gatekeeper"]={"name":"남궁 문지기","basic_portrait":"male_instructor"}
  for i in range(1,5):game.PORTRAITS.ACTORS["ng_guard_"+str(i)]={"name":"남궁 무사","basic_portrait":"male_common_b"}
  var stages={}
  for s in PHASES:stages[s]={"label":{"available":"남궁세가 정문의 남궁서진에게 토벌 이야기 듣기","preparing":"정비한 뒤 남궁서진과 출정","camp":"남궁 무사들과 청애채 안쪽의 마운표에게 접근","battle":"남궁서진의 지원을 받아 마운표 제압","report":"산채 해체를 확인하고 남궁세가의 서진에게 보상 받기","return":"삼거리 산촌에서 돌아온 임수전과 대화","completed":"돌아온 주민들의 생활 확인"}[s],"goals":[]}
@@ -22,9 +24,11 @@ func marker_for(id: String) -> String:return "!" if id==GIVER and status()=="ava
 func is_target(id: String) -> bool:return id==("qy_ma_yunpiao" if phase in ["camp","battle"] else "qy_ren_shoutian" if phase=="return" else GIVER)
 func restored() -> bool:return phase in ["return","completed"]
 func camp_open() -> bool:return phase in ["camp","battle","report","return","completed"]
-func reset() -> void:clear_world();phase="available";signature=""
+func reset() -> void:clear_world();phase="available";signature="";gate_warned=false
 func track() -> void:game.quest_navigation.update_quest(ID,phase)
 func handle_interaction(id: String) -> bool:
+ if id=="ng_gatekeeper":
+  _gate_dialogue();return true
  if id==GIVER:
   if game.exploration.area_name=="namgung_estate":
    if phase=="available":game.say(data.scenes.intro,_offer) if eligible() else game.say(data.scenes.locked)
@@ -106,7 +110,10 @@ func refresh_world() -> void:
  var w=game.exploration;var sig=str(w.load_revision)+w.area_name+phase+str(eligible())
  if sig==signature:return
  signature=sig;clear_world()
- if w.area_name=="namgung_estate":_person(GIVER,"남궁서진",[1000,860],4,"남궁세가 소가주")
+ if w.area_name=="namgung_estate":
+  gate_warned=false
+  _person(GIVER,"남궁서진",[1000,860],4,"남궁세가 소가주")
+  _person("ng_gatekeeper","남궁 문지기",[565,855],4,"정문 경비")
  elif w.area_name=="qingya_camp" and phase in ["camp","battle"]:
   _person(GIVER,"남궁서진",[920,710],4,"토벌 지휘")
   _person("qy_ma_yunpiao","마운표",[780,450],4,"청애채 채주")
@@ -114,7 +121,20 @@ func refresh_world() -> void:
  if (w.area_name=="namgung_estate" and phase=="preparing") or (w.area_name=="qingya_camp" and phase in ["camp","battle"]):
   for i in range(4):_person("ng_guard_"+str(i+1),"남궁 무사",[970+i*65,940] if w.area_name=="namgung_estate" else [530+i*110,675],4,"토벌대")
  if is_instance_valid(w.regional_map):w.regional_map.resident_positions.assign(w.ambient_nodes.map(func(n):return n.position));w.regional_map._build_navigation();w.astar=w.regional_map.astar
-func _process(_delta: float) -> void:refresh_world()
+func _gate_dialogue() -> void:
+ gate_warned=true
+ var text="내원은 아직 손님을 받지 않습니다. 용무가 있으시면 정문 밖의 소가주께 여쭈십시오."
+ if phase in ["preparing","camp","battle","report","return"]:text="토벌과 뒤처리가 모두 마무리되기 전까지 내원 출입을 삼가 주십시오. 소가주께서도 정문 밖에서 뵙겠다고 하셨습니다."
+ elif phase=="completed":text="소가주께서 길을 열라 명하셨습니다. 산촌의 일에 끝까지 힘써 주신 은혜를 잊지 않겠습니다. 외원으로 드시지요."
+ game.say([["ng_gatekeeper",text]])
+func _process(_delta: float) -> void:
+ refresh_world()
+ var w=game.exploration
+ if w.area_name!="namgung_estate" or phase=="completed":return
+ if w.player.position.y>900*3:gate_warned=false
+ var approach=Rect2(610*3,833*3,310*3,60*3).has_point(w.player.position)
+ if not gate_warned and approach and Input.is_action_pressed("move_up") and w.active and game.state=="explore" and game.dialogue_lines.is_empty() and not game.adventure_ui.window.visible:
+  _gate_dialogue()
 func snapshot() -> Dictionary:return {"phase":phase}
 func valid(value) -> bool:return value is Dictionary and value.get("phase") in PHASES
 func restore(value: Dictionary) -> void:phase=value.get("phase","available");signature="";refresh_world()

@@ -23,17 +23,17 @@
   "objects": [
     {
       "id": "main_hall",
-      "prefab": "government",
+      "prefab": "ng_main",
       "rect": [
-        570,
-        135,
-        400,
-        290
+        525,
+        155,
+        490,
+        285
       ]
     },
     {
       "id": "west_wing",
-      "prefab": "home",
+      "prefab": "ng_residence",
       "rect": [
         245,
         240,
@@ -43,7 +43,7 @@
     },
     {
       "id": "east_wing",
-      "prefab": "home",
+      "prefab": "ng_residence",
       "rect": [
         1055,
         240,
@@ -53,32 +53,22 @@
     },
     {
       "id": "training_hall",
-      "prefab": "martial_hall",
+      "prefab": "ng_training",
       "rect": [
-        1070,
-        470,
-        245,
-        195
+        1005,
+        490,
+        310,
+        170
       ]
     },
     {
       "id": "guest_hall",
-      "prefab": "inn",
+      "prefab": "ng_residence",
       "rect": [
-        230,
-        470,
-        250,
-        195
-      ]
-    },
-    {
-      "id": "ancestral_hall",
-      "prefab": "shrine",
-      "rect": [
-        665,
-        35,
-        210,
-        155
+        225,
+        475,
+        270,
+        190
       ]
     },
     {
@@ -273,12 +263,12 @@
     },
     {
       "id": "main_gate",
-      "prefab": "gate",
+      "prefab": "ng_gate",
       "rect": [
-        600,
-        625,
+        605,
+        565,
         330,
-        205
+        265
       ]
     },
     {
@@ -295,7 +285,7 @@
       "id": "garden_tree_1",
       "prefab": "tree",
       "rect": [
-        500,
+        430,
         800,
         110,
         140
@@ -305,7 +295,7 @@
       "id": "garden_tree_2",
       "prefab": "tree",
       "rect": [
-        960,
+        1100,
         790,
         110,
         140
@@ -352,7 +342,86 @@
       ]
     }
   ],
-  "prefabs": {},
+  "prefabs": {
+    "ng_main": {
+      "texture": "res://assets/maps/namgung-estate/clan-buildings.png",
+      "source": [
+        31,
+        18,
+        834,
+        488
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.08,
+          0.52,
+          0.84,
+          0.46
+        ]
+      ]
+    },
+    "ng_residence": {
+      "texture": "res://assets/maps/namgung-estate/clan-buildings.png",
+      "source": [
+        987,
+        98,
+        536,
+        386
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.08,
+          0.52,
+          0.84,
+          0.46
+        ]
+      ]
+    },
+    "ng_training": {
+      "texture": "res://assets/maps/namgung-estate/clan-buildings.png",
+      "source": [
+        23,
+        574,
+        884,
+        414
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.08,
+          0.52,
+          0.84,
+          0.46
+        ]
+      ]
+    },
+    "ng_gate": {
+      "texture": "res://assets/maps/namgung-estate/clan-buildings.png",
+      "source": [
+        960,
+        538,
+        548,
+        443
+      ],
+      "kind": "gate",
+      "footprints": [
+        [
+          0.1,
+          0.48,
+          0.16,
+          0.52
+        ],
+        [
+          0.74,
+          0.48,
+          0.16,
+          0.52
+        ]
+      ]
+    }
+  },
   "terrain_blockers": [],
   "districts": [
     {

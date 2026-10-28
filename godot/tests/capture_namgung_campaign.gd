@@ -11,6 +11,8 @@ func run() -> void:
  var q=game.qingya_quest;q.phase="completed";q.ruined=true;q.regret_seen=true;q.ruin_intro=true
  game.waterfront_quest.phase="completed";game.progress.add_favor("namgung",10)
  var n=game.namgung_campaign;n._travel("namgung_estate",[970,900]);n.phase="preparing";n.refresh_world();await shot("namgung-estate-play")
+ n.handle_interaction("ng_gatekeeper");await shot("namgung-gatekeeper")
+ while not game.dialogue_lines.is_empty():game.advance_dialogue()
  var view=SubViewport.new();view.world_2d=World2D.new();view.size=Vector2i(1536,1024);view.render_target_update_mode=SubViewport.UPDATE_ALWAYS;root.add_child(view)
  var map=preload("res://scripts/namgung_map.gd").new();map.scale=Vector2.ONE/3;view.add_child(map);await create_timer(.3).timeout;await RenderingServer.frame_post_draw
  assert(view.get_texture().get_image().save_png("res://screenshots/namgung-estate-full.png")==OK);view.queue_free();await process_frame

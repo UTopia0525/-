@@ -155,7 +155,7 @@ func load_area(value: String) -> void:
 
 func _load_regional(value: String) -> void:
 	if value=="namgung_estate":
-		regional_map=preload("res://scripts/namgung_map.gd").new()
+		regional_map=preload("res://scripts/namgung_map.gd").new(get_parent().namgung_campaign.phase=="completed")
 	elif value=="nanjing":
 		regional_map=preload("res://scripts/nanjing_map.gd").new()
 	elif value in ["qingya_hamlet","qingya_camp"]:
@@ -411,6 +411,8 @@ func _clear_citizen_position(preferred: Vector2, entry: Dictionary) -> Vector2:
 	return preferred
 
 func safe_player_position(preferred: Vector2) -> Vector2:
+	# Old estate saves may predate the keeper; place locked visitors outside safely.
+	if area_name=="namgung_estate" and get_parent().namgung_campaign.phase!="completed" and Rect2(570,510,3450,1980).has_point(preferred):preferred=city_point([768,910])
 	if can_stand(preferred): return preferred
 	for ring in range(1, 65):
 		for y in range(-ring, ring + 1):
