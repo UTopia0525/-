@@ -35,6 +35,9 @@ func run() -> void:
   w.player.position=path[-1];w.player.stop();await physics_frame
   check(w.nearest().get("id")==entry.id,"F selects intended resident "+entry.name)
   await press_f()
+  if game.adventure_ui.window.visible and game.adventure_ui.mode=="topics":
+   for button in game.adventure_ui.rows.get_children():
+    if button.get_meta("topic","")==({"city_artisan":"병장기를 살펴본다","city_instructor":"무공을 전수받는다","city_merchant":"영약을 살펴본다"}[entry.service_id] if entry.has("service_id") else "일상 이야기"):button.pressed.emit();break
   check(game.dialogue_cast.active_actor==entry.id and game.dialogue_name.text==entry.name,"correct speaker and name "+entry.name)
   check(game.dialogue_backdrop.visible,"conversation dims city")
   check(not game.save_system.blocked_reason().is_empty(),"dialogue saving remains blocked")

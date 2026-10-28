@@ -113,10 +113,13 @@ func is_target(npc: String) -> bool:
 			if goal.get("npc_id","")==npc:return true
 	return false
 func marker_for(npc: String) -> String:
+	var regional_symbol=""
 	for quest in game.regional_quests():
 		if is_instance_valid(quest):
 			var symbol: String=quest.marker_for(npc)
-			if not symbol.is_empty():return symbol
+			if symbol=="?":return symbol
+			if symbol=="!":regional_symbol=symbol
+	if not regional_symbol.is_empty():return regional_symbol
 	if game.trade_intro.active() and game.trade_intro.current().npc==npc:return "?"
 	for id in definitions:
 		if definitions[id].giver==npc:

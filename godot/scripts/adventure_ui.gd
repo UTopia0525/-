@@ -134,7 +134,7 @@ func set_filter(value: String) -> void:
 	for quest in game.regional_quests():
 		var quest_status: String=quest.status()
 		if (filter=="active" and quest_status in ["active","ready"]) or filter==quest_status:
-			add_quest_row(quest.ID,quest_status,quest.stage(),"메인 이야기" if quest.ID==game.alliance_story.ID else "남경 · 일반 의뢰" if quest.ID in [game.waterfront_quest.ID,game.levy_quest.ID,game.book_quest.ID,game.cart_quest.ID,game.silk_quest.ID] else "남경 · 구휼 사건" if quest.ID==game.nanjing_relief_quest.ID else "산촌 · 일반 의뢰" if quest.ID==game.qingya_quest.ID else "무창 · 일반 의뢰")
+			add_quest_row(quest.ID,quest_status,quest.stage(),"소주 · 일반 의뢰" if quest.ID.begins_with("suzhou_") else "메인 이야기" if quest.ID==game.alliance_story.ID else "남경 · 일반 의뢰" if quest.ID in [game.waterfront_quest.ID,game.levy_quest.ID,game.book_quest.ID,game.cart_quest.ID,game.silk_quest.ID] else "남경 · 구휼 사건" if quest.ID==game.nanjing_relief_quest.ID else "산촌 · 일반 의뢰" if quest.ID==game.qingya_quest.ID else "무창 · 일반 의뢰")
 	var story=game.bandit_story
 	if story.stage!="dormant":
 		var state: String="completed" if story.stage=="completed" else "active"
@@ -257,6 +257,7 @@ func select_result(index: int) -> void:
 	var result: Dictionary=results[index]
 	var note: String="승리 · %s · %d교전\n남은 체력 %d/300\n이 교전에서 즉시 받는 보상: 없음.
 표행·의뢰 보수는 해당 이야기의 인도·보고 후 지급합니다.\n다음 전투는 체력과 시작 내기를 새로 갖춥니다." % [result.enemy,result.turns,result.player_hp] if result.won else "패배 · %s\n산적 토벌은 퇴각 대화를 마친 뒤 I/K로 정비하고 동문에서 다시 출정할 수 있습니다.\n0장/전투 체험은 전투창의 다시 도전으로 재개합니다." % result.enemy
+	if not result.won and result.enemy=="백정수 · 지도 대련":note="지도 대련 종료 · 백정수가 출수를 거두었습니다.\n목숨을 잃지 않으며, 대화를 마치고 연무장의 백정수에게 다시 도전할 수 있습니다.\n시험을 통과한 뒤 진덕구에게 보고해야 품삯을 받습니다."
 	if not result.won and result.enemy=="구칠":note="패배 · 구칠\n약초 꾸러미가 있던 곳으로 물러났습니다. 조사 진도는 유지됩니다.\nI/K에서 정비한 뒤 약초꾼이 있는 곳에서 F로 다시 도전하세요.\n다음 전투는 체력과 시작 내기를 새로 갖춥니다."
 	if result.enemy=="유소강":note=("승리" if result.won else "패배")+" · 연무장 대련\n대련을 마쳤습니다. 임정산에게 보고하면 승패와 관계없이 조식수원공을 전수받습니다."
 	if result.enemy=="마응칠":note="승리 · 육정호에게 보고한 뒤 송지겸의 감사를 받으세요." if result.won else "패배 · 조사 진도는 유지됩니다. I/K에서 정비 후 나루 창고 뒤에서 다시 도전하세요."

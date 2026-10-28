@@ -19,6 +19,9 @@ func run() -> void:
     marker.add_child(npc.get_child(1).duplicate())
     var label=preload("res://scripts/ui.gd").label(marker,str(npc.get_meta("display_name")),Rect2(-115,-190,230,45),36,Color("ffe4ad"))
     label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;label.add_theme_color_override("font_outline_color",Color("152a26"));label.add_theme_constant_override("outline_size",6)
+    var symbol=game.ordinary_quests.marker_for(npc.get_meta("npc_id"))
+    if not symbol.is_empty():
+     var quest_mark=preload("res://scripts/ui.gd").label(marker,symbol,Rect2(-40,-270,80,80),64,Color("ffe14b"));quest_mark.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;quest_mark.add_theme_color_override("font_outline_color",Color("152a26"));quest_mark.add_theme_constant_override("outline_size",6)
   await create_timer(.4).timeout
   for i in range(3):await process_frame;await RenderingServer.frame_post_draw
   assert(view.get_texture().get_image().save_png("res://screenshots/"+area+"-full.png")==OK);view.queue_free();await process_frame
