@@ -39,6 +39,7 @@ var equipped_weapon_type := "sword"
 var player_hp: int = Rules.PLAYER_MAX_HP
 var enemy_hp: int = Rules.ENEMY_MAX_HP
 var encounter: Dictionary = {}
+var tutorial_enemy: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/tutorial_enemy.json"))
 var enemy_max_hp: int = Rules.ENEMY_MAX_HP
 var enemy_constitution: int = Rules.ENEMY_CONSTITUTION
 var enemy_raw_damage: int = Rules.DEMO_ENEMY_RAW_DAMAGE
@@ -116,12 +117,12 @@ func _health_bar(parent: Node, area: Rect2, maximum: int, damage_trail: bool = t
 
 func set_encounter(value: Dictionary) -> void:
 	encounter = value.duplicate(true)
-	enemy_max_hp = int(encounter.get("max_hp", Rules.ENEMY_MAX_HP))
-	enemy_constitution = int(encounter.get("constitution", Rules.ENEMY_CONSTITUTION))
-	enemy_stats = encounter.get("stats", {"strength":12,"agility":12,"constitution":5,"inner":6,"insight":5}).duplicate()
+	enemy_max_hp = int(encounter.get("max_hp", tutorial_enemy.max_hp))
+	enemy_constitution = int(encounter.get("constitution", tutorial_enemy.constitution))
+	enemy_stats = encounter.get("stats", tutorial_enemy.stats).duplicate()
 	enemy_stats.constitution = enemy_constitution
-	enemy_weapon = str(encounter.get("weapon", "thickback_saber"))
-	enemy_skills = encounter.get("skills", ["bandit_chop", "soemok"]).duplicate()
+	enemy_weapon = str(encounter.get("weapon", tutorial_enemy.weapon))
+	enemy_skills = encounter.get("skills", tutorial_enemy.skills).duplicate()
 	enemy_raw_damage = int(Rules.basic_attack_damage(enemy_stats))
 	enemy_guard = 0
 	enemy_qi.start(int(enemy_stats.inner))

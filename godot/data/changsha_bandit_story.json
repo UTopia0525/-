@@ -22,21 +22,22 @@
       "id": "bandit_sentry",
       "name": "길목 산적",
       "faction": "장사 동쪽 산적 무리",
-      "max_hp": 180,
-      "constitution": 10,
+      "max_hp": 170,
+      "constitution": 12,
       "stats": {
-        "strength": 12,
-        "agility": 10,
-        "constitution": 10,
-        "inner": 6,
-        "insight": 8
+        "strength": 16,
+        "agility": 12,
+        "constitution": 12,
+        "inner": 12,
+        "insight": 12
       },
       "weapon": "thickback_saber",
       "skills": [
-        "bandit_chop",
-        "soemok"
+        "danseok"
       ],
-      "ai": "commit_before_player_skill_then_guard_every_third_turn",
+      "ai": {
+        "style": "adaptive"
+      },
       "defeat_outcome": "retry"
     },
     {
@@ -44,20 +45,21 @@
       "name": "산적 우두머리",
       "faction": "장사 동쪽 산적 무리",
       "max_hp": 240,
-      "constitution": 15,
+      "constitution": 12,
       "stats": {
-        "strength": 14,
-        "agility": 12,
-        "constitution": 15,
-        "inner": 8,
-        "insight": 10
+        "strength": 16,
+        "agility": 16,
+        "constitution": 12,
+        "inner": 12,
+        "insight": 14
       },
       "weapon": "thickback_saber",
       "skills": [
-        "bandit_heavy_chop",
-        "soemok"
+        "hoepung"
       ],
-      "ai": "commit_before_player_skill_then_guard_every_third_turn",
+      "ai": {
+        "style": "adaptive"
+      },
       "defeat_outcome": "retry"
     }
   ],

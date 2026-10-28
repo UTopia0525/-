@@ -38,6 +38,7 @@
 | 거래·I/K·성장 | [거래](systems/city-trading.md), [정비창](systems/player-menus.md), [K 행동력·범위 UI](ui/k-tactics.md) | `scripts/player_progress.gd`, `city_service.gd`, `player_menu.gd` | `trading.gd`, `onboarding_menus.gd` |
 | 사망·전투 결과 | [기본 사망/기존 예외/타이틀 복귀](systems/combat-death.md) | `scripts/combat_outcome.gd`, `death_screen.gd`, `main.gd` | `death_flow.gd` |
 | 조절형 전투 실험실 | [사용법·화면·가정](../prototypes/grid-initiative-simulation/README.md), [후속 행동/방어 기획](systems/grid-action-timing.md) | `prototypes/grid-initiative-simulation/engine.js`, `editor.js` | `scripts/test_grid_simulator.cjs`, `export_grid_simulator_catalog.gd`, `scripts/capture_grid_initiative_replay.mjs` |
+| 적 밸런스·대응 AI | [9전투 수치·140조건](systems/encounter-balance.md) | `scripts/grid_tactical_ai.gd`, `data/tutorial_enemy.json`, 조우 데이터 | `encounter_balance.gd`, `grid_ai_reactions.gd`, `grid_story_integration.gd` |
 | 가변 격자 전투 | [실제 화면·행동력·전장 설정](systems/grid-combat.md), [전투 미술·기본 동작](ui/premium-battle.md) | `scripts/grid_combat.gd`, `battle_field.gd`, `grid_battle.gd` | `grid_combat.gd`, `grid_battle_live.gd`, `grid_story_integration.gd`, `grid_campaign.gd`, `capture_grid_battle.gd` |
 | 전투 HUD | [체력·내기·기세·무공 선택](ui/battle-hud.md), [색상3안 검토](ui/battle-palette-candidates.md) | `scripts/battle_hud.gd`, `scripts/battle.gd` | `ui_states.gd`, `combat_updates.gd`, `battle_motion.gd`, `capture_battle_hud.gd` |
 | 전투·아이콘 | [현재 규칙](systems/combat-actions-and-icons.md), [창법](systems/spear-balance.md) | `scripts/battle.gd`, `combat_actions.gd`, `data/icon_manifest.json` | `combat_updates.gd`, `spear_balance.gd` |

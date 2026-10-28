@@ -6,22 +6,25 @@
       "id": "qingya_chief",
       "name": "정괴",
       "faction": "청애채 · 감옥지기",
-      "max_hp": 280,
+      "max_hp": 300,
       "constitution": 14,
       "stats": {
         "strength": 16,
-        "agility": 14,
+        "agility": 16,
         "constitution": 14,
         "inner": 14,
         "insight": 12
       },
       "weapon": "thickback_saber",
       "skills": [
-        "soemok",
-        "bandit_chop"
+        "danseok",
+        "hoepung"
       ],
       "defeat_outcome": "death",
-      "background_texture": "res://assets/battle/qingya-prison-empty.png"
+      "background_texture": "res://assets/battle/qingya-prison-empty.png",
+      "ai": {
+        "style": "adaptive"
+      }
     }
   ],
   "scenes": {

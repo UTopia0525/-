@@ -14,21 +14,24 @@
     "id": "training_student",
     "name": "유소강",
     "faction": "무창 무관 · 연무장 대련",
-    "max_hp": 180,
-    "constitution": 10,
+    "max_hp": 220,
+    "constitution": 12,
     "stats": {
-      "strength": 10,
-      "agility": 10,
-      "constitution": 10,
-      "inner": 8,
-      "insight": 12
+      "strength": 14,
+      "agility": 16,
+      "constitution": 12,
+      "inner": 14,
+      "insight": 14
     },
-    "weapon": "thickback_saber",
+    "weapon": "plain_iron_sword",
     "skills": [
-      "bandit_chop",
-      "soemok"
+      "cheongpung",
+      "yusu"
     ],
-    "defeat_outcome": "nonlethal"
+    "defeat_outcome": "nonlethal",
+    "ai": {
+      "style": "adaptive"
+    }
   },
   "scenes": {
     "intro": [

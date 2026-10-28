@@ -1,0 +1,21 @@
+{
+  "id": "tutorial_pirate",
+  "name": "흑린채 수적",
+  "faction": "흑린채 · 일반 수적",
+  "stats": {
+    "strength": 4,
+    "agility": 3,
+    "constitution": 2,
+    "inner": 10,
+    "insight": 3
+  },
+  "constitution": 2,
+  "max_hp": 90,
+  "weapon": "plain_iron_sword",
+  "skills": [
+    "samjae"
+  ],
+  "ai": {
+    "style": "tutorial"
+  }
+}

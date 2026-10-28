@@ -20,7 +20,7 @@ func setup(config: Dictionary,player: Dictionary,enemy: Dictionary) -> void:
   data.position=field.player_spawn if index==0 else field.enemy_spawn
   data.facing=Vector2i.RIGHT if index==0 else Vector2i.LEFT
   data.resource=preload("res://scripts/inner_qi.gd").new();data.resource.start(int(data.stats.inner))
-  data.gauge=0;data.qi=data.resource.amount;data.guard=0;data.actions=0;data.ready={}
+  data.gauge=0;data.qi=data.resource.amount;data.guard=0;data.actions=0;data.ready={};data.observed_skills=[];data.last_action=""
   units.append(data)
 func next_actor() -> int:
  if winner>=0:return -1
@@ -81,6 +81,8 @@ func perform(index: int,id: String,facing: Vector2i,destination: Vector2i=Vector
  var unit=units[index];var foe=units[1-index];var before=unit.position
  unit.resource.restore(int(unit.stats.inner),int(unit.qi))
  # Only a committed action expires guard. Selection, ticks and invalid attempts never do.
+ unit.last_action=id
+ if id not in ["move","wait"] and id not in foe.observed_skills:foe.observed_skills.append(id)
  unit.guard=0;unit.facing=facing;unit.gauge-=cost(id);unit.actions+=1;last_actor=index;continuation=index
  var event={"ok":true,"actor":index,"id":id,"damage":0,"qi_cost":0,"guard_used":foe.guard,"before":before}
  if id=="move":unit.position=destination
@@ -105,29 +107,4 @@ func perform(index: int,id: String,facing: Vector2i,destination: Vector2i=Vector
  if foe.hp==0:winner=index
  return event
 func enemy_choice() -> Dictionary:
- var unit=units[1];var best={"id":"","facing":unit.facing};var score=-1.0
- for id in ["basic_attack"]+unit.skills:
-  for facing in DIRECTIONS:
-   if problem(1,id,facing).is_empty():
-    var action=combat.action(id,unit.stats,unit.weapon)
-    var value=float(action.raw)+float(action.guard)*.3
-    if value>score:score=value;best={"id":id,"facing":facing}
- if score>=0:
-  if unit.hp<float(unit.max_hp)*.35 and unit.actions%4==2 and problem(1,"basic_defense",unit.facing).is_empty():return {"id":"basic_defense","facing":unit.facing}
-  return best
- # Breadth-first search reaches an attack position, including ranged weapons and blocked corridors.
- var queue=[unit.position];var first={unit.position:unit.position};var cursor=0
- while cursor<queue.size():
-  var point=queue[cursor];cursor+=1
-  if point!=unit.position:
-   var old=unit.position;unit.position=point;var can_hit=false
-   for facing in DIRECTIONS:
-    for id in ["basic_attack"]+unit.skills:
-     if problem(1,id,facing).is_empty():can_hit=true;break
-    if can_hit:break
-   unit.position=old
-   if can_hit:return {"id":"move","destination":first[point],"facing":first[point]-old}
-  for direction in DIRECTIONS:
-   var next=point+direction
-   if free_cell(next,1) and not first.has(next):first[next]=next if point==unit.position else first[point];queue.append(next)
- return {"id":"basic_defense","facing":unit.facing}
+ return preload("res://scripts/grid_tactical_ai.gd").choose(self,1)

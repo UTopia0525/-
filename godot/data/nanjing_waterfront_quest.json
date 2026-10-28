@@ -19,20 +19,24 @@
     "id": "nanjing_nochil",
     "name": "노칠",
     "faction": "물가 도적",
-    "max_hp": 420,
-    "constitution": 18,
+    "max_hp": 300,
+    "constitution": 14,
     "stats": {
-      "strength": 18,
+      "strength": 16,
       "agility": 16,
-      "constitution": 18,
-      "inner": 12,
-      "insight": 10
+      "constitution": 14,
+      "inner": 14,
+      "insight": 12
     },
     "weapon": "thickback_saber",
     "skills": [
-      "soemok"
+      "danseok",
+      "hoepung"
     ],
-    "defeat_outcome": "death"
+    "defeat_outcome": "death",
+    "ai": {
+      "style": "adaptive"
+    }
   },
   "scenes": {
     "intro": [

@@ -23,22 +23,23 @@
     "id": "inn_warrior",
     "name": "장만길",
     "faction": "떠돌이 무인 · 객잔 옆 비무",
-    "max_hp": 240,
+    "max_hp": 180,
     "constitution": 14,
     "stats": {
       "strength": 14,
-      "agility": 12,
+      "agility": 10,
       "constitution": 14,
-      "inner": 10,
-      "insight": 10
+      "inner": 20,
+      "insight": 22
     },
-    "weapon": "thickback_saber",
+    "weapon": "none",
     "skills": [
-      "bandit_chop",
-      "bandit_heavy_chop",
-      "soemok"
+      "cheolsan"
     ],
-    "defeat_outcome": "nonlethal"
+    "defeat_outcome": "nonlethal",
+    "ai": {
+      "style": "adaptive"
+    }
   },
   "scenes": {
     "intro": [

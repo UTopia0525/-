@@ -24,22 +24,24 @@
     "id": "impostor_ma",
     "name": "마응칠",
     "faction": "무림맹 사칭범",
-    "max_hp": 350,
-    "constitution": 18,
+    "max_hp": 300,
+    "constitution": 14,
     "stats": {
-      "strength": 18,
-      "agility": 14,
-      "constitution": 18,
-      "inner": 12,
-      "insight": 10
+      "strength": 16,
+      "agility": 16,
+      "constitution": 14,
+      "inner": 16,
+      "insight": 14
     },
-    "weapon": "thickback_saber",
+    "weapon": "plain_iron_sword",
     "skills": [
-      "bandit_chop",
-      "bandit_heavy_chop",
-      "soemok"
+      "cheongpung",
+      "yusu"
     ],
-    "defeat_outcome": "retry"
+    "defeat_outcome": "retry",
+    "ai": {
+      "style": "adaptive"
+    }
   },
   "scenes": {
     "intro": [

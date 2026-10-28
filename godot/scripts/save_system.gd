@@ -47,7 +47,7 @@ func capture() -> Dictionary:
 	var nodes = {"top_hud":game.top_hud, "bottom_hint":game.bottom_hint, "caption":game.story_caption, "exploration":w, "ending":game.ending, "overview":game.city_overview, "visual":game.story_visual}
 	var visibility := {}
 	for id in nodes: visibility[id] = nodes[id].visible
-	return {"schema":3, "waterfront_quest":game.waterfront_quest.snapshot(), "levy_quest":game.levy_quest.snapshot(), "book_quest":game.book_quest.snapshot(), "cart_quest":game.cart_quest.snapshot(), "silk_quest":game.silk_quest.snapshot(), "nanjing_relief_quest":game.nanjing_relief_quest.snapshot(), "qingya_quest":game.qingya_quest.snapshot(), "plaque_quest":game.plaque_quest.snapshot(), "grain_quest":game.grain_quest.snapshot(), "wages_quest":game.wages_quest.snapshot(), "alliance_story":game.alliance_story.snapshot(), "impostor_quest":game.impostor_quest.snapshot(), "inn_quest":game.inn_quest.snapshot(), "duel_quest":game.duel_quest.snapshot(), "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
+	return {"schema":3, "enemy_balance_revision":1, "waterfront_quest":game.waterfront_quest.snapshot(), "levy_quest":game.levy_quest.snapshot(), "book_quest":game.book_quest.snapshot(), "cart_quest":game.cart_quest.snapshot(), "silk_quest":game.silk_quest.snapshot(), "nanjing_relief_quest":game.nanjing_relief_quest.snapshot(), "qingya_quest":game.qingya_quest.snapshot(), "plaque_quest":game.plaque_quest.snapshot(), "grain_quest":game.grain_quest.snapshot(), "wages_quest":game.wages_quest.snapshot(), "alliance_story":game.alliance_story.snapshot(), "impostor_quest":game.impostor_quest.snapshot(), "inn_quest":game.inn_quest.snapshot(), "duel_quest":game.duel_quest.snapshot(), "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
 		"chapter":game.chapter_number, "money":game.money, "changsha_reward_revision":1, "talked_captain":game.talked_captain,
 		"world":{"layout_version":3 if w.area_name=="mountain_road" else 2 if w.area_name=="nanjing" else 1, "area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
@@ -104,7 +104,7 @@ func read_slot(slot: int) -> Dictionary:
 	var json = JSON.new()
 	if json.parse(FileAccess.get_file_as_string(path(slot))) != OK:return {}
 	var parsed = json.data
-	parsed=_upgrade_martial_arts(_upgrade_qingya_battle(parsed))
+	parsed=_upgrade_enemy_balance(_upgrade_martial_arts(_upgrade_qingya_battle(parsed)))
 	return parsed if validate(parsed) else {}
 
 func _upgrade_qingya_battle(value):
@@ -132,9 +132,25 @@ func _upgrade_martial_arts(value):
 		if id is String:upgraded.battle.selected_action=game.progress.arts.RETIRED.get(id,id)
 	return upgraded
 
+func _upgrade_enemy_balance(value):
+	if not value is Dictionary or value.has("enemy_balance_revision") or not value.get("battle") is Dictionary:return value
+	var old_caps={"":150,"bandit_sentry":180,"bandit_ringleader":240,"herb_ruffian":320,"training_student":180,"inn_warrior":240,"impostor_ma":350,"qingya_chief":280,"nanjing_nochil":420}
+	var id=value.battle.get("encounter_id","")
+	if id not in old_caps or not is_number(value.battle.get("enemy_hp"),0,old_caps[id]):return value
+	var definition=game.battle.tutorial_enemy
+	for entry in game.encounters():
+		if entry.id==id:definition=entry;break
+	var upgraded: Dictionary=value.duplicate(true);upgraded.enemy_balance_revision=1
+	upgraded.battle.enemy_hp=mini(int(upgraded.battle.enemy_hp),int(definition.max_hp))
+	# Old cached intentions may reference removed enemy arts or the previous weapon.
+	if upgraded.battle.get("enemy_intent","") in ["bandit_chop","bandit_heavy_chop","soemok"]:
+		upgraded.battle.enemy_intent="basic_attack"
+	return upgraded
+
 func validate(d) -> bool:
-	d=_upgrade_martial_arts(_upgrade_qingya_battle(d))
+	d=_upgrade_enemy_balance(_upgrade_martial_arts(_upgrade_qingya_battle(d)))
 	if not d is Dictionary: return false
+	if d.has("enemy_balance_revision") and not game.progress.whole(d.enemy_balance_revision,1,1):return false
 	if d.has("changsha_reward_revision") and not game.progress.whole(d.changsha_reward_revision,0,1):return false
 	if d.get("schema") != 1 and d.get("schema") != 2 and d.get("schema") != 3: return false
 	if d.schema == 3 and not game.progress.valid(d.get("progress")): return false
@@ -233,7 +249,7 @@ func validate(d) -> bool:
 	if not d.get("pending_service") is String or not is_number(d.get("service_tab"), 0, 1): return false
 	if not d.service.is_empty() and d.service.get("id") not in ["city_merchant", "city_artisan", "city_instructor"]: return false
 	if d.state == "service" and d.service.is_empty(): return false
-	var enemy_maximum := 150
+	var enemy_maximum: int = int(game.battle.tutorial_enemy.max_hp)
 	var encounter_id = d.battle.get("encounter_id", "")
 	if encounter_id not in ["", "bandit_sentry", "bandit_ringleader", "herb_ruffian", "training_student", "inn_warrior", "impostor_ma", "qingya_sentry", "qingya_chief", "nanjing_nochil"]: return false
 	for definition in game.encounters():
@@ -275,12 +291,12 @@ func validate(d) -> bool:
 		if int(d.battle.enemy_guard) not in [0,20]: return false
 	if d.battle.has("enemy_qi") or d.battle.has("enemy_intent"):
 		if not game.progress.whole(d.battle.get("enemy_qi"),0,500): return false
-		var allowed: Array = ["basic_attack","basic_defense","bandit_chop","soemok"]
+		var allowed: Array = ["basic_attack","basic_defense"]+game.battle.tutorial_enemy.skills
 		for definition in game.encounters():
 			if definition.id == encounter_id: allowed = ["basic_attack","basic_defense"] + definition.skills
 		if d.battle.get("enemy_intent") not in allowed: return false
-		var stats := {"strength":12,"agility":12,"constitution":5,"inner":6,"insight":5}
-		var enemy_weapon := "thickback_saber"
+		var stats: Dictionary = game.battle.tutorial_enemy.stats
+		var enemy_weapon: String = str(game.battle.tutorial_enemy.weapon)
 		for definition in game.encounters():
 			if definition.id == encounter_id:
 				stats = definition.stats

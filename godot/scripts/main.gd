@@ -373,7 +373,7 @@ func reset() -> void:
 	ending.hide()
 	battle.cancel()
 	battle.set_encounter({})
-	battle.enemy_hp = battle.Rules.ENEMY_MAX_HP
+	battle.enemy_hp = battle.enemy_max_hp
 	battle.player_hp = battle.Rules.PLAYER_MAX_HP
 	battle.qi.start(int(progress.stats.inner))
 	battle.selected = false

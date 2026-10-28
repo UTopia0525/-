@@ -14,22 +14,23 @@
     "id": "herb_ruffian",
     "name": "구칠",
     "faction": "떠돌이 불한당",
-    "max_hp": 320,
-    "constitution": 18,
+    "max_hp": 190,
+    "constitution": 12,
     "stats": {
-      "strength": 18,
-      "agility": 14,
-      "constitution": 18,
+      "strength": 16,
+      "agility": 12,
+      "constitution": 12,
       "inner": 12,
-      "insight": 10
+      "insight": 12
     },
     "weapon": "thickback_saber",
     "skills": [
-      "bandit_chop",
-      "bandit_heavy_chop",
-      "soemok"
+      "danseok"
     ],
-    "defeat_outcome": "retry"
+    "defeat_outcome": "retry",
+    "ai": {
+      "style": "adaptive"
+    }
   },
   "scenes": {
     "intro": [

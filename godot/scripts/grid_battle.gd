@@ -30,7 +30,7 @@ func begin(inner_power: int=-1) -> void:
  scene_image.texture=load(backdrop);scene_image.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR
  grid=preload("res://scripts/grid_combat.gd").new()
  grid.combat=combat
- grid.setup(encounter.get("field",{}),{"stats":player_stats.duplicate(),"weapon":equipped_weapon_id,"hp":player_hp,"max_hp":Rules.PLAYER_MAX_HP,"skills":loadout.filter(func(id):return id!="")}, {"stats":enemy_stats.duplicate(),"weapon":enemy_weapon,"hp":enemy_hp,"max_hp":enemy_max_hp,"skills":enemy_skills.duplicate()})
+ grid.setup(encounter.get("field",{}),{"stats":player_stats.duplicate(),"weapon":equipped_weapon_id,"hp":player_hp,"max_hp":Rules.PLAYER_MAX_HP,"skills":loadout.filter(func(id):return id!="")}, {"stats":enemy_stats.duplicate(),"weapon":enemy_weapon,"hp":enemy_hp,"max_hp":enemy_max_hp,"skills":enemy_skills.duplicate(),"ai":encounter.get("ai",tutorial_enemy.ai if encounter.is_empty() else {"style":"adaptive"}).duplicate()})
  _update_status_portrait()
  choice="move";facing=Vector2i.RIGHT;opponent_side=1.0;grid_ui.show();board.show();player_actor.scale=Vector2.ONE*.25;enemy_actor.scale=Vector2.ONE*.31
  _place_actors();refresh_grid();_start_grid.call_deferred(generation)

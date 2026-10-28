@@ -1,11 +1,11 @@
 extends SceneTree
 var failed=false
 func _initialize() -> void:
- var encounters=[{}]
+ var encounters=[JSON.parse_string(FileAccess.get_file_as_string("res://data/tutorial_enemy.json"))]
  encounters.append_array(JSON.parse_string(FileAccess.get_file_as_string("res://data/changsha_bandit_story.json")).encounters)
  var output=[]
  for source in encounters:
-  var starter=source.is_empty()
+  var starter=source.id=="tutorial_pirate"
   var level=10 if starter else 20
   for route in (["samjae"] if starter else ["cheongpung","danseok","gwanpung","cheolsan"]):
    var g=preload("res://scripts/grid_combat.gd").new()
