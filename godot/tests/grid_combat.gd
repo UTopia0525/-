@@ -7,6 +7,14 @@ func fixture(config: Dictionary={}) -> RefCounted:
  var stats={"strength":20,"agility":50,"constitution":20,"inner":20,"insight":20}
  var g=Grid.new();g.setup(config,{"stats":stats.duplicate(),"weapon":"plain_iron_sword","hp":300,"max_hp":300,"skills":["samjae","josik_suwon","cheongpung"]},{"stats":stats.duplicate(),"weapon":"thickback_saber","hp":500,"max_hp":500,"skills":["soemok"]});return g
 func _initialize() -> void:
+ var damages=[]
+ for agility in [0,100]:
+  var basic=fixture({"player_spawn":[2,2],"enemy_spawn":[3,2]})
+  for index in range(2):
+   basic.units[index].stats.agility=agility;basic.units[index].gauge=100
+   check(basic.combat.action("basic_attack",basic.units[index].stats,basic.units[index].weapon).raw==40,"both actors use strength+inner without agility")
+  damages.append([basic.perform(0,"basic_attack",Vector2i.RIGHT).damage,basic.perform(1,"basic_attack",Vector2i.LEFT).damage])
+ check(damages[0]==damages[1],"agility changes action timing, not actual basic attack damage on either side")
  var g=fixture();g.units[1].stats.agility=40
  check(g.field.width==7 and g.field.height==5,"default field7x5")
  check(g.next_actor()==0 and g.tick==2 and g.units[0].gauge==120 and g.units[1].gauge==100,"50/40 agility recharges60/50 each beat")

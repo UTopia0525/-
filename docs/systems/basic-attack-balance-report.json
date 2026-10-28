@@ -1,0 +1,1973 @@
+[
+  {
+    "enemy": "tutorial_pirate",
+    "enemy_used": {
+      "basic_attack": 1,
+      "samjae": 1
+    },
+    "hp": 284,
+    "policy": "direct",
+    "skill": "samjae",
+    "steps": 8,
+    "win": true
+  },
+  {
+    "enemy": "tutorial_pirate",
+    "enemy_used": {
+      "samjae": 3
+    },
+    "hp": 258,
+    "policy": "adaptive",
+    "skill": "samjae",
+    "steps": 11,
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "basic_attack": 1,
+      "danseok": 1,
+      "move": 2
+    },
+    "hp": 158,
+    "policy": "direct",
+    "skill": "cheongpung",
+    "steps": 11,
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 163,
+    "policy": "adaptive",
+    "skill": "cheongpung",
+    "steps": 9,
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 191,
+    "policy": "direct",
+    "skill": "yusu",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 191,
+    "policy": "adaptive",
+    "skill": "yusu",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "direct",
+    "skill": "danseok",
+    "steps": 4,
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "danseok",
+    "steps": 4,
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 163,
+    "policy": "direct",
+    "skill": "hoepung",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 163,
+    "policy": "adaptive",
+    "skill": "hoepung",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "direct",
+    "skill": "gwanpung",
+    "steps": 2,
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "gwanpung",
+    "steps": 2,
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 163,
+    "policy": "direct",
+    "skill": "yeonhwan",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 163,
+    "policy": "adaptive",
+    "skill": "yeonhwan",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "direct",
+    "skill": "cheolsan",
+    "steps": 4,
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "cheolsan",
+    "steps": 4,
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "basic_attack": 1
+    },
+    "hp": 294,
+    "policy": "direct",
+    "skill": "ungi",
+    "steps": 5,
+    "win": true
+  },
+  {
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "basic_attack": 1
+    },
+    "hp": 294,
+    "policy": "adaptive",
+    "skill": "ungi",
+    "steps": 5,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "basic_attack": 3,
+      "move": 4
+    },
+    "hp": 285,
+    "policy": "direct",
+    "skill": "cheongpung",
+    "steps": 17,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 2
+    },
+    "hp": 140,
+    "policy": "adaptive",
+    "skill": "cheongpung",
+    "steps": 14,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "basic_attack": 2,
+      "move": 3
+    },
+    "hp": 290,
+    "policy": "direct",
+    "skill": "yusu",
+    "steps": 10,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "basic_attack": 2,
+      "move": 3
+    },
+    "hp": 290,
+    "policy": "adaptive",
+    "skill": "yusu",
+    "steps": 10,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 1
+    },
+    "hp": 220,
+    "policy": "direct",
+    "skill": "danseok",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 1
+    },
+    "hp": 220,
+    "policy": "adaptive",
+    "skill": "danseok",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 1
+    },
+    "hp": 220,
+    "policy": "direct",
+    "skill": "hoepung",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 1
+    },
+    "hp": 220,
+    "policy": "adaptive",
+    "skill": "hoepung",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "move": 3
+    },
+    "hp": 300,
+    "policy": "direct",
+    "skill": "gwanpung",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "move": 3
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "gwanpung",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 1
+    },
+    "hp": 220,
+    "policy": "direct",
+    "skill": "yeonhwan",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 1
+    },
+    "hp": 220,
+    "policy": "adaptive",
+    "skill": "yeonhwan",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 2
+    },
+    "hp": 220,
+    "policy": "direct",
+    "skill": "cheolsan",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 2
+    },
+    "hp": 220,
+    "policy": "adaptive",
+    "skill": "cheolsan",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 2
+    },
+    "hp": 220,
+    "policy": "direct",
+    "skill": "ungi",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 2
+    },
+    "hp": 220,
+    "policy": "adaptive",
+    "skill": "ungi",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "enemy": "herb_ruffian",
+    "enemy_used": {
+      "basic_attack": 1,
+      "move": 1
+    },
+    "hp": 295,
+    "policy": "direct",
+    "skill": "hoeryu",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "herb_ruffian",
+    "enemy_used": {
+      "basic_attack": 1,
+      "move": 1
+    },
+    "hp": 295,
+    "policy": "adaptive",
+    "skill": "hoeryu",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "herb_ruffian",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "direct",
+    "skill": "paak",
+    "steps": 4,
+    "win": true
+  },
+  {
+    "enemy": "herb_ruffian",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "paak",
+    "steps": 4,
+    "win": true
+  },
+  {
+    "enemy": "herb_ruffian",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "direct",
+    "skill": "gwanak",
+    "steps": 2,
+    "win": true
+  },
+  {
+    "enemy": "herb_ruffian",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "gwanak",
+    "steps": 2,
+    "win": true
+  },
+  {
+    "enemy": "herb_ruffian",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "direct",
+    "skill": "banseok",
+    "steps": 5,
+    "win": true
+  },
+  {
+    "enemy": "herb_ruffian",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 163,
+    "policy": "adaptive",
+    "skill": "banseok",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "enemy": "herb_ruffian",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "direct",
+    "skill": "jungun",
+    "steps": 4,
+    "win": true
+  },
+  {
+    "enemy": "herb_ruffian",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "jungun",
+    "steps": 4,
+    "win": true
+  },
+  {
+    "enemy": "training_student",
+    "enemy_used": {
+      "basic_attack": 1,
+      "cheongpung": 1
+    },
+    "hp": 248,
+    "policy": "direct",
+    "skill": "hoeryu",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "training_student",
+    "enemy_used": {
+      "cheongpung": 1,
+      "yusu": 1
+    },
+    "hp": 200,
+    "policy": "adaptive",
+    "skill": "hoeryu",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "enemy": "training_student",
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 1,
+      "yusu": 1
+    },
+    "hp": 200,
+    "policy": "direct",
+    "skill": "paak",
+    "steps": 8,
+    "win": true
+  },
+  {
+    "enemy": "training_student",
+    "enemy_used": {
+      "cheongpung": 1,
+      "yusu": 1
+    },
+    "hp": 200,
+    "policy": "adaptive",
+    "skill": "paak",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "training_student",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "direct",
+    "skill": "gwanak",
+    "steps": 2,
+    "win": true
+  },
+  {
+    "enemy": "training_student",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "gwanak",
+    "steps": 2,
+    "win": true
+  },
+  {
+    "enemy": "training_student",
+    "enemy_used": {
+      "cheongpung": 1
+    },
+    "hp": 253,
+    "policy": "direct",
+    "skill": "banseok",
+    "steps": 5,
+    "win": true
+  },
+  {
+    "enemy": "training_student",
+    "enemy_used": {
+      "cheongpung": 1,
+      "yusu": 1
+    },
+    "hp": 200,
+    "policy": "adaptive",
+    "skill": "banseok",
+    "steps": 9,
+    "win": true
+  },
+  {
+    "enemy": "training_student",
+    "enemy_used": {
+      "cheongpung": 2,
+      "move": 1
+    },
+    "hp": 206,
+    "policy": "direct",
+    "skill": "jungun",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "enemy": "training_student",
+    "enemy_used": {
+      "cheongpung": 1,
+      "yusu": 2
+    },
+    "hp": 147,
+    "policy": "adaptive",
+    "skill": "jungun",
+    "steps": 11,
+    "win": true
+  },
+  {
+    "enemy": "inn_warrior",
+    "enemy_used": {
+      "move": 2
+    },
+    "hp": 300,
+    "policy": "direct",
+    "skill": "hoeryu",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "inn_warrior",
+    "enemy_used": {
+      "move": 2
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "hoeryu",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "inn_warrior",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "direct",
+    "skill": "paak",
+    "steps": 3,
+    "win": true
+  },
+  {
+    "enemy": "inn_warrior",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "paak",
+    "steps": 3,
+    "win": true
+  },
+  {
+    "enemy": "inn_warrior",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "direct",
+    "skill": "gwanak",
+    "steps": 2,
+    "win": true
+  },
+  {
+    "enemy": "inn_warrior",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "gwanak",
+    "steps": 2,
+    "win": true
+  },
+  {
+    "enemy": "inn_warrior",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "direct",
+    "skill": "banseok",
+    "steps": 3,
+    "win": true
+  },
+  {
+    "enemy": "inn_warrior",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "banseok",
+    "steps": 3,
+    "win": true
+  },
+  {
+    "enemy": "inn_warrior",
+    "enemy_used": {
+      "cheolsan": 1
+    },
+    "hp": 132,
+    "policy": "direct",
+    "skill": "jungun",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "inn_warrior",
+    "enemy_used": {
+      "cheolsan": 1
+    },
+    "hp": 132,
+    "policy": "adaptive",
+    "skill": "jungun",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "impostor_ma",
+    "enemy_used": {
+      "basic_attack": 2,
+      "basic_defense": 1,
+      "cheongpung": 1
+    },
+    "hp": 228,
+    "policy": "direct",
+    "skill": "hoeryu",
+    "steps": 9,
+    "win": true
+  },
+  {
+    "enemy": "impostor_ma",
+    "enemy_used": {
+      "cheongpung": 2,
+      "move": 1,
+      "yusu": 1
+    },
+    "hp": 136,
+    "policy": "adaptive",
+    "skill": "hoeryu",
+    "steps": 10,
+    "win": true
+  },
+  {
+    "enemy": "impostor_ma",
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 1,
+      "yusu": 1
+    },
+    "hp": 181,
+    "policy": "direct",
+    "skill": "paak",
+    "steps": 8,
+    "win": true
+  },
+  {
+    "enemy": "impostor_ma",
+    "enemy_used": {
+      "cheongpung": 2,
+      "move": 1,
+      "yusu": 1
+    },
+    "hp": 125,
+    "policy": "adaptive",
+    "skill": "paak",
+    "steps": 9,
+    "win": true
+  },
+  {
+    "enemy": "impostor_ma",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "direct",
+    "skill": "gwanak",
+    "steps": 2,
+    "win": true
+  },
+  {
+    "enemy": "impostor_ma",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "gwanak",
+    "steps": 2,
+    "win": true
+  },
+  {
+    "enemy": "impostor_ma",
+    "enemy_used": {
+      "cheongpung": 2,
+      "move": 2
+    },
+    "hp": 188,
+    "policy": "direct",
+    "skill": "banseok",
+    "steps": 10,
+    "win": true
+  },
+  {
+    "enemy": "impostor_ma",
+    "enemy_used": {
+      "cheongpung": 2,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 125,
+    "policy": "adaptive",
+    "skill": "banseok",
+    "steps": 14,
+    "win": true
+  },
+  {
+    "enemy": "impostor_ma",
+    "enemy_used": {
+      "cheongpung": 2,
+      "move": 1
+    },
+    "hp": 188,
+    "policy": "direct",
+    "skill": "jungun",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "enemy": "impostor_ma",
+    "enemy_used": {
+      "cheongpung": 1,
+      "yusu": 4
+    },
+    "hp": 0,
+    "policy": "adaptive",
+    "skill": "jungun",
+    "steps": 15,
+    "win": false
+  },
+  {
+    "enemy": "qingya_chief",
+    "enemy_used": {
+      "basic_attack": 2,
+      "basic_defense": 2,
+      "move": 1
+    },
+    "hp": 288,
+    "policy": "direct",
+    "skill": "hoeryu",
+    "steps": 10,
+    "win": true
+  },
+  {
+    "enemy": "qingya_chief",
+    "enemy_used": {
+      "basic_attack": 1,
+      "basic_defense": 1,
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 153,
+    "policy": "adaptive",
+    "skill": "hoeryu",
+    "steps": 9,
+    "win": true
+  },
+  {
+    "enemy": "qingya_chief",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 159,
+    "policy": "direct",
+    "skill": "paak",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "qingya_chief",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 159,
+    "policy": "adaptive",
+    "skill": "paak",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "qingya_chief",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "direct",
+    "skill": "gwanak",
+    "steps": 2,
+    "win": true
+  },
+  {
+    "enemy": "qingya_chief",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "gwanak",
+    "steps": 2,
+    "win": true
+  },
+  {
+    "enemy": "qingya_chief",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 159,
+    "policy": "direct",
+    "skill": "banseok",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "enemy": "qingya_chief",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 159,
+    "policy": "adaptive",
+    "skill": "banseok",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "enemy": "qingya_chief",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 159,
+    "policy": "direct",
+    "skill": "jungun",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "qingya_chief",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 159,
+    "policy": "adaptive",
+    "skill": "jungun",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "nanjing_nochil",
+    "enemy_used": {
+      "basic_attack": 2,
+      "basic_defense": 2,
+      "move": 1
+    },
+    "hp": 288,
+    "policy": "direct",
+    "skill": "hoeryu",
+    "steps": 10,
+    "win": true
+  },
+  {
+    "enemy": "nanjing_nochil",
+    "enemy_used": {
+      "basic_attack": 1,
+      "basic_defense": 1,
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 153,
+    "policy": "adaptive",
+    "skill": "hoeryu",
+    "steps": 9,
+    "win": true
+  },
+  {
+    "enemy": "nanjing_nochil",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 159,
+    "policy": "direct",
+    "skill": "paak",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "nanjing_nochil",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 159,
+    "policy": "adaptive",
+    "skill": "paak",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "nanjing_nochil",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "direct",
+    "skill": "gwanak",
+    "steps": 2,
+    "win": true
+  },
+  {
+    "enemy": "nanjing_nochil",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "gwanak",
+    "steps": 2,
+    "win": true
+  },
+  {
+    "enemy": "nanjing_nochil",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 159,
+    "policy": "direct",
+    "skill": "banseok",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "enemy": "nanjing_nochil",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 159,
+    "policy": "adaptive",
+    "skill": "banseok",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "enemy": "nanjing_nochil",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 159,
+    "policy": "direct",
+    "skill": "jungun",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "enemy": "nanjing_nochil",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 159,
+    "policy": "adaptive",
+    "skill": "jungun",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "basic_attack": 1,
+      "move": 4
+    },
+    "hp": 294,
+    "policy": "adaptive",
+    "skill": "cheongpung",
+    "steps": 11,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "basic_attack": 1,
+      "danseok": 1
+    },
+    "hp": 179,
+    "policy": "adaptive",
+    "skill": "yusu",
+    "steps": 8,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "danseok",
+    "steps": 3,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "basic_attack": 1,
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 151,
+    "policy": "adaptive",
+    "skill": "hoepung",
+    "steps": 9,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "gwanpung",
+    "steps": 2,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 2
+    },
+    "hp": 159,
+    "policy": "adaptive",
+    "skill": "yeonhwan",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 17,
+      "constitution": 18,
+      "inner": 20,
+      "insight": 28,
+      "strength": 17
+    },
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "cheolsan",
+    "steps": 4,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 16,
+      "constitution": 16,
+      "inner": 26,
+      "insight": 26,
+      "strength": 16
+    },
+    "enemy": "bandit_sentry",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "ungi",
+    "steps": 4,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "basic_attack": 2,
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 222,
+    "policy": "adaptive",
+    "skill": "cheongpung",
+    "steps": 15,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "basic_attack": 2,
+      "move": 3
+    },
+    "hp": 288,
+    "policy": "adaptive",
+    "skill": "yusu",
+    "steps": 10,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 2
+    },
+    "hp": 217,
+    "policy": "adaptive",
+    "skill": "danseok",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "basic_attack": 1,
+      "hoepung": 2,
+      "move": 3
+    },
+    "hp": 126,
+    "policy": "adaptive",
+    "skill": "hoepung",
+    "steps": 11,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 2
+    },
+    "hp": 217,
+    "policy": "adaptive",
+    "skill": "gwanpung",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 2
+    },
+    "hp": 217,
+    "policy": "adaptive",
+    "skill": "yeonhwan",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 17,
+      "constitution": 18,
+      "inner": 20,
+      "insight": 28,
+      "strength": 17
+    },
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 1
+    },
+    "hp": 217,
+    "policy": "adaptive",
+    "skill": "cheolsan",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 16,
+      "constitution": 16,
+      "inner": 26,
+      "insight": 26,
+      "strength": 16
+    },
+    "enemy": "bandit_ringleader",
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 2
+    },
+    "hp": 214,
+    "policy": "adaptive",
+    "skill": "ungi",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "herb_ruffian",
+    "enemy_used": {
+      "danseok": 1,
+      "move": 2
+    },
+    "hp": 187,
+    "policy": "adaptive",
+    "skill": "hoeryu",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "herb_ruffian",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "paak",
+    "steps": 3,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "herb_ruffian",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "gwanak",
+    "steps": 3,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "herb_ruffian",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "banseok",
+    "steps": 3,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "herb_ruffian",
+    "enemy_used": {
+      "basic_attack": 1
+    },
+    "hp": 292,
+    "policy": "adaptive",
+    "skill": "jungun",
+    "steps": 5,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "training_student",
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 1
+    },
+    "hp": 260,
+    "policy": "adaptive",
+    "skill": "hoeryu",
+    "steps": 5,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "training_student",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "paak",
+    "steps": 3,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "training_student",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "gwanak",
+    "steps": 4,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "training_student",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "banseok",
+    "steps": 3,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "training_student",
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 195,
+    "policy": "adaptive",
+    "skill": "jungun",
+    "steps": 9,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "inn_warrior",
+    "enemy_used": {
+      "move": 2
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "hoeryu",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "inn_warrior",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "paak",
+    "steps": 3,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "inn_warrior",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "gwanak",
+    "steps": 3,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "inn_warrior",
+    "enemy_used": {
+
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "banseok",
+    "steps": 3,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "inn_warrior",
+    "enemy_used": {
+      "cheolsan": 1
+    },
+    "hp": 128,
+    "policy": "adaptive",
+    "skill": "jungun",
+    "steps": 6,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "impostor_ma",
+    "enemy_used": {
+      "cheongpung": 2,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 140,
+    "policy": "adaptive",
+    "skill": "hoeryu",
+    "steps": 10,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "impostor_ma",
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 1,
+      "yusu": 1
+    },
+    "hp": 175,
+    "policy": "adaptive",
+    "skill": "paak",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "impostor_ma",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "gwanak",
+    "steps": 4,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "impostor_ma",
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 2
+    },
+    "hp": 109,
+    "policy": "adaptive",
+    "skill": "banseok",
+    "steps": 13,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "impostor_ma",
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 175,
+    "policy": "adaptive",
+    "skill": "jungun",
+    "steps": 9,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "qingya_chief",
+    "enemy_used": {
+      "danseok": 2,
+      "move": 2
+    },
+    "hp": 39,
+    "policy": "adaptive",
+    "skill": "hoeryu",
+    "steps": 9,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "qingya_chief",
+    "enemy_used": {
+      "basic_defense": 1,
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 155,
+    "policy": "adaptive",
+    "skill": "paak",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "qingya_chief",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "gwanak",
+    "steps": 4,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "qingya_chief",
+    "enemy_used": {
+      "basic_attack": 1,
+      "danseok": 2,
+      "move": 1
+    },
+    "hp": 0,
+    "policy": "adaptive",
+    "skill": "banseok",
+    "steps": 11,
+    "win": false
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "qingya_chief",
+    "enemy_used": {
+      "danseok": 2,
+      "move": 2
+    },
+    "hp": 10,
+    "policy": "adaptive",
+    "skill": "jungun",
+    "steps": 9,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "nanjing_nochil",
+    "enemy_used": {
+      "danseok": 2,
+      "move": 2
+    },
+    "hp": 39,
+    "policy": "adaptive",
+    "skill": "hoeryu",
+    "steps": 9,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "nanjing_nochil",
+    "enemy_used": {
+      "basic_defense": 1,
+      "danseok": 1,
+      "move": 1
+    },
+    "hp": 155,
+    "policy": "adaptive",
+    "skill": "paak",
+    "steps": 7,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "nanjing_nochil",
+    "enemy_used": {
+      "move": 1
+    },
+    "hp": 300,
+    "policy": "adaptive",
+    "skill": "gwanak",
+    "steps": 4,
+    "win": true
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "nanjing_nochil",
+    "enemy_used": {
+      "basic_attack": 1,
+      "danseok": 2,
+      "move": 1
+    },
+    "hp": 0,
+    "policy": "adaptive",
+    "skill": "banseok",
+    "steps": 11,
+    "win": false
+  },
+  {
+    "build": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 28,
+      "strength": 18
+    },
+    "enemy": "nanjing_nochil",
+    "enemy_used": {
+      "danseok": 2,
+      "move": 2
+    },
+    "hp": 10,
+    "policy": "adaptive",
+    "skill": "jungun",
+    "steps": 9,
+    "win": true
+  }
+]
