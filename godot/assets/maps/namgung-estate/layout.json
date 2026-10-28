@@ -25,450 +25,880 @@
       "id": "main_hall",
       "prefab": "ng_main",
       "rect": [
-        870,
-        125,
-        560,
-        315
+        982.0,
+        251.0,
+        336.0,
+        189.0
       ]
     },
     {
       "id": "west_wing",
       "prefab": "ng_residence",
       "rect": [
-        300,
-        460,
-        300,
-        215
+        350.0,
+        531.67,
+        200.0,
+        143.33
       ]
     },
     {
       "id": "east_wing",
       "prefab": "ng_residence",
       "rect": [
-        1700,
-        460,
-        300,
-        215
+        1750.0,
+        531.67,
+        200.0,
+        143.33
       ]
     },
     {
       "id": "training_hall",
       "prefab": "ng_training",
       "rect": [
-        1690,
-        800,
-        365,
-        200
+        1750.84,
+        866.67,
+        243.33,
+        133.33
       ]
     },
     {
       "id": "guest_hall",
       "prefab": "ng_residence",
       "rect": [
-        280,
-        790,
-        315,
-        220
+        332.5,
+        863.33,
+        210.0,
+        146.67
       ]
     },
     {
       "id": "main_gate",
       "prefab": "ng_gate",
       "rect": [
-        975,
-        1150,
-        355,
-        285
+        1053.1,
+        1275.4,
+        198.8,
+        159.6
       ]
     },
     {
       "id": "garden_tree_0",
       "prefab": "tree",
       "rect": [
-        330,
-        1240,
-        140,
-        180
+        366.4,
+        1333.6,
+        67.2,
+        86.4
       ]
     },
     {
       "id": "garden_tree_1",
       "prefab": "tree",
       "rect": [
-        650,
-        1240,
-        140,
-        180
+        686.4,
+        1333.6,
+        67.2,
+        86.4
       ]
     },
     {
       "id": "garden_tree_2",
       "prefab": "tree",
       "rect": [
-        1720,
-        1240,
-        140,
-        180
+        1756.4,
+        1333.6,
+        67.2,
+        86.4
       ]
     },
     {
       "id": "garden_tree_3",
       "prefab": "tree",
       "rect": [
-        1940,
-        1240,
-        140,
-        180
+        1976.4,
+        1333.6,
+        67.2,
+        86.4
       ]
     },
     {
       "id": "garden_tree_4",
       "prefab": "tree",
       "rect": [
-        400,
-        85,
-        140,
-        180
+        436.4,
+        178.6,
+        67.2,
+        86.4
       ]
     },
     {
       "id": "garden_tree_5",
       "prefab": "tree",
       "rect": [
-        1840,
-        85,
-        140,
-        180
+        1876.4,
+        178.6,
+        67.2,
+        86.4
       ]
     },
     {
       "id": "west_well",
       "prefab": "well",
       "rect": [
-        480,
-        1335,
-        110,
-        95
+        504.75,
+        1377.75,
+        60.5,
+        52.25
       ]
     },
     {
-      "id": "rear_wall_210",
+      "id": "rear_wall_0",
       "prefab": "wall_h",
       "rect": [
-        210,
-        90,
-        205,
-        90
+        200,
+        119,
+        93.33,
+        56
       ]
     },
     {
-      "id": "rear_wall_400",
+      "id": "rear_wall_1",
       "prefab": "wall_h",
       "rect": [
-        400,
-        90,
-        205,
-        90
+        293.33,
+        119,
+        93.33,
+        56
       ]
     },
     {
-      "id": "rear_wall_590",
+      "id": "rear_wall_2",
       "prefab": "wall_h",
       "rect": [
-        590,
-        90,
-        205,
-        90
+        386.67,
+        119,
+        93.33,
+        56
       ]
     },
     {
-      "id": "rear_wall_780",
+      "id": "rear_wall_3",
       "prefab": "wall_h",
       "rect": [
-        780,
-        90,
-        205,
-        90
+        480.0,
+        119,
+        93.33,
+        56
       ]
     },
     {
-      "id": "rear_wall_970",
+      "id": "rear_wall_4",
       "prefab": "wall_h",
       "rect": [
-        970,
-        90,
-        205,
-        90
+        573.33,
+        119,
+        93.33,
+        56
       ]
     },
     {
-      "id": "rear_wall_1160",
+      "id": "rear_wall_5",
       "prefab": "wall_h",
       "rect": [
-        1160,
-        90,
-        205,
-        90
+        666.67,
+        119,
+        93.33,
+        56
       ]
     },
     {
-      "id": "rear_wall_1350",
+      "id": "rear_wall_6",
       "prefab": "wall_h",
       "rect": [
-        1350,
-        90,
-        205,
-        90
+        760.0,
+        119,
+        93.33,
+        56
       ]
     },
     {
-      "id": "rear_wall_1540",
+      "id": "rear_wall_7",
       "prefab": "wall_h",
       "rect": [
-        1540,
-        90,
-        205,
-        90
+        853.33,
+        119,
+        93.33,
+        56
       ]
     },
     {
-      "id": "rear_wall_1730",
+      "id": "rear_wall_8",
       "prefab": "wall_h",
       "rect": [
-        1730,
-        90,
-        205,
-        90
+        946.67,
+        119,
+        93.33,
+        56
       ]
     },
     {
-      "id": "rear_wall_1920",
+      "id": "rear_wall_9",
       "prefab": "wall_h",
       "rect": [
-        1920,
-        90,
-        205,
-        90
+        1040.0,
+        119,
+        93.33,
+        56
       ]
     },
     {
-      "id": "west_wall_180",
+      "id": "rear_wall_10",
+      "prefab": "wall_h",
+      "rect": [
+        1133.33,
+        119,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "rear_wall_11",
+      "prefab": "wall_h",
+      "rect": [
+        1226.67,
+        119,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "rear_wall_12",
+      "prefab": "wall_h",
+      "rect": [
+        1320.0,
+        119,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "rear_wall_13",
+      "prefab": "wall_h",
+      "rect": [
+        1413.33,
+        119,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "rear_wall_14",
+      "prefab": "wall_h",
+      "rect": [
+        1506.67,
+        119,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "rear_wall_15",
+      "prefab": "wall_h",
+      "rect": [
+        1600.0,
+        119,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "rear_wall_16",
+      "prefab": "wall_h",
+      "rect": [
+        1693.33,
+        119,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "rear_wall_17",
+      "prefab": "wall_h",
+      "rect": [
+        1786.67,
+        119,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "rear_wall_18",
+      "prefab": "wall_h",
+      "rect": [
+        1880.0,
+        119,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "rear_wall_19",
+      "prefab": "wall_h",
+      "rect": [
+        1973.33,
+        119,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "rear_wall_20",
+      "prefab": "wall_h",
+      "rect": [
+        2066.67,
+        119,
+        38.33,
+        56
+      ]
+    },
+    {
+      "id": "west_wall_0",
       "prefab": "wall_v",
       "rect": [
         200,
-        180,
-        55,
-        180
+        155,
+        30.67,
+        77.33
       ]
     },
     {
-      "id": "east_wall_180",
-      "prefab": "wall_v",
-      "rect": [
-        2050,
-        180,
-        55,
-        180
-      ]
-    },
-    {
-      "id": "west_wall_345",
+      "id": "west_wall_1",
       "prefab": "wall_v",
       "rect": [
         200,
-        345,
-        55,
-        180
+        232.33,
+        30.67,
+        77.33
       ]
     },
     {
-      "id": "east_wall_345",
-      "prefab": "wall_v",
-      "rect": [
-        2050,
-        345,
-        55,
-        180
-      ]
-    },
-    {
-      "id": "west_wall_510",
+      "id": "west_wall_2",
       "prefab": "wall_v",
       "rect": [
         200,
-        510,
-        55,
-        180
+        309.67,
+        30.67,
+        77.33
       ]
     },
     {
-      "id": "east_wall_510",
-      "prefab": "wall_v",
-      "rect": [
-        2050,
-        510,
-        55,
-        180
-      ]
-    },
-    {
-      "id": "west_wall_675",
+      "id": "west_wall_3",
       "prefab": "wall_v",
       "rect": [
         200,
-        675,
-        55,
-        180
+        387.0,
+        30.67,
+        77.33
       ]
     },
     {
-      "id": "east_wall_675",
-      "prefab": "wall_v",
-      "rect": [
-        2050,
-        675,
-        55,
-        180
-      ]
-    },
-    {
-      "id": "west_wall_840",
+      "id": "west_wall_4",
       "prefab": "wall_v",
       "rect": [
         200,
-        840,
-        55,
-        180
+        464.33,
+        30.67,
+        77.33
       ]
     },
     {
-      "id": "east_wall_840",
-      "prefab": "wall_v",
-      "rect": [
-        2050,
-        840,
-        55,
-        180
-      ]
-    },
-    {
-      "id": "west_wall_1005",
+      "id": "west_wall_5",
       "prefab": "wall_v",
       "rect": [
         200,
-        1005,
-        55,
-        180
+        541.67,
+        30.67,
+        77.33
       ]
     },
     {
-      "id": "east_wall_1005",
-      "prefab": "wall_v",
-      "rect": [
-        2050,
-        1005,
-        55,
-        180
-      ]
-    },
-    {
-      "id": "west_wall_1170",
+      "id": "west_wall_6",
       "prefab": "wall_v",
       "rect": [
         200,
-        1170,
-        55,
-        180
+        619.0,
+        30.67,
+        77.33
       ]
     },
     {
-      "id": "east_wall_1170",
+      "id": "west_wall_7",
       "prefab": "wall_v",
       "rect": [
-        2050,
-        1170,
-        55,
-        180
+        200,
+        696.33,
+        30.67,
+        77.33
       ]
     },
     {
-      "id": "front_wall_210",
-      "prefab": "wall_h",
+      "id": "west_wall_8",
+      "prefab": "wall_v",
       "rect": [
-        210,
-        1280,
-        210,
-        100
+        200,
+        773.67,
+        30.67,
+        77.33
       ]
     },
     {
-      "id": "front_wall_400",
-      "prefab": "wall_h",
+      "id": "west_wall_9",
+      "prefab": "wall_v",
       "rect": [
-        400,
-        1280,
-        210,
-        100
+        200,
+        851.0,
+        30.67,
+        77.33
       ]
     },
     {
-      "id": "front_wall_590",
-      "prefab": "wall_h",
+      "id": "west_wall_10",
+      "prefab": "wall_v",
       "rect": [
-        590,
-        1280,
-        210,
-        100
+        200,
+        928.33,
+        30.67,
+        77.33
       ]
     },
     {
-      "id": "front_wall_780",
-      "prefab": "wall_h",
+      "id": "west_wall_11",
+      "prefab": "wall_v",
       "rect": [
-        780,
-        1280,
-        210,
-        100
+        200,
+        1005.67,
+        30.67,
+        77.33
       ]
     },
     {
-      "id": "front_wall_1330",
-      "prefab": "wall_h",
+      "id": "west_wall_12",
+      "prefab": "wall_v",
       "rect": [
-        1330,
-        1280,
-        210,
-        100
+        200,
+        1083.0,
+        30.67,
+        77.33
       ]
     },
     {
-      "id": "front_wall_1520",
-      "prefab": "wall_h",
+      "id": "west_wall_13",
+      "prefab": "wall_v",
       "rect": [
-        1520,
-        1280,
-        210,
-        100
+        200,
+        1160.33,
+        30.67,
+        77.33
       ]
     },
     {
-      "id": "front_wall_1710",
-      "prefab": "wall_h",
+      "id": "west_wall_14",
+      "prefab": "wall_v",
       "rect": [
-        1710,
-        1280,
-        210,
-        100
+        200,
+        1237.67,
+        30.67,
+        77.33
       ]
     },
     {
-      "id": "front_wall_1900",
+      "id": "west_wall_15",
+      "prefab": "wall_v",
+      "rect": [
+        200,
+        1315.0,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "west_wall_16",
+      "prefab": "wall_v",
+      "rect": [
+        200,
+        1392.33,
+        30.67,
+        42.67
+      ]
+    },
+    {
+      "id": "east_wall_0",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        155,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "east_wall_1",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        232.33,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "east_wall_2",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        309.67,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "east_wall_3",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        387.0,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "east_wall_4",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        464.33,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "east_wall_5",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        541.67,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "east_wall_6",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        619.0,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "east_wall_7",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        696.33,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "east_wall_8",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        773.67,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "east_wall_9",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        851.0,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "east_wall_10",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        928.33,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "east_wall_11",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        1005.67,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "east_wall_12",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        1083.0,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "east_wall_13",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        1160.33,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "east_wall_14",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        1237.67,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "east_wall_15",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        1315.0,
+        30.67,
+        77.33
+      ]
+    },
+    {
+      "id": "east_wall_16",
+      "prefab": "wall_v",
+      "rect": [
+        2074.33,
+        1392.33,
+        30.67,
+        42.67
+      ]
+    },
+    {
+      "id": "front_wall_w_0",
       "prefab": "wall_h",
       "rect": [
-        1900,
-        1280,
-        210,
-        100
+        200,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_w_1",
+      "prefab": "wall_h",
+      "rect": [
+        293.33,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_w_2",
+      "prefab": "wall_h",
+      "rect": [
+        386.67,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_w_3",
+      "prefab": "wall_h",
+      "rect": [
+        480.0,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_w_4",
+      "prefab": "wall_h",
+      "rect": [
+        573.33,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_w_5",
+      "prefab": "wall_h",
+      "rect": [
+        666.67,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_w_6",
+      "prefab": "wall_h",
+      "rect": [
+        760.0,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_w_7",
+      "prefab": "wall_h",
+      "rect": [
+        853.33,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_w_8",
+      "prefab": "wall_h",
+      "rect": [
+        946.67,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_w_9",
+      "prefab": "wall_h",
+      "rect": [
+        1040.0,
+        1379,
+        48.88,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_e_0",
+      "prefab": "wall_h",
+      "rect": [
+        1216.12,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_e_1",
+      "prefab": "wall_h",
+      "rect": [
+        1309.45,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_e_2",
+      "prefab": "wall_h",
+      "rect": [
+        1402.78,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_e_3",
+      "prefab": "wall_h",
+      "rect": [
+        1496.12,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_e_4",
+      "prefab": "wall_h",
+      "rect": [
+        1589.45,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_e_5",
+      "prefab": "wall_h",
+      "rect": [
+        1682.78,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_e_6",
+      "prefab": "wall_h",
+      "rect": [
+        1776.12,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_e_7",
+      "prefab": "wall_h",
+      "rect": [
+        1869.45,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_e_8",
+      "prefab": "wall_h",
+      "rect": [
+        1962.78,
+        1379,
+        93.33,
+        56
+      ]
+    },
+    {
+      "id": "front_wall_e_9",
+      "prefab": "wall_h",
+      "rect": [
+        2056.12,
+        1379,
+        48.88,
+        56
       ]
     }
   ],

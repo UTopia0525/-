@@ -90,3 +90,9 @@ Q 의뢰 일지와 추적·미니맵/전체 지도 목표를 연결했다. 다�
 - [전용 도트](../../godot/assets/characters/namgung/seojin.png)
 - [본가 적용 화면](../../godot/screenshots/namgung-seojin-overworld.png)
 - [청애채 적용 화면](../../godot/screenshots/namgung-seojin-camp.png)
+
+## 부지와 구조물 축척
+
+중앙 문양을 드러내기 위해 넓힌6912×4608 부지는 유지하고, 구조물만 도시 축척으로 줄였다. 본당60%, 거처/연무당 약67%, 문루56%이며 기존 전용 그림은 그대로다. 담장은 한 장을 크게 늘리지 않고 무창 기준 가로 최대280×168, 세로92×최대232 월드 크기로 반복한다. 정문은 발밑 기준선1435를 유지하며 담장을 문기둥까지 연결했다. 중앙 문양 보호 구역과 NPC/이동 좌표·출입 허가 조건은 유지한다.
+
+[수정된 전체 지도](../../godot/screenshots/namgung-estate-full.png)

@@ -16,6 +16,12 @@ func run() -> void:
  for spec in w.city_data.objects:
   if spec.prefab in ["ng_main","ng_residence","ng_training","ng_gate"]:
    check(not motif.intersects(Rect2(spec.rect[0],spec.rect[1],spec.rect[2],spec.rect[3])),"building never covers central motif: "+spec.id)
+ # Shared wall art must retain the Wuchang world-unit scale, even on the wider estate.
+ for spec in w.city_data.objects:
+  if spec.prefab=="wall_h":
+   check(spec.rect[2]*3<=280.1 and is_equal_approx(float(spec.rect[3])*3,168.0),"horizontal wall uses city scale")
+  if spec.prefab=="wall_v":
+   check(absf(float(spec.rect[2])*3-92.0)<0.02 and spec.rect[3]*3<=232.1,"vertical wall uses city scale")
  var guard=w.ambient_nodes.filter(func(n):return n.get_meta("npc_id")=="ng_gatekeeper")[0]
  check(guard.get_child(1).texture.atlas.resource_path==q.warrior_visual.sprite,"gatekeeper uses dedicated Namgung map sprite")
  check(game.PORTRAITS.ACTORS.ng_gatekeeper.portrait==q.warrior_visual.portrait,"gatekeeper uses dedicated portrait")
