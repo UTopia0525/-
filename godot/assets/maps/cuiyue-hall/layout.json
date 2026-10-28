@@ -1,0 +1,346 @@
+{
+  "name": "항주 · 취월루",
+  "art_size": [
+    1536,
+    1024
+  ],
+  "world_size": [
+    3072,
+    2048
+  ],
+  "walk_bounds": [
+    90,
+    260,
+    1356,
+    730
+  ],
+  "spawn": [
+    768,
+    900
+  ],
+  "ground_script": "res://scripts/qingya_ground.gd",
+  "ground_texture": "res://assets/maps/cuiyue-hall/ground.png",
+  "districts": [
+    {
+      "id": "stage",
+      "name": "금란무대",
+      "rect": [
+        470,
+        330,
+        600,
+        220
+      ],
+      "label": [
+        768,
+        470
+      ]
+    },
+    {
+      "id": "banquet",
+      "name": "연회석",
+      "rect": [
+        90,
+        520,
+        1356,
+        250
+      ],
+      "label": [
+        768,
+        630
+      ]
+    },
+    {
+      "id": "lounge",
+      "name": "비단별석",
+      "rect": [
+        90,
+        770,
+        1356,
+        220
+      ],
+      "label": [
+        768,
+        870
+      ]
+    }
+  ],
+  "roads": [],
+  "landmarks": [],
+  "services": [],
+  "prefabs": {
+    "stage": {
+      "texture": "res://assets/maps/cuiyue-hall/furniture.png",
+      "source": [
+        19,
+        36,
+        557,
+        419
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.04,
+          0.12,
+          0.92,
+          0.84
+        ]
+      ]
+    },
+    "banquet": {
+      "texture": "res://assets/maps/cuiyue-hall/furniture.png",
+      "source": [
+        588,
+        122,
+        412,
+        331
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.08,
+          0.43,
+          0.84,
+          0.5
+        ]
+      ]
+    },
+    "tea": {
+      "texture": "res://assets/maps/cuiyue-hall/furniture.png",
+      "source": [
+        1047,
+        157,
+        454,
+        265
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.05,
+          0.5,
+          0.9,
+          0.43
+        ]
+      ]
+    },
+    "screen": {
+      "texture": "res://assets/maps/cuiyue-hall/furniture.png",
+      "source": [
+        43,
+        518,
+        546,
+        453
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.03,
+          0.86,
+          0.94,
+          0.11
+        ]
+      ]
+    },
+    "pillar": {
+      "texture": "res://assets/maps/cuiyue-hall/furniture.png",
+      "source": [
+        701,
+        475,
+        183,
+        513
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.3,
+          0.88,
+          0.4,
+          0.09
+        ]
+      ]
+    },
+    "divan": {
+      "texture": "res://assets/maps/cuiyue-hall/furniture.png",
+      "source": [
+        976,
+        640,
+        523,
+        324
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.04,
+          0.5,
+          0.92,
+          0.44
+        ]
+      ]
+    }
+  },
+  "objects": [
+    {
+      "id": "performance",
+      "prefab": "stage",
+      "rect": [
+        535,
+        225,
+        465,
+        300
+      ]
+    },
+    {
+      "id": "wine_west",
+      "prefab": "banquet",
+      "rect": [
+        215,
+        510,
+        175,
+        135
+      ]
+    },
+    {
+      "id": "wine_east",
+      "prefab": "banquet",
+      "rect": [
+        1140,
+        510,
+        175,
+        135
+      ]
+    },
+    {
+      "id": "wine_southwest",
+      "prefab": "banquet",
+      "rect": [
+        435,
+        710,
+        175,
+        125
+      ]
+    },
+    {
+      "id": "wine_southeast",
+      "prefab": "banquet",
+      "rect": [
+        935,
+        710,
+        175,
+        125
+      ]
+    },
+    {
+      "id": "tea_west",
+      "prefab": "tea",
+      "rect": [
+        135,
+        730,
+        205,
+        110
+      ]
+    },
+    {
+      "id": "tea_east",
+      "prefab": "tea",
+      "rect": [
+        1195,
+        730,
+        205,
+        110
+      ]
+    },
+    {
+      "id": "screen_west",
+      "prefab": "screen",
+      "rect": [
+        115,
+        595,
+        245,
+        110
+      ]
+    },
+    {
+      "id": "screen_east",
+      "prefab": "screen",
+      "rect": [
+        1180,
+        595,
+        245,
+        110
+      ]
+    },
+    {
+      "id": "divan_west",
+      "prefab": "divan",
+      "rect": [
+        160,
+        370,
+        230,
+        130
+      ]
+    },
+    {
+      "id": "divan_east",
+      "prefab": "divan",
+      "rect": [
+        1150,
+        370,
+        230,
+        130
+      ]
+    },
+    {
+      "id": "column_nw",
+      "prefab": "pillar",
+      "rect": [
+        410,
+        320,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "column_ne",
+      "prefab": "pillar",
+      "rect": [
+        1070,
+        320,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "column_sw",
+      "prefab": "pillar",
+      "rect": [
+        410,
+        600,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "column_se",
+      "prefab": "pillar",
+      "rect": [
+        1070,
+        600,
+        55,
+        180
+      ]
+    }
+  ],
+  "terrain_blockers": [
+    [
+      90,
+      870,
+      585,
+      120
+    ],
+    [
+      860,
+      870,
+      586,
+      120
+    ]
+  ]
+}

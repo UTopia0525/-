@@ -95,7 +95,7 @@ func goal(world) -> Dictionary:
    if npc.get_meta("npc_id")==target():return {"position":npc.position,"label":label,"quest_title":data.title,"goal_id":target(),"quest_id":ID,"stage_id":stage()}
   if data.has("enemy_point") and target()=="sz_extortionist":return {"position":world.city_point(data.enemy_point),"label":label,"quest_title":data.title,"goal_id":target(),"quest_id":ID,"stage_id":stage()}
  else:
-  var exit_id={"hangzhou":"travel:canal","suzhou_hangzhou_canal":"travel:suzhou","murong_estate":"travel:suzhou","nanjing":"travel:suzhou_road","nanjing_suzhou_road":"travel:suzhou","namgung_estate":"travel:nanjing","qingya_hamlet":"travel:nanjing","qingya_camp":"travel:hamlet","wuchang":"travel:qingya","alliance_office":"travel:office_exit","mountain_road":"travel:wuchang","changsha":"travel:road_east"}.get(world.area_name,"")
+  var exit_id={"cuiyue_hall":"travel:hall_exit","hangzhou":"travel:canal","suzhou_hangzhou_canal":"travel:suzhou","murong_estate":"travel:suzhou","nanjing":"travel:suzhou_road","nanjing_suzhou_road":"travel:suzhou","namgung_estate":"travel:nanjing","qingya_hamlet":"travel:nanjing","qingya_camp":"travel:hamlet","wuchang":"travel:qingya","alliance_office":"travel:office_exit","mountain_road":"travel:wuchang","changsha":"travel:road_east"}.get(world.area_name,"")
   for entry in world.travel_exits:
    if entry.id==exit_id:return {"position":entry.position,"label":"소주 의뢰를 위해 "+entry.name,"quest_title":data.title,"goal_id":entry.id,"quest_id":ID,"stage_id":stage()}
  return {}

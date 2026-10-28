@@ -33,6 +33,9 @@ func update_quest(id: String, stage: String, completed: Array = []) -> bool:
 	return track(id,stage,completed)
 
 func get_goal(world) -> Dictionary:
+	if world.area_name=="cuiyue_hall" and (not quest_id.is_empty() or not facility_id.is_empty()):
+		for entry in world.travel_exits:
+			if entry.id=="travel:hall_exit":return {"position":entry.position,"label":"취월루를 나와 항주 거리로 이동","quest_title":definitions.get(quest_id,{}).get("title","시설 안내"),"goal_id":entry.id,"quest_id":quest_id,"stage_id":stage_id}
 	if world.area_name in ["hangzhou","suzhou_hangzhou_canal"] and (not quest_id.is_empty() or (not facility_id.is_empty() and world.area_name!="hangzhou")):
 		for entry in world.travel_exits:
 			if entry.id==("travel:canal" if world.area_name=="hangzhou" else "travel:suzhou"):return {"position":entry.position,"label":"소주 방면으로 돌아가기","quest_title":definitions.get(quest_id,{}).get("title","시설 안내"),"goal_id":entry.id,"quest_id":quest_id,"stage_id":stage_id}

@@ -1,5 +1,5 @@
 extends RefCounted
-const AREAS=["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal","hangzhou"]
+const AREAS=["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal","hangzhou","cuiyue_hall"]
 const LINKS={
  "changsha":[{"id":"travel:road_east","name":"무창 방면 산길 →","point":[1490,510],"area":"mountain_road","arrival":[125,1175]}],
  "mountain_road":[{"id":"travel:changsha","name":"← 장사 동쪽 농촌","point":[80,1175],"area":"changsha","arrival":[1440,510]}, {"id":"travel:wuchang","name":"↑ 무창 남쪽 농촌","point":[740,64],"area":"wuchang","arrival":[1100,1790]}],
@@ -7,7 +7,8 @@ const LINKS={
  "qingya_hamlet":[{"id":"travel:wuchang","name":"← 무창","point":[70,530],"area":"wuchang","arrival":[1920,945]},{"id":"travel:camp","name":"↑ 청애채","point":[780,60],"area":"qingya_camp","arrival":[1152,1480]},{"id":"travel:nanjing","name":"남경 →","point":[1470,530],"area":"nanjing","arrival":[255,530]}],
  "namgung_estate":[{"id":"travel:nanjing","name":"남경 방면 →","point":[768,1070],"area":"nanjing","arrival":[300,160]}],
  "murong_estate":[{"id":"travel:suzhou","name":"소주 방면 →","point":[768,980],"area":"suzhou","arrival":[1190,100]}],
- "hangzhou":[{"id":"travel:canal","name":"↑ 소주 방면 운하길","point":[1080,60],"area":"suzhou_hangzhou_canal","arrival":[1270,890]}],
+ "cuiyue_hall":[{"id":"travel:hall_exit","name":"취월루 · 바깥으로","point":[768,967],"area":"hangzhou","arrival":[785,455]}],
+ "hangzhou":[{"id":"travel:hall_entry","name":"취월루 · 들어가기","point":[785,425],"area":"cuiyue_hall","arrival":[768,900]},{"id":"travel:canal","name":"↑ 소주 방면 운하길","point":[1080,60],"area":"suzhou_hangzhou_canal","arrival":[1270,890]}],
  "suzhou_hangzhou_canal":[{"id":"travel:hangzhou","name":"항주 · 북쪽 나루","point":[1270,930],"area":"hangzhou","arrival":[1080,110]},{"id":"travel:suzhou","name":"↑ 소주 남쪽 하역장","point":[600,60],"area":"suzhou","arrival":[1100,945]}],
  "suzhou":[{"id":"travel:canal","name":"남쪽 · 강남 운하길","point":[1100,990],"area":"suzhou_hangzhou_canal","arrival":[600,110]},{"id":"travel:murong","name":"태호 · 모용세가 방면","point":[1190,55],"area":"murong_estate","arrival":[768,955]},{"id":"travel:suzhou_road","name":"← 남경 방면 산길","point":[48,512],"area":"nanjing_suzhou_road","arrival":[1450,570]}],
  "nanjing_suzhou_road":[{"id":"travel:nanjing","name":"← 남경","point":[35,460],"area":"nanjing","arrival":[1470,995]},{"id":"travel:suzhou","name":"소주 →","point":[1500,570],"area":"suzhou","arrival":[85,512]}],
