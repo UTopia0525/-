@@ -24,16 +24,20 @@ static func basic_attack_damage(stats: Dictionary = STARTING_STATS) -> float:
 static func samjae_damage() -> float:
 	return STARTING_STATS.strength * 3.0 + STARTING_STATS.agility * 2.0
 
-# Legacy terminology only; not displayed or used for current progression gates.
+# Realm labels are independent from existing quest minimum-total gates.
 static func realm(total: int) -> String:
-	if total >= 500:
-		return "자연경"
-	if total >= 400:
-		return "현경"
-	if total >= 300:
-		return "화경"
-	if total >= 200:
-		return "초절정"
-	if total >= 100:
+	if total <= 100:
+		return "삼류"
+	if total <= 200:
+		return "이류"
+	if total <= 300:
+		return "일류"
+	if total <= 400:
 		return "절정"
-	return "명칭 미정"
+	if total <= 500:
+		return "초절정"
+	if total <= 600:
+		return "화경"
+	if total <= 700:
+		return "현경"
+	return "자연경"

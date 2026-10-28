@@ -32,7 +32,8 @@ func run() -> void:
  check(qi.amount==200 and qi.inner_power==200,"battle uses full inner200")
  qi.recover_turn();qi.recover_turn();check(qi.amount==500,"qi pool remains500")
  qi.restore(200,150);check(qi.inner_power==200 and qi.amount==150,"legacy resource restore accepts inner200")
- check(p.RULES.realm(500)=="자연경" and p.RULES.realm(501)=="자연경" and p.RULES.realm(1000)=="자연경","realm does not regress above old maximum")
+ for boundary in [[0,"삼류"],[50,"삼류"],[100,"삼류"],[101,"이류"],[200,"이류"],[201,"일류"],[300,"일류"],[301,"절정"],[400,"절정"],[401,"초절정"],[500,"초절정"],[501,"화경"],[600,"화경"],[601,"현경"],[700,"현경"],[701,"자연경"],[1000,"자연경"]]:
+  check(p.RULES.realm(boundary[0])==boundary[1],"realm boundary %d" % boundary[0])
  p.reset();game.chapter_one.intro_complete=true;game.chapter_number=1
  p.learned.append("hoeryu")
  for key in p.stats:p.stats[key]=20
