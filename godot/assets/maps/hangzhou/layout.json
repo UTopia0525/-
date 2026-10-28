@@ -1,0 +1,1385 @@
+{
+  "name": "항주 · 서호와 취월루",
+  "art_size": [
+    1760,
+    1280
+  ],
+  "world_size": [
+    5632,
+    4096
+  ],
+  "spawn": [
+    1080,
+    110
+  ],
+  "walk_bounds": [
+    425,
+    20,
+    1310,
+    1240
+  ],
+  "ground_script": "res://scripts/qingya_ground.gd",
+  "ground_texture": "res://assets/maps/hangzhou/ground.png",
+  "prefabs": {
+    "hz_government": {
+      "texture": "res://assets/maps/hangzhou/buildings.png",
+      "source": [
+        0,
+        20,
+        565,
+        465
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.65,
+          0.76,
+          0.31
+        ]
+      ]
+    },
+    "hz_inn": {
+      "texture": "res://assets/maps/hangzhou/buildings.png",
+      "source": [
+        565,
+        20,
+        480,
+        465
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.65,
+          0.76,
+          0.31
+        ]
+      ]
+    },
+    "hz_shop": {
+      "texture": "res://assets/maps/hangzhou/buildings.png",
+      "source": [
+        1045,
+        20,
+        491,
+        465
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.65,
+          0.76,
+          0.31
+        ]
+      ]
+    },
+    "hz_workshop": {
+      "texture": "res://assets/maps/hangzhou/buildings.png",
+      "source": [
+        0,
+        520,
+        560,
+        470
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.65,
+          0.76,
+          0.31
+        ]
+      ]
+    },
+    "hz_home": {
+      "texture": "res://assets/maps/hangzhou/buildings.png",
+      "source": [
+        565,
+        520,
+        440,
+        470
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.65,
+          0.76,
+          0.31
+        ]
+      ]
+    },
+    "hz_guild": {
+      "texture": "res://assets/maps/hangzhou/buildings.png",
+      "source": [
+        1005,
+        520,
+        531,
+        470
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.65,
+          0.76,
+          0.31
+        ]
+      ]
+    },
+    "hz_tower": {
+      "texture": "res://assets/maps/hangzhou/tower.png",
+      "source": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.14,
+          0.84,
+          0.72,
+          0.14
+        ]
+      ]
+    },
+    "sz_willow": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        38,
+        671,
+        347,
+        330
+      ],
+      "kind": "tree",
+      "footprints": [
+        [
+          0.38,
+          0.82,
+          0.24,
+          0.17
+        ]
+      ]
+    },
+    "sz_boat": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        408,
+        806,
+        372,
+        134
+      ],
+      "kind": "cargo",
+      "footprints": [
+        [
+          0.1,
+          0.72,
+          0.8,
+          0.25
+        ]
+      ]
+    },
+    "sz_cargo": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        1164,
+        799,
+        350,
+        168
+      ],
+      "kind": "cargo",
+      "footprints": [
+        [
+          0.1,
+          0.72,
+          0.8,
+          0.25
+        ]
+      ]
+    },
+    "capital_produce": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        418,
+        3,
+        342,
+        317
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_silk": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        5,
+        0,
+        400,
+        320
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "capital_lantern": {
+      "texture": "res://assets/maps/nanjing/capital-props.png",
+      "source": [
+        22,
+        322,
+        280,
+        355
+      ],
+      "kind": "stall",
+      "footprints": [
+        [
+          0.15,
+          0.73,
+          0.7,
+          0.23
+        ]
+      ]
+    },
+    "sz_pavilion": {
+      "texture": "res://assets/maps/suzhou/scenery.png",
+      "source": [
+        871,
+        364,
+        290,
+        321
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.53,
+          0.76,
+          0.43
+        ]
+      ]
+    }
+  },
+  "objects": [
+    {
+      "id": "zuiyue_tower",
+      "prefab": "hz_tower",
+      "rect": [
+        620,
+        20,
+        300,
+        390
+      ],
+      "lot": {
+        "rect": [
+          612,
+          12,
+          316,
+          418
+        ],
+        "surface": "stone"
+      }
+    },
+    {
+      "id": "lake_pavilion",
+      "prefab": "sz_pavilion",
+      "rect": [
+        515,
+        110,
+        95,
+        115
+      ],
+      "lot": {
+        "rect": [
+          507,
+          102,
+          111,
+          143
+        ],
+        "surface": "stone"
+      }
+    },
+    {
+      "id": "magistrate",
+      "prefab": "hz_government",
+      "rect": [
+        1160,
+        25,
+        230,
+        175
+      ],
+      "lot": {
+        "rect": [
+          1152,
+          17,
+          246,
+          203
+        ],
+        "surface": "stone"
+      }
+    },
+    {
+      "id": "warehouse",
+      "prefab": "hz_guild",
+      "rect": [
+        1530,
+        70,
+        170,
+        130
+      ],
+      "lot": {
+        "rect": [
+          1522,
+          62,
+          186,
+          158
+        ],
+        "surface": "wood"
+      }
+    },
+    {
+      "id": "north_shop_1145",
+      "prefab": "hz_shop",
+      "rect": [
+        1145,
+        285,
+        95,
+        125
+      ],
+      "lot": {
+        "rect": [
+          1137,
+          277,
+          111,
+          153
+        ],
+        "surface": "stone"
+      }
+    },
+    {
+      "id": "north_shop_1295",
+      "prefab": "hz_shop",
+      "rect": [
+        1295,
+        285,
+        120,
+        125
+      ],
+      "lot": {
+        "rect": [
+          1287,
+          277,
+          136,
+          153
+        ],
+        "surface": "stone"
+      }
+    },
+    {
+      "id": "north_shop_1525",
+      "prefab": "hz_shop",
+      "rect": [
+        1525,
+        285,
+        110,
+        125
+      ],
+      "lot": {
+        "rect": [
+          1517,
+          277,
+          126,
+          153
+        ],
+        "surface": "stone"
+      }
+    },
+    {
+      "id": "west_inn",
+      "prefab": "hz_inn",
+      "rect": [
+        510,
+        505,
+        155,
+        125
+      ],
+      "lot": {
+        "rect": [
+          502,
+          497,
+          171,
+          153
+        ],
+        "surface": "stone"
+      }
+    },
+    {
+      "id": "tea_house",
+      "prefab": "hz_shop",
+      "rect": [
+        800,
+        505,
+        180,
+        125
+      ],
+      "lot": {
+        "rect": [
+          792,
+          497,
+          196,
+          153
+        ],
+        "surface": "stone"
+      }
+    },
+    {
+      "id": "music_annex",
+      "prefab": "hz_inn",
+      "rect": [
+        510,
+        710,
+        155,
+        115
+      ],
+      "lot": {
+        "rect": [
+          502,
+          702,
+          171,
+          143
+        ],
+        "surface": "stone"
+      }
+    },
+    {
+      "id": "silk_emporium",
+      "prefab": "hz_shop",
+      "rect": [
+        800,
+        710,
+        180,
+        115
+      ],
+      "lot": {
+        "rect": [
+          792,
+          702,
+          196,
+          143
+        ],
+        "surface": "stone"
+      }
+    },
+    {
+      "id": "lake_workshop",
+      "prefab": "hz_workshop",
+      "rect": [
+        510,
+        945,
+        155,
+        145
+      ],
+      "lot": {
+        "rect": [
+          502,
+          937,
+          171,
+          173
+        ],
+        "surface": "earth"
+      }
+    },
+    {
+      "id": "artisan_yard",
+      "prefab": "hz_workshop",
+      "rect": [
+        800,
+        945,
+        180,
+        145
+      ],
+      "lot": {
+        "rect": [
+          792,
+          937,
+          196,
+          173
+        ],
+        "surface": "earth"
+      }
+    },
+    {
+      "id": "guildhall",
+      "prefab": "hz_guild",
+      "rect": [
+        1305,
+        500,
+        120,
+        125
+      ],
+      "lot": {
+        "rect": [
+          1297,
+          492,
+          136,
+          153
+        ],
+        "surface": "stone"
+      }
+    },
+    {
+      "id": "east_tea",
+      "prefab": "hz_shop",
+      "rect": [
+        1530,
+        500,
+        100,
+        125
+      ],
+      "lot": {
+        "rect": [
+          1522,
+          492,
+          116,
+          153
+        ],
+        "surface": "stone"
+      }
+    },
+    {
+      "id": "perfume_shop",
+      "prefab": "hz_shop",
+      "rect": [
+        1135,
+        505,
+        90,
+        120
+      ],
+      "lot": {
+        "rect": [
+          1127,
+          497,
+          106,
+          148
+        ],
+        "surface": "stone"
+      }
+    },
+    {
+      "id": "home_1135_710",
+      "prefab": "hz_home",
+      "rect": [
+        1135,
+        710,
+        90,
+        115
+      ],
+      "lot": {
+        "rect": [
+          1127,
+          702,
+          106,
+          143
+        ],
+        "surface": "earth"
+      }
+    },
+    {
+      "id": "home_1305_710",
+      "prefab": "hz_home",
+      "rect": [
+        1305,
+        710,
+        120,
+        115
+      ],
+      "lot": {
+        "rect": [
+          1297,
+          702,
+          136,
+          143
+        ],
+        "surface": "earth"
+      }
+    },
+    {
+      "id": "home_1525_710",
+      "prefab": "hz_home",
+      "rect": [
+        1525,
+        710,
+        105,
+        115
+      ],
+      "lot": {
+        "rect": [
+          1517,
+          702,
+          121,
+          143
+        ],
+        "surface": "earth"
+      }
+    },
+    {
+      "id": "home_1135_950",
+      "prefab": "hz_home",
+      "rect": [
+        1135,
+        950,
+        90,
+        145
+      ],
+      "lot": {
+        "rect": [
+          1127,
+          942,
+          106,
+          173
+        ],
+        "surface": "earth"
+      }
+    },
+    {
+      "id": "home_1305_950",
+      "prefab": "hz_home",
+      "rect": [
+        1305,
+        950,
+        120,
+        145
+      ],
+      "lot": {
+        "rect": [
+          1297,
+          942,
+          136,
+          173
+        ],
+        "surface": "earth"
+      }
+    },
+    {
+      "id": "home_1525_950",
+      "prefab": "hz_home",
+      "rect": [
+        1525,
+        950,
+        105,
+        145
+      ],
+      "lot": {
+        "rect": [
+          1517,
+          942,
+          121,
+          173
+        ],
+        "surface": "earth"
+      }
+    },
+    {
+      "id": "stall_0",
+      "prefab": "capital_silk",
+      "rect": [
+        545,
+        390,
+        48,
+        40
+      ]
+    },
+    {
+      "id": "stall_1",
+      "prefab": "capital_produce",
+      "rect": [
+        930,
+        385,
+        48,
+        40
+      ]
+    },
+    {
+      "id": "stall_2",
+      "prefab": "capital_silk",
+      "rect": [
+        1145,
+        380,
+        48,
+        40
+      ]
+    },
+    {
+      "id": "stall_3",
+      "prefab": "capital_produce",
+      "rect": [
+        1325,
+        380,
+        48,
+        40
+      ]
+    },
+    {
+      "id": "stall_4",
+      "prefab": "capital_silk",
+      "rect": [
+        1570,
+        380,
+        48,
+        40
+      ]
+    },
+    {
+      "id": "stall_5",
+      "prefab": "capital_produce",
+      "rect": [
+        980,
+        580,
+        48,
+        40
+      ]
+    },
+    {
+      "id": "stall_6",
+      "prefab": "capital_silk",
+      "rect": [
+        1140,
+        780,
+        48,
+        40
+      ]
+    },
+    {
+      "id": "stall_7",
+      "prefab": "capital_produce",
+      "rect": [
+        1570,
+        780,
+        48,
+        40
+      ]
+    },
+    {
+      "id": "stall_8",
+      "prefab": "capital_silk",
+      "rect": [
+        980,
+        1040,
+        48,
+        40
+      ]
+    },
+    {
+      "id": "stall_9",
+      "prefab": "capital_produce",
+      "rect": [
+        1310,
+        1090,
+        48,
+        40
+      ]
+    },
+    {
+      "id": "lantern_0",
+      "prefab": "capital_lantern",
+      "rect": [
+        495,
+        385,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "lantern_1",
+      "prefab": "capital_lantern",
+      "rect": [
+        990,
+        380,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "lantern_2",
+      "prefab": "capital_lantern",
+      "rect": [
+        1120,
+        380,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "lantern_3",
+      "prefab": "capital_lantern",
+      "rect": [
+        1410,
+        380,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "lantern_4",
+      "prefab": "capital_lantern",
+      "rect": [
+        1600,
+        380,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "lantern_5",
+      "prefab": "capital_lantern",
+      "rect": [
+        666,
+        565,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "lantern_6",
+      "prefab": "capital_lantern",
+      "rect": [
+        1010,
+        565,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "lantern_7",
+      "prefab": "capital_lantern",
+      "rect": [
+        1410,
+        565,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "lantern_8",
+      "prefab": "capital_lantern",
+      "rect": [
+        1610,
+        565,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "lantern_9",
+      "prefab": "capital_lantern",
+      "rect": [
+        666,
+        765,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "lantern_10",
+      "prefab": "capital_lantern",
+      "rect": [
+        1010,
+        765,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "lantern_11",
+      "prefab": "capital_lantern",
+      "rect": [
+        1410,
+        765,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "lantern_12",
+      "prefab": "capital_lantern",
+      "rect": [
+        1610,
+        765,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "lantern_13",
+      "prefab": "capital_lantern",
+      "rect": [
+        666,
+        1030,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "lantern_14",
+      "prefab": "capital_lantern",
+      "rect": [
+        1010,
+        1030,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "lantern_15",
+      "prefab": "capital_lantern",
+      "rect": [
+        1410,
+        1030,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "lantern_16",
+      "prefab": "capital_lantern",
+      "rect": [
+        1610,
+        1030,
+        22,
+        44
+      ]
+    },
+    {
+      "id": "willow_0",
+      "prefab": "sz_willow",
+      "rect": [
+        385,
+        150,
+        40,
+        65
+      ]
+    },
+    {
+      "id": "willow_1",
+      "prefab": "sz_willow",
+      "rect": [
+        385,
+        330,
+        40,
+        65
+      ]
+    },
+    {
+      "id": "willow_2",
+      "prefab": "sz_willow",
+      "rect": [
+        385,
+        560,
+        40,
+        65
+      ]
+    },
+    {
+      "id": "willow_3",
+      "prefab": "sz_willow",
+      "rect": [
+        385,
+        760,
+        40,
+        65
+      ]
+    },
+    {
+      "id": "willow_4",
+      "prefab": "sz_willow",
+      "rect": [
+        385,
+        1000,
+        40,
+        65
+      ]
+    },
+    {
+      "id": "willow_5",
+      "prefab": "sz_willow",
+      "rect": [
+        1685,
+        300,
+        40,
+        65
+      ]
+    },
+    {
+      "id": "willow_6",
+      "prefab": "sz_willow",
+      "rect": [
+        1685,
+        600,
+        40,
+        65
+      ]
+    },
+    {
+      "id": "willow_7",
+      "prefab": "sz_willow",
+      "rect": [
+        1685,
+        950,
+        40,
+        65
+      ]
+    },
+    {
+      "id": "pleasure_boat_0",
+      "prefab": "sz_boat",
+      "rect": [
+        210,
+        300,
+        95,
+        35
+      ]
+    },
+    {
+      "id": "pleasure_boat_1",
+      "prefab": "sz_boat",
+      "rect": [
+        250,
+        650,
+        95,
+        35
+      ]
+    },
+    {
+      "id": "pleasure_boat_2",
+      "prefab": "sz_boat",
+      "rect": [
+        150,
+        1000,
+        95,
+        35
+      ]
+    },
+    {
+      "id": "wharf_cargo_0",
+      "prefab": "sz_cargo",
+      "rect": [
+        1525,
+        175,
+        45,
+        25
+      ]
+    },
+    {
+      "id": "wharf_cargo_1",
+      "prefab": "sz_cargo",
+      "rect": [
+        1600,
+        175,
+        45,
+        25
+      ]
+    }
+  ],
+  "terrain_blockers": [
+    [
+      0,
+      0,
+      415,
+      1280
+    ],
+    [
+      1490,
+      0,
+      270,
+      60
+    ]
+  ],
+  "services": [],
+  "residents": [],
+  "road_centers": [],
+  "roads": [
+    {
+      "id": "main",
+      "points": [
+        [
+          1080,
+          30
+        ],
+        [
+          1080,
+          1230
+        ]
+      ],
+      "width": 72
+    },
+    {
+      "id": "lake",
+      "points": [
+        [
+          460,
+          75
+        ],
+        [
+          460,
+          1220
+        ]
+      ],
+      "width": 54
+    },
+    {
+      "id": "west",
+      "points": [
+        [
+          720,
+          460
+        ],
+        [
+          720,
+          1200
+        ]
+      ],
+      "width": 48
+    },
+    {
+      "id": "east",
+      "points": [
+        [
+          1470,
+          80
+        ],
+        [
+          1470,
+          1210
+        ]
+      ],
+      "width": 52
+    },
+    {
+      "id": "east_alley",
+      "points": [
+        [
+          1260,
+          460
+        ],
+        [
+          1260,
+          1180
+        ]
+      ],
+      "width": 36
+    },
+    {
+      "id": "east_edge",
+      "points": [
+        [
+          1660,
+          230
+        ],
+        [
+          1660,
+          1180
+        ]
+      ],
+      "width": 36
+    },
+    {
+      "id": "north",
+      "points": [
+        [
+          1080,
+          230
+        ],
+        [
+          1690,
+          230
+        ]
+      ],
+      "width": 48
+    },
+    {
+      "id": "cross",
+      "points": [
+        [
+          460,
+          460
+        ],
+        [
+          1690,
+          460
+        ]
+      ],
+      "width": 68
+    },
+    {
+      "id": "middle",
+      "points": [
+        [
+          460,
+          665
+        ],
+        [
+          1690,
+          665
+        ]
+      ],
+      "width": 44
+    },
+    {
+      "id": "south",
+      "points": [
+        [
+          460,
+          860
+        ],
+        [
+          1690,
+          860
+        ]
+      ],
+      "width": 64
+    },
+    {
+      "id": "homes",
+      "points": [
+        [
+          460,
+          1160
+        ],
+        [
+          1690,
+          1160
+        ]
+      ],
+      "width": 52
+    }
+  ],
+  "districts": [
+    {
+      "id": "lake",
+      "name": "서호 수변",
+      "rect": [
+        425,
+        0,
+        110,
+        1280
+      ],
+      "label": [
+        465,
+        700
+      ]
+    },
+    {
+      "id": "pleasure",
+      "name": "취월루 · 풍류거리",
+      "rect": [
+        535,
+        0,
+        490,
+        430
+      ],
+      "label": [
+        775,
+        415
+      ]
+    },
+    {
+      "id": "government",
+      "name": "관아·북문",
+      "rect": [
+        1025,
+        0,
+        435,
+        430
+      ],
+      "label": [
+        1240,
+        210
+      ]
+    },
+    {
+      "id": "wharf",
+      "name": "운하 나루·창고",
+      "rect": [
+        1460,
+        0,
+        280,
+        430
+      ],
+      "label": [
+        1590,
+        245
+      ]
+    },
+    {
+      "id": "inn",
+      "name": "객잔·차거리",
+      "rect": [
+        535,
+        430,
+        490,
+        410
+      ],
+      "label": [
+        850,
+        650
+      ]
+    },
+    {
+      "id": "market",
+      "name": "상점·상회거리",
+      "rect": [
+        1025,
+        430,
+        715,
+        410
+      ],
+      "label": [
+        1370,
+        650
+      ]
+    },
+    {
+      "id": "workshops",
+      "name": "공방거리",
+      "rect": [
+        535,
+        840,
+        490,
+        400
+      ],
+      "label": [
+        850,
+        1145
+      ]
+    },
+    {
+      "id": "homes",
+      "name": "주거 골목",
+      "rect": [
+        1025,
+        840,
+        715,
+        400
+      ],
+      "label": [
+        1380,
+        1145
+      ]
+    }
+  ],
+  "landmarks": []
+}

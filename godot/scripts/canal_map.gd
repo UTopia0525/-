@@ -10,7 +10,3 @@ func _init() -> void:
  for p in data.spur:spur.append(point(p))
  var quay=Geometry2D.offset_polyline(spur,48,Geometry2D.JOIN_ROUND,Geometry2D.END_ROUND)[0]
  walk_polygon=Geometry2D.merge_polygons(walk_polygon,quay)[0]
-func _ready() -> void:
- super._ready()
- var label=preload("res://scripts/ui.gd").label(self,"항주 방면 · 통행 불가",Rect2(point([1270,965])-Vector2(190,0),Vector2(380,45)),22,Color("eedcb1"))
- label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;label.add_theme_color_override("font_outline_color",Color("183128"));label.add_theme_constant_override("outline_size",5)

@@ -85,6 +85,13 @@
       "merchant": "merchant_b",
       "artisan": "artisan_b",
       "instructor": "instructor_b"
+    },
+    "hangzhou": {
+      "merchant": "merchant_b",
+      "artisan": "artisan_b"
     }
+  },
+  "city_exceptions": {
+    "hangzhou": "사용자 승인으로 무관/교관 미배치. 상인과 장인은 기존 공용 그림을 재사용한다."
   }
 }

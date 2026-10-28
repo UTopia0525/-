@@ -64,7 +64,7 @@ func _objective(goal: Dictionary) -> void:
 	game.objective_meta.position.y=95
 	game.objective_meta.add_theme_font_size_override("font_size",10)
 	game.quest_heading.text=goal.quest_title if not goal.is_empty() else "주요 목표" if not main.is_empty() else "강호행"
-	game.objective.text=str(goal.label).split(" · ")[0] if not goal.is_empty() else main if not main.is_empty() else "운하길을 둘러보고 북쪽으로 돌아가기" if game.exploration.area_name=="suzhou_hangzhou_canal" else "주변을 둘러보고 사람들과 이야기하기"
+	game.objective.text=str(goal.label).split(" · ")[0] if not goal.is_empty() else main if not main.is_empty() else "서호와 항주의 거리를 둘러보기" if game.exploration.area_name=="hangzhou" else "운하길을 따라 남쪽 항주로 이동하기" if game.exploration.area_name=="suzhou_hangzhou_canal" else "주변을 둘러보고 사람들과 이야기하기"
 	var other=not goal.is_empty() and (str(goal.label).contains("나가기") or str(goal.label).contains("이동") or str(goal.label).contains("돌아가기"))
 	if not goal.is_empty():
 		for exit in game.exploration.travel_exits:

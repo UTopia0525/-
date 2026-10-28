@@ -1,0 +1,244 @@
+[
+  {
+    "name": "공용 무인 · 서문길",
+    "texture": "res://assets/characters.png",
+    "region": [
+      69,
+      504,
+      254,
+      465
+    ],
+    "group": "공용 원형"
+  },
+  {
+    "name": "공용 여성 · 진소옥",
+    "texture": "res://assets/characters.png",
+    "region": [
+      479,
+      529,
+      186,
+      440
+    ],
+    "group": "공용 원형"
+  },
+  {
+    "name": "공용 장정 · 허만복",
+    "texture": "res://assets/characters.png",
+    "region": [
+      829,
+      529,
+      272,
+      440
+    ],
+    "group": "공용 원형"
+  },
+  {
+    "name": "공용 서리 · 육승",
+    "texture": "res://assets/characters.png",
+    "region": [
+      1236,
+      508,
+      205,
+      461
+    ],
+    "group": "공용 원형"
+  },
+  {
+    "name": "유백초",
+    "texture": "res://assets/characters/wuchang-residents.png",
+    "region": [
+      86,
+      46,
+      228,
+      450
+    ],
+    "group": "무창 주민 공용"
+  },
+  {
+    "name": "석대용",
+    "texture": "res://assets/characters/wuchang-residents.png",
+    "region": [
+      440,
+      37,
+      284,
+      454
+    ],
+    "group": "무창 주민 공용"
+  },
+  {
+    "name": "임정산",
+    "texture": "res://assets/characters/wuchang-residents.png",
+    "region": [
+      847,
+      42,
+      219,
+      451
+    ],
+    "group": "무창 주민 공용"
+  },
+  {
+    "name": "도삼랑",
+    "texture": "res://assets/characters/wuchang-residents.png",
+    "region": [
+      1220,
+      48,
+      243,
+      448
+    ],
+    "group": "무창 주민 공용"
+  },
+  {
+    "name": "육정호",
+    "texture": "res://assets/characters/wuchang-residents.png",
+    "region": [
+      67,
+      521,
+      268,
+      455
+    ],
+    "group": "무창 주민 공용"
+  },
+  {
+    "name": "오덕수",
+    "texture": "res://assets/characters/wuchang-residents.png",
+    "region": [
+      443,
+      536,
+      300,
+      440
+    ],
+    "group": "무창 주민 공용"
+  },
+  {
+    "name": "정씨 할머니",
+    "texture": "res://assets/characters/wuchang-residents.png",
+    "region": [
+      860,
+      575,
+      202,
+      401
+    ],
+    "group": "무창 주민 공용"
+  },
+  {
+    "name": "주계복",
+    "texture": "res://assets/characters/wuchang-residents.png",
+    "region": [
+      1232,
+      524,
+      255,
+      451
+    ],
+    "group": "무창 주민 공용"
+  },
+  {
+    "name": "좌측 수문 무사",
+    "texture": "res://assets/characters/alliance-members.png",
+    "region": [
+      128,
+      75,
+      320,
+      649
+    ],
+    "group": "무림맹 전용"
+  },
+  {
+    "name": "우측 수문 무사",
+    "texture": "res://assets/characters/alliance-members.png",
+    "region": [
+      556,
+      78,
+      367,
+      644
+    ],
+    "group": "무림맹 전용"
+  },
+  {
+    "name": "허문규",
+    "texture": "res://assets/characters/alliance-members.png",
+    "region": [
+      126,
+      829,
+      319,
+      649
+    ],
+    "group": "무림맹 전용"
+  },
+  {
+    "name": "곽진석",
+    "texture": "res://assets/characters/alliance-members.png",
+    "region": [
+      543,
+      796,
+      377,
+      683
+    ],
+    "group": "무림맹 전용"
+  },
+  {
+    "name": "육소전",
+    "texture": "res://assets/characters/lu-xiaozhuan.png",
+    "region": [
+      239,
+      181,
+      549,
+      1248
+    ],
+    "group": "인물 전용"
+  },
+  {
+    "name": "남궁세가 일반 무인",
+    "texture": "res://assets/characters/namgung/regular-warrior.png",
+    "region": [
+      303,
+      101,
+      532,
+      1204
+    ],
+    "group": "남궁 공용 무사"
+  },
+  {
+    "name": "남궁서진",
+    "texture": "res://assets/characters/namgung/seojin.png",
+    "region": [
+      271,
+      95,
+      645,
+      1232
+    ],
+    "group": "인물·세가 전용"
+  },
+  {
+    "name": "모용경원",
+    "texture": "res://assets/characters/murong/family.png",
+    "region": [
+      0,
+      20,
+      591,
+      821
+    ],
+    "group": "인물·세가 전용"
+  },
+  {
+    "name": "모용유안",
+    "texture": "res://assets/characters/murong/family.png",
+    "region": [
+      592,
+      21,
+      591,
+      817
+    ],
+    "group": "인물·세가 전용"
+  },
+  {
+    "name": "모용세가 무사",
+    "texture": "res://assets/characters/murong/family.png",
+    "region": [
+      1184,
+      0,
+      578,
+      887
+    ],
+    "group": "인물·세가 전용"
+  }
+]

@@ -70,7 +70,7 @@ func load_area(value: String) -> void:
 	regional_map=null
 	area_name = value
 	player.stop()
-	player.set_display_height(float(player.animation_metadata.target_height) if value in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal"] else Metrics.PROLOGUE_HEIGHT)
+	player.set_display_height(float(player.animation_metadata.target_height) if value in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal","hangzhou"] else Metrics.PROLOGUE_HEIGHT)
 	camera.set_focus_height(player.display_height*Metrics.CAMERA_FOCUS_RATIO)
 	for entry in npcs:
 		entry.node.free()
@@ -91,7 +91,7 @@ func load_area(value: String) -> void:
 	city_data = {}
 	map_bounds = Rect2(0, 0, 1280, 720)
 	camera.exploration_zoom = camera_zoom
-	if value in ["mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal"]:
+	if value in ["mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal","hangzhou"]:
 		_load_regional(value)
 	elif value == "changsha":
 		_load_changsha()
@@ -155,7 +155,9 @@ func load_area(value: String) -> void:
 	camera.snap_to_player()
 
 func _load_regional(value: String) -> void:
-	if value=="suzhou_hangzhou_canal":
+	if value=="hangzhou":
+		regional_map=preload("res://scripts/hangzhou_map.gd").new()
+	elif value=="suzhou_hangzhou_canal":
 		regional_map=preload("res://scripts/canal_map.gd").new()
 	elif value=="murong_estate":
 		regional_map=preload("res://scripts/murong_map.gd").new()
@@ -172,7 +174,7 @@ func _load_regional(value: String) -> void:
 	add_child(regional_map)
 	city_data=regional_map.data.duplicate(true)
 	city_data.ground_texture="res://assets/maps/"+("changsha-wuchang" if value=="mountain_road" else "alliance-office" if value=="alliance_office" else "wuchang")+"/ground.png"
-	if value in ["qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal"]:city_data.ground_texture=regional_map.data.ground_texture
+	if value in ["qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal","hangzhou"]:city_data.ground_texture=regional_map.data.ground_texture
 	for district in city_data.districts:
 		district.bounds=district.rect;district.category={"market":"market","workshops":"workshops","martial":"martial_hall"}.get(district.get("id",""),"regional")
 	map_bounds=regional_map.map_bounds;camera.exploration_zoom=0.8
@@ -191,7 +193,7 @@ func _load_regional(value: String) -> void:
 		art_tiles.append({"texture":load(prefab.texture),"source":Rect2(prefab.source[0],prefab.source[1],prefab.source[2],prefab.source[3]),"target":target})
 	art_tiles.sort_custom(func(a,b):return a.target.end.y<b.target.end.y)
 	player.position=city_point(city_data.spawn)
-	if value in ["wuchang","nanjing","suzhou","murong_estate"]:
+	if value in ["wuchang","nanjing","suzhou","murong_estate","hangzhou"]:
 		var civil=JSON.parse_string(FileAccess.get_file_as_string("res://data/"+value+"_residents.json"))
 		city_data.residents=civil.npcs;city_data.services=civil.services
 		var faction=JSON.parse_string(FileAccess.get_file_as_string("res://data/alliance_characters.json"))
@@ -434,7 +436,7 @@ func safe_player_position(preferred: Vector2) -> Vector2:
 				if absi(x) != ring and absi(y) != ring: continue
 				var candidate := preferred + Vector2(x, y) * 20.0
 				if can_stand(candidate): return candidate
-	return city_point(city_data.spawn) if area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal"] else preferred
+	return city_point(city_data.spawn) if area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal","hangzhou"] else preferred
 
 func path_to(point: Vector2, interaction: bool = false) -> PackedVector2Array:
 	if is_instance_valid(regional_map):
@@ -573,7 +575,7 @@ func _process(_delta: float) -> void:
 	indicator.visible = not target.is_empty() and not target.has("travel")
 	if not target.is_empty():
 		indicator.position=target.position
-		indicator.set_body_height((Metrics.CITIZEN_HEIGHT if area_name in ["changsha","wuchang","mountain_road","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal"] else Metrics.PROLOGUE_HEIGHT) if target.frame>=0 else 0.0)
+		indicator.set_body_height((Metrics.CITIZEN_HEIGHT if area_name in ["changsha","wuchang","mountain_road","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal","hangzhou"] else Metrics.PROLOGUE_HEIGHT) if target.frame>=0 else 0.0)
 	if not target.is_empty():
 		hint.add_theme_color_override("font_color",Color("9de5ff") if target.has("travel") else UI.GOLD)
 		hint.position = target.position + Vector2(-75, 20 if target.has("travel") else 14)

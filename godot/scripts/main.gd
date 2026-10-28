@@ -569,7 +569,7 @@ func interact() -> void:
 			pending_service_id = service.id
 			say(service.get("greeting_lines",[[service.get("actor_id",service.id), greeting]]), _service_done)
 		return
-	if exploration.area_name in ["wuchang","nanjing","suzhou"]:
+	if exploration.area_name in ["wuchang","nanjing","suzhou","hangzhou"]:
 		for entry in exploration.city_data.residents:
 			if entry.id==npc.id:say(entry.dialogue);return
 	if exploration.area_name=="changsha" and not npc.has("service_id") and npc.id not in ["bandit_officer","bandit_muster"]:
@@ -754,7 +754,7 @@ func _input(event: InputEvent) -> void:
 				toggle_city_map()
 			get_viewport().set_input_as_handled()
 			return
-		if event.keycode == KEY_TAB and state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal"]:
+		if event.keycode == KEY_TAB and state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal","hangzhou"]:
 			toggle_city_map()
 			get_viewport().set_input_as_handled()
 		elif event.keycode == KEY_M:

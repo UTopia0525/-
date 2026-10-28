@@ -21,8 +21,8 @@ func run() -> void:
  for p in path:check(w.can_stand(p),"path physically clear")
  check(not w.path_to(w.city_point([1030,710])).is_empty(),"small wharf reachable")
  check(not w.can_stand(w.city_point([850,350])) and not w.can_stand(w.city_point([850,680])),"cannot walk on canal")
- check(not w.can_stand(w.city_point([1270,1010])),"south end bounded until Hangzhou added")
- check(w.travel_exits.size()==1 and w.travel_exits[0].travel.area=="suzhou","no dead portal into unimplemented city")
+ check(not w.can_stand(w.city_point([1270,1010])),"physical south boundary")
+ check(w.travel_exits.size()==2 and w.travel_exits.all(func(e):return e.travel.area in ["suzhou","hangzhou"]),"both portal destinations implemented")
  game.toggle_city_map();check(game.city_overview.visible,"full map opens");game.toggle_city_map()
  w.player.position=w.safe_player_position(w.city_point([1200,800]));var saved=w.player.position
  check(game.save_system.write_slot(8) and game.save_system.load_slot(8),"canal save/load")

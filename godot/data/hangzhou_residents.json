@@ -1,0 +1,116 @@
+{
+  "npcs": [
+    {
+      "id": "hz_herbalist",
+      "name": "두청하",
+      "age": 39,
+      "gender": "여",
+      "role": "영약 상인",
+      "post": "영약 상인",
+      "point": [
+        1190,
+        697
+      ],
+      "frame": 5,
+      "district": "market",
+      "basic_portrait": "female_herbalist",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "상점가 약재점을 운영한다. 유흥가 손님에게도 과장된 보약을 권하지 않는다.",
+        "personality": "실용적이며 손님을 재촉하지 않는다.",
+        "relations": "나루와 상점가의 물건을 거래한다.",
+        "speech_habit": "손님 사정을 먼저 살핀다.",
+        "smalltalk": "항주 구경에 밤을 새우셨습니까? 좋은 술과 좋은 약도 쉬어 가는 때를 대신해 주지는 않지요."
+      },
+      "dialogue": [
+        [
+          "hz_herbalist",
+          "항주 구경에 밤을 새우셨습니까? 좋은 술과 좋은 약도 쉬어 가는 때를 대신해 주지는 않지요."
+        ]
+      ],
+      "sprite_texture": "res://assets/characters/wuchang-residents.png",
+      "sprite_region": [
+        86,
+        46,
+        228,
+        450
+      ],
+      "service_id": "city_merchant"
+    },
+    {
+      "id": "hz_artisan",
+      "name": "한수성",
+      "age": 47,
+      "gender": "남",
+      "role": "무기 장인",
+      "post": "무기 장인",
+      "point": [
+        760,
+        1060
+      ],
+      "frame": 4,
+      "district": "workshops",
+      "basic_portrait": "male_blacksmith",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "배의 쇠붙이와 병장기를 함께 손보는 장인. 겉치레보다 내구성을 따진다.",
+        "personality": "실용적이며 손님을 재촉하지 않는다.",
+        "relations": "나루와 상점가의 물건을 거래한다.",
+        "speech_habit": "손님 사정을 먼저 살핀다.",
+        "smalltalk": "주루의 번쩍이는 난간도 누군가는 못을 박아야 하지요. 병장기도 보기 전에 손에 맞는지부터 살펴보시오."
+      },
+      "dialogue": [
+        [
+          "hz_artisan",
+          "주루의 번쩍이는 난간도 누군가는 못을 박아야 하지요. 병장기도 보기 전에 손에 맞는지부터 살펴보시오."
+        ]
+      ],
+      "sprite_texture": "res://assets/characters/wuchang-residents.png",
+      "sprite_region": [
+        440,
+        37,
+        284,
+        454
+      ],
+      "service_id": "city_artisan"
+    }
+  ],
+  "services": [
+    {
+      "id": "city_merchant",
+      "npc_id": "hz_herbalist",
+      "actor_id": "hz_herbalist",
+      "kind": "market",
+      "title": "항주 약재점",
+      "name": "두청하",
+      "greeting_lines": [
+        [
+          "hz_herbalist",
+          "항주 구경에 밤을 새우셨습니까? 좋은 술과 좋은 약도 쉬어 가는 때를 대신해 주지는 않지요."
+        ],
+        [
+          "hz_herbalist",
+          "기존 영약을 한 알에 백문으로 팝니다."
+        ]
+      ]
+    },
+    {
+      "id": "city_artisan",
+      "npc_id": "hz_artisan",
+      "actor_id": "hz_artisan",
+      "kind": "workshop",
+      "title": "항주 공방",
+      "name": "한수성",
+      "greeting_lines": [
+        [
+          "hz_artisan",
+          "주루의 번쩍이는 난간도 누군가는 못을 박아야 하지요. 병장기도 보기 전에 손에 맞는지부터 살펴보시오."
+        ],
+        [
+          "hz_artisan",
+          "검과 도, 창을 삼백·오백·칠백문에 갖추고 있소."
+        ]
+      ]
+    }
+  ]
+}
