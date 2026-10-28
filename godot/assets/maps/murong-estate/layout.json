@@ -1,0 +1,535 @@
+{
+  "name": "모용세가 · 태호 수향 장원",
+  "art_size": [
+    1536,
+    1024
+  ],
+  "world_size": [
+    4608,
+    3072
+  ],
+  "spawn": [
+    768,
+    965
+  ],
+  "walk_bounds": [
+    210,
+    35,
+    1150,
+    965
+  ],
+  "ground_script": "res://scripts/qingya_ground.gd",
+  "ground_texture": "res://assets/maps/murong-estate/ground.png",
+  "prefabs": {
+    "main": {
+      "texture": "res://assets/maps/murong-estate/scenery.png",
+      "source": [
+        0,
+        40,
+        610,
+        490
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.62,
+          0.76,
+          0.34
+        ]
+      ]
+    },
+    "library": {
+      "texture": "res://assets/maps/murong-estate/scenery.png",
+      "source": [
+        610,
+        40,
+        460,
+        490
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.62,
+          0.76,
+          0.34
+        ]
+      ]
+    },
+    "training": {
+      "texture": "res://assets/maps/murong-estate/scenery.png",
+      "source": [
+        1070,
+        40,
+        466,
+        490
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.62,
+          0.76,
+          0.34
+        ]
+      ]
+    },
+    "gallery": {
+      "texture": "res://assets/maps/murong-estate/scenery.png",
+      "source": [
+        0,
+        540,
+        580,
+        470
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.62,
+          0.76,
+          0.34
+        ]
+      ]
+    },
+    "gate": {
+      "texture": "res://assets/maps/murong-estate/scenery.png",
+      "source": [
+        585,
+        540,
+        490,
+        470
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.64,
+          0.2,
+          0.3
+        ],
+        [
+          0.68,
+          0.64,
+          0.2,
+          0.3
+        ]
+      ]
+    },
+    "residence": {
+      "texture": "res://assets/maps/murong-estate/scenery.png",
+      "source": [
+        1075,
+        540,
+        461,
+        470
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.62,
+          0.76,
+          0.34
+        ]
+      ]
+    }
+  },
+  "objects": [
+    {
+      "id": "main",
+      "prefab": "main",
+      "rect": [
+        570,
+        90,
+        396,
+        200
+      ]
+    },
+    {
+      "id": "library",
+      "prefab": "library",
+      "rect": [
+        260,
+        125,
+        270,
+        250
+      ]
+    },
+    {
+      "id": "training",
+      "prefab": "training",
+      "rect": [
+        1020,
+        215,
+        290,
+        220
+      ]
+    },
+    {
+      "id": "gallery",
+      "prefab": "gallery",
+      "rect": [
+        235,
+        460,
+        340,
+        160
+      ]
+    },
+    {
+      "id": "gate",
+      "prefab": "gate",
+      "rect": [
+        665,
+        795,
+        220,
+        120
+      ]
+    },
+    {
+      "id": "residence",
+      "prefab": "residence",
+      "rect": [
+        1010,
+        650,
+        270,
+        210
+      ]
+    },
+    {
+      "id": "rear_220",
+      "prefab": "wall_h",
+      "rect": [
+        220,
+        30,
+        260,
+        48
+      ]
+    },
+    {
+      "id": "rear_480",
+      "prefab": "wall_h",
+      "rect": [
+        480,
+        30,
+        260,
+        48
+      ]
+    },
+    {
+      "id": "rear_740",
+      "prefab": "wall_h",
+      "rect": [
+        740,
+        30,
+        260,
+        48
+      ]
+    },
+    {
+      "id": "rear_1000",
+      "prefab": "wall_h",
+      "rect": [
+        1000,
+        30,
+        260,
+        48
+      ]
+    },
+    {
+      "id": "rear_1260",
+      "prefab": "wall_h",
+      "rect": [
+        1260,
+        30,
+        90,
+        48
+      ]
+    },
+    {
+      "id": "side_210_70",
+      "prefab": "wall_v",
+      "rect": [
+        210,
+        70,
+        30,
+        200
+      ]
+    },
+    {
+      "id": "side_210_270",
+      "prefab": "wall_v",
+      "rect": [
+        210,
+        270,
+        30,
+        200
+      ]
+    },
+    {
+      "id": "side_210_470",
+      "prefab": "wall_v",
+      "rect": [
+        210,
+        470,
+        30,
+        200
+      ]
+    },
+    {
+      "id": "side_210_670",
+      "prefab": "wall_v",
+      "rect": [
+        210,
+        670,
+        30,
+        200
+      ]
+    },
+    {
+      "id": "side_210_870",
+      "prefab": "wall_v",
+      "rect": [
+        210,
+        870,
+        30,
+        200
+      ]
+    },
+    {
+      "id": "side_1320_70",
+      "prefab": "wall_v",
+      "rect": [
+        1320,
+        70,
+        30,
+        200
+      ]
+    },
+    {
+      "id": "side_1320_270",
+      "prefab": "wall_v",
+      "rect": [
+        1320,
+        270,
+        30,
+        200
+      ]
+    },
+    {
+      "id": "side_1320_470",
+      "prefab": "wall_v",
+      "rect": [
+        1320,
+        470,
+        30,
+        200
+      ]
+    },
+    {
+      "id": "side_1320_670",
+      "prefab": "wall_v",
+      "rect": [
+        1320,
+        670,
+        30,
+        200
+      ]
+    },
+    {
+      "id": "side_1320_870",
+      "prefab": "wall_v",
+      "rect": [
+        1320,
+        870,
+        30,
+        200
+      ]
+    },
+    {
+      "id": "front_240",
+      "prefab": "wall_h",
+      "rect": [
+        240,
+        865,
+        220,
+        48
+      ]
+    },
+    {
+      "id": "front_460",
+      "prefab": "wall_h",
+      "rect": [
+        460,
+        865,
+        220,
+        48
+      ]
+    },
+    {
+      "id": "front_890",
+      "prefab": "wall_h",
+      "rect": [
+        890,
+        865,
+        220,
+        48
+      ]
+    },
+    {
+      "id": "front_1110",
+      "prefab": "wall_h",
+      "rect": [
+        1110,
+        865,
+        220,
+        48
+      ]
+    }
+  ],
+  "terrain_blockers": [
+    [
+      210,
+      80,
+      90,
+      300
+    ],
+    [
+      210,
+      540,
+      90,
+      270
+    ],
+    [
+      1275,
+      80,
+      80,
+      285
+    ],
+    [
+      1275,
+      550,
+      80,
+      280
+    ]
+  ],
+  "districts": [
+    {
+      "id": "estate",
+      "name": "모용 장원",
+      "rect": [
+        210,
+        35,
+        1150,
+        965
+      ]
+    }
+  ],
+  "services": [],
+  "residents": [
+    {
+      "id": "mr_patriarch",
+      "name": "모용경원",
+      "role": "가주",
+      "point": [
+        775,
+        310
+      ],
+      "frame": 4,
+      "quest_actor": false,
+      "post": "모용 장원",
+      "district": "estate",
+      "character_profile": {},
+      "dialogue": [
+        [
+          "mr_patriarch",
+          "찾아온 객의 사정부터 듣는 것이 집주인의 예지요."
+        ]
+      ]
+    },
+    {
+      "id": "mr_heir",
+      "name": "모용유안",
+      "role": "소가주",
+      "point": [
+        1020,
+        510
+      ],
+      "frame": 4,
+      "quest_actor": false,
+      "post": "모용 장원",
+      "district": "estate",
+      "character_profile": {},
+      "dialogue": [
+        [
+          "mr_heir",
+          "초식의 까닭을 함께 이야기할 수 있다면 좋겠습니다."
+        ]
+      ]
+    },
+    {
+      "id": "mr_guest",
+      "name": "진석우",
+      "role": "호송으로 생계를 잇는 낭인",
+      "point": [
+        480,
+        720
+      ],
+      "frame": 4,
+      "quest_actor": false,
+      "post": "모용 장원",
+      "district": "estate",
+      "character_profile": {},
+      "dialogue": [
+        [
+          "mr_guest",
+          "오늘 품일을 마치고 조금 더 닦아 볼 참이오."
+        ]
+      ],
+      "basic_portrait": "male_common_a"
+    },
+    {
+      "id": "mr_guard",
+      "name": "모용세가 무사",
+      "role": "정문 경비",
+      "point": [
+        680,
+        915
+      ],
+      "frame": 4,
+      "quest_actor": false,
+      "post": "모용 장원",
+      "district": "estate",
+      "character_profile": {},
+      "dialogue": [
+        [
+          "mr_guard",
+          "어서 오십시오. 교류회는 안쪽 연무정에서 열립니다."
+        ]
+      ]
+    },
+    {
+      "id": "mr_guard_east",
+      "name": "모용세가 무사",
+      "role": "정문 경비",
+      "point": [
+        870,
+        915
+      ],
+      "frame": 4,
+      "quest_actor": false,
+      "post": "모용 장원",
+      "district": "estate",
+      "character_profile": {},
+      "dialogue": [
+        [
+          "mr_guard_east",
+          "어서 오십시오. 교류회는 안쪽 연무정에서 열립니다."
+        ]
+      ]
+    }
+  ],
+  "road_centers": [],
+  "roads": []
+}

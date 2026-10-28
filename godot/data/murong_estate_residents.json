@@ -1,0 +1,106 @@
+{
+  "npcs": [
+    {
+      "id": "mr_patriarch",
+      "name": "모용경원",
+      "role": "가주",
+      "point": [
+        775,
+        310
+      ],
+      "frame": 4,
+      "quest_actor": false,
+      "post": "모용 장원",
+      "district": "estate",
+      "character_profile": {},
+      "dialogue": [
+        [
+          "mr_patriarch",
+          "찾아온 객의 사정부터 듣는 것이 집주인의 예지요."
+        ]
+      ]
+    },
+    {
+      "id": "mr_heir",
+      "name": "모용유안",
+      "role": "소가주",
+      "point": [
+        1020,
+        510
+      ],
+      "frame": 4,
+      "quest_actor": false,
+      "post": "모용 장원",
+      "district": "estate",
+      "character_profile": {},
+      "dialogue": [
+        [
+          "mr_heir",
+          "초식의 까닭을 함께 이야기할 수 있다면 좋겠습니다."
+        ]
+      ]
+    },
+    {
+      "id": "mr_guest",
+      "name": "진석우",
+      "role": "호송으로 생계를 잇는 낭인",
+      "point": [
+        480,
+        720
+      ],
+      "frame": 4,
+      "quest_actor": false,
+      "post": "모용 장원",
+      "district": "estate",
+      "character_profile": {},
+      "dialogue": [
+        [
+          "mr_guest",
+          "오늘 품일을 마치고 조금 더 닦아 볼 참이오."
+        ]
+      ],
+      "basic_portrait": "male_common_a"
+    },
+    {
+      "id": "mr_guard",
+      "name": "모용세가 무사",
+      "role": "정문 경비",
+      "point": [
+        680,
+        915
+      ],
+      "frame": 4,
+      "quest_actor": false,
+      "post": "모용 장원",
+      "district": "estate",
+      "character_profile": {},
+      "dialogue": [
+        [
+          "mr_guard",
+          "어서 오십시오. 교류회는 안쪽 연무정에서 열립니다."
+        ]
+      ]
+    },
+    {
+      "id": "mr_guard_east",
+      "name": "모용세가 무사",
+      "role": "정문 경비",
+      "point": [
+        870,
+        915
+      ],
+      "frame": 4,
+      "quest_actor": false,
+      "post": "모용 장원",
+      "district": "estate",
+      "character_profile": {},
+      "dialogue": [
+        [
+          "mr_guard_east",
+          "어서 오십시오. 교류회는 안쪽 연무정에서 열립니다."
+        ]
+      ]
+    }
+  ],
+  "services": []
+}

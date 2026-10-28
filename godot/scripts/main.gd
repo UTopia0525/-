@@ -754,7 +754,7 @@ func _input(event: InputEvent) -> void:
 				toggle_city_map()
 			get_viewport().set_input_as_handled()
 			return
-		if event.keycode == KEY_TAB and state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road"]:
+		if event.keycode == KEY_TAB and state == "explore" and exploration.area_name in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate"]:
 			toggle_city_map()
 			get_viewport().set_input_as_handled()
 		elif event.keycode == KEY_M:

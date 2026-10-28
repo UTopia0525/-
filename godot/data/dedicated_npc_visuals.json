@@ -9,5 +9,49 @@
       645,
       1232
     ]
+  },
+  "mr_patriarch": {
+    "name": "모용경원",
+    "portrait": "res://assets/portraits/murong/gyeongwon.png",
+    "sprite": "res://assets/characters/murong/family.png",
+    "sprite_region": [
+      0,
+      20,
+      591,
+      821
+    ]
+  },
+  "mr_heir": {
+    "name": "모용유안",
+    "portrait": "res://assets/portraits/murong/yuan.png",
+    "sprite": "res://assets/characters/murong/family.png",
+    "sprite_region": [
+      592,
+      21,
+      591,
+      817
+    ]
+  },
+  "mr_guard": {
+    "name": "모용세가 무사",
+    "portrait": "res://assets/portraits/murong/guard.png",
+    "sprite": "res://assets/characters/murong/family.png",
+    "sprite_region": [
+      1184,
+      0,
+      578,
+      887
+    ]
+  },
+  "mr_guard_east": {
+    "name": "모용세가 무사",
+    "portrait": "res://assets/portraits/murong/guard.png",
+    "sprite": "res://assets/characters/murong/family.png",
+    "sprite_region": [
+      1184,
+      0,
+      578,
+      887
+    ]
   }
 }

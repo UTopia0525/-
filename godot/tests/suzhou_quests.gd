@@ -54,9 +54,10 @@ func run() -> void:
  game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await process_frame
  game.options.seen.append_array(["city","dialogue","trade","battle"]);game.start_wuchang();game.exploration.load_area("suzhou");game.suzhou_quests.refresh_world();game.money=2000
  game.progress.stats={"strength":20,"agility":20,"constitution":20,"inner":20,"insight":20};game.progress.learned.append("hoeryu");game.progress.loadout=["basic_attack","basic_defense","hoeryu",""]
- check(game.suzhou_quests.quests.size()==5,"five independent quests")
+ check(game.suzhou_quests.quests.size()==6,"five civilian quests and one family exchange")
  var stats=game.progress.stats.duplicate();var inventory=game.progress.inventory.duplicate();var fame=game.progress.fame;var favor=game.progress.faction_favor.duplicate()
- for quest in game.suzhou_quests.quests:check(quest.marker_for(quest.GIVER)=="!","initial giver marker")
+ for quest in game.suzhou_quests.quests:
+  if quest.ID!="suzhou_murong":check(quest.marker_for(quest.GIVER)=="!","initial giver marker")
  await talk(q("silk").GIVER,"silk");await settle();await choose(false)
  check(q("silk").phase=="available","decline never accepts")
  for id in ["silk","sewing","rumor","quay","balance"]:

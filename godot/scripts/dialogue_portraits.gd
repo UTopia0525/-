@@ -39,6 +39,8 @@ func _init() -> void:
 		ACTORS[entry.id]={"name":entry.name,"basic_portrait":entry.basic_portrait} if entry.has("basic_portrait") else {"name":entry.name,"extra":entry.extra,"portrait":"res://assets/portraits/wuchang/"+str(entry.id).trim_prefix("wc_")+".png"}
 	for entry in JSON.parse_string(FileAccess.get_file_as_string("res://data/suzhou_residents.json")).npcs:
 		ACTORS[entry.id]={"name":entry.name,"basic_portrait":entry.basic_portrait}
+	for entry in JSON.parse_string(FileAccess.get_file_as_string("res://data/murong_estate_residents.json")).npcs:
+		ACTORS[entry.id]={"name":entry.name,"basic_portrait":entry.basic_portrait} if entry.has("basic_portrait") else {"name":entry.name,"portrait":"res://assets/portraits/murong/"+{"mr_patriarch":"gyeongwon","mr_heir":"yuan","mr_guard":"guard","mr_guard_east":"guard"}[entry.id]+".png"}
 	var qingya=JSON.parse_string(FileAccess.get_file_as_string("res://data/qingya_characters.json"))
 	for entry in qingya.npcs:
 		var actor={"name":entry.name}

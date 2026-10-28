@@ -33,7 +33,10 @@ func update_quest(id: String, stage: String, completed: Array = []) -> bool:
 	return track(id,stage,completed)
 
 func get_goal(world) -> Dictionary:
-	if world.area_name in ["suzhou","nanjing_suzhou_road"] and not quest_id.is_empty() and not quest_id.begins_with("suzhou_"):
+	if world.area_name=="murong_estate" and not quest_id.begins_with("suzhou_"):
+		for entry in world.travel_exits:
+			if entry.id=="travel:suzhou":return {"position":entry.position,"label":"소주 방면 이동","quest_title":"의뢰 안내","goal_id":entry.id,"quest_id":quest_id,"stage_id":stage_id}
+	if world.area_name in ["suzhou","nanjing_suzhou_road","murong_estate"] and not quest_id.is_empty() and not quest_id.begins_with("suzhou_"):
 		for entry in world.travel_exits:
 			if entry.id==("travel:suzhou_road" if world.area_name=="suzhou" else "travel:nanjing"):
 				return {"position":entry.position,"label":"추적 중인 의뢰를 위해 남경 방면 이동","quest_title":definitions.get(quest_id,{}).get("title","의뢰"),"quest_id":quest_id,"stage_id":stage_id,"goal_id":entry.id}

@@ -10,6 +10,7 @@ func _ready() -> void:
  game.PORTRAITS.ACTORS.sz_extortionist={"name":"나루 갈취범","portrait":"res://assets/portraits/archetypes/bandit.png"}
  for spec in JSON.parse_string(FileAccess.get_file_as_string("res://data/suzhou_quests.json")):
   var q=preload("res://scripts/suzhou_errand.gd").new();q.game=game;q.hub=self;q.data=spec;add_child(q);quests.append(q)
+ var q=preload("res://scripts/murong_quest.gd").new();q.game=game;q.hub=self;q.data=JSON.parse_string(FileAccess.get_file_as_string("res://data/murong_quest.json"));add_child(q);quests.append(q)
 func reset() -> void:
  clear_world()
  for q in quests:q.reset()
@@ -21,6 +22,11 @@ func get_quest(id: String):
  return null
 func _pick(callback: Callable) -> void:game.adventure_ui.close_menu();callback.call()
 func handle_interaction(id: String) -> bool:
+ var mq=get_quest("suzhou_murong")
+ if mq.is_target(id):mq.present();return true
+ if game.exploration.area_name=="murong_estate":
+  for n in JSON.parse_string(FileAccess.get_file_as_string("res://data/murong_estate_residents.json")).npcs:
+   if n.id==id:game.say(n.dialogue);return true
  if game.exploration.area_name!="suzhou":return false
  if id=="sz_extortionist":
   var q=get_quest("suzhou_quay")
@@ -30,7 +36,7 @@ func handle_interaction(id: String) -> bool:
  for q in quests:
   if q.phase not in ["available","completed"] and q.target()==id:topics.append([("완료 보고 · " if q.phase=="ready" else "진행 · ")+str(q.data.title),q.present])
  for q in quests:
-  if q.GIVER==id and q.phase=="available":topics.append(["의뢰 · "+str(q.data.title),q.present])
+  if q.GIVER==id and q.phase=="available" and (q.ID!="suzhou_murong" or q.eligible()):topics.append(["의뢰 · "+str(q.data.title),q.present])
   elif q.GIVER==id and q.phase not in ["completed","ready"] and q.target()!=id:topics.append(["진행 확인 · "+str(q.data.title),q.remind])
   if q.phase=="completed" and q.data.participants.has(id):post=true
  if topics.is_empty() and not post:return false
@@ -95,9 +101,9 @@ func refresh_world() -> void:
  for q in quests:key+=":"+q.phase+q.branch
  if key==signature:return
  signature=key;clear_world()
- if w.area_name!="suzhou":return
+ if w.area_name not in ["suzhou","murong_estate"]:return
  var q=get_quest("suzhou_quay")
- if q.phase=="confront":
+ if w.area_name=="suzhou" and q.phase=="confront":
   w._populate_residents([{"id":"sz_extortionist","name":"나루 갈취범","role":"행패꾼","post":"하역 마당","point":q.data.enemy_point,"frame":4,"quest_actor":true,"character_profile":{},"district":"harbor"}])
   var npc=w.ambient_nodes.back();owned.append(npc);var tag=w.occlusion_roots.pop_back();tag.reparent(npc);tag.position=Vector2.ZERO
  for npc in w.ambient_nodes:
