@@ -6,4 +6,4 @@ func _init(admitted: bool=false) -> void:
  data.admission_open=admitted
  if not admitted:
   # Closed perimeter prevents entering around the side walls as well as the gate.
-  data.terrain_blockers.append_array([[190,800,1150,30],[190,170,1150,25],[190,170,25,660],[1315,170,25,660]])
+  data.terrain_blockers.append_array(data.admission_barriers)

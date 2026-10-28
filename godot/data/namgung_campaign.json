@@ -32,7 +32,9 @@
   "reward": {
     "money": 1000,
     "elixir": "namgung_cheongcheon_pill",
-    "count": 1
+    "count": 1,
+    "faction": "namgung",
+    "favor": 30
   },
   "scenes": {
     "locked": [
@@ -147,6 +149,10 @@
       [
         "namgung_seojin",
         "집과 곳간까지 하루 만에 고칠 수는 없소. 우리가 도울 손길도 보냈으니, 그대도 그들의 이야기를 듣고 오시오."
+      ],
+      [
+        "namgung_seojin",
+        "그대가 보인 의기를 남궁은 잊지 않겠소. 문지기에게도 일러 두겠으니, 이제 외원은 편히 드나드시오."
       ]
     ],
     "return": [

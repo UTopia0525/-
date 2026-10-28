@@ -1,22 +1,22 @@
 {
   "name": "남궁세가 · 합비 본가",
   "art_size": [
-    1536,
-    1024
+    2304,
+    1536
   ],
   "world_size": [
-    4608,
-    3072
+    6912,
+    4608
   ],
   "spawn": [
-    768,
-    935
+    1152,
+    1480
   ],
   "walk_bounds": [
     24,
     24,
-    1488,
-    976
+    2256,
+    1488
   ],
   "ground_script": "res://scripts/qingya_ground.gd",
   "ground_texture": "res://assets/maps/namgung-estate/ground.png",
@@ -25,158 +25,268 @@
       "id": "main_hall",
       "prefab": "ng_main",
       "rect": [
-        525,
-        155,
-        490,
-        285
+        870,
+        125,
+        560,
+        315
       ]
     },
     {
       "id": "west_wing",
       "prefab": "ng_residence",
       "rect": [
-        245,
-        240,
-        240,
-        210
+        300,
+        460,
+        300,
+        215
       ]
     },
     {
       "id": "east_wing",
       "prefab": "ng_residence",
       "rect": [
-        1055,
-        240,
-        240,
-        210
+        1700,
+        460,
+        300,
+        215
       ]
     },
     {
       "id": "training_hall",
       "prefab": "ng_training",
       "rect": [
-        1005,
-        490,
-        310,
-        170
+        1690,
+        800,
+        365,
+        200
       ]
     },
     {
       "id": "guest_hall",
       "prefab": "ng_residence",
       "rect": [
-        225,
-        475,
-        270,
-        190
+        280,
+        790,
+        315,
+        220
       ]
     },
     {
-      "id": "rear_wall_155",
+      "id": "main_gate",
+      "prefab": "ng_gate",
+      "rect": [
+        975,
+        1150,
+        355,
+        285
+      ]
+    },
+    {
+      "id": "garden_tree_0",
+      "prefab": "tree",
+      "rect": [
+        330,
+        1240,
+        140,
+        180
+      ]
+    },
+    {
+      "id": "garden_tree_1",
+      "prefab": "tree",
+      "rect": [
+        650,
+        1240,
+        140,
+        180
+      ]
+    },
+    {
+      "id": "garden_tree_2",
+      "prefab": "tree",
+      "rect": [
+        1720,
+        1240,
+        140,
+        180
+      ]
+    },
+    {
+      "id": "garden_tree_3",
+      "prefab": "tree",
+      "rect": [
+        1940,
+        1240,
+        140,
+        180
+      ]
+    },
+    {
+      "id": "garden_tree_4",
+      "prefab": "tree",
+      "rect": [
+        400,
+        85,
+        140,
+        180
+      ]
+    },
+    {
+      "id": "garden_tree_5",
+      "prefab": "tree",
+      "rect": [
+        1840,
+        85,
+        140,
+        180
+      ]
+    },
+    {
+      "id": "west_well",
+      "prefab": "well",
+      "rect": [
+        480,
+        1335,
+        110,
+        95
+      ]
+    },
+    {
+      "id": "rear_wall_210",
       "prefab": "wall_h",
       "rect": [
-        155,
-        100,
+        210,
+        90,
         205,
-        80
+        90
       ]
     },
     {
-      "id": "rear_wall_345",
+      "id": "rear_wall_400",
       "prefab": "wall_h",
       "rect": [
+        400,
+        90,
+        205,
+        90
+      ]
+    },
+    {
+      "id": "rear_wall_590",
+      "prefab": "wall_h",
+      "rect": [
+        590,
+        90,
+        205,
+        90
+      ]
+    },
+    {
+      "id": "rear_wall_780",
+      "prefab": "wall_h",
+      "rect": [
+        780,
+        90,
+        205,
+        90
+      ]
+    },
+    {
+      "id": "rear_wall_970",
+      "prefab": "wall_h",
+      "rect": [
+        970,
+        90,
+        205,
+        90
+      ]
+    },
+    {
+      "id": "rear_wall_1160",
+      "prefab": "wall_h",
+      "rect": [
+        1160,
+        90,
+        205,
+        90
+      ]
+    },
+    {
+      "id": "rear_wall_1350",
+      "prefab": "wall_h",
+      "rect": [
+        1350,
+        90,
+        205,
+        90
+      ]
+    },
+    {
+      "id": "rear_wall_1540",
+      "prefab": "wall_h",
+      "rect": [
+        1540,
+        90,
+        205,
+        90
+      ]
+    },
+    {
+      "id": "rear_wall_1730",
+      "prefab": "wall_h",
+      "rect": [
+        1730,
+        90,
+        205,
+        90
+      ]
+    },
+    {
+      "id": "rear_wall_1920",
+      "prefab": "wall_h",
+      "rect": [
+        1920,
+        90,
+        205,
+        90
+      ]
+    },
+    {
+      "id": "west_wall_180",
+      "prefab": "wall_v",
+      "rect": [
+        200,
+        180,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "east_wall_180",
+      "prefab": "wall_v",
+      "rect": [
+        2050,
+        180,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "west_wall_345",
+      "prefab": "wall_v",
+      "rect": [
+        200,
         345,
-        100,
-        205,
-        80
-      ]
-    },
-    {
-      "id": "rear_wall_535",
-      "prefab": "wall_h",
-      "rect": [
-        535,
-        100,
-        205,
-        80
-      ]
-    },
-    {
-      "id": "rear_wall_725",
-      "prefab": "wall_h",
-      "rect": [
-        725,
-        100,
-        205,
-        80
-      ]
-    },
-    {
-      "id": "rear_wall_915",
-      "prefab": "wall_h",
-      "rect": [
-        915,
-        100,
-        205,
-        80
-      ]
-    },
-    {
-      "id": "rear_wall_1105",
-      "prefab": "wall_h",
-      "rect": [
-        1105,
-        100,
-        205,
-        80
-      ]
-    },
-    {
-      "id": "rear_wall_1295",
-      "prefab": "wall_h",
-      "rect": [
-        1295,
-        100,
-        205,
-        80
-      ]
-    },
-    {
-      "id": "west_wall_190",
-      "prefab": "wall_v",
-      "rect": [
-        145,
-        190,
         55,
         180
       ]
     },
     {
-      "id": "east_wall_190",
+      "id": "east_wall_345",
       "prefab": "wall_v",
       "rect": [
-        1340,
-        190,
-        55,
-        180
-      ]
-    },
-    {
-      "id": "west_wall_350",
-      "prefab": "wall_v",
-      "rect": [
-        145,
-        350,
-        55,
-        180
-      ]
-    },
-    {
-      "id": "east_wall_350",
-      "prefab": "wall_v",
-      "rect": [
-        1340,
-        350,
+        2050,
+        345,
         55,
         180
       ]
@@ -185,7 +295,7 @@
       "id": "west_wall_510",
       "prefab": "wall_v",
       "rect": [
-        145,
+        200,
         510,
         55,
         180
@@ -195,150 +305,170 @@
       "id": "east_wall_510",
       "prefab": "wall_v",
       "rect": [
-        1340,
+        2050,
         510,
         55,
         180
       ]
     },
     {
-      "id": "west_wall_670",
+      "id": "west_wall_675",
       "prefab": "wall_v",
       "rect": [
-        145,
-        670,
+        200,
+        675,
         55,
         180
       ]
     },
     {
-      "id": "east_wall_670",
+      "id": "east_wall_675",
       "prefab": "wall_v",
       "rect": [
-        1340,
-        670,
+        2050,
+        675,
         55,
         180
       ]
     },
     {
-      "id": "front_wall_155",
+      "id": "west_wall_840",
+      "prefab": "wall_v",
+      "rect": [
+        200,
+        840,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "east_wall_840",
+      "prefab": "wall_v",
+      "rect": [
+        2050,
+        840,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "west_wall_1005",
+      "prefab": "wall_v",
+      "rect": [
+        200,
+        1005,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "east_wall_1005",
+      "prefab": "wall_v",
+      "rect": [
+        2050,
+        1005,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "west_wall_1170",
+      "prefab": "wall_v",
+      "rect": [
+        200,
+        1170,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "east_wall_1170",
+      "prefab": "wall_v",
+      "rect": [
+        2050,
+        1170,
+        55,
+        180
+      ]
+    },
+    {
+      "id": "front_wall_210",
       "prefab": "wall_h",
       "rect": [
-        155,
-        680,
         210,
-        90
+        1280,
+        210,
+        100
       ]
     },
     {
-      "id": "front_wall_345",
+      "id": "front_wall_400",
       "prefab": "wall_h",
       "rect": [
-        345,
-        680,
+        400,
+        1280,
         210,
-        90
+        100
       ]
     },
     {
-      "id": "front_wall_920",
+      "id": "front_wall_590",
       "prefab": "wall_h",
       "rect": [
-        920,
-        680,
+        590,
+        1280,
         210,
-        90
+        100
       ]
     },
     {
-      "id": "front_wall_1110",
+      "id": "front_wall_780",
       "prefab": "wall_h",
       "rect": [
-        1110,
-        680,
+        780,
+        1280,
         210,
-        90
+        100
       ]
     },
     {
-      "id": "main_gate",
-      "prefab": "ng_gate",
+      "id": "front_wall_1330",
+      "prefab": "wall_h",
       "rect": [
-        605,
-        565,
-        330,
-        265
+        1330,
+        1280,
+        210,
+        100
       ]
     },
     {
-      "id": "garden_tree_0",
-      "prefab": "tree",
+      "id": "front_wall_1520",
+      "prefab": "wall_h",
       "rect": [
-        240,
-        785,
-        110,
-        140
+        1520,
+        1280,
+        210,
+        100
       ]
     },
     {
-      "id": "garden_tree_1",
-      "prefab": "tree",
+      "id": "front_wall_1710",
+      "prefab": "wall_h",
       "rect": [
-        430,
-        800,
-        110,
-        140
+        1710,
+        1280,
+        210,
+        100
       ]
     },
     {
-      "id": "garden_tree_2",
-      "prefab": "tree",
+      "id": "front_wall_1900",
+      "prefab": "wall_h",
       "rect": [
-        1100,
-        790,
-        110,
-        140
-      ]
-    },
-    {
-      "id": "garden_tree_3",
-      "prefab": "tree",
-      "rect": [
-        1250,
-        795,
-        110,
-        140
-      ]
-    },
-    {
-      "id": "garden_tree_4",
-      "prefab": "tree",
-      "rect": [
-        290,
-        70,
-        110,
-        140
-      ]
-    },
-    {
-      "id": "garden_tree_5",
-      "prefab": "tree",
-      "rect": [
-        1190,
-        70,
-        110,
-        140
-      ]
-    },
-    {
-      "id": "west_well",
-      "prefab": "well",
-      "rect": [
-        330,
-        820,
-        95,
-        85
+        1900,
+        1280,
+        210,
+        100
       ]
     }
   ],
@@ -429,33 +559,109 @@
       "name": "남궁세가 정문",
       "rect": [
         0,
-        760,
-        1536,
-        264
+        1380,
+        2304,
+        156
       ]
     },
     {
       "id": "court",
-      "name": "연무장·외원",
+      "name": "창천 연무장·외원",
       "rect": [
-        180,
-        420,
-        1180,
-        340
+        255,
+        450,
+        1790,
+        930
       ]
     },
     {
       "id": "halls",
       "name": "남궁 내원",
       "rect": [
-        180,
+        255,
         0,
-        1180,
-        420
+        1790,
+        450
       ]
     }
   ],
   "services": [],
   "residents": [],
-  "road_centers": []
+  "road_centers": [],
+  "admission_bounds": [
+    230,
+    175,
+    1840,
+    1260
+  ],
+  "admission_barriers": [
+    [
+      230,
+      1405,
+      1840,
+      30
+    ],
+    [
+      230,
+      175,
+      1840,
+      25
+    ],
+    [
+      230,
+      175,
+      25,
+      1260
+    ],
+    [
+      2045,
+      175,
+      25,
+      1260
+    ]
+  ],
+  "gate_approach": [
+    1020,
+    1436,
+    265,
+    55
+  ],
+  "outside_spawn": [
+    1152,
+    1485
+  ],
+  "courtyard_motif_bounds": [
+    690,
+    475,
+    930,
+    555
+  ],
+  "story_posts": {
+    "seojin": [
+      1490,
+      1455
+    ],
+    "gatekeeper": [
+      920,
+      1450
+    ],
+    "troops": [
+      [
+        1460,
+        1490
+      ],
+      [
+        1530,
+        1490
+      ],
+      [
+        1600,
+        1490
+      ],
+      [
+        1670,
+        1490
+      ]
+    ]
+  }
 }

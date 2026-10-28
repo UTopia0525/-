@@ -1,0 +1,14 @@
+{
+  "name": "남궁세가 일반 무인",
+  "portrait": "res://assets/portraits/namgung/regular-warrior.png",
+  "sprite": "res://assets/characters/namgung/regular-warrior.png",
+  "sprite_region": [
+    303,
+    101,
+    532,
+    1204
+  ],
+  "role": "문지기·일반 토벌대 공용",
+  "appearance": "흰색과 밝은 푸른색 복식, 검은 상투와 푸른 머리띠, 짙은 푸른 허리띠, 곧은 검집",
+  "policy": "남궁서진 등 고유 인물의 전용 초상화와 구분한다. 한 대화에 다른 사람으로 중복 출연시키지 않는다."
+}

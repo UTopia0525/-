@@ -208,6 +208,12 @@
       "eye_y": 300,
       "eye_to_chin": 160,
       "natural_facing": "right"
+    },
+    "res://assets/portraits/namgung/regular-warrior.png": {
+      "face_x": 545,
+      "eye_y": 245,
+      "eye_to_chin": 150,
+      "natural_facing": "left"
     }
   }
 }

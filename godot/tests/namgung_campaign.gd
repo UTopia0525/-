@@ -48,7 +48,7 @@ func run() -> void:
   var solo=sim(id,false);var aided=sim(id,true);results.append(solo);results.append(aided)
   check(aided.win and aided.support_damage>0,"middle art clears with visible support: "+id)
  print("NAMGUNG_BALANCE "+JSON.stringify(results))
- q._travel("namgung_estate",[768,935]);check(game.exploration.area_name=="namgung_estate","estate reachable")
+ q._travel("namgung_estate",[1152,1485]);check(game.exploration.area_name=="namgung_estate","estate reachable")
  check(game.exploration.regional_map.can_stand(game.exploration.player.position),"estate spawn clear")
  check(game.save_system.write_slot(1) and game.save_system.load_slot(1),"estate save/load")
  q=game.namgung_campaign
@@ -72,10 +72,15 @@ func run() -> void:
   await create_timer(.02).timeout
  await settle();check(q.phase=="report" and game.state=="explore","actual supported battle victory clears camp")
  check(game.top_hud.visible and game.exploration.camera.enabled,"exploration HUD and camera restored after battle")
- q._travel("namgung_estate",[768,935]);var money=game.money
- q.handle_interaction(q.GIVER);await settle();check(q.phase=="return" and game.money==money+1000 and game.progress.inventory[PILL]==1,"reward exactly once at dialogue end")
- q._paid();check(game.money==money+1000 and game.progress.inventory[PILL]==1,"duplicate reward blocked")
+ q._travel("namgung_estate",[1152,1485]);var money=game.money
+ q.handle_interaction(q.GIVER);await settle();check(q.phase=="return" and game.money==money+1000 and game.progress.inventory[PILL]==1 and game.progress.faction_favor.namgung==40,"reward exactly once with30favor at dialogue end")
+ check(game.exploration.regional_map.data.admission_open,"paying immediately opens existing estate without village revisit")
+ q._paid();check(game.money==money+1000 and game.progress.inventory[PILL]==1 and game.progress.faction_favor.namgung==40,"duplicate money, pill and favor blocked")
  check(game.save_system.write_slot(5) and game.save_system.load_slot(5),"paid stage save/load")
+ var legacy=game.save_system.read_slot(5);legacy.namgung_campaign.erase("favor_reward_granted");legacy.progress.faction_favor.namgung=10;legacy.world.position=[3000,2580];legacy.world.layout_version=1
+ var old_file=FileAccess.open(game.save_system.path(8),FileAccess.WRITE);old_file.store_string(JSON.stringify(legacy));old_file.close()
+ check(game.save_system.load_slot(8) and game.progress.faction_favor.namgung==40 and game.namgung_campaign.estate_open(),"old paid save gains missing favor and entry")
+ check(game.save_system.load_slot(8) and game.progress.faction_favor.namgung==40,"reloading old file does not stack favor")
  q=game.namgung_campaign;q._travel("qingya_hamlet",[900,650])
  check(q.restored() and game.exploration.ambient_nodes.any(func(n):return n.get_meta("npc_id")=="qy_ren_shoutian"),"residents return")
  check(game.exploration.objectives.all(func(o):return not str(o.id).begins_with("qingya_ruin:")),"old ruin investigations removed")
