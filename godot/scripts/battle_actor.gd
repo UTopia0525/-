@@ -27,6 +27,9 @@ func configure(is_enemy: bool, weapon: String, foot: Vector2) -> void:
 		sprite = Sprite2D.new()
 		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		add_child(sprite)
+	if not is_enemy:
+		var palette=ShaderMaterial.new();palette.shader=preload("res://shaders/hero_cloth_palette.gdshader");sprite.material=palette
+	else:sprite.material=null
 	var sheet: Texture2D = load("res://assets/battle/enemy-poses.png" if is_enemy else "res://assets/battle/premium/hero-jade-poses.png")
 	var metadata: Dictionary
 	if is_enemy: metadata = JSON.parse_string(FileAccess.get_file_as_string("res://assets/battle/frames.json")).enemy

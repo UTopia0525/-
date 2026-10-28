@@ -23,6 +23,7 @@ func run() -> void:
  var initial=b.grid.units[0].position;b.commit("move",initial+Vector2i.RIGHT)
  await create_timer(.025).timeout
  check(is_instance_valid(b.player_actor.walker) and not b.player_actor.sprite.visible,"movement uses articulated walking layer")
+ check(b.player_actor.walker.pieces.all(func(part):return part.sprite.material==b.player_actor.sprite.material),"walking retains the same costume palette")
  await wait_player();check(b.grid.units[0].position==initial+Vector2i.RIGHT,"live movement updates model and actor")
  var old=b.grid.units[0].gauge;b.select_skill("hoeryu");check(b.grid.units[0].gauge==old,"selection spends nothing")
  check(b.metrics.text.contains("행동력 50"),"HUD shows actual action cost")
