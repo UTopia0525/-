@@ -273,5 +273,27 @@
       986
     ],
     "group": "취월루 전용"
+  },
+  {
+    "name": "탁문호",
+    "texture": "res://assets/characters/cuiyue/tak-munho.png",
+    "region": [
+      129,
+      9,
+      785,
+      1516
+    ],
+    "group": "취월루 사건 전용"
+  },
+  {
+    "name": "은소월",
+    "texture": "res://assets/characters/cuiyue/eunsowol.png",
+    "region": [
+      172,
+      43,
+      742,
+      1481
+    ],
+    "group": "취월루 사건 전용"
   }
 ]

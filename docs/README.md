@@ -102,4 +102,6 @@
 
 항주 일반 의뢰5종: [진행·보수·전체 대화·소길의 짝사랑](quests/hangzhou.md). `hangzhou_quests.gd`/`hangzhou_errand.gd`, 기존 주민16명 재사용.
 
-취월루 후속 사건: [공개 장면·개방 조건·전투 배경안](quests/cuiyue-incident-proposal.md). 이야기/미술 준비 단계이며 실제 사건은 미연결, 단독 면담 원고는 저장소 밖 제작자용 문서에 보관한다.
+취월루 후속 사건: [공개 장면·개방 조건·전투 배경안](quests/cuiyue-incident-proposal.md). 초기 기획 기록이며, 현재는 아래 구현 문서와 게임 데이터가 우선한다.
+
+취월루 후속 사건 구현: [네 선행 조건·제압전·남경 접점 대화·보상·실제 화면](quests/cuiyue-incident.md). 이전 기획안보다 우선하며 `cuiyue_incident.gd`/`cuiyue_incident.json`이 현재 원본이다.

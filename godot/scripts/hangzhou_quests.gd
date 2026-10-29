@@ -43,3 +43,13 @@ func refresh_world() -> void:
   var label=UI.label(npc,mark,Rect2(-40,-w.Metrics.CITIZEN_HEIGHT-w.Metrics.QUEST_GAP-w.Metrics.NAME_GAP-46,80,92),68,Color("ffe14b"));label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
   label.add_theme_color_override("font_outline_color",Color("2b2614"));label.add_theme_constant_override("outline_size",5);owned.append(label)
 func _process(_delta: float) -> void:refresh_world()
+
+func chatter(id: String) -> void:
+ var scene=[]
+ for q in quests:
+  if q.phase=="completed":scene.append_array(q.data.post.get(id,[]))
+ if is_instance_valid(game.cuiyue_incident) and game.cuiyue_incident.phase=="completed":scene.append_array(game.cuiyue_incident.data.post.get(id,[]))
+ if scene.is_empty():
+  for n in people.npcs:
+   if n.id==id:scene=n.dialogue;break
+ if not scene.is_empty():game.say(scene)

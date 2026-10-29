@@ -86,5 +86,27 @@
       616,
       986
     ]
+  },
+  "cy_tak": {
+    "name": "탁문호",
+    "portrait": "res://assets/portraits/cuiyue/tak-munho.png",
+    "sprite": "res://assets/characters/cuiyue/tak-munho.png",
+    "sprite_region": [
+      129,
+      9,
+      785,
+      1516
+    ]
+  },
+  "cy_eunsowol": {
+    "name": "은소월",
+    "portrait": "res://assets/portraits/cuiyue/eunsowol.png",
+    "sprite": "res://assets/characters/cuiyue/eunsowol.png",
+    "sprite_region": [
+      172,
+      43,
+      742,
+      1481
+    ]
   }
 }

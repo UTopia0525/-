@@ -26,6 +26,7 @@ var book_quest
 var silk_quest
 var suzhou_quests
 var hangzhou_quests
+var cuiyue_incident
 var nanjing_relief_quest
 var death_screen
 var duel_quest
@@ -168,6 +169,7 @@ func _ready() -> void:
 	ordinary_quests=preload("res://scripts/ordinary_quests.gd").new();ordinary_quests.game=self;add_child(ordinary_quests)
 	suzhou_quests=preload("res://scripts/suzhou_quests.gd").new();suzhou_quests.game=self;add_child(suzhou_quests)
 	hangzhou_quests=preload("res://scripts/hangzhou_quests.gd").new();hangzhou_quests.game=self;add_child(hangzhou_quests)
+	cuiyue_incident=preload("res://scripts/cuiyue_incident.gd").new();cuiyue_incident.game=self;add_child(cuiyue_incident)
 	herbalist_quest=preload("res://scripts/herbalist_quest.gd").new();herbalist_quest.game=self;add_child(herbalist_quest)
 	artisan_quest=preload("res://scripts/artisan_quest.gd").new();artisan_quest.game=self;add_child(artisan_quest)
 	duel_quest=preload("res://scripts/duel_quest.gd").new();duel_quest.game=self;add_child(duel_quest)
@@ -327,8 +329,8 @@ func _build_ending() -> void:
 	restart.pressed.connect(reset)
 	ending.hide()
 
-func regional_quests() -> Array:return [namgung_campaign,waterfront_quest,levy_quest,book_quest,cart_quest,silk_quest,nanjing_relief_quest,qingya_quest,alliance_story,herbalist_quest,artisan_quest,wages_quest,plaque_quest,grain_quest,duel_quest,inn_quest,impostor_quest]+(suzhou_quests.quests if is_instance_valid(suzhou_quests) else [])+(hangzhou_quests.quests if is_instance_valid(hangzhou_quests) else [])
-func encounters() -> Array:return [namgung_campaign.data.encounter]+qingya_quest.data.encounters+qingya_quest.data.get("legacy_encounters",[])+bandit_story.data.encounters+[waterfront_quest.data.encounter,herbalist_quest.data.encounter,duel_quest.data.encounter,inn_quest.data.encounter,impostor_quest.data.encounter]+suzhou_quests.encounters()
+func regional_quests() -> Array:return [cuiyue_incident,namgung_campaign,waterfront_quest,levy_quest,book_quest,cart_quest,silk_quest,nanjing_relief_quest,qingya_quest,alliance_story,herbalist_quest,artisan_quest,wages_quest,plaque_quest,grain_quest,duel_quest,inn_quest,impostor_quest]+(suzhou_quests.quests if is_instance_valid(suzhou_quests) else [])+(hangzhou_quests.quests if is_instance_valid(hangzhou_quests) else [])
+func encounters() -> Array:return [cuiyue_incident.data.encounter,namgung_campaign.data.encounter]+qingya_quest.data.encounters+qingya_quest.data.get("legacy_encounters",[])+bandit_story.data.encounters+[waterfront_quest.data.encounter,herbalist_quest.data.encounter,duel_quest.data.encounter,inn_quest.data.encounter,impostor_quest.data.encounter]+suzhou_quests.encounters()
 
 func reset() -> void:
 	if is_instance_valid(death_screen):death_screen.dismiss()
@@ -353,6 +355,7 @@ func reset() -> void:
 	if is_instance_valid(ordinary_quests):ordinary_quests.reset()
 	if is_instance_valid(suzhou_quests):suzhou_quests.reset()
 	if is_instance_valid(hangzhou_quests):hangzhou_quests.reset()
+	if is_instance_valid(cuiyue_incident):cuiyue_incident.reset()
 	if is_instance_valid(settings_menu): settings_menu.close_menu()
 	progress.reset()
 	chapter_number = 0
@@ -540,6 +543,7 @@ func interact() -> void:
 	if npc.is_empty():
 		return
 	if preload("res://scripts/overland_travel.gd").use(self,npc):return
+	if cuiyue_incident.handle_interaction(str(npc.id)):return
 	if hangzhou_quests.handle_interaction(str(npc.id)):return
 	if suzhou_quests.handle_interaction(str(npc.id)):return
 	if namgung_campaign.handle_interaction(str(npc.id)):return
@@ -624,8 +628,9 @@ func start_battle(encounter: Dictionary = {}) -> void:
 func _on_victory(hp: int) -> void:
 	if state!="battle":return
 	if battle.lesson.active:battle.lesson.finish()
+	var story_continues=cuiyue_incident.in_battle()
 	_finish_victory(hp)
-	adventure_ui.record_result(true)
+	adventure_ui.record_result(true,not story_continues)
 
 func _on_defeat() -> void:
 	if state!="battle":return
@@ -661,6 +666,8 @@ func enter_game_over() -> void:
 
 func _finish_victory(hp: int) -> void:
 	if state != "battle": return
+	if cuiyue_incident.in_battle():
+		cuiyue_incident.after_victory();return
 	if suzhou_quests.in_battle():
 		suzhou_quests.after_victory()
 		return

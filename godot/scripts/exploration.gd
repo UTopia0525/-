@@ -151,6 +151,8 @@ func load_area(value: String) -> void:
 	if is_instance_valid(qingya):qingya.refresh_world()
 	var campaign=get_parent().get("namgung_campaign")
 	if is_instance_valid(campaign):campaign.refresh_world()
+	var incident=get_parent().get("cuiyue_incident")
+	if is_instance_valid(incident):incident.refresh_world()
 	camera.set_map_bounds(map_bounds)
 	camera.snap_to_player()
 

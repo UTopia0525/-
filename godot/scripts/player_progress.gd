@@ -14,7 +14,7 @@ var inventory: Dictionary
 var consumed: Dictionary
 var manual_definitions: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/martial_manuals.json"))
 var manuals: Dictionary = {}
-const FACTIONS = {"murim_alliance":"무림맹","namgung":"남궁세가","murong":"모용세가"}
+const FACTIONS = {"haomun":"하오문","murim_alliance":"무림맹","namgung":"남궁세가","murong":"모용세가"}
 const FAVOR_MAX=100
 var faction_favor: Dictionary = {}
 var known_factions: Array = []

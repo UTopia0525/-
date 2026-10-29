@@ -134,7 +134,7 @@ func set_filter(value: String) -> void:
 	for quest in game.regional_quests():
 		var quest_status: String=quest.status()
 		if (filter=="active" and quest_status in ["active","ready"]) or filter==quest_status:
-			add_quest_row(quest.ID,quest_status,quest.stage(),"항주 · 일반 의뢰" if quest.ID.begins_with("hangzhou_") else "모용세가 · 교류" if quest.ID=="suzhou_murong" else "소주 · 일반 의뢰" if quest.ID.begins_with("suzhou_") else "메인 이야기" if quest.ID==game.alliance_story.ID else "남경 · 일반 의뢰" if quest.ID in [game.waterfront_quest.ID,game.levy_quest.ID,game.book_quest.ID,game.cart_quest.ID,game.silk_quest.ID] else "남경 · 구휼 사건" if quest.ID==game.nanjing_relief_quest.ID else "산촌 · 일반 의뢰" if quest.ID==game.qingya_quest.ID else "무창 · 일반 의뢰")
+			add_quest_row(quest.ID,quest_status,quest.stage(),"항주 · 사건" if quest.ID=="cuiyue_incident" else "항주 · 일반 의뢰" if quest.ID.begins_with("hangzhou_") else "모용세가 · 교류" if quest.ID=="suzhou_murong" else "소주 · 일반 의뢰" if quest.ID.begins_with("suzhou_") else "메인 이야기" if quest.ID==game.alliance_story.ID else "남경 · 일반 의뢰" if quest.ID in [game.waterfront_quest.ID,game.levy_quest.ID,game.book_quest.ID,game.cart_quest.ID,game.silk_quest.ID] else "남경 · 구휼 사건" if quest.ID==game.nanjing_relief_quest.ID else "산촌 · 일반 의뢰" if quest.ID==game.qingya_quest.ID else "무창 · 일반 의뢰")
 	var story=game.bandit_story
 	if story.stage!="dormant":
 		var state: String="completed" if story.stage=="completed" else "active"

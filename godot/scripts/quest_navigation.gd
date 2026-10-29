@@ -33,6 +33,7 @@ func update_quest(id: String, stage: String, completed: Array = []) -> bool:
 	return track(id,stage,completed)
 
 func get_goal(world) -> Dictionary:
+	if quest_id=="cuiyue_incident":return get_parent().cuiyue_incident.goal(world)
 	if quest_id.begins_with("hangzhou_"):
 		var q=get_parent().hangzhou_quests.get_quest(quest_id)
 		if is_instance_valid(q):return q.goal(world)
