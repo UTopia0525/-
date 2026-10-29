@@ -26,7 +26,7 @@
     "ai": {
       "style": "adaptive"
     },
-    "defeat_outcome": "death",
+    "defeat_outcome": "nonlethal",
     "premium_background": "res://assets/battle/premium/cuiyue-hall.png",
     "field": {
       "width": 7,
@@ -159,7 +159,7 @@
       ],
       [
         "cy_eunsowol",
-        "다친 자 하나를 돌려보내는 것과, 시신 하나를 보내는 것은 다르지요. 남은 뒷일은 제가 맡겠습니다."
+        "이곳에서 목숨을 거두는 일은 소란을 가라앉히는 것과는 다르지요. 남은 뒷일은 제가 맡겠습니다."
       ],
       [
         "cy_eunsowol",
@@ -214,6 +214,24 @@
       [
         "cy_eunsowol",
         "남경에서 소전이를 도와주신 일도, 오늘 채령이를 지켜 주신 일도 잊지 않겠습니다. 저희도 그 은혜를 기억할게요."
+      ]
+    ],
+    "player_defeated": [
+      [
+        "cy_tak",
+        "그 정도 솜씨로 남의 일에 끼어든 것이냐? 비켜라. 아직 볼일이 남았다."
+      ],
+      [
+        "hero",
+        "크윽…… 아직 끝나지 않았소."
+      ],
+      [
+        "cy_eunsowol",
+        "그만두세요. 물러선 사람에게까지 칼을 겨누는 것은 제 집에서 허락하지 않겠습니다."
+      ],
+      [
+        "cy_dancer",
+        "도 소협, 더 일어나지 마세요. 누주께서 오셨어요."
       ]
     ]
   },

@@ -635,6 +635,10 @@ func _on_victory(hp: int) -> void:
 func _on_defeat() -> void:
 	if state!="battle":return
 	battle.lesson.stop()
+	if cuiyue_incident.in_battle():
+		adventure_ui.record_result(false,false)
+		cuiyue_incident.after_defeat()
+		return
 	if preload("res://scripts/combat_outcome.gd").defeat_policy(battle.encounter)=="death":
 		adventure_ui.record_result(false,false)
 		enter_game_over()

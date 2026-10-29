@@ -84,13 +84,31 @@ func run() -> void:
  var legacy=game.save_system.read_slot(1);legacy.erase("cuiyue_incident")
  var f=FileAccess.open(game.save_system.path(4),FileAccess.WRITE);f.store_string(JSON.stringify(legacy));f.close()
  check(game.save_system.load_slot(4) and event.phase=="dormant","old save loads without new state")
- # Real F entry starts once, then loss uses the normal death/title path.
+ # Real F entry starts once; loss is interrupted by the owner and rejoins the same story.
  var saved=FileAccess.get_file_as_string(game.save_system.path(1))
  var portal=w.travel_exits.filter(func(e):return e.id=="travel:hall_entry")[0]
  w.player.position=portal.position;w.player.stop();await frames();await press_f();await frames()
  check(event.phase=="confront","eligible revisit through F triggers")
- await drain_to("battle");game.battle.cancel();game._on_defeat()
- check(game.state=="game_over" and not game.save_system.write_slot(5),"loss is death, not retry")
- check(saved==FileAccess.get_file_as_string(game.save_system.path(1)),"death preserves previous save")
+ await drain_to("battle")
+ var b=game.battle;b.animation_time=.01
+ var deadline=Time.get_ticks_msec()+6000
+ while not b.awaiting_player and Time.get_ticks_msec()<deadline:await create_timer(.02).timeout
+ b.grid.units[0].position=Vector2i(2,2);b.grid.units[1].position=Vector2i(3,2)
+ b.grid.units[0].hp=1;b.player_hp=1;b.grid.units[0].gauge=100;b.grid.units[1].gauge=100
+ while game.state=="battle" and Time.get_ticks_msec()<deadline:
+  if b.awaiting_player and not b.busy:b.commit("wait")
+  await create_timer(.02).timeout
+ check(b.player_hp==0,"real enemy strike causes loss")
+ check(game.state=="story" and event.phase=="aftermath" and not game.save_system.write_slot(5),"loss enters rescue dialogue, save remains blocked")
+ check(not game.death_screen.visible and not game.adventure_ui.window.visible,"loss shows neither death nor result popup")
+ check(game.dialogue_lines==event.data.scenes.player_defeated,"loss has dedicated rescue lines")
+ check(game.progress.favor_for("haomun")==0,"rescue gives no early reward")
+ check(saved==FileAccess.get_file_as_string(game.save_system.path(1)),"rescue preserves previous save")
+ await drain_to("private")
+ check(JSON.stringify(game.dialogue_lines).contains("육소전"),"loss rejoins private Nanjing contact conversation")
+ await drain_to("completed");await frames()
+ check(game.state=="explore" and game.progress.favor_for("haomun")==20,"loss finishes with same one-time favor")
+ event._complete();check(game.progress.favor_for("haomun")==20,"loss reward cannot duplicate")
+ check(game.save_system.write_slot(5) and game.save_system.load_slot(5),"loss completion saves and restores")
  game.reset();await frames();check(event.phase=="dormant","new game resets event")
  game.queue_free();await process_frame;print("CUIYUE_INCIDENT: "+("FAIL" if failed else "PASS"));quit(1 if failed else 0)

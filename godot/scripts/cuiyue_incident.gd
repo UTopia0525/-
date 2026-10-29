@@ -46,10 +46,14 @@ func _fight() -> void:
  phase="battle";track();game.start_battle(data.encounter)
 func in_battle() -> bool:return phase=="battle"
 func after_victory() -> void:
+ _after_battle(data.scenes.defeated)
+func after_defeat() -> void:
+ _after_battle(data.scenes.player_defeated)
+func _after_battle(lines: Array) -> void:
  if phase!="battle":return
  phase="aftermath";game.battle.cancel();game.battle.hide();game.state="story"
  var w=game.exploration;w.show();w.camera.enabled=true;w.camera.snap_to_player();game.top_hud.show();game.bottom_hint.hide()
- refresh_world();track();w.camera.position=Vector2(-100,-300);w.camera.snap_to_player();game.music.play_track("dock");game.say(data.scenes.defeated,_warn)
+ refresh_world();track();w.camera.position=Vector2(-100,-300);w.camera.snap_to_player();game.music.play_track("dock");game.say(lines,_warn)
 func _warn() -> void:
  if phase!="aftermath":return
  refresh_world();game.say(data.scenes.warning,_private)
