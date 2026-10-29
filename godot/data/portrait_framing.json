@@ -232,6 +232,24 @@
       "eye_y": 305,
       "eye_to_chin": 180,
       "natural_facing": "left"
+    },
+    "res://assets/portraits/cuiyue/seol-geumran.png": {
+      "face_x": 570,
+      "eye_y": 284,
+      "eye_to_chin": 163,
+      "natural_facing": "right"
+    },
+    "res://assets/portraits/cuiyue/baek-soa.png": {
+      "face_x": 451,
+      "eye_y": 285,
+      "eye_to_chin": 155,
+      "natural_facing": "left"
+    },
+    "res://assets/portraits/cuiyue/hong-chaeryeong.png": {
+      "face_x": 575,
+      "eye_y": 319,
+      "eye_to_chin": 150,
+      "natural_facing": "right"
     }
   }
 }

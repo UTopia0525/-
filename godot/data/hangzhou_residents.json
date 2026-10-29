@@ -18,7 +18,7 @@
       "character_profile": {
         "background": "상점가 약재점을 운영한다. 유흥가 손님에게도 과장된 보약을 권하지 않는다.",
         "personality": "실용적이며 손님을 재촉하지 않는다.",
-        "relations": "나루와 상점가의 물건을 거래한다.",
+        "relations": "서호 유람객의 상비약을 팔며 오계향의 객잔에 약을 보낸다.",
         "speech_habit": "손님 사정을 먼저 살핀다.",
         "smalltalk": "항주 구경에 밤을 새우셨습니까? 좋은 술과 좋은 약도 쉬어 가는 때를 대신해 주지는 않지요."
       },
@@ -55,7 +55,7 @@
       "character_profile": {
         "background": "배의 쇠붙이와 병장기를 함께 손보는 장인. 겉치레보다 내구성을 따진다.",
         "personality": "실용적이며 손님을 재촉하지 않는다.",
-        "relations": "나루와 상점가의 물건을 거래한다.",
+        "relations": "곽진복에게 취월루 보관대와 금속 장식 수리를 의뢰받는다.",
         "speech_habit": "손님 사정을 먼저 살핀다.",
         "smalltalk": "주루의 번쩍이는 난간도 누군가는 못을 박아야 하지요. 병장기도 보기 전에 손에 맞는지부터 살펴보시오."
       },
@@ -73,6 +73,316 @@
         454
       ],
       "service_id": "city_artisan"
+    },
+    {
+      "id": "hz_boatman",
+      "name": "노경수",
+      "age": 58,
+      "gender": "남",
+      "role": "뱃사공",
+      "post": "뱃사공",
+      "point": [
+        500,
+        300
+      ],
+      "frame": 6,
+      "district": "lake",
+      "basic_portrait": "male_elder",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "서호에서 수십 년 유람객을 태웠다. 옷차림으로 손님을 가르지 않으며 시에는 소질이 없다.",
+        "personality": "서호에서 수십 년 유람객을 태웠다. 옷차림으로 손님을 가르지 않으며 시에는 소질이 없다.",
+        "relations": "뱃삯 대신 시를 주려던 유정백과 서로 놀리는 사이.",
+        "speech_habit": "직업과 생활에 관한 이야기를 한다.",
+        "smalltalk": "배를 타실 때는 발밑부터 보십시오. 서호가 곱다고 물까지 얕은 것은 아니오."
+      },
+      "dialogue": [
+        [
+          "hz_boatman",
+          "배를 타실 때는 발밑부터 보십시오. 서호가 곱다고 물까지 얕은 것은 아니오."
+        ],
+        [
+          "hz_boatman",
+          "유 서생이 뱃삯 대신 시를 주겠다더군. 시로는 삿대를 고칠 수 없다고 했지요."
+        ],
+        [
+          "hz_boatman",
+          "소주 쪽 물길을 찾으시면 북쪽 나루로 가시오. 호수 구경과 먼 길 채비는 다른 법이니."
+        ]
+      ]
+    },
+    {
+      "id": "hz_fishseller",
+      "name": "심옥분",
+      "age": 44,
+      "gender": "여",
+      "role": "생선 장수",
+      "post": "생선 장수",
+      "point": [
+        1495,
+        697
+      ],
+      "frame": 5,
+      "district": "market",
+      "basic_portrait": "female_common_a",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "새벽 어획물을 객잔과 취월루에 납품한다. 말이 빠르고 계산이 정확하다.",
+        "personality": "새벽 어획물을 객잔과 취월루에 납품한다. 말이 빠르고 계산이 정확하다.",
+        "relations": "오계향과 설금란에게 생선을 납품하며 신용을 인정받는다.",
+        "speech_habit": "직업과 생활에 관한 이야기를 한다.",
+        "smalltalk": "눈이 맑고 아가미가 붉어야 좋은 생선이지요. 등불 아래 반짝인다고 다 싱싱한 건 아니에요."
+      },
+      "dialogue": [
+        [
+          "hz_fishseller",
+          "눈이 맑고 아가미가 붉어야 좋은 생선이지요. 등불 아래 반짝인다고 다 싱싱한 건 아니에요."
+        ],
+        [
+          "hz_fishseller",
+          "취월루 설 관리인과는 값 때문에 티격태격해도 날짜를 어긴 적은 없어요. 믿음이 있어야 큰 상도 차리지요."
+        ],
+        [
+          "hz_fishseller",
+          "밤새 잔치를 했다더니 오늘은 또 연회를 잡았답니다. 저는 그 말만 들으면 생선이 몇 마리 필요한지부터 세요."
+        ]
+      ]
+    },
+    {
+      "id": "hz_silkowner",
+      "name": "전문상",
+      "age": 36,
+      "gender": "남",
+      "role": "포목상",
+      "post": "포목상",
+      "point": [
+        1330,
+        697
+      ],
+      "frame": 7,
+      "district": "market",
+      "basic_portrait": "male_common_b",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "소주 비단을 취급한다. 옷소매가 늘 말끔하며 외상을 거절하지 못한다.",
+        "personality": "소주 비단을 취급한다. 옷소매가 늘 말끔하며 외상을 거절하지 못한다.",
+        "relations": "홍채령의 공연 의상용 비단을 거래한다.",
+        "speech_habit": "직업과 생활에 관한 이야기를 한다.",
+        "smalltalk": "소주에서 온 비단입니다. 같은 빛깔이라도 등불 아래와 햇빛 아래가 다르니 펼쳐 보시지요."
+      },
+      "dialogue": [
+        [
+          "hz_silkowner",
+          "소주에서 온 비단입니다. 같은 빛깔이라도 등불 아래와 햇빛 아래가 다르니 펼쳐 보시지요."
+        ],
+        [
+          "hz_silkowner",
+          "홍채령 낭자는 무대에서 잘 보이는 색만 찾습니다. 묵은 비단을 권했다가는 눈치가 어찌나 빠른지."
+        ],
+        [
+          "hz_silkowner",
+          "외상 장부가 길다고 장사가 잘되는 건 아니더군요. 제 소매처럼 장부도 말끔하면 좋으련만."
+        ]
+      ]
+    },
+    {
+      "id": "hz_innkeeper",
+      "name": "오계향",
+      "age": 52,
+      "gender": "여",
+      "role": "객잔 주인",
+      "post": "객잔 주인",
+      "point": [
+        650,
+        705
+      ],
+      "frame": 5,
+      "district": "inn",
+      "basic_portrait": "female_innkeeper",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "유람객에게 친절하나 일꾼을 함부로 대하는 손님은 받지 않는다.",
+        "personality": "유람객에게 친절하나 일꾼을 함부로 대하는 손님은 받지 않는다.",
+        "relations": "심옥분의 생선을 사고 두청하에게 상비약을 구한다.",
+        "speech_habit": "직업과 생활에 관한 이야기를 한다.",
+        "smalltalk": "편히 쉬실 곳을 찾으십니까? 큰길에서는 조금 물러난 방이 밤에 덜 시끄럽지요."
+      },
+      "dialogue": [
+        [
+          "hz_innkeeper",
+          "편히 쉬실 곳을 찾으십니까? 큰길에서는 조금 물러난 방이 밤에 덜 시끄럽지요."
+        ],
+        [
+          "hz_innkeeper",
+          "종업원에게 큰소리를 치는 손님은 받지 않아요. 은전이 잠까지 대신 자 주는 건 아니니까요."
+        ],
+        [
+          "hz_innkeeper",
+          "심옥분네 생선은 믿을 만하지요. 손님상에 낼 것을 두고 값을 지나치게 깎지는 않습니다."
+        ]
+      ],
+      "sprite_texture": "res://assets/characters/wuchang-residents.png",
+      "sprite_region": [
+        1220,
+        48,
+        243,
+        448
+      ]
+    },
+    {
+      "id": "hz_clerk",
+      "name": "장문필",
+      "age": 31,
+      "gender": "남",
+      "role": "관아 아전",
+      "post": "관아 아전",
+      "point": [
+        1415,
+        195
+      ],
+      "frame": 7,
+      "district": "government",
+      "basic_portrait": "male_young",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "시장 영업과 운송 문서를 담당한다. 깐깐하지만 부당한 돈을 받지 않는다.",
+        "personality": "시장 영업과 운송 문서를 담당한다. 깐깐하지만 부당한 돈을 받지 않는다.",
+        "relations": "시장 상인과 운송인의 서류를 다룬다.",
+        "speech_habit": "직업과 생활에 관한 이야기를 한다.",
+        "smalltalk": "운송 문서는 받는 이와 수량을 함께 적으셔야 합니다. 도장만 찍었다고 끝나는 것이 아닙니다."
+      },
+      "dialogue": [
+        [
+          "hz_clerk",
+          "운송 문서는 받는 이와 수량을 함께 적으셔야 합니다. 도장만 찍었다고 끝나는 것이 아닙니다."
+        ],
+        [
+          "hz_clerk",
+          "설명이 길다고들 하시지만, 한 줄 빠뜨리고 두 번 오시는 것보다는 낫지 않겠습니까."
+        ],
+        [
+          "hz_clerk",
+          "서류에 밝지 않으시면 제게 물으십시오. 대신 써 드리는 데 따로 돈을 받지는 않습니다."
+        ]
+      ]
+    },
+    {
+      "id": "hz_farmer",
+      "name": "허복례",
+      "age": 63,
+      "gender": "여",
+      "role": "채소 장수",
+      "post": "채소 장수",
+      "point": [
+        1200,
+        1130
+      ],
+      "frame": 5,
+      "district": "homes",
+      "basic_portrait": "female_elder",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "근교에서 채소와 연근을 가져온다. 허리는 굽어도 목소리는 크다.",
+        "personality": "근교에서 채소와 연근을 가져온다. 허리는 굽어도 목소리는 크다.",
+        "relations": "마소진에게 국수에 쓸 채소를 납품한다.",
+        "speech_habit": "직업과 생활에 관한 이야기를 한다.",
+        "smalltalk": "오늘 아침에 캔 연근이오. 진흙은 묻어도 속까지 묵은 물건은 아니지."
+      },
+      "dialogue": [
+        [
+          "hz_farmer",
+          "오늘 아침에 캔 연근이오. 진흙은 묻어도 속까지 묵은 물건은 아니지."
+        ],
+        [
+          "hz_farmer",
+          "항주는 물가가 어찌나 센지, 채소 팔아 손주 과자 한 봉 사면 주머니가 도로 가벼워져."
+        ],
+        [
+          "hz_farmer",
+          "마소진네 국수에 넣을 푸성귀도 내가 가져오지. 일꾼들 그릇은 든든해야 한다고 꼭 좋은 걸 고르더구먼."
+        ]
+      ],
+      "sprite_texture": "res://assets/characters/wuchang-residents.png",
+      "sprite_region": [
+        860,
+        575,
+        202,
+        401
+      ]
+    },
+    {
+      "id": "hz_scholar",
+      "name": "유정백",
+      "age": 25,
+      "gender": "남",
+      "role": "서생",
+      "post": "서생",
+      "point": [
+        500,
+        490
+      ],
+      "frame": 7,
+      "district": "lake",
+      "basic_portrait": "male_common_a",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "과거 공부를 핑계로 항주에 머문다. 허세가 있으나 숙박비가 늘 걱정이다.",
+        "personality": "과거 공부를 핑계로 항주에 머문다. 허세가 있으나 숙박비가 늘 걱정이다.",
+        "relations": "노경수에게 뱃삯 대신 시를 내밀었다가 거절당했다.",
+        "speech_habit": "직업과 생활에 관한 이야기를 한다.",
+        "smalltalk": "서호를 보고도 시 한 수 떠오르지 않는다면 선비라 하겠습니까. 다만 지금은 배가 조금 고파서 말이지요."
+      },
+      "dialogue": [
+        [
+          "hz_scholar",
+          "서호를 보고도 시 한 수 떠오르지 않는다면 선비라 하겠습니까. 다만 지금은 배가 조금 고파서 말이지요."
+        ],
+        [
+          "hz_scholar",
+          "노 뱃사공은 제 시보다 뱃삯이 먼저라더군요. 틀린 말이 아니라 더 할 말이 없었습니다."
+        ],
+        [
+          "hz_scholar",
+          "경치는 머무는 값을 받지 않는데 객잔은 그렇지 않으니, 내일은 정말 글공부를 해야겠습니다."
+        ]
+      ]
+    },
+    {
+      "id": "hz_noodles",
+      "name": "마소진",
+      "age": 33,
+      "gender": "여",
+      "role": "국수 장수",
+      "post": "국수 장수",
+      "point": [
+        820,
+        635
+      ],
+      "frame": 5,
+      "district": "inn",
+      "basic_portrait": "female_common_b",
+      "quest_actor": false,
+      "character_profile": {
+        "background": "밤에 취월루 일을 마친 사람들이 찾는 국수 노점을 운영한다. 사정을 캐묻지 않고 국물을 더 담는다.",
+        "personality": "밤에 취월루 일을 마친 사람들이 찾는 국수 노점을 운영한다. 사정을 캐묻지 않고 국물을 더 담는다.",
+        "relations": "방소길과 백소아가 단골이며 허복례의 채소를 쓴다.",
+        "speech_habit": "직업과 생활에 관한 이야기를 한다.",
+        "smalltalk": "뜨거우니 천천히 드세요. 밤길을 걸으셨으면 속부터 덥히셔야지요."
+      },
+      "dialogue": [
+        [
+          "hz_noodles",
+          "뜨거우니 천천히 드세요. 밤길을 걸으셨으면 속부터 덥히셔야지요."
+        ],
+        [
+          "hz_noodles",
+          "취월루 소길이와 소아 낭자가 일이 끝나면 들러요. 여기서는 주문보다 한숨이 먼저 나올 때도 있지요."
+        ],
+        [
+          "hz_noodles",
+          "허 할머니가 가져온 푸성귀예요. 오늘은 연근도 좋다기에 조금 샀습니다."
+        ]
+      ]
     }
   ],
   "services": [

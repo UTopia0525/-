@@ -97,3 +97,5 @@
 - [탐험 캐릭터 전체23종·주인공 무기/방향 비교](characters/exploration-sprite-comparison.md)
 
 항주 취월루: [실내 구성·F 출입·실제 화면](cities/cuiyue-hall.md). 단일 연회장과 독립 가구/충돌/Y정렬, 저장·지도·의뢰 출구 안내.
+
+항주·취월루 주민: [16명 설정·대화·전용3인·배치 화면](characters/hangzhou-residents.md).

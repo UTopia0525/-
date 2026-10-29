@@ -17,7 +17,7 @@ func run() -> void:
  check(not w.path_to(w.city_point([1270,930])).is_empty(),"canal end reachable")
  await travel("travel:hangzhou");check(w.area_name=="hangzhou","F enters Hangzhou")
  check(w.map_bounds.size==Vector2(5632,4096),"size between Nanjing and Suzhou")
- check(w.ambient_nodes.size()==2 and w.city_data.services.size()==2,"two reused commercial NPCs; no instructor")
+ check(w.ambient_nodes.size()==10 and w.city_data.services.size()==2,"two reused commercial NPCs; no instructor")
  check(not w.can_stand(w.city_point([200,650])),"lake not walkable")
  for o in w.city_data.objects:
   if not str(o.prefab).begins_with("hz_"):continue
@@ -27,7 +27,7 @@ func run() -> void:
   var a=w.city_point(road.points[0]);var b=w.city_point(road.points[1])
   for i in range(1,20):check(w.can_stand(a.lerp(b,i/20.0)),"clear street "+road.id)
  check(not w.city_data.prefabs.has("hz_martial"),"no martial school")
- for npc in w.ambient_nodes:
+ for npc in w.ambient_nodes.filter(func(n):return not str(n.get_meta("service_id","")).is_empty()):
   var path=w.path_to(npc.position,true);check(not path.is_empty(),"service NPC reachable")
   if path.is_empty():continue
   w.player.position=path[-1];w.player.stop();await physics_frame;game.interact()

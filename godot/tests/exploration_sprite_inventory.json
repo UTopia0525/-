@@ -240,5 +240,38 @@
       803
     ],
     "group": "인물·세가 전용"
+  },
+  {
+    "name": "설금란",
+    "texture": "res://assets/characters/cuiyue/residents.png",
+    "region": [
+      94,
+      78,
+      434,
+      908
+    ],
+    "group": "취월루 전용"
+  },
+  {
+    "name": "백소아",
+    "texture": "res://assets/characters/cuiyue/residents.png",
+    "region": [
+      570,
+      96,
+      440,
+      890
+    ],
+    "group": "취월루 전용"
+  },
+  {
+    "name": "홍채령",
+    "texture": "res://assets/characters/cuiyue/residents.png",
+    "region": [
+      1056,
+      66,
+      442,
+      920
+    ],
+    "group": "취월루 전용"
   }
 ]

@@ -23,8 +23,8 @@ func run() -> void:
 	await travel("travel:hall_entry")
 	check(w.area_name=="cuiyue_hall","actual F enters hall")
 	check(w.map_bounds.size==Vector2(3072,2048) and w.player.display_height==140,"world and consistent character size")
-	check(w.scenery_nodes.size()==15 and w.ambient_nodes.is_empty(),"independent furnishings, no invented residents")
-	for p in [[768,560],[768,660],[768,800],[768,967],[500,550],[1035,550],[375,835],[1160,835]]:
+	check(w.scenery_nodes.size()==15 and w.ambient_nodes.size()==6,"independent furnishings and six approved residents")
+	for p in [[768,560],[768,660],[768,800],[768,967],[500,550],[1035,550],[375,835],[1160,805]]:
 		check(not w.path_to(w.city_point(p)).is_empty(),"reachable aisle "+str(p))
 	for p in [[768,410],[300,620],[1230,620],[200,920],[1300,920],[50,700],[768,180]]:
 		check(not w.can_stand(w.city_point(p)),"furniture/wall blocks "+str(p))

@@ -1,8 +1,8 @@
 # 탐험 캐릭터 비교표
 
-현재 실제 탐험에서 사용하는 도원1종과 NPC 도트22종을 중복 제거해 모았다. 대화 초상화18장과는 다른 목록이다. 같은 그림을 여러 인물이 재사용하는 경우 한 번만 실었다. 과거 보관용/현재 미사용 이미지와 전투 전용 도트는 포함하지 않는다.
+현재 실제 탐험에서 사용하는 도원1종과 NPC 도트25종을 중복 제거해 모았다. 대화 초상화18장과는 다른 목록이다. 같은 그림을 여러 인물이 재사용하는 경우 한 번만 실었다. 과거 보관용/현재 미사용 이미지와 전투 전용 도트는 포함하지 않는다.
 
-[전체23종](../../godot/screenshots/exploration-characters-all.png) · [도원 무기4종×방향4종](../../godot/screenshots/exploration-player-variants.png)
+[전체26종](../../godot/screenshots/exploration-characters-all.png) · [도원 무기4종×방향4종](../../godot/screenshots/exploration-player-variants.png)
 
 실제 `player.tscn` 렌더러와 NPC의 `min(132/영역높이,88/영역너비)` 배율을 사용해 공통2배로 확대했다. 발밑 기준선은 같으며 원본의 여백과 폭 제한은 유지했다. 카메라 줌은 제외했다.0장은 기존104 표시 규칙이라 도시보다 작지만 같은 그림을 사용한다. 비교를 위해 키를 임의로 같게 늘리지 않았다.
 
@@ -33,5 +33,8 @@
 | 21 | 모용경원 | 인물·세가 전용 |
 | 22 | 모용유안 | 인물·세가 전용 |
 | 23 | 모용세가 무사 | 인물·세가 전용 |
+| 24 | 설금란 | 취월루 전용 |
+| 25 | 백소아 | 취월루 전용 |
+| 26 | 홍채령 | 취월루 전용 |
 
 재생성: `tests/capture_exploration_sprites.gd`. NPC 영역 목록은 `tests/exploration_sprite_inventory.json`에 있으며 원본 그림을 편집하지 않고 AtlasTexture로 표시한다.

@@ -53,5 +53,38 @@
       374,
       803
     ]
+  },
+  "cy_manager": {
+    "name": "설금란",
+    "portrait": "res://assets/portraits/cuiyue/seol-geumran.png",
+    "sprite": "res://assets/characters/cuiyue/residents.png",
+    "sprite_region": [
+      94,
+      78,
+      434,
+      908
+    ]
+  },
+  "cy_pipa": {
+    "name": "백소아",
+    "portrait": "res://assets/portraits/cuiyue/baek-soa.png",
+    "sprite": "res://assets/characters/cuiyue/residents.png",
+    "sprite_region": [
+      570,
+      96,
+      440,
+      890
+    ]
+  },
+  "cy_dancer": {
+    "name": "홍채령",
+    "portrait": "res://assets/portraits/cuiyue/hong-chaeryeong.png",
+    "sprite": "res://assets/characters/cuiyue/residents.png",
+    "sprite_region": [
+      1056,
+      66,
+      442,
+      920
+    ]
   }
 }

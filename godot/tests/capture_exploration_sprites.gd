@@ -17,7 +17,7 @@ func save(view: SubViewport,path: String) -> void:
  assert(view.get_texture().get_image().save_png(path)==OK)
 func run() -> void:
  var data: Array=JSON.parse_string(FileAccess.get_file_as_string("res://tests/exploration_sprite_inventory.json"))
- var view=viewport(Vector2i(1760,1680));label(view,"탐험 캐릭터 전체 비교 · 도원 + NPC %d종" % data.size(),Rect2(20,16,1720,40),30)
+ var view=viewport(Vector2i(1760,105+int(ceil((data.size()+1)/6.0))*380+55));label(view,"탐험 캐릭터 전체 비교 · 도원 + NPC %d종" % data.size(),Rect2(20,16,1720,40),30)
  label(view,"도시 표시 기준 ×2 · 발밑 기준선 동일 · 폭 제한과 원본 여백 유지 · 카메라 줌 제외",Rect2(20,60,1720,30),20)
  for i in range(data.size()+1):
   var x=40+(i%6)*280;var y=105+(i/6)*380
