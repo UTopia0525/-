@@ -33,6 +33,10 @@ func update_quest(id: String, stage: String, completed: Array = []) -> bool:
 	return track(id,stage,completed)
 
 func get_goal(world) -> Dictionary:
+	if quest_id=="blackguild_story":return get_parent().blackguild_story.goal(world)
+	if world.area_name in ["blackguild_hall","blackguild_warehouse"] and (not quest_id.is_empty() or not facility_id.is_empty()):
+		for entry in world.travel_exits:
+			if entry.id=="travel:bg_exit":return {"position":entry.position,"label":"항주로 돌아가기","quest_title":"의뢰 안내","goal_id":entry.id,"quest_id":quest_id,"stage_id":stage_id}
 	if quest_id=="cuiyue_incident":return get_parent().cuiyue_incident.goal(world)
 	if quest_id.begins_with("hangzhou_"):
 		var q=get_parent().hangzhou_quests.get_quest(quest_id)

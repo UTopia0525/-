@@ -1,0 +1,345 @@
+[
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 690,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "adaptive",
+    "skill": "hoeryu",
+    "steps": 4,
+    "total": 101,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 690,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "adaptive",
+    "skill": "paak",
+    "steps": 4,
+    "total": 101,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 690,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "adaptive",
+    "skill": "gwanak",
+    "steps": 4,
+    "total": 101,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 690,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "adaptive",
+    "skill": "banseok",
+    "steps": 4,
+    "total": 101,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 690,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "adaptive",
+    "skill": "jungun",
+    "steps": 4,
+    "total": 101,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 12,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "basic_attack": 2,
+      "basic_defense": 2,
+      "hoepung": 2,
+      "move": 5
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "policy": "adaptive",
+    "skill": "hoeryu",
+    "steps": 17,
+    "total": 201,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 0,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 223,
+    "max_hp": 540,
+    "policy": "adaptive",
+    "skill": "paak",
+    "steps": 6,
+    "total": 201,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 204,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 5
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "policy": "adaptive",
+    "skill": "gwanak",
+    "steps": 10,
+    "total": 201,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 0,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 223,
+    "max_hp": 540,
+    "policy": "adaptive",
+    "skill": "banseok",
+    "steps": 7,
+    "total": 201,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 390,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "policy": "adaptive",
+    "skill": "jungun",
+    "steps": 6,
+    "total": 201,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 0,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 1
+    },
+    "hp": 331,
+    "max_hp": 620,
+    "policy": "adaptive",
+    "skill": "hoeryu",
+    "steps": 7,
+    "total": 251,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 0,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "basic_defense": 1,
+      "hoepung": 2,
+      "move": 1
+    },
+    "hp": 42,
+    "max_hp": 620,
+    "policy": "adaptive",
+    "skill": "paak",
+    "steps": 8,
+    "total": 251,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 0,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 3
+    },
+    "hp": 42,
+    "max_hp": 620,
+    "policy": "adaptive",
+    "skill": "gwanak",
+    "steps": 11,
+    "total": 251,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 0,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 4
+    },
+    "hp": 42,
+    "max_hp": 620,
+    "policy": "adaptive",
+    "skill": "banseok",
+    "steps": 13,
+    "total": 251,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 0,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 331,
+    "max_hp": 620,
+    "policy": "adaptive",
+    "skill": "jungun",
+    "steps": 8,
+    "total": 251,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 0,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "basic_attack": 1,
+      "move": 3
+    },
+    "hp": 670,
+    "max_hp": 700,
+    "policy": "adaptive",
+    "skill": "hoeryu",
+    "steps": 8,
+    "total": 301,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 0,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 435,
+    "max_hp": 700,
+    "policy": "adaptive",
+    "skill": "paak",
+    "steps": 8,
+    "total": 301,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 0,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 2
+    },
+    "hp": 435,
+    "max_hp": 700,
+    "policy": "adaptive",
+    "skill": "gwanak",
+    "steps": 7,
+    "total": 301,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 0,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 2
+    },
+    "hp": 435,
+    "max_hp": 700,
+    "policy": "adaptive",
+    "skill": "banseok",
+    "steps": 9,
+    "total": 301,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "enemy": "blackguild_enforcer",
+    "enemy_hp": 0,
+    "enemy_max_hp": 690,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 2
+    },
+    "hp": 170,
+    "max_hp": 700,
+    "policy": "adaptive",
+    "skill": "jungun",
+    "steps": 9,
+    "total": 301,
+    "win": true,
+    "winner": 0
+  }
+]

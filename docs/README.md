@@ -1,5 +1,7 @@
 # 작업별 색인
 
+흑도방 후속: [등불 밖의 셈·운하 창고/본당·양 노선·대화 원고](quests/blackguild-story.md).
+
 중급 영약 구현: [하오문 호의도20 이상·취월루 점소이 안내·항주 두청하 판매/아이콘/복용](systems/mid-grade-elixirs.md). 제안 기록의 자연물은 미채택.
 
 0장 보수: [귀물 인도500문·옛 수령 저장 유지](story/chapter-00-implementation.md#보수500문-변경).

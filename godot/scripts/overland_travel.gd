@@ -1,6 +1,8 @@
 extends RefCounted
-const AREAS=["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal","hangzhou","cuiyue_hall"]
+const AREAS=["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal","hangzhou","cuiyue_hall","blackguild_warehouse","blackguild_hall"]
 const LINKS={
+ "blackguild_warehouse":[{"id":"travel:bg_exit","name":"항주 운하 나루로","point":[768,950],"area":"hangzhou","arrival":[470,430]}],
+ "blackguild_hall":[{"id":"travel:bg_exit","name":"항주 거리로","point":[768,950],"area":"hangzhou","arrival":[470,520]}],
  "changsha":[{"id":"travel:road_east","name":"무창 방면 산길 →","point":[1490,510],"area":"mountain_road","arrival":[125,1175]}],
  "mountain_road":[{"id":"travel:changsha","name":"← 장사 동쪽 농촌","point":[80,1175],"area":"changsha","arrival":[1440,510]}, {"id":"travel:wuchang","name":"↑ 무창 남쪽 농촌","point":[740,64],"area":"wuchang","arrival":[1100,1790]}],
  "alliance_office":[{"id":"travel:office_exit","name":"무림맹 외원으로","point":[256,321],"area":"wuchang","arrival":[1077,795]}],
@@ -8,7 +10,7 @@ const LINKS={
  "namgung_estate":[{"id":"travel:nanjing","name":"남경 방면 →","point":[768,1070],"area":"nanjing","arrival":[300,160]}],
  "murong_estate":[{"id":"travel:suzhou","name":"소주 방면 →","point":[768,980],"area":"suzhou","arrival":[1190,100]}],
  "cuiyue_hall":[{"id":"travel:hall_exit","name":"취월루 · 바깥으로","point":[768,967],"area":"hangzhou","arrival":[785,455]}],
- "hangzhou":[{"id":"travel:hall_entry","name":"취월루 · 들어가기","point":[785,425],"area":"cuiyue_hall","arrival":[768,900]},{"id":"travel:canal","name":"↑ 소주 방면 운하길","point":[1080,60],"area":"suzhou_hangzhou_canal","arrival":[1270,890]}],
+ "hangzhou":[{"id":"travel:bg_warehouse","name":"운하 창고 · 들어가기","point":[470,430],"area":"blackguild_warehouse","arrival":[768,900]},{"id":"travel:bg_hall","name":"흑도방 본당 · 들어가기","point":[470,520],"area":"blackguild_hall","arrival":[768,900]},{"id":"travel:hall_entry","name":"취월루 · 들어가기","point":[785,425],"area":"cuiyue_hall","arrival":[768,900]},{"id":"travel:canal","name":"↑ 소주 방면 운하길","point":[1080,60],"area":"suzhou_hangzhou_canal","arrival":[1270,890]}],
  "suzhou_hangzhou_canal":[{"id":"travel:hangzhou","name":"항주 · 북쪽 나루","point":[1270,930],"area":"hangzhou","arrival":[1080,110]},{"id":"travel:suzhou","name":"↑ 소주 남쪽 하역장","point":[600,60],"area":"suzhou","arrival":[1100,945]}],
  "suzhou":[{"id":"travel:canal","name":"남쪽 · 강남 운하길","point":[1100,990],"area":"suzhou_hangzhou_canal","arrival":[600,110]},{"id":"travel:murong","name":"태호 · 모용세가 방면","point":[1190,55],"area":"murong_estate","arrival":[768,955]},{"id":"travel:suzhou_road","name":"← 남경 방면 산길","point":[48,512],"area":"nanjing_suzhou_road","arrival":[1450,570]}],
  "nanjing_suzhou_road":[{"id":"travel:nanjing","name":"← 남경","point":[35,460],"area":"nanjing","arrival":[1470,995]},{"id":"travel:suzhou","name":"소주 →","point":[1500,570],"area":"suzhou","arrival":[85,512]}],
@@ -44,6 +46,8 @@ static func use(game,entry: Dictionary) -> bool:
 	return true
 
 static func blocked_reason(game,destination: String) -> String:
+	if destination=="blackguild_hall" and game.blackguild_story.phase not in ["audience","report","completed"]:return "문지기가 길을 막았다. 방주와 약속한 용무가 없다면 들일 수 없다고 한다."
+	if destination=="blackguild_warehouse" and game.blackguild_story.phase in ["available","fish","artisan","waiter","proposal","consult"]:return "창고는 닫혀 있다. 먼저 취월루와 거래처들의 사정을 살펴보자."
 	if game.exploration.area_name!="changsha" or destination=="changsha":return ""
 	if game.bandit_story.stage=="completed" and game.bandit_story.reward_granted:return ""
 	if game.bandit_story.stage=="report":return "도적은 물리쳤지만 아직 정 포두께 보고하지 않았다. 관아에서 보수를 받고 통행이 풀리면 떠나자."

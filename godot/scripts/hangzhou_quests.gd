@@ -7,7 +7,7 @@ func _ready() -> void:
   var q=preload("res://scripts/hangzhou_errand.gd").new();q.game=game;q.hub=self;q.data=spec;add_child(q);quests.append(q)
 func handle_interaction(id: String) -> bool:
  if game.exploration.area_name not in ["hangzhou","cuiyue_hall"]:return false
- var topics=[];var post=false
+ var topics=game.blackguild_story.topics(id) if is_instance_valid(game.blackguild_story) else [];var post=false
  for q in quests:
   if q.phase not in ["available","completed"] and q.target()==id:topics.append([("완료 보고 · " if q.phase=="ready" else "진행 · ")+str(q.data.title),q.present])
  for q in quests:
@@ -50,6 +50,7 @@ func chatter(id: String) -> void:
  for q in quests:
   if q.phase=="completed":scene.append_array(q.data.post.get(id,[]))
  if is_instance_valid(game.cuiyue_incident) and game.cuiyue_incident.phase=="completed":scene.append_array(game.cuiyue_incident.data.post.get(id,[]))
+ if is_instance_valid(game.blackguild_story) and game.blackguild_story.phase=="completed":scene.append_array(game.blackguild_story.data.post[game.blackguild_story.branch].get(id,[]))
  if scene.is_empty():
   for n in people.npcs:
    if n.id==id:scene=n.dialogue;break

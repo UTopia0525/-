@@ -1,0 +1,297 @@
+{
+  "name": "흑도방 · 본당",
+  "art_size": [
+    1536,
+    1024
+  ],
+  "world_size": [
+    3072,
+    2048
+  ],
+  "walk_bounds": [
+    85,
+    270,
+    1366,
+    715
+  ],
+  "spawn": [
+    768,
+    900
+  ],
+  "ground_script": "res://scripts/qingya_ground.gd",
+  "ground_texture": "res://assets/maps/blackguild-hall/ground.png",
+  "districts": [
+    {
+      "id": "hall",
+      "name": "흑금대청",
+      "rect": [
+        85,
+        270,
+        1366,
+        715
+      ],
+      "label": [
+        768,
+        650
+      ]
+    }
+  ],
+  "roads": [],
+  "landmarks": [],
+  "services": [],
+  "prefabs": {
+    "desk": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        29,
+        75,
+        574,
+        330
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.05,
+          0.54,
+          0.9,
+          0.4
+        ]
+      ],
+      "content_rect": [
+        0.05,
+        0.3,
+        0.9,
+        0.64
+      ]
+    },
+    "shelf": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        642,
+        10,
+        455,
+        429
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.08,
+          0.7,
+          0.84,
+          0.27
+        ]
+      ],
+      "content_rect": [
+        0.07,
+        0.05,
+        0.86,
+        0.91
+      ]
+    },
+    "bench": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        1134,
+        142,
+        568,
+        263
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.05,
+          0.5,
+          0.9,
+          0.45
+        ]
+      ],
+      "content_rect": [
+        0.06,
+        0.45,
+        0.88,
+        0.5
+      ]
+    },
+    "screen": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        59,
+        449,
+        512,
+        427
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.03,
+          0.83,
+          0.94,
+          0.14
+        ]
+      ],
+      "content_rect": [
+        0.05,
+        0.07,
+        0.9,
+        0.86
+      ]
+    },
+    "pillar": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        748,
+        444,
+        241,
+        421
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.2,
+          0.75,
+          0.6,
+          0.22
+        ]
+      ],
+      "content_rect": [
+        0.23,
+        0.05,
+        0.54,
+        0.91
+      ]
+    },
+    "lantern": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        1327,
+        454,
+        172,
+        418
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.25,
+          0.8,
+          0.5,
+          0.18
+        ]
+      ],
+      "content_rect": [
+        0.3,
+        0.06,
+        0.4,
+        0.9
+      ]
+    }
+  },
+  "objects": [
+    {
+      "id": "pillar260_340",
+      "prefab": "pillar",
+      "rect": [
+        400,
+        340,
+        60,
+        180
+      ]
+    },
+    {
+      "id": "pillar260_620",
+      "prefab": "pillar",
+      "rect": [
+        400,
+        620,
+        60,
+        180
+      ]
+    },
+    {
+      "id": "pillar1215_340",
+      "prefab": "pillar",
+      "rect": [
+        1076,
+        340,
+        60,
+        180
+      ]
+    },
+    {
+      "id": "pillar1215_620",
+      "prefab": "pillar",
+      "rect": [
+        1076,
+        620,
+        60,
+        180
+      ]
+    },
+    {
+      "id": "shelf125",
+      "prefab": "shelf",
+      "rect": [
+        125,
+        290,
+        240,
+        170
+      ]
+    },
+    {
+      "id": "desk125",
+      "prefab": "desk",
+      "rect": [
+        125,
+        650,
+        230,
+        160
+      ]
+    },
+    {
+      "id": "shelf1160",
+      "prefab": "shelf",
+      "rect": [
+        1160,
+        290,
+        240,
+        170
+      ]
+    },
+    {
+      "id": "desk1160",
+      "prefab": "desk",
+      "rect": [
+        1160,
+        650,
+        230,
+        160
+      ]
+    }
+  ],
+  "terrain_blockers": [
+    [
+      535,
+      360,
+      145,
+      80
+    ],
+    [
+      855,
+      360,
+      155,
+      80
+    ],
+    [
+      85,
+      860,
+      585,
+      125
+    ],
+    [
+      870,
+      860,
+      581,
+      125
+    ]
+  ],
+  "road_centers": []
+}

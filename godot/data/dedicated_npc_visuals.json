@@ -108,5 +108,16 @@
       666,
       1241
     ]
+  },
+  "bg_wi": {
+    "name": "위중량",
+    "portrait": "res://assets/portraits/blackguild/wijungnyang.png",
+    "sprite": "res://assets/characters/blackguild/wijungnyang.png",
+    "sprite_region": [
+      98,
+      25,
+      985,
+      1349
+    ]
   }
 }

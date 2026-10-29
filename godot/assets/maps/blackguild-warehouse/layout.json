@@ -1,0 +1,265 @@
+{
+  "name": "항주 · 운하 창고",
+  "art_size": [
+    1536,
+    1024
+  ],
+  "world_size": [
+    3072,
+    2048
+  ],
+  "walk_bounds": [
+    85,
+    270,
+    1366,
+    715
+  ],
+  "spawn": [
+    768,
+    900
+  ],
+  "ground_script": "res://scripts/qingya_ground.gd",
+  "ground_texture": "res://assets/maps/blackguild-warehouse/ground.png",
+  "districts": [
+    {
+      "id": "warehouse",
+      "name": "운송 계약 창고",
+      "rect": [
+        85,
+        270,
+        1366,
+        715
+      ],
+      "label": [
+        768,
+        650
+      ]
+    }
+  ],
+  "roads": [],
+  "landmarks": [],
+  "services": [],
+  "prefabs": {
+    "desk": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        29,
+        75,
+        574,
+        330
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.05,
+          0.54,
+          0.9,
+          0.4
+        ]
+      ],
+      "content_rect": [
+        0.05,
+        0.3,
+        0.9,
+        0.64
+      ]
+    },
+    "shelf": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        642,
+        10,
+        455,
+        429
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.08,
+          0.7,
+          0.84,
+          0.27
+        ]
+      ],
+      "content_rect": [
+        0.07,
+        0.05,
+        0.86,
+        0.91
+      ]
+    },
+    "bench": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        1134,
+        142,
+        568,
+        263
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.05,
+          0.5,
+          0.9,
+          0.45
+        ]
+      ],
+      "content_rect": [
+        0.06,
+        0.45,
+        0.88,
+        0.5
+      ]
+    },
+    "screen": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        59,
+        449,
+        512,
+        427
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.03,
+          0.83,
+          0.94,
+          0.14
+        ]
+      ],
+      "content_rect": [
+        0.05,
+        0.07,
+        0.9,
+        0.86
+      ]
+    },
+    "pillar": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        748,
+        444,
+        241,
+        421
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.2,
+          0.75,
+          0.6,
+          0.22
+        ]
+      ],
+      "content_rect": [
+        0.23,
+        0.05,
+        0.54,
+        0.91
+      ]
+    },
+    "lantern": {
+      "texture": "res://assets/maps/alliance-office/furniture.png",
+      "source": [
+        1327,
+        454,
+        172,
+        418
+      ],
+      "kind": "furniture",
+      "footprints": [
+        [
+          0.25,
+          0.8,
+          0.5,
+          0.18
+        ]
+      ],
+      "content_rect": [
+        0.3,
+        0.06,
+        0.4,
+        0.9
+      ]
+    }
+  },
+  "objects": [
+    {
+      "id": "cargo380_280",
+      "prefab": "cargo",
+      "rect": [
+        380,
+        280,
+        170,
+        180
+      ]
+    },
+    {
+      "id": "cargo1180_280",
+      "prefab": "cargo",
+      "rect": [
+        1270,
+        280,
+        170,
+        180
+      ]
+    },
+    {
+      "id": "cargo150_600",
+      "prefab": "cargo",
+      "rect": [
+        150,
+        600,
+        170,
+        180
+      ]
+    },
+    {
+      "id": "cargo1180_610",
+      "prefab": "cargo",
+      "rect": [
+        1180,
+        610,
+        170,
+        180
+      ]
+    },
+    {
+      "id": "contracts",
+      "prefab": "desk",
+      "rect": [
+        1020,
+        330,
+        230,
+        170
+      ]
+    },
+    {
+      "id": "records",
+      "prefab": "shelf",
+      "rect": [
+        105,
+        350,
+        220,
+        180
+      ]
+    }
+  ],
+  "terrain_blockers": [
+    [
+      85,
+      890,
+      580,
+      95
+    ],
+    [
+      870,
+      890,
+      581,
+      95
+    ]
+  ],
+  "road_centers": []
+}

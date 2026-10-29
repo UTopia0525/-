@@ -51,7 +51,7 @@ func capture() -> Dictionary:
 	var nodes = {"top_hud":game.top_hud, "bottom_hint":game.bottom_hint, "caption":game.story_caption, "exploration":w, "ending":game.ending, "overview":game.city_overview, "visual":game.story_visual}
 	var visibility := {}
 	for id in nodes: visibility[id] = nodes[id].visible
-	return {"schema":3, "health_revision":1, "cuiyue_incident":game.cuiyue_incident.snapshot(), "hangzhou_quests":game.hangzhou_quests.snapshot(), "suzhou_quests":game.suzhou_quests.snapshot(), "namgung_campaign":game.namgung_campaign.snapshot(), "enemy_balance_revision":1, "waterfront_quest":game.waterfront_quest.snapshot(), "levy_quest":game.levy_quest.snapshot(), "book_quest":game.book_quest.snapshot(), "cart_quest":game.cart_quest.snapshot(), "silk_quest":game.silk_quest.snapshot(), "nanjing_relief_quest":game.nanjing_relief_quest.snapshot(), "qingya_quest":game.qingya_quest.snapshot(), "plaque_quest":game.plaque_quest.snapshot(), "grain_quest":game.grain_quest.snapshot(), "wages_quest":game.wages_quest.snapshot(), "alliance_story":game.alliance_story.snapshot(), "impostor_quest":game.impostor_quest.snapshot(), "inn_quest":game.inn_quest.snapshot(), "duel_quest":game.duel_quest.snapshot(), "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
+	return {"schema":3, "health_revision":1, "blackguild_story":game.blackguild_story.snapshot(), "cuiyue_incident":game.cuiyue_incident.snapshot(), "hangzhou_quests":game.hangzhou_quests.snapshot(), "suzhou_quests":game.suzhou_quests.snapshot(), "namgung_campaign":game.namgung_campaign.snapshot(), "enemy_balance_revision":1, "waterfront_quest":game.waterfront_quest.snapshot(), "levy_quest":game.levy_quest.snapshot(), "book_quest":game.book_quest.snapshot(), "cart_quest":game.cart_quest.snapshot(), "silk_quest":game.silk_quest.snapshot(), "nanjing_relief_quest":game.nanjing_relief_quest.snapshot(), "qingya_quest":game.qingya_quest.snapshot(), "plaque_quest":game.plaque_quest.snapshot(), "grain_quest":game.grain_quest.snapshot(), "wages_quest":game.wages_quest.snapshot(), "alliance_story":game.alliance_story.snapshot(), "impostor_quest":game.impostor_quest.snapshot(), "inn_quest":game.inn_quest.snapshot(), "duel_quest":game.duel_quest.snapshot(), "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
 		"chapter":game.chapter_number, "money":game.money, "changsha_reward_revision":1, "talked_captain":game.talked_captain,
 		"world":{"layout_version":3 if w.area_name in ["mountain_road","namgung_estate"] else 2 if w.area_name=="nanjing" else 1, "area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
@@ -200,6 +200,9 @@ func validate(d) -> bool:
 	if d.schema == 3 and not game.progress.valid(d.get("progress")): return false
 	if d.has("suzhou_quests") and not game.suzhou_quests.valid(d.suzhou_quests):return false
 	if d.has("hangzhou_quests") and not game.hangzhou_quests.valid(d.hangzhou_quests):return false
+	if d.has("blackguild_story"):
+		if not game.blackguild_story.valid(d.blackguild_story):return false
+		if d.blackguild_story.phase!="available" and d.get("cuiyue_incident",{}).get("phase")!="completed":return false
 	if d.has("cuiyue_incident"):
 		if not game.cuiyue_incident.valid(d.cuiyue_incident):return false
 		if d.cuiyue_incident.phase!="dormant":
@@ -253,12 +256,12 @@ func validate(d) -> bool:
 	if d.get("state") not in ["explore", "story", "choice", "service", "battle", "end"]: return false
 	if not d.get("saved_at") is String or not is_number(d.get("money"), 0, 1000000000) or not is_number(d.get("chapter"), 0, 1): return false
 	if not d.get("talked_captain") is bool or d.get("choice") not in ["", "treasure", "rescue"]: return false
-	if d.world.get("area") not in ["dock", "deck", "changsha", "mountain_road", "wuchang", "alliance_office", "qingya_hamlet", "qingya_camp", "nanjing", "namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal","hangzhou","cuiyue_hall"]: return false
+	if d.world.get("area") not in ["dock", "deck", "changsha", "mountain_road", "wuchang", "alliance_office", "qingya_hamlet", "qingya_camp", "nanjing", "namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal","hangzhou","cuiyue_hall","blackguild_warehouse","blackguild_hall"]: return false
 	var layout_version=d.world.get("layout_version",1)
 	if not is_number(layout_version,1,3) or float(layout_version) not in [1.0,2.0,3.0]:return false
 	var pos = d.world.get("position")
 	if not pos is Array or pos.size() != 2: return false
-	var limit: Vector2={"cuiyue_hall":Vector2(3072,2048),"hangzhou":Vector2(5632,4096),"suzhou_hangzhou_canal":Vector2(3072,2048),"murong_estate":Vector2(4608,3072),"suzhou":Vector2(4608,3072),"nanjing_suzhou_road":Vector2(3840,2560),"changsha":Vector2(6144,4096),"mountain_road":(Vector2(2560,3200) if layout_version==3 else Vector2(4096,5120 if layout_version==2 else 10240)),"wuchang":Vector2(8192,7680),"alliance_office":Vector2(2048,1440),"qingya_hamlet":Vector2(4608,3072),"qingya_camp":Vector2(4608,3072),"namgung_estate":Vector2(4608,3300) if layout_version==3 else Vector2(6912,4608) if layout_version==2 else Vector2(4608,3072),"nanjing":Vector2(6144,4096) if layout_version>=2 else Vector2(4608,3072)}.get(d.world.area,Vector2(1280,720))
+	var limit: Vector2={"blackguild_hall":Vector2(3072,2048),"blackguild_warehouse":Vector2(3072,2048),"cuiyue_hall":Vector2(3072,2048),"hangzhou":Vector2(5632,4096),"suzhou_hangzhou_canal":Vector2(3072,2048),"murong_estate":Vector2(4608,3072),"suzhou":Vector2(4608,3072),"nanjing_suzhou_road":Vector2(3840,2560),"changsha":Vector2(6144,4096),"mountain_road":(Vector2(2560,3200) if layout_version==3 else Vector2(4096,5120 if layout_version==2 else 10240)),"wuchang":Vector2(8192,7680),"alliance_office":Vector2(2048,1440),"qingya_hamlet":Vector2(4608,3072),"qingya_camp":Vector2(4608,3072),"namgung_estate":Vector2(4608,3300) if layout_version==3 else Vector2(6912,4608) if layout_version==2 else Vector2(4608,3072),"nanjing":Vector2(6144,4096) if layout_version>=2 else Vector2(4608,3072)}.get(d.world.area,Vector2(1280,720))
 	if not is_number(pos[0], 0, limit.x) or not is_number(pos[1], 0, limit.y): return false
 	if d.world.get("facing") not in ["up", "down", "left", "right"] or not d.world.get("active") is bool: return false
 	var p = d.prologue
@@ -311,7 +314,8 @@ func validate(d) -> bool:
 		if not q.data.has("encounter"):continue
 		var fighting=d.get("suzhou_quests",{}).get(q.ID,{}).get("phase","")=="battle"
 		if fighting!=(d.state=="battle" and encounter_id==q.data.encounter.id):return false
-	if encounter_id not in ["", "bandit_sentry", "bandit_ringleader", "herb_ruffian", "training_student", "inn_warrior", "impostor_ma", "qingya_sentry", "qingya_chief", "nanjing_nochil", "qingya_maunpyo", "sz_quay_extortionist", "sz_training_bai", "mr_exchange", "cuiyue_tak"]: return false
+	if encounter_id not in ["", "bandit_sentry", "bandit_ringleader", "herb_ruffian", "training_student", "inn_warrior", "impostor_ma", "qingya_sentry", "qingya_chief", "nanjing_nochil", "qingya_maunpyo", "sz_quay_extortionist", "sz_training_bai", "mr_exchange", "cuiyue_tak", "blackguild_enforcer"]: return false
+	if (d.get("blackguild_story",{}).get("phase")=="battle")!=(d.state=="battle" and encounter_id=="blackguild_enforcer"):return false
 	if (d.get("cuiyue_incident",{}).get("phase")=="battle")!=(d.state=="battle" and encounter_id=="cuiyue_tak"):return false
 	for definition in game.encounters():
 		if definition.id == encounter_id: enemy_maximum = HEALTH_RULES.max_health(definition.stats)
@@ -418,6 +422,7 @@ func load_slot(slot: int) -> bool:
 	game.suzhou_quests.restore(d.get("suzhou_quests",{}))
 	game.hangzhou_quests.restore(d.get("hangzhou_quests",{}))
 	game.cuiyue_incident.restore(d.get("cuiyue_incident",{}))
+	game.blackguild_story.restore(d.get("blackguild_story",{}))
 	game.grain_quest.restore(d.get("grain_quest",{"phase":"available"}))
 	game.wages_quest.restore(d.get("wages_quest",{"phase":"available"}))
 	game.artisan_quest.restore(d.get("artisan_quest",{"phase":"available"}))
@@ -439,7 +444,7 @@ func load_slot(slot: int) -> bool:
 		var previous_layout=int(d.world.get("layout_version",1))
 		if previous_layout<2:game.exploration.player.position*=1.5
 		if previous_layout<3:game.exploration.player.position*=Vector2(1536.0/2304.0,1100.0/1536.0)
-	if d.world.area in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal","hangzhou","cuiyue_hall"]:
+	if d.world.area in ["changsha","mountain_road","wuchang","alliance_office","qingya_hamlet","qingya_camp","nanjing","namgung_estate","suzhou","nanjing_suzhou_road","murong_estate","suzhou_hangzhou_canal","hangzhou","cuiyue_hall","blackguild_warehouse","blackguild_hall"]:
 		game.exploration.player.position = game.exploration.safe_player_position(game.exploration.player.position)
 	game.exploration.player.facing = d.world.facing
 	game.exploration.player.stop()
@@ -533,7 +538,7 @@ func reward_adjustment(data: Dictionary) -> int:
 
 # Presentation metadata only: do not expose quest objectives or branch spoilers.
 func area_name(id: String) -> String:
-	return {"cuiyue_hall":"항주 · 취월루", "dock":"청류진 나루", "deck":"호송선", "changsha":"장사", "mountain_road":"장사–무창 산길", "wuchang":"무창", "alliance_office":"총무당", "qingya_hamlet":"삼거리 산촌", "qingya_camp":"청애채", "nanjing":"남경", "namgung_estate":"남궁세가", "murong_estate":"모용세가", "hangzhou":"항주", "suzhou_hangzhou_canal":"강남 운하길", "suzhou":"소주", "nanjing_suzhou_road":"남경–소주 산길"}.get(id, "이름 없는 길")
+	return {"blackguild_hall":"흑도방 본당","blackguild_warehouse":"운하 창고","cuiyue_hall":"항주 · 취월루", "dock":"청류진 나루", "deck":"호송선", "changsha":"장사", "mountain_road":"장사–무창 산길", "wuchang":"무창", "alliance_office":"총무당", "qingya_hamlet":"삼거리 산촌", "qingya_camp":"청애채", "nanjing":"남경", "namgung_estate":"남궁세가", "murong_estate":"모용세가", "hangzhou":"항주", "suzhou_hangzhou_canal":"강남 운하길", "suzhou":"소주", "nanjing_suzhou_road":"남경–소주 산길"}.get(id, "이름 없는 길")
 
 func saved_time(data: Dictionary, file_path: String) -> String:
 	var value = data.get("saved_at", "")
