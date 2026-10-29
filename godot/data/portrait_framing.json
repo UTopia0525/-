@@ -258,8 +258,8 @@
       "natural_facing": "right"
     },
     "res://assets/portraits/cuiyue/tak-munho.png": {
-      "face_x": 560,
-      "eye_y": 285,
+      "face_x": 565,
+      "eye_y": 267,
       "eye_to_chin": 170,
       "natural_facing": "right"
     }

@@ -92,10 +92,10 @@
     "portrait": "res://assets/portraits/cuiyue/tak-munho.png",
     "sprite": "res://assets/characters/cuiyue/tak-munho.png",
     "sprite_region": [
-      129,
-      9,
-      785,
-      1516
+      291,
+      92,
+      595,
+      1236
     ]
   },
   "cy_eunsowol": {
@@ -103,10 +103,10 @@
     "portrait": "res://assets/portraits/cuiyue/eunsowol.png",
     "sprite": "res://assets/characters/cuiyue/eunsowol.png",
     "sprite_region": [
-      172,
-      43,
-      742,
-      1481
+      273,
+      102,
+      666,
+      1241
     ]
   }
 }

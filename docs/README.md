@@ -1,5 +1,7 @@
 # 작업별 색인
 
+인물 미술 작업: [모델과 관계없이 유지하는 화풍·비율·실제 표시 검수 기준](characters/art-consistency.md).
+
 전체 세계지도: [실제 구현 지역을 굵게 표시한 현황 지도](world-map-progress.png) · [확대·선택 가능한 HTML](world-map-progress.html). 도시/거점 구현과0장 선상 전투만 있는 흑린채를 구분했다.
 
 최신 변경: [주요 전투 사망·타이틀 복귀](systems/combat-death.md), [산촌·청애채 선택 의뢰](quests/qingya-village.md), [BGM 반복 재생 유지](systems/bgm-loop.md), [산길 이동 단축·발 교차 보행](systems/short-road-and-stride.md), [작은 A안 HUD](ui/compact-a.md). 이전 비교 시안과 검토는 당시 기록이다.
