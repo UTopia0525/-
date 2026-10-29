@@ -68,23 +68,23 @@
   "cy_pipa": {
     "name": "백소아",
     "portrait": "res://assets/portraits/cuiyue/baek-soa.png",
-    "sprite": "res://assets/characters/cuiyue/residents.png",
+    "sprite": "res://assets/characters/cuiyue/performers.png",
     "sprite_region": [
-      570,
-      96,
-      440,
-      890
+      159,
+      31,
+      569,
+      969
     ]
   },
   "cy_dancer": {
     "name": "홍채령",
     "portrait": "res://assets/portraits/cuiyue/hong-chaeryeong.png",
-    "sprite": "res://assets/characters/cuiyue/residents.png",
+    "sprite": "res://assets/characters/cuiyue/performers.png",
     "sprite_region": [
-      1056,
-      66,
-      442,
-      920
+      873,
+      19,
+      616,
+      986
     ]
   }
 }

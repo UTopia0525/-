@@ -254,23 +254,23 @@
   },
   {
     "name": "백소아",
-    "texture": "res://assets/characters/cuiyue/residents.png",
+    "texture": "res://assets/characters/cuiyue/performers.png",
     "region": [
-      570,
-      96,
-      440,
-      890
+      159,
+      31,
+      569,
+      969
     ],
     "group": "취월루 전용"
   },
   {
     "name": "홍채령",
-    "texture": "res://assets/characters/cuiyue/residents.png",
+    "texture": "res://assets/characters/cuiyue/performers.png",
     "region": [
-      1056,
-      66,
-      442,
-      920
+      873,
+      19,
+      616,
+      986
     ],
     "group": "취월루 전용"
   }

@@ -30,7 +30,7 @@ func run() -> void:
 			var texture=game.dialogue_cast.texture_for(game.PORTRAITS.ACTORS[entry.id])
 			if entry.has("portrait"):
 				check(texture.resource_path==entry.portrait,"dedicated portrait "+entry.name)
-				check(body.get_child(1).texture.atlas.resource_path=="res://assets/characters/cuiyue/residents.png","dedicated exploration sprite")
+				check(body.get_child(1).texture.atlas.resource_path==("res://assets/characters/cuiyue/residents.png" if entry.id=="cy_manager" else "res://assets/characters/cuiyue/performers.png"),"dedicated exploration sprite")
 			else:check(texture.resource_path==game.dialogue_cast.basic_portraits[entry.basic_portrait].path,"existing basic portrait reused")
 			check(game.dialogue_backdrop.visible and not game.save_system.blocked_reason().is_empty(),"dialogue backdrop and save restriction")
 			for i in range(12):
