@@ -1,5 +1,7 @@
 # 작업별 색인
 
+3D 실험: [항주3인칭 탐험 프로젝트·실행/조작/검사](../godot-3d-hangzhou/README.md). 기존2D 게임과 별도로 연다.
+
 고유 전투 인물: [전투 도트4종·자세/효과·실제 비교표](characters/dedicated-battle-visuals.md).
 
 흑도방 후속: [등불 밖의 셈·운하 창고/본당·양 노선·대화 원고](quests/blackguild-story.md).
