@@ -380,6 +380,24 @@
           0.32
         ]
       ]
+    },
+    "pleasure_barge": {
+      "texture": "res://assets/maps/hangzhou/pleasure-barge.png",
+      "source": [
+        0,
+        21,
+        2158,
+        687
+      ],
+      "kind": "cargo",
+      "footprints": [
+        [
+          0.07,
+          0.72,
+          0.86,
+          0.23
+        ]
+      ]
     }
   },
   "objects": [
@@ -869,6 +887,16 @@
         1090,
         20,
         44
+      ]
+    },
+    {
+      "id": "lake_grand_pleasure_barge",
+      "prefab": "pleasure_barge",
+      "rect": [
+        45,
+        440,
+        330,
+        105
       ]
     }
   ],
