@@ -4,10 +4,13 @@ var report=[]
 const KEYS=["strength","agility","constitution","inner","insight"]
 func check(ok: bool,message: String) -> void:
  if not ok:failed=true;push_error("ENCOUNTER_BALANCE: "+message)
-func run_battle(e: Dictionary,stats: Dictionary,skill: String,policy: String) -> Dictionary:
+func run_battle(e: Dictionary,stats: Dictionary,skill: String,policy: String,legacy_health: bool=false) -> Dictionary:
  var g=preload("res://scripts/grid_combat.gd").new()
  var weapon=g.combat.weapons.DEFAULT_BY_TYPE[g.combat.arts.get_skill(skill).required_weapon_type]
- g.setup(e.get("field",{}),{"stats":stats.duplicate(),"weapon":weapon,"hp":300,"max_hp":300,"skills":[skill],"ai":{"style":"adaptive"}}, {"stats":e.stats.duplicate(),"weapon":e.weapon,"hp":e.max_hp,"max_hp":e.max_hp,"skills":e.skills.duplicate(),"ai":e.get("ai",{})})
+ var hp=300 if legacy_health else preload("res://scripts/rules.gd").max_health(stats)
+ var enemy_hp=int(preload("res://scripts/save_system.gd").LEGACY_HEALTH_CAPS.get(e.id,e.max_hp)) if legacy_health else preload("res://scripts/rules.gd").max_health(e.stats)
+ var field: Dictionary=e.get("field",{}).duplicate(true);field.support=e.get("support",{}).duplicate(true)
+ g.setup(field,{"stats":stats.duplicate(),"weapon":weapon,"hp":hp,"max_hp":hp,"skills":[skill],"ai":{"style":"adaptive"}}, {"stats":e.stats.duplicate(),"weapon":e.weapon,"hp":enemy_hp,"max_hp":enemy_hp,"skills":e.skills.duplicate(),"ai":e.get("ai",{})})
  var used={};var steps=0
  for step in range(500):
   steps=step+1
@@ -36,7 +39,7 @@ func run_battle(e: Dictionary,stats: Dictionary,skill: String,policy: String) ->
   check(event.ok,"legal committed action: "+e.id)
   if actor==1:used[plan.id]=int(used.get(plan.id,0))+1
   if g.winner>=0:break
- return {"enemy":e.id,"skill":skill,"policy":policy,"win":g.winner==0,"hp":g.units[0].hp,"steps":steps,"enemy_used":used}
+ return {"enemy":e.id,"skill":skill,"policy":policy,"win":g.winner==0,"hp":g.units[0].hp,"max_hp":hp,"enemy_hp":g.units[1].hp,"enemy_max_hp":enemy_hp,"winner":g.winner,"steps":steps,"enemy_used":used}
 func _initialize() -> void:
  var enemies=[JSON.parse_string(FileAccess.get_file_as_string("res://data/tutorial_enemy.json"))]
  for name in ["changsha_bandit_story","wuchang_herbalist_quest","wuchang_duel_quest","wuchang_inn_quest","wuchang_impostor_quest","qingya_quest","nanjing_waterfront_quest"]:

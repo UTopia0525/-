@@ -40,7 +40,7 @@ func begin(inner_power: int=-1) -> void:
  grid=preload("res://scripts/grid_combat.gd").new()
  grid.combat=combat
  var field_config: Dictionary=encounter.get("field",{}).duplicate(true);field_config.support=encounter.get("support",{}).duplicate(true)
- grid.setup(field_config,{"stats":player_stats.duplicate(),"weapon":equipped_weapon_id,"hp":player_hp,"max_hp":Rules.PLAYER_MAX_HP,"skills":loadout.filter(func(id):return id!="")}, {"stats":enemy_stats.duplicate(),"weapon":enemy_weapon,"hp":enemy_hp,"max_hp":enemy_max_hp,"skills":enemy_skills.duplicate(),"ai":encounter.get("ai",tutorial_enemy.ai if encounter.is_empty() else {"style":"adaptive"}).duplicate()})
+ grid.setup(field_config,{"stats":player_stats.duplicate(),"weapon":equipped_weapon_id,"hp":player_hp,"max_hp":player_max_hp,"skills":loadout.filter(func(id):return id!="")}, {"stats":enemy_stats.duplicate(),"weapon":enemy_weapon,"hp":enemy_hp,"max_hp":enemy_max_hp,"skills":enemy_skills.duplicate(),"ai":encounter.get("ai",tutorial_enemy.ai if encounter.is_empty() else {"style":"adaptive"}).duplicate()})
  support_actor.visible=not grid.support.is_empty();support_label.visible=support_actor.visible
  support_actor.reset_motion();support_label.text=("남궁서진 · 협공\n근접 행동 후 협공 · 공세 %d%% 차단" % int(grid.support.get("intercept_percent",0))) if support_actor.visible else ""
  _update_status_portrait()

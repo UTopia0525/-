@@ -14,7 +14,7 @@
     "id": "training_student",
     "name": "유소강",
     "faction": "무창 무관 · 연무장 대련",
-    "max_hp": 220,
+    "max_hp": 322,
     "constitution": 12,
     "stats": {
       "strength": 14,

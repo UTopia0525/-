@@ -1,5 +1,7 @@
 # 작업별 색인
 
+현재 체력/밸런스: [근력·근골 공통 체력 공식과306쌍 전투 비교](systems/health-growth.md).
+
 인물 미술 작업: [모델과 관계없이 유지하는 화풍·비율·실제 표시 검수 기준](characters/art-consistency.md).
 
 전체 세계지도: [실제 구현 지역을 굵게 표시한 현황 지도](world-map-progress.png) · [확대·선택 가능한 HTML](world-map-progress.html). 도시/거점 구현과0장 선상 전투만 있는 흑린채를 구분했다.

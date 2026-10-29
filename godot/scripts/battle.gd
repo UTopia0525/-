@@ -36,6 +36,7 @@ var skill_qi_costs: Dictionary = {}
 var weapons = preload("res://scripts/weapons.gd").new()
 var equipped_weapon_id := "plain_iron_sword"
 var equipped_weapon_type := "sword"
+var player_max_hp: int = Rules.PLAYER_MAX_HP
 var player_hp: int = Rules.PLAYER_MAX_HP
 var enemy_hp: int = Rules.ENEMY_MAX_HP
 var encounter: Dictionary = {}
@@ -117,10 +118,10 @@ func _health_bar(parent: Node, area: Rect2, maximum: int, damage_trail: bool = t
 
 func set_encounter(value: Dictionary) -> void:
 	encounter = value.duplicate(true)
-	enemy_max_hp = int(encounter.get("max_hp", tutorial_enemy.max_hp))
 	enemy_constitution = int(encounter.get("constitution", tutorial_enemy.constitution))
 	enemy_stats = encounter.get("stats", tutorial_enemy.stats).duplicate()
 	enemy_stats.constitution = enemy_constitution
+	enemy_max_hp = Rules.max_health(enemy_stats)
 	enemy_weapon = str(encounter.get("weapon", tutorial_enemy.weapon))
 	enemy_skills = encounter.get("skills", tutorial_enemy.skills).duplicate()
 	enemy_raw_damage = int(Rules.basic_attack_damage(enemy_stats))
@@ -144,7 +145,8 @@ func begin(inner_power: int = -1) -> void:
 	enemy_guard = 0
 	generation += 1
 	_reset_presentation()
-	player_hp = Rules.PLAYER_MAX_HP
+	player_max_hp = Rules.max_health(player_stats)
+	player_hp = player_max_hp
 	enemy_hp = enemy_max_hp
 	selected = false
 	selected_action = ""
@@ -405,9 +407,9 @@ func use_selected() -> void:
 func _update_hp(animate: bool = false) -> void:
 	enemy_text.text = "%d / %d" % [enemy_hp, enemy_max_hp]
 	_update_enemy_qi()
-	player_text.text = "%d / %d" % [player_hp, Rules.PLAYER_MAX_HP]
+	player_text.text = "%d / %d" % [player_hp, player_max_hp]
 	enemy_bar.set_health(enemy_hp, enemy_max_hp, animate)
-	player_bar.set_health(player_hp, Rules.PLAYER_MAX_HP, animate)
+	player_bar.set_health(player_hp, player_max_hp, animate)
 
 func _float_damage(value: int, on_player: bool) -> void:
 	if float_tween and float_tween.is_valid():

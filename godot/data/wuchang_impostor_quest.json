@@ -24,7 +24,7 @@
     "id": "impostor_ma",
     "name": "마응칠",
     "faction": "무림맹 사칭범",
-    "max_hp": 300,
+    "max_hp": 338,
     "constitution": 14,
     "stats": {
       "strength": 16,

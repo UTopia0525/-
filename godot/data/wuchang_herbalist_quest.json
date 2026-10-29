@@ -14,7 +14,7 @@
     "id": "herb_ruffian",
     "name": "구칠",
     "faction": "떠돌이 불한당",
-    "max_hp": 190,
+    "max_hp": 328,
     "constitution": 12,
     "stats": {
       "strength": 16,

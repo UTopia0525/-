@@ -386,7 +386,8 @@ func reset() -> void:
 	battle.cancel()
 	battle.set_encounter({})
 	battle.enemy_hp = battle.enemy_max_hp
-	battle.player_hp = battle.Rules.PLAYER_MAX_HP
+	battle.player_max_hp = battle.Rules.max_health(progress.stats)
+	battle.player_hp = battle.player_max_hp
 	battle.qi.start(int(progress.stats.inner))
 	battle.selected = false
 	battle.selected_action = ""
@@ -704,7 +705,7 @@ func _finish_victory(hp: int) -> void:
 		return
 	music.play_track("title")
 	state = "end"
-	ending_hp.text = "남은 체력   %d / 300" % hp
+	ending_hp.text = "남은 체력   %d / %d" % [hp,battle.player_max_hp]
 	ending.show()
 
 func _input(event: InputEvent) -> void:

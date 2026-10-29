@@ -98,7 +98,7 @@ func refresh() -> void:
  button("소지품  I",Rect2(88,648,122,28),mode=="inventory").pressed.connect(switch_mode.bind("inventory"))
  button("무공  K",Rect2(218,648,112,28),mode=="martial").pressed.connect(switch_mode.bind("martial"))
  var s=progress.stats
- summary=text(content,"근력%d  기민%d  근골%d  내공%d  오성%d  · 명성%d" % [s.strength,s.agility,s.constitution,s.inner,s.insight,progress.fame],Rect2(365,652,655,23),14,MUTED)
+ summary=text(content,"근력%d  기민%d  근골%d  내공%d  오성%d  · 체력%d · 명성%d" % [s.strength,s.agility,s.constitution,s.inner,s.insight,progress.RULES.max_health(s),progress.fame],Rect2(365,652,655,23),14,MUTED)
  button("ESC 닫기",Rect2(1080,648,116,28)).pressed.connect(close_menu)
  var ids=visible_ids()
  if selected_id!="clear" and selected_id not in ids:selected_id=str(ids[0]) if not ids.is_empty() else ""

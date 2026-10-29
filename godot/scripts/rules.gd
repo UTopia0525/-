@@ -12,6 +12,9 @@ const DEMO_ENEMY_RAW_DAMAGE = 40
 const DEMO_ATTACK_DELAY = 0.45
 const DEMO_TURN_DELAY = 0.65
 
+static func max_health(stats: Dictionary = STARTING_STATS) -> int:
+	return 220 + 3 * int(stats.get("strength", 10)) + 5 * int(stats.get("constitution", 10))
+
 static func damage(raw: float, constitution: float) -> int:
 	return floori(damage_before_rounding(raw, constitution))
 

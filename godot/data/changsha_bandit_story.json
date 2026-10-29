@@ -22,7 +22,7 @@
       "id": "bandit_sentry",
       "name": "길목 산적",
       "faction": "장사 동쪽 산적 무리",
-      "max_hp": 170,
+      "max_hp": 328,
       "constitution": 12,
       "stats": {
         "strength": 16,
@@ -44,7 +44,7 @@
       "id": "bandit_ringleader",
       "name": "산적 우두머리",
       "faction": "장사 동쪽 산적 무리",
-      "max_hp": 240,
+      "max_hp": 328,
       "constitution": 12,
       "stats": {
         "strength": 16,

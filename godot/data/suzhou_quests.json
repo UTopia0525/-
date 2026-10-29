@@ -649,7 +649,7 @@
       "name": "나루 갈취범",
       "faction": "소주 선착장 · 갈취 사건",
       "portrait_actor": "sz_extortionist",
-      "max_hp": 200,
+      "max_hp": 322,
       "constitution": 12,
       "stats": {
         "strength": 14,
@@ -780,7 +780,7 @@
       "name": "백정수 · 지도 대련",
       "faction": "소주 무관 · 힘을 제한한 비살상 대련",
       "portrait_actor": "sz_instructor",
-      "max_hp": 220,
+      "max_hp": 316,
       "constitution": 12,
       "stats": {
         "strength": 12,

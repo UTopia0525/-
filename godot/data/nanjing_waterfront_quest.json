@@ -19,7 +19,7 @@
     "id": "nanjing_nochil",
     "name": "노칠",
     "faction": "물가 도적",
-    "max_hp": 300,
+    "max_hp": 338,
     "constitution": 14,
     "stats": {
       "strength": 16,

@@ -1,4 +1,6 @@
 extends Node
+const HEALTH_RULES = preload("res://scripts/rules.gd")
+const LEGACY_HEALTH_CAPS = {"mr_exchange": 220, "qingya_chief": 300, "qingya_sentry": 180, "impostor_ma": 300, "nanjing_nochil": 300, "training_student": 220, "bandit_sentry": 170, "bandit_ringleader": 240, "sz_quay_extortionist": 200, "sz_training_bai": 220, "inn_warrior": 180, "cuiyue_tak": 220, "herb_ruffian": 190, "qingya_maunpyo": 750, "tutorial_pirate": 90, "": 90}
 const STAT_MAX = preload("res://scripts/rules.gd").STAT_MAX
 ## Versioned manual saves; continuations are explicit allowed methods, never objects/code.
 const SLOT_COUNT = 10
@@ -49,7 +51,7 @@ func capture() -> Dictionary:
 	var nodes = {"top_hud":game.top_hud, "bottom_hint":game.bottom_hint, "caption":game.story_caption, "exploration":w, "ending":game.ending, "overview":game.city_overview, "visual":game.story_visual}
 	var visibility := {}
 	for id in nodes: visibility[id] = nodes[id].visible
-	return {"schema":3, "cuiyue_incident":game.cuiyue_incident.snapshot(), "hangzhou_quests":game.hangzhou_quests.snapshot(), "suzhou_quests":game.suzhou_quests.snapshot(), "namgung_campaign":game.namgung_campaign.snapshot(), "enemy_balance_revision":1, "waterfront_quest":game.waterfront_quest.snapshot(), "levy_quest":game.levy_quest.snapshot(), "book_quest":game.book_quest.snapshot(), "cart_quest":game.cart_quest.snapshot(), "silk_quest":game.silk_quest.snapshot(), "nanjing_relief_quest":game.nanjing_relief_quest.snapshot(), "qingya_quest":game.qingya_quest.snapshot(), "plaque_quest":game.plaque_quest.snapshot(), "grain_quest":game.grain_quest.snapshot(), "wages_quest":game.wages_quest.snapshot(), "alliance_story":game.alliance_story.snapshot(), "impostor_quest":game.impostor_quest.snapshot(), "inn_quest":game.inn_quest.snapshot(), "duel_quest":game.duel_quest.snapshot(), "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
+	return {"schema":3, "health_revision":1, "cuiyue_incident":game.cuiyue_incident.snapshot(), "hangzhou_quests":game.hangzhou_quests.snapshot(), "suzhou_quests":game.suzhou_quests.snapshot(), "namgung_campaign":game.namgung_campaign.snapshot(), "enemy_balance_revision":1, "waterfront_quest":game.waterfront_quest.snapshot(), "levy_quest":game.levy_quest.snapshot(), "book_quest":game.book_quest.snapshot(), "cart_quest":game.cart_quest.snapshot(), "silk_quest":game.silk_quest.snapshot(), "nanjing_relief_quest":game.nanjing_relief_quest.snapshot(), "qingya_quest":game.qingya_quest.snapshot(), "plaque_quest":game.plaque_quest.snapshot(), "grain_quest":game.grain_quest.snapshot(), "wages_quest":game.wages_quest.snapshot(), "alliance_story":game.alliance_story.snapshot(), "impostor_quest":game.impostor_quest.snapshot(), "inn_quest":game.inn_quest.snapshot(), "duel_quest":game.duel_quest.snapshot(), "artisan_quest":game.artisan_quest.snapshot(), "herbalist_quest":game.herbalist_quest.snapshot(), "alliance_visit":game.alliance_visit.snapshot(), "ordinary_quests":game.ordinary_quests.snapshot(), "progress":game.progress.snapshot(), "trade_intro":game.trade_intro.snapshot(), "bandit_story":game.bandit_story.snapshot(), "saved_at":Time.get_datetime_string_from_system(false, true), "state":game.state,
 		"chapter":game.chapter_number, "money":game.money, "changsha_reward_revision":1, "talked_captain":game.talked_captain,
 		"world":{"layout_version":3 if w.area_name in ["mountain_road","namgung_estate"] else 2 if w.area_name=="nanjing" else 1, "area":w.area_name, "position":[w.player.position.x, w.player.position.y], "facing":w.player.facing, "active":w.active},
 		"prologue":{"active":p.active, "completed":p.completed, "branch":p.branch, "paid":p.payment_received, "queue":p.pending_scenes.duplicate(), "done":callback_data(p.sequence_done)},
@@ -59,7 +61,7 @@ func capture() -> Dictionary:
 		"ui":{"visible":visibility, "location":game.location.text, "objective":game.objective.text, "hint":game.bottom_hint.text, "caption":game.story_caption.text, "ending_hp":game.ending_hp.text},
 		"visual":{"mode":game.story_visual.mode, "phase":game.story_visual.phase, "paused":game.story_visual.paused},
 		"choice":game.pending_choice, "service":game.city_service.service.duplicate(true), "service_tab":game.city_service.selected_tab, "pending_service":game.pending_service_id,
-		"battle":{"ready_turns":game.battle.ready_turns.duplicate(),"enemy_ready_turns":game.battle.enemy_ready_turns.duplicate(),"encounter_id":game.battle.encounter.get("id", ""), "weapon_id":game.battle.equipped_weapon_id, "weapon_type":game.battle.equipped_weapon_type, "inner_power":game.battle.qi.inner_power, "qi":game.battle.qi.amount, "player_hp":game.battle.player_hp, "enemy_hp":game.battle.enemy_hp, "turn":game.battle.turn, "selected":game.battle.selected, "selected_action":game.battle.selected_action, "enemy_qi":game.battle.enemy_qi.amount, "enemy_intent":game.battle.enemy_intent, "enemy_guard":game.battle.enemy_guard},
+		"battle":{"ready_turns":game.battle.ready_turns.duplicate(),"enemy_ready_turns":game.battle.enemy_ready_turns.duplicate(),"encounter_id":game.battle.encounter.get("id", ""), "weapon_id":game.battle.equipped_weapon_id, "weapon_type":game.battle.equipped_weapon_type, "inner_power":game.battle.qi.inner_power, "qi":game.battle.qi.amount, "player_hp":game.battle.player_hp if game.state=="battle" else HEALTH_RULES.max_health(game.progress.stats), "enemy_hp":mini(game.battle.enemy_hp,game.battle.enemy_max_hp), "turn":game.battle.turn, "selected":game.battle.selected, "selected_action":game.battle.selected_action, "enemy_qi":game.battle.enemy_qi.amount, "enemy_intent":game.battle.enemy_intent, "enemy_guard":game.battle.enemy_guard},
 		"music":{"track":game.music.current_track, "enabled":game.music.enabled}}
 
 func path(slot: int) -> String: return ROOT + "/slot_%02d.json" % slot
@@ -106,7 +108,7 @@ func read_slot(slot: int) -> Dictionary:
 	var json = JSON.new()
 	if json.parse(FileAccess.get_file_as_string(path(slot))) != OK:return {}
 	var parsed = json.data
-	parsed=_upgrade_enemy_balance(_upgrade_martial_arts(_upgrade_qingya_battle(parsed)))
+	parsed=_upgrade_health(_upgrade_enemy_balance(_upgrade_martial_arts(_upgrade_qingya_battle(parsed))))
 	return parsed if validate(parsed) else {}
 
 func _upgrade_qingya_battle(value):
@@ -143,10 +145,37 @@ func _upgrade_enemy_balance(value):
 	for entry in game.encounters():
 		if entry.id==id:definition=entry;break
 	var upgraded: Dictionary=value.duplicate(true);upgraded.enemy_balance_revision=1
-	upgraded.battle.enemy_hp=mini(int(upgraded.battle.enemy_hp),int(definition.max_hp))
+	upgraded.battle.enemy_hp=mini(int(upgraded.battle.enemy_hp),int(LEGACY_HEALTH_CAPS.get(id,definition.max_hp)))
 	# Old cached intentions may reference removed enemy arts or the previous weapon.
 	if upgraded.battle.get("enemy_intent","") in ["bandit_chop","bandit_heavy_chop","soemok"]:
 		upgraded.battle.enemy_intent="basic_attack"
+	return upgraded
+
+func _upgrade_health(value):
+	if not value is Dictionary or value.has("health_revision") or not value.get("battle") is Dictionary:return value
+	var progress=value.get("progress",{})
+	if not progress is Dictionary:return value
+	var stats=progress.get("stats",HEALTH_RULES.STARTING_STATS)
+	if not stats is Dictionary:return value
+	for key in HEALTH_RULES.STARTING_STATS:
+		if not is_number(stats.get(key),0,STAT_MAX):return value
+	var id=value.battle.get("encounter_id","")
+	if id not in LEGACY_HEALTH_CAPS:return value
+	var old_enemy=int(LEGACY_HEALTH_CAPS[id])
+	if not is_number(value.battle.get("player_hp"),0,300) or not is_number(value.battle.get("enemy_hp"),0,old_enemy):return value
+	var definition=game.battle.tutorial_enemy
+	for entry in game.encounters():
+		if entry.id==id:definition=entry;break
+	var upgraded: Dictionary=value.duplicate(true)
+	upgraded.health_revision=1
+	var player_cap=HEALTH_RULES.max_health(stats);var enemy_cap=HEALTH_RULES.max_health(definition.stats)
+	if value.get("state")=="battle":
+		# Preserve remaining percentage in old combat saves; zero stays zero.
+		upgraded.battle.player_hp=ceili(float(value.battle.player_hp)*player_cap/300.0)
+		upgraded.battle.enemy_hp=ceili(float(value.battle.enemy_hp)*enemy_cap/old_enemy)
+	else:
+		upgraded.battle.player_hp=player_cap
+		upgraded.battle.enemy_hp=mini(int(value.battle.enemy_hp),enemy_cap)
 	return upgraded
 
 func validate(d) -> bool:
@@ -263,7 +292,7 @@ func validate(d) -> bool:
 	if not d.get("pending_service") is String or not is_number(d.get("service_tab"), 0, 1): return false
 	if not d.service.is_empty() and d.service.get("id") not in ["city_merchant", "city_artisan", "city_instructor"]: return false
 	if d.state == "service" and d.service.is_empty(): return false
-	var enemy_maximum: int = int(game.battle.tutorial_enemy.max_hp)
+	var enemy_maximum: int = HEALTH_RULES.max_health(game.battle.tutorial_enemy.stats)
 	var encounter_id = d.battle.get("encounter_id", "")
 	for q in game.suzhou_quests.quests:
 		if not q.data.has("encounter"):continue
@@ -272,7 +301,7 @@ func validate(d) -> bool:
 	if encounter_id not in ["", "bandit_sentry", "bandit_ringleader", "herb_ruffian", "training_student", "inn_warrior", "impostor_ma", "qingya_sentry", "qingya_chief", "nanjing_nochil", "qingya_maunpyo", "sz_quay_extortionist", "sz_training_bai", "mr_exchange", "cuiyue_tak"]: return false
 	if (d.get("cuiyue_incident",{}).get("phase")=="battle")!=(d.state=="battle" and encounter_id=="cuiyue_tak"):return false
 	for definition in game.encounters():
-		if definition.id == encounter_id: enemy_maximum = int(definition.max_hp)
+		if definition.id == encounter_id: enemy_maximum = HEALTH_RULES.max_health(definition.stats)
 	if d.state=="battle" and encounter_id=="herb_ruffian" and d.get("herbalist_quest",{}).get("phase")!="rescue":return false
 	if d.get("duel_quest",{}).get("phase")=="battle" and (d.state!="battle" or encounter_id!="training_student"):return false
 	if d.state=="battle" and encounter_id=="training_student" and d.get("duel_quest",{}).get("phase")!="battle":return false
@@ -289,7 +318,9 @@ func validate(d) -> bool:
 	if d.state=="battle" and encounter_id in ["qingya_sentry","qingya_chief"] and qphase!=("fight_sentry" if encounter_id=="qingya_sentry" else "fight_chief"):return false
 	if d.has("bandit_story") and d.bandit_story.stage in ["battle_one", "battle_two"]:
 		if d.state != "battle" or encounter_id != game.bandit_story.data.encounters[0 if d.bandit_story.stage == "battle_one" else 1].id: return false
-	if not is_number(d.battle.get("player_hp"), 0, 300) or not is_number(d.battle.get("enemy_hp"), 0, enemy_maximum) or not is_number(d.battle.get("turn"), 1, 10000) or not d.battle.get("selected") is bool: return false
+	if d.has("health_revision") and not is_number(d.health_revision,1,1):return false
+	var player_maximum=HEALTH_RULES.max_health(d.get("progress",{}).get("stats",HEALTH_RULES.STARTING_STATS))
+	if not is_number(d.battle.get("player_hp"), 0, player_maximum) or not is_number(d.battle.get("enemy_hp"), 0, enemy_maximum) or not is_number(d.battle.get("turn"), 1, 10000) or not d.battle.get("selected") is bool: return false
 	for key in ["ready_turns","enemy_ready_turns"]:
 		var cooldowns=d.battle.get(key,{})
 		if not cooldowns is Dictionary:return false
@@ -342,6 +373,8 @@ func load_slot(slot: int) -> bool:
 	game.money = int(d.money)+adjustment
 	if d.schema == 3: game.progress.restore(d.progress)
 	game.battle.player_stats = game.progress.stats.duplicate()
+	game.battle.player_max_hp = HEALTH_RULES.max_health(game.progress.stats)
+	game.battle.player_hp = game.battle.player_max_hp
 	game.battle.set_loadout(game.progress.loadout)
 	if d.has("bandit_story"): game.bandit_story.restore(d.bandit_story)
 	if d.has("alliance_visit"):game.alliance_visit.restore(d.alliance_visit)
