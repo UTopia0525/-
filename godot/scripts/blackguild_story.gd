@@ -23,7 +23,7 @@ func status() -> String:
  return phase if phase in ["available","completed"] else "ready" if phase=="report" else "active"
 func stage() -> String:return phase
 func target() -> String:return data.stages[phase][0]
-func reward_label() -> String:return "취월루의 거래 회복 · 별도 수치 보상 없음"
+func reward_label() -> String:return "보수 %d문 · 하오문 호의도+%d" % [int(data.reward.money),int(data.reward.favor.haomun)]
 func marker_for(id: String) -> String:
  if not eligible():return ""
  if phase=="available" and id==GIVER:return "!"
@@ -55,7 +55,7 @@ func present() -> void:
  var next={"fish":"artisan","artisan":"waiter","waiter":"proposal","proposal":"consult","consult":"warehouse","papers":"choice"}
  game.say(data.scenes[phase],_fight if phase=="warehouse" else _advance.bind(next.get(phase,phase)))
 func _offer() -> void:
- game.adventure_ui.choose(data.title,"거래처의 사정을 조사합니다. 창고에서 실전 전투가 있으며 패배하면 사망합니다.\n별도의 금전·능력치 보상은 없습니다.","사정을 알아보겠소",accept,"지금은 어렵겠소",func():game.say([[GIVER,"다른 볼일부터 보세요. 급한 마음에 더 큰 일을 만들고 싶지는 않아요."]]))
+ game.adventure_ui.choose(data.title,"거래처의 사정을 조사합니다. 창고에서 실전 전투가 있으며 패배하면 사망합니다.\n"+reward_label(),"사정을 알아보겠소",accept,"지금은 어렵겠소",func():game.say([[GIVER,"다른 볼일부터 보세요. 급한 마음에 더 큰 일을 만들고 싶지는 않아요."]]))
 func accept() -> void:
  if phase!="available" or not eligible():return
  phase="fish";track();game.say(data.scenes.accept);game.adventure_ui.notify("의뢰 수락 · "+data.title,"quest")
@@ -79,8 +79,10 @@ func after_victory() -> void:
 func _complete() -> void:
  if phase!="report":return
  phase="completed";signature=""
+ game.money+=int(data.reward.money)
+ game.progress.add_favor("haomun",int(data.reward.favor.haomun))
  if game.quest_navigation.quest_id==ID:game.quest_navigation.clear()
- game.adventure_ui.notify("의뢰 완료 · "+data.title,"quest");refresh_world()
+ game.adventure_ui.notify("의뢰 완료 · "+reward_label(),"quest");refresh_world()
 func goal(world) -> Dictionary:
  if not eligible() or phase=="completed":return {}
  var destination=data.stages[phase][1];var point=Vector2.ZERO;var goal_id=target();var label=data.stages[phase][2]
@@ -123,7 +125,7 @@ func refresh_world() -> void:
  if w.area_name=="hangzhou" and phase=="proposal":
   var n=_character("cy_tak");n.point=[550,390];_spawn(n)
  if w.area_name=="blackguild_warehouse":
-  _spawn(_character("bg_supplier"))
+  var supplier=_character("bg_supplier");supplier.point=[720,740];_spawn(supplier)
   if phase in ["warehouse","battle"]:_spawn(_character("bg_officer"))
  if w.area_name=="blackguild_hall":
   _spawn(_character("bg_wi"))

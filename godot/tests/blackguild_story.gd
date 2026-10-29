@@ -37,7 +37,7 @@ func run() -> void:
  check(q.phase=="consult","Tak delivers message regardless prior victory/loss")
  await travel_to("cuiyue_hall");await speak("cy_eunsowol");await settle();await travel_to("hangzhou");await travel_to("blackguild_warehouse")
  check(game.save_system.write_slot(7) and game.save_system.load_slot(7),"warehouse save roundtrip")
- await frames();await speak("bg_officer");await settle();check(q.phase=="battle","F starts fight")
+ await frames();check(w.city_data.objects.size()==18 and w.city_data.objects.all(func(o):return o.prefab=="cargo"),"warehouse contains18 cargo piles and no office furniture");await speak("bg_officer");await settle();check(q.phase=="battle","F starts fight")
  check(not game.save_system.write_slot(8),"battle cannot save")
  game.battle.animation_time=.01
  var deadline=Time.get_ticks_msec()+30000
@@ -67,10 +67,14 @@ func run() -> void:
   await travel_to("hangzhou");await travel_to("blackguild_hall")
   check(game.save_system.write_slot(9) and game.save_system.load_slot(9),"hall and branch restore")
   await frames();await speak("bg_wi");await settle();check(q.phase=="report","actual leader audience")
-  await travel_to("hangzhou");await travel_to("cuiyue_hall");await speak("cy_manager");await settle()
+  await travel_to("hangzhou");await travel_to("cuiyue_hall");await speak("cy_manager")
+  while game.dialogue_index<game.dialogue_lines.size()-1:game.advance_dialogue();await process_frame
+  check(q.phase=="report" and game.money==initial_money and game.progress.favor_for("haomun")==initial_favor,"no reward before final report line ends")
+  game.advance_dialogue();await settle()
   check(q.phase=="completed" and q.marker_for("cy_manager")=="","final report completes")
-  q._complete();check(game.money==initial_money and game.progress.stats==initial_stats and game.progress.favor_for("haomun")==initial_favor,"no invented or duplicate numeric rewards")
+  q._complete();check(game.money==initial_money+500 and game.progress.stats==initial_stats and game.progress.favor_for("haomun")==initial_favor+30,"500 mun and 30 favor exactly once on either branch")
   check(game.save_system.write_slot(10) and game.save_system.load_slot(10),"completion persists")
+  q._complete();check(game.money==initial_money+500 and game.progress.favor_for("haomun")==initial_favor+30,"loading and repeated completion cannot grant again")
  var bad=q.snapshot();bad.branch="";check(not q.valid(bad),"reject impossible branch")
  var old=game.save_system.capture();old.erase("blackguild_story");old.world.area="hangzhou";old.world.position=[2200,2000]
  check(game.save_system.validate(old),"old save without quest compatible")

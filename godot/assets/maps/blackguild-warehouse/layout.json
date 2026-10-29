@@ -39,211 +39,186 @@
   "roads": [],
   "landmarks": [],
   "services": [],
-  "prefabs": {
-    "desk": {
-      "texture": "res://assets/maps/alliance-office/furniture.png",
-      "source": [
-        29,
-        75,
-        574,
-        330
-      ],
-      "kind": "furniture",
-      "footprints": [
-        [
-          0.05,
-          0.54,
-          0.9,
-          0.4
-        ]
-      ],
-      "content_rect": [
-        0.05,
-        0.3,
-        0.9,
-        0.64
-      ]
-    },
-    "shelf": {
-      "texture": "res://assets/maps/alliance-office/furniture.png",
-      "source": [
-        642,
-        10,
-        455,
-        429
-      ],
-      "kind": "furniture",
-      "footprints": [
-        [
-          0.08,
-          0.7,
-          0.84,
-          0.27
-        ]
-      ],
-      "content_rect": [
-        0.07,
-        0.05,
-        0.86,
-        0.91
-      ]
-    },
-    "bench": {
-      "texture": "res://assets/maps/alliance-office/furniture.png",
-      "source": [
-        1134,
-        142,
-        568,
-        263
-      ],
-      "kind": "furniture",
-      "footprints": [
-        [
-          0.05,
-          0.5,
-          0.9,
-          0.45
-        ]
-      ],
-      "content_rect": [
-        0.06,
-        0.45,
-        0.88,
-        0.5
-      ]
-    },
-    "screen": {
-      "texture": "res://assets/maps/alliance-office/furniture.png",
-      "source": [
-        59,
-        449,
-        512,
-        427
-      ],
-      "kind": "furniture",
-      "footprints": [
-        [
-          0.03,
-          0.83,
-          0.94,
-          0.14
-        ]
-      ],
-      "content_rect": [
-        0.05,
-        0.07,
-        0.9,
-        0.86
-      ]
-    },
-    "pillar": {
-      "texture": "res://assets/maps/alliance-office/furniture.png",
-      "source": [
-        748,
-        444,
-        241,
-        421
-      ],
-      "kind": "furniture",
-      "footprints": [
-        [
-          0.2,
-          0.75,
-          0.6,
-          0.22
-        ]
-      ],
-      "content_rect": [
-        0.23,
-        0.05,
-        0.54,
-        0.91
-      ]
-    },
-    "lantern": {
-      "texture": "res://assets/maps/alliance-office/furniture.png",
-      "source": [
-        1327,
-        454,
-        172,
-        418
-      ],
-      "kind": "furniture",
-      "footprints": [
-        [
-          0.25,
-          0.8,
-          0.5,
-          0.18
-        ]
-      ],
-      "content_rect": [
-        0.3,
-        0.06,
-        0.4,
-        0.9
-      ]
-    }
-  },
+  "prefabs": {},
   "objects": [
     {
-      "id": "cargo380_280",
+      "id": "freight_0_0",
       "prefab": "cargo",
       "rect": [
-        380,
-        280,
-        170,
-        180
-      ]
-    },
-    {
-      "id": "cargo1180_280",
-      "prefab": "cargo",
-      "rect": [
-        1270,
-        280,
-        170,
-        180
-      ]
-    },
-    {
-      "id": "cargo150_600",
-      "prefab": "cargo",
-      "rect": [
-        150,
-        600,
-        170,
-        180
-      ]
-    },
-    {
-      "id": "cargo1180_610",
-      "prefab": "cargo",
-      "rect": [
-        1180,
-        610,
-        170,
-        180
-      ]
-    },
-    {
-      "id": "contracts",
-      "prefab": "desk",
-      "rect": [
-        1020,
-        330,
-        230,
+        105,
+        275,
+        175,
         170
       ]
     },
     {
-      "id": "records",
-      "prefab": "shelf",
+      "id": "freight_0_1",
+      "prefab": "cargo",
+      "rect": [
+        295,
+        283,
+        170,
+        170
+      ]
+    },
+    {
+      "id": "freight_0_2",
+      "prefab": "cargo",
+      "rect": [
+        485,
+        275,
+        155,
+        170
+      ]
+    },
+    {
+      "id": "freight_0_3",
+      "prefab": "cargo",
+      "rect": [
+        910,
+        283,
+        170,
+        170
+      ]
+    },
+    {
+      "id": "freight_0_4",
+      "prefab": "cargo",
+      "rect": [
+        1100,
+        275,
+        175,
+        170
+      ]
+    },
+    {
+      "id": "freight_0_5",
+      "prefab": "cargo",
+      "rect": [
+        1290,
+        283,
+        150,
+        170
+      ]
+    },
+    {
+      "id": "freight_1_0",
+      "prefab": "cargo",
       "rect": [
         105,
-        350,
-        220,
-        180
+        465,
+        175,
+        160
+      ]
+    },
+    {
+      "id": "freight_1_1",
+      "prefab": "cargo",
+      "rect": [
+        300,
+        473,
+        170,
+        160
+      ]
+    },
+    {
+      "id": "freight_1_2",
+      "prefab": "cargo",
+      "rect": [
+        485,
+        465,
+        155,
+        160
+      ]
+    },
+    {
+      "id": "freight_1_3",
+      "prefab": "cargo",
+      "rect": [
+        915,
+        473,
+        170,
+        160
+      ]
+    },
+    {
+      "id": "freight_1_4",
+      "prefab": "cargo",
+      "rect": [
+        1100,
+        465,
+        175,
+        160
+      ]
+    },
+    {
+      "id": "freight_1_5",
+      "prefab": "cargo",
+      "rect": [
+        1295,
+        473,
+        150,
+        160
+      ]
+    },
+    {
+      "id": "freight_2_0",
+      "prefab": "cargo",
+      "rect": [
+        105,
+        655,
+        175,
+        175
+      ]
+    },
+    {
+      "id": "freight_2_1",
+      "prefab": "cargo",
+      "rect": [
+        295,
+        663,
+        170,
+        175
+      ]
+    },
+    {
+      "id": "freight_2_2",
+      "prefab": "cargo",
+      "rect": [
+        485,
+        655,
+        155,
+        175
+      ]
+    },
+    {
+      "id": "freight_2_3",
+      "prefab": "cargo",
+      "rect": [
+        910,
+        663,
+        170,
+        175
+      ]
+    },
+    {
+      "id": "freight_2_4",
+      "prefab": "cargo",
+      "rect": [
+        1100,
+        655,
+        175,
+        175
+      ]
+    },
+    {
+      "id": "freight_2_5",
+      "prefab": "cargo",
+      "rect": [
+        1290,
+        663,
+        150,
+        175
       ]
     }
   ],
