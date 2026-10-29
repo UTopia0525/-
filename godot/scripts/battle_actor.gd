@@ -4,6 +4,9 @@ signal strike_started
 ## Weapon columns: sword / saber / spear / none. Pose rows: ready / windup / strike / hit.
 const COLUMNS = {"sword":0,"saber":1,"spear":2,"none":3}
 const ROWS = {"ready":0,"windup":1,"strike":2,"hit":3}
+const VISUALS=preload("res://scripts/battle_visuals.gd")
+var visual_id=""
+var visual_effect: Dictionary={}
 var sprite: Sprite2D
 var weapon_type := "sword"
 var pose := "ready"
@@ -20,24 +23,31 @@ var display_scale := 1.0
 var cell_width := 0.0
 var walker: Node2D
 
-func configure(is_enemy: bool, weapon: String, foot: Vector2) -> void:
+func configure(is_enemy: bool, weapon: String, foot: Vector2, character_id: String="") -> void:
 	enemy_side = is_enemy
+	visual_id=character_id if VISUALS.DATA.characters.has(character_id) else ""
+	var visual: Dictionary=VISUALS.DATA.characters.get(visual_id,{})
+	visual_effect=visual.get("effect",{}).duplicate(true)
+	pose="ready"
 	home = foot
 	if not is_instance_valid(sprite):
 		sprite = Sprite2D.new()
 		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		add_child(sprite)
-	if not is_enemy:
+	if not is_enemy and visual_id.is_empty():
 		var palette=ShaderMaterial.new();palette.shader=preload("res://shaders/hero_cloth_palette.gdshader");sprite.material=palette
 	else:sprite.material=null
-	var sheet: Texture2D = load("res://assets/battle/enemy-poses.png" if is_enemy else "res://assets/battle/premium/hero-jade-poses.png")
+	var sheet: Texture2D = load(visual.texture if not visual.is_empty() else "res://assets/battle/enemy-poses.png" if is_enemy else "res://assets/battle/premium/hero-jade-poses.png")
 	var metadata: Dictionary
-	if is_enemy: metadata = JSON.parse_string(FileAccess.get_file_as_string("res://assets/battle/frames.json")).enemy
+	if not visual.is_empty():metadata=visual
+	elif is_enemy: metadata = JSON.parse_string(FileAccess.get_file_as_string("res://assets/battle/frames.json")).enemy
 	else: metadata = JSON.parse_string(FileAccess.get_file_as_string("res://assets/battle/premium/hero-jade-frames.json"))
 	frame_data = metadata.frames
 	cell_width = float(metadata.cell_width)
 	var side := 300.0 if is_enemy else 380.0
 	display_scale = side / cell_width if is_enemy else 320.0 / float(frame_data["0"].region[3])
+	if not visual.is_empty():display_scale=float(visual.display_height)/float(visual.reference_height)
+	sprite.flip_h=not is_enemy and not visual.is_empty()
 	sprite.scale = Vector2.ONE * display_scale
 	sprite.centered = false
 	textures.clear()
@@ -61,13 +71,15 @@ func set_weapon(value: String) -> void:
 
 func set_pose(value: String) -> void:
 	pose = value
-	frame_index = int(ROWS[value]) * 4 + int(COLUMNS[weapon_type])
+	frame_index = int(ROWS[value]) if not visual_id.is_empty() else int(ROWS[value]) * 4 + int(COLUMNS[weapon_type])
 	var key := str(frame_index)
 	sprite.texture = textures[key]
 	var data: Dictionary = frame_data[key]
+	if not visual_id.is_empty():sprite.flip_h=bool(data.get("facing_right",false)) != (not enemy_side)
 	var r: Array = data.region
 	var anchor_x := float(data.get("foot_x",float(data.cell_x)+cell_width/2.0))
 	sprite_origin = Vector2(float(r[0])-anchor_x,float(r[1])-float(data.foot_y))*display_scale
+	if sprite.flip_h:sprite_origin.x=-(float(r[2])-(anchor_x-float(r[0])))*display_scale
 	sprite.position = sprite_origin
 
 func _kill(tween: Tween) -> void:
@@ -114,10 +126,10 @@ func attack() -> void:
 	motion.tween_callback(set_pose.bind("ready"))
 	motion.tween_callback(_idle)
 
-func hurt() -> void:
+func hurt(impact_direction: Vector2=Vector2.ZERO) -> void:
 	_prepare_motion()
 	set_pose("hit")
-	var away := Vector2(1,-.28) if enemy_side else Vector2(-1,.28)
+	var away := impact_direction.normalized() if impact_direction!=Vector2.ZERO else Vector2(1,-.28) if enemy_side else Vector2(-1,.28)
 	motion = create_tween()
 	motion.tween_property(self,"position",home+away*20,.06)
 	motion.tween_property(self,"position",home,.28).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)

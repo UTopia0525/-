@@ -133,7 +133,7 @@ func set_encounter(value: Dictionary) -> void:
 	enemy_faction.text = str(encounter.get("faction", "흑린채 · 일반 수적"))
 	enemy_bar.max_value = enemy_max_hp
 	scene_image.texture = load(encounter.get("background_texture","res://assets/battle/road-empty.png" if not encounter.is_empty() else "res://assets/battle/deck-empty.png"))
-	enemy_actor.set_weapon(weapons.weapon_type(enemy_weapon))
+	enemy_actor.configure(true,weapons.weapon_type(enemy_weapon),enemy_actor.home,str(encounter.get("portrait_actor","")))
 
 func begin(inner_power: int = -1) -> void:
 	player_actor.set_weapon(equipped_weapon_type)

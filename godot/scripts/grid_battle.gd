@@ -42,6 +42,7 @@ func begin(inner_power: int=-1) -> void:
  var field_config: Dictionary=encounter.get("field",{}).duplicate(true);field_config.support=encounter.get("support",{}).duplicate(true)
  grid.setup(field_config,{"stats":player_stats.duplicate(),"weapon":equipped_weapon_id,"hp":player_hp,"max_hp":player_max_hp,"skills":loadout.filter(func(id):return id!="")}, {"stats":enemy_stats.duplicate(),"weapon":enemy_weapon,"hp":enemy_hp,"max_hp":enemy_max_hp,"skills":enemy_skills.duplicate(),"ai":encounter.get("ai",tutorial_enemy.ai if encounter.is_empty() else {"style":"adaptive"}).duplicate()})
  support_actor.visible=not grid.support.is_empty();support_label.visible=support_actor.visible
+ support_actor.configure(false,"sword",Vector2(220,425),"namgung_seojin" if support_actor.visible else "");support_actor.scale=Vector2.ONE*.24
  support_actor.reset_motion();support_label.text=("남궁서진 · 협공\n근접 행동 후 협공 · 공세 %d%% 차단" % int(grid.support.get("intercept_percent",0))) if support_actor.visible else ""
  _update_status_portrait()
  choice="move";facing=Vector2i.RIGHT;opponent_side=1.0;grid_ui.show();board.show();player_actor.scale=Vector2.ONE*.25;enemy_actor.scale=Vector2.ONE*.31
@@ -139,7 +140,7 @@ func _present(event: Dictionary,token: int) -> void:
  qi.restore(int(player_stats.inner),grid.units[0].qi);enemy_qi.restore(int(enemy_stats.inner),grid.units[1].qi)
  var moving=event.id=="move" or event.before!=unit.position
  var attack=float(combat.action(event.id,unit.stats,unit.weapon).get("raw",0))>0
- if attack:_basic_fx("attack",actor.home+Vector2(unit.facing)*34+Vector2(0,-30),Vector2(unit.facing))
+ if attack:_basic_fx("attack",actor.home+Vector2(unit.facing)*34+Vector2(0,-30),Vector2(unit.facing),actor.visual_effect)
  elif event.id not in ["move","wait"]:_basic_fx("guard",actor.home+Vector2(0,-35),Vector2(unit.facing))
  if moving:
   actor.walker=preload("res://scripts/battle_step.gd").new();actor.add_child(actor.walker);actor.walker.configure(actor,animation_time)
@@ -152,7 +153,7 @@ func _present(event: Dictionary,token: int) -> void:
   tween.tween_callback(actor.set_pose.bind("strike"));tween.tween_property(actor,"position",actor.home,animation_time*.4)
  else:actor.defend(animation_time)
  if event.damage>0:
-  victim.hurt();sound_requested.emit("hit");_basic_fx("hit",victim.home+Vector2(0,-32),Vector2(unit.facing))
+  victim.hurt(Vector2(unit.facing));sound_requested.emit("hit");_basic_fx("hit",victim.home+Vector2(0,-32),Vector2(unit.facing),victim.visual_effect)
  elif event.id not in ["move","wait"]:sound_requested.emit("block")
  log_action(name,str(label),event.damage,event.qi_cost,event.guard_used,unit.qi)
  refresh_grid(true)
@@ -167,8 +168,8 @@ func _present(event: Dictionary,token: int) -> void:
   support_actor.defend(maxf(.1,animation_time));_basic_fx("guard",player_actor.home+Vector2(0,-35),Vector2.RIGHT)
   log_action("남궁서진","공세 차단",0,0,0,0);note.text="남궁서진이 공격 피해 %d을 막았다." % int(event.support_blocked)
  if int(event.get("support_damage",0))>0:
-  support_actor.set_pose("strike");sound_requested.emit("attack_sword");_basic_fx("attack",enemy_actor.home+Vector2(0,-30),Vector2.RIGHT)
-  enemy_actor.hurt();damage_label.position=enemy_actor.home+Vector2(-25,-100);damage_label.text="−%d" % int(event.support_damage);damage_label.modulate.a=1;damage_label.show()
+  support_actor.set_pose("strike");sound_requested.emit("attack_sword");_basic_fx("attack",enemy_actor.home+Vector2(0,-30),Vector2.RIGHT,support_actor.visual_effect)
+  enemy_actor.hurt();_basic_fx("hit",enemy_actor.home+Vector2(0,-32),Vector2.RIGHT,enemy_actor.visual_effect);damage_label.position=enemy_actor.home+Vector2(-25,-100);damage_label.text="−%d" % int(event.support_damage);damage_label.modulate.a=1;damage_label.show()
   log_action("남궁서진","지원 공격",int(event.support_damage),0,0,0);note.text="남궁서진이 틈을 열어 협공했다."
   await get_tree().create_timer(maxf(.1,animation_time),false).timeout
   if token!=generation or not running:return
@@ -224,8 +225,8 @@ func _update_hp(animate: bool=false) -> void:
 func _refresh_availability() -> void:
  if grid!=null and running:refresh_grid()
 
-func _basic_fx(kind: String,point: Vector2,direction: Vector2) -> void:
- var effect=preload("res://scripts/battle_basic_fx.gd").new();effect.kind=kind;effect.position=point;effect.direction=direction;effect.token=generation
+func _basic_fx(kind: String,point: Vector2,direction: Vector2,profile: Dictionary={}) -> void:
+ var effect=preload("res://scripts/battle_basic_fx.gd").new();effect.kind=kind;effect.position=point;effect.direction=direction;effect.token=generation;effect.profile=profile.duplicate(true)
  add_child(effect);move_child(effect,grid_ui.get_index())
 
 func _update_status_portrait() -> void:
@@ -233,6 +234,8 @@ func _update_status_portrait() -> void:
  var id=str(encounter.get("portrait_actor",encounter.get("id","pirate")))
  id={"bandit_sentry":"bandit_raider","bandit_ringleader":"bandit_leader","qingya_chief":"bandit_raider","herb_ruffian":"bandit_raider"}.get(id,id)
  var actor=portraits.ACTORS.get(id,portraits.ACTORS["bandit_raider"] if str(encounter.get("name","")).contains("산적") else portraits.ACTORS["recipient"])
+ var visual: Dictionary=preload("res://scripts/battle_visuals.gd").DATA.characters.get(id,{})
+ if not visual.is_empty():actor={"name":visual.name,"portrait":visual.portrait}
  var resolver=portraits.new();var texture=resolver.texture_for(actor);resolver.free()
  var atlas=AtlasTexture.new();atlas.atlas=texture;atlas.region=Rect2(0,0,texture.get_width(),texture.get_height()*.64)
  status_cards[1].portrait.texture=atlas

@@ -1,0 +1,253 @@
+{
+  "version": 1,
+  "characters": {
+    "mr_heir": {
+      "name": "모용유안",
+      "texture": "res://assets/battle/dedicated/murong-yuan.png",
+      "cell_width": 627.0,
+      "reference_height": 440,
+      "display_height": 264,
+      "frames": {
+        "0": {
+          "cell_x": 0,
+          "foot_x": 406.77,
+          "foot_y": 602,
+          "region": [
+            79,
+            162,
+            511,
+            440
+          ],
+          "facing_right": false
+        },
+        "1": {
+          "cell_x": 627,
+          "foot_x": 968.53,
+          "foot_y": 603,
+          "region": [
+            782,
+            88,
+            367,
+            515
+          ],
+          "facing_right": true
+        },
+        "2": {
+          "cell_x": 0,
+          "foot_x": 439.24,
+          "foot_y": 1163,
+          "region": [
+            32,
+            732,
+            600,
+            431
+          ],
+          "facing_right": false
+        },
+        "3": {
+          "cell_x": 632,
+          "foot_x": 986.61,
+          "foot_y": 1163,
+          "region": [
+            824,
+            784,
+            328,
+            379
+          ],
+          "facing_right": true
+        }
+      },
+      "effect": {
+        "style": "swift_sword",
+        "color": "c7b8f5"
+      },
+      "portrait": "res://assets/portraits/murong/yuan.png"
+    },
+    "cy_tak": {
+      "name": "탁문호",
+      "texture": "res://assets/battle/dedicated/tak-munho.png",
+      "cell_width": 627.0,
+      "reference_height": 467,
+      "display_height": 276,
+      "frames": {
+        "0": {
+          "cell_x": 0,
+          "foot_x": 405.93,
+          "foot_y": 621,
+          "region": [
+            13,
+            154,
+            591,
+            467
+          ],
+          "facing_right": true
+        },
+        "1": {
+          "cell_x": 627,
+          "foot_x": 977.29,
+          "foot_y": 620,
+          "region": [
+            753,
+            137,
+            435,
+            483
+          ],
+          "facing_right": true
+        },
+        "2": {
+          "cell_x": 0,
+          "foot_x": 481.68,
+          "foot_y": 1178,
+          "region": [
+            10,
+            724,
+            706,
+            454
+          ],
+          "facing_right": false
+        },
+        "3": {
+          "cell_x": 716,
+          "foot_x": 1015.01,
+          "foot_y": 1178,
+          "region": [
+            824,
+            742,
+            380,
+            436
+          ],
+          "facing_right": true
+        }
+      },
+      "effect": {
+        "style": "heavy_saber",
+        "color": "e2aa72"
+      },
+      "portrait": "res://assets/portraits/cuiyue/tak-munho.png"
+    },
+    "qy_ma_yunpiao": {
+      "name": "마운표",
+      "texture": "res://assets/battle/dedicated/maunpyo.png",
+      "cell_width": 627.0,
+      "reference_height": 493,
+      "display_height": 280,
+      "frames": {
+        "0": {
+          "cell_x": 0,
+          "foot_x": 344.19,
+          "foot_y": 589,
+          "region": [
+            134,
+            96,
+            464,
+            493
+          ],
+          "facing_right": false
+        },
+        "1": {
+          "cell_x": 627,
+          "foot_x": 965.49,
+          "foot_y": 588,
+          "region": [
+            740,
+            87,
+            450,
+            501
+          ],
+          "facing_right": false
+        },
+        "2": {
+          "cell_x": 0,
+          "foot_x": 327.37,
+          "foot_y": 1187,
+          "region": [
+            61,
+            702,
+            548,
+            485
+          ],
+          "facing_right": false
+        },
+        "3": {
+          "cell_x": 627,
+          "foot_x": 944.3,
+          "foot_y": 1183,
+          "region": [
+            762,
+            734,
+            411,
+            449
+          ],
+          "facing_right": false
+        }
+      },
+      "effect": {
+        "style": "heavy_fist",
+        "color": "d8bc80"
+      },
+      "portrait": "res://assets/portraits/greenwood/maunpyo.png"
+    },
+    "namgung_seojin": {
+      "name": "남궁서진",
+      "texture": "res://assets/battle/dedicated/namgung-seojin.png",
+      "cell_width": 627.0,
+      "reference_height": 448,
+      "display_height": 320,
+      "frames": {
+        "0": {
+          "cell_x": 0,
+          "foot_x": 422.49,
+          "foot_y": 616,
+          "region": [
+            31,
+            168,
+            587,
+            448
+          ],
+          "facing_right": false
+        },
+        "1": {
+          "cell_x": 627,
+          "foot_x": 1013.25,
+          "foot_y": 615,
+          "region": [
+            742,
+            103,
+            472,
+            512
+          ],
+          "facing_right": false
+        },
+        "2": {
+          "cell_x": 0,
+          "foot_x": 509.04,
+          "foot_y": 1162,
+          "region": [
+            14,
+            726,
+            715,
+            436
+          ],
+          "facing_right": false
+        },
+        "3": {
+          "cell_x": 729,
+          "foot_x": 1003.78,
+          "foot_y": 1167,
+          "region": [
+            772,
+            752,
+            452,
+            415
+          ],
+          "facing_right": false
+        }
+      },
+      "effect": {
+        "style": "cloud_sword",
+        "color": "b5e9ff"
+      },
+      "portrait": "res://assets/portraits/namgung/seojin.png"
+    }
+  }
+}

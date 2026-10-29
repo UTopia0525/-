@@ -6,7 +6,10 @@ var elapsed=0.0
 var duration=.4
 func configure(actor,seconds: float) -> void:
  original=actor.sprite;duration=seconds;position=original.position;scale=original.scale
- var texture=original.texture;var dimensions=texture.get_size();var seam=floorf(dimensions.y*.79)
+ var texture=original.texture;var dimensions=texture.get_size()
+ # Mirror the complete articulated body, including the leg order, like the source pose.
+ if original.flip_h:position.x+=dimensions.x*scale.x;scale.x*=-1
+ var seam=floorf(dimensions.y*.79)
  for area in [Rect2(0,0,dimensions.x,seam),Rect2(0,seam,dimensions.x/2,dimensions.y-seam),Rect2(dimensions.x/2,seam,dimensions.x/2,dimensions.y-seam)]:
   var sprite=Sprite2D.new();var part=AtlasTexture.new();part.atlas=texture;part.region=area;sprite.texture=part;sprite.material=original.material;sprite.centered=false;sprite.position=area.position;sprite.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;add_child(sprite);pieces.append({"sprite":sprite,"home":area.position})
  original.hide()
