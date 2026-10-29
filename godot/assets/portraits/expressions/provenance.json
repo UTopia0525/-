@@ -1,0 +1,224 @@
+{
+  "hero": {
+    "source": "godot/assets/portraits/player/hero.png",
+    "generated": "/workspace/generated_images/exec-0a7eb068-b5cb-4787-883d-e1fc86b40518.png"
+  },
+  "sheets": [
+    {
+      "source": "/workspace/-/godot/assets/portraits/alliance/gwak-jinseok.png",
+      "file": "alliance--gwak-jinseok.png",
+      "generated": "/workspace/generated_images/exec-66b1f0f7-7197-4478-a697-f9a58af1c69e.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/alliance/heo-mungyu.png",
+      "file": "alliance--heo-mungyu.png",
+      "generated": "/workspace/generated_images/exec-bf23dcc6-f0ef-45cc-9f3c-29816a9101c4.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/archetypes/bandit.png",
+      "file": "archetypes--bandit.png",
+      "generated": "/workspace/generated_images/exec-d2cd5097-0b8b-40da-af8b-bdb6505afe48.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/alliance/song-jigyeom.png",
+      "file": "alliance--song-jigyeom.png",
+      "generated": "/workspace/generated_images/exec-055739e6-14b2-49d7-84e1-43f475281942.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/archetypes/wanderer.png",
+      "file": "archetypes--wanderer.png",
+      "generated": "/workspace/generated_images/exec-1d8c21cd-d65a-4c3b-bdf3-046cb1e27f3d.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/archetypes/bandit-sentry.png",
+      "file": "archetypes--bandit-sentry.png",
+      "generated": "/workspace/generated_images/exec-8e97a60b-76b6-4ea7-9d5a-d658de4802de.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/archetypes/water-bandit.png",
+      "file": "archetypes--water-bandit.png",
+      "generated": "/workspace/generated_images/exec-002c320b-b5a3-4a2a-815c-c94a6bbeaa11.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/blackguild/wijungnyang.png",
+      "file": "blackguild--wijungnyang.png",
+      "generated": "/workspace/generated_images/exec-cda47838-7fba-427e-930a-30cb8b0a1964.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/cuiyue/eunsowol.png",
+      "file": "cuiyue--eunsowol.png",
+      "generated": "/workspace/generated_images/exec-97fa9d2a-a1df-4b4d-a182-f6b98f1ad769.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/cuiyue/baek-soa.png",
+      "file": "cuiyue--baek-soa.png",
+      "generated": "/workspace/generated_images/exec-f3c34538-e86c-4e97-a886-d24ecc83072d.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/cuiyue/hong-chaeryeong.png",
+      "file": "cuiyue--hong-chaeryeong.png",
+      "generated": "/workspace/generated_images/exec-7a80de8a-cf3c-4baf-844d-0bf919d5ca3c.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/cuiyue/seol-geumran.png",
+      "file": "cuiyue--seol-geumran.png",
+      "generated": "/workspace/generated_images/exec-42858bfd-ea16-4251-bdc8-83d58a9e075b.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/extras/female_common_b.png",
+      "file": "extras--female_common_b.png",
+      "generated": "/workspace/generated_images/exec-5b853718-386e-4fb8-998c-5e1369860990.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/extras/female_common_a.png",
+      "file": "extras--female_common_a.png",
+      "generated": "/workspace/generated_images/exec-1ad070b1-048c-4ee2-9a23-58c8072dca64.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/extras/female_elder.png",
+      "file": "extras--female_elder.png",
+      "generated": "/workspace/generated_images/exec-6758bd2f-4a6a-47ff-8c88-b9f5eb118191.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/cuiyue/tak-munho.png",
+      "file": "cuiyue--tak-munho.png",
+      "generated": "/workspace/generated_images/exec-dc3044ae-1868-4405-bdbf-3b2182442303.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/extras/female_middle.png",
+      "file": "extras--female_middle.png",
+      "generated": "/workspace/generated_images/exec-894c12ea-5098-48db-9ed8-cd70f1ce815c.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/extras/female_young.png",
+      "file": "extras--female_young.png",
+      "generated": "/workspace/generated_images/exec-e03aa5e5-cb53-4530-84e6-3d02010a5a16.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/extras/male_middle.png",
+      "file": "extras--male_middle.png",
+      "generated": "/workspace/generated_images/exec-283786b5-da69-48ef-a0b1-bcd9df8355a6.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/extras/male_common_a.png",
+      "file": "extras--male_common_a.png",
+      "generated": "/workspace/generated_images/exec-af26e330-cc74-42fd-8487-01fb250af764.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/extras/male_common_b.png",
+      "file": "extras--male_common_b.png",
+      "generated": "/workspace/generated_images/exec-c4593f19-5b01-4e2a-8f44-630731fc1ec0.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/extras/male_young.png",
+      "file": "extras--male_young.png",
+      "generated": "/workspace/generated_images/exec-1db79fd9-9b05-42b2-bbb4-ec6ae16c555d.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/greenwood/maunpyo.png",
+      "file": "greenwood--maunpyo.png",
+      "generated": "/workspace/generated_images/exec-152982b8-d216-45d1-a311-a38601e1d49e.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/extras/male_elder.png",
+      "file": "extras--male_elder.png",
+      "generated": "/workspace/generated_images/exec-ae54588f-2528-4a08-acb5-b70e9abe270f.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/haomun/lu-xiaozhuan.png",
+      "file": "haomun--lu-xiaozhuan.png",
+      "generated": "/workspace/generated_images/exec-a88e78f7-60c0-4c91-848b-649716593c35.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/murong/gyeongwon.png",
+      "file": "murong--gyeongwon.png",
+      "generated": "/workspace/generated_images/exec-36c02f6b-4bd9-4209-987b-bd781c72c333.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/murong/guard.png",
+      "file": "murong--guard.png",
+      "generated": "/workspace/generated_images/exec-95b55268-b1b3-4fa0-b76f-91ed0bcd6019.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/murong/yuan.png",
+      "file": "murong--yuan.png",
+      "generated": "/workspace/generated_images/exec-64861f95-653e-406d-99aa-e581e45390cd.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/namgung/seojin.png",
+      "file": "namgung--seojin.png",
+      "generated": "/workspace/generated_images/exec-7cc1ac90-5c19-40a4-bbae-a3fdbdd69579.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/namgung/regular-warrior.png",
+      "file": "namgung--regular-warrior.png",
+      "generated": "/workspace/generated_images/exec-bc88a8ee-aa47-47a7-a56e-06ba515a6d69.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/namgung/yeonseo.png",
+      "file": "namgung--yeonseo.png",
+      "generated": "/workspace/generated_images/exec-c896bfe8-d5e9-4991-8c3c-737e6fb0eb51.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/services/instructor.png",
+      "file": "services--instructor.png",
+      "generated": "/workspace/generated_images/exec-1542064c-9272-44d0-9508-f3ff55f71ad7.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/services/artisan.png",
+      "file": "services--artisan.png",
+      "generated": "/workspace/generated_images/exec-afe0f529-eb06-4dba-bdf7-f57b1158325c.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/wuchang/du_sanniang.png",
+      "file": "wuchang--du_sanniang.png",
+      "generated": "/workspace/generated_images/exec-9ec74995-2d3b-4d7d-b6a0-a41c05208fab.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/wuchang/grandmother_zheng.png",
+      "file": "wuchang--grandmother_zheng.png",
+      "generated": "/workspace/generated_images/exec-4a1def54-0ac5-4638-9648-ddf45761b08f.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/services/merchant.png",
+      "file": "services--merchant.png",
+      "generated": "/workspace/generated_images/exec-b8688c8d-0e0c-47a4-adc9-9c29ee83c2ab.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/wuchang/lin_zhengshan.png",
+      "file": "wuchang--lin_zhengshan.png",
+      "generated": "/workspace/generated_images/exec-32b66d6f-2493-43f5-a4d3-e2c7d28e9527.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/story/constable-duty.png",
+      "file": "story--constable-duty.png",
+      "generated": "/workspace/generated_images/exec-a8ab81f5-e8ff-4f91-a309-6c938e9aab41.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/wuchang/shi_dayong.png",
+      "file": "wuchang--shi_dayong.png",
+      "generated": "/workspace/generated_images/exec-6c225e19-d2d2-49cc-945c-55a35cfd6842.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/wuchang/liu_baicao.png",
+      "file": "wuchang--liu_baicao.png",
+      "generated": "/workspace/generated_images/exec-b8a4d65f-c0c4-491e-89cd-3bf3d0088428.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/wuchang/wu_deshu.png",
+      "file": "wuchang--wu_deshu.png",
+      "generated": "/workspace/generated_images/exec-0bc59752-dfb1-4cb2-808d-f83dfb66f844.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/wuchang/lu_zhenghao.png",
+      "file": "wuchang--lu_zhenghao.png",
+      "generated": "/workspace/generated_images/exec-02f954a0-0f9b-4b60-96d7-84d262534917.png"
+    },
+    {
+      "source": "/workspace/-/godot/assets/portraits/wuchang/zhou_jifu.png",
+      "file": "wuchang--zhou_jifu.png",
+      "generated": "/workspace/generated_images/exec-e9a1aedc-7e99-4d7b-9910-571fb4e5c4f2.png"
+    }
+  ],
+  "method": "image_gen reference edits, original source copied unchanged; four quadrants selected in Godot shader, no raster postprocessing"
+}

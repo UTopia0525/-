@@ -20,6 +20,7 @@ var quest_badges: Array[Dictionary]=[]
 var npc_markers: PackedVector2Array = []
 var player_marker: Vector2
 var facing := "down"
+var nanjing_floor: Texture2D
 
 class MapView extends Control:
 	var owner_map
@@ -126,6 +127,11 @@ func draw_map(canvas: Control) -> void:
 	if not is_instance_valid(exploration) or world_window.size.x <= 0:
 		return
 	var texture: Texture2D = exploration.background.texture
+	if exploration.area_name=="nanjing" and ResourceLoader.exists("res://assets/maps/nanjing/painted/overview-floor.png"):
+		# Canvas draw commands hold a RID, not a strong texture reference. Keep this
+		# alive after _draw returns, or the first minimap frame becomes a white box.
+		if nanjing_floor==null:nanjing_floor=load("res://assets/maps/nanjing/painted/overview-floor.png")
+		if nanjing_floor:texture=nanjing_floor
 	var bounds: Rect2 = exploration.map_bounds
 	var source = Rect2((world_window.position - bounds.position) / bounds.size * texture.get_size(), world_window.size / bounds.size * texture.get_size())
 	canvas.draw_texture_rect_region(texture, Rect2(Vector2.ZERO, VIEW_SIZE), source, Color(0.75, 0.83, 0.77))

@@ -262,6 +262,18 @@
       "eye_y": 267,
       "eye_to_chin": 170,
       "natural_facing": "right"
+    },
+    "res://assets/portraits/namgung/seojin.png": {
+      "face_x": 570,
+      "eye_y": 280,
+      "eye_to_chin": 150,
+      "natural_facing": "right"
+    },
+    "res://assets/portraits/blackguild/wijungnyang.png": {
+      "face_x": 550,
+      "eye_y": 290,
+      "eye_to_chin": 175,
+      "natural_facing": "right"
     }
   }
 }

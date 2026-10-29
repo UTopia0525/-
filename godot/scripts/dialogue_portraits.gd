@@ -29,6 +29,9 @@ var actor_names: Dictionary = {}
 var active_actor: String = ""
 var source_facing: Dictionary = {}
 var portrait_choices: Dictionary = {}
+const EXPRESSIONS = preload("res://scripts/portrait_expressions.gd")
+var expression_library = EXPRESSIONS.new()
+var expression_states: Dictionary = {}
 var basic_portraits: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/basic_npc_portraits.json")).entries
 var COMMON_POOL={"male":[],"female":[]}
 
@@ -95,7 +98,12 @@ func apply_framing(view: TextureRect, actor: Dictionary) -> void:
 func valid_staging(value) -> bool:
 	if not value is Dictionary: return false
 	for key in value:
-		if key not in ["to", "facing"]: return false
+		if key not in ["to", "facing", "emotion", "emotions"]: return false
+	if value.has("emotion") and value.emotion not in EXPRESSIONS.MOODS:return false
+	if value.has("emotions"):
+		if not value.emotions is Dictionary:return false
+		for id in value.emotions:
+			if not ACTORS.has(id) or value.emotions[id] not in EXPRESSIONS.MOODS:return false
 	if value.has("to") and (not value.to is String or not ACTORS.has(value.to)): return false
 	if value.has("facing"):
 		if not value.facing is Dictionary: return false
@@ -174,6 +182,10 @@ func set_participants(participants: Array) -> void:
 
 func set_speaker(id: String, staging: Dictionary = {}) -> void:
 	active_actor = id
+	# Expressions belong to the illustrated identity selected for this conversation.
+	# An alternate common portrait therefore gets its own matching expressions.
+	if portraits.has(id):set_expression(id,str(staging.get("emotion","neutral")))
+	for actor_id in staging.get("emotions",{}):set_expression(actor_id,str(staging.emotions[actor_id]))
 	var addressed: String = str(staging.get("to", ""))
 	if not portraits.has(addressed) or addressed == id:
 		addressed = "hero" if id != "hero" and portraits.has("hero") else ""
@@ -203,6 +215,18 @@ func set_speaker(id: String, staging: Dictionary = {}) -> void:
 		if overrides.has(actor_id): desired = str(overrides[actor_id])
 		view.flip_h = desired != source_facing[actor_id]
 
+func set_expression(id: String, mood: String) -> void:
+	if not portraits.has(id):return
+	var view: TextureRect=portraits[id]
+	var base: String=portrait_choices[id]
+	var sheet: Texture2D=expression_library.sheet_for(base) if mood!="neutral" else null
+	var index: int=EXPRESSIONS.MOODS.find(mood)-1
+	view.material.set_shader_parameter("use_expression",sheet!=null and index>=0)
+	if sheet and index>=0:
+		view.material.set_shader_parameter("expression_sheet",sheet)
+		view.material.set_shader_parameter("expression_cell",Vector2(index%2,index/2))
+	expression_states[id]=mood if sheet and index>=0 else "neutral"
+
 func clear() -> void:
 	for child in get_children():
 		remove_child(child)
@@ -211,5 +235,7 @@ func clear() -> void:
 	actor_names.clear()
 	source_facing.clear()
 	portrait_choices.clear()
+	expression_states.clear()
+	expression_library.cache.clear()
 	active_actor = ""
 	hide()

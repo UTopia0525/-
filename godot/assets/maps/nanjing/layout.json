@@ -20,7 +20,7 @@
     1464,
     930
   ],
-  "ground_script": "res://scripts/qingya_ground.gd",
+  "ground_script": "res://scripts/nanjing_ground.gd",
   "ground_texture": "res://assets/maps/nanjing/ground.png",
   "objects": [
     {
@@ -335,7 +335,7 @@
     },
     {
       "id": "alley_house_0",
-      "prefab": "nj_sidehome",
+      "prefab": "nj_home",
       "rect": [
         130,
         558,
@@ -415,7 +415,7 @@
     },
     {
       "id": "alley_house_12",
-      "prefab": "nj_sidehome",
+      "prefab": "nj_home",
       "rect": [
         585,
         896,
@@ -450,16 +450,6 @@
         1090,
         900,
         83,
-        78
-      ]
-    },
-    {
-      "id": "alley_house_16",
-      "prefab": "nj_sidehome",
-      "rect": [
-        1390,
-        907,
-        97,
         78
       ]
     },
@@ -1422,6 +1412,36 @@
         30,
         28
       ]
+    },
+    {
+      "id": "painted_bridge_0",
+      "prefab": "painted_bridge",
+      "rect": [
+        380,
+        740,
+        69,
+        164
+      ]
+    },
+    {
+      "id": "painted_bridge_1",
+      "prefab": "painted_bridge",
+      "rect": [
+        717,
+        750,
+        67,
+        155
+      ]
+    },
+    {
+      "id": "painted_bridge_2",
+      "prefab": "painted_bridge",
+      "rect": [
+        1284,
+        780,
+        70,
+        144
+      ]
     }
   ],
   "districts": [
@@ -1745,220 +1765,256 @@
   "npcs": [],
   "prefabs": {
     "nj_home": {
-      "texture": "res://assets/maps/nanjing/buildings.png",
+      "texture": "res://assets/maps/nanjing/painted/civic.png",
       "source": [
-        45,
-        100,
-        280,
-        225
+        0,
+        95,
+        503,
+        408
       ],
       "kind": "building",
       "footprints": [
         [
           0.11,
-          0.53,
+          0.58,
           0.78,
-          0.43
+          0.33
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "nj_townhouse": {
-      "texture": "res://assets/maps/nanjing/buildings.png",
+      "texture": "res://assets/maps/nanjing/painted/civic.png",
       "source": [
-        448,
-        16,
-        240,
-        312
+        510,
+        0,
+        435,
+        495
       ],
       "kind": "building",
       "footprints": [
         [
           0.11,
-          0.53,
+          0.58,
           0.78,
-          0.43
+          0.33
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "nj_shop": {
-      "texture": "res://assets/maps/nanjing/buildings.png",
+      "texture": "res://assets/maps/nanjing/painted/civic.png",
       "source": [
-        785,
+        949,
         60,
-        302,
-        270
+        583,
+        441
       ],
       "kind": "building",
       "footprints": [
         [
           0.11,
-          0.53,
+          0.58,
           0.78,
-          0.43
+          0.33
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "nj_warehouse": {
-      "texture": "res://assets/maps/nanjing/buildings.png",
+      "texture": "res://assets/maps/nanjing/painted/civic.png",
       "source": [
-        1165,
-        75,
-        360,
-        252
+        0,
+        540,
+        510,
+        421
       ],
       "kind": "building",
       "footprints": [
         [
           0.11,
-          0.53,
+          0.58,
           0.78,
-          0.43
+          0.33
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "nj_workshop": {
-      "texture": "res://assets/maps/nanjing/buildings.png",
+      "texture": "res://assets/maps/nanjing/painted/civic.png",
       "source": [
-        10,
-        365,
-        335,
-        290
+        515,
+        510,
+        438,
+        451
       ],
       "kind": "building",
       "footprints": [
         [
           0.11,
-          0.53,
+          0.58,
           0.78,
-          0.43
+          0.33
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "nj_inn": {
-      "texture": "res://assets/maps/nanjing/buildings.png",
+      "texture": "res://assets/maps/nanjing/painted/civic.png",
       "source": [
-        338,
-        358,
-        475,
-        303
+        955,
+        510,
+        580,
+        467
       ],
       "kind": "building",
       "footprints": [
         [
           0.11,
-          0.53,
+          0.58,
           0.78,
-          0.43
+          0.33
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "nj_government": {
-      "texture": "res://assets/maps/nanjing/buildings.png",
+      "texture": "res://assets/maps/nanjing/painted/landmarks.png",
       "source": [
-        818,
-        353,
-        387,
-        310
+        0,
+        0,
+        596,
+        495
       ],
       "kind": "building",
       "footprints": [
         [
           0.11,
-          0.53,
+          0.58,
           0.78,
-          0.43
+          0.33
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "nj_martial": {
-      "texture": "res://assets/maps/nanjing/buildings.png",
+      "texture": "res://assets/maps/nanjing/painted/landmarks.png",
       "source": [
-        1202,
-        388,
-        330,
-        273
+        596,
+        80,
+        427,
+        418
       ],
       "kind": "building",
       "footprints": [
         [
           0.11,
-          0.53,
+          0.58,
           0.78,
-          0.43
+          0.33
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "nj_tea_house": {
-      "texture": "res://assets/maps/nanjing/buildings.png",
+      "texture": "res://assets/maps/nanjing/painted/landmarks.png",
       "source": [
-        10,
-        665,
-        345,
-        330
+        1025,
+        0,
+        510,
+        495
       ],
       "kind": "building",
       "footprints": [
         [
           0.11,
-          0.53,
+          0.58,
           0.78,
-          0.43
+          0.33
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "nj_bookshop": {
-      "texture": "res://assets/maps/nanjing/buildings.png",
+      "texture": "res://assets/maps/nanjing/painted/landmarks.png",
       "source": [
-        370,
-        720,
-        490,
-        270
+        0,
+        540,
+        675,
+        455
       ],
       "kind": "building",
       "footprints": [
         [
           0.11,
-          0.53,
+          0.58,
           0.78,
-          0.43
+          0.33
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "nj_sidehome": {
-      "texture": "res://assets/maps/nanjing/buildings.png",
+      "texture": "res://assets/maps/nanjing/painted/landmarks.png",
       "source": [
-        900,
-        660,
-        225,
-        340
+        675,
+        490,
+        315,
+        505
       ],
       "kind": "building",
       "footprints": [
         [
           0.11,
-          0.53,
+          0.58,
           0.78,
-          0.43
+          0.33
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "nj_shrine": {
-      "texture": "res://assets/maps/nanjing/buildings.png",
+      "texture": "res://assets/maps/nanjing/painted/landmarks.png",
       "source": [
-        1180,
-        720,
-        350,
-        280
+        1000,
+        540,
+        533,
+        455
       ],
       "kind": "building",
       "footprints": [
         [
           0.11,
-          0.53,
+          0.58,
           0.78,
-          0.43
+          0.33
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "nj_wall_h": {
       "texture": "res://assets/maps/nanjing/landmarks.png",
@@ -2511,10 +2567,58 @@
           0.23
         ]
       ]
+    },
+    "painted_bridge": {
+      "texture": "res://assets/maps/nanjing/painted/bridge.png",
+      "source": [
+        310,
+        27,
+        406,
+        882
+      ],
+      "segments": [
+        [
+          310,
+          27,
+          406,
+          200
+        ],
+        [
+          310,
+          500,
+          406,
+          380
+        ],
+        [
+          310,
+          1190,
+          406,
+          302
+        ]
+      ],
+      "kind": "bridge",
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "footprints": [
+        [
+          0.08,
+          0.03,
+          0.13,
+          0.9
+        ],
+        [
+          0.79,
+          0.03,
+          0.13,
+          0.9
+        ]
+      ]
     }
   },
   "ambience": {
     "description": "붉은 등롱/비단 시장, 어두운 공방, 하역 짐수레, 서책 진열, 관아 석수, 수변 찻자리",
     "crowd_prefix": "nj_crowd_"
-  }
+  },
+  "painted_materials": "res://assets/maps/nanjing/painted/materials.png",
+  "art_revision": 3
 }

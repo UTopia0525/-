@@ -82,7 +82,11 @@ func run() -> void:
 	check(saves.write_slot(4) and FileAccess.file_exists(saves.path(4) + ".bak"), "overwrite uses backup")
 	# Combat resumes only at a stable player turn. Busy actions are unsaveable and pause.
 	game.start_battle()
+	for i in range(4):await process_frame
+	game.battle.grid.units[0].position=Vector2i(2,2);game.battle.grid.units[1].position=Vector2i(3,2)
 	game.battle.select_samjae()
+	var expected_battle_enemy_hp: int=game.battle.enemy_hp
+	var expected_battle_player_hp: int=game.battle.player_hp
 	check(preload("res://tests/legacy_save_fixture.gd").write(game, 7), "battle between turns saved")
 	game.battle.use_selected()
 	check(not saves.write_slot(8), "busy battle save disabled")
@@ -93,7 +97,7 @@ func run() -> void:
 	game.settings_menu.close_menu()
 	check(saves.load_slot(7), "restore player turn and cancel old attack")
 	await create_timer(0.8).timeout
-	check(game.battle.enemy_hp == 150 and game.battle.player_hp == 300 and game.battle.selected and game.state == "battle", "old timer cannot damage loaded battle")
+	check(game.battle.enemy_hp == expected_battle_enemy_hp and game.battle.player_hp == expected_battle_player_hp and game.battle.selected and game.state == "battle", "old timer cannot damage loaded battle with current derived health")
 	# Named boarding and service continuations remain valid after a process-independent load.
 	game.start_story()
 	drain()

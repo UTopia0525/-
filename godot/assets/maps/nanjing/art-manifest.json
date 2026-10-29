@@ -50,5 +50,23 @@
     "source": "/workspace/generated_images/exec-ca38fffa-e9d6-4823-a4a9-055efbd54d57.png",
     "sha256": "26eb6d04c7e371595f4e62f07979dacbc60e7c41142b1c10ae11f5721b1326a9",
     "method": "image_gen unified transparent L-shaped masonry wall, no raster postprocessing"
+  },
+  "painted_revision": {
+    "date": "2026-10-30",
+    "goal": "Cuiyue hall material richness; consistent front-facing orthographic camera, uniform aspect-preserving scale, layered collision and shadows",
+    "civic_source": "/workspace/generated_images/exec-a7d3c8ef-cffc-4805-8c5c-0d911b98190d.png",
+    "landmarks_source": "/workspace/generated_images/exec-0db9e15e-b786-44b8-87e0-54d9035357e8.png",
+    "materials_source": "/workspace/generated_images/exec-87d68dbe-bf12-4904-b65c-72e1dd5d9a3a.png",
+    "method": "Original generated files copied unchanged; atlas selections, material detail, contact shadows and map-only terrain bake rendered in Godot. No raster postprocessing.",
+    "layout_version": 2,
+    "coordinate_migration": "world dimensions/coordinates unchanged, existing safe-player correction retained",
+    "files": {
+      "godot/assets/maps/nanjing/painted/landmarks.png": "ed6f85ad42c1b2bdc20616c5563fa4f7d5d3f048d6fd69aef0cf33f648faad36",
+      "godot/assets/maps/nanjing/painted/materials.png": "785cbe7b92fecf20d193ed229809d96232c1eb0fa0026ff2673d0083a546cce7",
+      "godot/assets/maps/nanjing/painted/bridge.png": "3e1bf9762845b721091efaa811e5d068c927a66cd726362c6a214b0c28346477",
+      "godot/assets/maps/nanjing/painted/overview-floor.png": "f90045c6cb751005e3d98e91f65fcffc7b944f65699fa6a58f6bde0485fed406",
+      "godot/assets/maps/nanjing/painted/civic.png": "60ba4f62e647bc01251f70344a3f8b5f8615c56e2b4a11f72bd12715494b804f"
+    },
+    "bridge_source": "/workspace/generated_images/exec-f8ba57d5-4d8f-474c-9d86-3773a2023de2.png"
   }
 }

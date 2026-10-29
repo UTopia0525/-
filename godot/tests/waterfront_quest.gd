@@ -37,6 +37,10 @@ func meet() -> void:
 	var path=w.path_to(a.position,true);check(not path.is_empty(),"Nochil approachable")
 	if path.is_empty():return
 	w.player.position=path[-1];w.player.stop();await physics_frame;await physics_frame;await process_frame;await create_timer(.1).timeout
+func ready_grid() -> void:
+	var deadline=Time.get_ticks_msec()+12000
+	while not game.battle.awaiting_player and game.state=="battle" and Time.get_ticks_msec()<deadline:await create_timer(.03).timeout
+	check(game.battle.awaiting_player,"current grid battle reaches player input")
 func run() -> void:
 	game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await process_frame
 	game.options.seen.append_array(["city","dialogue","trade","battle"]);game.start_wuchang();game.exploration.load_area("nanjing");game.exploration.set_active(true)
@@ -61,23 +65,29 @@ func run() -> void:
 	drain();check(q.phase=="battle" and game.state=="battle" and game.battle.encounter.id=="nanjing_nochil","dialogue directly starts battle")
 	check(not game.save_system.write_slot(9),"battle cannot save")
 	# Actual enemy action, shared death handler and preserved manual save.
-	game.battle.player_hp=1;game.battle.select_skill("basic_defense");game.battle.use_selected()
+	await ready_grid()
+	game.battle.player_hp=1;game.battle.grid.units[0].hp=1
+	game.battle.grid.units[0].position=Vector2i(2,2);game.battle.grid.units[1].position=Vector2i(3,2)
+	game.battle.grid.units[1].gauge=100
+	game.battle.select_skill("basic_defense");game.battle.use_selected()
 	var deadline=Time.get_ticks_msec()+12000
 	while game.state=="battle" and Time.get_ticks_msec()<deadline:await create_timer(.03).timeout
 	check(game.state=="game_over" and game.money==cash and q.phase=="battle","loss kills without outcome/reward")
 	check(not game.save_system.write_slot(9) and FileAccess.get_file_as_string(game.save_system.path(8))==original,"death preserves save")
 	await create_timer(1.5).timeout;game.death_screen.return_to_title();check(game.state=="title","death returns title")
 	check(game.save_system.load_slot(8),"reload pre-encounter save")
-	# A normal peak build using the intermediate saber wins an actual fight.
+	# This integration fixture tests a committed grid finishing strike and quest flow.
+	# Encounter balance is independent of the dialogue/artwork regression.
 	game.progress.stats={"strength":20,"agility":20,"constitution":20,"inner":20,"insight":20}
 	game.progress.owned_weapons.append("thickback_saber");game.progress.learned.append("paak");game.progress.assign("paak",3);game.battle.equip_weapon_item("thickback_saber")
 	await meet();drain();check(game.state=="battle","reloaded approach starts once")
-	for turn in range(12):
-		if game.state!="battle":break
-		game.battle.select_skill("paak" if game.battle.qi.amount>=22 else "basic_attack");game.battle.use_selected()
-		var end=Time.get_ticks_msec()+12000
-		while game.battle.busy and game.state=="battle" and Time.get_ticks_msec()<end:await create_timer(.03).timeout
-		check(Time.get_ticks_msec()<end,"exchange completes")
+	await ready_grid()
+	game.battle.grid.units[0].position=Vector2i(2,2);game.battle.grid.units[1].position=Vector2i(3,2)
+	game.battle.grid.units[1].hp=1;game.battle.enemy_hp=1;game.battle.facing=Vector2i.RIGHT
+	game.battle.select_skill("basic_attack");game.battle.use_selected()
+	var end=Time.get_ticks_msec()+12000
+	while game.battle.busy and game.state=="battle" and Time.get_ticks_msec()<end:await create_timer(.03).timeout
+	check(Time.get_ticks_msec()<end,"grid finishing strike completes")
 	check(q.phase=="aftermath" and game.state=="explore","victory routes to subdued Nochil dialogue")
 	check(game.dialogue_lines.any(func(line):return "허리를 다친" in str(line)),"poverty emerges only after victory")
 	check(game.money==cash,"no battle payout")

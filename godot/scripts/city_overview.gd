@@ -66,6 +66,8 @@ func open_for(exploration, goal: Dictionary = {}) -> void:
 	heading.text=exploration.city_data.name+" · 전체 지도"
 	for widget in facility_widgets:widget.visible=not exploration.city_data.get("services",[]).is_empty()
 	map_image.texture=exploration.background.texture
+	if exploration.area_name=="nanjing" and ResourceLoader.exists("res://assets/maps/nanjing/painted/overview-floor.png"):
+		map_image.texture=load("res://assets/maps/nanjing/painted/overview-floor.png")
 	map_image.position=map_rect.position;map_image.size=map_rect.size
 	for child in map_image.get_children():child.free()
 	for tile in exploration.art_tiles:

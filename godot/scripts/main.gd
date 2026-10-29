@@ -508,9 +508,7 @@ func _show_line() -> void:
 	var subtitle: String = str(line[2]) if line.size() > 2 and line[2] is String else ""
 	dialogue_name.text = PORTRAITS.ACTORS[line[0]].name + (" · " + subtitle if not subtitle.is_empty() else "")
 	dialogue_text.text = line[1]
-	var staging: Dictionary = {}
-	if line.size() > 2 and line[2] is Dictionary: staging = line[2].duplicate(true)
-	if line.size() > 3 and line[3] is Dictionary: staging = line[3].duplicate(true)
+	var staging: Dictionary = dialogue_cast.expression_library.staging_at(dialogue_lines,dialogue_index)
 	# Infer the hero's reply target from the script, so loading a line is deterministic.
 	if not staging.has("to") and line[0] == "hero" and dialogue_index > 0:
 		var previous: String = str(dialogue_lines[dialogue_index - 1][0])
@@ -885,9 +883,7 @@ func _layout_dialogue() -> void:
 		if not participants.is_empty():
 			dialogue_cast.set_participants(participants)
 			if active!="" and not dialogue_lines.is_empty():
-				var line=dialogue_lines[dialogue_index];var staging={}
-				if line.size()>2 and line[2] is Dictionary:staging=line[2]
-				if line.size()>3 and line[3] is Dictionary:staging=line[3]
+				var staging=dialogue_cast.expression_library.staging_at(dialogue_lines,dialogue_index)
 				if not staging.has("to") and active=="hero" and dialogue_index>0 and dialogue_lines[dialogue_index-1][0]!="hero":staging=staging.merged({"to":dialogue_lines[dialogue_index-1][0]})
 				dialogue_cast.set_speaker(active,staging)
 

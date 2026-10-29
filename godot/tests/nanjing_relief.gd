@@ -117,7 +117,7 @@ func run() -> void:
 	var old=game.save_system.capture();old.erase("nanjing_relief_quest");check(game.save_system.validate(old),"old save without new field validates")
 	var bad=game.save_system.capture();bad.nanjing_relief_quest.phase="unknown";check(not game.save_system.validate(bad),"unknown phases rejected")
 	bad=game.save_system.capture();bad.alliance_story.stage="dormant";check(not game.save_system.validate(bad),"progress without teaching rejected")
-	var return_exit=w.travel_exits[0];preload("res://scripts/overland_travel.gd").use(game,return_exit);check(w.area_name=="qingya_hamlet","return portal works")
+	var return_exit=w.travel_exits.filter(func(e):return e.id=="travel:hamlet")[0];preload("res://scripts/overland_travel.gd").use(game,return_exit);check(w.area_name=="qingya_hamlet","return portal works")
 	preload("res://scripts/overland_travel.gd").use(game,east);check(not is_instance_valid(actor(q.GIVER)),"absence persists after region travel")
 	game.reset();check(q.phase=="available" and game.progress.favor_for("namgung")==0,"new game resets quest and favor")
 	game.queue_free();await process_frame

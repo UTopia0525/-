@@ -115,6 +115,9 @@ func load_area(value: String) -> void:
 	background.position = map_bounds.position
 	background.scale = map_bounds.size / background.texture.get_size()
 	preload("res://scripts/terrain_rendering.gd").apply(background,area_name,map_bounds)
+	if value=="nanjing":
+		background.material=regional_map.get_child(0).material
+		background.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR
 	if not is_instance_valid(regional_map):_build_collision_and_navigation()
 	preload("res://scripts/overland_travel.gd").install(self)
 	var visit=get_parent().get("alliance_visit")
@@ -195,10 +198,17 @@ func _load_regional(value: String) -> void:
 		node.reparent(decorations);occlusion_roots.append(node);scenery_nodes.append(node);scenery_bounds.append(node.visual_rect)
 		var spec: Dictionary=node.definition;var prefab: Dictionary=regional_map.prefabs[spec.prefab]
 		var target=Rect2(spec.rect[0],spec.rect[1],spec.rect[2],spec.rect[3])
+		if prefab.get("preserve_aspect",false):target=Rect2(node.visual_rect.position/regional_map.world_scale,node.visual_rect.size/regional_map.world_scale)
 		if prefab.has("content_rect"):
 			var c: Array=prefab.content_rect
 			target=Rect2(target.position+Vector2(c[0],c[1])*target.size,target.size*Vector2(c[2],c[3]))
-		art_tiles.append({"texture":load(prefab.texture),"source":Rect2(prefab.source[0],prefab.source[1],prefab.source[2],prefab.source[3]),"target":target})
+		if prefab.has("segments"):
+			var offset_y=0.0
+			for part in prefab.segments:
+				var height=float(part[3])/float(prefab.source[3])*target.size.y
+				art_tiles.append({"texture":load(prefab.texture),"source":Rect2(part[0],part[1],part[2],part[3]),"target":Rect2(target.position+Vector2(0,offset_y),Vector2(target.size.x,height))})
+				offset_y+=height
+		else:art_tiles.append({"texture":load(prefab.texture),"source":Rect2(prefab.source[0],prefab.source[1],prefab.source[2],prefab.source[3]),"target":target})
 	art_tiles.sort_custom(func(a,b):return a.target.end.y<b.target.end.y)
 	player.position=city_point(city_data.spawn)
 	if value in ["wuchang","nanjing","suzhou","murong_estate","hangzhou","cuiyue_hall"]:

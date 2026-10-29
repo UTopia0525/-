@@ -1,0 +1,578 @@
+{
+  "version": 1,
+  "neutral": "original",
+  "portraits": {
+    "res://assets/portraits/alliance/gwak-jinseok.png": {
+      "sheet": "res://assets/portraits/expressions/alliance--gwak-jinseok.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/alliance/heo-mungyu.png": {
+      "sheet": "res://assets/portraits/expressions/alliance--heo-mungyu.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/alliance/song-jigyeom.png": {
+      "sheet": "res://assets/portraits/expressions/alliance--song-jigyeom.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/archetypes/bandit-sentry.png": {
+      "sheet": "res://assets/portraits/expressions/archetypes--bandit-sentry.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/archetypes/bandit.png": {
+      "sheet": "res://assets/portraits/expressions/archetypes--bandit.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/archetypes/wanderer.png": {
+      "sheet": "res://assets/portraits/expressions/archetypes--wanderer.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/archetypes/water-bandit.png": {
+      "sheet": "res://assets/portraits/expressions/archetypes--water-bandit.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/blackguild/wijungnyang.png": {
+      "sheet": "res://assets/portraits/expressions/blackguild--wijungnyang.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/cuiyue/baek-soa.png": {
+      "sheet": "res://assets/portraits/expressions/cuiyue--baek-soa.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/cuiyue/eunsowol.png": {
+      "sheet": "res://assets/portraits/expressions/cuiyue--eunsowol.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/cuiyue/hong-chaeryeong.png": {
+      "sheet": "res://assets/portraits/expressions/cuiyue--hong-chaeryeong.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/cuiyue/seol-geumran.png": {
+      "sheet": "res://assets/portraits/expressions/cuiyue--seol-geumran.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/cuiyue/tak-munho.png": {
+      "sheet": "res://assets/portraits/expressions/cuiyue--tak-munho.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/extras/female_common_a.png": {
+      "sheet": "res://assets/portraits/expressions/extras--female_common_a.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/extras/female_common_b.png": {
+      "sheet": "res://assets/portraits/expressions/extras--female_common_b.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/extras/female_elder.png": {
+      "sheet": "res://assets/portraits/expressions/extras--female_elder.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/extras/female_middle.png": {
+      "sheet": "res://assets/portraits/expressions/extras--female_middle.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/extras/female_young.png": {
+      "sheet": "res://assets/portraits/expressions/extras--female_young.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/extras/male_common_a.png": {
+      "sheet": "res://assets/portraits/expressions/extras--male_common_a.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/extras/male_common_b.png": {
+      "sheet": "res://assets/portraits/expressions/extras--male_common_b.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/extras/male_elder.png": {
+      "sheet": "res://assets/portraits/expressions/extras--male_elder.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/extras/male_middle.png": {
+      "sheet": "res://assets/portraits/expressions/extras--male_middle.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/extras/male_young.png": {
+      "sheet": "res://assets/portraits/expressions/extras--male_young.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/greenwood/maunpyo.png": {
+      "sheet": "res://assets/portraits/expressions/greenwood--maunpyo.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/haomun/lu-xiaozhuan.png": {
+      "sheet": "res://assets/portraits/expressions/haomun--lu-xiaozhuan.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/murong/guard.png": {
+      "sheet": "res://assets/portraits/expressions/murong--guard.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/murong/gyeongwon.png": {
+      "sheet": "res://assets/portraits/expressions/murong--gyeongwon.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/murong/yuan.png": {
+      "sheet": "res://assets/portraits/expressions/murong--yuan.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/namgung/regular-warrior.png": {
+      "sheet": "res://assets/portraits/expressions/namgung--regular-warrior.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/namgung/seojin.png": {
+      "sheet": "res://assets/portraits/expressions/namgung--seojin.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/namgung/yeonseo.png": {
+      "sheet": "res://assets/portraits/expressions/namgung--yeonseo.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/player/hero.png": {
+      "sheet": "res://assets/portraits/expressions/player--hero.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/services/artisan.png": {
+      "sheet": "res://assets/portraits/expressions/services--artisan.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/services/instructor.png": {
+      "sheet": "res://assets/portraits/expressions/services--instructor.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/services/merchant.png": {
+      "sheet": "res://assets/portraits/expressions/services--merchant.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/story/constable-duty.png": {
+      "sheet": "res://assets/portraits/expressions/story--constable-duty.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/wuchang/du_sanniang.png": {
+      "sheet": "res://assets/portraits/expressions/wuchang--du_sanniang.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/wuchang/grandmother_zheng.png": {
+      "sheet": "res://assets/portraits/expressions/wuchang--grandmother_zheng.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/wuchang/lin_zhengshan.png": {
+      "sheet": "res://assets/portraits/expressions/wuchang--lin_zhengshan.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/wuchang/liu_baicao.png": {
+      "sheet": "res://assets/portraits/expressions/wuchang--liu_baicao.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/wuchang/lu_zhenghao.png": {
+      "sheet": "res://assets/portraits/expressions/wuchang--lu_zhenghao.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/wuchang/shi_dayong.png": {
+      "sheet": "res://assets/portraits/expressions/wuchang--shi_dayong.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/wuchang/wu_deshu.png": {
+      "sheet": "res://assets/portraits/expressions/wuchang--wu_deshu.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    },
+    "res://assets/portraits/wuchang/zhou_jifu.png": {
+      "sheet": "res://assets/portraits/expressions/wuchang--zhou_jifu.png",
+      "grid": [
+        2,
+        2
+      ],
+      "order": [
+        "smile",
+        "angry",
+        "sad",
+        "surprised"
+      ]
+    }
+  }
+}

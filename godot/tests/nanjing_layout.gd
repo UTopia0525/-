@@ -18,7 +18,18 @@ func run() -> void:
 	w.player.position=w.city_point([255,530])
 	for npc in w.ambient_nodes:check(not w.path_to(npc.position,true).is_empty(),"every civilian/quest actor reachable "+str(npc.name))
 	check(not w.scenery_nodes.any(func(n):return n.name=="west_city_gate"),"no palace gate/wall fragment at the river landing")
-	check(not w.path_to(w.travel_exits[0].position,true).is_empty(),"landing exit remains accessible from the city")
+	var quay_exit=w.travel_exits.filter(func(e):return e.id=="travel:hamlet")[0]
+	check(not w.path_to(quay_exit.position,true).is_empty(),"landing exit remains accessible from the city")
+	for exit in w.travel_exits:check(not w.path_to(exit.position,true).is_empty(),"all travel exits stay reachable "+str(exit.name))
+	for node in w.scenery_nodes:
+		if not node.definition.has("prefab"):continue
+		var prefab: Dictionary=w.regional_map.prefabs[node.definition.prefab]
+		if not prefab.get("preserve_aspect",false):continue
+		check(is_equal_approx(node.sprite.scale.x,node.sprite.scale.y),"no stretched building "+str(node.name))
+		check(is_zero_approx(node.sprite.rotation),"no rotated facade "+str(node.name))
+		var plot=w.regional_map.rect(node.definition.rect)
+		check(plot.grow(.1).encloses(node.visual_rect),"building remains inside its plot "+str(node.name))
+	check(w.background.material.shader.resource_path.ends_with("nanjing_terrain.gdshader"),"playable scene uses painted material detail")
 	check(w.city_data.reference=="docs/cities/designs/nanjing-npc-preview.png","original design explicitly remains the source of layout")
 	game.queue_free();await process_frame
 	print("NANJING_LAYOUT: "+("FAIL" if failed else "PASS"));quit(1 if failed else 0)

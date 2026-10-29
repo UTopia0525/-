@@ -1,5 +1,7 @@
 # 작업별 색인
 
+2D 미술 개선: [전 인물 대화 표정·비교표](systems/dialogue-expressions.md), [남경 전체 재질·건물 비율·실제 화면](cities/nanjing-painted.md).
+
 3D 실험: [항주3인칭 탐험 프로젝트·실행/조작/검사](../godot-3d-hangzhou/README.md). 기존2D 게임과 별도로 연다.
 
 고유 전투 인물: [전투 도트4종·자세/효과·실제 비교표](characters/dedicated-battle-visuals.md).
