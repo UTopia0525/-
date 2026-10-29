@@ -1,5 +1,7 @@
 # 작업별 색인
 
+0장 보수: [귀물 인도500문·옛 수령 저장 유지](story/chapter-00-implementation.md#보수500문-변경).
+
 최신 유안/탁문호: [일류250·300 조정/150쌍 비교](systems/yuan-tak-balance.md).
 
 최신 마운표: [절정 총합310·체력875·80쌍 비교](systems/maunpyo-peak.md).

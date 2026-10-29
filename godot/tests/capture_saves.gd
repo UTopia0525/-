@@ -31,7 +31,7 @@ func run() -> void:
 	while game.money == 0 and count < 200:
 		game.advance_dialogue()
 		count += 1
-	assert(game.money == 3000)
+	assert(game.money == 500)
 	drain()
 	if game.state == "chapter_transition": await create_timer(2.6).timeout
 	store(2)

@@ -108,8 +108,21 @@ func read_slot(slot: int) -> Dictionary:
 	var json = JSON.new()
 	if json.parse(FileAccess.get_file_as_string(path(slot))) != OK:return {}
 	var parsed = json.data
-	parsed=_upgrade_health(_upgrade_enemy_balance(_upgrade_martial_arts(_upgrade_qingya_battle(parsed))))
+	parsed=_upgrade_prologue_reward(_upgrade_health(_upgrade_enemy_balance(_upgrade_martial_arts(_upgrade_qingya_battle(parsed)))))
 	return parsed if validate(parsed) else {}
+
+func _upgrade_prologue_reward(value):
+	# Only unpaid, ongoing prologue dialogue changes. Already-earned cash is retained.
+	if not value is Dictionary or not value.get("prologue") is Dictionary:return value
+	if value.prologue.get("active")!=true or value.prologue.get("paid")!=false:return value
+	var upgraded: Dictionary=value.duplicate(true)
+	var dialogue=upgraded.get("dialogue",{})
+	if dialogue is Dictionary and dialogue.get("lines") is Array:
+		for line in dialogue.lines:
+			if line is Array and line.size()>1 and line[1] is String:line[1]=line[1].replace("삼천 문","오백 문").replace("3,000문","500문")
+	var ui=upgraded.get("ui",{})
+	if ui is Dictionary and ui.get("caption") is String:ui.caption=ui.caption.replace("삼천 문","오백 문").replace("3,000문","500문")
+	return upgraded
 
 func _upgrade_qingya_battle(value):
 	# Retired boss metadata may remain even in a completed exploration save.

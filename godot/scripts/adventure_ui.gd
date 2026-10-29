@@ -150,7 +150,7 @@ func select_quest(id: String) -> void:
 	if id=="prologue_record":
 		selected=id;primary.disabled=true;primary.text="이야기의 목표 안내를 따르세요"
 		var history: String="현재 할 일: "+game.objective.text+"\n\n보수는 표행의 결과에 따라 이야기에서 확인됩니다."
-		if game.prologue.completed:history="귀물을 전달하고 인도 보수 3,000문을 받았다." if game.prologue.branch=="treasure" else "사람을 구하고 귀물을 잃었다. 인도 보수는 받지 않았다."
+		if game.prologue.completed:history="귀물을 전달하고 약정한 인도 보수를 받았다." if game.prologue.branch=="treasure" else "사람을 구하고 귀물을 잃었다. 인도 보수는 받지 않았다."
 		body.text="0장 · 표행의 기록\n\n"+history
 		return
 	selected=id;var data: Dictionary=entries[id];var nav: Dictionary=game.quest_navigation.definitions[id]

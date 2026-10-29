@@ -50,7 +50,7 @@ func run() -> void:
 		check(game.story_visual.picture.visible and game.story_visual.picture.texture.resource_path.ends_with("sinking-escort-ship.png"), "decision shows sinking ship artwork")
 		check(game.story_visual.paused and not game.story_visual.note.visible and not game.story_caption.visible, "decision keeps scene still without duplicate captions")
 		for label in game.choice_screen.find_children("*", "Label", true, false):
-			check(not label.text.contains("보수") and not label.text.contains("3,000") and not label.text.contains("구한다 ·"), "choice descriptions never disclose outcomes")
+			check(not label.text.contains("보수") and not label.text.contains("3,000") and not label.text.contains("500") and not label.text.contains("구한다 ·"), "choice descriptions never disclose outcomes")
 		key(KEY_F)
 		check(game.state == "choice", "F cannot accidentally confirm")
 		key(KEY_1 if branch == "treasure" else KEY_2)
@@ -75,7 +75,7 @@ func run() -> void:
 		check(game.quest_navigation.quest_id == "changsha_cloth", "first chain quest tracked")
 		check(limit < 300 and saw_port, "branch reaches port")
 		check(game.prologue.completed and game.state == "explore" and game.exploration.active, "chapter ends in free exploration")
-		check(game.money == (3000 if branch == "treasure" else 0), "branch-specific money")
+		check(game.money == (500 if branch == "treasure" else 0), "branch-specific money")
 		check(saw_payment == (branch == "treasure"), "payment only after treasure delivery")
 		var before: int = game.money
 		game.prologue.choose(branch)

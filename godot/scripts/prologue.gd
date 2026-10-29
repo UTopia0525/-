@@ -1,5 +1,7 @@
 extends Node
 ## Owns the chapter branch and payment; exploration, UI and combat remain in main.
+const TREASURE_REWARD = 500
+const LEGACY_TREASURE_REWARD = 3000
 const DATA_PATH = "res://data/prologue_dialogues.json"
 const SAVE_PATH = "user://chapter_00.json"
 var game
@@ -85,7 +87,7 @@ func _after_delivery() -> void:
 	if branch == "treasure":
 		if not payment_received:
 			payment_received = true
-			game.money += 3000
+			game.money += TREASURE_REWARD
 		sequence(["treasure_paid"], _farewell)
 	else:
 		_farewell()
@@ -134,8 +136,13 @@ func read_checkpoint() -> Dictionary:
 			if not quests is Dictionary: return {}
 			if quests.get("changsha_cloth") != {"status":"active", "stage":"deliver"}: return {}
 	if data.get("branch") not in ["treasure", "rescue"]: return {}
-	var expected = 3000 if data.branch == "treasure" else 0
-	if data.get("money") != expected or data.get("payment_received") != (data.branch == "treasure"): return {}
+	var amount = data.get("money")
+	if typeof(amount) not in [TYPE_INT, TYPE_FLOAT]: return {}
+	# JSON numbers are floats; compare amounts numerically, preserving old earnings.
+	if data.branch == "treasure":
+		if amount != TREASURE_REWARD and amount != LEGACY_TREASURE_REWARD: return {}
+	elif amount != 0: return {}
+	if data.get("payment_received") != (data.branch == "treasure"): return {}
 	return data
 
 func resume() -> void:

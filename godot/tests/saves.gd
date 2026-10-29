@@ -44,7 +44,7 @@ func run() -> void:
 	while game.money == 0 and count < 200:
 		game.advance_dialogue()
 		count += 1
-	check(game.money == 3000, "treasure paid")
+	check(game.money == 500, "treasure paid")
 	check(preload("res://tests/legacy_save_fixture.gd").write(game, 3), "save after payment during dialogue: " + saves.error)
 	await settle()
 	check(game.chapter_one.accepted_quests.has("changsha_cloth"), "accepted quest reached")
@@ -53,7 +53,7 @@ func run() -> void:
 	check(saves.write_slot(4), "save city and quest")
 	check(saves.load_slot(3), "restore mid-sequence after payment")
 	await settle()
-	check(game.money == 3000 and game.state == "explore", "restored continuation never pays twice")
+	check(game.money == 500 and game.state == "explore", "restored continuation never pays twice")
 	check(saves.load_slot(2), "rewind to choice")
 	check(game.money == 0 and game.prologue.branch == "" and game.pending_choice == "treasure" and game.choice_screen.visible, "unconfirmed choice restored without committing branch")
 	game.select_story_choice("rescue")
@@ -62,14 +62,14 @@ func run() -> void:
 	check(game.prologue.branch == "rescue" and game.money == 0, "same decision save can lead to other ending")
 	check(saves.write_slot(5), "save rescue in separate slot")
 	check(saves.load_slot(4), "load independent treasure city slot")
-	check(game.money == 3000 and game.prologue.branch == "treasure" and game.chapter_one.accepted_quests.has("changsha_cloth"), "money, branch and quest independent")
+	check(game.money == 500 and game.prologue.branch == "treasure" and game.chapter_one.accepted_quests.has("changsha_cloth"), "money, branch and quest independent")
 	check(game.exploration.player.position.distance_to(game.exploration.city_point([540, 480])) < 0.1, "exact city position restored")
 	check(game.quest_navigation.quest_id == "changsha_cloth" and game.chapter_number == 1, "chapter and tracked objective restored")
 	# Broken files and unsupported versions never touch current play.
 	var file = FileAccess.open(saves.path(6), FileAccess.WRITE)
 	file.store_string("{\"schema\":999}")
 	file.close()
-	check(not saves.load_slot(6) and game.money == 3000 and game.state == "explore", "invalid data leaves running game intact")
+	check(not saves.load_slot(6) and game.money == 500 and game.state == "explore", "invalid data leaves running game intact")
 	# Settings pauses actors and timed chapter cards; closing restores tree processing.
 	game.settings_menu.open_menu()
 	check(paused and game.settings_menu.window.visible, "settings pauses game")
