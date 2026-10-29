@@ -101,3 +101,5 @@
 항주·취월루 주민: [16명 설정·대화·전용3인·배치 화면](characters/hangzhou-residents.md).
 
 항주 일반 의뢰5종: [진행·보수·전체 대화·소길의 짝사랑](quests/hangzhou.md). `hangzhou_quests.gd`/`hangzhou_errand.gd`, 기존 주민16명 재사용.
+
+취월루 후속 사건: [공개 장면·개방 조건·전투 배경안](quests/cuiyue-incident-proposal.md). 이야기/미술 준비 단계이며 실제 사건은 미연결, 단독 면담 원고는 저장소 밖 제작자용 문서에 보관한다.
