@@ -26,7 +26,12 @@ func run() -> void:
 			if path.is_empty():continue
 			w.player.position=path[-1];w.player.stop();await physics_frame
 			check(w.nearest().get("id")==entry.id,"F target unambiguous "+entry.name)
-			await press_f();check(game.dialogue_cast.active_actor==entry.id,"actual F conversation "+entry.name)
+			await press_f()
+			if game.adventure_ui.window.visible and game.adventure_ui.mode=="topics":
+				var topic={"city_artisan":"병장기를 살펴본다","city_merchant":"영약을 살펴본다"}.get(entry.get("service_id",""),"일상 이야기")
+				for button in game.adventure_ui.rows.get_children():
+					if button.get_meta("topic","")==topic:button.pressed.emit();break
+			check(game.dialogue_cast.active_actor==entry.id,"actual F conversation "+entry.name)
 			var texture=game.dialogue_cast.texture_for(game.PORTRAITS.ACTORS[entry.id])
 			if entry.has("portrait"):
 				check(texture.resource_path==entry.portrait,"dedicated portrait "+entry.name)

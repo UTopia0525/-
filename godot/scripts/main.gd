@@ -25,6 +25,7 @@ var levy_quest
 var book_quest
 var silk_quest
 var suzhou_quests
+var hangzhou_quests
 var nanjing_relief_quest
 var death_screen
 var duel_quest
@@ -166,6 +167,7 @@ func _ready() -> void:
 	adventure_ui=preload("res://scripts/adventure_ui.gd").new();adventure_ui.game=self;ui_root.add_child(adventure_ui)
 	ordinary_quests=preload("res://scripts/ordinary_quests.gd").new();ordinary_quests.game=self;add_child(ordinary_quests)
 	suzhou_quests=preload("res://scripts/suzhou_quests.gd").new();suzhou_quests.game=self;add_child(suzhou_quests)
+	hangzhou_quests=preload("res://scripts/hangzhou_quests.gd").new();hangzhou_quests.game=self;add_child(hangzhou_quests)
 	herbalist_quest=preload("res://scripts/herbalist_quest.gd").new();herbalist_quest.game=self;add_child(herbalist_quest)
 	artisan_quest=preload("res://scripts/artisan_quest.gd").new();artisan_quest.game=self;add_child(artisan_quest)
 	duel_quest=preload("res://scripts/duel_quest.gd").new();duel_quest.game=self;add_child(duel_quest)
@@ -325,7 +327,7 @@ func _build_ending() -> void:
 	restart.pressed.connect(reset)
 	ending.hide()
 
-func regional_quests() -> Array:return [namgung_campaign,waterfront_quest,levy_quest,book_quest,cart_quest,silk_quest,nanjing_relief_quest,qingya_quest,alliance_story,herbalist_quest,artisan_quest,wages_quest,plaque_quest,grain_quest,duel_quest,inn_quest,impostor_quest]+(suzhou_quests.quests if is_instance_valid(suzhou_quests) else [])
+func regional_quests() -> Array:return [namgung_campaign,waterfront_quest,levy_quest,book_quest,cart_quest,silk_quest,nanjing_relief_quest,qingya_quest,alliance_story,herbalist_quest,artisan_quest,wages_quest,plaque_quest,grain_quest,duel_quest,inn_quest,impostor_quest]+(suzhou_quests.quests if is_instance_valid(suzhou_quests) else [])+(hangzhou_quests.quests if is_instance_valid(hangzhou_quests) else [])
 func encounters() -> Array:return [namgung_campaign.data.encounter]+qingya_quest.data.encounters+qingya_quest.data.get("legacy_encounters",[])+bandit_story.data.encounters+[waterfront_quest.data.encounter,herbalist_quest.data.encounter,duel_quest.data.encounter,inn_quest.data.encounter,impostor_quest.data.encounter]+suzhou_quests.encounters()
 
 func reset() -> void:
@@ -350,6 +352,7 @@ func reset() -> void:
 	if is_instance_valid(herbalist_quest):herbalist_quest.reset()
 	if is_instance_valid(ordinary_quests):ordinary_quests.reset()
 	if is_instance_valid(suzhou_quests):suzhou_quests.reset()
+	if is_instance_valid(hangzhou_quests):hangzhou_quests.reset()
 	if is_instance_valid(settings_menu): settings_menu.close_menu()
 	progress.reset()
 	chapter_number = 0
@@ -537,6 +540,7 @@ func interact() -> void:
 	if npc.is_empty():
 		return
 	if preload("res://scripts/overland_travel.gd").use(self,npc):return
+	if hangzhou_quests.handle_interaction(str(npc.id)):return
 	if suzhou_quests.handle_interaction(str(npc.id)):return
 	if namgung_campaign.handle_interaction(str(npc.id)):return
 	if waterfront_quest.handle_interaction(str(npc.id)):return

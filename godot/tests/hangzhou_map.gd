@@ -31,6 +31,9 @@ func run() -> void:
   var path=w.path_to(npc.position,true);check(not path.is_empty(),"service NPC reachable")
   if path.is_empty():continue
   w.player.position=path[-1];w.player.stop();await physics_frame;game.interact()
+  if game.adventure_ui.window.visible and game.adventure_ui.mode=="topics":
+   for button in game.adventure_ui.rows.get_children():
+    if button.get_meta("topic","")==("병장기를 살펴본다" if npc.get_meta("service_id")=="city_artisan" else "영약을 살펴본다"):button.pressed.emit();break
   for i in range(20):
    if game.dialogue_lines.is_empty():break
    game.advance_dialogue()
