@@ -23,6 +23,7 @@ var error := ""
 
 func _init() -> void:
 	elixirs.merge(JSON.parse_string(FileAccess.get_file_as_string("res://data/special_elixirs.json")))
+	elixirs.merge(JSON.parse_string(FileAccess.get_file_as_string("res://data/mid_grade_elixirs.json")))
 	reset()
 
 func reset() -> void:
@@ -55,7 +56,7 @@ func issue(kind: String, id: String, money: int) -> String:
 			price = int(arts.get_skill(id).price)
 		"elixir":
 			if not elixirs.has(id) or elixirs[id].get("price")==null: return "판매하지 않는 영약입니다."
-			if int(consumed[id]) + int(inventory[id]) >= elixir_limit(id): return "복용량과 보유량이 이 영약의 한도10개에 도달했습니다."
+			if int(consumed[id]) + int(inventory[id]) >= elixir_limit(id): return "복용량과 보유량이 이 영약의 한도%d개에 도달했습니다." % elixir_limit(id)
 			price = int(elixirs[id].price)
 		_: return "잘못된 거래입니다."
 	return "소지금이 부족합니다. 필요 %d문 / 보유 %d문" % [price, money] if money < price else ""
@@ -70,6 +71,9 @@ func price_for(kind: String, id: String) -> int:
 func purchase(kind: String, id: String, game) -> bool:
 	error = issue(kind, id, game.money)
 	if not error.is_empty(): return false
+	if kind=="elixir" and elixirs[id].get("acquisition")=="hangzhou_haomun":
+		error=elixir_sale_issue(id,game.exploration.area_name,str(game.city_service.service.get("actor_id","")))
+		if not error.is_empty():return false
 	game.money -= price_for(kind, id)
 	match kind:
 		"weapon": owned_weapons.append(id)
@@ -78,12 +82,22 @@ func purchase(kind: String, id: String, game) -> bool:
 	progress_changed.emit({"event":"purchase","kind":kind,"id":id,"price":price_for(kind,id)})
 	return true
 
+func elixir_sale_issue(id: String,area: String,actor: String) -> String:
+	if not elixirs.has(id):return "판매하지 않는 영약입니다."
+	if elixirs[id].get("acquisition")!="hangzhou_haomun":return ""
+	if area!="hangzhou" or actor!="hz_herbalist":return "항주 약방의 두청하에게서 구할 수 있는 영약입니다."
+	if favor_for("haomun")<20:return "아직 중급 영약을 거래할 인연이 닿지 않았습니다."
+	return ""
+
+func elixir_stock(area: String,actor: String) -> Array:
+	return elixirs.keys().filter(func(id):return elixirs[id].get("acquisition")=="city_merchant" or (elixirs[id].get("acquisition")=="hangzhou_haomun" and elixir_sale_issue(id,area,actor).is_empty()))
+
 func consume(id: String) -> bool:
 	if not elixirs.has(id) or int(inventory.get(id, 0)) <= 0:
 		error = "보유한 영약이 없습니다."
 		return false
 	if int(consumed[id]) >= elixir_limit(id):
-		error = "이 영약은 이미10개 복용했습니다."
+		error = "이 영약은 이미%d개 복용했습니다." % elixir_limit(id)
 		return false
 	var changed := false
 	for key in elixirs[id].permanent_stat_gains:
@@ -180,7 +194,7 @@ func upgrade_elixirs(data):
 	if not data is Dictionary or not data.get("inventory") is Dictionary or not data.get("consumed") is Dictionary:return data
 	var upgraded=data.duplicate(true)
 	for id in elixirs:
-		if id=="namgung_cheongcheon_pill" and not upgraded.inventory.has(id) and not upgraded.consumed.has(id):upgraded.inventory[id]=0;upgraded.consumed[id]=0
+		if (id=="namgung_cheongcheon_pill" or elixirs[id].get("grade")=="intermediate") and not upgraded.inventory.has(id) and not upgraded.consumed.has(id):upgraded.inventory[id]=0;upgraded.consumed[id]=0
 	return upgraded
 
 func whole(value, minimum: int, maximum: int) -> bool:

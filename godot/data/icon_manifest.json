@@ -308,5 +308,25 @@
   },
   "namgung_cheongcheon_pill": {
     "path": "res://assets/icons/namgung-cheongcheon.png"
+  },
+  "ganggeun_pill": {
+    "atlas": "mid-elixirs",
+    "cell": 0,
+    "cols": 2
+  },
+  "yupung_pill": {
+    "atlas": "mid-elixirs",
+    "cell": 1,
+    "cols": 2
+  },
+  "okgol_pill": {
+    "atlas": "mid-elixirs",
+    "cell": 2,
+    "cols": 2
+  },
+  "baewon_pill": {
+    "atlas": "mid-elixirs",
+    "cell": 3,
+    "cols": 2
   }
 }

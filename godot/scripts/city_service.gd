@@ -98,14 +98,18 @@ func refresh_list() -> void:
 	summary.text = "소지금 %d문  |  근력%d · 기민%d · 근골%d · 내공%d · 오성%d  |  %s · 합계 %d" % [game.money, s.strength, s.agility, s.constitution, s.inner, s.insight, p.RULES.realm(int(s.strength+s.agility+s.constitution+s.inner+s.insight)), int(s.strength + s.agility + s.constitution + s.inner + s.insight)]
 	var ids: Array = []
 	match service.kind:
-		"market": ids = p.elixirs.keys().filter(func(id):return p.elixirs[id].get("acquisition")=="city_merchant")
+		"market":
+			ids = p.elixir_stock(game.exploration.area_name,str(service.get("actor_id","")))
+			if selected_tab==1:
+				for id in p.elixirs:
+					if id not in ids and (int(p.inventory[id])>0 or int(p.consumed[id])>0):ids.append(id)
 		"workshop": ids = p.weapons.definitions.keys() if selected_tab == 0 else ["none"] + p.owned_weapons
 		"training": ids = p.arts.definitions.keys() if selected_tab == 0 else ["basic_attack", "basic_defense"] + p.learned.duplicate()
 	if selected_tab==0 and service.kind=="workshop":ids=weapon_stock()
 	for id in ids:
 		var text := ""
 		match service.kind:
-			"market": text = "%s · %s" % [p.elixirs[id].name, "100문" if selected_tab == 0 else "보유%d / 복용%d·10" % [p.inventory[id], p.consumed[id]]]
+			"market": text = "%s · %s" % [p.elixirs[id].name, "%d문" % p.elixirs[id].price if selected_tab == 0 else "보유%d / 복용%d·%s" % [p.inventory[id], p.consumed[id],str(p.elixirs[id].max_lifetime_uses) if p.elixirs[id].has("max_lifetime_uses") else "제한없음"]]
 			"workshop":
 				if selected_tab == 0 and p.weapons.get_weapon(id).get("price") == null: continue
 				text = "무기 해제 · 맨손" if id == "none" else str(p.weapons.get_weapon(id).name)
@@ -163,10 +167,13 @@ func update_detail() -> void:
 		"market":
 			var item: Dictionary = p.elixirs[selected_id]
 			var g: Dictionary = item.permanent_stat_gains
-			message.text = "%s\n\n%s\n\n근력+%d · 기민+%d · 근골+%d · 내공+%d\n오성 상승 없음\n보유%d개 · 누적 복용%d/10개" % [item.name, item.description, g.strength, g.agility, g.constitution, g.inner, p.inventory[selected_id], p.consumed[selected_id]]
-			action.text = "100문 · 1개 구매" if selected_tab == 0 else "1개 복용"
-			if selected_tab == 0: problem = p.issue("elixir", selected_id, game.money)
-			elif int(p.consumed[selected_id])>=int(item.max_lifetime_uses):problem="평생 복용 한도 도달 · 10/10"
+			var uses="%d/%d개" % [p.consumed[selected_id],p.elixir_limit(selected_id)] if item.has("max_lifetime_uses") else "%d개 (별도 한도 없음)" % p.consumed[selected_id]
+			message.text = "%s\n\n%s\n\n근력+%d · 기민+%d · 근골+%d · 내공+%d\n오성 상승 없음\n보유%d개 · 누적 복용%s" % [item.name, item.description, g.strength, g.agility, g.constitution, g.inner, p.inventory[selected_id], uses]
+			action.text = "%d문 · 1개 구매" % item.price if selected_tab == 0 else "1개 복용"
+			if selected_tab == 0:
+				problem = p.issue("elixir", selected_id, game.money)
+				if problem.is_empty():problem=p.elixir_sale_issue(selected_id,game.exploration.area_name,str(service.get("actor_id","")))
+			elif int(p.consumed[selected_id])>=p.elixir_limit(selected_id):problem="평생 복용 한도 도달 · %d/%d" % [p.consumed[selected_id],p.elixir_limit(selected_id)]
 			elif p.inventory[selected_id] <= 0: problem = "보유한 영약이 없습니다."
 			else:
 				var can_gain=false

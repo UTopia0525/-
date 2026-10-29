@@ -1,6 +1,6 @@
 # 작업별 색인
 
-중급 영약 기획: [하오문 호의도20 이상·항주 두청하 판매 조건과 미채택 후보](systems/mid-grade-elixirs-proposal.md). 아직 게임 거래에는 미연결.
+중급 영약 구현: [하오문 호의도20 이상·취월루 점소이 안내·항주 두청하 판매/아이콘/복용](systems/mid-grade-elixirs.md). 제안 기록의 자연물은 미채택.
 
 0장 보수: [귀물 인도500문·옛 수령 저장 유지](story/chapter-00-implementation.md#보수500문-변경).
 

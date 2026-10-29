@@ -14,7 +14,7 @@ func handle_interaction(id: String) -> bool:
   if q.GIVER==id and q.phase=="available":topics.append(["의뢰 · "+str(q.data.title),q.present])
   elif q.GIVER==id and q.phase not in ["completed","ready"] and q.target()!=id:topics.append(["진행 확인 · "+str(q.data.title),q.remind])
   if q.phase=="completed" and (q.data.participants.has(id) or q.data.get("post",{}).has(id)):post=true
- if topics.is_empty() and not post:return false
+ if topics.is_empty() and not post and not (id=="hz_herbalist" and game.progress.favor_for("haomun")>=20):return false
  var spec={}
  for n in people.npcs:
   if n.id==id:spec=n;break
@@ -46,6 +46,7 @@ func _process(_delta: float) -> void:refresh_world()
 
 func chatter(id: String) -> void:
  var scene=[]
+ if id=="hz_herbalist" and game.progress.favor_for("haomun")>=20:scene.append([id,"취월루 사람들에게 손을 내밀어 주셨다지요. 중급 영약이 필요하면 말씀하세요. 약은 길을 걷는 사람에게 가야지요."])
  for q in quests:
   if q.phase=="completed":scene.append_array(q.data.post.get(id,[]))
  if is_instance_valid(game.cuiyue_incident) and game.cuiyue_incident.phase=="completed":scene.append_array(game.cuiyue_incident.data.post.get(id,[]))
@@ -53,3 +54,13 @@ func chatter(id: String) -> void:
   for n in people.npcs:
    if n.id==id:scene=n.dialogue;break
  if not scene.is_empty():game.say(scene)
+
+func trade(id: String) -> void:
+ if id=="hz_herbalist" and game.progress.favor_for("haomun")>=20:
+  game.pending_service_id="city_merchant"
+  game.say([[id,"취월루에서 소협 이야기를 전해 들었어요. 오늘은 안쪽에 두었던 약도 보여 드리지요."],[id,"강근단·유풍환·옥골단·배원단입니다. 한 알에 오백문이고, 같은 약은 평생 세 알까지만 드세요. 몸에 맞는 약을 골라 보세요."]],game._service_done)
+  return
+ super.trade(id)
+func topic_detail(spec: Dictionary,title: String) -> void:
+ super.topic_detail(spec,title)
+ if spec.id=="hz_herbalist" and game.progress.favor_for("haomun")>=20 and title=="영약을 살펴본다":game.adventure_ui.body.text+="\n\n소개받은 중급 영약4종도 거래할 수 있습니다.\n한 알500문 · 종류별 평생3알."

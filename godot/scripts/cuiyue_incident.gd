@@ -4,6 +4,7 @@ const ID="cuiyue_incident"
 const GIVER="cy_manager"
 var game
 var phase="dormant"
+var referral_seen=false
 var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/cuiyue_incident.json"))
 var owned: Array[Node]=[]
 var hidden: Array[Node2D]=[]
@@ -68,6 +69,17 @@ func _complete() -> void:
  if game.quest_navigation.quest_id==ID:game.quest_navigation.clear()
  refresh_world();game.state="explore";game.exploration.set_active(true)
  game.adventure_ui.notify("취월루 사건 완료 · 하오문 호의도+20","quest")
+func before_exit() -> bool:
+ if phase!="completed" or referral_seen or game.exploration.area_name!="cuiyue_hall":return false
+ game.exploration.set_active(false)
+ game.say(data.scenes.departure,_depart)
+ return true
+func _depart() -> void:
+ if phase!="completed" or referral_seen:return
+ referral_seen=true
+ var travel=preload("res://scripts/overland_travel.gd")
+ travel.use(game,{"id":"travel:hall_exit","travel":travel.LINKS.cuiyue_hall[0]})
+ game.adventure_ui.notify("상점가 약방 · 두청하에게 중급 영약을 구할 수 있습니다.","confirm")
 func handle_interaction(id: String) -> bool:
  if phase=="completed" and game.exploration.area_name=="cuiyue_hall" and id=="cy_eunsowol":game.say(data.post[id]);return true
  return false
@@ -113,7 +125,7 @@ func _process(_delta: float) -> void:
  if phase=="dormant" and eligible() and safe_to_start():begin()
 func reset() -> void:
  if phase!="dormant":game.exploration.camera.position=Vector2(0,-game.exploration.camera.focus_height)
- phase="dormant";signature="";clear_world()
-func snapshot() -> Dictionary:return {"phase":phase}
-func valid(v) -> bool:return v is Dictionary and v.get("phase") in ["dormant","battle","completed"]
-func restore(v: Dictionary) -> void:phase=v.get("phase","dormant");signature=""
+ phase="dormant";referral_seen=false;signature="";clear_world()
+func snapshot() -> Dictionary:return {"phase":phase,"referral_seen":referral_seen}
+func valid(v) -> bool:return v is Dictionary and v.get("phase") in ["dormant","battle","completed"] and v.get("referral_seen",false) is bool and (not v.get("referral_seen",false) or v.phase=="completed")
+func restore(v: Dictionary) -> void:phase=v.get("phase","dormant");referral_seen=v.get("referral_seen",false);signature=""

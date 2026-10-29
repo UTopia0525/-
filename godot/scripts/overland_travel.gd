@@ -31,6 +31,7 @@ static func use(game,entry: Dictionary) -> bool:
 	if not reason.is_empty():
 		game.say([["hero",reason]])
 		return true
+	if game.exploration.area_name=="cuiyue_hall" and link.area=="hangzhou" and game.cuiyue_incident.before_exit():return true
 	game.exploration.set_active(false)
 	game.qingya_quest.before_travel(game.exploration.area_name,link.area)
 	game.qingya_quest.on_arrive(link.area)

@@ -174,7 +174,7 @@ func update_inventory_detail(kind: String) -> void:
    if item.has("max_lifetime_uses"):detail.text=detail.text.replace("누적 복용 %d" % p.consumed[selected_id],"누적 복용 %d/%d" % [p.consumed[selected_id],int(item.max_lifetime_uses)])
    action.text="영약 1개 복용"
    var reason=""
-   if int(p.consumed[selected_id])>=progress.elixir_limit(selected_id):reason="평생 복용 한도 도달 · 10/10"
+   if int(p.consumed[selected_id])>=progress.elixir_limit(selected_id):reason="평생 복용 한도 도달 · %d/%d" % [p.consumed[selected_id],p.elixir_limit(selected_id)]
    elif int(p.inventory.get(selected_id,0))<=0:reason="보유한 영약이 없습니다."
    else:
     var can_gain=false

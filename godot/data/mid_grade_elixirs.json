@@ -1,0 +1,74 @@
+{
+  "ganggeun_pill": {
+    "name": "강근단",
+    "grade": "intermediate",
+    "primary_stat": "strength",
+    "permanent_stat_gains": {
+      "strength": 5,
+      "agility": 1,
+      "constitution": 1,
+      "inner": 1,
+      "insight": 0
+    },
+    "description": "힘줄과 근육을 보하는 짙은 갈색 단약. 붉은 나무 약갑에 한 알씩 담았다.",
+    "acquisition": "hangzhou_haomun",
+    "price": 500,
+    "max_lifetime_uses": 3,
+    "price_currency": "mun",
+    "status": "implemented"
+  },
+  "yupung_pill": {
+    "name": "유풍환",
+    "grade": "intermediate",
+    "primary_stat": "agility",
+    "permanent_stat_gains": {
+      "strength": 1,
+      "agility": 5,
+      "constitution": 1,
+      "inner": 1,
+      "insight": 0
+    },
+    "description": "몸의 긴장을 풀고 경쾌한 움직임을 돕는 담록색 환약. 바람 무늬의 녹색 약갑에 담았다.",
+    "acquisition": "hangzhou_haomun",
+    "price": 500,
+    "max_lifetime_uses": 3,
+    "price_currency": "mun",
+    "status": "implemented"
+  },
+  "okgol_pill": {
+    "name": "옥골단",
+    "grade": "intermediate",
+    "primary_stat": "constitution",
+    "permanent_stat_gains": {
+      "strength": 1,
+      "agility": 1,
+      "constitution": 5,
+      "inner": 1,
+      "insight": 0
+    },
+    "description": "뼈와 몸의 기초를 다지는 회백색 단약. 단단한 회색 약갑에 담았다.",
+    "acquisition": "hangzhou_haomun",
+    "price": 500,
+    "max_lifetime_uses": 3,
+    "price_currency": "mun",
+    "status": "implemented"
+  },
+  "baewon_pill": {
+    "name": "배원단",
+    "grade": "intermediate",
+    "primary_stat": "inner",
+    "permanent_stat_gains": {
+      "strength": 1,
+      "agility": 1,
+      "constitution": 1,
+      "inner": 5,
+      "insight": 0
+    },
+    "description": "기혈과 원기를 보하여 내공을 기르는 호박색 단약. 짙은 나무 약갑에 담았다.",
+    "acquisition": "hangzhou_haomun",
+    "price": 500,
+    "max_lifetime_uses": 3,
+    "price_currency": "mun",
+    "status": "implemented"
+  }
+}
