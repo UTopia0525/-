@@ -25,7 +25,8 @@ func run() -> void:
  game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await process_frame
  game.options.seen.append_array(["city","dialogue","trade","battle"]);game.start_wuchang();game.exploration.load_area("hangzhou")
  var w=game.exploration;var event=game.cuiyue_incident
- game.progress.stats={"strength":18,"agility":18,"constitution":18,"inner":18,"insight":29};game.progress.learned.append("hoeryu");game.progress.loadout=["basic_attack","basic_defense","hoeryu",""]
+ # The victory path uses a grown build; the separate loss path still forces real defeat.
+ game.progress.stats={"strength":60,"agility":60,"constitution":60,"inner":60,"insight":61};game.progress.learned.append("hoeryu");game.progress.loadout=["basic_attack","basic_defense","hoeryu",""]
  prepare_prereqs()
  for missing in event.data.prerequisites:
   var other=game.hangzhou_quests.get_quest(missing);var saved=other.phase;other.phase="ready"

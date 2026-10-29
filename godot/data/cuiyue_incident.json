@@ -10,14 +10,14 @@
     "id": "cuiyue_tak",
     "name": "탁문호",
     "portrait_actor": "cy_tak",
-    "max_hp": 322,
-    "constitution": 12,
+    "max_hp": 770,
+    "constitution": 65,
     "stats": {
-      "strength": 14,
-      "agility": 16,
-      "constitution": 12,
-      "inner": 12,
-      "insight": 16
+      "strength": 75,
+      "agility": 55,
+      "constitution": 65,
+      "inner": 65,
+      "insight": 40
     },
     "weapon": "thickback_saber",
     "skills": [

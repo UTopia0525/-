@@ -230,14 +230,14 @@
     "name": "모용유안 · 교류 대련",
     "faction": "모용세가 · 힘을 제한한 비살상 대련",
     "portrait_actor": "mr_heir",
-    "max_hp": 316,
-    "constitution": 12,
+    "max_hp": 555,
+    "constitution": 40,
     "stats": {
-      "strength": 12,
-      "agility": 12,
-      "constitution": 12,
-      "inner": 14,
-      "insight": 24
+      "strength": 45,
+      "agility": 55,
+      "constitution": 40,
+      "inner": 55,
+      "insight": 55
     },
     "weapon": "refined_sword",
     "skills": [

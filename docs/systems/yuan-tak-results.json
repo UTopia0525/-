@@ -1,0 +1,6169 @@
+[
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "basic_attack": 1,
+        "cheongpung": 1,
+        "move": 2
+      },
+      "hp": 323,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 9,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 3,
+        "yusu": 1
+      },
+      "hp": 276,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 13,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 2
+      },
+      "hp": 319,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 7,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "paak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 2
+      },
+      "hp": 319,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 7,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "paak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 1,
+        "yusu": 1
+      },
+      "hp": 267,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 9,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 1,
+        "yusu": 1
+      },
+      "hp": 267,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 9,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 1,
+        "yusu": 1
+      },
+      "hp": 267,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 10,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 1,
+        "yusu": 2
+      },
+      "hp": 215,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 11,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "move": 3,
+        "yusu": 4
+      },
+      "hp": 156,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 18,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "move": 2,
+        "yusu": 6
+      },
+      "hp": 52,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 24,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "basic_attack": 1,
+        "basic_defense": 1,
+        "cheongpung": 1
+      },
+      "hp": 334,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 8,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 1,
+        "yusu": 1
+      },
+      "hp": 289,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 11,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "yusu": 1
+      },
+      "hp": 289,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "paak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 2,
+        "move": 1,
+        "yusu": 1
+      },
+      "hp": 247,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 11,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "paak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 1
+      },
+      "hp": 338,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 5,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 1
+      },
+      "hp": 338,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 5,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 2,
+        "move": 1
+      },
+      "hp": 296,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 10,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 97,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 2,
+        "yusu": 7
+      },
+      "hp": 0,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 31,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 1
+      },
+      "hp": 338,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 7,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 1,
+        "yusu": 3
+      },
+      "hp": 191,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 18,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "basic_attack": 2,
+      "basic_defense": 1,
+      "cheongpung": 1,
+      "move": 2
+    },
+    "hp": 341,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 9,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "basic_attack": 2,
+      "basic_defense": 1,
+      "cheongpung": 1,
+      "move": 2
+    },
+    "hp": 341,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 9,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 2,
+      "move": 3,
+      "yusu": 1
+    },
+    "hp": 24,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "paak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 8,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 2,
+      "move": 3,
+      "yusu": 1
+    },
+    "hp": 24,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "paak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 8,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 67,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 2
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 8,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 262,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 2
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 8,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 2,
+      "move": 3,
+      "yusu": 1
+    },
+    "hp": 24,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "banseok",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 12,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 90,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 2
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "banseok",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 8,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 223,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 5,
+      "yusu": 2
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "jungun",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 11,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 223,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 5,
+      "yusu": 2
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "jungun",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 11,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "basic_attack": 1,
+      "cheongpung": 1,
+      "move": 2
+    },
+    "hp": 477,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced251",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 6,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "basic_attack": 1,
+      "cheongpung": 1,
+      "move": 2
+    },
+    "hp": 477,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced251",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 6,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 305,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced251",
+    "skill": "paak",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 6,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 305,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced251",
+    "skill": "paak",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 6,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 5,
+      "yusu": 2
+    },
+    "hp": 136,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced251",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 14,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 305,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced251",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 8,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "move": 2
+    },
+    "hp": 620,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced251",
+    "skill": "banseok",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 3,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "move": 2
+    },
+    "hp": 620,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced251",
+    "skill": "banseok",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 3,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 4,
+      "yusu": 1
+    },
+    "hp": 305,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced251",
+    "skill": "jungun",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 11,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 4,
+      "yusu": 1
+    },
+    "hp": 305,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced251",
+    "skill": "jungun",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 11,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "basic_attack": 1,
+      "cheongpung": 1,
+      "move": 2
+    },
+    "hp": 575,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 8,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "basic_attack": 1,
+      "cheongpung": 1,
+      "move": 2
+    },
+    "hp": 575,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 8,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+
+    },
+    "hp": 700,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "paak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 3,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+
+    },
+    "hp": 700,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "paak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 3,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 3
+    },
+    "hp": 569,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 3
+    },
+    "hp": 569,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+
+    },
+    "hp": 700,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "banseok",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 3,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+
+    },
+    "hp": 700,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "banseok",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 3,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 2,
+      "move": 3,
+      "yusu": 1
+    },
+    "hp": 286,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련",
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "jungun",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 13,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "move": 2,
+      "yusu": 3
+    },
+    "hp": 244,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련",
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "jungun",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 12,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "basic_attack": 1,
+        "cheongpung": 1,
+        "move": 2
+      },
+      "hp": 323,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 9,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 3,
+        "yusu": 1
+      },
+      "hp": 276,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 13,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 2
+      },
+      "hp": 319,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 7,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "paak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 2
+      },
+      "hp": 319,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 7,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "paak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 1,
+        "yusu": 1
+      },
+      "hp": 267,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 9,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 1,
+        "yusu": 1
+      },
+      "hp": 267,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 9,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "move": 1,
+        "yusu": 2
+      },
+      "hp": 260,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 10,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "move": 2,
+        "yusu": 4
+      },
+      "hp": 156,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 18,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "move": 3,
+        "yusu": 4
+      },
+      "hp": 156,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 18,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "move": 2,
+        "yusu": 6
+      },
+      "hp": 52,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 24,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "basic_attack": 1,
+        "basic_defense": 1,
+        "cheongpung": 1
+      },
+      "hp": 334,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 8,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 1,
+        "yusu": 1
+      },
+      "hp": 289,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 11,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "yusu": 1
+      },
+      "hp": 289,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "paak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 2,
+        "move": 1,
+        "yusu": 1
+      },
+      "hp": 247,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 11,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "paak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 1
+      },
+      "hp": 338,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 5,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 1
+      },
+      "hp": 338,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 5,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 2,
+        "move": 1
+      },
+      "hp": 296,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 10,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 97,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 2,
+        "yusu": 7
+      },
+      "hp": 0,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 31,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 1
+      },
+      "hp": 338,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 7,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+        "cheongpung": 1,
+        "move": 1,
+        "yusu": 3
+      },
+      "hp": 191,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 18,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 555,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "basic_attack": 2,
+      "basic_defense": 1,
+      "cheongpung": 1,
+      "move": 2
+    },
+    "hp": 341,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 9,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "basic_attack": 2,
+      "basic_defense": 1,
+      "cheongpung": 1,
+      "move": 2
+    },
+    "hp": 341,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 9,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 2,
+      "move": 3,
+      "yusu": 1
+    },
+    "hp": 24,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "paak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 8,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 2,
+      "move": 3,
+      "yusu": 1
+    },
+    "hp": 24,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "paak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 8,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 67,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 2
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 8,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 262,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 2
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 8,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 90,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "basic_attack": 1,
+      "cheongpung": 2,
+      "move": 3,
+      "yusu": 1
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "banseok",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 12,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 90,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 2
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "banseok",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 8,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 223,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 5,
+      "yusu": 2
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "jungun",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 11,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 223,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 5,
+      "yusu": 2
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "jungun",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 11,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "basic_attack": 1,
+      "cheongpung": 1,
+      "move": 2
+    },
+    "hp": 477,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced251",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 6,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "basic_attack": 1,
+      "cheongpung": 1,
+      "move": 2
+    },
+    "hp": 477,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced251",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 6,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 305,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced251",
+    "skill": "paak",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 6,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 305,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced251",
+    "skill": "paak",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 6,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 5,
+      "yusu": 2
+    },
+    "hp": 136,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced251",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 14,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 2,
+      "yusu": 1
+    },
+    "hp": 305,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced251",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 8,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "move": 2
+    },
+    "hp": 620,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced251",
+    "skill": "banseok",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 3,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "move": 2
+    },
+    "hp": 620,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced251",
+    "skill": "banseok",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 3,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 4,
+      "yusu": 1
+    },
+    "hp": 305,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced251",
+    "skill": "jungun",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 11,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 4,
+      "yusu": 1
+    },
+    "hp": 305,
+    "max_hp": 620,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced251",
+    "skill": "jungun",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 11,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "basic_attack": 1,
+      "cheongpung": 1,
+      "move": 2
+    },
+    "hp": 575,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 8,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "basic_attack": 1,
+      "cheongpung": 1,
+      "move": 2
+    },
+    "hp": 575,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 8,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+
+    },
+    "hp": 700,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "paak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 3,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+
+    },
+    "hp": 700,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "paak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 3,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 3
+    },
+    "hp": 569,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 1,
+      "move": 3
+    },
+    "hp": 569,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+
+    },
+    "hp": 700,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "banseok",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 3,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+
+    },
+    "hp": 700,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "banseok",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 3,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "cheongpung": 2,
+      "move": 3,
+      "yusu": 1
+    },
+    "hp": 286,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "jungun",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 13,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "mr_exchange",
+      "enemy_hp": 0,
+      "enemy_max_hp": 316,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "mr_exchange",
+    "enemy_hp": 0,
+    "enemy_max_hp": 555,
+    "enemy_used": {
+      "move": 2,
+      "yusu": 3
+    },
+    "hp": 244,
+    "max_hp": 700,
+    "name": "모용유안 · 교류 대련 · 좁은 길 재대련",
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "jungun",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 12,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "basic_attack": 2,
+        "basic_defense": 1,
+        "move": 2
+      },
+      "hp": 354,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 9,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "basic_attack": 2,
+        "basic_defense": 1,
+        "move": 2
+      },
+      "hp": 354,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 9,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "hoepung": 1,
+        "move": 2
+      },
+      "hp": 291,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 7,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "paak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "hoepung": 1,
+        "move": 2
+      },
+      "hp": 291,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 7,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "paak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "hoepung": 1,
+        "move": 1
+      },
+      "hp": 291,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "hoepung": 1,
+        "move": 1
+      },
+      "hp": 291,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "hoepung": 1,
+        "move": 2
+      },
+      "hp": 291,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 8,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "hoepung": 1,
+        "move": 2
+      },
+      "hp": 291,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 8,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "hoepung": 1,
+        "move": 1
+      },
+      "hp": 291,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "hoepung": 1,
+        "move": 1
+      },
+      "hp": 291,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "basic_attack": 2,
+        "basic_defense": 2,
+        "move": 1
+      },
+      "hp": 372,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 10,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "basic_attack": 1,
+        "basic_defense": 1,
+        "hoepung": 1,
+        "move": 1
+      },
+      "hp": 306,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 9,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "hoepung": 1,
+        "move": 1
+      },
+      "hp": 310,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "paak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "hoepung": 1,
+        "move": 1
+      },
+      "hp": 310,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "paak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "hoepung": 1,
+        "move": 2
+      },
+      "hp": 310,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "hoepung": 1,
+        "move": 2
+      },
+      "hp": 310,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "hoepung": 1,
+        "move": 3
+      },
+      "hp": 310,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 11,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "hoepung": 1,
+        "move": 3
+      },
+      "hp": 310,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 11,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "hoepung": 1,
+        "move": 1
+      },
+      "hp": 310,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+        "hoepung": 1,
+        "move": 1
+      },
+      "hp": 310,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 770,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 4,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "basic_attack": 4,
+      "basic_defense": 3,
+      "move": 3
+    },
+    "hp": 312,
+    "max_hp": 540,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 14,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "basic_attack": 4,
+      "basic_defense": 3,
+      "move": 3
+    },
+    "hp": 312,
+    "max_hp": 540,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 14,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 130,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "paak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 7,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 450,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 4
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "paak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 8,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 326,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 7,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 326,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 4
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 9,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 26,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 6
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "banseok",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 11,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 26,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 6
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "banseok",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 11,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 495,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "jungun",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 6,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 495,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "jungun",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 6,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "basic_attack": 3,
+      "basic_defense": 1,
+      "move": 3
+    },
+    "hp": 476,
+    "max_hp": 620,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced251",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 10,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "basic_attack": 3,
+      "basic_defense": 1,
+      "move": 3
+    },
+    "hp": 476,
+    "max_hp": 620,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced251",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 10,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 280,
+    "max_hp": 620,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced251",
+    "skill": "paak",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 6,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 280,
+    "max_hp": 620,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced251",
+    "skill": "paak",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 6,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 286,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 3
+    },
+    "hp": 0,
+    "max_hp": 620,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced251",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 7,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 286,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 4
+    },
+    "hp": 0,
+    "max_hp": 620,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced251",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 9,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 280,
+    "max_hp": 620,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced251",
+    "skill": "banseok",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 7,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 280,
+    "max_hp": 620,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced251",
+    "skill": "banseok",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 7,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 62,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 620,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced251",
+    "skill": "jungun",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 7,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 620,
+      "max_hp": 620,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 62,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 620,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced251",
+    "skill": "jungun",
+    "stats": {
+      "agility": 50,
+      "constitution": 50,
+      "inner": 50,
+      "insight": 51,
+      "strength": 50
+    },
+    "steps": 9,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "basic_attack": 3,
+      "basic_defense": 2,
+      "move": 3
+    },
+    "hp": 580,
+    "max_hp": 700,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 13,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "basic_attack": 2,
+      "basic_defense": 2,
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 307,
+    "max_hp": 700,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 17,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 387,
+    "max_hp": 700,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "paak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 8,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 3
+    },
+    "hp": 387,
+    "max_hp": 700,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "paak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 8,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 3
+    },
+    "hp": 74,
+    "max_hp": 700,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 11,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 3
+    },
+    "hp": 74,
+    "max_hp": 700,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 11,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 2
+    },
+    "hp": 387,
+    "max_hp": 700,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "banseok",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 9,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 1,
+      "move": 2
+    },
+    "hp": 387,
+    "max_hp": 700,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "banseok",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 10,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 2
+    },
+    "hp": 74,
+    "max_hp": 700,
+    "name": "탁문호",
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "jungun",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 9,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "cuiyue_tak",
+      "enemy_hp": 0,
+      "enemy_max_hp": 322,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "cuiyue_tak",
+    "enemy_hp": 0,
+    "enemy_max_hp": 770,
+    "enemy_used": {
+      "hoepung": 2,
+      "move": 2
+    },
+    "hp": 74,
+    "max_hp": 700,
+    "name": "탁문호",
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "jungun",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 9,
+    "win": true,
+    "winner": 0
+  }
+]
