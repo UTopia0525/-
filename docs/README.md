@@ -1,5 +1,7 @@
 # 작업별 색인
 
+최신 마운표: [절정 총합310·체력875·80쌍 비교](systems/maunpyo-peak.md).
+
 현재 체력/밸런스: [근력·근골 공통 체력 공식과306쌍 전투 비교](systems/health-growth.md).
 
 인물 미술 작업: [모델과 관계없이 유지하는 화풍·비율·실제 표시 검수 기준](characters/art-consistency.md).

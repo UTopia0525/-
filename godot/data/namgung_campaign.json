@@ -5,14 +5,14 @@
     "name": "마운표",
     "faction": "청애채 채주 · 녹림 총채주 후보",
     "portrait_actor": "qy_ma_yunpiao",
-    "max_hp": 466,
-    "constitution": 30,
+    "max_hp": 875,
+    "constitution": 80,
     "stats": {
-      "strength": 32,
-      "agility": 24,
-      "constitution": 30,
-      "inner": 26,
-      "insight": 25
+      "strength": 85,
+      "agility": 45,
+      "constitution": 80,
+      "inner": 60,
+      "insight": 40
     },
     "weapon": "none",
     "skills": [

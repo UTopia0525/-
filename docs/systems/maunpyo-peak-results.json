@@ -1,0 +1,3278 @@
+[
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 1,
+        "move": 2
+      },
+      "hp": 312,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 5,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 732,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "basic_attack": 2,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 7,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 1,
+        "move": 2
+      },
+      "hp": 312,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 5,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 787,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 5,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 1,
+        "move": 2
+      },
+      "hp": 272,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 5,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 787,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "paak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 5,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 1,
+        "move": 2
+      },
+      "hp": 272,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 5,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 787,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "paak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 5,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 1,
+        "move": 2
+      },
+      "hp": 272,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 787,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 5,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 1,
+        "move": 2
+      },
+      "hp": 272,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 787,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 5,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 1,
+        "move": 2
+      },
+      "hp": 272,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 5,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 787,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 5,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 1,
+        "move": 2
+      },
+      "hp": 272,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 5,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 787,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 5,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 1,
+        "move": 2
+      },
+      "hp": 272,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 787,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 5,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 1,
+        "move": 2
+      },
+      "hp": 272,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 787,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 5,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 6,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 2,
+        "cheolsan": 1,
+        "move": 4
+      },
+      "hp": 0,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 11,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 6,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 2,
+        "cheolsan": 1,
+        "move": 4
+      },
+      "hp": 0,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 11,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 284,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 1,
+        "cheolsan": 1,
+        "move": 2
+      },
+      "hp": 0,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 6,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "paak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 284,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 1,
+        "cheolsan": 1,
+        "move": 2
+      },
+      "hp": 0,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 6,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "paak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 213,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 2,
+        "move": 2
+      },
+      "hp": 0,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 7,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 213,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 2,
+        "move": 2
+      },
+      "hp": 0,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 7,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 254,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 1,
+        "cheolsan": 1,
+        "move": 2
+      },
+      "hp": 0,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 6,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 254,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 1,
+        "cheolsan": 1,
+        "move": 2
+      },
+      "hp": 0,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 6,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 310,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 2,
+        "move": 2
+      },
+      "hp": 0,
+      "max_hp": 364,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 7,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "direct",
+    "profile": "quest101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 310,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 2,
+        "move": 2
+      },
+      "hp": 0,
+      "max_hp": 364,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 7,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 364,
+    "policy": "adaptive",
+    "profile": "quest101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 18,
+      "constitution": 18,
+      "inner": 18,
+      "insight": 29,
+      "strength": 18
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 1,
+        "move": 2
+      },
+      "hp": 330,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 567,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "basic_attack": 3,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 9,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 1,
+        "move": 2
+      },
+      "hp": 330,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 633,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 7,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "move": 1
+      },
+      "hp": 380,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 579,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "paak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 6,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "move": 1
+      },
+      "hp": 380,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 579,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "paak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 6,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "move": 1
+      },
+      "hp": 380,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 541,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 6,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "move": 1
+      },
+      "hp": 380,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 541,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 6,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "move": 1
+      },
+      "hp": 380,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 611,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "basic_attack": 2,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 9,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "move": 1
+      },
+      "hp": 380,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 699,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 6,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 1,
+        "move": 1
+      },
+      "hp": 290,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 5,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 599,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 6,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 1,
+        "move": 1
+      },
+      "hp": 290,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 5,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 599,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 6,
+    "support": true,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 76,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 3,
+        "move": 1
+      },
+      "hp": 0,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 8,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 206,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 2,
+        "cheolsan": 1,
+        "move": 1
+      },
+      "hp": 0,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 8,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 261,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 1,
+        "cheolsan": 1,
+        "move": 2
+      },
+      "hp": 0,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 6,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "paak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 261,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 1,
+        "cheolsan": 1,
+        "move": 2
+      },
+      "hp": 0,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 6,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "paak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 2,
+        "move": 1
+      },
+      "hp": 18,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 7,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 2,
+        "move": 1
+      },
+      "hp": 18,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 7,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 2,
+        "move": 3
+      },
+      "hp": 18,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 8,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 2,
+        "move": 3
+      },
+      "hp": 18,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 8,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "banseok",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 466,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 2,
+        "move": 1
+      },
+      "hp": 0,
+      "max_hp": 380,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 6,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "direct",
+    "profile": "balanced101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 466,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 2,
+        "move": 1
+      },
+      "hp": 0,
+      "max_hp": 380,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 6,
+      "win": false,
+      "winner": 1
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 875,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 380,
+    "policy": "adaptive",
+    "profile": "balanced101",
+    "skill": "jungun",
+    "stats": {
+      "agility": 20,
+      "constitution": 20,
+      "inner": 20,
+      "insight": 21,
+      "strength": 20
+    },
+    "steps": 3,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "move": 3
+    },
+    "hp": 287,
+    "max_hp": 540,
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 9,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "move": 3
+    },
+    "hp": 287,
+    "max_hp": 540,
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 10,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 3,
+      "move": 1
+    },
+    "hp": 117,
+    "max_hp": 540,
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "paak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 8,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "move": 1
+    },
+    "hp": 258,
+    "max_hp": 540,
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "paak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 7,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 70,
+    "max_hp": 540,
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 9,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 70,
+    "max_hp": 540,
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 11,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "move": 1
+    },
+    "hp": 258,
+    "max_hp": 540,
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "banseok",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 6,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "move": 1
+    },
+    "hp": 258,
+    "max_hp": 540,
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "banseok",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 8,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "cheolsan": 1,
+      "move": 1
+    },
+    "hp": 70,
+    "max_hp": 540,
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "jungun",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 11,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "cheolsan": 1,
+      "move": 1
+    },
+    "hp": 70,
+    "max_hp": 540,
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "jungun",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 11,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "move": 2
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 698,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "move": 1
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 5,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "move": 2
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 6,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 698,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "move": 1
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 5,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 1,
+        "move": 2
+      },
+      "hp": 399,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 7,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 590,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "move": 1
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "paak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 5,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "banseok_jingak": 1,
+        "move": 2
+      },
+      "hp": 399,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 7,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 590,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "move": 1
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "paak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 5,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "move": 2
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 5,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 485,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 6,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "move": 2
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 5,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 485,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 7,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 542,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "move": 1
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "banseok",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 5,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 540,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 542,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "move": 1
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "banseok",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 5,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 1,
+        "move": 1
+      },
+      "hp": 333,
+      "max_hp": 540,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 9,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 631,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 1
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "policy": "direct",
+    "profile": "balanced201",
+    "skill": "jungun",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 6,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+        "cheolsan": 1,
+        "move": 1
+      },
+      "hp": 333,
+      "max_hp": 540,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 9,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 631,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 1
+    },
+    "hp": 0,
+    "max_hp": 540,
+    "policy": "adaptive",
+    "profile": "balanced201",
+    "skill": "jungun",
+    "stats": {
+      "agility": 40,
+      "constitution": 40,
+      "inner": 40,
+      "insight": 41,
+      "strength": 40
+    },
+    "steps": 6,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 605,
+    "max_hp": 700,
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 605,
+    "max_hp": 700,
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 582,
+    "max_hp": 700,
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "paak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 582,
+    "max_hp": 700,
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "paak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "move": 2
+    },
+    "hp": 464,
+    "max_hp": 700,
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 9,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 2,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "move": 2
+    },
+    "hp": 464,
+    "max_hp": 700,
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 9,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 1
+    },
+    "hp": 582,
+    "max_hp": 700,
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "banseok",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 1
+    },
+    "hp": 582,
+    "max_hp": 700,
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "banseok",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 1
+    },
+    "hp": 422,
+    "max_hp": 700,
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "jungun",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 9,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 1
+    },
+    "hp": 422,
+    "max_hp": 700,
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "jungun",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 9,
+    "support": true,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "hoeryu",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "move": 2
+    },
+    "hp": 156,
+    "max_hp": 700,
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 10,
+    "support": false,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "hoeryu",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 2,
+      "move": 2
+    },
+    "hp": 156,
+    "max_hp": 700,
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "hoeryu",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 12,
+    "support": false,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 360,
+    "max_hp": 700,
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "paak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "support": false,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "paak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 2
+    },
+    "hp": 360,
+    "max_hp": 700,
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "paak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "support": false,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "gwanak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 411,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 700,
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "gwanak",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 411,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "cheolsan": 1,
+      "move": 2
+    },
+    "hp": 0,
+    "max_hp": 700,
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "gwanak",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 1
+    },
+    "hp": 360,
+    "max_hp": 700,
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "banseok",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "support": false,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "banseok",
+      "steps": 3,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 0,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "banseok_jingak": 1,
+      "move": 1
+    },
+    "hp": 360,
+    "max_hp": 700,
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "banseok",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "support": false,
+    "win": true,
+    "winner": 0
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "direct",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 487,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "cheolsan": 2
+    },
+    "hp": 0,
+    "max_hp": 700,
+    "policy": "direct",
+    "profile": "balanced301",
+    "skill": "jungun",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "support": false,
+    "win": false,
+    "winner": 1
+  },
+  {
+    "before": {
+      "enemy": "qingya_maunpyo",
+      "enemy_hp": 0,
+      "enemy_max_hp": 466,
+      "enemy_used": {
+
+      },
+      "hp": 700,
+      "max_hp": 700,
+      "policy": "adaptive",
+      "skill": "jungun",
+      "steps": 4,
+      "win": true,
+      "winner": 0
+    },
+    "enemy": "qingya_maunpyo",
+    "enemy_hp": 487,
+    "enemy_max_hp": 875,
+    "enemy_used": {
+      "cheolsan": 2
+    },
+    "hp": 0,
+    "max_hp": 700,
+    "policy": "adaptive",
+    "profile": "balanced301",
+    "skill": "jungun",
+    "stats": {
+      "agility": 60,
+      "constitution": 60,
+      "inner": 60,
+      "insight": 61,
+      "strength": 60
+    },
+    "steps": 7,
+    "support": false,
+    "win": false,
+    "winner": 1
+  }
+]
