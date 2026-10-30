@@ -23,6 +23,7 @@ var facing := "down"
 var nanjing_floor: Texture2D
 var changsha_floor: Texture2D
 var wuchang_floor: Texture2D
+var suzhou_floor: Texture2D
 
 class MapView extends Control:
 	var owner_map
@@ -129,6 +130,9 @@ func draw_map(canvas: Control) -> void:
 	if not is_instance_valid(exploration) or world_window.size.x <= 0:
 		return
 	var texture: Texture2D = exploration.background.texture
+	if exploration.area_name=="suzhou" and ResourceLoader.exists("res://assets/maps/suzhou/painted/overview-floor.png"):
+		if suzhou_floor==null:suzhou_floor=load("res://assets/maps/suzhou/painted/overview-floor.png")
+		texture=suzhou_floor
 	if exploration.area_name=="wuchang" and ResourceLoader.exists("res://assets/maps/wuchang/painted/overview-floor.png"):
 		if wuchang_floor==null:wuchang_floor=load("res://assets/maps/wuchang/painted/overview-floor.png")
 		texture=wuchang_floor

@@ -1,0 +1,17 @@
+{
+  "grain": {
+    "source": "/workspace/generated_images/exec-bc98e661-6112-4589-84ea-6e4b7c22bf5a.png",
+    "sha256": "d79227a578f08d856bd47aef3d7db06f0510a423e70bff635ade1c0a2862ecd6",
+    "method": "image_gen using approved Nanjing market reference; original copied unchanged, independent atlas regions and collisions"
+  },
+  "canal": {
+    "source": "/workspace/generated_images/exec-8d29f65f-0b63-46c3-91d7-c1f75630d1be.png",
+    "sha256": "ba68f7f8ad6119d574d60a2580da22cc6d903b06d2cda79b34da7696717ace68",
+    "method": "image_gen using approved Nanjing market reference; original copied unchanged, independent atlas regions and collisions"
+  },
+  "rice-field": {
+    "source": "/workspace/generated_images/exec-4b07f401-ce33-4c4f-abe4-3b1a704589c5.png",
+    "sha256": "80259370c52195c9f3082c6d8f405bf5e85fe5dcc18acd0285082a769a6da4eb",
+    "method": "image_gen standalone seamless rice material; original copied unchanged and sampled at runtime"
+  }
+}

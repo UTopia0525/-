@@ -1,5 +1,7 @@
 # 게임 콘텐츠 작업 규칙
 
+- 소주는 `suzhou/painted/`의 곡물·운하 건물과 벼 재질을 사용한다. 같은 화풍/문 비율/접지 그림자와 기존 비단 공방·운하3교를 유지하고 소주 `layout.json` 안에서 프리팹을 재정의한다. 지역 미술 변경으로 다른 도시의 공유 프리팹을 덮어쓰지 않는다. [소주 미술](../docs/cities/suzhou-painted.md).
+
 - 무창은 `wuchang/painted/`의 무림맹 전용 본부와 실용적인 객잔·술집·다루·보급점, 장사 전용 미술의 동일 시점/비율을 사용한다. 무창 `layout.json` 안에서 프리팹을 재정의하며 다른 도시 공유 프리팹을 덮어쓰지 않는다. 무림맹 정문 통제·총무당 포탈/전수와 주민 접근을 미술 변경 후 점검한다. [무창 미술](../docs/cities/wuchang-painted.md).
 
 - 장사는 `changsha/painted/prefabs.json`의 소박한 전용 건물과 남경 시장 계열의 흙/포장 재질을 사용한다. 다른 도시가 공유하는 `changsha/layered/prefabs.json`을 장사 미술 변경으로 덮어쓰지 않는다. 캐릭터·문 비율/발밑 충돌과 실제 표시 사각형의 지도 동기화를 유지한다. [장사 미술](../docs/cities/changsha-painted.md).

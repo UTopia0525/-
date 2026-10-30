@@ -40,6 +40,10 @@ func run() -> void:
   check(not w.path_to(w.city_point(point)).is_empty(),"district reachable "+str(point))
  for node in w.scenery_nodes:
   if node.get_meta("kind")=="building":check(not w.can_stand(node.collision_rects[0].get_center()),"building collision "+str(node.name))
+  if str(node.name) in ["grain_warehouse","grain_shipping_house","rice_hulling_workshop"]:
+   check(is_equal_approx(node.sprite.scale.x,node.sprite.scale.y) and is_zero_approx(node.sprite.rotation),"grain building preserves camera/aspect "+str(node.name))
+   var doorstep=Vector2(node.visual_rect.get_center().x,node.visual_rect.end.y+30)
+   check(w.can_stand(doorstep) and not w.path_to(doorstep).is_empty(),"new grain building doorstep reachable "+str(node.name))
  game.toggle_city_map();check(game.city_overview.visible,"Tab map supports Suzhou");game.toggle_city_map()
  check(game.save_system.write_slot(2) and game.save_system.load_slot(2),"Suzhou save/load")
  await travel("travel:suzhou_road");check(w.area_name=="nanjing_suzhou_road","Suzhou returns to road")

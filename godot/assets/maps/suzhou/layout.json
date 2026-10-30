@@ -18,7 +18,7 @@
     1488,
     976
   ],
-  "ground_script": "res://scripts/qingya_ground.gd",
+  "ground_script": "res://scripts/suzhou_painted_ground.gd",
   "ground_texture": "res://assets/maps/suzhou/ground.png",
   "objects": [
     {
@@ -33,7 +33,7 @@
     },
     {
       "id": "north_home_b",
-      "prefab": "sz_home",
+      "prefab": "sz_rice_shop",
       "rect": [
         350,
         75,
@@ -93,7 +93,7 @@
     },
     {
       "id": "farm_home",
-      "prefab": "sz_home",
+      "prefab": "sz_farm",
       "rect": [
         180,
         820,
@@ -400,44 +400,80 @@
         62,
         90
       ]
+    },
+    {
+      "id": "grain_warehouse",
+      "prefab": "sz_granary",
+      "rect": [
+        1130,
+        820,
+        145,
+        110
+      ]
+    },
+    {
+      "id": "grain_shipping_house",
+      "prefab": "sz_grain_broker",
+      "rect": [
+        1340,
+        825,
+        150,
+        110
+      ]
+    },
+    {
+      "id": "rice_hulling_workshop",
+      "prefab": "sz_grain_mill",
+      "rect": [
+        410,
+        830,
+        170,
+        120
+      ]
     }
   ],
   "prefabs": {
     "nj_government": {
-      "texture": "res://assets/maps/nanjing/buildings.png",
+      "texture": "res://assets/maps/changsha/painted/town.png",
       "source": [
-        818,
-        353,
-        387,
-        310
+        768,
+        0,
+        768,
+        512
       ],
       "kind": "building",
       "footprints": [
         [
-          0.11,
-          0.53,
-          0.78,
-          0.43
+          0.08,
+          0.42,
+          0.84,
+          0.56
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "nj_martial": {
-      "texture": "res://assets/maps/nanjing/buildings.png",
+      "texture": "res://assets/maps/changsha/painted/town.png",
       "source": [
-        1202,
-        388,
-        330,
-        273
+        0,
+        512,
+        768,
+        512
       ],
       "kind": "building",
       "footprints": [
         [
-          0.11,
-          0.53,
-          0.78,
-          0.43
+          0.08,
+          0.42,
+          0.84,
+          0.56
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "capital_silk": {
       "texture": "res://assets/maps/nanjing/capital-props.png",
@@ -566,12 +602,12 @@
       ]
     },
     "sz_home": {
-      "texture": "res://assets/maps/suzhou/scenery.png",
+      "texture": "res://assets/maps/suzhou/painted/canal.png",
       "source": [
-        20,
-        60,
-        327,
-        269
+        0,
+        0,
+        768,
+        512
       ],
       "kind": "building",
       "footprints": [
@@ -581,33 +617,39 @@
           0.76,
           0.43
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "sz_silk": {
-      "texture": "res://assets/maps/suzhou/scenery.png",
+      "texture": "res://assets/maps/nanjing/market-slice/shops.png",
       "source": [
-        401,
-        12,
-        337,
-        326
+        768,
+        0,
+        768,
+        512
       ],
       "kind": "building",
       "footprints": [
         [
-          0.12,
-          0.53,
-          0.76,
-          0.43
+          0.1,
+          0.54,
+          0.8,
+          0.41
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "sz_dye": {
-      "texture": "res://assets/maps/suzhou/scenery.png",
+      "texture": "res://assets/maps/suzhou/painted/canal.png",
       "source": [
-        776,
-        92,
-        368,
-        248
+        0,
+        512,
+        768,
+        512
       ],
       "kind": "building",
       "footprints": [
@@ -617,7 +659,10 @@
           0.76,
           0.43
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "sz_bridge": {
       "texture": "res://assets/maps/suzhou/scenery.png",
@@ -644,12 +689,12 @@
       ]
     },
     "sz_tea": {
-      "texture": "res://assets/maps/suzhou/scenery.png",
+      "texture": "res://assets/maps/suzhou/painted/canal.png",
       "source": [
-        16,
-        358,
-        357,
-        314
+        768,
+        0,
+        768,
+        512
       ],
       "kind": "building",
       "footprints": [
@@ -659,15 +704,18 @@
           0.76,
           0.43
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "sz_inn": {
-      "texture": "res://assets/maps/suzhou/scenery.png",
+      "texture": "res://assets/maps/suzhou/painted/canal.png",
       "source": [
-        391,
-        354,
-        462,
-        322
+        768,
+        0,
+        768,
+        512
       ],
       "kind": "building",
       "footprints": [
@@ -677,7 +725,10 @@
           0.76,
           0.43
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "sz_pavilion": {
       "texture": "res://assets/maps/suzhou/scenery.png",
@@ -792,6 +843,111 @@
           0.25
         ]
       ]
+    },
+    "sz_granary": {
+      "texture": "res://assets/maps/suzhou/painted/grain.png",
+      "source": [
+        0,
+        0,
+        768,
+        512
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.53,
+          0.76,
+          0.43
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
+    },
+    "sz_grain_mill": {
+      "texture": "res://assets/maps/suzhou/painted/grain.png",
+      "source": [
+        768,
+        0,
+        768,
+        512
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.53,
+          0.76,
+          0.43
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
+    },
+    "sz_rice_shop": {
+      "texture": "res://assets/maps/suzhou/painted/grain.png",
+      "source": [
+        0,
+        512,
+        768,
+        512
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.53,
+          0.76,
+          0.43
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
+    },
+    "sz_farm": {
+      "texture": "res://assets/maps/suzhou/painted/grain.png",
+      "source": [
+        768,
+        512,
+        768,
+        512
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.53,
+          0.76,
+          0.43
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
+    },
+    "sz_grain_broker": {
+      "texture": "res://assets/maps/suzhou/painted/canal.png",
+      "source": [
+        768,
+        512,
+        768,
+        512
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.12,
+          0.53,
+          0.76,
+          0.43
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     }
   },
   "terrain_blockers": [
@@ -928,7 +1084,7 @@
     },
     {
       "id": "market",
-      "name": "비단 상점가",
+      "name": "비단·곡물 상점가",
       "rect": [
         175,
         285,
@@ -1012,7 +1168,7 @@
     },
     {
       "id": "harbor",
-      "name": "태호 방면 선착장",
+      "name": "곡물 창고·태호 선착장",
       "rect": [
         870,
         790,
@@ -1040,7 +1196,7 @@
     },
     {
       "id": "farmland",
-      "name": "서쪽 채소밭",
+      "name": "농가·정미 작업장",
       "rect": [
         175,
         790,
@@ -1052,5 +1208,6 @@
         895
       ]
     }
-  ]
+  ],
+  "painted_style": true
 }
