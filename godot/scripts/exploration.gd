@@ -117,7 +117,7 @@ func load_area(value: String) -> void:
 	preload("res://scripts/terrain_rendering.gd").apply(background,area_name,map_bounds)
 	if value=="changsha" and city_data.get("painted_style",false):
 		background.material=preload("res://scripts/changsha_painted_ground.gd").make(city_data)
-	if value=="nanjing":
+	if value in ["nanjing","wuchang"]:
 		background.material=regional_map.get_child(0).material
 		background.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR
 	if not is_instance_valid(regional_map):_build_collision_and_navigation()

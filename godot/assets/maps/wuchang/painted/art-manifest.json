@@ -1,0 +1,12 @@
+{
+  "alliance-hall": {
+    "source": "/workspace/generated_images/exec-8aa26c8e-ec05-45e9-83d2-625e0cec96e3.png",
+    "sha256": "5afbe0715b53322934c96c02671eee4d52811b38fe685eebc78e1e4ef037bd47",
+    "method": "image_gen matched approved Nanjing market reference; original copied unchanged, atlas regions only"
+  },
+  "streets": {
+    "source": "/workspace/generated_images/exec-eb4594dc-ba38-40f9-8f92-63f116ab5e55.png",
+    "sha256": "72b067d1fb5fccb30bebde862573c96bbd04ffe58cc1ac2dd7a658e0b0cc760c",
+    "method": "image_gen matched approved Nanjing market reference; original copied unchanged, atlas regions only"
+  }
+}

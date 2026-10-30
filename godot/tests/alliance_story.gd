@@ -119,7 +119,8 @@ func run() -> void:
 		check(game.progress.loadout==loadout,"learned skill not forced over equipped slots")
 		q._finish_teaching();q.confirm_art("hoeryu");check(game.progress.learned.size()==2,"duplicate callback and second choice cannot grant again")
 		game.player_menu.open_menu("martial");game.player_menu.select_item(id)
-		check(game.player_menu.detail.text.contains(game.progress.arts.get_skill(id).name),"K displays received skill")
+		var skill_name: String=game.progress.arts.get_skill(id).name
+		check(game.player_menu.content.get_children().any(func(n):return n is Label and n.visible and n.text==skill_name),"K displays received skill title")
 		check(game.progress.assign(id,3),"learned skill can be assigned in K");game.player_menu.close_menu()
 		await roundtrip(5)
 	# Closing the visit is driven by physically walking out, not merely leaving the office.
