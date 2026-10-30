@@ -1,0 +1,12 @@
+{
+  "living": {
+    "source": "/workspace/generated_images/exec-c092ca36-cf96-4a7d-8be3-27b68e2a044a.png",
+    "sha256": "7b1636ab341b0109c48f0295b4e9c4c1dba31ce299f9cb5e4aff7e0f1e2dd4c5",
+    "method": "image_gen with Nanjing market reference; copied unchanged, independent atlas regions/physics"
+  },
+  "town": {
+    "source": "/workspace/generated_images/exec-d6e7fddf-d1bb-4b75-ab18-d9b06cee9ca2.png",
+    "sha256": "016d87e86e792c163dfe6affa01e4b48a939426aacff5c7ada32c62ea55dfc88",
+    "method": "image_gen with Nanjing market reference; copied unchanged, independent atlas regions/physics"
+  }
+}

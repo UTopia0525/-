@@ -1,0 +1,344 @@
+{
+  "home": {
+    "texture": "res://assets/maps/changsha/painted/living.png",
+    "source": [
+      0,
+      0,
+      768,
+      512
+    ],
+    "kind": "building",
+    "footprints": [
+      [
+        0.08,
+        0.42,
+        0.84,
+        0.56
+      ]
+    ],
+    "preserve_aspect": true,
+    "smooth_filter": true,
+    "contact_shadow": true
+  },
+  "warehouse": {
+    "texture": "res://assets/maps/changsha/painted/living.png",
+    "source": [
+      768,
+      0,
+      768,
+      512
+    ],
+    "kind": "building",
+    "footprints": [
+      [
+        0.08,
+        0.42,
+        0.84,
+        0.56
+      ]
+    ],
+    "preserve_aspect": true,
+    "smooth_filter": true,
+    "contact_shadow": true
+  },
+  "inn": {
+    "texture": "res://assets/maps/changsha/painted/town.png",
+    "source": [
+      0,
+      0,
+      768,
+      512
+    ],
+    "kind": "building",
+    "footprints": [
+      [
+        0.08,
+        0.42,
+        0.84,
+        0.56
+      ]
+    ],
+    "preserve_aspect": true,
+    "smooth_filter": true,
+    "contact_shadow": true
+  },
+  "government": {
+    "texture": "res://assets/maps/changsha/painted/town.png",
+    "source": [
+      768,
+      0,
+      768,
+      512
+    ],
+    "kind": "building",
+    "footprints": [
+      [
+        0.08,
+        0.42,
+        0.84,
+        0.56
+      ]
+    ],
+    "preserve_aspect": true,
+    "smooth_filter": true,
+    "contact_shadow": true
+  },
+  "workshop": {
+    "texture": "res://assets/maps/changsha/painted/living.png",
+    "source": [
+      0,
+      512,
+      790,
+      512
+    ],
+    "kind": "building",
+    "footprints": [
+      [
+        0.08,
+        0.42,
+        0.84,
+        0.56
+      ]
+    ],
+    "preserve_aspect": true,
+    "smooth_filter": true,
+    "contact_shadow": true
+  },
+  "martial_hall": {
+    "texture": "res://assets/maps/changsha/painted/town.png",
+    "source": [
+      0,
+      512,
+      768,
+      512
+    ],
+    "kind": "building",
+    "footprints": [
+      [
+        0.08,
+        0.42,
+        0.84,
+        0.56
+      ]
+    ],
+    "preserve_aspect": true,
+    "smooth_filter": true,
+    "contact_shadow": true
+  },
+  "shrine": {
+    "texture": "res://assets/maps/changsha/painted/town.png",
+    "source": [
+      768,
+      0,
+      768,
+      512
+    ],
+    "kind": "building",
+    "footprints": [
+      [
+        0.08,
+        0.42,
+        0.84,
+        0.56
+      ]
+    ],
+    "preserve_aspect": true,
+    "smooth_filter": true,
+    "contact_shadow": true
+  },
+  "farmhouse": {
+    "texture": "res://assets/maps/changsha/painted/living.png",
+    "source": [
+      790,
+      512,
+      746,
+      512
+    ],
+    "kind": "building",
+    "footprints": [
+      [
+        0.08,
+        0.42,
+        0.84,
+        0.56
+      ]
+    ],
+    "preserve_aspect": true,
+    "smooth_filter": true,
+    "contact_shadow": true
+  },
+  "stall_a": {
+    "texture": "res://assets/maps/changsha/painted/town.png",
+    "source": [
+      768,
+      512,
+      768,
+      512
+    ],
+    "kind": "stall",
+    "footprints": [
+      [
+        0.08,
+        0.53,
+        0.84,
+        0.45
+      ]
+    ],
+    "preserve_aspect": true,
+    "smooth_filter": true,
+    "contact_shadow": true
+  },
+  "stall_b": {
+    "texture": "res://assets/maps/changsha/painted/town.png",
+    "source": [
+      0,
+      0,
+      768,
+      512
+    ],
+    "kind": "stall",
+    "footprints": [
+      [
+        0.08,
+        0.53,
+        0.84,
+        0.45
+      ]
+    ],
+    "preserve_aspect": true,
+    "smooth_filter": true,
+    "contact_shadow": true
+  },
+  "wall_h": {
+    "texture": "res://assets/maps/changsha/layered/scenery-atlas.png",
+    "source": [
+      655,
+      761,
+      260,
+      139
+    ],
+    "kind": "wall",
+    "footprints": [
+      [
+        0.02,
+        0.65,
+        0.96,
+        0.34
+      ]
+    ]
+  },
+  "wall_v": {
+    "texture": "res://assets/maps/changsha/layered/scenery-atlas.png",
+    "source": [
+      1049,
+      677,
+      75,
+      223
+    ],
+    "kind": "wall",
+    "footprints": [
+      [
+        0.25,
+        0.06,
+        0.5,
+        0.93
+      ]
+    ]
+  },
+  "tree": {
+    "texture": "res://assets/maps/changsha/layered/scenery-atlas.png",
+    "source": [
+      38,
+      930,
+      251,
+      273
+    ],
+    "kind": "tree",
+    "footprints": [
+      [
+        0.37,
+        0.78,
+        0.26,
+        0.2
+      ]
+    ]
+  },
+  "willow": {
+    "texture": "res://assets/maps/changsha/layered/scenery-atlas.png",
+    "source": [
+      344,
+      900,
+      260,
+      298
+    ],
+    "kind": "tree",
+    "footprints": [
+      [
+        0.37,
+        0.78,
+        0.26,
+        0.2
+      ]
+    ]
+  },
+  "cargo": {
+    "texture": "res://assets/maps/changsha/layered/scenery-atlas.png",
+    "source": [
+      664,
+      900,
+      247,
+      289
+    ],
+    "kind": "cargo",
+    "footprints": [
+      [
+        0.08,
+        0.53,
+        0.84,
+        0.45
+      ]
+    ]
+  },
+  "well": {
+    "texture": "res://assets/maps/changsha/layered/scenery-atlas.png",
+    "source": [
+      975,
+      900,
+      232,
+      288
+    ],
+    "kind": "well",
+    "footprints": [
+      [
+        0.12,
+        0.28,
+        0.76,
+        0.7
+      ]
+    ]
+  },
+  "gate": {
+    "texture": "res://assets/maps/changsha/layered/open-gate.png",
+    "source": [
+      192,
+      48,
+      1152,
+      850
+    ],
+    "kind": "gate",
+    "footprints": [
+      [
+        0.137,
+        0.84,
+        0.1,
+        0.16
+      ],
+      [
+        0.764,
+        0.84,
+        0.111,
+        0.16
+      ]
+    ]
+  }
+}

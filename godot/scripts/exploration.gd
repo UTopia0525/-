@@ -115,6 +115,8 @@ func load_area(value: String) -> void:
 	background.position = map_bounds.position
 	background.scale = map_bounds.size / background.texture.get_size()
 	preload("res://scripts/terrain_rendering.gd").apply(background,area_name,map_bounds)
+	if value=="changsha" and city_data.get("painted_style",false):
+		background.material=preload("res://scripts/changsha_painted_ground.gd").make(city_data)
 	if value=="nanjing":
 		background.material=regional_map.get_child(0).material
 		background.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR
@@ -329,8 +331,8 @@ func _build_city_art() -> void:
 			blockers.append(rectangle)
 			city_data.scenery_objects.append({"kind":prefab.kind, "bounds":[rectangle.position.x / world_scale.x, rectangle.position.y / world_scale.y, rectangle.size.x / world_scale.x, rectangle.size.y / world_scale.y]})
 		var src: Array = prefab.source
-		var target: Array = spec.rect
-		art_tiles.append({"texture":load(prefab.texture), "source":Rect2(src[0], src[1], src[2], src[3]), "target":Rect2(target[0], target[1], target[2], target[3])})
+		var displayed: Rect2=node.visual_rect
+		art_tiles.append({"texture":load(prefab.texture), "source":Rect2(src[0], src[1], src[2], src[3]), "target":Rect2(displayed.position/world_scale,displayed.size/world_scale)})
 	art_tiles.sort_custom(func(a,b): return a.target.end.y < b.target.end.y)
 
 func city_point(point: Array) -> Vector2:

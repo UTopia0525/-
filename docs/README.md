@@ -1,6 +1,8 @@
 # 작업별 색인
 
-최신 미술: [남경 전역 시장 화풍 확장 · 전체 지도/구역별 실제 화면](cities/nanjing-capital.md). 공방·상가·관아·무관·수변 누각과 바닥을 통일했다. 이전 [시장·골목 파일럿](cities/nanjing-market-slice.md)은 확대 전 비교 기록이다.
+최신 미술: [장사 · 소박한 생활 도시/전체 지도·실제 플레이](cities/changsha-painted.md). 남경과 화풍은 통일하고 장사의 주거·공방·창고·농촌은 절제된 외형으로 구분했다.
+
+남경 미술: [전역 시장 화풍 확장 · 전체 지도/구역별 실제 화면](cities/nanjing-capital.md). 이전 [시장·골목 파일럿](cities/nanjing-market-slice.md)은 확대 전 비교 기록이다.
 
 전투 검토: [이동·방어·두 무공의 비교 이득/최소량50·100/3,108회](reviews/mixed-actions-merit.md) · [실제 성공 사례·반례 재생기](../prototypes/mixed-actions-review/index.html). 본게임 미적용. 무기 우열 대신 선택지를 제한한 대조 실험이며 상한만으로 다양성이 확보되었다고 판정하지 않는다.
 

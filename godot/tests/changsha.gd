@@ -99,7 +99,7 @@ func _run() -> void:
 	check(city.map_bounds.size == Vector2(1280, 720), "reset restores prologue map bounds")
 	check(city.ambient_nodes.is_empty() and city.npcs.size() == 5, "city residents removed on reset")
 	check(not game.city_overview.visible and game.state == "title", "reset restores title")
-	check(is_equal_approx(city.camera.exploration_zoom, 1.5), "reset restores prologue camera zoom")
+	check(is_equal_approx(city.camera.exploration_zoom, city.camera_zoom), "reset restores configured prologue camera zoom")
 	# Finish the reset crossfade before releasing audio playback resources.
 	await create_timer(1.0).timeout
 	for voice in game.music.players:

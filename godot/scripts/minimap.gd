@@ -21,6 +21,7 @@ var npc_markers: PackedVector2Array = []
 var player_marker: Vector2
 var facing := "down"
 var nanjing_floor: Texture2D
+var changsha_floor: Texture2D
 
 class MapView extends Control:
 	var owner_map
@@ -127,6 +128,9 @@ func draw_map(canvas: Control) -> void:
 	if not is_instance_valid(exploration) or world_window.size.x <= 0:
 		return
 	var texture: Texture2D = exploration.background.texture
+	if exploration.area_name=="changsha" and ResourceLoader.exists("res://assets/maps/changsha/painted/overview-floor.png"):
+		if changsha_floor==null:changsha_floor=load("res://assets/maps/changsha/painted/overview-floor.png")
+		texture=changsha_floor
 	if exploration.area_name=="nanjing" and ResourceLoader.exists("res://assets/maps/nanjing/painted/overview-floor.png"):
 		# Canvas draw commands hold a RID, not a strong texture reference. Keep this
 		# alive after _draw returns, or the first minimap frame becomes a white box.

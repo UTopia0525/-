@@ -13,6 +13,8 @@ func run() -> void:
 	check(city.art_tiles.size()==city.scenery_nodes.size(),"minimap reuses all live architecture")
 	for node in city.scenery_nodes:
 		check(node.get_parent()==city.decorations and node.position.y==node.visual_rect.end.y,"foot-based Y sort: "+node.name)
+		if node.definition.prefab in ["home","warehouse","inn","government","workshop","martial_hall","farmhouse","stall_a","stall_b"]:
+			check(is_equal_approx(node.sprite.scale.x,node.sprite.scale.y),"painted facade preserves aspect: "+node.name)
 		for bounds in node.collision_rects:
 			var query:=PhysicsPointQueryParameters2D.new();query.position=bounds.get_center();query.collision_mask=2
 			var hits=city.get_world_2d().direct_space_state.intersect_point(query)

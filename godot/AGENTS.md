@@ -1,5 +1,7 @@
 # 게임 콘텐츠 작업 규칙
 
+- 장사는 `changsha/painted/prefabs.json`의 소박한 전용 건물과 남경 시장 계열의 흙/포장 재질을 사용한다. 다른 도시가 공유하는 `changsha/layered/prefabs.json`을 장사 미술 변경으로 덮어쓰지 않는다. 캐릭터·문 비율/발밑 충돌과 실제 표시 사각형의 지도 동기화를 유지한다. [장사 미술](../docs/cities/changsha-painted.md).
+
 - 대화 표정은 `portrait_expressions.json`의 원본 그림별4표정 시트를 쓴다. 기존 중립 원본은 유지하고 `emotion`/`emotions` 또는 `dialogue_expression_cues.json`으로 지정한다. 얼굴 크기·좌우 반전·공용 그림 중복 방지는 공통 경로를 유지하며 새 전용 그림을 만들면 표정 연결과 실제 대화 비교도 확인한다. [표정 규칙](../docs/systems/dialogue-expressions.md).
 - 남경 건물은 시장 `market-slice/`와 전역 `capital/`의 동일한 정면 시점·비율 보존 배치를 사용한다. 기존 `painted/`는 이전 원본/다리용으로 보존한다. 정면 그림을 사선 회전하거나 X/Y로 다르게 늘려 측면을 만들지 않는다. 바닥 재질/그림자/건물·담장 충돌은 별도 층으로 유지하고 지도에서도 최종 표시 사각형을 사용한다. [최신 남경 개선](../docs/cities/nanjing-capital.md).
 

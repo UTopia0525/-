@@ -754,7 +754,7 @@
   "visual_style": "독립 투명 건물/담장/문/소품과 발밑 충돌·Y정렬. 흙길·빈 마당 바닥 레이어. 일체형 도시 이미지 재덧씌우기 없음.",
   "visual_occluders": [],
   "ground_texture": "res://assets/maps/changsha/layered/ground.png",
-  "prefabs_path": "res://assets/maps/changsha/layered/prefabs.json",
+  "prefabs_path": "res://assets/maps/changsha/painted/prefabs.json",
   "objects": [
     {
       "id": "warehouse_west",
@@ -2342,5 +2342,6 @@
       "name": "장사꾼",
       "extra": "male_young"
     }
-  }
+  },
+  "painted_style": true
 }
