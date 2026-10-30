@@ -13,7 +13,7 @@ func _ready() -> void:
 				var p=a.lerp(b,j/float(steps));var width=int(road.width)
 				mask.fill_rect(Rect2i(int(p.x)-width/2,int(p.y)-width/2,width,width),Color(.9,0,0,.94))
 	mask.fill_rect(Rect2i(175,805,510,195),Color(0,0,1,.96))
-	for courtyard in [Rect2i(330,805,80,195),Rect2i(175,895,165,90),Rect2i(405,910,185,80)]:mask.fill_rect(courtyard,Color(0,0,0,.94))
+	for courtyard in [Rect2i(330,805,80,195),Rect2i(175,895,170,95),Rect2i(420,895,195,95)]:mask.fill_rect(courtyard,Color(0,0,0,.94))
 	mask.fill_rect(Rect2i(930,825,160,75),Color(0,1,0,.94))
 	# Preserve the authored canal edges and the exact three navigable crossings.
 	mask.fill_rect(Rect2i(685,0,185,1024),Color.TRANSPARENT)
