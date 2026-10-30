@@ -1,0 +1,232 @@
+{
+  "cases": 3780,
+  "outcomes": {
+    "draw": 321,
+    "hero": 1560,
+    "boss": 1839,
+    "timeout": 60
+  },
+  "locked": [
+    {
+      "mode": "current",
+      "level": 50,
+      "style": "sword",
+      "kit": "upper"
+    },
+    {
+      "mode": "current",
+      "level": 50,
+      "style": "sword",
+      "kit": "support"
+    },
+    {
+      "mode": "current",
+      "level": 50,
+      "style": "saber",
+      "kit": "upper"
+    },
+    {
+      "mode": "current",
+      "level": 50,
+      "style": "saber",
+      "kit": "support"
+    },
+    {
+      "mode": "current",
+      "level": 50,
+      "style": "spear",
+      "kit": "upper"
+    },
+    {
+      "mode": "current",
+      "level": 50,
+      "style": "spear",
+      "kit": "support"
+    },
+    {
+      "mode": "current",
+      "level": 50,
+      "style": "fist",
+      "kit": "upper"
+    },
+    {
+      "mode": "current",
+      "level": 50,
+      "style": "fist",
+      "kit": "support"
+    },
+    {
+      "mode": "current",
+      "level": 50,
+      "style": "palm",
+      "kit": "upper"
+    },
+    {
+      "mode": "current",
+      "level": 50,
+      "style": "palm",
+      "kit": "support"
+    },
+    {
+      "mode": "current",
+      "level": 100,
+      "style": "saber",
+      "kit": "upper"
+    },
+    {
+      "mode": "current",
+      "level": 100,
+      "style": "saber",
+      "kit": "support"
+    },
+    {
+      "mode": "current",
+      "level": 100,
+      "style": "fist",
+      "kit": "upper"
+    },
+    {
+      "mode": "current",
+      "level": 100,
+      "style": "fist",
+      "kit": "support"
+    },
+    {
+      "mode": "current",
+      "level": 100,
+      "style": "palm",
+      "kit": "upper"
+    },
+    {
+      "mode": "current",
+      "level": 100,
+      "style": "palm",
+      "kit": "support"
+    },
+    {
+      "mode": "current",
+      "level": 150,
+      "style": "saber",
+      "kit": "upper"
+    },
+    {
+      "mode": "current",
+      "level": 150,
+      "style": "saber",
+      "kit": "support"
+    },
+    {
+      "mode": "graded",
+      "level": 50,
+      "style": "sword",
+      "kit": "upper"
+    },
+    {
+      "mode": "graded",
+      "level": 50,
+      "style": "sword",
+      "kit": "support"
+    },
+    {
+      "mode": "graded",
+      "level": 50,
+      "style": "saber",
+      "kit": "upper"
+    },
+    {
+      "mode": "graded",
+      "level": 50,
+      "style": "saber",
+      "kit": "support"
+    },
+    {
+      "mode": "graded",
+      "level": 50,
+      "style": "spear",
+      "kit": "upper"
+    },
+    {
+      "mode": "graded",
+      "level": 50,
+      "style": "spear",
+      "kit": "support"
+    },
+    {
+      "mode": "graded",
+      "level": 50,
+      "style": "fist",
+      "kit": "upper"
+    },
+    {
+      "mode": "graded",
+      "level": 50,
+      "style": "fist",
+      "kit": "support"
+    },
+    {
+      "mode": "graded",
+      "level": 50,
+      "style": "palm",
+      "kit": "upper"
+    },
+    {
+      "mode": "graded",
+      "level": 50,
+      "style": "palm",
+      "kit": "support"
+    },
+    {
+      "mode": "graded",
+      "level": 100,
+      "style": "saber",
+      "kit": "upper"
+    },
+    {
+      "mode": "graded",
+      "level": 100,
+      "style": "saber",
+      "kit": "support"
+    },
+    {
+      "mode": "graded",
+      "level": 100,
+      "style": "fist",
+      "kit": "upper"
+    },
+    {
+      "mode": "graded",
+      "level": 100,
+      "style": "fist",
+      "kit": "support"
+    },
+    {
+      "mode": "graded",
+      "level": 100,
+      "style": "palm",
+      "kit": "upper"
+    },
+    {
+      "mode": "graded",
+      "level": 100,
+      "style": "palm",
+      "kit": "support"
+    },
+    {
+      "mode": "graded",
+      "level": 150,
+      "style": "saber",
+      "kit": "upper"
+    },
+    {
+      "mode": "graded",
+      "level": 150,
+      "style": "saber",
+      "kit": "support"
+    }
+  ],
+  "hashes": {
+    "catalogue.py": "0d626b995c3bfbf28eda6ee7573b995e088fcb3317961fd26a8dfcdb95e41948",
+    "engine.py": "7173ed3d377fecb6813e10b3126a4d69b7ee62d70c0c32d30b95df308d4fae44",
+    "benchmark.py": "82039e1b3eece93090bdcd377926b5f8ef72e18301587b73238aadfabe5b86d9"
+  }
+}

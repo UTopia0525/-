@@ -1,5 +1,7 @@
 # 작업별 색인
 
+최신 검토: [내공200까지의 최대량 공식·중급7종·테스트 상급7종·전 구간 계산](reviews/progression-combat-budget.md) · [능력치/장비/공식 계산기·범위·실제 기록](../prototypes/progression-combat-review/index.html). 본게임 미적용이며 고정80을 전 구간 상한으로 채택하지 않는다.
+
 후속 검토: [내기 소모·최대량 변화와 이동/공격 순환의 손익](reviews/timed-qi-budget.md) · [수치 조합 탐색·실제 기록 재생](../prototypes/timed-qi-review/index.html). 회복 시점은 유지하며 본게임 미적용이다.
 
 검토 전용: [장사 우두머리 정수 시간제 전투8,316시행·반복/대응 비교](reviews/timed-combat-changsha.md). [오프라인 기록 재생기](../prototypes/timed-combat-review/index.html)는 다운로드 후 브라우저로 연다. 본게임 미적용이며3D 개발은 사용자 요청으로 보류한다.

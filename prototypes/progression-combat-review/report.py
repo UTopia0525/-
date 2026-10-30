@@ -1,0 +1,167 @@
+import csv
+import hashlib
+import json
+from collections import Counter
+from pathlib import Path
+import catalogue as cat
+import benchmark as bench
+
+HERE=Path(__file__).resolve().parent
+formula=json.loads((HERE/'formula-summary.json').read_text())
+sensitivity=json.loads((HERE/'sensitivity-summary.json').read_text())
+cross=json.loads((HERE/'crossmatch-summary.json').read_text())
+replays=json.loads((HERE/'replays.json').read_text())
+with (HERE/'analytical.csv').open(encoding='utf-8-sig') as f:analytical=list(csv.DictReader(f))
+with (HERE/'crossmatch-results.csv').open(encoding='utf-8-sig') as f:cross_rows=list(csv.DictReader(f))
+graded=cat.catalogue();current=cat.catalogue('current')
+payload=dict(graded=graded,current=current,weapons=cat.WEAPONS,replays=replays)
+(HERE/'index.html').write_text((HERE/'calculator.template.html').read_text().replace('__DATA__',json.dumps(payload,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c')))
+
+def power(d):
+    if d['kind']=='support':return '추가 회복 내공×200%'
+    values=[]
+    if d.get('base_damage'):values.append(str(d['base_damage']))
+    for key,label in [('strength','근력'),('inner','내공')]:
+        value=d['damage_coefficients'].get(key,0)
+        if value:values.append(f'{label}×{value:g}')
+    return ' + '.join(values)
+
+def grade_table(grade):
+    table=['| 무공 | 검토 위력 | 내기 | 준비/출수/회수 | 총시간 |','|---|---|---:|---|---:|']
+    for key,d in graded.items():
+        if d['grade']!=grade:continue
+        table.append(f"| {d['name']} | {power(d)} | {d['qi_cost']} | {'/'.join(map(str,d['timing']))} | {sum(d['timing'])} |")
+    return '\n'.join(table)
+
+caps=['| 내공 | 시작 내기/행동 완료 회복 | 최대 내기 |','|---:|---:|---:|']
+for i in [10,20,50,100,150,200]:caps.append(f'| {i} | {i} | {cat.FORMULAS["floor80_40_2I"](i)} |')
+formula_table=['| 식 | 내공20 | 50 | 100 | 200 | 내공200에서420 소모 기술 |','|---|---:|---:|---:|---:|---|']
+names={'fixed80':'고정80','floor80_20_2I':'max(80,20+내공×2)','floor80_40_2I':'max(80,40+내공×2)','floor80_60_2I':'max(80,60+내공×2)','floor80_40_1.5I':'max(80,40+내공×1.5)','floor80_40_2.5I':'max(80,40+내공×2.5)'}
+for key,fn in cat.FORMULAS.items():formula_table.append('| '+names[key]+' | '+' | '.join(str(fn(i)) for i in [20,50,100,200])+' | '+('사용 가능' if fn(200)>=420 else '상한 부족')+' |')
+
+dps_table=['| 계열 | 기존 중급 | 검토 중급 | 테스트 상급 |','|---|---:|---:|---:|']
+for style,ids in cat.STYLE_ARTS.items():
+    values=[]
+    for mode,art in [('current',ids['mid']),('graded',ids['mid']),('graded',ids['upper'])]:
+        r=next(r for r in analytical if r['mode']==mode and r['formula']=='floor80_40_2I' and r['inner']=='200' and r['tier']=='3' and r['art']==art)
+        values.append(f"{float(r['sustained_damage']):.2f}")
+    dps_table.append('| '+style+' | '+' | '.join(values)+' |')
+
+cross_table=['| 내공200·상대5계열 | 중급 편성 승/무/패/교착 | 상급+중급 편성 | 상급+조식 편성 |','|---|---|---|---|']
+for style in bench.STYLES:
+    counts=[]
+    for kind in ('mid','upper','support'):
+        rows=[r for r in cross_rows if r['mode']=='graded' and r['level']=='200' and r['style']==style and r['kit']==kind]
+        c=Counter(r['winner'] for r in rows)
+        counts.append('/'.join(str(c[k]) for k in ['hero','draw','boss','timeout']))
+    cross_table.append('| '+style+' | '+' | '.join(counts)+' |')
+
+power_table=['| 무공 | 근력=내공20 | 50 | 100 | 200 |','|---|---:|---:|---:|---:|']
+for key,d in graded.items():
+    if d['kind']=='support':continue
+    vals=[d.get('base_damage',0)+sum(d['damage_coefficients'].values())*i for i in [20,50,100,200]]
+    power_table.append('| '+d['name']+' | '+' | '.join(f'{v:g}' for v in vals)+' |')
+
+total=formula['cases']+sensitivity['cases']+cross['cases']
+report=f'''# 전 구간 내기·등급별 무공 계산 검토
+
+2026-10-30. **계산/테스트 전용이며 본게임·기존 무공·저장에 미적용.** 상급5종과 절초2종은 임시 이름/범위/수치로만 만들었다. 실제 학습 경로·전용 미술·K/전투 등록은 하지 않았다. 아래 위력 재편도 채택 대기안이다.
+
+## 최대 내기 후보
+
+**최대 내기 = max(80, 40 + 내공×2)**. 시작 내기와 행동 완료 회복은 내공 그대로다. 내공0이면 정상 행동으로 회복되지 않으며, 내공 증가와 별개인 아이템 회복은 이번 검사에 넣지 않았다.
+
+{chr(10).join(caps)}
+
+최소80은 내공이 낮아도 무림맹에서 배우는 중급 무공을 실제로 사용할 만큼 모을 수 있게 하기 위한 장치다. 학습에 새 내공 조건을 붙인 것이 아니다. 내공10에서 소모75를 모으려면 비용0 행동7회, 내공20에서는3회가 필요하다. ‘사용 가능’과 ‘쾌적하게 사용’은 구별해야 한다.
+
+내공160/상한360에서 소모360을 쓰면 회복 후160이므로 다음 시전까지 회복 행동2회가 필요하다. 내공200/상한440에서 가득 모아 같은 기술을 쓰면 회복 후280, 회복 행동1회면440으로 돌아온다. 최대 내기를80으로 고정했을 때와 달리 높은 내공의 저장·회복 보상이 남는다.
+
+### 비교한 공식
+
+{chr(10).join(formula_table)}
+
+고정80은 성장과 상급 사용을 막고,1.5배 식은 최종 절초 일부가 끝까지 사용 불가다.20+2배는420 소모 절초를 사용할 수 있지만 내기 clipping 때문에 회복 행동이 더 필요하다.2.5배 식은 후반 저장량과 연속 사용 여유를 크게 준다.40+2배는 유일한 정답이나 승률 최댓값으로 확정한 것이 아니라, 초반 최소량/최종 사용 가능/저장 제한을 함께 만족하는 검토 기준점이다.
+
+## 등급별 위력 재편의 필요
+
+기존 계수를 그대로 두고 비용만 올리면 내공200에서 중급 무공을 무료에 가깝게 반복하는 편이 상급보다 효율적일 수 있다. 그래서 **기존 위력 유지안과 입문/하급/중급 재편안을 따로 계산**했다. 본게임 계수를 실제로 낮추지 않았다.
+
+아래는 근력=내공=상대 근골200,3단계 장비, 선택 공식에서의 단일 대상 지속 피해/시간이다. 회복에 쓰는 시간10 행동을 포함한 정확한 자원 순환 주기이며, 해당 회복 행동이 기본공격일 때의 추가 피해·명중 실패·지형·능동 방어는 제외한다. 비교 상대는3단계 검의 수동 방어를 가진다.
+
+{chr(10).join(dps_table)}
+
+이 재편에서는 중급보다 상급의 자원 포함 지속 위력이 높아진다. 두 절초는 단발 위력과 범위/거리의 선택지이며, 지속 효율까지 모든 일반 상급보다 높게 만들지는 않았다. 전황에 맞춰 쓸 기술이어야 한다.
+
+## 입문·하급 검토값
+
+삼재는 초반 교육에서 내기를 모으는 행동이 지나치게 길지 않도록 비용25로 잡았다. 재편 위력 `20+근력×2+내공`은 시작 능력치10에서 기존 위력50을 유지하되 성장 계수를 낮춘 안이다. 창은 높은 고정 위력/낮은 계수를 유지한다. 표의 내기는 장비 절감 전이다.
+
+{grade_table('introductory')}
+
+{grade_table('low')}
+
+## 현재 중급7종 검토값
+
+무림맹5종·쇄랑도법·조식수원공을 모두 포함한다. 기존 학습/스토리 조건과 획득 방법은 변경하지 않는다. 관악창법은 균형창/유엽창/유운창에서 각각77/68/60을 소비한다.
+
+{grade_table('intermediate')}
+
+조식수원공은 비용0, 기술 효과로 내공200% 회복, 공통 행동 완료 회복100%를 합쳐 최대300%를 회복한다. 이번 동시 시간 모델에서는 모두 회수 종료에 처리하고, 운기 유지 구간에만 피해20% 감소를 적용한다. 준비·회수 구간에는 적용하지 않는다. 사용 후 다른 자기 행동3회가 완료되어야 다시 쓸 수 있으며 대기는 회복/재사용 진행에 포함하지 않는다. 일반 회복 시점/양은 바꾸지 않았다. 효과 회복 시점은 이 검토 엔진의 추가 해석이다.
+
+## 테스트용 상급7종
+
+처음5종은 각 계열의 일반 상급, 마지막2종은 많은 내기를 쓰는 절초다. 전수/학습조건·전용 아이콘·이야기상의 비전으로 확정하지 않았다.
+
+{grade_table('upper')}
+
+- 유하: 가까운 전방3칸과 긴 정면2~3칸의 검로5칸. 출수 후 회수까지20% 수세.
+- 분악: 정면1~3칸 직선. 긴 준비/회수의 강공.
+- 파진관운: 정면2~3칸. 인접 칸 사각, 높은 고정 위력950/낮은 성장 계수. 창 장비에서 실제 소모234/208/182다. 일반 상급 창법이므로 후반에는 다른 계열의 높은 계수에 밀리는 원칙을 유지한다.
+- 금강쇄심: 한 칸 전진 후 가까운1명 공격/한 칸 밀침. 이동과 공격이 한 행동이다.
+- 중천진악: 전방3칸과 정면2칸 지점, 총4칸 장력/한 칸 밀침.
+- 천광일섬: 먼 정면2~3칸. 긴 준비 뒤 큰 단발 검격.
+- 일도단강: 가까운 전방3칸과 정면2칸, 총4칸. 최종 비용420의 큰 도격.
+
+공격·전진·밀침 끝 위치는 기존 기준처럼 출수 전 자신에서 맨해튼3칸 안에 있다. 범위 도식은 계산기에서 실제 데이터로 그린다. 같은 비용·시간대에서는 넓은 기술의 대상당 효율을 낮춘다. 절초는 더 큰 비용/긴 준비를 지급해 단발 위력을 높인 별도 비교안이므로 모든 상급을 동일한 비용의 기술로 비교하지 않는다.
+
+## 같은 능력치에서의 위력 수준
+
+장비·근골·방어 적용 전 값이다. 아래 숫자가 표시되어도 해당 내공에서 비용을 감당할 수 있다는 뜻은 아니다. 사용 가능 여부와 첫 충전 행동은 계산기에 별도 표시한다.
+
+{chr(10).join(power_table)}
+
+## 실제 시간제 전투 검사
+
+- 공식 비교{formula['cases']:,}회, 비용±15%·내공/근력 집중·장비1~3단계 민감도{sensitivity['cases']:,}회, 상대5계열 교차검사{cross['cases']:,}회, **총{total:,}회**. 산술 자원표는 별도이며 전투 시행 수에 합치지 않았다. 중복 대조 조건을 포함하며 사람의 승률을 의미하지 않는다.
+- 7×5,3시작 배치, 효율 우선/강공 우선/이동 대응3정책. 공식/민감도에서는 공세/수세2적 정책. 기민의 새 시간 보정·지형·일반 피격 경직·행동 취소는 미반영이다.
+- 시작 능력치10은 실제0장 수적,20은 현재 장사 우두머리,50 이상은 같은 단계 능력치의 가상 상대다. 후반 가상 상대의 이름/능력치를 실제 스토리 인물에 덮어쓰지 않았다.
+- 최대 체력은 양쪽 모두 기존220+근력×3+근골×5를 유지했다. 중후반 상대를 이기도록 체력을 임의 배율로 바꾸지 않았다.
+- 편성4칸. 중급 편성=기본공격/방어+중급+하급, 상급 편성=기본공격/방어+상급+중급, 조식 편성=기본공격/방어+상급+조식이다. 상급 추가를 무조건5번째 슬롯으로 지급하지 않았다.
+- 내공/근력 집중은 같은 능력치 총합에서 다른 전투 수치를 옮겼으며200 상한을 지켰다. 아직 얻는 방법이 없는 후반 성장·상급은 수치 실험용 주입이다.
+- 무공의 학습 조건 미충족/최대 내기보다 높은 비용은 별도 잠금으로 기록한다. 절초 편성은 일반 상급뿐 아니라 절초 자체 비용도 감당할 때만 실행한다. 기본공격으로 이겨도 그 기술을 사용할 수 있다고 세지 않았다.
+
+### 내공200 교차검사 — 전술 균형은 별도 보완 필요
+
+각 칸45조건(상대5계열×정책3×배치3). 표는 실제 승/동시 사망/패/시간초과 순이다.
+
+{chr(10).join(cross_table)}
+
+상급 편성은 여러 계열에서 개선됐지만 모든 계열/전황에서 더 좋지는 않다. 검은 빠른 출수와 수세가 강하고, 도의 긴 준비와 창의 인접 사각은 이 작은 전장에서 손해가 크다. 일부 권법은 자동 추격/전진 판단으로 교착됐다. 따라서 **이 수식/수치가 모든 무기와 실제 플레이에서 최종 균형을 통과했다는 결론은 내리지 않는다.** 원자료에는 실패·동시 사망·시간초과도 모두 남겼다. 위력/자원 성장 체계의 후보와 실제 무기별 AI/전술 조정은 구분한다.
+
+## 자료·재현
+
+- [실험 안내](../../prototypes/progression-combat-review/README.md)
+- [내공0~200 계산·범위 도식·실제 기록 재생](../../prototypes/progression-combat-review/index.html): 다운로드 후 브라우저로 연다.
+- [위력/비용/시간의 전체 검토 카탈로그](../../prototypes/progression-combat-review/catalogue.json)
+- [공식 전투CSV](../../prototypes/progression-combat-review/formula-results.csv), [민감도CSV](../../prototypes/progression-combat-review/sensitivity-results.csv), [교차CSV](../../prototypes/progression-combat-review/crossmatch-results.csv), [산술CSV](../../prototypes/progression-combat-review/analytical.csv)
+
+14개 동작 검사에서 중급 목록/최소 상한/최종 상급 사용/전진 판정/범위 한도/내기 성장/조식 회복 시점·방어·재사용/원래 엔진 격리를 확인했다. 검토 자료만 저장하며 본게임 적용 여부는 별도다.
+'''
+(cat.ROOT/'docs/reviews/progression-combat-budget.md').write_text(report)
+inputs=[HERE/'catalogue.py',HERE/'engine.py',HERE/'benchmark.py',HERE/'report.py',
+        HERE.parent/'timed-combat-review/simulate.py',HERE.parent/'timed-qi-review/sweep.py']
+manifest=dict(status='report generation snapshot',source_hashes={str(p.relative_to(cat.ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},
+              result_hashes={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in HERE.glob('*-results.csv')})
+(HERE/'report-manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
+print('Built progression report/calculator:',total,'actual battles,',len(replays),'recorded replays')

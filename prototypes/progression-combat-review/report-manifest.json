@@ -1,0 +1,16 @@
+{
+  "status": "report generation snapshot",
+  "source_hashes": {
+    "prototypes/progression-combat-review/catalogue.py": "0d626b995c3bfbf28eda6ee7573b995e088fcb3317961fd26a8dfcdb95e41948",
+    "prototypes/progression-combat-review/engine.py": "7173ed3d377fecb6813e10b3126a4d69b7ee62d70c0c32d30b95df308d4fae44",
+    "prototypes/progression-combat-review/benchmark.py": "82039e1b3eece93090bdcd377926b5f8ef72e18301587b73238aadfabe5b86d9",
+    "prototypes/progression-combat-review/report.py": "0279e5fe3d2de3b946285071dac93d336e2b3147faecfb903a1d927fcab5f9a3",
+    "prototypes/timed-combat-review/simulate.py": "a7ba675ee3d4b2634dce0f040aa9821a539cfb8fd0ab60eb8e34ad87809e6e42",
+    "prototypes/timed-qi-review/sweep.py": "73e06e8627582e52163fbc796b5ebb13baf6e42d307804f94e363e818385aeb2"
+  },
+  "result_hashes": {
+    "sensitivity-results.csv": "36c2b8a74c39d7b6e0333d037c9faf31397c38ebeacbd655ab4da580124e3ca0",
+    "crossmatch-results.csv": "9b51e8148c496dff9f72c4bfcea6671d5bca9925a0cb1590498929fb7fcb4c71",
+    "formula-results.csv": "f7bd713e578018d830667b3b34adeea51cdb5561901922a2740eaa788f059d76"
+  }
+}
