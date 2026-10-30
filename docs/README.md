@@ -1,5 +1,7 @@
 # 작업별 색인
 
+검토 전용: [장사 우두머리 정수 시간제 전투8,316시행·반복/대응 비교](reviews/timed-combat-changsha.md). [오프라인 기록 재생기](../prototypes/timed-combat-review/index.html)는 다운로드 후 브라우저로 연다. 본게임 미적용이며3D 개발은 사용자 요청으로 보류한다.
+
 2D 미술 개선: [전 인물 대화 표정·비교표](systems/dialogue-expressions.md), [남경 전체 재질·건물 비율·실제 화면](cities/nanjing-painted.md).
 
 3D 실험: [항주3인칭 탐험 프로젝트·실행/조작/검사](../godot-3d-hangzhou/README.md). 기존2D 게임과 별도로 연다.
