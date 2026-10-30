@@ -18,119 +18,137 @@
     1310,
     1240
   ],
-  "ground_script": "res://scripts/qingya_ground.gd",
+  "ground_script": "res://scripts/hangzhou_painted_ground.gd",
   "ground_texture": "res://assets/maps/hangzhou/ground.png",
   "prefabs": {
     "hz_government": {
-      "texture": "res://assets/maps/hangzhou/buildings.png",
+      "texture": "res://assets/maps/changsha/painted/town.png",
       "source": [
+        768,
         0,
-        20,
-        565,
-        465
+        768,
+        512
       ],
       "kind": "building",
       "footprints": [
         [
-          0.12,
-          0.65,
-          0.76,
-          0.31
+          0.06,
+          0.42,
+          0.88,
+          0.56
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "hz_inn": {
-      "texture": "res://assets/maps/hangzhou/buildings.png",
-      "source": [
-        565,
-        20,
-        480,
-        465
-      ],
-      "kind": "building",
-      "footprints": [
-        [
-          0.12,
-          0.65,
-          0.76,
-          0.31
-        ]
-      ]
-    },
-    "hz_shop": {
-      "texture": "res://assets/maps/hangzhou/buildings.png",
-      "source": [
-        1045,
-        20,
-        491,
-        465
-      ],
-      "kind": "building",
-      "footprints": [
-        [
-          0.12,
-          0.65,
-          0.76,
-          0.31
-        ]
-      ]
-    },
-    "hz_workshop": {
-      "texture": "res://assets/maps/hangzhou/buildings.png",
+      "texture": "res://assets/maps/hangzhou/painted/districts.png",
       "source": [
         0,
-        520,
-        560,
-        470
+        0,
+        768,
+        560
       ],
       "kind": "building",
       "footprints": [
         [
-          0.12,
-          0.65,
-          0.76,
-          0.31
+          0.06,
+          0.42,
+          0.88,
+          0.56
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
+    },
+    "hz_shop": {
+      "texture": "res://assets/maps/nanjing/market-slice/shops.png",
+      "source": [
+        768,
+        0,
+        768,
+        512
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.06,
+          0.42,
+          0.88,
+          0.56
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
+    },
+    "hz_workshop": {
+      "texture": "res://assets/maps/changsha/painted/living.png",
+      "source": [
+        0,
+        512,
+        790,
+        512
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.06,
+          0.42,
+          0.88,
+          0.56
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "hz_home": {
-      "texture": "res://assets/maps/hangzhou/buildings.png",
+      "texture": "res://assets/maps/changsha/painted/living.png",
       "source": [
-        565,
-        520,
-        440,
-        470
+        0,
+        0,
+        768,
+        512
       ],
       "kind": "building",
       "footprints": [
         [
-          0.12,
-          0.65,
-          0.76,
-          0.31
+          0.06,
+          0.42,
+          0.88,
+          0.56
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "hz_guild": {
-      "texture": "res://assets/maps/hangzhou/buildings.png",
+      "texture": "res://assets/maps/hangzhou/painted/districts.png",
       "source": [
-        1005,
-        520,
-        531,
-        470
+        768,
+        505,
+        768,
+        519
       ],
       "kind": "building",
       "footprints": [
         [
-          0.12,
-          0.65,
-          0.76,
-          0.31
+          0.06,
+          0.42,
+          0.88,
+          0.56
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "hz_tower": {
-      "texture": "res://assets/maps/hangzhou/tower.png",
+      "texture": "res://assets/maps/hangzhou/painted/tower.png",
       "source": [
         0,
         0,
@@ -140,12 +158,15 @@
       "kind": "building",
       "footprints": [
         [
-          0.14,
-          0.84,
-          0.72,
-          0.14
+          0.1,
+          0.82,
+          0.8,
+          0.16
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "sz_willow": {
       "texture": "res://assets/maps/suzhou/scenery.png",
@@ -163,7 +184,10 @@
           0.24,
           0.17
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "sz_boat": {
       "texture": "res://assets/maps/suzhou/scenery.png",
@@ -181,7 +205,10 @@
           0.8,
           0.25
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": false
     },
     "sz_cargo": {
       "texture": "res://assets/maps/suzhou/scenery.png",
@@ -199,7 +226,10 @@
           0.8,
           0.25
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "capital_produce": {
       "texture": "res://assets/maps/nanjing/capital-props.png",
@@ -217,7 +247,10 @@
           0.7,
           0.23
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "capital_silk": {
       "texture": "res://assets/maps/nanjing/capital-props.png",
@@ -235,7 +268,10 @@
           0.7,
           0.23
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "capital_lantern": {
       "texture": "res://assets/maps/nanjing/capital-props.png",
@@ -253,7 +289,10 @@
           0.7,
           0.23
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "sz_pavilion": {
       "texture": "res://assets/maps/suzhou/scenery.png",
@@ -271,7 +310,10 @@
           0.76,
           0.43
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "sz_tea": {
       "texture": "res://assets/maps/suzhou/scenery.png",
@@ -346,40 +388,46 @@
       ]
     },
     "hz_market_a": {
-      "texture": "res://assets/maps/hangzhou/market-rows.png",
+      "texture": "res://assets/maps/hangzhou/painted/markets.png",
       "source": [
         0,
-        0,
+        85,
         1536,
-        480
+        390
       ],
       "kind": "building",
       "footprints": [
         [
           0.025,
-          0.65,
+          0.48,
           0.95,
-          0.32
+          0.5
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "hz_market_b": {
-      "texture": "res://assets/maps/hangzhou/market-rows.png",
+      "texture": "res://assets/maps/hangzhou/painted/markets.png",
       "source": [
         0,
-        480,
+        570,
         1536,
-        544
+        400
       ],
       "kind": "building",
       "footprints": [
         [
           0.025,
-          0.65,
+          0.48,
           0.95,
-          0.32
+          0.5
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     },
     "pleasure_barge": {
       "texture": "res://assets/maps/hangzhou/pleasure-barge.png",
@@ -397,7 +445,73 @@
           0.86,
           0.23
         ]
-      ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": false
+    },
+    "hz_warehouse": {
+      "texture": "res://assets/maps/hangzhou/painted/districts.png",
+      "source": [
+        768,
+        0,
+        768,
+        505
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.06,
+          0.42,
+          0.88,
+          0.56
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
+    },
+    "hz_slum": {
+      "texture": "res://assets/maps/hangzhou/painted/districts.png",
+      "source": [
+        0,
+        600,
+        768,
+        424
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.06,
+          0.42,
+          0.88,
+          0.56
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
+    },
+    "hz_tea": {
+      "texture": "res://assets/maps/nanjing/market-slice/shops.png",
+      "source": [
+        0,
+        0,
+        768,
+        512
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.06,
+          0.42,
+          0.88,
+          0.56
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     }
   },
   "objects": [
@@ -460,174 +574,93 @@
     },
     {
       "id": "warehouse",
-      "prefab": "hz_guild",
+      "prefab": "hz_warehouse",
       "rect": [
-        1530,
-        70,
-        170,
-        130
-      ],
-      "lot": {
-        "rect": [
-          1522,
-          62,
-          186,
-          158
-        ],
-        "surface": "wood"
-      }
+        1508,
+        66,
+        204,
+        140
+      ]
     },
     {
       "id": "west_inn",
       "prefab": "hz_inn",
       "rect": [
-        510,
-        505,
-        155,
-        125
-      ],
-      "lot": {
-        "rect": [
-          502,
-          497,
-          171,
-          153
-        ],
-        "surface": "stone"
-      }
+        508,
+        490,
+        190,
+        140
+      ]
     },
     {
       "id": "music_annex",
-      "prefab": "sz_tea",
+      "prefab": "hz_tea",
       "rect": [
-        515,
+        512,
         720,
-        145,
+        180,
         105
-      ],
-      "lot": {
-        "rect": [
-          507,
-          712,
-          161,
-          133
-        ],
-        "surface": "stone"
-      }
+      ]
     },
     {
       "id": "silk_emporium",
       "prefab": "hz_shop",
       "rect": [
-        815,
-        715,
-        160,
-        110
-      ],
-      "lot": {
-        "rect": [
-          807,
-          707,
-          176,
-          138
-        ],
-        "surface": "stone"
-      }
+        810,
+        700,
+        215,
+        125
+      ]
     },
     {
       "id": "lake_workshop",
       "prefab": "hz_workshop",
       "rect": [
-        530,
-        930,
-        135,
-        150
-      ],
-      "lot": {
-        "rect": [
-          522,
-          922,
-          151,
-          178
-        ],
-        "surface": "earth"
-      }
+        510,
+        929,
+        188,
+        153
+      ]
     },
     {
       "id": "artisan_yard",
       "prefab": "hz_workshop",
       "rect": [
-        840,
-        980,
-        140,
-        110
-      ],
-      "lot": {
-        "rect": [
-          832,
-          972,
-          156,
-          138
-        ],
-        "surface": "earth"
-      }
+        820,
+        956,
+        205,
+        138
+      ]
     },
     {
       "id": "home_1135_950",
-      "prefab": "sz_home",
+      "prefab": "hz_slum",
       "rect": [
-        1130,
-        960,
-        100,
-        125
-      ],
-      "lot": {
-        "rect": [
-          1122,
-          952,
-          116,
-          153
-        ],
-        "surface": "earth"
-      }
+        1125,
+        890,
+        150,
+        105
+      ]
     },
     {
       "id": "home_1305_950",
-      "prefab": "hz_guild",
+      "prefab": "hz_slum",
       "rect": [
-        1310,
-        930,
-        120,
-        165
-      ],
-      "lot": {
-        "rect": [
-          1302,
-          922,
-          136,
-          193
-        ],
-        "surface": "earth"
-      }
+        1270,
+        960,
+        175,
+        145
+      ]
     },
     {
       "id": "home_1525_950",
-      "prefab": "sz_dye",
+      "prefab": "hz_guild",
       "rect": [
-        1530,
-        970,
-        105,
-        120
-      ],
-      "lot": {
-        "rect": [
-          1522,
-          962,
-          121,
-          148
-        ],
-        "surface": "earth"
-      }
+        1490,
+        932,
+        210,
+        170
+      ]
     },
     {
       "id": "willow_0",
@@ -743,20 +776,20 @@
       "id": "wharf_cargo_0",
       "prefab": "sz_cargo",
       "rect": [
-        1525,
-        175,
-        45,
-        25
+        1497,
+        155,
+        40,
+        30
       ]
     },
     {
       "id": "wharf_cargo_1",
       "prefab": "sz_cargo",
       "rect": [
-        1600,
-        175,
-        45,
-        25
+        1667,
+        165,
+        43,
+        30
       ]
     },
     {
@@ -898,6 +931,36 @@
         330,
         105
       ]
+    },
+    {
+      "id": "tower_east_annex",
+      "prefab": "hz_inn",
+      "rect": [
+        925,
+        190,
+        102,
+        158
+      ]
+    },
+    {
+      "id": "cargo_boat_north",
+      "prefab": "sz_boat",
+      "rect": [
+        1530,
+        10,
+        120,
+        40
+      ]
+    },
+    {
+      "id": "tenement_north_east",
+      "prefab": "hz_slum",
+      "rect": [
+        1305,
+        885,
+        135,
+        90
+      ]
     }
   ],
   "terrain_blockers": [
@@ -989,28 +1052,14 @@
       "width": 52
     },
     {
-      "id": "east_alley",
-      "points": [
-        [
-          1260,
-          860
-        ],
-        [
-          1260,
-          1180
-        ]
-      ],
-      "width": 36
-    },
-    {
       "id": "east_edge",
       "points": [
         [
-          1660,
+          1720,
           230
         ],
         [
-          1660,
+          1720,
           1180
         ]
       ],
@@ -1188,7 +1237,7 @@
     },
     {
       "id": "homes",
-      "name": "주거 골목",
+      "name": "쇠락한 주거·흑도 골목",
       "rect": [
         1025,
         840,
@@ -1232,6 +1281,17 @@
       ],
       "surface": "earth",
       "name": "상점들이 이어진 시장골목"
+    },
+    {
+      "rect": [
+        1500,
+        60,
+        220,
+        155
+      ],
+      "surface": "wood",
+      "name": "운하 하역 마당"
     }
-  ]
+  ],
+  "painted_style": true
 }

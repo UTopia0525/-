@@ -117,7 +117,7 @@ func load_area(value: String) -> void:
 	preload("res://scripts/terrain_rendering.gd").apply(background,area_name,map_bounds)
 	if value=="changsha" and city_data.get("painted_style",false):
 		background.material=preload("res://scripts/changsha_painted_ground.gd").make(city_data)
-	if value in ["nanjing","wuchang","suzhou"]:
+	if value in ["nanjing","wuchang","suzhou","hangzhou"]:
 		background.material=regional_map.get_child(0).material
 		background.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR
 	if not is_instance_valid(regional_map):_build_collision_and_navigation()
@@ -588,7 +588,7 @@ func _process(_delta: float) -> void:
 	var target = nearest() if active else {}
 	for exit in travel_exits:
 		var locked=not preload("res://scripts/overland_travel.gd").blocked_reason(get_parent(),exit.travel.area).is_empty()
-		exit.name="통행 제한 · 토벌 보고 후 출발" if locked else exit.open_name
+		exit.name=(("통행 제한 · 토벌 보고 후 출발" if area_name=="changsha" else exit.open_name.replace(" · 들어가기","")+" · 출입 제한") if locked else exit.open_name)
 		exit.portal_label.text=exit.name
 		exit.node.set_available(not target.is_empty() and target.id==exit.id)
 	hint.visible = not target.is_empty()
