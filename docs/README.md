@@ -1,6 +1,8 @@
 # 작업별 색인
 
-최신 검토: [이동·방어·두 무공의 비교 이득/최소량50·100/3,108회](reviews/mixed-actions-merit.md) · [실제 성공 사례·반례 재생기](../prototypes/mixed-actions-review/index.html). 본게임 미적용. 무기 우열 대신 선택지를 제한한 대조 실험이며 상한만으로 다양성이 확보되었다고 판정하지 않는다.
+최신 미술: [남경 시장·골목 파일럿 · 같은 카메라 전후/1440p/도원과의 조화](cities/nanjing-market-slice.md). 실제 구역 적용이며 남경 다른 구역 확대는 검토 후 진행한다.
+
+전투 검토: [이동·방어·두 무공의 비교 이득/최소량50·100/3,108회](reviews/mixed-actions-merit.md) · [실제 성공 사례·반례 재생기](../prototypes/mixed-actions-review/index.html). 본게임 미적용. 무기 우열 대신 선택지를 제한한 대조 실험이며 상한만으로 다양성이 확보되었다고 판정하지 않는다.
 
 이전 전 구간 계산: [내공200까지의 최대량 공식·중급7종·테스트 상급7종](reviews/progression-combat-budget.md) · [능력치/장비/공식 계산기·범위·실제 기록](../prototypes/progression-combat-review/index.html). 본게임 미적용이며 고정80을 전 구간 상한으로 채택하지 않는다.
 

@@ -215,42 +215,42 @@
     },
     {
       "id": "market_shop_0",
-      "prefab": "nj_shop",
+      "prefab": "market_tea",
       "rect": [
         760,
         295,
         120,
-        92
+        102
       ]
     },
     {
       "id": "market_shop_1",
-      "prefab": "nj_shop",
+      "prefab": "market_silk",
       "rect": [
-        900,
-        294,
-        105,
-        98
+        906,
+        298,
+        110,
+        99
       ]
     },
     {
       "id": "market_shop_2",
-      "prefab": "nj_shop",
+      "prefab": "market_herbs",
       "rect": [
         760,
-        407,
-        107,
-        94
+        411,
+        115,
+        100
       ]
     },
     {
       "id": "market_shop_3",
-      "prefab": "nj_shop",
+      "prefab": "market_grain",
       "rect": [
-        910,
-        414,
-        96,
-        85
+        906,
+        405,
+        112,
+        106
       ]
     },
     {
@@ -271,26 +271,6 @@
         430,
         90,
         60
-      ]
-    },
-    {
-      "id": "market_stalls_2",
-      "prefab": "nj_stalls",
-      "rect": [
-        1000,
-        300,
-        80,
-        56
-      ]
-    },
-    {
-      "id": "market_stalls_3",
-      "prefab": "nj_stalls",
-      "rect": [
-        775,
-        391,
-        90,
-        40
       ]
     },
     {
@@ -1024,36 +1004,6 @@
       ]
     },
     {
-      "id": "capital_0",
-      "prefab": "capital_silk",
-      "rect": [
-        764,
-        388,
-        53,
-        42
-      ]
-    },
-    {
-      "id": "capital_1",
-      "prefab": "capital_produce",
-      "rect": [
-        847,
-        391,
-        46,
-        36
-      ]
-    },
-    {
-      "id": "capital_2",
-      "prefab": "capital_silk",
-      "rect": [
-        960,
-        380,
-        47,
-        38
-      ]
-    },
-    {
       "id": "capital_3",
       "prefab": "capital_produce",
       "rect": [
@@ -1061,16 +1011,6 @@
         471,
         45,
         34
-      ]
-    },
-    {
-      "id": "capital_4",
-      "prefab": "capital_silk",
-      "rect": [
-        1014,
-        468,
-        50,
-        38
       ]
     },
     {
@@ -2613,6 +2553,90 @@
           0.9
         ]
       ]
+    },
+    "market_tea": {
+      "texture": "res://assets/maps/nanjing/market-slice/shops.png",
+      "source": [
+        0,
+        0,
+        768,
+        512
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.1,
+          0.54,
+          0.8,
+          0.41
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
+    },
+    "market_silk": {
+      "texture": "res://assets/maps/nanjing/market-slice/shops.png",
+      "source": [
+        768,
+        0,
+        768,
+        512
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.1,
+          0.54,
+          0.8,
+          0.41
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
+    },
+    "market_herbs": {
+      "texture": "res://assets/maps/nanjing/market-slice/shops.png",
+      "source": [
+        0,
+        512,
+        768,
+        512
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.1,
+          0.54,
+          0.8,
+          0.41
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
+    },
+    "market_grain": {
+      "texture": "res://assets/maps/nanjing/market-slice/shops.png",
+      "source": [
+        768,
+        512,
+        768,
+        512
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.1,
+          0.54,
+          0.8,
+          0.41
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     }
   },
   "ambience": {
@@ -2620,5 +2644,16 @@
     "crowd_prefix": "nj_crowd_"
   },
   "painted_materials": "res://assets/maps/nanjing/painted/materials.png",
-  "art_revision": 3
+  "art_revision": 3,
+  "market_slice": {
+    "bounds": [
+      738,
+      286,
+      292,
+      240
+    ],
+    "version": 1,
+    "reference": "취월루 실내의 재질 밀도 · 남경 시장 파일럿",
+    "materials": "res://assets/maps/nanjing/market-slice/materials.png"
+  }
 }

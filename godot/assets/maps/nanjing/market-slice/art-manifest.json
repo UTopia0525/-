@@ -1,0 +1,25 @@
+{
+  "shops": {
+    "source": "/workspace/generated_images/exec-135ca064-78ac-4b29-9410-4baf234ebf45.png",
+    "target": "godot/assets/maps/nanjing/market-slice/shops.png",
+    "sha256": "69b93142c93d923d7a01b4eeefbcf6536a5eeffca36e4fe8742ded3a924c6e81",
+    "method": "image_gen original copied unchanged; atlas regions and runtime shader composition only"
+  },
+  "materials": {
+    "source": "/workspace/generated_images/exec-9869c088-8ca6-43b5-841a-6049b6ab4945.png",
+    "target": "godot/assets/maps/nanjing/market-slice/materials.png",
+    "sha256": "eeaeca1b997d148f364999052ee73a1841cabed5714f086a921e907cebb22cca",
+    "method": "image_gen original copied unchanged; atlas regions and runtime shader composition only"
+  },
+  "scope": {
+    "bounds": [
+      738,
+      286,
+      292,
+      240
+    ],
+    "unchanged_buildings_and_props": 132,
+    "character_art_changed": false,
+    "baseline_commit": "a9e9ef387087fa7866ded48bc0987fc8d88ddade"
+  }
+}

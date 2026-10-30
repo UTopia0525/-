@@ -6,8 +6,8 @@
       "role": "약재상",
       "post": "약재상",
       "point": [
-        808,
-        508
+        780,
+        519
       ],
       "basic_portrait": "female_herbalist",
       "frame": 5,
@@ -448,8 +448,8 @@
       "role": "심부름꾼",
       "post": "심부름꾼",
       "point": [
-        888,
-        510
+        1024,
+        512
       ],
       "basic_portrait": "male_young",
       "frame": 7,

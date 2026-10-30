@@ -26,5 +26,18 @@ func _ready() -> void:
 				image.fill_rect(Rect2i(int(center.x)-w/2,int(center.y)-w/2,w,w),Color(1,0,0,.9))
 	var ink=ShaderMaterial.new();ink.shader=preload("res://shaders/nanjing_terrain.gdshader")
 	ink.set_shader_parameter("material_atlas",load(data.painted_materials));ink.set_shader_parameter("district_mask",ImageTexture.create_from_image(image));material=ink
+	# A bounded production sample; all other districts retain their current art.
+	if data.has("market_slice"):
+		var slice: Dictionary=data.market_slice
+		var b: Array=slice.bounds
+		ink.set_shader_parameter("market_enabled",true)
+		ink.set_shader_parameter("market_bounds",Vector4(b[0],b[1],b[2],b[3]))
+		ink.set_shader_parameter("market_materials",load(slice.materials))
+		var shadows=PackedVector4Array()
+		for spec in data.objects:
+			if str(spec.id).begins_with("market_shop_"):
+				var r: Array=spec.rect
+				shadows.append(Vector4(r[0]+12,r[1]+r[3]-13,r[2]-15,12))
+		ink.set_shader_parameter("market_shadows",shadows)
 func _draw() -> void:
 	if terrain_texture:draw_texture_rect(terrain_texture,Rect2(Vector2.ZERO,Vector2(data.art_size[0],data.art_size[1])),false)
