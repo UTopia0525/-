@@ -1,0 +1,180 @@
+{
+  "cases": 3108,
+  "outcomes": {
+    "hero": 2147,
+    "timeout": 150,
+    "boss": 729,
+    "draw": 82
+  },
+  "standard": {
+    "committed": {
+      "n": 72,
+      "full_wins": 64,
+      "all_actions_used": 14,
+      "all_actions_and_won": 12,
+      "joint_practical_merit": 1,
+      "movement_merit": 28,
+      "guard_merit": 13,
+      "second_art_merit": 28,
+      "practical_over_both_simple": 40,
+      "movement_regret": 17,
+      "guard_regret": 12
+    },
+    "coarse": {
+      "n": 72,
+      "full_wins": 56,
+      "all_actions_used": 13,
+      "all_actions_and_won": 9,
+      "joint_practical_merit": 1,
+      "movement_merit": 29,
+      "guard_merit": 11,
+      "second_art_merit": 29,
+      "practical_over_both_simple": 32,
+      "movement_regret": 15,
+      "guard_regret": 15
+    }
+  },
+  "stage_rows": [
+    [
+      20,
+      100,
+      13,
+      10,
+      3,
+      9,
+      5,
+      0
+    ],
+    [
+      50,
+      140,
+      17,
+      6,
+      4,
+      8,
+      4,
+      1
+    ],
+    [
+      100,
+      240,
+      13,
+      7,
+      3,
+      5,
+      4,
+      0
+    ],
+    [
+      200,
+      440,
+      13,
+      6,
+      1,
+      7,
+      0,
+      0
+    ]
+  ],
+  "early_rows": [
+    [
+      50,
+      18,
+      3,
+      5,
+      7,
+      1
+    ],
+    [
+      80,
+      13,
+      9,
+      1,
+      10,
+      1
+    ],
+    [
+      100,
+      13,
+      10,
+      3,
+      9,
+      0
+    ]
+  ],
+  "affordable_rows": [
+    [
+      50,
+      13,
+      8,
+      3,
+      8,
+      0
+    ],
+    [
+      100,
+      15,
+      9,
+      5,
+      9,
+      0
+    ]
+  ],
+  "horizon_rows": [
+    [
+      20,
+      "committed",
+      9,
+      4,
+      3,
+      0,
+      0
+    ],
+    [
+      20,
+      "coarse",
+      7,
+      5,
+      2,
+      1,
+      0
+    ],
+    [
+      40,
+      "committed",
+      9,
+      4,
+      1,
+      3,
+      0
+    ],
+    [
+      40,
+      "coarse",
+      8,
+      3,
+      0,
+      3,
+      0
+    ],
+    [
+      60,
+      "committed",
+      10,
+      4,
+      0,
+      0,
+      0
+    ],
+    [
+      60,
+      "coarse",
+      10,
+      3,
+      1,
+      2,
+      0
+    ]
+  ],
+  "strict_physical_cases": 1
+}

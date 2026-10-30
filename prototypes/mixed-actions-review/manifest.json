@@ -1,0 +1,14 @@
+{
+  "prototypes/mixed-actions-review/experiment.py": "172123abcedafafb410daaf62f9862310435dcb8624a2ed049bce80f9d30fd07",
+  "prototypes/mixed-actions-review/sensitivity.py": "88a10d1d6f61f8e4122042b33e2fb1c63b48cb8f5850e97bb96bbf2275a92c2b",
+  "prototypes/mixed-actions-review/cost_probe.py": "ee7a92bc929b771c4e5e9a8070cae8a66c844db5de39d7121c6077904a58d880",
+  "prototypes/mixed-actions-review/report.py": "1a604acd0398007f3e197591bd56b90435b90bb1e910ba4b8a174c9087257852",
+  "prototypes/mixed-actions-review/viewer.template.html": "827cfe236fcb9d1b881d05859cd1b23f32d92129703faee1252f7f3a4af4a309",
+  "godot/data/basic_martial_arts.json": "ec503bb5d673e6b450120df4a85f79737fb32a0659eba5dc08aebcf7fd6b57e3",
+  "godot/data/alliance_martial_arts.json": "9b1560f98049189f2c4984a000d3f4f71f5f87d98e09bd50ba9d3ce1476661fd",
+  "godot/data/quest_martial_arts.json": "197f350df22c6c0d86de38b4a3e4facdb5f233d56d8298d07289812f7ea230b9",
+  "godot/data/support_martial_arts.json": "127cc378c71c91f47b50c3ec42ba7c7796d31f438409e1966661de2fda206cad",
+  "godot/data/martial_tactics.json": "781b2a44b606deaa92d0e11b6fea89f56f8e6776f23ac4803f4425391f14f87a",
+  "godot/data/weapons.json": "86c544a73354730a73ba32e77fdccc323ee477644761d33de509601999099575",
+  "godot/data/tutorial_enemy.json": "546795c03a87d55584ce35d1ed8931e6fa7d01bbf61d37f9bbcab3a50453b414"
+}

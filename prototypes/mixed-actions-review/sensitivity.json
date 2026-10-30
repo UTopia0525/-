@@ -1,0 +1,223 @@
+{
+  "cases": 336,
+  "outcomes": {
+    "hero": 216,
+    "boss": 86,
+    "draw": 20,
+    "timeout": 14
+  },
+  "pairs": {
+    "20": {
+      "100/40/20/committed/1.3": {
+        "n": 3,
+        "full_wins": 3,
+        "all_actions_used": 1,
+        "all_actions_and_won": 1,
+        "joint_practical_merit": 0,
+        "movement_merit": 1,
+        "guard_merit": 1,
+        "second_art_merit": 0,
+        "practical_over_both_simple": 3,
+        "movement_regret": 0,
+        "guard_regret": 0
+      },
+      "100/40/20/coarse/1.3": {
+        "n": 3,
+        "full_wins": 3,
+        "all_actions_used": 1,
+        "all_actions_and_won": 1,
+        "joint_practical_merit": 0,
+        "movement_merit": 1,
+        "guard_merit": 1,
+        "second_art_merit": 1,
+        "practical_over_both_simple": 3,
+        "movement_regret": 1,
+        "guard_regret": 1
+      },
+      "100/40/50/committed/1.3": {
+        "n": 3,
+        "full_wins": 2,
+        "all_actions_used": 0,
+        "all_actions_and_won": 0,
+        "joint_practical_merit": 0,
+        "movement_merit": 0,
+        "guard_merit": 2,
+        "second_art_merit": 0,
+        "practical_over_both_simple": 0,
+        "movement_regret": 1,
+        "guard_regret": 1
+      },
+      "100/40/50/coarse/1.3": {
+        "n": 3,
+        "full_wins": 0,
+        "all_actions_used": 0,
+        "all_actions_and_won": 0,
+        "joint_practical_merit": 0,
+        "movement_merit": 0,
+        "guard_merit": 0,
+        "second_art_merit": 0,
+        "practical_over_both_simple": 0,
+        "movement_regret": 1,
+        "guard_regret": 1
+      },
+      "100/40/100/committed/1.3": {
+        "n": 3,
+        "full_wins": 2,
+        "all_actions_used": 1,
+        "all_actions_and_won": 0,
+        "joint_practical_merit": 0,
+        "movement_merit": 1,
+        "guard_merit": 0,
+        "second_art_merit": 0,
+        "practical_over_both_simple": 0,
+        "movement_regret": 0,
+        "guard_regret": 2
+      },
+      "100/40/100/coarse/1.3": {
+        "n": 3,
+        "full_wins": 2,
+        "all_actions_used": 1,
+        "all_actions_and_won": 1,
+        "joint_practical_merit": 0,
+        "movement_merit": 2,
+        "guard_merit": 1,
+        "second_art_merit": 0,
+        "practical_over_both_simple": 0,
+        "movement_regret": 0,
+        "guard_regret": 1
+      },
+      "100/40/200/committed/1.3": {
+        "n": 3,
+        "full_wins": 2,
+        "all_actions_used": 0,
+        "all_actions_and_won": 0,
+        "joint_practical_merit": 0,
+        "movement_merit": 2,
+        "guard_merit": 0,
+        "second_art_merit": 0,
+        "practical_over_both_simple": 2,
+        "movement_regret": 0,
+        "guard_regret": 0
+      },
+      "100/40/200/coarse/1.3": {
+        "n": 3,
+        "full_wins": 2,
+        "all_actions_used": 0,
+        "all_actions_and_won": 0,
+        "joint_practical_merit": 0,
+        "movement_merit": 2,
+        "guard_merit": 0,
+        "second_art_merit": 0,
+        "practical_over_both_simple": 2,
+        "movement_regret": 0,
+        "guard_regret": 1
+      }
+    },
+    "60": {
+      "100/40/20/committed/1.3": {
+        "n": 3,
+        "full_wins": 2,
+        "all_actions_used": 0,
+        "all_actions_and_won": 0,
+        "joint_practical_merit": 0,
+        "movement_merit": 1,
+        "guard_merit": 0,
+        "second_art_merit": 0,
+        "practical_over_both_simple": 1,
+        "movement_regret": 1,
+        "guard_regret": 2
+      },
+      "100/40/20/coarse/1.3": {
+        "n": 3,
+        "full_wins": 2,
+        "all_actions_used": 1,
+        "all_actions_and_won": 1,
+        "joint_practical_merit": 0,
+        "movement_merit": 0,
+        "guard_merit": 1,
+        "second_art_merit": 0,
+        "practical_over_both_simple": 0,
+        "movement_regret": 3,
+        "guard_regret": 1
+      },
+      "100/40/50/committed/1.3": {
+        "n": 3,
+        "full_wins": 3,
+        "all_actions_used": 0,
+        "all_actions_and_won": 0,
+        "joint_practical_merit": 0,
+        "movement_merit": 2,
+        "guard_merit": 0,
+        "second_art_merit": 0,
+        "practical_over_both_simple": 2,
+        "movement_regret": 1,
+        "guard_regret": 0
+      },
+      "100/40/50/coarse/1.3": {
+        "n": 3,
+        "full_wins": 3,
+        "all_actions_used": 0,
+        "all_actions_and_won": 0,
+        "joint_practical_merit": 0,
+        "movement_merit": 2,
+        "guard_merit": 0,
+        "second_art_merit": 1,
+        "practical_over_both_simple": 3,
+        "movement_regret": 0,
+        "guard_regret": 0
+      },
+      "100/40/100/committed/1.3": {
+        "n": 3,
+        "full_wins": 2,
+        "all_actions_used": 0,
+        "all_actions_and_won": 0,
+        "joint_practical_merit": 0,
+        "movement_merit": 0,
+        "guard_merit": 0,
+        "second_art_merit": 0,
+        "practical_over_both_simple": 0,
+        "movement_regret": 0,
+        "guard_regret": 0
+      },
+      "100/40/100/coarse/1.3": {
+        "n": 3,
+        "full_wins": 2,
+        "all_actions_used": 0,
+        "all_actions_and_won": 0,
+        "joint_practical_merit": 0,
+        "movement_merit": 0,
+        "guard_merit": 0,
+        "second_art_merit": 0,
+        "practical_over_both_simple": 0,
+        "movement_regret": 0,
+        "guard_regret": 0
+      },
+      "100/40/200/committed/1.3": {
+        "n": 3,
+        "full_wins": 3,
+        "all_actions_used": 0,
+        "all_actions_and_won": 0,
+        "joint_practical_merit": 0,
+        "movement_merit": 1,
+        "guard_merit": 0,
+        "second_art_merit": 0,
+        "practical_over_both_simple": 1,
+        "movement_regret": 0,
+        "guard_regret": 0
+      },
+      "100/40/200/coarse/1.3": {
+        "n": 3,
+        "full_wins": 3,
+        "all_actions_used": 0,
+        "all_actions_and_won": 0,
+        "joint_practical_merit": 0,
+        "movement_merit": 1,
+        "guard_merit": 0,
+        "second_art_merit": 1,
+        "practical_over_both_simple": 1,
+        "movement_regret": 0,
+        "guard_regret": 0
+      }
+    }
+  }
+}

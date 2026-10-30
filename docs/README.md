@@ -1,6 +1,8 @@
 # 작업별 색인
 
-최신 검토: [내공200까지의 최대량 공식·중급7종·테스트 상급7종·전 구간 계산](reviews/progression-combat-budget.md) · [능력치/장비/공식 계산기·범위·실제 기록](../prototypes/progression-combat-review/index.html). 본게임 미적용이며 고정80을 전 구간 상한으로 채택하지 않는다.
+최신 검토: [이동·방어·두 무공의 비교 이득/최소량50·100/3,108회](reviews/mixed-actions-merit.md) · [실제 성공 사례·반례 재생기](../prototypes/mixed-actions-review/index.html). 본게임 미적용. 무기 우열 대신 선택지를 제한한 대조 실험이며 상한만으로 다양성이 확보되었다고 판정하지 않는다.
+
+이전 전 구간 계산: [내공200까지의 최대량 공식·중급7종·테스트 상급7종](reviews/progression-combat-budget.md) · [능력치/장비/공식 계산기·범위·실제 기록](../prototypes/progression-combat-review/index.html). 본게임 미적용이며 고정80을 전 구간 상한으로 채택하지 않는다.
 
 후속 검토: [내기 소모·최대량 변화와 이동/공격 순환의 손익](reviews/timed-qi-budget.md) · [수치 조합 탐색·실제 기록 재생](../prototypes/timed-qi-review/index.html). 회복 시점은 유지하며 본게임 미적용이다.
 

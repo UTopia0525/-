@@ -1,0 +1,45 @@
+{
+  "status": "REVIEW ONLY — causal action-mask comparison under a finite-horizon controller",
+  "cases": 252,
+  "outcomes": {
+    "hero": 220,
+    "boss": 27,
+    "timeout": 5
+  },
+  "pairs": {
+    "50/0/20/committed/1.3": {
+      "n": 18,
+      "full_wins": 18,
+      "all_actions_used": 2,
+      "all_actions_and_won": 2,
+      "joint_practical_merit": 0,
+      "movement_merit": 6,
+      "guard_merit": 0,
+      "second_art_merit": 10,
+      "practical_over_both_simple": 12,
+      "movement_regret": 5,
+      "guard_regret": 3
+    },
+    "50/0/20/coarse/1.3": {
+      "n": 18,
+      "full_wins": 18,
+      "all_actions_used": 3,
+      "all_actions_and_won": 3,
+      "joint_practical_merit": 1,
+      "movement_merit": 3,
+      "guard_merit": 5,
+      "second_art_merit": 7,
+      "practical_over_both_simple": 11,
+      "movement_regret": 5,
+      "guard_regret": 0
+    }
+  },
+  "hashes": {
+    "mixed-actions-review/experiment.py": "172123abcedafafb410daaf62f9862310435dcb8624a2ed049bce80f9d30fd07",
+    "progression-combat-review/engine.py": "7173ed3d377fecb6813e10b3126a4d69b7ee62d70c0c32d30b95df308d4fae44",
+    "progression-combat-review/catalogue.py": "0d626b995c3bfbf28eda6ee7573b995e088fcb3317961fd26a8dfcdb95e41948",
+    "progression-combat-review/benchmark.py": "82039e1b3eece93090bdcd377926b5f8ef72e18301587b73238aadfabe5b86d9",
+    "timed-qi-review/sweep.py": "73e06e8627582e52163fbc796b5ebb13baf6e42d307804f94e363e818385aeb2",
+    "timed-combat-review/simulate.py": "a7ba675ee3d4b2634dce0f040aa9821a539cfb8fd0ab60eb8e34ad87809e6e42"
+  }
+}

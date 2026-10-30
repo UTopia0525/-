@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>이동·방어·복수 무공 검토</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#121c20;color:#e4e5dd}body{max-width:1120px;margin:auto;padding:24px}h1{font-size:26px}h2{font-size:19px;color:#d8be88}p{line-height:1.7;color:#bcc8c6}strong{color:#f1d497}section{border:1px solid #44535a;border-radius:9px;padding:18px;margin:18px 0;background:#1c282d}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;border-bottom:1px solid #3d4c50;padding:9px}th{color:#cdbb92}button,select{font:inherit;background:#293d43;color:#fff;border:1px solid #6d8586;border-radius:5px;padding:8px}button{cursor:pointer}input[type=range]{width:min(100%,540px);vertical-align:middle;accent-color:#bdc88d}.two{display:grid;grid-template-columns:minmax(300px,1fr) minmax(300px,1fr);gap:22px}.board{display:grid;grid-template-columns:repeat(7,1fr);aspect-ratio:7/5;margin:18px 0;border:1px solid #6e7c7d}.cell{border:1px solid #405859;display:flex;align-items:center;justify-content:center;color:#617879;font-size:11px;background:#25393c}.hero{background:#296387;color:#fff;font-size:16px;font-weight:bold}.foe{background:#7e463d;color:#fff;font-size:16px;font-weight:bold}.scroll{max-height:410px;overflow:auto}#state{line-height:1.9;min-height:90px}#notice{color:#e0be92}a{color:#9bc8d5}.dim{font-size:13px;color:#9aaba9}.table-wrap{overflow-x:auto}@media(max-width:750px){.two{display:block}body{padding:12px}th,td{padding:6px}}
+</style>
+<h1>이동·방어·무공 — 섞어서 싸울 이유가 있는가</h1>
+<p>이동 · 기본방어 · 두 무공의 <strong>비교 검토</strong>. 실제 실행 기록이며 본게임에 적용하지 않았습니다.</p>
+<section><h2>판정: 가능성은 있지만, 아직 안정적이지 않음</h2><p id="summary"></p><p>여러 행동을 썼다는 이유로 가산하지 않았습니다. 이득은 패배→승리 또는 체력·시간의 뚜렷한 개선입니다. 같은 판단기에서 기능을 하나씩 제한해 비교했습니다. 인간의 재미나 최적 전술을 증명한 결과는 아닙니다.</p></section>
+<section><h2>성장 구간별 결과</h2><p class="dim">최대 내기=max(100,40+내공×2). coarse 정보 조건, 각 행18조건. ‘모두 사용’과 ‘모든 기능의 비교 이득 동시 충족’을 구분합니다.</p><div class="table-wrap"><table><thead><tr><th>내공</th><th>최대 내기</th><th>승리</th><th>이동 이득</th><th>방어 이득</th><th>두 무공 이득</th><th>모두 사용</th><th>결합 통과</th></tr></thead><tbody id="stages"></tbody></table></div></section>
+<section><h2>초반의 실제 내기 상한 비교</h2><p class="dim">내공20, 각 행18조건. 실제 상한50에서는 하급8종 중6종이 비용을 감당하지 못하므로 높은 승률을 좋은 균형으로 해석하면 안 됩니다. 80은 기존 성장식에서 나온 중간값이며 최소량 후보로 추천한 값이 아닙니다.</p><div class="table-wrap"><table><thead><tr><th>실제 상한</th><th>승리</th><th>이동 이득</th><th>방어 이득</th><th>두 무공 이득</th><th>결합 통과</th></tr></thead><tbody id="early"></tbody></table></div></section>
+<section><h2>사용 불가 효과를 제거한 비용 대조</h2><p class="dim">위력·범위·시간을 유지하고 양쪽 무공의 비용만70%로 낮춰 모든 하급 무공을 상한50 안에서 사용할 수 있게 했습니다. 각 행18조건(coarse), 행동 완료 회복20. 이 조건에서도 모든 기능을 함께 쓰는 이점이 안정적으로 생기지는 않았습니다.</p><div class="table-wrap"><table><thead><tr><th>실제 상한</th><th>승리</th><th>이동 이득</th><th>방어 이득</th><th>두 무공 이득</th><th>결합 통과</th></tr></thead><tbody id="affordable"></tbody></table></div></section>
+<section><h2>실제로 함께 써서 이긴 사례와 반복 승리 반례</h2><select id="case" aria-label="대전 선택"></select><p id="notice"></p><div class="two"><div><div id="board" class="board"></div><button id="play">재생</button> <button id="reset">처음</button> <span id="clock"></span><p><input id="time" aria-label="전투 시간 T" type="range" min="0" step="1" value="0"></p><div id="state"></div></div><div><div class="scroll"><table><thead><tr><th>제한</th><th>결과</th><th>체력</th><th>T</th></tr></thead><tbody id="compare"></tbody></table></div><p class="dim">T는 초가 아닌 정수 시간입니다. 시각화의 재생 속도는 설명 편의를 위한 값입니다. 동작 시작/이동/명중/회복은 아래 실제 기록을 따릅니다.</p></div></div><h2>해당 T의 실제 사건</h2><div id="events" class="scroll"></div></section>
+<section><h2>다음 검토</h2><p>최솟값100을 기준으로 검토를 계속하되 기본방어와 검법의 역할 중복, 빠른 견제/느린 파훼의 구별을 먼저 다듬는 편이 좋습니다. 기본방어40%/60% 등은 제안이며 이번 결과에 섞지 않았습니다.</p><p><a href="../../docs/reviews/mixed-actions-merit.md">상세 보고서</a> · <a href="results.csv">전체 원자료</a> · <a href="sensitivity.csv">예측 길이 민감도</a> · <a href="README.md">실행 방법과 가정</a></p></section>
+<script>
+'use strict';
+const DATA=__DATA__;
+const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const row=v=>'<tr>'+v.map(x=>'<td>'+esc(x)+'</td>').join('')+'</tr>';
+const labels=DATA.labels,names=DATA.names,win={hero:'승리',boss:'패배',draw:'동시 전멸',timeout:'시간초과'},phase={ready:'준비 완료',prepare:'준비',release:'출수',recover:'회수'};
+const g=DATA.summary.standard.coarse;
+$('summary').textContent=`실행 ${DATA.summary.cases.toLocaleString()}회. 최솟값100·대표 자세 추정 조건72개에서 이동 이득 ${g.movement_merit}, 방어 이득 ${g.guard_merit}, 두 무공 이득 ${g.second_art_merit}. 엄격 결합 통과는 ${g.joint_practical_merit}개입니다.`;
+$('stages').innerHTML=DATA.summary.stage_rows.map(row).join('');$('early').innerHTML=DATA.summary.early_rows.map(row).join('');$('affordable').innerHTML=DATA.summary.affordable_rows.map(row).join('');
+DATA.replays.forEach((r,i)=>{const o=document.createElement('option');o.value=i;o.textContent=i===0?'함께 써서 이긴 실제 사례':'고단계에서 섞지 않고 이긴 반례';$('case').append(o)});
+let replay,index=0,timer=null;
+function stop(){if(timer)clearInterval(timer);timer=null;$('play').textContent='재생'}
+function load(){stop();index=0;replay=DATA.replays[Number($('case').value)];$('time').max=replay.frames.length-1;$('time').value=0;
+ const r=replay.case;$('notice').textContent=`내공 ${r.level} / 최대 내기 ${r.capacity} / ${names[r.art_A]} · ${names[r.art_B]} / ${r.foe} / ${r.information}. 실제 종료 T=${r.time}, ${win[r.winner]}, 체력 ${r.hp}.`;
+ $('compare').innerHTML=replay.comparisons.map(c=>row([labels[c.mask],win[c.winner],c.hp,c.time])).join('');draw();}
+function eventText(v){const who=v.actor===0?'도원':'상대',art=names[v.art]||v.art;
+ if(v.kind==='start')return `${who} ${art} 시작 · 내기 ${v.qi} · 완료 예정 T=${v.end}`;
+ if(v.kind==='hit')return `${who} ${art} 명중 · 피해 ${v.damage} · 방어 감쇄 ${v.guard_saved} · 상대 잔여 체력 ${v.target_hp}`;
+ if(v.kind==='miss')return `${who} ${art} 빗나감`;
+ if(v.kind==='move'||v.kind==='push')return `${who} ${v.kind==='push'?'밀려남':'이동'} → (${v.destination})`;
+ if(v.kind==='finish')return `${who} ${art} 완료 · 회복 후 내기 ${v.qi}`;
+ return `${who} ${v.kind}`;}
+function draw(){const frame=replay.frames[index];$('clock').textContent=`T=${frame.t}`;$('time').value=index;
+ let grid='';for(let y=0;y<5;y++)for(let x=0;x<7;x++){const i=frame.actors.findIndex(a=>a.pos[0]===x&&a.pos[1]===y);grid+=`<div class="cell ${i===0?'hero':i===1?'foe':''}">${i===0?'도원':i===1?'상대':`${x},${y}`}</div>`}$('board').innerHTML=grid;
+ $('state').innerHTML=frame.actors.map((a,i)=>`${i===0?'도원':'상대'} · 체력 ${a.hp} · 내기 ${a.qi} · ${esc(names[a.art]||a.art)} · ${esc(phase[a.phase])}`).join('<br>');
+ const events=replay.events.filter(v=>v.t<=frame.t).slice(-24);$('events').innerHTML=events.map(v=>`<p class="dim">T=${v.t} · ${esc(eventText(v))}</p>`).join('');$('events').scrollTop=$('events').scrollHeight;}
+$('case').onchange=load;$('time').oninput=()=>{stop();index=Number($('time').value);draw()};$('reset').onclick=load;
+$('play').onclick=()=>{if(timer)return stop();if(index>=replay.frames.length-1)index=0;$('play').textContent='일시정지';timer=setInterval(()=>{index++;if(index>=replay.frames.length){index=replay.frames.length-1;stop()}draw()},100)};
+load();
+</script></html>

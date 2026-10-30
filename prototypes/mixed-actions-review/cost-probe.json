@@ -1,0 +1,63 @@
+{
+  "cases": 504,
+  "outcomes": {
+    "hero": 330,
+    "timeout": 39,
+    "boss": 134,
+    "draw": 1
+  },
+  "pairs": {
+    "50/0/20/committed/1.3": {
+      "n": 18,
+      "full_wins": 15,
+      "all_actions_used": 2,
+      "all_actions_and_won": 2,
+      "joint_practical_merit": 0,
+      "movement_merit": 9,
+      "guard_merit": 7,
+      "second_art_merit": 6,
+      "practical_over_both_simple": 12,
+      "movement_regret": 3,
+      "guard_regret": 3
+    },
+    "50/0/20/coarse/1.3": {
+      "n": 18,
+      "full_wins": 13,
+      "all_actions_used": 1,
+      "all_actions_and_won": 1,
+      "joint_practical_merit": 0,
+      "movement_merit": 8,
+      "guard_merit": 3,
+      "second_art_merit": 8,
+      "practical_over_both_simple": 11,
+      "movement_regret": 2,
+      "guard_regret": 2
+    },
+    "100/0/20/committed/1.3": {
+      "n": 18,
+      "full_wins": 16,
+      "all_actions_used": 3,
+      "all_actions_and_won": 3,
+      "joint_practical_merit": 0,
+      "movement_merit": 11,
+      "guard_merit": 4,
+      "second_art_merit": 11,
+      "practical_over_both_simple": 11,
+      "movement_regret": 1,
+      "guard_regret": 0
+    },
+    "100/0/20/coarse/1.3": {
+      "n": 18,
+      "full_wins": 15,
+      "all_actions_used": 3,
+      "all_actions_and_won": 1,
+      "joint_practical_merit": 0,
+      "movement_merit": 9,
+      "guard_merit": 5,
+      "second_art_merit": 9,
+      "practical_over_both_simple": 11,
+      "movement_regret": 3,
+      "guard_regret": 2
+    }
+  }
+}
