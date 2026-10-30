@@ -6,6 +6,7 @@ uniform sampler2D material_atlas : source_color, filter_linear;
 uniform sampler2D district_mask : filter_linear;
 uniform vec2 world_extent=vec2(6144.0,4096.0);
 uniform bool market_enabled=false;
+uniform bool capital_materials=false;
 uniform vec4 market_bounds=vec4(738.0,286.0,292.0,240.0);
 uniform sampler2D market_materials : source_color, filter_linear;
 uniform vec4 market_shadows[4];
@@ -29,6 +30,12 @@ void fragment() {
 	vec3 stone=swatch(2.0,point).rgb;
 	vec3 brick=swatch(1.0,point).rgb;
 	vec3 quay=swatch(3.0,point).rgb;
+	if(capital_materials) {
+		earth=market_swatch(vec2(1.0,0.0),point,380.0);
+		stone=market_swatch(vec2(0.0,0.0),point,320.0);
+		brick=market_swatch(vec2(0.0,1.0),point,380.0)*vec3(1.0,.97,.93);
+		quay=market_swatch(vec2(0.0,1.0),point,320.0);
+	}
 	vec3 floor_ink=mix(earth,stone,mask.r);
 	floor_ink=mix(floor_ink,brick,mask.g);
 	floor_ink=mix(floor_ink,quay,mask.b);
@@ -39,7 +46,7 @@ void fragment() {
 	// Preserve vegetation/edging from the authored floor instead of painting over it.
 	float greenery=smoothstep(.015,.10,base.g-base.r);
 	greenery*=smoothstep(.0,.08,base.g-base.b);
-	final_ink=mix(final_ink,base.rgb,greenery*.85);
+	final_ink=mix(final_ink,base.rgb,greenery*(0.85*(1.0-float(capital_materials))));
 	float water=smoothstep(.06,.22,base.b-base.r)*smoothstep(.01,.10,base.b-base.g);
 	vec2 art=UV*vec2(1536.0,1024.0);
 	float river_band=step(775.0,art.y)*(1.0-step(900.0,art.y));

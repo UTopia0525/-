@@ -31,6 +31,7 @@ func _ready() -> void:
 		var slice: Dictionary=data.market_slice
 		var b: Array=slice.bounds
 		ink.set_shader_parameter("market_enabled",true)
+		ink.set_shader_parameter("capital_materials",data.get("capital_materials",false))
 		ink.set_shader_parameter("market_bounds",Vector4(b[0],b[1],b[2],b[3]))
 		ink.set_shader_parameter("market_materials",load(slice.materials))
 		var shadows=PackedVector4Array()

@@ -1,0 +1,12 @@
+{
+  "commerce": {
+    "source": "/workspace/generated_images/exec-7077aeaa-9b82-4e12-a591-e3140d9fe823.png",
+    "sha256": "21c67bce5682ea70485916f9d4282469f02d2e7d6c045800be423019cc1e7941",
+    "method": "image_gen reference market-slice/shops.png; original copied unchanged; rendered by atlas regions"
+  },
+  "landmarks": {
+    "source": "/workspace/generated_images/exec-a59925f8-3833-4ebf-8793-4b49d9bc94f0.png",
+    "sha256": "ac4d01609721140a6472606695ac1a437e7e95faf5fc7ccda3c88db6c906ed04",
+    "method": "image_gen reference market-slice/shops.png; original copied unchanged; rendered by atlas regions"
+  }
+}

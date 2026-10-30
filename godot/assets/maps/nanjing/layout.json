@@ -84,26 +84,6 @@
       ]
     },
     {
-      "id": "north_east_0",
-      "prefab": "nj_home",
-      "rect": [
-        760,
-        72,
-        106,
-        85
-      ]
-    },
-    {
-      "id": "north_east_1",
-      "prefab": "nj_home",
-      "rect": [
-        894,
-        72,
-        105,
-        85
-      ]
-    },
-    {
       "id": "north_east_2",
       "prefab": "nj_home",
       "rect": [
@@ -115,7 +95,7 @@
     },
     {
       "id": "north_east_3",
-      "prefab": "nj_home",
+      "prefab": "nj_townhouse",
       "rect": [
         1160,
         75,
@@ -125,22 +105,12 @@
     },
     {
       "id": "north_east_4",
-      "prefab": "nj_bookshop",
+      "prefab": "capital_trading_house",
       "rect": [
-        780,
-        170,
-        130,
-        75
-      ]
-    },
-    {
-      "id": "north_east_5",
-      "prefab": "nj_bookshop",
-      "rect": [
-        920,
-        170,
-        133,
-        75
+        770,
+        65,
+        268,
+        180
       ]
     },
     {
@@ -155,7 +125,7 @@
     },
     {
       "id": "north_east_7",
-      "prefab": "nj_bookshop",
+      "prefab": "market_silk",
       "rect": [
         1200,
         170,
@@ -185,7 +155,7 @@
     },
     {
       "id": "craft_2",
-      "prefab": "nj_shop",
+      "prefab": "market_silk",
       "rect": [
         590,
         333,
@@ -195,7 +165,7 @@
     },
     {
       "id": "craft_3",
-      "prefab": "nj_shop",
+      "prefab": "market_grain",
       "rect": [
         252,
         444,
@@ -205,7 +175,7 @@
     },
     {
       "id": "craft_4",
-      "prefab": "nj_shop",
+      "prefab": "market_tea",
       "rect": [
         461,
         447,
@@ -251,26 +221,6 @@
         405,
         112,
         106
-      ]
-    },
-    {
-      "id": "market_stalls_0",
-      "prefab": "nj_stalls",
-      "rect": [
-        605,
-        440,
-        95,
-        57
-      ]
-    },
-    {
-      "id": "market_stalls_1",
-      "prefab": "nj_stalls",
-      "rect": [
-        1020,
-        430,
-        90,
-        60
       ]
     },
     {
@@ -1382,6 +1332,36 @@
         70,
         144
       ]
+    },
+    {
+      "id": "qinhuai_west_pavilion",
+      "prefab": "nj_tea_house",
+      "rect": [
+        70,
+        887,
+        130,
+        98
+      ]
+    },
+    {
+      "id": "qinhuai_east_pavilion",
+      "prefab": "nj_tea_house",
+      "rect": [
+        1370,
+        885,
+        115,
+        98
+      ]
+    },
+    {
+      "id": "capital_2",
+      "prefab": "capital_silk",
+      "rect": [
+        909,
+        390,
+        28,
+        22
+      ]
     }
   ],
   "districts": [
@@ -1705,20 +1685,20 @@
   "npcs": [],
   "prefabs": {
     "nj_home": {
-      "texture": "res://assets/maps/nanjing/painted/civic.png",
+      "texture": "res://assets/maps/nanjing/market-slice/shops.png",
       "source": [
-        0,
-        95,
-        503,
-        408
+        768,
+        512,
+        768,
+        512
       ],
       "kind": "building",
       "footprints": [
         [
-          0.11,
-          0.58,
-          0.78,
-          0.33
+          0.1,
+          0.54,
+          0.8,
+          0.41
         ]
       ],
       "preserve_aspect": true,
@@ -1726,20 +1706,20 @@
       "contact_shadow": true
     },
     "nj_townhouse": {
-      "texture": "res://assets/maps/nanjing/painted/civic.png",
+      "texture": "res://assets/maps/nanjing/market-slice/shops.png",
       "source": [
-        510,
         0,
-        435,
-        495
+        0,
+        768,
+        512
       ],
       "kind": "building",
       "footprints": [
         [
-          0.11,
-          0.58,
-          0.78,
-          0.33
+          0.1,
+          0.54,
+          0.8,
+          0.41
         ]
       ],
       "preserve_aspect": true,
@@ -1747,20 +1727,20 @@
       "contact_shadow": true
     },
     "nj_shop": {
-      "texture": "res://assets/maps/nanjing/painted/civic.png",
+      "texture": "res://assets/maps/nanjing/market-slice/shops.png",
       "source": [
-        949,
-        60,
-        583,
-        441
+        768,
+        512,
+        768,
+        512
       ],
       "kind": "building",
       "footprints": [
         [
-          0.11,
-          0.58,
-          0.78,
-          0.33
+          0.1,
+          0.54,
+          0.8,
+          0.41
         ]
       ],
       "preserve_aspect": true,
@@ -1768,20 +1748,20 @@
       "contact_shadow": true
     },
     "nj_warehouse": {
-      "texture": "res://assets/maps/nanjing/painted/civic.png",
+      "texture": "res://assets/maps/nanjing/market-slice/shops.png",
       "source": [
-        0,
-        540,
-        510,
-        421
+        768,
+        512,
+        768,
+        512
       ],
       "kind": "building",
       "footprints": [
         [
-          0.11,
-          0.58,
-          0.78,
-          0.33
+          0.1,
+          0.54,
+          0.8,
+          0.41
         ]
       ],
       "preserve_aspect": true,
@@ -1789,12 +1769,12 @@
       "contact_shadow": true
     },
     "nj_workshop": {
-      "texture": "res://assets/maps/nanjing/painted/civic.png",
+      "texture": "res://assets/maps/nanjing/capital/commerce.png",
       "source": [
-        515,
-        510,
-        438,
-        451
+        0,
+        0,
+        768,
+        512
       ],
       "kind": "building",
       "footprints": [
@@ -1810,12 +1790,12 @@
       "contact_shadow": true
     },
     "nj_inn": {
-      "texture": "res://assets/maps/nanjing/painted/civic.png",
+      "texture": "res://assets/maps/nanjing/capital/landmarks.png",
       "source": [
-        955,
-        510,
-        580,
-        467
+        768,
+        475,
+        768,
+        549
       ],
       "kind": "building",
       "footprints": [
@@ -1831,12 +1811,12 @@
       "contact_shadow": true
     },
     "nj_government": {
-      "texture": "res://assets/maps/nanjing/painted/landmarks.png",
+      "texture": "res://assets/maps/nanjing/capital/landmarks.png",
       "source": [
         0,
         0,
-        596,
-        495
+        768,
+        475
       ],
       "kind": "building",
       "footprints": [
@@ -1852,12 +1832,12 @@
       "contact_shadow": true
     },
     "nj_martial": {
-      "texture": "res://assets/maps/nanjing/painted/landmarks.png",
+      "texture": "res://assets/maps/nanjing/capital/landmarks.png",
       "source": [
-        596,
-        80,
-        427,
-        418
+        768,
+        0,
+        768,
+        475
       ],
       "kind": "building",
       "footprints": [
@@ -1873,12 +1853,12 @@
       "contact_shadow": true
     },
     "nj_tea_house": {
-      "texture": "res://assets/maps/nanjing/painted/landmarks.png",
+      "texture": "res://assets/maps/nanjing/capital/landmarks.png",
       "source": [
-        1025,
         0,
-        510,
-        495
+        475,
+        768,
+        549
       ],
       "kind": "building",
       "footprints": [
@@ -1894,12 +1874,12 @@
       "contact_shadow": true
     },
     "nj_bookshop": {
-      "texture": "res://assets/maps/nanjing/painted/landmarks.png",
+      "texture": "res://assets/maps/nanjing/capital/commerce.png",
       "source": [
         0,
-        540,
-        675,
-        455
+        512,
+        768,
+        512
       ],
       "kind": "building",
       "footprints": [
@@ -2637,6 +2617,27 @@
       "preserve_aspect": true,
       "smooth_filter": true,
       "contact_shadow": true
+    },
+    "capital_trading_house": {
+      "texture": "res://assets/maps/nanjing/capital/commerce.png",
+      "source": [
+        768,
+        0,
+        768,
+        512
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.11,
+          0.58,
+          0.78,
+          0.33
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     }
   },
   "ambience": {
@@ -2644,7 +2645,7 @@
     "crowd_prefix": "nj_crowd_"
   },
   "painted_materials": "res://assets/maps/nanjing/painted/materials.png",
-  "art_revision": 3,
+  "art_revision": "capital-market-style-v1",
   "market_slice": {
     "bounds": [
       738,
@@ -2655,5 +2656,6 @@
     "version": 1,
     "reference": "취월루 실내의 재질 밀도 · 남경 시장 파일럿",
     "materials": "res://assets/maps/nanjing/market-slice/materials.png"
-  }
+  },
+  "capital_materials": true
 }
