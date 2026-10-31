@@ -9,6 +9,9 @@ uniform bool expanded_layout=false;
 uniform sampler2D original_terrain:source_color,filter_linear;
 uniform vec2 art_extent=vec2(1536.0,1024.0);
 uniform vec2 layout_origin=vec2(0.0);
+uniform bool countryside_enabled=false;
+uniform sampler2D countryside_mask:filter_linear;
+uniform sampler2D countryside_materials:source_color,filter_linear;
 uniform bool market_enabled=false;
 uniform bool capital_materials=false;
 uniform vec4 market_bounds=vec4(738.0,286.0,292.0,240.0);
@@ -87,6 +90,16 @@ void fragment() {
 		}
 		local*=1.0-shade*.19;
 		final_ink=mix(final_ink,local,region);
+	}
+	if(countryside_enabled){
+		vec4 rural=texture(countryside_mask,UV);
+		vec2 rural_uv=clamp(fract(point/440.0),vec2(.004),vec2(.996));
+		vec3 dirt=texture(countryside_materials,(rural_uv+vec2(1.0,1.0))*.5).rgb;
+		vec3 paddy=texture(countryside_materials,rural_uv*.5).rgb;
+		vec3 crops=texture(countryside_materials,(rural_uv+vec2(1.0,0.0))*.5).rgb;
+		vec3 verge=texture(countryside_materials,(rural_uv+vec2(0.0,1.0))*.5).rgb;
+		vec3 landscape=mix(dirt,paddy,rural.r);landscape=mix(landscape,crops,rural.g);landscape=mix(landscape,verge,rural.b);
+		final_ink=mix(final_ink,landscape,rural.a);
 	}
 	COLOR=vec4(final_ink,base.a);
 }

@@ -1,7 +1,7 @@
 {
   "name": "남경 · 응천부",
   "layout_version": 3,
-  "reference": "2026-10-31 중앙 대로·북쪽 황궁 외곽",
+  "reference": "2026-10-31 중앙 대로·연속 성곽·성 밖 농촌",
   "art_size": [
     1856,
     1408
@@ -1194,59 +1194,99 @@
       ]
     },
     {
-      "id": "imperial_roofs",
-      "prefab": "capital_palace_roofs",
+      "id": "countryside_northwest_farm",
+      "prefab": "country_farmhouse",
       "rect": [
+        470,
+        90,
+        140,
+        115
+      ]
+    },
+    {
+      "id": "countryside_north_home",
+      "prefab": "country_home",
+      "rect": [
+        850,
+        110,
+        145,
+        110
+      ]
+    },
+    {
+      "id": "countryside_northeast_farm",
+      "prefab": "country_farmhouse",
+      "rect": [
+        1195,
+        90,
+        145,
+        120
+      ]
+    },
+    {
+      "id": "countryside_north_barn",
+      "prefab": "country_barn",
+      "rect": [
+        1390,
+        115,
+        135,
+        100
+      ]
+    },
+    {
+      "id": "countryside_east_home_a",
+      "prefab": "country_home",
+      "rect": [
+        1725,
+        310,
+        98,
+        100
+      ]
+    },
+    {
+      "id": "countryside_east_home_b",
+      "prefab": "country_farmhouse",
+      "rect": [
+        1728,
+        690,
+        95,
+        100
+      ]
+    },
+    {
+      "id": "countryside_east_home_c",
+      "prefab": "country_home",
+      "rect": [
+        1722,
+        930,
+        100,
+        100
+      ]
+    },
+    {
+      "id": "countryside_western_farm",
+      "prefab": "country_farmhouse",
+      "rect": [
+        50,
         695,
-        10,
-        410,
-        130
-      ]
-    },
-    {
-      "id": "imperial_main_gate",
-      "prefab": "capital_palace_gate",
-      "rect": [
-        775,
-        120,
-        250,
-        180
-      ]
-    },
-    {
-      "id": "imperial_wall_0",
-      "prefab": "capital_palace_wall_0",
-      "rect": [
-        650,
-        213.6,
         140,
-        86.4
-      ]
-    },
-    {
-      "id": "imperial_wall_1",
-      "prefab": "capital_palace_wall_1",
-      "rect": [
-        1010,
-        213.6,
-        140,
-        86.4
+        105
       ]
     }
   ],
   "districts": [
     {
-      "id": "imperial",
-      "name": "황궁 외곽·궁성문",
+      "id": "north_country",
+      "name": "북성 밖 농촌",
       "rect": [
-        650,
+        20,
         0,
-        500,
-        330
+        1816,
+        248
       ],
       "label": [
-        900,
-        310
+        1060,
+        90
       ]
     },
     {
@@ -1279,7 +1319,7 @@
     },
     {
       "id": "government",
-      "name": "관아·황성 외곽",
+      "name": "관아 거리",
       "rect": [
         1180,
         590,
@@ -1575,12 +1615,6 @@
       1075,
       176,
       125
-    ],
-    [
-      650,
-      0,
-      500,
-      300
     ]
   ],
   "npcs": [],
@@ -2540,89 +2574,68 @@
       "smooth_filter": true,
       "contact_shadow": true
     },
-    "capital_palace_gate": {
-      "texture": "res://assets/maps/nanjing/capital/imperial-frontage.png",
+    "country_farmhouse": {
+      "texture": "res://assets/maps/changsha/painted/living.png",
+      "source": [
+        790,
+        512,
+        746,
+        512
+      ],
+      "kind": "building",
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true,
+      "footprints": [
+        [
+          0.08,
+          0.42,
+          0.84,
+          0.56
+        ]
+      ]
+    },
+    "country_home": {
+      "texture": "res://assets/maps/changsha/painted/living.png",
       "source": [
         0,
-        470,
+        0,
         768,
-        530
+        512
       ],
       "kind": "building",
-      "footprints": [
-        [
-          0.04,
-          0.55,
-          0.92,
-          0.45
-        ]
-      ],
       "preserve_aspect": true,
       "smooth_filter": true,
-      "contact_shadow": true
+      "contact_shadow": true,
+      "footprints": [
+        [
+          0.08,
+          0.42,
+          0.84,
+          0.56
+        ]
+      ]
     },
-    "capital_palace_roofs": {
-      "texture": "res://assets/maps/nanjing/capital/imperial-frontage.png",
+    "country_barn": {
+      "texture": "res://assets/maps/changsha/painted/living.png",
       "source": [
         768,
-        570,
+        0,
         768,
-        390
+        512
       ],
       "kind": "building",
-      "footprints": [
-        [
-          0,
-          0.7,
-          1,
-          0.3
-        ]
-      ],
       "preserve_aspect": true,
       "smooth_filter": true,
-      "contact_shadow": true
-    },
-    "capital_palace_wall_0": {
-      "texture": "res://assets/maps/nanjing/capital/imperial-frontage.png",
-      "source": [
-        30,
-        80,
-        583.3333333333334,
-        360
-      ],
-      "kind": "wall",
+      "contact_shadow": true,
       "footprints": [
         [
-          0,
-          0.55,
-          1,
-          0.45
+          0.08,
+          0.42,
+          0.84,
+          0.56
         ]
-      ],
-      "preserve_aspect": true,
-      "smooth_filter": true,
-      "contact_shadow": true
-    },
-    "capital_palace_wall_1": {
-      "texture": "res://assets/maps/nanjing/capital/imperial-frontage.png",
-      "source": [
-        30,
-        80,
-        583.3333333333334,
-        360
-      ],
-      "kind": "wall",
-      "footprints": [
-        [
-          0,
-          0.55,
-          1,
-          0.45
-        ]
-      ],
-      "preserve_aspect": true,
-      "smooth_filter": true,
-      "contact_shadow": true
+      ]
     }
   },
   "ambience": {
@@ -2653,18 +2666,6 @@
         300
       ],
       [
-        "city_north_nw",
-        455,
-        650,
-        300
-      ],
-      [
-        "city_north_e",
-        1150,
-        1680,
-        300
-      ],
-      [
         "city_south_w",
         240,
         830,
@@ -2675,6 +2676,12 @@
         970,
         1680,
         1380
+      ],
+      [
+        "city_north_continuous",
+        455,
+        1680,
+        300
       ]
     ],
     "vertical": [
@@ -2776,6 +2783,490 @@
           78
         ]
       ]
+    ]
+  },
+  "countryside": {
+    "regions": [
+      [
+        0,
+        0,
+        1856,
+        248
+      ],
+      [
+        0,
+        680,
+        235,
+        184
+      ],
+      [
+        0,
+        1004,
+        235,
+        71
+      ],
+      [
+        0,
+        1200,
+        235,
+        208
+      ],
+      [
+        1693,
+        248,
+        163,
+        827
+      ],
+      [
+        1693,
+        1200,
+        163,
+        208
+      ],
+      [
+        235,
+        1380,
+        1458,
+        28
+      ]
+    ],
+    "fields": [
+      {
+        "kind": "vegetable",
+        "points": [
+          [
+            245,
+            22
+          ],
+          [
+            335,
+            30
+          ],
+          [
+            330,
+            117
+          ],
+          [
+            242,
+            110
+          ]
+        ]
+      },
+      {
+        "kind": "rice",
+        "points": [
+          [
+            455,
+            12
+          ],
+          [
+            718,
+            20
+          ],
+          [
+            708,
+            70
+          ],
+          [
+            460,
+            67
+          ]
+        ]
+      },
+      {
+        "kind": "vegetable",
+        "points": [
+          [
+            646,
+            108
+          ],
+          [
+            806,
+            100
+          ],
+          [
+            800,
+            207
+          ],
+          [
+            648,
+            213
+          ]
+        ]
+      },
+      {
+        "kind": "rice",
+        "points": [
+          [
+            747,
+            12
+          ],
+          [
+            1066,
+            24
+          ],
+          [
+            1052,
+            71
+          ],
+          [
+            750,
+            66
+          ]
+        ]
+      },
+      {
+        "kind": "rice",
+        "points": [
+          [
+            1092,
+            18
+          ],
+          [
+            1358,
+            24
+          ],
+          [
+            1345,
+            69
+          ],
+          [
+            1095,
+            75
+          ]
+        ]
+      },
+      {
+        "kind": "vegetable",
+        "points": [
+          [
+            1428,
+            14
+          ],
+          [
+            1642,
+            20
+          ],
+          [
+            1633,
+            99
+          ],
+          [
+            1434,
+            92
+          ]
+        ]
+      },
+      {
+        "kind": "rice",
+        "points": [
+          [
+            1666,
+            12
+          ],
+          [
+            1828,
+            24
+          ],
+          [
+            1824,
+            173
+          ],
+          [
+            1674,
+            164
+          ]
+        ]
+      },
+      {
+        "kind": "rice",
+        "points": [
+          [
+            1725,
+            453
+          ],
+          [
+            1828,
+            449
+          ],
+          [
+            1825,
+            613
+          ],
+          [
+            1720,
+            622
+          ]
+        ]
+      },
+      {
+        "kind": "vegetable",
+        "points": [
+          [
+            1721,
+            831
+          ],
+          [
+            1828,
+            835
+          ],
+          [
+            1824,
+            898
+          ],
+          [
+            1719,
+            902
+          ]
+        ]
+      },
+      {
+        "kind": "vegetable",
+        "points": [
+          [
+            32,
+            1012
+          ],
+          [
+            216,
+            1011
+          ],
+          [
+            210,
+            1064
+          ],
+          [
+            35,
+            1066
+          ]
+        ]
+      },
+      {
+        "kind": "rice",
+        "points": [
+          [
+            35,
+            1214
+          ],
+          [
+            215,
+            1209
+          ],
+          [
+            211,
+            1285
+          ],
+          [
+            31,
+            1288
+          ]
+        ]
+      },
+      {
+        "kind": "vegetable",
+        "points": [
+          [
+            42,
+            1305
+          ],
+          [
+            214,
+            1302
+          ],
+          [
+            215,
+            1367
+          ],
+          [
+            37,
+            1373
+          ]
+        ]
+      },
+      {
+        "kind": "vegetable",
+        "points": [
+          [
+            1721,
+            1215
+          ],
+          [
+            1827,
+            1218
+          ],
+          [
+            1825,
+            1270
+          ],
+          [
+            1718,
+            1268
+          ]
+        ]
+      }
+    ],
+    "paths": [
+      {
+        "width": 18,
+        "points": [
+          [
+            385,
+            105
+          ],
+          [
+            420,
+            85
+          ],
+          [
+            1620,
+            85
+          ],
+          [
+            1708,
+            230
+          ],
+          [
+            1708,
+            1050
+          ]
+        ]
+      },
+      {
+        "width": 16,
+        "points": [
+          [
+            650,
+            85
+          ],
+          [
+            650,
+            225
+          ],
+          [
+            540,
+            225
+          ]
+        ]
+      },
+      {
+        "width": 16,
+        "points": [
+          [
+            1050,
+            85
+          ],
+          [
+            1050,
+            235
+          ],
+          [
+            923,
+            235
+          ]
+        ]
+      },
+      {
+        "width": 16,
+        "points": [
+          [
+            1360,
+            85
+          ],
+          [
+            1360,
+            228
+          ],
+          [
+            1268,
+            228
+          ]
+        ]
+      },
+      {
+        "width": 16,
+        "points": [
+          [
+            1540,
+            85
+          ],
+          [
+            1540,
+            235
+          ],
+          [
+            1458,
+            235
+          ]
+        ]
+      },
+      {
+        "width": 15,
+        "points": [
+          [
+            1708,
+            428
+          ],
+          [
+            1775,
+            428
+          ],
+          [
+            1775,
+            420
+          ]
+        ]
+      },
+      {
+        "width": 15,
+        "points": [
+          [
+            1708,
+            808
+          ],
+          [
+            1775,
+            808
+          ],
+          [
+            1775,
+            800
+          ]
+        ]
+      },
+      {
+        "width": 15,
+        "points": [
+          [
+            1708,
+            1048
+          ],
+          [
+            1772,
+            1048
+          ],
+          [
+            1772,
+            1040
+          ]
+        ]
+      },
+      {
+        "width": 18,
+        "points": [
+          [
+            120,
+            800
+          ],
+          [
+            120,
+            830
+          ],
+          [
+            240,
+            830
+          ]
+        ]
+      }
     ]
   }
 }

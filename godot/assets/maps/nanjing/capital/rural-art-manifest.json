@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-31",
+  "asset": "res://assets/maps/nanjing/capital/rural-materials.png",
+  "source": "image_gen",
+  "original": "generated_images/exec-449cb389-ffce-474b-bd24-62b461e7c219.png",
+  "sha256": "9842c49589e11c79808b1387d58775aa81c6b4468e25d867646f298cd6404e5c",
+  "references": [
+    "res://assets/maps/suzhou/painted/rice-field.png",
+    "res://assets/maps/changsha/painted/living.png"
+  ],
+  "description": "Unmodified generated 1536x1024, 2x2 equal texture atlas: rice / vegetables / grassy verge / earth footpath. Rural houses reuse approved Changsha living atlas without alteration."
+}

@@ -23,7 +23,7 @@ func run() -> void:
 		for p in gates:check(w.can_stand(w.city_point(p)),"open passage "+area+"/"+str(p))
 		if area=="nanjing":
 			for y in range(335,1071,10):check(w.can_stand(w.city_point([900,y])),"clear central avenue at "+str(y))
-			check(not w.can_stand(w.city_point([900,275])),"palace closed")
+			check(not w.can_stand(w.city_point([900,275])),"continuous northern city wall blocks crossing")
 			for p in [[574,1120],[910,1140],[1484,1150]]:check(w.can_stand(w.city_point(p)),"river bridge retained "+str(p))
 		if area=="changsha":
 			w.set_active(true);w.player.position=w.city_point([1100,510]);await physics_frame;await move_for(w,"move_right",110)

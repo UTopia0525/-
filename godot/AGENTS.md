@@ -1,6 +1,6 @@
 # 게임 콘텐츠 작업 규칙
 
-- 장사·무창·남경 외성은 항주의 회색 석조 성곽과 `fortification_layout.gd`의 동일 월드 축척을 사용한다. 동서 통로는 `fortifications/side-gate.png`의 별도 측면 그림/좌우 반전으로 맞추며 정면 문을 회전하지 않는다. 작은 남북 보조문도 전용 낮은 문루를 사용한다. 남경은 후속 사용자 승인으로 중앙 남북 대로·북쪽 황궁 외곽/layout_version3(7424×5632)이며 예전 동쪽 황성 배치를 되살리지 않는다. [세 도시 성곽](../docs/cities/three-city-fortifications.md).
+- 장사·무창·남경 외성은 항주의 회색 석조 성곽과 `fortification_layout.gd`의 동일 월드 축척을 사용한다. 동서 통로는 `fortifications/side-gate.png`의 별도 측면 그림/좌우 반전으로 맞추며 정면 문을 회전하지 않는다. 작은 남북 보조문도 전용 낮은 문루를 사용한다. 남경은 후속 사용자 승인으로 중앙 남북 대로·북쪽 연속 성곽·성 밖 논밭/농가/layout_version3(7424×5632)이다. 후속 요청으로 황궁을 철거했으므로 북쪽 황궁이나 예전 동쪽 황성을 되살리지 않는다. [세 도시 성곽](../docs/cities/three-city-fortifications.md) · [남경 성 밖 농촌](../docs/cities/nanjing-countryside.md).
 
 - 항주 북쪽은 성 밖 흙길→북문 통과→시내 진입이다. 세계5888×5632/layout_version2이며 옛 시내와 주민·출입 좌표는 Y+400미술 단위로 이동했다. 옛 항주 저장은 Y+1280월드 단위로 한 번 이행한다. 북문 중앙 통행/양옆 석축 충돌·문루 가림과 수문 물 차단을 유지한다. [외곽 성곽](../docs/cities/hangzhou-fortifications.md).
 
