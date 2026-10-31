@@ -14,6 +14,7 @@ var world_scale=Vector2(4,4)
 var map_bounds=Rect2(0,0,data.world_size[0],data.world_size[1])
 var walk_bounds: Rect2
 func _ready() -> void:
+	preload("res://scripts/fortification_layout.gd").apply(data)
 	map_bounds=Rect2(0,0,data.world_size[0],data.world_size[1])
 	prefabs.alliance_hall={"texture":"res://assets/maps/wuchang/alliance-hall.png","source":[0,0,1536,1024],"kind":"building","footprints":[[.10,.62,.80,.35]]}
 	walk_bounds=rect(data.walk_bounds)

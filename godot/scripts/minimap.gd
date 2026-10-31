@@ -159,6 +159,9 @@ func draw_map(canvas: Control) -> void:
 			continue
 		var destination = Rect2((intersection.position - art_source.position) / art_source.size * VIEW_SIZE, intersection.size / art_source.size * VIEW_SIZE)
 		var sample = Rect2(tile.source.position + (intersection.position - tile.target.position) / tile.target.size * tile.source.size, intersection.size / tile.target.size * tile.source.size)
+		if tile.get("flip_h",false):
+			sample.position.x=tile.source.end.x-(sample.end.x-tile.source.position.x)
+			destination.position.x+=destination.size.x;destination.size.x=-destination.size.x
 		canvas.draw_texture_rect_region(tile.texture, destination, sample, Color(0.75, 0.83, 0.77))
 	for exit in exploration.travel_exits:
 		if not world_window.has_point(exit.position):continue

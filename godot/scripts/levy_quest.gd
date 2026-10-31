@@ -32,7 +32,7 @@ func track() -> void:game.quest_navigation.update_quest(ID,stage())
 func prepare_residents(entries: Array) -> void:
 	if phase!="arrest":return
 	for entry in entries:
-		if entry.id==GUARD:entry.point=[938,300]
+		if entry.id==GUARD:entry.point=[1098,600]
 func handle_interaction(id: String) -> bool:
 	if game.exploration.area_name!="nanjing":return false
 	if id==GIVER and game.silk_quest.phase in ["vendor","completed"]:
@@ -81,7 +81,7 @@ func _arrest_done() -> void:
 func _reload_market(at_scene: bool) -> void:
 	var w=game.exploration
 	if w.area_name!="nanjing":return
-	var point: Vector2=w.city_point([960,333]) if at_scene else w.player.position
+	var point: Vector2=w.city_point([1120,633]) if at_scene else w.player.position
 	w.load_area("nanjing")
 	if at_scene:
 		for a in w.ambient_nodes:
@@ -132,7 +132,7 @@ func refresh_world() -> void:
 	if w.area_name!="nanjing":return
 	if phase not in ["ready","completed"]:
 		var table=preload("res://scripts/city_scenery.gd").new()
-		table.configure({"id":"levy_collection_desk","rect":[985,270,45,46]},{"texture":"res://assets/icons/levy-quest.png","source":[730,115,790,820],"kind":"stall","footprints":[[.12,.60,.76,.37]]},w.regional_map.world_scale)
+		table.configure({"id":"levy_collection_desk","rect":[1145,570,45,46]},{"texture":"res://assets/icons/levy-quest.png","source":[730,115,790,820],"kind":"stall","footprints":[[.12,.60,.76,.37]]},w.regional_map.world_scale)
 		w.decorations.add_child(table);w.occlusion_roots.append(table);nodes.append(table);w.scenery_nodes.append(table);w.scenery_bounds.append(table.visual_rect)
 		table_visual=table.visual_rect;block_map=w.regional_map;table_blocks.assign(table.collision_rects);block_map.blockers.append_array(table_blocks)
 		w._populate_residents([data.suspect.duplicate(true)])

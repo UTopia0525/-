@@ -67,6 +67,12 @@
       654,
       180,
       36
+    ],
+    [
+      235,
+      150,
+      40,
+      100
     ]
   ],
   "blockers": [
@@ -448,8 +454,8 @@
       "id": "dock_worker",
       "name": "허대산",
       "point": [
-        278.0,
-        460.0
+        320,
+        450
       ],
       "frame": 6,
       "post": "나루 하역장 가장자리",
@@ -616,8 +622,8 @@
       "id": "bandit_muster",
       "name": "집결 포졸",
       "point": [
-        1185.0,
-        490.0
+        1250,
+        520
       ],
       "frame": 7,
       "quest_actor": false,
@@ -1877,266 +1883,6 @@
       ]
     },
     {
-      "id": "north_city_wall_285",
-      "prefab": "wall_h",
-      "rect": [
-        285,
-        42,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "north_city_wall_349",
-      "prefab": "wall_h",
-      "rect": [
-        349,
-        42,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "north_city_wall_413",
-      "prefab": "wall_h",
-      "rect": [
-        413,
-        42,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "north_city_wall_477",
-      "prefab": "wall_h",
-      "rect": [
-        477,
-        42,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "north_city_wall_541",
-      "prefab": "wall_h",
-      "rect": [
-        541,
-        42,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "north_city_wall_605",
-      "prefab": "wall_h",
-      "rect": [
-        605,
-        42,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "north_city_wall_669",
-      "prefab": "wall_h",
-      "rect": [
-        669,
-        42,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "north_city_wall_861",
-      "prefab": "wall_h",
-      "rect": [
-        861,
-        42,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "north_city_wall_925",
-      "prefab": "wall_h",
-      "rect": [
-        925,
-        42,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "north_city_wall_989",
-      "prefab": "wall_h",
-      "rect": [
-        989,
-        42,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "north_city_wall_1053",
-      "prefab": "wall_h",
-      "rect": [
-        1053,
-        42,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "north_city_wall_1117",
-      "prefab": "wall_h",
-      "rect": [
-        1117,
-        42,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "north_city_gate",
-      "prefab": "gate",
-      "rect": [
-        720,
-        26,
-        96,
-        52
-      ]
-    },
-    {
-      "id": "south_city_wall_285",
-      "prefab": "wall_h",
-      "rect": [
-        285,
-        932,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "south_city_wall_349",
-      "prefab": "wall_h",
-      "rect": [
-        349,
-        932,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "south_city_wall_413",
-      "prefab": "wall_h",
-      "rect": [
-        413,
-        932,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "south_city_wall_477",
-      "prefab": "wall_h",
-      "rect": [
-        477,
-        932,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "south_city_wall_541",
-      "prefab": "wall_h",
-      "rect": [
-        541,
-        932,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "south_city_wall_605",
-      "prefab": "wall_h",
-      "rect": [
-        605,
-        932,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "south_city_wall_669",
-      "prefab": "wall_h",
-      "rect": [
-        669,
-        932,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "south_city_wall_861",
-      "prefab": "wall_h",
-      "rect": [
-        861,
-        932,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "south_city_wall_925",
-      "prefab": "wall_h",
-      "rect": [
-        925,
-        932,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "south_city_wall_989",
-      "prefab": "wall_h",
-      "rect": [
-        989,
-        932,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "south_city_wall_1053",
-      "prefab": "wall_h",
-      "rect": [
-        1053,
-        932,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "south_city_wall_1117",
-      "prefab": "wall_h",
-      "rect": [
-        1117,
-        932,
-        64,
-        36
-      ]
-    },
-    {
-      "id": "south_city_gate",
-      "prefab": "gate",
-      "rect": [
-        720,
-        916,
-        96,
-        52
-      ]
-    },
-    {
       "id": "tree_0",
       "prefab": "willow",
       "rect": [
@@ -2343,5 +2089,133 @@
       "extra": "male_young"
     }
   },
-  "painted_style": true
+  "painted_style": true,
+  "fortification_plan": {
+    "horizontal": [
+      [
+        "city_north_w",
+        260,
+        698,
+        78
+      ],
+      [
+        "city_north_e",
+        838,
+        1166,
+        78
+      ],
+      [
+        "city_south_w",
+        260,
+        698,
+        968
+      ],
+      [
+        "city_south_e",
+        838,
+        1166,
+        968
+      ]
+    ],
+    "vertical": [
+      [
+        "city_west_a",
+        255,
+        60,
+        150
+      ],
+      [
+        "city_west_b",
+        255,
+        250,
+        430
+      ],
+      [
+        "city_west_c",
+        255,
+        490,
+        630
+      ],
+      [
+        "city_west_d",
+        255,
+        710,
+        968
+      ],
+      [
+        "city_east_n",
+        1135,
+        60,
+        470
+      ],
+      [
+        "city_east_s",
+        1135,
+        550,
+        968
+      ]
+    ],
+    "gates": [
+      [
+        "north_city_gate",
+        "postern",
+        [
+          688,
+          0,
+          160,
+          78
+        ]
+      ],
+      [
+        "south_city_gate",
+        "postern",
+        [
+          688,
+          890,
+          160,
+          78
+        ]
+      ],
+      [
+        "east_city_gate",
+        "east",
+        [
+          1105,
+          383,
+          77,
+          200
+        ]
+      ],
+      [
+        "dock_gate_north",
+        "west",
+        [
+          220,
+          73,
+          77,
+          200
+        ]
+      ],
+      [
+        "dock_gate_middle",
+        "west",
+        [
+          220,
+          333,
+          77,
+          200
+        ]
+      ],
+      [
+        "dock_gate_south",
+        "west",
+        [
+          220,
+          543,
+          77,
+          200
+        ]
+      ]
+    ]
+  }
 }

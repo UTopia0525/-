@@ -1,34 +1,34 @@
 {
   "name": "남경 · 응천부",
-  "layout_version": 2,
-  "reference": "docs/cities/designs/nanjing-npc-preview.png",
+  "layout_version": 3,
+  "reference": "2026-10-31 중앙 대로·북쪽 황궁 외곽",
   "art_size": [
-    1536,
-    1024
+    1856,
+    1408
   ],
   "world_size": [
-    6144,
-    4096
+    7424,
+    5632
   ],
   "spawn": [
-    255,
-    530
+    180,
+    830
   ],
   "walk_bounds": [
-    36,
-    75,
-    1464,
-    930
+    20,
+    20,
+    1816,
+    1368
   ],
-  "ground_script": "res://scripts/nanjing_ground.gd",
+  "ground_script": "res://scripts/nanjing_capital_ground.gd",
   "ground_texture": "res://assets/maps/nanjing/ground.png",
   "objects": [
     {
       "id": "northwest_0",
       "prefab": "nj_warehouse",
       "rect": [
-        250,
-        78,
+        410,
+        378,
         125,
         112
       ]
@@ -37,8 +37,8 @@
       "id": "northwest_1",
       "prefab": "nj_warehouse",
       "rect": [
-        245,
-        225,
+        405,
+        525,
         125,
         83
       ]
@@ -47,8 +47,8 @@
       "id": "northwest_2",
       "prefab": "nj_townhouse",
       "rect": [
-        460,
-        75,
+        620,
+        375,
         102,
         112
       ]
@@ -57,8 +57,8 @@
       "id": "northwest_3",
       "prefab": "nj_home",
       "rect": [
-        585,
-        75,
+        745,
+        375,
         105,
         100
       ]
@@ -67,8 +67,8 @@
       "id": "northwest_4",
       "prefab": "nj_townhouse",
       "rect": [
-        465,
-        206,
+        625,
+        506,
         105,
         100
       ]
@@ -77,8 +77,8 @@
       "id": "northwest_5",
       "prefab": "nj_home",
       "rect": [
-        590,
-        213,
+        750,
+        513,
         108,
         92
       ]
@@ -87,8 +87,8 @@
       "id": "north_east_2",
       "prefab": "nj_home",
       "rect": [
-        1040,
-        74,
+        1200,
+        374,
         112,
         80
       ]
@@ -97,8 +97,8 @@
       "id": "north_east_3",
       "prefab": "nj_townhouse",
       "rect": [
-        1160,
-        75,
+        1320,
+        375,
         105,
         90
       ]
@@ -107,8 +107,8 @@
       "id": "north_east_4",
       "prefab": "capital_trading_house",
       "rect": [
-        770,
-        65,
+        930,
+        365,
         268,
         180
       ]
@@ -117,8 +117,8 @@
       "id": "north_east_6",
       "prefab": "nj_bookshop",
       "rect": [
-        1065,
-        170,
+        1225,
+        470,
         123,
         75
       ]
@@ -127,8 +127,8 @@
       "id": "north_east_7",
       "prefab": "market_silk",
       "rect": [
-        1200,
-        170,
+        1360,
+        470,
         105,
         75
       ]
@@ -137,8 +137,8 @@
       "id": "craft_0",
       "prefab": "nj_workshop",
       "rect": [
-        245,
-        335,
+        405,
+        635,
         120,
         105
       ]
@@ -147,8 +147,8 @@
       "id": "craft_1",
       "prefab": "nj_workshop",
       "rect": [
-        455,
-        334,
+        615,
+        634,
         120,
         110
       ]
@@ -157,8 +157,8 @@
       "id": "craft_2",
       "prefab": "market_silk",
       "rect": [
-        590,
-        333,
+        750,
+        633,
         103,
         108
       ]
@@ -167,8 +167,8 @@
       "id": "craft_3",
       "prefab": "market_grain",
       "rect": [
-        252,
-        444,
+        412,
+        744,
         100,
         66
       ]
@@ -177,8 +177,8 @@
       "id": "craft_4",
       "prefab": "market_tea",
       "rect": [
-        461,
-        447,
+        621,
+        747,
         105,
         62
       ]
@@ -187,8 +187,8 @@
       "id": "market_shop_0",
       "prefab": "market_tea",
       "rect": [
-        760,
-        295,
+        940,
+        595,
         120,
         102
       ]
@@ -197,8 +197,8 @@
       "id": "market_shop_1",
       "prefab": "market_silk",
       "rect": [
-        906,
-        298,
+        1086,
+        598,
         110,
         99
       ]
@@ -207,8 +207,8 @@
       "id": "market_shop_2",
       "prefab": "market_herbs",
       "rect": [
-        760,
-        411,
+        940,
+        711,
         115,
         100
       ]
@@ -217,8 +217,8 @@
       "id": "market_shop_3",
       "prefab": "market_grain",
       "rect": [
-        906,
-        405,
+        1086,
+        705,
         112,
         106
       ]
@@ -227,9 +227,9 @@
       "id": "main_inn",
       "prefab": "nj_inn",
       "rect": [
-        607,
-        546,
-        322,
+        610,
+        846,
+        268,
         154
       ]
     },
@@ -237,8 +237,8 @@
       "id": "government_hall",
       "prefab": "nj_government",
       "rect": [
-        1085,
-        290,
+        1245,
+        590,
         205,
         185
       ]
@@ -247,8 +247,8 @@
       "id": "martial_hall",
       "prefab": "nj_martial",
       "rect": [
-        1220,
-        548,
+        1380,
+        848,
         170,
         137
       ]
@@ -257,8 +257,8 @@
       "id": "qinhuai_music_house",
       "prefab": "nj_tea_house",
       "rect": [
-        1110,
-        792,
+        1270,
+        1092,
         170,
         155
       ]
@@ -267,8 +267,8 @@
       "id": "alley_house_0",
       "prefab": "nj_home",
       "rect": [
-        130,
-        558,
+        290,
+        858,
         102,
         90
       ]
@@ -277,8 +277,8 @@
       "id": "alley_house_1",
       "prefab": "nj_townhouse",
       "rect": [
-        255,
-        552,
+        415,
+        852,
         119,
         80
       ]
@@ -287,8 +287,8 @@
       "id": "alley_house_2",
       "prefab": "nj_home",
       "rect": [
-        135,
-        662,
+        295,
+        962,
         97,
         88
       ]
@@ -297,8 +297,8 @@
       "id": "alley_house_3",
       "prefab": "nj_home",
       "rect": [
-        252,
-        657,
+        412,
+        957,
         116,
         93
       ]
@@ -307,28 +307,28 @@
       "id": "alley_house_4",
       "prefab": "nj_shop",
       "rect": [
-        455,
-        552,
-        110,
-        98
+        1488,
+        386,
+        118,
+        108
       ]
     },
     {
       "id": "alley_house_5",
       "prefab": "nj_townhouse",
       "rect": [
-        455,
-        675,
+        1502,
+        510,
         110,
-        74
+        80
       ]
     },
     {
       "id": "alley_house_10",
       "prefab": "nj_home",
       "rect": [
-        240,
-        890,
+        400,
+        1190,
         115,
         84
       ]
@@ -337,8 +337,8 @@
       "id": "alley_house_11",
       "prefab": "nj_home",
       "rect": [
-        460,
-        895,
+        620,
+        1195,
         105,
         82
       ]
@@ -347,8 +347,8 @@
       "id": "alley_house_12",
       "prefab": "nj_home",
       "rect": [
-        585,
-        896,
+        745,
+        1196,
         105,
         78
       ]
@@ -357,8 +357,8 @@
       "id": "alley_house_13",
       "prefab": "nj_townhouse",
       "rect": [
-        800,
-        898,
+        960,
+        1198,
         105,
         85
       ]
@@ -367,8 +367,8 @@
       "id": "alley_house_14",
       "prefab": "nj_home",
       "rect": [
-        950,
-        899,
+        1110,
+        1199,
         98,
         80
       ]
@@ -377,8 +377,8 @@
       "id": "alley_house_15",
       "prefab": "nj_home",
       "rect": [
-        1090,
-        900,
+        1250,
+        1200,
         83,
         78
       ]
@@ -387,8 +387,8 @@
       "id": "gov_back_1040",
       "prefab": "wall_h",
       "rect": [
-        1040,
-        300,
+        1200,
+        600,
         64,
         27
       ]
@@ -397,8 +397,8 @@
       "id": "gov_back_1102",
       "prefab": "wall_h",
       "rect": [
-        1102,
-        300,
+        1262,
+        600,
         64,
         27
       ]
@@ -407,8 +407,8 @@
       "id": "gov_back_1164",
       "prefab": "wall_h",
       "rect": [
-        1164,
-        300,
+        1324,
+        600,
         64,
         27
       ]
@@ -417,8 +417,8 @@
       "id": "gov_back_1226",
       "prefab": "wall_h",
       "rect": [
-        1226,
-        300,
+        1386,
+        600,
         64,
         27
       ]
@@ -427,8 +427,8 @@
       "id": "gov_back_1288",
       "prefab": "wall_h",
       "rect": [
-        1288,
-        300,
+        1448,
+        600,
         52,
         27
       ]
@@ -437,8 +437,8 @@
       "id": "dojo_back_1050",
       "prefab": "wall_h",
       "rect": [
-        1050,
-        553,
+        1210,
+        853,
         64,
         27
       ]
@@ -447,8 +447,8 @@
       "id": "dojo_back_1112",
       "prefab": "wall_h",
       "rect": [
-        1112,
-        553,
+        1272,
+        853,
         64,
         27
       ]
@@ -457,8 +457,8 @@
       "id": "dojo_back_1174",
       "prefab": "wall_h",
       "rect": [
-        1174,
-        553,
+        1334,
+        853,
         64,
         27
       ]
@@ -467,8 +467,8 @@
       "id": "dojo_back_1236",
       "prefab": "wall_h",
       "rect": [
-        1236,
-        553,
+        1396,
+        853,
         64,
         27
       ]
@@ -477,8 +477,8 @@
       "id": "dojo_back_1298",
       "prefab": "wall_h",
       "rect": [
-        1298,
-        553,
+        1458,
+        853,
         64,
         27
       ]
@@ -487,8 +487,8 @@
       "id": "dojo_back_1360",
       "prefab": "wall_h",
       "rect": [
-        1360,
-        553,
+        1520,
+        853,
         64,
         27
       ]
@@ -497,8 +497,8 @@
       "id": "compound_side_1040_330",
       "prefab": "wall_v",
       "rect": [
-        1040,
-        330,
+        1200,
+        630,
         24,
         135
       ]
@@ -507,8 +507,8 @@
       "id": "compound_side_1350_320",
       "prefab": "wall_v",
       "rect": [
-        1318,
-        320,
+        1478,
+        620,
         24,
         145
       ]
@@ -517,8 +517,8 @@
       "id": "compound_side_1050_585",
       "prefab": "wall_v",
       "rect": [
-        1050,
-        585,
+        1210,
+        885,
         24,
         140
       ]
@@ -527,8 +527,8 @@
       "id": "compound_side_1395_585",
       "prefab": "wall_v",
       "rect": [
-        1395,
-        585,
+        1555,
+        885,
         24,
         140
       ]
@@ -537,178 +537,18 @@
       "id": "dojo_open_gate",
       "prefab": "nj_courtyard_gate",
       "rect": [
-        1150,
-        686,
+        1310,
+        986,
         100,
         65
-      ]
-    },
-    {
-      "id": "north_wall_280",
-      "prefab": "wall_h",
-      "rect": [
-        280,
-        22,
-        66,
-        40
-      ]
-    },
-    {
-      "id": "north_wall_344",
-      "prefab": "wall_h",
-      "rect": [
-        344,
-        22,
-        66,
-        40
-      ]
-    },
-    {
-      "id": "north_wall_408",
-      "prefab": "wall_h",
-      "rect": [
-        408,
-        22,
-        66,
-        40
-      ]
-    },
-    {
-      "id": "north_wall_472",
-      "prefab": "wall_h",
-      "rect": [
-        472,
-        22,
-        66,
-        40
-      ]
-    },
-    {
-      "id": "north_wall_536",
-      "prefab": "wall_h",
-      "rect": [
-        536,
-        22,
-        66,
-        40
-      ]
-    },
-    {
-      "id": "north_wall_600",
-      "prefab": "wall_h",
-      "rect": [
-        600,
-        22,
-        66,
-        40
-      ]
-    },
-    {
-      "id": "north_wall_664",
-      "prefab": "wall_h",
-      "rect": [
-        664,
-        22,
-        66,
-        40
-      ]
-    },
-    {
-      "id": "north_wall_728",
-      "prefab": "wall_h",
-      "rect": [
-        728,
-        22,
-        66,
-        40
-      ]
-    },
-    {
-      "id": "north_wall_792",
-      "prefab": "wall_h",
-      "rect": [
-        792,
-        22,
-        66,
-        40
-      ]
-    },
-    {
-      "id": "north_wall_856",
-      "prefab": "wall_h",
-      "rect": [
-        856,
-        22,
-        66,
-        40
-      ]
-    },
-    {
-      "id": "north_wall_920",
-      "prefab": "wall_h",
-      "rect": [
-        920,
-        22,
-        66,
-        40
-      ]
-    },
-    {
-      "id": "north_wall_984",
-      "prefab": "wall_h",
-      "rect": [
-        984,
-        22,
-        66,
-        40
-      ]
-    },
-    {
-      "id": "north_wall_1048",
-      "prefab": "wall_h",
-      "rect": [
-        1048,
-        22,
-        66,
-        40
-      ]
-    },
-    {
-      "id": "north_wall_1112",
-      "prefab": "wall_h",
-      "rect": [
-        1112,
-        22,
-        66,
-        40
-      ]
-    },
-    {
-      "id": "north_wall_1176",
-      "prefab": "wall_h",
-      "rect": [
-        1176,
-        22,
-        66,
-        40
-      ]
-    },
-    {
-      "id": "north_wall_1240",
-      "prefab": "wall_h",
-      "rect": [
-        1240,
-        22,
-        66,
-        40
       ]
     },
     {
       "id": "garden_tree_0",
       "prefab": "tree",
       "rect": [
-        220,
-        125,
+        380,
+        425,
         32,
         42
       ]
@@ -717,8 +557,8 @@
       "id": "garden_tree_1",
       "prefab": "tree",
       "rect": [
-        400,
-        90,
+        560,
+        390,
         30,
         42
       ]
@@ -727,8 +567,8 @@
       "id": "garden_tree_2",
       "prefab": "tree",
       "rect": [
-        704,
-        90,
+        864,
+        390,
         27,
         40
       ]
@@ -737,8 +577,8 @@
       "id": "garden_tree_3",
       "prefab": "tree",
       "rect": [
-        716,
-        260,
+        876,
+        560,
         27,
         42
       ]
@@ -747,8 +587,8 @@
       "id": "garden_tree_4",
       "prefab": "tree",
       "rect": [
-        1310,
-        250,
+        1470,
+        550,
         28,
         44
       ]
@@ -757,8 +597,8 @@
       "id": "garden_tree_5",
       "prefab": "tree",
       "rect": [
-        550,
-        320,
+        710,
+        620,
         23,
         34
       ]
@@ -767,8 +607,8 @@
       "id": "garden_tree_6",
       "prefab": "tree",
       "rect": [
-        1010,
-        270,
+        1170,
+        570,
         26,
         38
       ]
@@ -777,8 +617,8 @@
       "id": "garden_tree_7",
       "prefab": "tree",
       "rect": [
-        1375,
-        544,
+        1535,
+        844,
         26,
         40
       ]
@@ -787,8 +627,8 @@
       "id": "garden_tree_8",
       "prefab": "tree",
       "rect": [
-        225,
-        720,
+        385,
+        1020,
         25,
         38
       ]
@@ -797,8 +637,8 @@
       "id": "garden_tree_9",
       "prefab": "willow",
       "rect": [
-        455,
-        850,
+        615,
+        1150,
         28,
         50
       ]
@@ -807,8 +647,8 @@
       "id": "garden_tree_10",
       "prefab": "willow",
       "rect": [
-        1090,
-        850,
+        1250,
+        1150,
         25,
         44
       ]
@@ -817,8 +657,8 @@
       "id": "garden_tree_11",
       "prefab": "willow",
       "rect": [
-        1380,
-        840,
+        1540,
+        1140,
         30,
         55
       ]
@@ -827,8 +667,8 @@
       "id": "cargo_0",
       "prefab": "cargo",
       "rect": [
-        242,
-        190,
+        402,
+        490,
         23,
         25
       ]
@@ -837,8 +677,8 @@
       "id": "cargo_1",
       "prefab": "cargo",
       "rect": [
-        370,
-        200,
+        530,
+        500,
         23,
         25
       ]
@@ -847,8 +687,8 @@
       "id": "cargo_2",
       "prefab": "cargo",
       "rect": [
-        238,
-        300,
+        398,
+        600,
         23,
         25
       ]
@@ -857,8 +697,8 @@
       "id": "cargo_3",
       "prefab": "cargo",
       "rect": [
-        372,
-        305,
+        532,
+        605,
         23,
         25
       ]
@@ -867,8 +707,8 @@
       "id": "cargo_4",
       "prefab": "cargo",
       "rect": [
-        270,
-        445,
+        430,
+        745,
         23,
         25
       ]
@@ -877,8 +717,8 @@
       "id": "cargo_5",
       "prefab": "cargo",
       "rect": [
-        350,
-        445,
+        510,
+        745,
         23,
         25
       ]
@@ -887,8 +727,8 @@
       "id": "cargo_6",
       "prefab": "cargo",
       "rect": [
-        460,
-        428,
+        620,
+        728,
         23,
         25
       ]
@@ -897,8 +737,8 @@
       "id": "cargo_7",
       "prefab": "cargo",
       "rect": [
-        563,
-        430,
+        723,
+        730,
         23,
         25
       ]
@@ -907,8 +747,8 @@
       "id": "cargo_8",
       "prefab": "cargo",
       "rect": [
-        980,
-        448,
+        1140,
+        748,
         23,
         25
       ]
@@ -917,8 +757,8 @@
       "id": "cargo_9",
       "prefab": "cargo",
       "rect": [
-        1040,
-        515,
+        1200,
+        815,
         23,
         25
       ]
@@ -927,8 +767,8 @@
       "id": "south_well",
       "prefab": "well",
       "rect": [
-        630,
-        941,
+        790,
+        1241,
         30,
         28
       ]
@@ -937,8 +777,8 @@
       "id": "yangtze_sailboat_north",
       "prefab": "nj_dock",
       "rect": [
-        16,
-        92,
+        176,
+        392,
         123,
         160
       ]
@@ -947,8 +787,8 @@
       "id": "yangtze_sailboat_south",
       "prefab": "nj_dock",
       "rect": [
-        7,
-        260,
+        167,
+        560,
         119,
         145
       ]
@@ -957,8 +797,8 @@
       "id": "capital_3",
       "prefab": "capital_produce",
       "rect": [
-        680,
-        471,
+        840,
+        771,
         45,
         34
       ]
@@ -967,8 +807,8 @@
       "id": "capital_5",
       "prefab": "capital_books",
       "rect": [
-        797,
-        253,
+        957,
+        553,
         47,
         35
       ]
@@ -977,8 +817,8 @@
       "id": "capital_6",
       "prefab": "capital_books",
       "rect": [
-        1102,
-        250,
+        1262,
+        550,
         46,
         35
       ]
@@ -987,8 +827,8 @@
       "id": "capital_7",
       "prefab": "capital_books",
       "rect": [
-        1210,
-        251,
+        1370,
+        551,
         48,
         35
       ]
@@ -997,8 +837,8 @@
       "id": "capital_8",
       "prefab": "capital_forge",
       "rect": [
-        367,
-        387,
+        527,
+        687,
         37,
         31
       ]
@@ -1007,8 +847,8 @@
       "id": "capital_9",
       "prefab": "capital_forge",
       "rect": [
-        568,
-        462,
+        728,
+        762,
         31,
         33
       ]
@@ -1017,8 +857,8 @@
       "id": "capital_10",
       "prefab": "capital_bales",
       "rect": [
-        260,
-        190,
+        420,
+        490,
         35,
         28
       ]
@@ -1027,8 +867,8 @@
       "id": "capital_11",
       "prefab": "capital_bales",
       "rect": [
-        330,
-        314,
+        490,
+        614,
         36,
         27
       ]
@@ -1037,8 +877,8 @@
       "id": "capital_12",
       "prefab": "quest_cart_broken",
       "rect": [
-        265,
-        315,
+        425,
+        615,
         44,
         30
       ]
@@ -1047,8 +887,8 @@
       "id": "capital_13",
       "prefab": "capital_grain_cart",
       "rect": [
-        236,
-        192,
+        396,
+        492,
         35,
         25
       ]
@@ -1057,8 +897,8 @@
       "id": "capital_14",
       "prefab": "capital_laundry",
       "rect": [
-        563,
-        174,
+        723,
+        474,
         36,
         25
       ]
@@ -1067,8 +907,8 @@
       "id": "capital_15",
       "prefab": "capital_laundry",
       "rect": [
-        655,
-        314,
+        815,
+        614,
         39,
         26
       ]
@@ -1077,8 +917,8 @@
       "id": "capital_16",
       "prefab": "capital_laundry",
       "rect": [
-        812,
-        985,
+        972,
+        1285,
         39,
         25
       ]
@@ -1087,8 +927,8 @@
       "id": "capital_17",
       "prefab": "capital_dummy",
       "rect": [
-        1240,
-        689,
+        1400,
+        989,
         21,
         41
       ]
@@ -1097,8 +937,8 @@
       "id": "capital_18",
       "prefab": "capital_rack",
       "rect": [
-        1363,
-        690,
+        1523,
+        990,
         29,
         37
       ]
@@ -1107,8 +947,8 @@
       "id": "capital_19",
       "prefab": "capital_tea",
       "rect": [
-        1005,
-        740,
+        1165,
+        1040,
         38,
         39
       ]
@@ -1117,8 +957,8 @@
       "id": "capital_21",
       "prefab": "capital_tea",
       "rect": [
-        1385,
-        887,
+        1545,
+        1187,
         39,
         38
       ]
@@ -1127,8 +967,8 @@
       "id": "capital_22",
       "prefab": "capital_planter",
       "rect": [
-        1062,
-        468,
+        1222,
+        768,
         26,
         30
       ]
@@ -1137,8 +977,8 @@
       "id": "capital_23",
       "prefab": "capital_planter",
       "rect": [
-        1318,
-        466,
+        1478,
+        766,
         26,
         30
       ]
@@ -1147,8 +987,8 @@
       "id": "capital_24",
       "prefab": "capital_planter",
       "rect": [
-        605,
-        703,
+        765,
+        1003,
         25,
         29
       ]
@@ -1157,8 +997,8 @@
       "id": "capital_25",
       "prefab": "capital_planter",
       "rect": [
-        942,
-        704,
+        1102,
+        1004,
         25,
         29
       ]
@@ -1167,8 +1007,8 @@
       "id": "capital_26",
       "prefab": "capital_planter",
       "rect": [
-        1110,
-        941,
+        1270,
+        1241,
         23,
         28
       ]
@@ -1177,8 +1017,8 @@
       "id": "capital_lantern_0",
       "prefab": "capital_lantern",
       "rect": [
-        725,
-        462,
+        835,
+        765,
         30,
         47
       ]
@@ -1187,8 +1027,8 @@
       "id": "capital_lantern_1",
       "prefab": "capital_lantern",
       "rect": [
-        1000,
-        470,
+        1160,
+        770,
         30,
         47
       ]
@@ -1197,8 +1037,8 @@
       "id": "capital_lantern_2",
       "prefab": "capital_lantern",
       "rect": [
-        605,
-        671,
+        765,
+        971,
         30,
         47
       ]
@@ -1207,8 +1047,8 @@
       "id": "capital_lantern_3",
       "prefab": "capital_lantern",
       "rect": [
-        942,
-        673,
+        1102,
+        973,
         30,
         47
       ]
@@ -1217,8 +1057,8 @@
       "id": "capital_lantern_4",
       "prefab": "capital_lantern",
       "rect": [
-        1080,
-        710,
+        1240,
+        1010,
         30,
         47
       ]
@@ -1227,8 +1067,8 @@
       "id": "capital_lantern_5",
       "prefab": "capital_lantern",
       "rect": [
-        1397,
-        730,
+        1557,
+        1030,
         30,
         47
       ]
@@ -1237,8 +1077,8 @@
       "id": "capital_lantern_6",
       "prefab": "capital_lantern",
       "rect": [
-        1090,
-        910,
+        1250,
+        1210,
         30,
         47
       ]
@@ -1247,8 +1087,8 @@
       "id": "capital_lantern_7",
       "prefab": "capital_lantern",
       "rect": [
-        1285,
-        932,
+        1445,
+        1232,
         30,
         47
       ]
@@ -1257,8 +1097,8 @@
       "id": "capital_lantern_8",
       "prefab": "capital_lantern",
       "rect": [
-        1270,
-        459,
+        1430,
+        759,
         30,
         47
       ]
@@ -1267,8 +1107,8 @@
       "id": "capital_lion_left",
       "prefab": "capital_lion",
       "rect": [
-        1089,
-        472,
+        1249,
+        772,
         23,
         37
       ]
@@ -1277,28 +1117,18 @@
       "id": "capital_lion_right",
       "prefab": "capital_lion",
       "rect": [
-        1286,
-        472,
+        1446,
+        772,
         23,
         37
-      ]
-    },
-    {
-      "id": "imperial_continuous_corner",
-      "prefab": "imperial_corner",
-      "rect": [
-        1270,
-        -20,
-        344,
-        516
       ]
     },
     {
       "id": "silk_cloth_chest",
       "prefab": "silk_chest",
       "rect": [
-        663,
-        179,
+        823,
+        479,
         30,
         28
       ]
@@ -1307,8 +1137,8 @@
       "id": "painted_bridge_0",
       "prefab": "painted_bridge",
       "rect": [
-        380,
-        740,
+        540,
+        1040,
         69,
         164
       ]
@@ -1317,8 +1147,8 @@
       "id": "painted_bridge_1",
       "prefab": "painted_bridge",
       "rect": [
-        717,
-        750,
+        877,
+        1050,
         67,
         155
       ]
@@ -1327,8 +1157,8 @@
       "id": "painted_bridge_2",
       "prefab": "painted_bridge",
       "rect": [
-        1284,
-        780,
+        1444,
+        1080,
         70,
         144
       ]
@@ -1337,8 +1167,8 @@
       "id": "qinhuai_west_pavilion",
       "prefab": "nj_tea_house",
       "rect": [
-        70,
-        887,
+        230,
+        1187,
         130,
         98
       ]
@@ -1347,8 +1177,8 @@
       "id": "qinhuai_east_pavilion",
       "prefab": "nj_tea_house",
       "rect": [
-        1370,
-        885,
+        1530,
+        1185,
         115,
         98
       ]
@@ -1357,124 +1187,178 @@
       "id": "capital_2",
       "prefab": "capital_silk",
       "rect": [
-        909,
-        390,
+        1069,
+        690,
         28,
         22
+      ]
+    },
+    {
+      "id": "imperial_roofs",
+      "prefab": "capital_palace_roofs",
+      "rect": [
+        695,
+        10,
+        410,
+        130
+      ]
+    },
+    {
+      "id": "imperial_main_gate",
+      "prefab": "capital_palace_gate",
+      "rect": [
+        775,
+        120,
+        250,
+        180
+      ]
+    },
+    {
+      "id": "imperial_wall_0",
+      "prefab": "capital_palace_wall_0",
+      "rect": [
+        650,
+        213.6,
+        140,
+        86.4
+      ]
+    },
+    {
+      "id": "imperial_wall_1",
+      "prefab": "capital_palace_wall_1",
+      "rect": [
+        1010,
+        213.6,
+        140,
+        86.4
       ]
     }
   ],
   "districts": [
     {
+      "id": "imperial",
+      "name": "황궁 외곽·궁성문",
+      "rect": [
+        650,
+        0,
+        500,
+        330
+      ],
+      "label": [
+        900,
+        310
+      ]
+    },
+    {
       "id": "harbor",
       "name": "장강 나루·하역 창고",
       "rect": [
-        36,
-        75,
+        196,
+        375,
         405,
         260
       ],
       "label": [
-        290,
-        235
+        450,
+        535
       ]
     },
     {
       "id": "residential",
       "name": "주거구역·서책거리",
       "rect": [
-        442,
-        65,
+        602,
+        365,
         870,
         247
       ],
       "label": [
-        810,
-        170
+        970,
+        470
       ]
     },
     {
       "id": "government",
       "name": "관아·황성 외곽",
       "rect": [
-        1020,
-        290,
+        1180,
+        590,
         445,
         235
       ],
       "label": [
-        1190,
-        407
+        1350,
+        707
       ]
     },
     {
       "id": "workshops",
       "name": "공방거리",
       "rect": [
-        218,
-        328,
+        378,
+        628,
         500,
         190
       ],
       "label": [
-        413,
-        435
+        573,
+        735
       ]
     },
     {
       "id": "market",
       "name": "상점가",
       "rect": [
-        718,
-        287,
-        302,
-        235
+        878,
+        587,
+        322,
+        280
       ],
       "label": [
-        846,
-        470
+        1006,
+        770
       ]
     },
     {
       "id": "inn",
       "name": "객잔",
       "rect": [
-        440,
-        540,
+        600,
+        840,
         570,
         213
       ],
       "label": [
-        770,
-        628
+        930,
+        928
       ]
     },
     {
       "id": "martial",
       "name": "무관·연무장",
       "rect": [
-        1020,
-        540,
+        1180,
+        840,
         440,
         213
       ],
       "label": [
-        1245,
-        660
+        1405,
+        960
       ]
     },
     {
       "id": "qinhuai",
       "name": "진회하·수변 골목",
       "rect": [
-        36,
-        750,
+        196,
+        1050,
         1464,
         254
       ],
       "label": [
-        945,
-        910
+        1105,
+        1210
       ]
     }
   ],
@@ -1482,12 +1366,12 @@
     {
       "points": [
         [
-          40,
-          530
+          200,
+          830
         ],
         [
-          1500,
-          530
+          1660,
+          830
         ]
       ],
       "width": 30
@@ -1495,12 +1379,12 @@
     {
       "points": [
         [
-          420,
-          75
+          580,
+          375
         ],
         [
-          420,
-          998
+          580,
+          1298
         ]
       ],
       "width": 28
@@ -1508,12 +1392,25 @@
     {
       "points": [
         [
-          733,
-          75
+          900,
+          320
         ],
         [
-          754,
-          990
+          900,
+          1388
+        ]
+      ],
+      "width": 56
+    },
+    {
+      "points": [
+        [
+          1135,
+          375
+        ],
+        [
+          1135,
+          1290
         ]
       ],
       "width": 28
@@ -1521,37 +1418,24 @@
     {
       "points": [
         [
-          975,
-          75
+          1508,
+          615
         ],
         [
-          975,
-          990
-        ]
-      ],
-      "width": 28
-    },
-    {
-      "points": [
-        [
-          1348,
-          315
+          1550,
+          750
         ],
         [
-          1390,
-          450
+          1585,
+          830
         ],
         [
-          1425,
-          530
+          1610,
+          900
         ],
         [
-          1450,
-          600
-        ],
-        [
-          1420,
-          710
+          1580,
+          1010
         ]
       ],
       "width": 30
@@ -1559,12 +1443,12 @@
     {
       "points": [
         [
-          235,
-          315
+          395,
+          615
         ],
         [
-          1320,
-          315
+          1480,
+          615
         ]
       ],
       "width": 23
@@ -1572,12 +1456,12 @@
     {
       "points": [
         [
-          230,
-          710
+          390,
+          1010
         ],
         [
-          1420,
-          710
+          1580,
+          1010
         ]
       ],
       "width": 25
@@ -1585,101 +1469,118 @@
     {
       "points": [
         [
-          240,
-          880
+          400,
+          1180
         ],
         [
-          1180,
-          880
+          1340,
+          1180
         ]
       ],
       "width": 23
+    },
+    {
+      "points": [
+        [
+          170,
+          830
+        ],
+        [
+          415,
+          830
+        ]
+      ],
+      "width": 32
+    },
+    {
+      "points": [
+        [
+          1630,
+          1295
+        ],
+        [
+          1790,
+          1295
+        ]
+      ],
+      "width": 32
+    },
+    {
+      "points": [
+        [
+          385,
+          60
+        ],
+        [
+          385,
+          340
+        ],
+        [
+          580,
+          340
+        ],
+        [
+          580,
+          375
+        ]
+      ],
+      "width": 30
     }
   ],
   "terrain_blockers": [
     [
-      36,
-      75,
-      145,
+      20,
+      375,
+      321,
       305
     ],
     [
-      36,
-      564,
-      38,
+      20,
+      864,
+      215,
       140
     ],
     [
-      50,
-      780,
+      210,
+      1080,
       332,
       65
     ],
     [
-      449,
-      800,
+      609,
+      1100,
       268,
       58
     ],
     [
-      784,
-      818,
+      944,
+      1118,
       500,
       63
     ],
     [
-      1354,
-      846,
+      1514,
+      1146,
       146,
       52
     ],
     [
-      1415,
-      75,
-      85,
-      370
+      20,
+      1075,
+      190,
+      125
     ],
     [
-      1330,
-      75,
-      206,
-      60
+      1660,
+      1075,
+      176,
+      125
     ],
     [
-      1352,
-      133,
-      184,
-      60
-    ],
-    [
-      1374,
-      191,
-      162,
-      60
-    ],
-    [
-      1396,
-      249,
-      140,
-      60
-    ],
-    [
-      1418,
-      307,
-      118,
-      60
-    ],
-    [
-      1440,
-      365,
-      96,
-      60
-    ],
-    [
-      1462,
-      423,
-      74,
-      60
+      650,
+      0,
+      500,
+      300
     ]
   ],
   "npcs": [],
@@ -2638,6 +2539,90 @@
       "preserve_aspect": true,
       "smooth_filter": true,
       "contact_shadow": true
+    },
+    "capital_palace_gate": {
+      "texture": "res://assets/maps/nanjing/capital/imperial-frontage.png",
+      "source": [
+        0,
+        470,
+        768,
+        530
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0.04,
+          0.55,
+          0.92,
+          0.45
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
+    },
+    "capital_palace_roofs": {
+      "texture": "res://assets/maps/nanjing/capital/imperial-frontage.png",
+      "source": [
+        768,
+        570,
+        768,
+        390
+      ],
+      "kind": "building",
+      "footprints": [
+        [
+          0,
+          0.7,
+          1,
+          0.3
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
+    },
+    "capital_palace_wall_0": {
+      "texture": "res://assets/maps/nanjing/capital/imperial-frontage.png",
+      "source": [
+        30,
+        80,
+        583.3333333333334,
+        360
+      ],
+      "kind": "wall",
+      "footprints": [
+        [
+          0,
+          0.55,
+          1,
+          0.45
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
+    },
+    "capital_palace_wall_1": {
+      "texture": "res://assets/maps/nanjing/capital/imperial-frontage.png",
+      "source": [
+        30,
+        80,
+        583.3333333333334,
+        360
+      ],
+      "kind": "wall",
+      "footprints": [
+        [
+          0,
+          0.55,
+          1,
+          0.45
+        ]
+      ],
+      "preserve_aspect": true,
+      "smooth_filter": true,
+      "contact_shadow": true
     }
   },
   "ambience": {
@@ -2648,8 +2633,8 @@
   "art_revision": "capital-market-style-v1",
   "market_slice": {
     "bounds": [
-      738,
-      286,
+      918,
+      586,
       292,
       240
     ],
@@ -2657,5 +2642,140 @@
     "reference": "취월루 실내의 재질 밀도 · 남경 시장 파일럿",
     "materials": "res://assets/maps/nanjing/market-slice/materials.png"
   },
-  "capital_materials": true
+  "capital_materials": true,
+  "capital_axis": 900,
+  "fortification_plan": {
+    "horizontal": [
+      [
+        "city_north_w",
+        240,
+        315,
+        300
+      ],
+      [
+        "city_north_nw",
+        455,
+        650,
+        300
+      ],
+      [
+        "city_north_e",
+        1150,
+        1680,
+        300
+      ],
+      [
+        "city_south_w",
+        240,
+        830,
+        1380
+      ],
+      [
+        "city_south_e",
+        970,
+        1680,
+        1380
+      ]
+    ],
+    "vertical": [
+      [
+        "city_west_a",
+        240,
+        275,
+        800
+      ],
+      [
+        "city_west_b",
+        240,
+        860,
+        1110
+      ],
+      [
+        "city_west_c",
+        240,
+        1175,
+        1380
+      ],
+      [
+        "city_east_a",
+        1660,
+        275,
+        1110
+      ],
+      [
+        "city_east_b",
+        1660,
+        1175,
+        1265
+      ],
+      [
+        "city_east_c",
+        1660,
+        1325,
+        1380
+      ]
+    ],
+    "gates": [
+      [
+        "northwest_city_gate",
+        "front",
+        [
+          305,
+          140,
+          160,
+          160
+        ]
+      ],
+      [
+        "west_city_gate",
+        "west",
+        [
+          207,
+          703,
+          77,
+          200
+        ]
+      ],
+      [
+        "west_river_gate",
+        "west",
+        [
+          207,
+          1013,
+          77,
+          200
+        ]
+      ],
+      [
+        "east_river_gate",
+        "east",
+        [
+          1630,
+          1013,
+          77,
+          200
+        ]
+      ],
+      [
+        "east_city_gate",
+        "east",
+        [
+          1630,
+          1168,
+          77,
+          200
+        ]
+      ],
+      [
+        "south_city_gate",
+        "postern",
+        [
+          820,
+          1302,
+          160,
+          78
+        ]
+      ]
+    ]
+  }
 }

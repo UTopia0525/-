@@ -6,8 +6,8 @@
       "role": "약재상",
       "post": "약재상",
       "point": [
-        780,
-        519
+        1000,
+        860
       ],
       "basic_portrait": "female_herbalist",
       "frame": 5,
@@ -38,8 +38,8 @@
       "role": "장인",
       "post": "장인",
       "point": [
-        350,
-        498
+        510,
+        798
       ],
       "basic_portrait": "male_blacksmith",
       "frame": 4,
@@ -70,8 +70,8 @@
       "role": "교관",
       "post": "교관",
       "point": [
-        1325,
-        715
+        1485,
+        1015
       ],
       "basic_portrait": "male_middle",
       "frame": 6,
@@ -103,8 +103,8 @@
       "role": "포졸",
       "post": "포졸",
       "point": [
-        1255,
-        496
+        1415,
+        796
       ],
       "basic_portrait": "male_constable",
       "frame": 4,
@@ -135,8 +135,8 @@
       "role": "객잔 주인",
       "post": "객잔 주인",
       "point": [
-        785,
-        724
+        810,
+        1043
       ],
       "basic_portrait": "female_innkeeper",
       "frame": 5,
@@ -166,8 +166,8 @@
       "role": "하역 인부",
       "post": "하역 인부",
       "point": [
-        390,
-        270
+        550,
+        570
       ],
       "basic_portrait": "male_dockworker",
       "frame": 6,
@@ -197,8 +197,8 @@
       "role": "창고 서리",
       "post": "창고 서리",
       "point": [
-        350,
-        220
+        510,
+        520
       ],
       "basic_portrait": "male_common_b",
       "frame": 7,
@@ -228,8 +228,8 @@
       "role": "뱃사공",
       "post": "뱃사공",
       "point": [
-        482,
-        883
+        642,
+        1183
       ],
       "basic_portrait": "male_middle",
       "frame": 6,
@@ -259,8 +259,8 @@
       "role": "주민",
       "post": "주민",
       "point": [
-        285,
-        994
+        445,
+        1294
       ],
       "basic_portrait": "female_elder",
       "frame": 5,
@@ -291,8 +291,8 @@
       "role": "노점상",
       "post": "노점상",
       "point": [
-        390,
-        555
+        550,
+        855
       ],
       "basic_portrait": "male_young",
       "frame": 7,
@@ -322,8 +322,8 @@
       "role": "서적상",
       "post": "서적상",
       "point": [
-        966,
-        286
+        1126,
+        586
       ],
       "basic_portrait": "male_elder",
       "frame": 6,
@@ -353,8 +353,8 @@
       "role": "찻집 일꾼",
       "post": "찻집 일꾼",
       "point": [
-        1400,
-        993
+        1560,
+        1293
       ],
       "basic_portrait": "female_common_a",
       "frame": 5,
@@ -384,8 +384,8 @@
       "role": "하역 인부",
       "post": "하역 인부",
       "point": [
-        390,
-        205
+        550,
+        505
       ],
       "basic_portrait": "male_dockworker",
       "frame": 6,
@@ -416,8 +416,8 @@
       "role": "포목 손님",
       "post": "포목 손님",
       "point": [
-        585,
-        510
+        745,
+        810
       ],
       "basic_portrait": "female_common_b",
       "frame": 5,
@@ -448,8 +448,8 @@
       "role": "심부름꾼",
       "post": "심부름꾼",
       "point": [
-        1024,
-        512
+        1184,
+        812
       ],
       "basic_portrait": "male_young",
       "frame": 7,
@@ -480,8 +480,8 @@
       "role": "객잔 손님",
       "post": "객잔 손님",
       "point": [
-        586,
-        740
+        746,
+        1040
       ],
       "basic_portrait": "male_common_b",
       "frame": 4,
@@ -512,8 +512,8 @@
       "role": "서생",
       "post": "서생",
       "point": [
-        858,
-        285
+        1018,
+        585
       ],
       "basic_portrait": "male_young",
       "frame": 7,
@@ -544,8 +544,8 @@
       "role": "관아 심부름꾼",
       "post": "관아 심부름꾼",
       "point": [
-        1100,
-        282
+        1260,
+        582
       ],
       "basic_portrait": "male_middle",
       "frame": 4,
@@ -576,8 +576,8 @@
       "role": "주민",
       "post": "주민",
       "point": [
-        714,
-        278
+        860,
+        578
       ],
       "basic_portrait": "female_middle",
       "frame": 5,
@@ -609,8 +609,8 @@
       "role": "나루 손님",
       "post": "나루 손님",
       "point": [
-        800,
-        890
+        960,
+        1190
       ],
       "basic_portrait": "female_common_a",
       "frame": 5,

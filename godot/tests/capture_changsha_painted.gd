@@ -17,6 +17,7 @@ func run() -> void:
 	await create_timer(.2).timeout;await RenderingServer.frame_post_draw
 	assert(view.get_texture().get_image().save_png("res://assets/maps/changsha/painted/overview-floor.png")==OK)
 	var prefabs=JSON.parse_string(FileAccess.get_file_as_string(data.prefabs_path))
+	prefabs.merge(data.get("prefabs",{}),true)
 	var actors=Node2D.new();actors.y_sort_enabled=true;view.add_child(actors)
 	for spec in data.objects:
 		var node=load("res://scripts/city_scenery.gd").new();node.configure(spec,prefabs[spec.prefab],Vector2.ONE);actors.add_child(node)

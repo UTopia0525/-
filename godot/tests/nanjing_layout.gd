@@ -9,15 +9,15 @@ func run() -> void:
 	game.options.seen.append_array(["city","dialogue","trade"]);game.start_wuchang()
 	game.exploration.load_area("nanjing");game.exploration.set_active(true);await physics_frame
 	var w=game.exploration
-	for p in [[414,820],[750,840],[1324,850]]:check(w.can_stand(w.city_point(p)),"bridge center is traversable "+str(p))
-	for p in [[560,825],[1020,855],[1435,867]]:check(not w.can_stand(w.city_point(p)),"river blocks walking "+str(p))
+	for p in [[414,820],[750,840],[1324,850]]:check(w.can_stand(w.city_point([p[0]+160,p[1]+300])),"bridge center is traversable "+str(p))
+	for p in [[560,825],[1020,855],[1435,867]]:check(not w.can_stand(w.city_point([p[0]+160,p[1]+300])),"river blocks walking "+str(p))
 	# The riverside landing now opens directly into the city thoroughfare.
-	for x in range(110,261,5):check(w.can_stand(w.city_point([x,530])),"open quay entrance "+str(x))
-	for x in range(1380,1496,15):check(w.can_stand(w.city_point([x,530])),"avenue remains outside palace corner "+str(x))
-	for pt in [[1450,560],[1450,600],[1430,680]]:check(w.can_stand(w.city_point(pt)),"south turning palace verge "+str(pt))
-	w.player.position=w.city_point([255,530])
+	for x in range(110,261,5):check(w.can_stand(w.city_point([x+160,830])),"open quay entrance "+str(x))
+	for x in range(1380,1496,15):check(w.can_stand(w.city_point([x+160,830])),"avenue remains outside palace corner "+str(x))
+	for pt in [[1450,560],[1450,600],[1430,680]]:check(w.can_stand(w.city_point([pt[0]+160,pt[1]+300])),"south turning palace verge "+str(pt))
+	w.player.position=w.city_point([415,830])
 	for npc in w.ambient_nodes:check(not w.path_to(npc.position,true).is_empty(),"every civilian/quest actor reachable "+str(npc.name))
-	check(not w.scenery_nodes.any(func(n):return n.name=="west_city_gate"),"no palace gate/wall fragment at the river landing")
+	check(w.scenery_nodes.any(func(n):return n.name=="west_city_gate" and n.definition.prefab=="fort_west"),"west-facing city gate at landing")
 	var quay_exit=w.travel_exits.filter(func(e):return e.id=="travel:hamlet")[0]
 	check(not w.path_to(quay_exit.position,true).is_empty(),"landing exit remains accessible from the city")
 	for exit in w.travel_exits:check(not w.path_to(exit.position,true).is_empty(),"all travel exits stay reachable "+str(exit.name))
@@ -30,6 +30,6 @@ func run() -> void:
 		var plot=w.regional_map.rect(node.definition.rect)
 		check(plot.grow(.1).encloses(node.visual_rect),"building remains inside its plot "+str(node.name))
 	check(w.background.material.shader.resource_path.ends_with("nanjing_terrain.gdshader"),"playable scene uses painted material detail")
-	check(w.city_data.reference=="docs/cities/designs/nanjing-npc-preview.png","original design explicitly remains the source of layout")
+	check(w.city_data.capital_axis==900 and w.city_data.layout_version==3,"new avenue/northern palace layout explicitly versioned")
 	game.queue_free();await process_frame
 	print("NANJING_LAYOUT: "+("FAIL" if failed else "PASS"));quit(1 if failed else 0)

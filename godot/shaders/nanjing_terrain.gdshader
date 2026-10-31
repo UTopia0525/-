@@ -5,6 +5,10 @@ render_mode unshaded;
 uniform sampler2D material_atlas : source_color, filter_linear;
 uniform sampler2D district_mask : filter_linear;
 uniform vec2 world_extent=vec2(6144.0,4096.0);
+uniform bool expanded_layout=false;
+uniform sampler2D original_terrain:source_color,filter_linear;
+uniform vec2 art_extent=vec2(1536.0,1024.0);
+uniform vec2 layout_origin=vec2(0.0);
 uniform bool market_enabled=false;
 uniform bool capital_materials=false;
 uniform vec4 market_bounds=vec4(738.0,286.0,292.0,240.0);
@@ -21,9 +25,13 @@ vec4 swatch(float id,vec2 point) {
 	return texture(material_atlas,(cell+uv)/vec2(3.0,2.0));
 }
 void fragment() {
-	vec4 base=texture(TEXTURE,UV);
+	vec2 logical_art=UV*art_extent-layout_origin;
+	vec2 terrain_uv=clamp(logical_art/vec2(1536.0,1024.0),vec2(.001),vec2(.999));
+	if(expanded_layout && logical_art.x<0.0)terrain_uv.x=((logical_art.y>775.0 && logical_art.y<900.0?400.0:0.0)+UV.x*art_extent.x)/1536.0;
+	if(expanded_layout && logical_art.x>1536.0)terrain_uv.x=(500.0+logical_art.x-1536.0)/1536.0;
+	vec4 base=expanded_layout?texture(original_terrain,terrain_uv):texture(TEXTURE,UV);
 	vec4 mask=texture(district_mask,UV);
-	vec2 px=vec2(2.0)/vec2(1536.0,1024.0);
+	vec2 px=vec2(2.0)/art_extent;
 	mask=(mask*4.0+texture(district_mask,UV+vec2(px.x,0.0))+texture(district_mask,UV-vec2(px.x,0.0))+texture(district_mask,UV+vec2(0.0,px.y))+texture(district_mask,UV-vec2(0.0,px.y)))/8.0;
 	vec2 point=UV*world_extent;
 	vec3 earth=swatch(0.0,point).rgb;
@@ -41,14 +49,14 @@ void fragment() {
 	floor_ink=mix(floor_ink,quay,mask.b);
 	// Retain hand-authored joins, bank edging and local colour variation.
 	vec3 tone=base.rgb/max(vec3(0.18),vec3(dot(base.rgb,vec3(.299,.587,.114))));
-	floor_ink*=mix(vec3(1.0),clamp(tone,vec3(.75),vec3(1.25)),.16);
+	if(!expanded_layout)floor_ink*=mix(vec3(1.0),clamp(tone,vec3(.75),vec3(1.25)),.16);
 	vec3 final_ink=mix(base.rgb,floor_ink,mask.a);
 	// Preserve vegetation/edging from the authored floor instead of painting over it.
 	float greenery=smoothstep(.015,.10,base.g-base.r);
 	greenery*=smoothstep(.0,.08,base.g-base.b);
 	final_ink=mix(final_ink,base.rgb,greenery*(0.85*(1.0-float(capital_materials))));
 	float water=smoothstep(.06,.22,base.b-base.r)*smoothstep(.01,.10,base.b-base.g);
-	vec2 art=UV*vec2(1536.0,1024.0);
+	vec2 art=logical_art;
 	float river_band=step(775.0,art.y)*(1.0-step(900.0,art.y));
 	float harbor=(1.0-step(181.0,art.x))*(1.0-step(380.0,art.y));
 	harbor=max(harbor,(1.0-step(75.0,art.x))*step(564.0,art.y)*(1.0-step(714.0,art.y)));

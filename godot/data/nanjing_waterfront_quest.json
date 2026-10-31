@@ -4,16 +4,16 @@
     "money": 250
   },
   "suspect_point": [
-    195,
-    225
+    355,
+    525
   ],
   "rope_point": [
-    165,
-    385
+    325,
+    685
   ],
   "grain_point": [
-    190,
-    290
+    350,
+    590
   ],
   "encounter": {
     "id": "nanjing_nochil",

@@ -119,7 +119,7 @@ func refresh_world() -> void:
 		if text.is_empty():continue
 		var mark=UI.label(a,text,Rect2(-40,-w.Metrics.CITIZEN_HEIGHT-w.Metrics.QUEST_GAP-w.Metrics.NAME_GAP-46,80,92),68,Color("ffe14b"));mark.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
 		mark.add_theme_color_override("font_outline_color",Color("2b2614"));mark.add_theme_constant_override("outline_size",5);nodes.append(mark)
-	for def in [[MARKET,"비단 노점",[960,380]],[CHEST,"주씨의 천 상자",[690,318]]]:
+	for def in [[MARKET,"비단 노점",[1120,680]],[CHEST,"주씨의 천 상자",[850,618]]]:
 		var point=w.city_point(def[2]);var node: Node2D
 		if def[0]==CHEST:
 			for scenery in w.scenery_nodes:

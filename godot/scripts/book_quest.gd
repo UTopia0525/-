@@ -29,7 +29,7 @@ func track() -> void:game.quest_navigation.update_quest(ID,stage())
 func prepare_residents(entries: Array) -> void:
 	for entry in entries:
 		if entry.id==SCHOLAR:
-			if phase not in ["ready","completed"]:entry.point=[964,650]
+			if phase not in ["ready","completed"]:entry.point=[1124,950]
 			entry.show_name=true
 func handle_interaction(id: String) -> bool:
 	if game.exploration.area_name!="nanjing":return false

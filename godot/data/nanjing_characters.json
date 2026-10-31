@@ -7,8 +7,8 @@
       "role": "점소이",
       "post": "점소이",
       "point": [
-        880,
-        724
+        860,
+        1046
       ],
       "basic_portrait": "male_young",
       "frame": 7,
@@ -35,8 +35,8 @@
       "role": "남궁세가",
       "post": "남궁세가",
       "point": [
-        399,
-        267
+        559,
+        567
       ],
       "basic_portrait": "female_young",
       "frame": 5,
@@ -46,8 +46,8 @@
       },
       "portrait": "res://assets/portraits/namgung/yeonseo.png",
       "arrest_point": [
-        382,
-        334
+        542,
+        634
       ]
     },
     {
@@ -57,8 +57,8 @@
       "role": "접객 담당",
       "post": "접객 담당",
       "point": [
-        1190,
-        970
+        1350,
+        1270
       ],
       "basic_portrait": "female_middle",
       "frame": 5,
@@ -74,8 +74,8 @@
       "role": "하역 인부",
       "post": "하역 인부",
       "point": [
-        634,
-        991
+        794,
+        1291
       ],
       "basic_portrait": "male_farmer",
       "frame": 6,
@@ -91,8 +91,8 @@
       "role": "상단 관사",
       "post": "상단 관사",
       "point": [
-        323,
-        324
+        483,
+        624
       ],
       "basic_portrait": "male_middle",
       "frame": 4,

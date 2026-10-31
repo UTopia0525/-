@@ -9,7 +9,7 @@ func run() -> void:
 	game.options.seen.append_array(["city","dialogue","trade"]);game.start_wuchang()
 	var w=game.exploration
 	w.load_area("nanjing");w.set_active(true);await physics_frame
-	w.player.position=w.city_point([888,530])
+	w.player.position=w.city_point([1068,830])
 	var shops=[]
 	for node in w.scenery_nodes:
 		if not str(node.name).begins_with("market_shop_"):continue
@@ -23,15 +23,15 @@ func run() -> void:
 			for bounds in node.collision_rects:check(not bounds.grow(16).has_point(actor.position),"NPC feet outside building "+str(actor.name))
 	check(shops.size()==4,"only four authored market storefronts")
 	for p in [[888,315],[888,360],[888,405],[888,490],[888,530],[820,402],[960,402],[820,521],[961,521]]:
-		var point=w.city_point(p)
+		var point=w.city_point([p[0]+180,p[1]+300])
 		check(w.can_stand(point),"clear alley/doorstep "+str(p))
 		check(not w.path_to(point).is_empty(),"reachable alley/doorstep "+str(p))
 	for actor in w.ambient_nodes:check(not w.path_to(actor.position,true).is_empty(),"all residents remain accessible "+str(actor.name))
 	# Test actual physics rather than navigation alone on the central north-south lane.
-	w.player.position=w.city_point([888,442]);w.player.set_physics_process(false)
+	w.player.position=w.city_point([1068,742]);w.player.set_physics_process(false)
 	for i in range(90):
 		w.player.velocity=Vector2(0,-360);w.player.move_and_slide();await physics_frame
-	check(w.player.position.y<w.city_point([888,360]).y,"physical walk crosses market alley")
+	check(w.player.position.y<w.city_point([1068,660]).y,"physical walk crosses market alley")
 	w.player.velocity=Vector2.ZERO;w.player.set_physics_process(true)
 	var merchant=w.ambient_nodes.filter(func(n):return n.get_meta("npc_id")=="nj_merchant")[0]
 	var approach=w.path_to(merchant.position,true)

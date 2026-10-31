@@ -5,6 +5,7 @@ static func make(data: Dictionary) -> ShaderMaterial:
 	image.fill_rect(Rect2i(260,80,890,875),Color(0,0,0,.94))
 	for road in data.road_centers:
 		image.fill_rect(Rect2i(road[0],road[1],road[2],road[3]),Color(.75,0,0,.94))
+	image.fill_rect(Rect2i(235,150,40,100),Color(.75,0,0,.94))
 	# Modest paved thresholds; leave most work yards as compacted earth.
 	for spec in data.objects:
 		if not spec.prefab in ["home","warehouse","inn","government","workshop","martial_hall","farmhouse","shrine"]:continue

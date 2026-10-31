@@ -85,7 +85,7 @@ func run() -> void:
 		check(paths.size()==unique.size(),"distinct portraits")
 		drain()
 	check(q.phase=="ready" and q.marker_for(q.LADY)=="?" and game.ordinary_quests.marker_for(q.LADY)=="?","ready report question mark reaches full map and minimap")
-	game.city_overview.open_for(w,q.goal(w));check(game.city_overview.district_labels.size()==8,"full map renders all eight district labels");game.city_overview.hide()
+	game.city_overview.open_for(w,q.goal(w));check(game.city_overview.district_labels.size()==w.city_data.districts.size(),"full map renders city and new palace district labels");game.city_overview.hide()
 	check(game.money==initial_money and game.progress.favor_for("namgung")==0,"no early rewards")
 	await approach(q.LADY)
 	# Finish just the report, leaving the automatic follow-up unread.

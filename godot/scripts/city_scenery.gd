@@ -35,6 +35,7 @@ func configure(spec: Dictionary, prefab: Dictionary, world_scale: Vector2) -> vo
 			add_child(shadow)
 	sprite = Sprite2D.new()
 	sprite.centered = false
+	sprite.flip_h=bool(prefab.get("flip_h",false))
 	sprite.texture = atlas
 	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR if prefab.get("smooth_filter",false) else CanvasItem.TEXTURE_FILTER_NEAREST
 	sprite.position = visual_rect.position - position
@@ -58,7 +59,7 @@ func configure(spec: Dictionary, prefab: Dictionary, world_scale: Vector2) -> vo
 				var section=Sprite2D.new();section.centered=false;section.texture=texture;section.position=Vector2(0,offset_y);sprite.add_child(section)
 			offset_y+=float(part[3])
 	for shape in prefab.footprints:
-		var bounds := Rect2(visual_rect.position + Vector2(shape[0], shape[1]) * visual_rect.size, Vector2(shape[2], shape[3]) * visual_rect.size)
+		var bounds := Rect2(visual_rect.position + Vector2(1.0-float(shape[0])-float(shape[2]) if prefab.get("flip_h",false) else shape[0], shape[1]) * visual_rect.size, Vector2(shape[2], shape[3]) * visual_rect.size)
 		collision_rects.append(bounds)
 		var collision := CollisionShape2D.new()
 		var rectangle := RectangleShape2D.new()

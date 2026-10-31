@@ -106,7 +106,7 @@ func refresh_world() -> void:
 		var tex=AtlasTexture.new();tex.atlas=load(prefab.texture);tex.region=Rect2(prefab.source[0],prefab.source[1],prefab.source[2],prefab.source[3])
 		prop.sprite.texture=tex;prop.sprite.scale=prop.visual_rect.size/tex.region.size
 		for tile in w.art_tiles:
-			if tile.target.position==Vector2(265,315):tile.texture=tex.atlas;tile.source=tex.region
+			if tile.target.position==prop.visual_rect.position/w.regional_map.world_scale:tile.texture=tex.atlas;tile.source=tex.region
 		w.objectives.append({"id":CART,"goal_id":CART,"name":"수리 대기 수레" if phase=="completed" else "부서진 곡물 수레","position":prop.position,"node":prop,"frame":-1,"important":is_target(CART)})
 		if phase=="cart":
 			var marker=UI.label(w.decorations,"◆",Rect2(prop.position+Vector2(-40,-190),Vector2(80,92)),68,Color("ffcf69"));marker.set_meta("hud_anchor",prop.position);marker.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;marker.z_index=6;nodes.append(marker)

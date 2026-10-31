@@ -83,6 +83,7 @@ func open_for(exploration, goal: Dictionary = {}) -> void:
 		var atlas=AtlasTexture.new();atlas.atlas=tile.texture;atlas.region=tile.source;section.texture=atlas
 		section.position=tile.target.position/Vector2(exploration.city_data.art_size[0],exploration.city_data.art_size[1])*map_rect.size
 		section.size=tile.target.size/Vector2(exploration.city_data.art_size[0],exploration.city_data.art_size[1])*map_rect.size
+		section.flip_h=bool(tile.get("flip_h",false))
 		section.mouse_filter=Control.MOUSE_FILTER_IGNORE;map_image.add_child(section)
 	for marker in actor_markers:
 		marker.free()

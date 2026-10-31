@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-31",
+  "references": [
+    "godot/assets/maps/hangzhou/painted/city-gate.png",
+    "godot/assets/maps/hangzhou/painted/city-walls.png",
+    "godot/assets/maps/wuchang/east-gate.png"
+  ],
+  "method": "Generated with approved art references, PNG originals copied unchanged. Atlas selection and horizontal mirror in Godot; front facades are not rotated or stretched.",
+  "assets": [
+    {
+      "file": "godot/assets/maps/fortifications/side-gate.png",
+      "source": "/workspace/generated_images/exec-4d1d6459-ec6a-45f7-99e6-91055d1a51ec.png",
+      "sha256": "ccdf0a4189a6ec96c85f284a2cfa1a3b481e79410366e6c09f02c8c2cf5e781c"
+    },
+    {
+      "file": "godot/assets/maps/fortifications/postern-gate.png",
+      "source": "/workspace/generated_images/exec-ffec1cc8-64b7-4264-9489-624d96174376.png",
+      "sha256": "b979dc285ec630d02fa31512adfb100ab3aecf017ed543a32c889b0e79973c8a"
+    },
+    {
+      "file": "godot/assets/maps/nanjing/capital/imperial-frontage.png",
+      "source": "/workspace/generated_images/exec-14ef2f24-cdb2-448c-9f02-6e97e53d2986.png",
+      "sha256": "cd0cf03dce5498da9634b375d140700d675277043902e10bbb1c463dd2790fca"
+    }
+  ]
+}

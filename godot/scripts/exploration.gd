@@ -210,7 +210,7 @@ func _load_regional(value: String) -> void:
 				var height=float(part[3])/float(prefab.source[3])*target.size.y
 				art_tiles.append({"texture":load(prefab.texture),"source":Rect2(part[0],part[1],part[2],part[3]),"target":Rect2(target.position+Vector2(0,offset_y),Vector2(target.size.x,height))})
 				offset_y+=height
-		else:art_tiles.append({"texture":load(prefab.texture),"source":Rect2(prefab.source[0],prefab.source[1],prefab.source[2],prefab.source[3]),"target":target})
+		else:art_tiles.append({"texture":load(prefab.texture),"source":Rect2(prefab.source[0],prefab.source[1],prefab.source[2],prefab.source[3]),"target":target,"flip_h":prefab.get("flip_h",false)})
 	art_tiles.sort_custom(func(a,b):return a.target.end.y<b.target.end.y)
 	player.position=city_point(city_data.spawn)
 	if value in ["wuchang","nanjing","suzhou","murong_estate","hangzhou","cuiyue_hall"]:
@@ -239,6 +239,7 @@ func _load_regional(value: String) -> void:
 
 func _load_changsha() -> void:
 	city_data = JSON.parse_string(FileAccess.get_file_as_string("res://assets/maps/changsha/layout.json"))
+	preload("res://scripts/fortification_layout.gd").apply(city_data)
 	map_bounds = Rect2(0, 0, city_data.world_size[0], city_data.world_size[1])
 	camera.exploration_zoom = 0.8
 	background.texture = load(city_data.ground_texture)
@@ -318,6 +319,7 @@ func _populate_residents(entries: Array) -> void:
 
 func _build_city_art() -> void:
 	var prefabs: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(city_data.prefabs_path))
+	prefabs.merge(city_data.get("prefabs",{}),true)
 	var world_scale := map_bounds.size / Vector2(city_data.art_size[0], city_data.art_size[1])
 	for spec in city_data.objects:
 		var prefab: Dictionary = prefabs[spec.prefab]
@@ -332,7 +334,7 @@ func _build_city_art() -> void:
 			city_data.scenery_objects.append({"kind":prefab.kind, "bounds":[rectangle.position.x / world_scale.x, rectangle.position.y / world_scale.y, rectangle.size.x / world_scale.x, rectangle.size.y / world_scale.y]})
 		var src: Array = prefab.source
 		var displayed: Rect2=node.visual_rect
-		art_tiles.append({"texture":load(prefab.texture), "source":Rect2(src[0], src[1], src[2], src[3]), "target":Rect2(displayed.position/world_scale,displayed.size/world_scale)})
+		art_tiles.append({"texture":load(prefab.texture), "source":Rect2(src[0], src[1], src[2], src[3]), "target":Rect2(displayed.position/world_scale,displayed.size/world_scale),"flip_h":prefab.get("flip_h",false)})
 	art_tiles.sort_custom(func(a,b): return a.target.end.y < b.target.end.y)
 
 func city_point(point: Array) -> Vector2:
