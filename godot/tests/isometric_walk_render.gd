@@ -21,6 +21,7 @@ func run() -> void:
 	var foot: Vector2=scene.get_canvas_transform()*scene.actor.position
 	var body=Rect2i(Vector2i(foot+Vector2(-16,-88)),Vector2i(32,42))
 	var feet=Rect2i(Vector2i(foot+Vector2(-40,-30)),Vector2i(80,45))
+	var sash=Rect2i(Vector2i(foot+Vector2(-14,-53)),Vector2i(28,29))
 	for key in ["front","back"]:
 		for flip in [false,true]:
 			scene.actor.moving=false;scene.actor.set_pose(key,flip);var idle=await rendered()
@@ -31,5 +32,9 @@ func run() -> void:
 			print("POSE "+key+" mirror="+str(flip)+" | upper-body changed pixels="+str(body_changes)+" | opposite-step changed pixels="+str(step_changes))
 			check(body_changes<=int(body.get_area()*.05),"rendered upper body matches idle in "+key+str(flip)+" changed="+str(body_changes))
 			check(step_changes>60,"rendered opposite foot contacts differ in "+key+str(flip)+" changed="+str(step_changes))
+			if scene.actor.display_name=="도원":
+				var garment_changes=differences(idle,first,sash)
+				print("GARMENT "+key+str(flip)+" | changed pixels="+str(garment_changes))
+				check(garment_changes<=int(sash.get_area()*.05),"rendered sash and upper hem do not stretch")
 	print("ISOMETRIC_WALK_RENDER: "+("FAIL" if failed else "PASS"))
 	scene.queue_free();await process_frame;quit(1 if failed else 0)

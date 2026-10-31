@@ -29,6 +29,7 @@ func setup(art: Dictionary,world) -> void:
 	polygon.polygon=points;add_child(polygon)
 	sprite=Sprite2D.new();sprite.centered=false;sprite.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;add_child(sprite)
 	rig=preload("res://prototypes/isometric/iso_walk_rig.gd").new();rig.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;add_child(rig)
+	rig.configure(art.get("gait",{}))
 	for key in ["front","back"]:
 		images[key]=_atlas(art[key]);hit_images[key]=_pixels(images[key])
 	base_scale=Vector2.ONE*96.0/float(art.get("canvas_height",images.front.get_height()))

@@ -27,6 +27,7 @@ var actor_occluded=false
 var occluded_samples=0
 var show_occlusion_hint=true
 var visibility_hint
+var grounding
 var last_sorted_positions: Array=[]
 func _ready() -> void:
 	process_physics_priority=10
@@ -44,9 +45,9 @@ func _ready() -> void:
 		for i in range(count):
 			var start=length*i/count;var end=length*(i+1)/count
 			var rect=[r[0]+start,r[1],end-start,r[3]] if along_u else [r[0],r[1]+start,r[2],end-start]
-			var wall=Wall.new();wall.setup({"id":section.id+"_"+str(i),"name":"巷 · 골목 담장","kind":"wall","rect":rect},{})
+			var wall=Wall.new();wall.setup({"id":section.id+"_"+str(i),"name":"골목 담장","kind":"wall","rect":rect,"end_cap":i==count-1},art.wall_materials)
 			actors.add_child(wall);props.append(wall)
-	actor=Actor.new();actor.setup(art.npc,self);actors.add_child(actor);moving_actors.append(actor);reset_actor()
+	actor=Actor.new();actor.setup(art.hero,self);actor.display_name="도원";actors.add_child(actor);moving_actors.append(actor);reset_actor()
 	for entry in data.get("patrols",[]):
 		var npc=Actor.new();npc.setup(art.npc,self);npc.name=entry.id;npc.display_name=entry.name
 		npc.interactive=false;npc.traffic_rank=npcs.size()+1;actors.add_child(npc);moving_actors.append(npc);npcs.append(npc)
@@ -54,6 +55,7 @@ func _ready() -> void:
 	for r in [Rect2(-1,-1,14,1),Rect2(-1,12,14,1),Rect2(-1,0,1,12),Rect2(12,0,1,12)]:
 		var wall=StaticBody2D.new();wall.collision_layer=1
 		var shape=CollisionPolygon2D.new();shape.polygon=Space.diamond(r);wall.add_child(shape);add_child(wall)
+	grounding=preload("res://prototypes/isometric/iso_grounding.gd").new();grounding.setup(self);add_child(grounding);move_child(grounding,0)
 	camera=Camera2D.new();camera.zoom=Vector2.ONE*.85;camera.position_smoothing_enabled=false;add_child(camera);camera.make_current();snap_camera()
 	_build_hud();update_depth();queue_redraw()
 func _register_inputs() -> void:
@@ -184,7 +186,7 @@ func _build_hud() -> void:
 	var panel=PanelContainer.new();panel.position=Vector2(22,18);panel.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(panel)
 	var style=StyleBoxFlat.new();style.bg_color=Color("142923eb");style.border_color=Color("98845b");style.set_border_width_all(1);style.set_content_margin_all(12);panel.add_theme_stylebox_override("panel",style)
 	var list=VBoxContainer.new();list.mouse_filter=Control.MOUSE_FILTER_IGNORE;panel.add_child(list)
-	for text in ["보행 시험 · 조작 짐꾼과 왕복 짐꾼 둘","WASD / 방향키 이동   ·   F 조사   ·   클릭 선택","휠 확대   ·   중간 버튼 드래그   ·   C 카메라 추적","G 충돌 범위 · H 가림 표시 · P 왕복 정지 · R 초기화"]:
+	for text in ["골목 시험 · 도원과 왕복 짐꾼 둘","WASD / 방향키 이동   ·   F 조사   ·   클릭 선택","휠 확대   ·   중간 버튼 드래그   ·   C 카메라 추적","G 충돌 범위 · H 가림 표시 · P 왕복 정지 · R 초기화"]:
 		var label=Label.new();label.text=text;label.add_theme_font_override("font",font);label.add_theme_font_size_override("font_size",15);label.mouse_filter=Control.MOUSE_FILTER_IGNORE;list.add_child(label)
 	details=Label.new();details.position=Vector2(24,650);details.add_theme_font_override("font",font);details.add_theme_font_size_override("font_size",17);details.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(details)
 	status=Label.new();status.position=Vector2(24,682);status.add_theme_font_override("font",font);status.add_theme_font_size_override("font_size",14);status.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(status)

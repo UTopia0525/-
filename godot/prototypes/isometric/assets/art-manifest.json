@@ -22,7 +22,34 @@
       "reference": "buildings.png",
       "sha256": "e8710c726c0495367645b42a647a198cf258417944a194f42f58459aeb7ebf70",
       "notes": "Tall open doorway. Unmodified original. Atlas crop and front ground corner registered in manifest; two physical pillars, no opening collider."
+    },
+    {
+      "file": "dowon.png",
+      "original": "generated_images/exec-c47b42c2-61c1-423a-89dd-2b65f15ce8ac.png",
+      "sha256": "34c98823cb0f1a72a216d92a8e54fbb30d3d038cf46e9506556a253b53d8d40f",
+      "references": [
+        "res://assets/animation/hero_walk_unarmed.png",
+        "res://prototypes/isometric/assets/npc.png",
+        "res://assets/portraits/player/hero.png"
+      ],
+      "notes": "Same 96-unit display height as before. Outfit identity from current hero; pixel style/proportions from prototype commoner. Fixed atlas canvas and foot pivot, garment-protected runtime gait."
+    },
+    {
+      "file": "courtyard-props.png",
+      "original": "generated_images/exec-ff8acf60-4cb5-46b3-be3a-c5d7177762f8.png",
+      "sha256": "4603b66b391badd07beb2095968acad4353d3bc50801dc70d12ac39751efc825",
+      "references": [
+        "res://prototypes/isometric/assets/buildings.png"
+      ]
+    },
+    {
+      "file": "courtyard-materials.png",
+      "original": "generated_images/exec-1c99993b-22bb-45cd-b2ef-5ecaeb403bb3.png",
+      "sha256": "89936438e8e6dcb0dc9634d566b128f6e4fa5d568cad024a0abdaa6025ace707",
+      "references": [
+        "res://prototypes/isometric/assets/buildings.png"
+      ]
     }
   ],
-  "notes": "Generated PNG originals copied without pixel edits. Atlas source rectangles and ground-front-corner pivots registered in manifest; tree/urn and floor are technical placeholders."
+  "notes": "Generated PNG originals copied without pixel edits. Source rectangles/pivots in manifest. House, warehouse, gate and commoner originals retained. New hero and courtyard props/materials are prototype-only."
 }

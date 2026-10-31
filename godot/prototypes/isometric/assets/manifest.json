@@ -41,6 +41,34 @@
         1334
       ],
       "ground_width": 717
+    },
+    "tree": {
+      "texture": "res://prototypes/isometric/assets/courtyard-props.png",
+      "region": [
+        69,
+        20,
+        883,
+        948
+      ],
+      "pivot": [
+        464,
+        946
+      ],
+      "ground_width": 400
+    },
+    "urn": {
+      "texture": "res://prototypes/isometric/assets/courtyard-props.png",
+      "region": [
+        1071,
+        524,
+        329,
+        417
+      ],
+      "pivot": [
+        164,
+        414
+      ],
+      "ground_width": 329
     }
   },
   "npc": {
@@ -62,5 +90,35 @@
         750
       ]
     }
+  },
+  "hero": {
+    "front": {
+      "texture": "res://prototypes/isometric/assets/dowon.png",
+      "region": [
+        190,
+        95,
+        580,
+        864
+      ]
+    },
+    "back": {
+      "texture": "res://prototypes/isometric/assets/dowon.png",
+      "region": [
+        795,
+        95,
+        580,
+        864
+      ]
+    },
+    "canvas_height": 864,
+    "gait": {
+      "hip_start": 0.8,
+      "hip_end": 0.98,
+      "stride": 0.075,
+      "lift": 0.02
+    }
+  },
+  "wall_materials": {
+    "texture": "res://prototypes/isometric/assets/courtyard-materials.png"
   }
 }

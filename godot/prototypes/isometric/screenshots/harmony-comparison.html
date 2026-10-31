@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>도원과 골목 · 실제 플레이 미술 비교</title>
+<style>
+body{margin:0;background:#101d19;color:#e5dfcd;font:16px/1.65 system-ui,sans-serif}main{max-width:1800px;margin:auto;padding:24px}h1{font-size:24px}h2{font-size:19px;margin-top:32px}p{color:#bdc9bf}.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}figure{margin:0;background:#162a23;padding:8px}img,video{display:block;width:100%;height:auto}figcaption{padding:6px 2px;font-size:14px}a{color:#dbc88b}video{max-width:1280px;margin:auto}@media(max-width:800px){.pair{grid-template-columns:1fr}main{padding:12px}}
+</style>
+<main>
+<h1>도원과 골목 · 실제 Godot 화면 비교</h1>
+<p>같은 1280×720 화면, 같은 카메라·배율·인물 위치. 건물/통로/충돌 배치와 두 자동 NPC의 속도 4.8은 유지했습니다. 비교 사진에서는 인물을 정지시켰고 영상에서는 자동 왕복을 재개합니다.</p>
+<h2>전체 구역 · 75%</h2>
+<div class="pair"><figure><a href="harmony-before-overview.png"><img src="harmony-before-overview.png" alt="변경 전 전체"></a><figcaption>변경 전 · 공용 조작 인물 / 도형 장식</figcaption></figure><figure><a href="harmony-after-overview.png"><img src="harmony-after-overview.png" alt="변경 후 전체"></a><figcaption>변경 후 · 도원 / 회벽·기와 / 새 나무와 항아리 / 접지</figcaption></figure></div>
+<h2>인물 근접 · 125%</h2>
+<div class="pair"><figure><a href="harmony-before-close.png"><img src="harmony-before-close.png" alt="변경 전 근접"></a><figcaption>변경 전</figcaption></figure><figure><a href="harmony-after-close.png"><img src="harmony-after-close.png" alt="변경 후 근접"></a><figcaption>변경 후 · 도원과 짐꾼의 비율 비교</figcaption></figure></div>
+<h2>대문 아래 · 105%</h2>
+<div class="pair"><figure><a href="harmony-before-gate.png"><img src="harmony-before-gate.png" alt="변경 전 대문"></a><figcaption>변경 전</figcaption></figure><figure><a href="harmony-after-gate.png"><img src="harmony-after-gate.png" alt="변경 후 대문"></a><figcaption>변경 후 · 열린 통로와 기존 기둥 충돌 유지</figcaption></figure></div>
+<h2>보행 영상 · 13.6초</h2>
+<video controls preload="metadata" poster="harmony-after-overview.png"><source src="harmony-walk.mp4" type="video/mp4"></video>
+<p>초반 정지 비교 배치 → 입력 기반 도원 이동과 짐꾼 왕복 → 보행 단계 비교 → 충돌/해상도 확인 순서입니다. 30fps는 영상 기록 속도이며 기기별 플레이 성능 수치가 아닙니다.</p>
+<p><a href="harmony-after-1440p.png">1440p</a> · <a href="harmony-after-collision.png">충돌 표시</a> · <a href="harmony-after-step-1.png">보행 접지 1</a> · <a href="harmony-after-step-3.png">반대 접지 3</a> · <a href="harmony-walk.mp4">영상 파일</a></p>
+</main>
+</html>

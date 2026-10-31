@@ -18,10 +18,11 @@ func setup(value: Dictionary,art: Dictionary) -> void:
 		var shape=CollisionPolygon2D.new();var points=Space.diamond(physical)
 		for i in range(points.size()):points[i]-=position
 		shape.polygon=points;add_child(shape)
-	if art.has(value.get("art","")):
-		var info=art[value.art];var atlas=AtlasTexture.new();atlas.atlas=load(info.texture);atlas.region=Rect2(info.region[0],info.region[1],info.region[2],info.region[3])
+	var art_key=value.get("art",value.kind)
+	if art.has(art_key):
+		var info=art[art_key];var atlas=AtlasTexture.new();atlas.atlas=load(info.texture);atlas.region=Rect2(info.region[0],info.region[1],info.region[2],info.region[3])
 		sprite=Sprite2D.new();sprite.centered=false;sprite.texture=atlas;sprite.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR
-		var fit=128.0 if not spec.kind in ["building","gate"] else 64.0*(footprint.size.x+footprint.size.y)
+		var fit=64.0*(footprint.size.x+footprint.size.y) if info.has("ground_width") else 128.0
 		sprite.scale=Vector2.ONE*fit/float(info.get("ground_width",atlas.region.size.x))
 		var pivot=Vector2(info.pivot[0],info.pivot[1])
 		sprite.position=Space.project(footprint.end)-position-pivot*sprite.scale

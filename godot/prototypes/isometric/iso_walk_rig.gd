@@ -9,6 +9,12 @@ var gait=0.0
 var tex_size=Vector2.ZERO
 var atlas_reference: Texture2D
 var render_textures: Dictionary={}
+var hip_start=.66
+var hip_end=.98
+var stride=.090
+var lift=.022
+func configure(profile: Dictionary) -> void:
+	hip_start=float(profile.get("hip_start",.66));hip_end=float(profile.get("hip_end",.98));stride=float(profile.get("stride",.090));lift=float(profile.get("lift",.022))
 func pose(atlas: Texture2D,pixels: Image,key: String,phase: float) -> void:
 	if atlas_reference!=atlas:
 		# Polygon2D UVs address the backing atlas, unlike Sprite2D's source rect.
@@ -33,19 +39,19 @@ func _build_grid() -> void:
 			triangles.append(PackedInt32Array([a,b,d]));triangles.append(PackedInt32Array([a,d,c]))
 	uv=coords;polygons=triangles
 func _offset(p: Vector2) -> Vector2:
-	var weight=smoothstep(.66,.98,p.y/tex_size.y)
+	var weight=smoothstep(hip_start,hip_end,p.y/tex_size.y)
 	var side=clampf(p.x/(tex_size.x*.1),-1,1)
 	var swing=sin(gait)*side
-	var forward=Vector2(.090,.042) if facing=="front" else Vector2(-.090,-.042)
-	return (forward*swing+Vector2(0,-maxf(0,-swing)*.022))*tex_size.y*weight
+	var forward=Vector2(stride,stride*.466667) if facing=="front" else Vector2(-stride,-stride*.466667)
+	return (forward*swing+Vector2(0,-maxf(0,-swing)*lift))*tex_size.y*weight
 func hit(world_point: Vector2) -> bool:
 	var point=to_local(world_point);var sample=Vector2(-1,-1)
 	if not Rect2(-tex_size.x/2-tex_size.y*.1,0,tex_size.x+tex_size.y*.2,tex_size.y*1.1).has_point(point):return false
-	if point.y<tex_size.y*.65:sample=point+Vector2(tex_size.x/2,0)
+	if point.y<tex_size.y*(hip_start-.01):sample=point+Vector2(tex_size.x/2,0)
 	else:
 		# Barycentric UVs use the same deformed triangles as the renderer.
 		for tri in triangles:
-			if original[tri[2]].y<tex_size.y*.60:continue
+			if original[tri[2]].y<tex_size.y*(hip_start-.06):continue
 			var a=polygon[tri[0]];var b=polygon[tri[1]];var c=polygon[tri[2]]
 			var ab=b-a;var ac=c-a;var ap=point-a;var den=ab.cross(ac)
 			if absf(den)<.0001:continue
