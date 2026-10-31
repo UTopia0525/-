@@ -10,5 +10,6 @@ void fragment(){
 	vec3 earth=texture(materials,(repeat_uv+vec2(1.0,0.0))*.5).rgb*vec3(.97,.98,1.0);
 	vec3 stone=texture(materials,repeat_uv*.5).rgb;
 	vec3 floor_color=mix(earth,stone,mask.r);
+	floor_color=mix(floor_color,texture(materials,(repeat_uv+vec2(0.0,1.0))*.5).rgb*vec3(.95,.96,.98),mask.g);
 	COLOR=vec4(mix(base.rgb,floor_color,mask.a),base.a);
 }

@@ -8,5 +8,7 @@ void fragment(){
 	vec2 uv=clamp(fract(p/360.0),vec2(.004),vec2(.996));
 	vec3 soil=texture(materials,(uv+vec2(1.0,0.0))*.5).rgb;
 	vec3 stone=texture(materials,uv*.5).rgb;
-	COLOR=vec4(mix(base.rgb,mix(soil,stone,mask.r),mask.a),base.a);
+	vec3 ground=mix(soil,stone,mask.r);
+	ground=mix(ground,texture(materials,(uv+vec2(0.0,1.0))*.5).rgb*vec3(.96,.97,.98),mask.g);
+	COLOR=vec4(mix(base.rgb,ground,mask.a),base.a);
 }

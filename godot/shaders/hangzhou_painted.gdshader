@@ -16,6 +16,8 @@ void fragment(){
 	vec3 pale=texture(materials,(uv+vec2(0.0,1.0))*.5).rgb;
 	vec3 wood=texture(materials,(uv+vec2(1.0,1.0))*.5).rgb;
 	vec3 grass=texture(outdoor_materials,(uv+vec2(0.0,1.0))*.5).rgb*vec3(.85,.91,.78);
+	// Only the settlement behind the wall is paved. The northern rural approach stays earth.
+	if(art.x>=433.0 && art.x<1808.0 && art.y>=400.0 && art.y<1680.0)soil=pale;
 	vec3 floor_color=mix(mix(soil,stone,mask.r),pale,mask.g);
 	float field=1.0-smoothstep(.03,.1,abs(mask.b-.25));
 	float dock=1.0-smoothstep(.05,.18,abs(mask.b-.5));

@@ -14,6 +14,15 @@ func _ready() -> void:
 			for step in range(steps+1):
 				var p=a.lerp(b,step/float(steps));var width=int(road.width)
 				mask.fill_rect(Rect2i(int(p.x)-width/2,int(p.y)-width/2,width,width),Color(.85 if road.kind=="stone" else .4,0,0,.95))
+	var inside=Rect2i(249,112,1691,1340)
+	mask.fill_rect(inside,Color(0,1,0,1))
+	mask.fill_rect(Rect2i(950,130,970,745),Color(1,0,0,1))
+	for road in data.roads:
+		for i in range(road.points.size()-1):
+			var a=Vector2(road.points[i][0],road.points[i][1]);var b=Vector2(road.points[i+1][0],road.points[i+1][1]);var steps=maxi(1,ceili(a.distance_to(b)))
+			for step in range(steps+1):
+				var p=a.lerp(b,step/float(steps));var width=int(road.width)
+				mask.fill_rect(Rect2i(int(p.x)-width/2,int(p.y)-width/2,width,width).intersection(inside),Color(1,0,0,1))
 	var ink=ShaderMaterial.new();ink.shader=load("res://shaders/wuchang_painted.gdshader")
 	ink.set_shader_parameter("mask_map",ImageTexture.create_from_image(mask));ink.set_shader_parameter("materials",load("res://assets/maps/nanjing/market-slice/materials.png"));material=ink
 	texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR

@@ -8,7 +8,8 @@ void fragment(){
 	vec2 p=UV*vec2(4608.0,3072.0);vec2 uv=clamp(fract(p/320.0),vec2(.004),vec2(.996));
 	vec3 earth=texture(materials,(uv+vec2(1.0,0.0))*.5).rgb;
 	vec3 stone=texture(materials,uv*.5).rgb;
-	vec3 ground=mix(earth,stone,mask.r);
+	vec3 pale=texture(materials,(uv+vec2(0.0,1.0))*.5).rgb*vec3(.96,.98,.99);
+	vec3 ground=mix(pale,stone,mask.r);
 	// A raked grain drying yard is painted terrain, never a solid obstacle.
 	float rows=smoothstep(.45,.55,fract(p.y/13.0));
 	float grain=fract(sin(dot(floor(p/2.0),vec2(127.1,311.7)))*43758.5453);
