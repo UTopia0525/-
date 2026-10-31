@@ -10,7 +10,7 @@ func shot(name: String) -> void:
 func travel(target: Vector2) -> void:
  for i in range(400):
   var delta=target-scene.actor.logical
-  if delta.length()<.10:break
+  if delta.length()<maxf(.10,scene.actor.speed/30*.55):break
   var v=Space.project(delta).normalized()
   for pair in [["iso_left",maxf(0,-v.x)],["iso_right",maxf(0,v.x)],["iso_up",maxf(0,-v.y)],["iso_down",maxf(0,v.y)]]:
    Input.action_release(pair[0])
@@ -18,7 +18,7 @@ func travel(target: Vector2) -> void:
   await process_frame
  for action in ["iso_left","iso_right","iso_up","iso_down"]:Input.action_release(action)
  await frames(2)
- assert(scene.actor.logical.distance_to(target)<.12,"Actual path cannot reach "+str(target))
+ assert(scene.actor.logical.distance_to(target)<maxf(.12,scene.actor.speed/30*.6),"Actual path cannot reach "+str(target))
 func run() -> void:
  create_timer(180).timeout.connect(func():push_error("District capture watchdog");quit(2))
  root.size=Vector2i(1600,1000);scene=load("res://prototypes/isometric/district.tscn").instantiate();root.add_child(scene);await frames(3)
@@ -51,4 +51,4 @@ func run() -> void:
  e=InputEventKey.new();e.keycode=KEY_F;e.physical_keycode=KEY_F;e.pressed=false;Input.parse_input_event(e);await frames(2);await shot("dialogue")
  scene.queue_free();await process_frame;print("ISOMETRIC_DISTRICT_CAPTURE: PASS");quit()
 func check_finish() -> void:
- assert(scene.actor.logical.distance_to(Vector2(scene.data.spawn[0],scene.data.spawn[1]))<.15,"Recorded loop failed to return")
+ assert(scene.actor.logical.distance_to(Vector2(scene.data.spawn[0],scene.data.spawn[1]))<.20,"Recorded loop failed to return")

@@ -4,6 +4,8 @@ const Prop=preload("res://prototypes/isometric/iso_prop.gd")
 const Wall=preload("res://prototypes/isometric/iso_wall.gd")
 const Actor=preload("res://prototypes/isometric/iso_actor.gd")
 const ACCESS=preload("res://prototypes/isometric/iso_access_rules.gd")
+const PLAYER_SPEED=9.6
+const NPC_SPEED=4.8
 @export_file("*.json") var layout_path="res://prototypes/isometric/layout.json"
 var data: Dictionary
 var map_size=Vector2.ZERO
@@ -55,10 +57,10 @@ func _ready() -> void:
 			var rect=[r[0]+start,r[1],end-start,r[3]] if along_u else [r[0],r[1]+start,r[2],end-start]
 			var wall=Wall.new();wall.setup({"id":section.id+"_"+str(i),"name":"마당 경계 담장","kind":"wall","rect":rect,"plot":section.get("plot",""),"end_cap":i==count-1},art.wall_materials)
 			actors.add_child(wall);props.append(wall)
-	actor=Actor.new();actor.setup(art.hero,self);actor.display_name="도원";actors.add_child(actor);moving_actors.append(actor);reset_actor()
+	actor=Actor.new();actor.setup(art.hero,self);actor.speed=PLAYER_SPEED;actor.display_name="도원";actors.add_child(actor);moving_actors.append(actor);reset_actor()
 	for entry in data.get("patrols",[]):
 		var npc=Actor.new();npc.setup(art.npc,self);npc.name=entry.id;npc.display_name=entry.name
-		npc.interactive=false;npc.traffic_rank=npcs.size()+1;actors.add_child(npc);moving_actors.append(npc);npcs.append(npc)
+		npc.interactive=false;npc.speed=NPC_SPEED;npc.traffic_rank=npcs.size()+1;actors.add_child(npc);moving_actors.append(npc);npcs.append(npc)
 		npc.patrol=preload("res://prototypes/isometric/iso_patrol.gd").new();npc.patrol.setup(npc,entry.route)
 	for r in [Rect2(-1,-1,map_size.x+2,1),Rect2(-1,map_size.y,map_size.x+2,1),Rect2(-1,0,1,map_size.y),Rect2(map_size.x,0,1,map_size.y)]:
 		var wall=StaticBody2D.new();wall.collision_layer=1

@@ -10,7 +10,7 @@ func frames(count: int) -> void:
 func walk_to(point: Vector2) -> void:
 	for i in range(240):
 		var delta=point-scene.actor.logical
-		if delta.length()<.05:break
+		if delta.length()<.09:break
 		var direction=Space.project(delta).normalized()
 		var actions={"iso_left":maxf(0,-direction.x),"iso_right":maxf(0,direction.x),"iso_up":maxf(0,-direction.y),"iso_down":maxf(0,direction.y)}
 		for action in actions:
@@ -46,7 +46,7 @@ func run() -> void:
 	check(warehouse.art_view=="rear" and warehouse.art_front==Vector2(-1,0),"real rear art faces its entrance toward alley")
 	warehouse.spec.entrance.road_anchor=[11,11];check(scene.ACCESS.validate(scene).any(func(s):return s.contains("road anchor")),"inventing a road behind the building cannot validate its direction");warehouse.spec.entrance=original.duplicate(true)
 	for person in [scene.actor,scene.npcs[0]]:
-		check(person.speed==4.8,"movement speed remains unchanged")
+		check(person.speed==(9.6 if person==scene.actor else 4.8),"player9.6 and NPC4.8 remain distinct")
 		for key in ["front","back"]:
 			var poses=[];var body_y=[];var arms=[];var feet=[];var bends=[]
 			for i in range(8):

@@ -24,7 +24,7 @@ func inspect_clearance() -> void:
  check(scene.depth_cycles==0,"acyclic depth across expanded layout")
 func walk_to(target: Vector2) -> void:
  for i in range(400):
-  if scene.actor.logical.distance_to(target)<.05:break
+  if scene.actor.logical.distance_to(target)<.09:break
   steer(target-scene.actor.logical);await physics_frame;inspect_clearance()
  steer(Vector2.ZERO);await physics_frame
  check(scene.actor.logical.distance_to(target)<.11,"real keyboard reaches "+str(target))
@@ -38,6 +38,14 @@ func run() -> void:
  check(scene.props.filter(func(p):return p.spec.kind=="building").size()==4,"four buildings with two open frontages")
  check(scene.npcs.size()==2 and scene.moving_actors.size()==3,"no new NPCs")
  check(scene.ACCESS.validate(scene).is_empty(),"all doors, courtyards and open workspaces validate")
+ scene.actor.set_logical(Vector2(3.5,10));scene.npcs[0].patrol.setup(scene.npcs[0],[[6,11],[12,11]]);scene.npcs[0].patrol.pause=0
+ scene.npcs[1].motion_paused=true;scene.npcs[1].set_logical(Vector2(19,15));scene.patrols_enabled=true
+ var p0=scene.actor.logical;var n0=scene.npcs[0].logical
+ steer(Vector2(1,0));await frames(20);steer(Vector2.ZERO);await physics_frame
+ var pd=scene.actor.logical.distance_to(p0);var nd=scene.npcs[0].logical.distance_to(n0)
+ check(absf(pd-3.2)<.2 and absf(nd-1.6)<.2,"measured player9.6 and unchanged NPC4.8")
+ print("SPEED_MEASURE: player_distance=",pd," NPC_distance=",nd," over20physicsframes")
+ scene.npcs[1].motion_paused=false;scene.npcs[0].patrol.setup(scene.npcs[0],scene.data.patrols[0].route);scene.reset_trial()
  scene.patrols_enabled=false
  for i in range(2):scene.npcs[i].set_logical(Vector2(19,14+i*.6))
  var loop_distance=0.0
@@ -92,7 +100,7 @@ func run() -> void:
  scene.actor.set_logical(Vector2(19,15));var before=scene.npcs[1].patrol.arrivals;var bounds=Rect2(scene.npcs[1].logical,Vector2.ZERO)
  for i in range(720):await physics_frame;inspect_clearance();bounds=bounds.expand(scene.npcs[1].logical)
  check(scene.npcs[1].patrol.arrivals>before+6 and bounds.position.x<11.3 and bounds.end.x>16.2,"rear NPC repeatedly traverses new region")
- for person in scene.moving_actors:check(person.speed==4.8 and is_equal_approx(person.base_scale.y*person.frames.get("canvas_height",person.images.front.get_height()),96),"speed and display height unchanged")
+ for person in scene.moving_actors:check(person.speed==(9.6 if person==scene.actor else 4.8) and is_equal_approx(person.base_scale.y*person.frames.get("canvas_height",person.images.front.get_height()),96),"speed and display height unchanged")
  print("DISTRICT_METRICS: loop_tiles=",loop_distance," | loop_input_seconds=",loop_frames/60.0," | clearance_frames=",travel_frames," | rear_range=",bounds)
  scene.queue_free();await process_frame
  scene=load("res://prototypes/isometric/main.tscn").instantiate();root.add_child(scene);await frames(3)

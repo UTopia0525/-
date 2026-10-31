@@ -29,7 +29,7 @@ func isolate() -> void:
 func run() -> void:
 	root.size=Vector2i(1280,720);scene=load("res://prototypes/isometric/main.tscn").instantiate();root.add_child(scene);await frames(2)
 	check(scene.npcs.size()==2 and scene.moving_actors.size()==3,"one controlled and exactly two autonomous actors")
-	check(scene.actor.speed==4.8,"existing double movement speed retained")
+	check(scene.actor.speed==9.6,"existing double movement speed retained")
 	isolate()
 	var keys=["iso_right","iso_left","iso_down","iso_up"]
 	for key in keys:

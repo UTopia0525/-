@@ -30,25 +30,25 @@ func run() -> void:
 	for i in range(scene.npcs.size()):scene.npcs[i].set_logical(Vector2(10,10+i))
 	gate=scene.props.filter(func(p):return p.spec.kind=="gate")[0]
 	check(gate.physical_footprints.size()==2,"two solid pillars, no solid opening")
-	check(is_equal_approx(scene.actor.speed,4.8),"speed doubled from2.4 to4.8")
+	check(is_equal_approx(scene.actor.speed,9.6),"player speed doubled from4.8 to9.6")
 	scene.actor.set_logical(Vector2(7,10));await physics_frame
 	var start: Vector2=scene.actor.logical;await walk(Vector2(1,0),12)
 	var travel=scene.actor.logical.distance_to(start)
-	check(travel>.8 and travel<1.15,"measured unobstructed movement is4.8 tiles/sec")
-	scene.actor.set_logical(Vector2(4.72,8.5));await physics_frame;await walk(Vector2(0,-1),85)
+	check(travel>1.7 and travel<2.1,"measured unobstructed movement is9.6 tiles/sec")
+	scene.actor.set_logical(Vector2(4.72,8.5));await physics_frame;await walk(Vector2(0,-1),43)
 	check(scene.actor.logical.y<1.9 and absf(scene.actor.logical.x-4.72)<.06,"full gate and narrow alley traverse north")
-	await walk(Vector2(0,1),85)
+	await walk(Vector2(0,1),43)
 	check(scene.actor.logical.y>8.2 and absf(scene.actor.logical.x-4.72)<.06,"full alley and gate traverse south")
-	scene.actor.set_logical(Vector2(3.12,8.5));await physics_frame;await walk(Vector2(0,-1),40)
+	scene.actor.set_logical(Vector2(3.12,8.5));await physics_frame;await walk(Vector2(0,-1),20)
 	check(scene.actor.logical.y<5.4,"house gate and private courtyard traverse")
 	for x in [2.375,3.875]:
 		scene.actor.set_logical(Vector2(x,7.25));await physics_frame;watch_pillars=true;pillar_contacts=0
-		await walk(Vector2(0,-1),22);watch_pillars=false
+		await walk(Vector2(0,-1),11);watch_pillars=false
 		check(pillar_contacts>0,"actual pillar contact blocks initial path "+str(x))
 		check(scene.actor.logical.y<7.25,"actor reaches pillar")
-	scene.actor.set_logical(Vector2(4.72,5.5));await physics_frame;await walk(Vector2(-1,0),20)
+	scene.actor.set_logical(Vector2(4.72,5.5));await physics_frame;await walk(Vector2(-1,0),10)
 	check(scene.actor.logical.x>=4.38,"left wall blocks")
-	scene.actor.set_logical(Vector2(4.72,5.5));await physics_frame;await walk(Vector2(1,0),20)
+	scene.actor.set_logical(Vector2(4.72,5.5));await physics_frame;await walk(Vector2(1,0),10)
 	check(scene.actor.logical.x<=5.52,"right wall blocks")
 	# Also exercise digital keyboard's equal-strength diagonal through the opening.
 	scene.actor.set_logical(Vector2(3.35,7.2));await physics_frame
@@ -62,7 +62,7 @@ func run() -> void:
 	scene.actor.set_logical(Vector2(3.12,7.15));scene.update_depth()
 	check(scene.actor.get_index()>gate.get_index(),"actor in front of gate renders over it")
 
-	scene.actor.set_logical(Vector2(1.6,1.65));scene.update_depth();scene.update_occlusion();await process_frame
+	scene.actor.set_logical(Vector2(1.6,1.65));await physics_frame;await physics_frame;scene.update_depth();scene.update_occlusion();scene.visibility_hint.refresh();await process_frame
 	check(scene.actor_occluded and scene.visibility_hint.visible,"hidden actor locator visible")
 	check(scene.pick(scene.actor.position+Vector2(0,-45))!=scene.actor,"locator never enables selection through roof")
 	scene.show_occlusion_hint=false;await process_frame;await process_frame

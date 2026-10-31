@@ -52,8 +52,8 @@ func run() -> void:
  fake.enclosure="walled";check(scene.ACCESS.validate_plots(scene).any(func(s):return s.contains("requires a courtyard")),"declared walls require a real owned courtyard");scene.data.props.pop_back()
  var workspace=scene.data.outdoor_spaces[0];var target=scene.ACCESS.vec(workspace.approach)
  scene.actor.set_logical(Vector2(8,10.3));await physics_frame
- await drive(target-scene.actor.logical,27)
+ await drive(target-scene.actor.logical,14)
  check(scene.actor.logical.distance_to(target)<.25,"workstation frontage reached directly from public yard")
  check(scene.ACCESS.validate_open_spaces(scene).is_empty(),"open frontage remains clear without walls")
- check(scene.actor.speed==4.8 and scene.npcs.all(func(n):return n.speed==4.8),"all movement speeds unchanged")
+ check(scene.actor.speed==9.6 and scene.npcs.all(func(n):return n.speed==4.8),"player9.6 and unchanged NPC4.8")
  print("ISOMETRIC_OUTDOOR_SPACES: "+("FAIL" if failed else "PASS"));scene.queue_free();await process_frame;quit(1 if failed else 0)
