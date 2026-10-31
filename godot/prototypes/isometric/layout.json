@@ -1,0 +1,59 @@
+{
+  "name": "작은 마을 · 독립 공간 시험",
+  "size": [
+    12,
+    12
+  ],
+  "spawn": [
+    6.3,
+    8.1
+  ],
+  "props": [
+    {
+      "id": "house",
+      "name": "작은 민가",
+      "kind": "building",
+      "rect": [
+        2,
+        2,
+        2,
+        3
+      ],
+      "art": "house"
+    },
+    {
+      "id": "warehouse",
+      "name": "곡물 창고",
+      "kind": "building",
+      "rect": [
+        8,
+        2.5,
+        1.5,
+        2.5
+      ],
+      "art": "warehouse"
+    },
+    {
+      "id": "tree",
+      "name": "마당의 나무",
+      "kind": "tree",
+      "rect": [
+        3,
+        9,
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "urn",
+      "name": "물항아리",
+      "kind": "urn",
+      "rect": [
+        9,
+        8,
+        0.45,
+        0.45
+      ]
+    }
+  ]
+}

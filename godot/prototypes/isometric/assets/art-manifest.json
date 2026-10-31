@@ -1,0 +1,20 @@
+{
+  "generator": "image_gen",
+  "references": [
+    "res://assets/maps/changsha/painted/living.png",
+    "res://assets/characters.png"
+  ],
+  "assets": [
+    {
+      "file": "buildings.png",
+      "original": "generated_images/exec-d4aea77e-6fca-4ef5-a8c8-17538a4fd2d1.png",
+      "sha256": "6c6d0518e20ea30e60265210315971b6b655e5909ba5a525e7f111fdab855b37"
+    },
+    {
+      "file": "npc.png",
+      "original": "generated_images/exec-d3c72318-a280-4788-9188-b6de7de7baef.png",
+      "sha256": "4a575c6e849447b0af4343825b8817814c555554c21d7ef935abf2adb9dc0c47"
+    }
+  ],
+  "notes": "Generated PNG originals copied without pixel edits. Atlas source rectangles and ground-front-corner pivots registered in manifest; tree/urn and floor are technical placeholders."
+}

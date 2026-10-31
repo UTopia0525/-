@@ -1,0 +1,52 @@
+{
+  "buildings": {
+    "house": {
+      "texture": "res://prototypes/isometric/assets/buildings.png",
+      "region": [
+        16,
+        164,
+        743,
+        694
+      ],
+      "pivot": [
+        285,
+        694
+      ],
+      "ground_width": 645
+    },
+    "warehouse": {
+      "texture": "res://prototypes/isometric/assets/buildings.png",
+      "region": [
+        779,
+        165,
+        741,
+        689
+      ],
+      "pivot": [
+        287,
+        689
+      ],
+      "ground_width": 662
+    }
+  },
+  "npc": {
+    "front": {
+      "texture": "res://prototypes/isometric/assets/npc.png",
+      "region": [
+        255,
+        185,
+        437,
+        751
+      ]
+    },
+    "back": {
+      "texture": "res://prototypes/isometric/assets/npc.png",
+      "region": [
+        843,
+        186,
+        419,
+        750
+      ]
+    }
+  }
+}
