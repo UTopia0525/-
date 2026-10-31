@@ -27,6 +27,20 @@
         689
       ],
       "ground_width": 662
+    },
+    "gate": {
+      "texture": "res://prototypes/isometric/assets/gate.png",
+      "region": [
+        46,
+        123,
+        931,
+        1334
+      ],
+      "pivot": [
+        726,
+        1334
+      ],
+      "ground_width": 717
     }
   },
   "npc": {

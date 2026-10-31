@@ -6,17 +6,22 @@ var sprite: Sprite2D
 var source_image: Image
 var picked=false
 var debug_footprint=false
+var physical_footprints: Array[Rect2]=[]
 func setup(value: Dictionary,art: Dictionary) -> void:
 	spec=value;name=value.id
 	var r=value.rect;footprint=Rect2(r[0],r[1],r[2],r[3]);position=Space.project(footprint.get_center())
 	collision_layer=1;collision_mask=2
-	var shape=CollisionPolygon2D.new();var points=Space.diamond(footprint)
-	for i in range(points.size()):points[i]-=position
-	shape.polygon=points;add_child(shape)
+	if value.has("colliders"):
+		for box in value.colliders:physical_footprints.append(Rect2(box[0],box[1],box[2],box[3]))
+	else:physical_footprints.append(footprint)
+	for physical in physical_footprints:
+		var shape=CollisionPolygon2D.new();var points=Space.diamond(physical)
+		for i in range(points.size()):points[i]-=position
+		shape.polygon=points;add_child(shape)
 	if art.has(value.get("art","")):
 		var info=art[value.art];var atlas=AtlasTexture.new();atlas.atlas=load(info.texture);atlas.region=Rect2(info.region[0],info.region[1],info.region[2],info.region[3])
 		sprite=Sprite2D.new();sprite.centered=false;sprite.texture=atlas;sprite.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR
-		var fit=128.0 if spec.kind!="building" else 64.0*(footprint.size.x+footprint.size.y)
+		var fit=128.0 if not spec.kind in ["building","gate"] else 64.0*(footprint.size.x+footprint.size.y)
 		sprite.scale=Vector2.ONE*fit/float(info.get("ground_width",atlas.region.size.x))
 		var pivot=Vector2(info.pivot[0],info.pivot[1])
 		sprite.position=Space.project(footprint.end)-position-pivot*sprite.scale
@@ -34,8 +39,11 @@ func _draw() -> void:
 	var foot=Space.diamond(footprint)
 	for i in range(foot.size()):foot[i]-=position
 	if picked or debug_footprint:
-		draw_colored_polygon(foot,Color(.84,.69,.32,.16))
-		draw_polyline(foot+PackedVector2Array([foot[0]]),Color("e0be73") if picked else Color("6daeba"),2)
+		for physical in physical_footprints:
+			var points=Space.diamond(physical)
+			for i in range(points.size()):points[i]-=position
+			draw_colored_polygon(points,Color(.84,.69,.32,.16))
+			draw_polyline(points+PackedVector2Array([points[0]]),Color("e0be73") if picked else Color("6daeba"),2)
 	if not is_instance_valid(sprite):
 		if spec.kind=="tree":
 			draw_rect(Rect2(-7,-70,14,70),Color("735039"))

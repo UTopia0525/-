@@ -1,5 +1,7 @@
 # 아이소메트릭 독립 시험 · 구현 결과
 
+이 문서는1단계 최소 씬 기록이다. 최신 배치·속도·대문/담장·가림 표시와 검증은 [2단계 골목 보고서](isometric-alley.md)를 따른다.
+
 사용자 승인 범위: 기존 게임을 바꾸지 않고 작은 시험 씬을 구현·검증한다. [실행과 조작 방법](../../godot/prototypes/isometric/README.md).
 
 ![실제 시험 씬](../../godot/prototypes/isometric/screenshots/overview.png)

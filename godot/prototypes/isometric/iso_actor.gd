@@ -1,7 +1,7 @@
 extends CharacterBody2D
 const Space=preload("res://prototypes/isometric/iso_space.gd")
 var logical=Vector2.ZERO
-var speed=2.4
+var speed=4.8
 var sprite: Sprite2D
 var frames: Dictionary
 var images: Dictionary={}

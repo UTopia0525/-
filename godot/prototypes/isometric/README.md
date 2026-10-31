@@ -23,11 +23,16 @@ godot --path godot res://prototypes/isometric/main.tscn
 | 중간 버튼 드래그 | 카메라 수동 이동 |
 | C | 카메라 추적 켜기/끄기 |
 | G | 바닥 타일·바닥 점유 범위 표시 |
+| H | 인물이 가려질 때 금색 위치 표시 켜기/끄기 |
 | R | 인물 시작 위치 복귀 |
 
 ## 들어 있는 것
 
-12×12 논리 바닥, 민가·창고2종, 조작 가능한 짐꾼1종, 도형 나무·항아리 각1개다. 건물과 NPC는 기존 화풍을 참조해 새로 생성했고 원본을 그대로 보관했다. NPC는 앞/뒤 대각선2종을 좌우 반전해4방향으로 표현한다. 전체 보행 프레임은 제작하지 않았으며 대기 호흡·이동 흔들림만 있다. 도형 장식은 기술 검증용이다.
+12×12 논리 바닥에 기존 민가·창고, 조작 가능한 짐꾼1종, 넓은 마당→열린 대문→좁은 골목을 배치했다. 담장은15개 짧은 구간으로 나눠 앞뒤 정렬한다. 나무·항아리 각1개는 도형 장식이다. 건물·NPC·새 대문은 원본 그림을 그대로 보관하고 비율을 유지한다. NPC는 앞/뒤 대각선2종을 좌우 반전해4방향으로 표현한다. 전체 보행 프레임은 제작하지 않았으며 대기 호흡·이동 흔들림만 있다.
+
+골목 폭은1.45논리 타일, 대문 통로는1.15타일, 인물 발밑 지름은0.30타일이다. 대문 양쪽 기둥만 충돌하고 중앙은 열려 있다. G로 실제 충돌 바닥을 확인할 수 있다. 지붕 아래에서는 대문 그림이 인물 앞에 오지만 투명한 개구부로 인물이 보인다.
+
+가림 대응안은 **가려질 때만 나타나는 금색 발밑 고리·점선·이름표**다. H로 비교할 수 있다. 지붕/담장을 투명하게 만들거나 가려진 인물을 클릭 가능하게 바꾸지 않는다.
 
 돌/흙 바닥은 기존 재질을 마름모에 매핑해 그린다. 이번 씬은 `TileMapLayer`를 사용하지 않고144개의 바닥 폴리곤을 그리는 방식이며, 대규모 도시용 타일 시스템을 확정한 결과가 아니다.
 
@@ -36,14 +41,23 @@ godot --path godot res://prototypes/isometric/main.tscn
 - `iso_space.gd`: 연속 논리 좌표↔화면 좌표 변환. 타일128×64. 기존 미술 좌표 배열을 논리 타일 단위로 읽는 작은 어댑터 포함.
 - `layout.json`: 시험 전용 점유 사각형/이름/ID. 기존 도시 JSON은 수정하지 않는다.
 - `iso_prop.gd`: 논리 바닥을 화면 다각형 충돌체로 변환하고 그림의 지상 앞쪽 모서리에 맞춰 등록한다. 이미지 종횡비는 유지한다.
+- `iso_wall.gd`: 짧은 담장 구간의 투영 바닥/충돌과 높이가 일정한 입체 면을 만든다. 기존 시장 재질을 사용한다.
+- `iso_visibility_hint.gd`: 가림 감지 결과를 화면 좌표로 표시한다. 물리/선택 판정은 바꾸지 않는다.
 - `iso_actor.gd`: 화면 방향 입력을 논리 방향으로 역변환해 이동하고 충돌 후 실제 위치에서 논리 위치를 갱신한다. 원형 논리 발밑은 화면에서 타원 다각형이다.
 - `iso_world.gd`: 배치·깊이·카메라·시험 안내. 불명확한 정렬은 화면Y로 결정하고 명확한 논리 앞뒤 관계는 우선한다. 단순 발밑Y 하나보다 건물 옆면에 유리하다.
 - `assets/manifest.json`: 이미지 영역·바닥 기준점·스케일. 원본 크기를 논리 충돌 면적으로 잘못 사용하는 것을 피한다.
 
-조작 속도는 논리 지상 거리 기준이다. 2:1 투영 때문에 화면에서 수직 이동 속도는 수평보다 작게 보인다. 조작감의 최종 기준은 후속 플레이 검토가 필요하다.
+조작 속도는 **논리 지상 거리 기준 초당4.8타일**로 이전2.4의 정확히2배다. 2:1 투영 때문에 화면에서 수직 이동 속도는 수평보다 작게 보인다. 본게임 이동 속도는 변경하지 않았다.
 
 ## 확인 화면
 
-[전체](screenshots/overview.png) · [실제 추적 카메라](screenshots/play.png) · [건물 뒤](screenshots/behind.png) · [건물 앞](screenshots/front.png) · [옆면](screenshots/side.png) · [점유 범위](screenshots/footprints.png) · [1440p](screenshots/1440p.png)
+[골목 전체](screenshots/alley-overview.png) · [실제 추적 카메라](screenshots/alley-play.png) · [대문 앞](screenshots/alley-gate-front.png) · [대문 아래](screenshots/alley-gate-under.png) · [대문 뒤](screenshots/alley-gate-back.png) · [가림 표시](screenshots/alley-hidden.png) · [표시 끔](screenshots/alley-hidden-no-hint.png) · [실제 충돌 바닥](screenshots/alley-collision.png) · [1440p](screenshots/alley-1440p.png)
 
-검사/제약/확장 판단은 [구현 보고서](../../../docs/reviews/isometric-prototype.md)를 따른다. 다음 구역으로 자동 확장하지 않는다.
+검사/제약/크기 평가는 [골목 구현 보고서](../../../docs/reviews/isometric-alley.md)를 따른다. 이전 [최소 씬 보고서](../../../docs/reviews/isometric-prototype.md)와 접두어 없는 스크린샷은1단계 기록이다. 다음 구역으로 자동 확장하지 않는다.
+
+```sh
+godot --headless --path godot --script res://tests/isometric_prototype.gd
+godot --headless --path godot --script res://tests/isometric_alley.gd
+```
+
+실제 렌더링 가능한 환경에서 `tests/capture_isometric_alley.gd`를 실행하면 위9장을 다시 촬영한다. 저장은 사용하지 않으며 본게임 검사와 분리한다.

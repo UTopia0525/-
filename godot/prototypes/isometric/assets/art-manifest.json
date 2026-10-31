@@ -14,6 +14,14 @@
       "file": "npc.png",
       "original": "generated_images/exec-d3c72318-a280-4788-9188-b6de7de7baef.png",
       "sha256": "4a575c6e849447b0af4343825b8817814c555554c21d7ef935abf2adb9dc0c47"
+    },
+    {
+      "file": "gate.png",
+      "original": "generated_images/exec-28dae524-228a-478d-ab7a-ab5177159ae3.png",
+      "draft_original": "generated_images/exec-b89e62a4-97e4-4f40-b2c8-3f86ba474365.png",
+      "reference": "buildings.png",
+      "sha256": "e8710c726c0495367645b42a647a198cf258417944a194f42f58459aeb7ebf70",
+      "notes": "Tall open doorway. Unmodified original. Atlas crop and front ground corner registered in manifest; two physical pillars, no opening collider."
     }
   ],
   "notes": "Generated PNG originals copied without pixel edits. Atlas source rectangles and ground-front-corner pivots registered in manifest; tree/urn and floor are technical placeholders."

@@ -1,6 +1,7 @@
 extends Node2D
 const Space=preload("res://prototypes/isometric/iso_space.gd")
 const Prop=preload("res://prototypes/isometric/iso_prop.gd")
+const Wall=preload("res://prototypes/isometric/iso_wall.gd")
 const Actor=preload("res://prototypes/isometric/iso_actor.gd")
 var data: Dictionary
 var actors: Node2D
@@ -17,9 +18,15 @@ var texture_stone: AtlasTexture
 var texture_soil: AtlasTexture
 var registered_actions: Array[String]=[]
 var depth_cycles=0
-var selection_message="마당의 인물을 움직여 건물 앞과 뒤를 지나 보세요."
+var selection_message="대문을 지나 좁은 골목으로 들어가 보세요. · 이동 속도 2배"
 var drag=false
+var actor_occluded=false
+var occluded_samples=0
+var show_occlusion_hint=true
+var visibility_hint
+var last_sorted_position=Vector2(INF,INF)
 func _ready() -> void:
+	process_physics_priority=10
 	data=JSON.parse_string(FileAccess.get_file_as_string("res://prototypes/isometric/layout.json"))
 	var art=JSON.parse_string(FileAccess.get_file_as_string("res://prototypes/isometric/assets/manifest.json"))
 	_register_inputs()
@@ -29,6 +36,13 @@ func _ready() -> void:
 	actors=Node2D.new();actors.name="DepthSortedActors";add_child(actors)
 	for entry in data.props:
 		var prop=Prop.new();prop.setup(entry,art.buildings);actors.add_child(prop);props.append(prop)
+	for section in data.walls:
+		var r=section.rect;var along_u=float(r[2])>float(r[3]);var length=float(r[2] if along_u else r[3]);var count=ceili(length/.75)
+		for i in range(count):
+			var start=length*i/count;var end=length*(i+1)/count
+			var rect=[r[0]+start,r[1],end-start,r[3]] if along_u else [r[0],r[1]+start,r[2],end-start]
+			var wall=Wall.new();wall.setup({"id":section.id+"_"+str(i),"name":"巷 · 골목 담장","kind":"wall","rect":rect},{})
+			actors.add_child(wall);props.append(wall)
 	actor=Actor.new();actor.setup(art.npc,self);actors.add_child(actor);reset_actor()
 	for r in [Rect2(-1,-1,14,1),Rect2(-1,12,14,1),Rect2(-1,0,1,12),Rect2(12,0,1,12)]:
 		var wall=StaticBody2D.new();wall.collision_layer=1
@@ -36,7 +50,7 @@ func _ready() -> void:
 	camera=Camera2D.new();camera.zoom=Vector2.ONE*.85;camera.position_smoothing_enabled=false;add_child(camera);camera.make_current();snap_camera()
 	_build_hud();update_depth();queue_redraw()
 func _register_inputs() -> void:
-	var actions={"iso_left":[KEY_A,KEY_LEFT],"iso_right":[KEY_D,KEY_RIGHT],"iso_up":[KEY_W,KEY_UP],"iso_down":[KEY_S,KEY_DOWN],"iso_interact":[KEY_F],"iso_debug":[KEY_G],"iso_reset":[KEY_R],"iso_camera":[KEY_C]}
+	var actions={"iso_left":[KEY_A,KEY_LEFT],"iso_right":[KEY_D,KEY_RIGHT],"iso_up":[KEY_W,KEY_UP],"iso_down":[KEY_S,KEY_DOWN],"iso_interact":[KEY_F],"iso_debug":[KEY_G],"iso_reset":[KEY_R],"iso_camera":[KEY_C],"iso_hint":[KEY_H]}
 	for action in actions:
 		if InputMap.has_action(action):continue
 		registered_actions.append(action);InputMap.add_action(action)
@@ -52,7 +66,9 @@ func _draw() -> void:
 	draw_colored_polygon(low,Color("263b35"))
 	for u in range(12):
 		for v in range(12):
-			var points=Space.diamond(Rect2(u,v,1,1));var road=(u>=5 and u<=7) or (v>=6 and v<=8)
+			var points=Space.diamond(Rect2(u,v,1,1));var road=false
+			for a in data.paving:
+				if Rect2(a[0],a[1],a[2],a[3]).has_point(Vector2(u+.5,v+.5)):road=true;break
 			var tint=1.0+float((u*17+v*31)%7-3)*.003
 			var uv=Vector2(u%3,v%3)/3.0;var step=1.0/3.0
 			var colors=PackedColorArray([Color(tint,tint,tint),Color(tint,tint,tint),Color(tint,tint,tint),Color(tint,tint,tint)])
@@ -62,6 +78,7 @@ func _draw() -> void:
 func _physics_process(_delta: float) -> void:
 	if not is_instance_valid(actor):return
 	update_depth()
+	update_occlusion()
 	if follow:snap_camera()
 	if is_instance_valid(details):
 		details.text=selection_message
@@ -72,24 +89,40 @@ func snap_camera() -> void:
 	var low=Vector2(-850,-330)+extent;var high=Vector2(850,900)-extent
 	camera.position=Vector2(clampf(target.x,minf(low.x,high.x),maxf(low.x,high.x)),clampf(target.y,minf(low.y,high.y),maxf(low.y,high.y)))
 	camera.force_update_scroll()
+func comes_before(a,b) -> bool:
+	var gate=b if a==actor else a if b==actor else null
+	if gate!=null and gate.spec.kind=="gate" and gate.footprint.has_point(actor.logical):
+		return a==actor
+	return Space.before(a.footprint,b.footprint)
 func update_depth() -> void:
-	# Resolve unambiguous ground separation before screen-Y tie breaking.
-	# This avoids a large building's front-corner anchor hiding a walker beside it.
+	if actor.logical.is_equal_approx(last_sorted_position):return
+	last_sorted_position=actor.logical
 	var nodes=props.duplicate();nodes.append(actor)
-	var ordered=[];var remaining=nodes.duplicate()
+	var edges={};var indegree={}
+	for node in nodes:edges[node]=[];indegree[node]=0
+	for i in range(nodes.size()):
+		for j in range(i+1,nodes.size()):
+			var a=nodes[i];var b=nodes[j]
+			if comes_before(a,b):edges[a].append(b);indegree[b]+=1
+			elif comes_before(b,a):edges[b].append(a);indegree[a]+=1
+	var remaining=nodes.duplicate();var ordered=[]
 	while not remaining.is_empty():
-		var ready=[]
-		for candidate in remaining:
-			var blocked=false
-			for other in remaining:
-				if other!=candidate and Space.before(other.footprint,candidate.footprint):blocked=true;break
-			if not blocked:ready.append(candidate)
+		var ready=remaining.filter(func(n):return indegree[n]==0)
 		if ready.is_empty():depth_cycles+=1;ready=remaining.duplicate()
 		ready.sort_custom(func(a,b):
 			var ay=Space.project(a.footprint.get_center()).y;var by=Space.project(b.footprint.get_center()).y
 			return ay<by if not is_equal_approx(ay,by) else str(a.name)<str(b.name))
 		var next=ready[0];ordered.append(next);remaining.erase(next)
+		for other in edges[next]:indegree[other]-=1
 	for i in range(ordered.size()):actors.move_child(ordered[i],i)
+func update_occlusion() -> void:
+	occluded_samples=0
+	for y in [18,44,70,90]:
+		for x in [-10,0,10]:
+			var point=actor.position+Vector2(x,-y)
+			for prop in props:
+				if prop.get_index()>actor.get_index() and prop.hit(point):occluded_samples+=1;break
+	actor_occluded=occluded_samples>=3
 func pick(world_point: Vector2):
 	var nodes=actors.get_children();nodes.reverse()
 	for node in nodes:
@@ -113,6 +146,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		debug_footprints=not debug_footprints
 		for prop in props:prop.debug_footprint=debug_footprints;prop.queue_redraw()
 		queue_redraw();get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("iso_hint") and not event.is_echo():show_occlusion_hint=not show_occlusion_hint
 	elif event.is_action_pressed("iso_reset") and not event.is_echo():reset_actor();snap_camera()
 	elif event.is_action_pressed("iso_camera") and not event.is_echo():follow=not follow
 	elif event.is_action_pressed("iso_interact") and not event.is_echo():interact()
@@ -125,11 +159,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventMouseMotion and drag:camera.position-=event.relative/camera.zoom
 func _build_hud() -> void:
 	var layer=CanvasLayer.new();add_child(layer)
+	visibility_hint=preload("res://prototypes/isometric/iso_visibility_hint.gd").new();visibility_hint.setup(self);layer.add_child(visibility_hint)
 	var font=load("res://assets/fonts/NanumMyeongjo-Regular.ttf")
 	var panel=PanelContainer.new();panel.position=Vector2(22,18);panel.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(panel)
 	var style=StyleBoxFlat.new();style.bg_color=Color("142923eb");style.border_color=Color("98845b");style.set_border_width_all(1);style.set_content_margin_all(12);panel.add_theme_stylebox_override("panel",style)
 	var list=VBoxContainer.new();list.mouse_filter=Control.MOUSE_FILTER_IGNORE;panel.add_child(list)
-	for text in ["공간 시험 · 작은 마을","WASD / 방향키 이동   ·   F 조사   ·   클릭 선택","휠 확대   ·   중간 버튼 드래그   ·   C 카메라 추적","G 바닥·충돌 범위   ·   R 시작 위치"]:
+	for text in ["공간 시험 · 마당에서 골목으로","WASD / 방향키 이동   ·   F 조사   ·   클릭 선택","휠 확대   ·   중간 버튼 드래그   ·   C 카메라 추적","G 충돌 범위   ·   H 가림 표시   ·   R 시작 위치"]:
 		var label=Label.new();label.text=text;label.add_theme_font_override("font",font);label.add_theme_font_size_override("font_size",15);label.mouse_filter=Control.MOUSE_FILTER_IGNORE;list.add_child(label)
 	details=Label.new();details.position=Vector2(24,650);details.add_theme_font_override("font",font);details.add_theme_font_size_override("font_size",17);details.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(details)
 	status=Label.new();status.position=Vector2(24,682);status.add_theme_font_override("font",font);status.add_theme_font_size_override("font_size",14);status.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(status)
