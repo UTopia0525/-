@@ -1,5 +1,7 @@
 # 아이소메트릭 도원·배경 미술 조화 검증
 
+이 문서는4단계 미술 기록이다. 최신 F 상호작용/공용 대화 연결과 정지 방향 보정은 [5단계 보고서](isometric-dialogue.md)를 따른다. 미술·배치·속도는 유지했다.
+
 기존 독립 골목에서 조작 인물만 도원으로 바꾸고 담장/나무/항아리와 바닥 접지를 정리했다. **본게임·건물 배치·통로 폭·충돌·자동 NPC2명의 경로와 속도는 유지한다.** 전체 도시로 확대하지 않았다.
 
 [나란히 비교하는 로컬 페이지](../../godot/prototypes/isometric/screenshots/harmony-comparison.html) · [실제 Godot 보행 영상13.6초](../../godot/prototypes/isometric/screenshots/harmony-walk.mp4)

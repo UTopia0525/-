@@ -1,0 +1,128 @@
+{
+  "1440p": {
+    "npc_speeds": [
+      4.8,
+      4.8
+    ],
+    "pose": [
+      "back",
+      true
+    ],
+    "position": [
+      8.30000019073486,
+      5.34999942779541
+    ]
+  },
+  "facing-idle": {
+    "npc_speeds": [
+      4.8,
+      4.8
+    ],
+    "pose": [
+      "back",
+      true
+    ],
+    "position": [
+      6.64268493652344,
+      8.8331413269043
+    ]
+  },
+  "facing-moving": {
+    "npc_speeds": [
+      4.8,
+      4.8
+    ],
+    "pose": [
+      "back",
+      true
+    ],
+    "position": [
+      6.86895942687988,
+      9.05941581726074
+    ]
+  },
+  "hero": {
+    "npc_speeds": [
+      4.8,
+      4.8
+    ],
+    "pose": [
+      "front",
+      false
+    ],
+    "position": [
+      5.5,
+      9.69999980926514
+    ]
+  },
+  "history": {
+    "npc_speeds": [
+      4.8,
+      4.8
+    ],
+    "pose": [
+      "front",
+      false
+    ],
+    "position": [
+      5.5,
+      9.69999980926514
+    ]
+  },
+  "npc": {
+    "npc_speeds": [
+      4.8,
+      4.8
+    ],
+    "pose": [
+      "front",
+      false
+    ],
+    "position": [
+      5.5,
+      9.69999980926514
+    ]
+  },
+  "resume": {
+    "npc_speeds": [
+      4.8,
+      4.8
+    ],
+    "pose": [
+      "front",
+      false
+    ],
+    "position": [
+      5.5,
+      9.69999980926514
+    ]
+  },
+  "second-npc": {
+    "npc_speeds": [
+      4.8,
+      4.8
+    ],
+    "pose": [
+      "back",
+      true
+    ],
+    "position": [
+      8.30000019073486,
+      5.34999942779541
+    ]
+  },
+  "target": {
+    "npc_speeds": [
+      4.8,
+      4.8
+    ],
+    "pose": [
+      "front",
+      false
+    ],
+    "position": [
+      5.5,
+      9.69999980926514
+    ]
+  }
+}

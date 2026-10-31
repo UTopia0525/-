@@ -28,6 +28,8 @@ var occluded_samples=0
 var show_occlusion_hint=true
 var visibility_hint
 var grounding
+var interaction
+var dialogue
 var last_sorted_positions: Array=[]
 func _ready() -> void:
 	process_physics_priority=10
@@ -57,7 +59,10 @@ func _ready() -> void:
 		var shape=CollisionPolygon2D.new();shape.polygon=Space.diamond(r);wall.add_child(shape);add_child(wall)
 	grounding=preload("res://prototypes/isometric/iso_grounding.gd").new();grounding.setup(self);add_child(grounding);move_child(grounding,0)
 	camera=Camera2D.new();camera.zoom=Vector2.ONE*.85;camera.position_smoothing_enabled=false;add_child(camera);camera.make_current();snap_camera()
-	_build_hud();update_depth();queue_redraw()
+	_build_hud()
+	var dialogue_layer=CanvasLayer.new();dialogue_layer.layer=20;add_child(dialogue_layer)
+	dialogue=preload("res://prototypes/isometric/iso_dialogue.gd").new();dialogue.setup(self);dialogue_layer.add_child(dialogue)
+	update_depth();queue_redraw()
 func _register_inputs() -> void:
 	var actions={"iso_left":[KEY_A,KEY_LEFT],"iso_right":[KEY_D,KEY_RIGHT],"iso_up":[KEY_W,KEY_UP],"iso_down":[KEY_S,KEY_DOWN],"iso_interact":[KEY_F],"iso_debug":[KEY_G],"iso_reset":[KEY_R],"iso_camera":[KEY_C],"iso_hint":[KEY_H],"iso_patrol":[KEY_P]}
 	for action in actions:
@@ -154,6 +159,7 @@ func select_target(target) -> void:
 	for person in moving_actors:person.picked=(person==selected);person.queue_redraw()
 	selection_message="선택: "+(selected.display_name if selected in moving_actors else str(selected.spec.name)) if selected!=null else "선택한 대상이 없습니다."
 func interact() -> void:
+	if interaction.interact():return
 	var nearest=null;var distance=INF
 	for prop in props:
 		var d=actor.logical.distance_to(prop.footprint.get_center())
@@ -162,6 +168,7 @@ func interact() -> void:
 		select_target(nearest);selection_message+="  ·  시험용 조사입니다. 본게임 대화와 연결되지 않습니다."
 	else:selection_message="가까이 다가가 F를 눌러 보세요."
 func _unhandled_input(event: InputEvent) -> void:
+	if is_instance_valid(dialogue) and dialogue.active:return
 	if event.is_action_pressed("iso_debug") and not event.is_echo():
 		debug_footprints=not debug_footprints
 		for prop in props:prop.debug_footprint=debug_footprints;prop.queue_redraw()
@@ -171,7 +178,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("iso_patrol") and not event.is_echo():
 		patrols_enabled=not patrols_enabled;selection_message="자동 NPC "+("왕복 재개" if patrols_enabled else "정지 · 충돌은 유지")
 	elif event.is_action_pressed("iso_camera") and not event.is_echo():follow=not follow
-	elif event.is_action_pressed("iso_interact") and not event.is_echo():interact()
+	elif event.is_action_pressed("iso_interact") and not event.is_echo():interact();get_viewport().set_input_as_handled()
 	elif event is InputEventMouseButton:
 		if event.button_index==MOUSE_BUTTON_MIDDLE:drag=event.pressed;follow=false
 		elif event.pressed and event.button_index in [MOUSE_BUTTON_WHEEL_UP,MOUSE_BUTTON_WHEEL_DOWN]:
@@ -182,11 +189,12 @@ func _unhandled_input(event: InputEvent) -> void:
 func _build_hud() -> void:
 	var layer=CanvasLayer.new();add_child(layer)
 	visibility_hint=preload("res://prototypes/isometric/iso_visibility_hint.gd").new();visibility_hint.setup(self);layer.add_child(visibility_hint)
+	interaction=preload("res://prototypes/isometric/iso_interaction.gd").new();interaction.setup(self);layer.add_child(interaction)
 	var font=load("res://assets/fonts/NanumMyeongjo-Regular.ttf")
 	var panel=PanelContainer.new();panel.position=Vector2(22,18);panel.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(panel)
 	var style=StyleBoxFlat.new();style.bg_color=Color("142923eb");style.border_color=Color("98845b");style.set_border_width_all(1);style.set_content_margin_all(12);panel.add_theme_stylebox_override("panel",style)
 	var list=VBoxContainer.new();list.mouse_filter=Control.MOUSE_FILTER_IGNORE;panel.add_child(list)
-	for text in ["골목 시험 · 도원과 왕복 짐꾼 둘","WASD / 방향키 이동   ·   F 조사   ·   클릭 선택","휠 확대   ·   중간 버튼 드래그   ·   C 카메라 추적","G 충돌 범위 · H 가림 표시 · P 왕복 정지 · R 초기화"]:
+	for text in ["골목 시험 · 도원과 왕복 짐꾼 둘","WASD / 방향키 이동 · F 대화/조사 · 클릭 선택","휠 확대 · 중간 버튼 드래그 · C 카메라 추적","G 충돌 · H 가림 표시(대화 중 기록) · P 왕복 · R 초기화"]:
 		var label=Label.new();label.text=text;label.add_theme_font_override("font",font);label.add_theme_font_size_override("font_size",15);label.mouse_filter=Control.MOUSE_FILTER_IGNORE;list.add_child(label)
 	details=Label.new();details.position=Vector2(24,650);details.add_theme_font_override("font",font);details.add_theme_font_size_override("font_size",17);details.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(details)
 	status=Label.new();status.position=Vector2(24,682);status.add_theme_font_override("font",font);status.add_theme_font_size_override("font_size",14);status.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(status)

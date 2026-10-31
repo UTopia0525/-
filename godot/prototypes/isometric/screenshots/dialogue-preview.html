@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>아이소메트릭 · F 대화와 정지 방향</title>
+<style>body{margin:0;background:#101d19;color:#e9e1ce;font:16px/1.65 system-ui,sans-serif}main{max-width:1500px;margin:auto;padding:24px}h1{font-size:24px}h2{font-size:20px;margin-top:32px}.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}figure{margin:0;background:#192b24;padding:8px}img,video{width:100%;height:auto;display:block}p{color:#bdc9bf}a{color:#d8c18e}@media(max-width:800px){.pair{grid-template-columns:1fr}main{padding:12px}}</style>
+<main><h1>F 대화 · 공용 UI 연결과 정지 방향 확인</h1>
+<p>F 대상은 가까운 접근 가능한 한 명. 대화는 F/다음 버튼, 기록은 H, 기록에서 복귀는 H/ESC입니다. 대화 중 도원과 상대만 멈추며, 공용 기록 창을 읽는 동안은 기존 방식대로 장면 전체가 잠시 정지합니다. 두 NPC의 속도는 기존4.8입니다.</p>
+<h2>실제 진행 영상 · 10.7초</h2><video controls preload="metadata" poster="dialogue-target.png"><source src="dialogue-play.mp4" type="video/mp4"></video>
+<h2>대상 선택과 대화</h2><div class="pair"><figure><img src="dialogue-target.png" alt="F 대화 대상"><figcaption>가까운 대상 이름과 발밑 강조</figcaption></figure><figure><img src="dialogue-npc.png" alt="상대 발언"><figcaption>공용 패널/초상화 · 상대가 말하면 도원은 어둡게</figcaption></figure></div>
+<h2>화자 전환과 기록</h2><div class="pair"><figure><img src="dialogue-hero.png" alt="도원 발언"><figcaption>도원이 말하면 상대는 어둡게 · 위치는 유지</figcaption></figure><figure><img src="dialogue-history.png" alt="지난 대화"><figcaption>실제로 표시한 두 줄만 기록 · 미래 대사는 숨김</figcaption></figure></div>
+<h2>W+D 이동 후 정지</h2><div class="pair"><figure><img src="dialogue-facing-moving.png" alt="대각선 이동"><figcaption>W+D 이동</figcaption></figure><figure><img src="dialogue-facing-idle.png" alt="정지 방향 유지"><figcaption>키를 차례로 뗀 뒤에도 같은 방향 유지</figcaption></figure></div>
+<p><a href="dialogue-second-npc.png">두 번째 짐꾼</a> · <a href="dialogue-resume.png">종료 후 왕복 재개</a> · <a href="dialogue-1440p.png">1440p</a> · <a href="dialogue-play.mp4">영상 파일</a></p>
+<p>짧은 대화용 독립 어댑터입니다. 본게임의 이야기·저장·전투와 연결하지 않았습니다. 영상의30fps는 기록 속도이며 기기별 성능 수치가 아닙니다.</p></main></html>

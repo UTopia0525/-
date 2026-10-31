@@ -12,6 +12,13 @@ var moving=false
 var phase=0.0
 var walk_frame=0
 var facing="front"
+var facing_flipped=false
+var last_direction=Vector2.ZERO
+var release_facing_time=0.0
+var steering_active=false
+var motion_paused=false
+var input_neutral_required=false
+var interaction_target=false
 var picked=false
 var interactive=true
 var display_name="조작 짐꾼"
@@ -41,7 +48,7 @@ func _pixels(texture: Texture2D) -> Image:
 	if result.is_compressed():result.decompress()
 	return result
 func set_pose(key: String,flip: bool) -> void:
-	facing=key;sprite.flip_h=flip
+	facing=key;facing_flipped=flip;sprite.flip_h=flip
 	sprite.texture=images[key]
 	# Fixed cell size, scale and ground pivot across idle/walk/all four directions.
 	sprite.scale=base_scale;sprite.rotation=0
@@ -52,10 +59,30 @@ func set_pose(key: String,flip: bool) -> void:
 		rig.scale=base_scale*Vector2(-1 if flip else 1,1)
 		rig.position=Vector2(0,-sprite.texture.get_height()*base_scale.y)
 func set_logical(p: Vector2) -> void:
-	logical=p;position=Space.project(p);velocity=Vector2.ZERO;moving=false;phase=0;walk_frame=0
-	if is_instance_valid(sprite):set_pose(facing,sprite.flip_h)
+	logical=p;position=Space.project(p);velocity=Vector2.ZERO;moving=false;phase=0;walk_frame=0;steering_active=false
+	if is_instance_valid(sprite):set_pose(facing,facing_flipped)
+func stop_motion() -> void:
+	velocity=Vector2.ZERO;moving=false;phase=0;walk_frame=0;steering_active=false;release_facing_time=0
+	set_pose(facing,facing_flipped);queue_redraw()
+func _face_movement(direction: Vector2,delta: float) -> void:
+	if direction.is_zero_approx():set_pose(facing,facing_flipped);return
+	# Releasing W+D one key at a time must not flash the remaining axis on stopping.
+	var was_diagonal=absf(last_direction.x)>.1 and absf(last_direction.y)>.1
+	var is_axis=absf(direction.x)<.1 or absf(direction.y)<.1
+	var releasing_axis=steering_active and was_diagonal and is_axis and direction.dot(last_direction)>0
+	steering_active=true
+	if interactive and releasing_axis:
+		release_facing_time+=delta
+		if release_facing_time<.09:
+			set_pose(facing,facing_flipped);return
+	release_facing_time=0;last_direction=direction
+	set_pose("back" if direction.y<0 else "front",direction.x<0 if direction.y>=0 else direction.x>0)
 func _physics_process(delta: float) -> void:
+	if motion_paused:stop_motion();return
 	var direction=Input.get_vector("iso_left","iso_right","iso_up","iso_down") if interactive else Vector2.ZERO
+	if interactive and input_neutral_required:
+		if direction==Vector2.ZERO:input_neutral_required=false
+		direction=Vector2.ZERO
 	var ground_direction=Space.unproject(direction).normalized()
 	if patrol!=null:
 		ground_direction=patrol.direction(delta) if owner_world.patrols_enabled else Vector2.ZERO
@@ -71,9 +98,9 @@ func _physics_process(delta: float) -> void:
 		# Distance-driven cycle stops on collision and does not run in place.
 		phase=fmod(phase+ground_travel*TAU/1.9,TAU)
 		walk_frame=int(phase/TAU*4)%4
-		set_pose("back" if direction.y<0 else "front",direction.x<0 if direction.y>=0 else direction.x>0)
+		_face_movement(direction,delta)
 	else:
-		phase=0;walk_frame=0;set_pose(facing,sprite.flip_h)
+		phase=0;walk_frame=0;release_facing_time=0;steering_active=false;set_pose(facing,facing_flipped)
 	queue_redraw()
 func hit(point: Vector2) -> bool:
 	if moving:return rig.hit(point)
@@ -86,6 +113,6 @@ func _draw() -> void:
 	var points=PackedVector2Array()
 	for i in range(32):points.append(Vector2(cos(i*TAU/32)*21,sin(i*TAU/32)*9))
 	draw_colored_polygon(points,Color(.06,.10,.09,.3))
-	if picked or owner_world.debug_footprints:
-		var color=Color("edcc80") if interactive else Color("8ec7d1")
-		draw_polyline(points+PackedVector2Array([points[0]]),color,2)
+	if picked or interaction_target or owner_world.debug_footprints:
+		var color=Color("ffe0a0") if interaction_target else Color("edcc80") if interactive else Color("8ec7d1")
+		draw_polyline(points+PackedVector2Array([points[0]]),color,3 if interaction_target else 2)

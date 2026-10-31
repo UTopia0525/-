@@ -1,0 +1,23 @@
+{
+  "actors": {
+    "hero": {"name":"도원","portrait":"res://assets/portraits/player/hero.png"},
+    "iso_gate_porter": {"name":"문길 짐꾼","basic_portrait":"male_common_a"},
+    "iso_rear_porter": {"name":"뒷길 짐꾼","basic_portrait":"male_dockworker"}
+  },
+  "conversations": {
+    "GatePorter": [
+      ["iso_gate_porter","문간에 잠깐 서 계시겠소? 짐이 오갈 때는 두 사람이 비켜 서야 해서 말이오."],
+      ["hero","길을 막을 뜻은 없었소. 창고까지 나르는 중이오?"],
+      ["iso_gate_porter","그렇소. 아침엔 쌀자루, 해질녘엔 빈 광주리요. 같은 길도 짐을 지면 영 멀어지지."],
+      ["hero","발밑 돌이 닳은 까닭을 알겠군. 먼저 지나가시오."],
+      ["iso_gate_porter","고맙소. 대문 아래 턱만 조심하시오. 비가 오면 제법 미끄럽다오."]
+    ],
+    "RearPorter": [
+      ["iso_rear_porter","뒤쪽 길로 돌면 바람이 좀 통하오. 창고 문 앞에만 있으면 먼지를 다 마시게 되지."],
+      ["hero","매일 이 길을 오가오?"],
+      ["iso_rear_porter","장날 전엔 더 바쁘지. 문간의 그 친구와 번갈아 짐을 받는데, 쉬는 날엔 둘 다 허리부터 편다오."],
+      ["hero","사람이 쉬어야 짐도 제때 옮기는 법이겠지."],
+      ["iso_rear_porter","허허, 알아주는 말이구려. 잠깐 숨을 돌렸으니 다시 돌아봐야겠소."]
+    ]
+  }
+}

@@ -17,7 +17,7 @@ func refresh() -> void:
 	label_rects.clear();markers.clear()
 	visible=is_instance_valid(world) and world.show_occlusion_hint
 	for person in captions:
-		var caption: Label=captions[person];caption.visible=visible and person.occluded
+		var caption: Label=captions[person];caption.visible=visible and person.occluded and not person.interaction_target
 		if not caption.visible:continue
 		var foot=world.get_canvas_transform()*person.position
 		var extent=caption.get_combined_minimum_size()+Vector2(8,4)
