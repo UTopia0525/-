@@ -20,7 +20,7 @@ godot --path godot res://prototypes/isometric/main.tscn
 화면과 영상을 한 페이지에서 보려면:
 
 ```powershell
-Start-Process .\godot\prototypes\isometric\screenshots\orientation-preview.html
+Start-Process .\godot\prototypes\isometric\screenshots\spaces-preview.html
 ```
 
 | 조작 | 동작 |
@@ -37,7 +37,7 @@ Start-Process .\godot\prototypes\isometric\screenshots\orientation-preview.html
 
 ## 현재 시험 범위
 
-12×12논리 바닥, 민가/창고/민가 대문, 두 건물의 독립 마당과43분할 담장, 나무/항아리, 도원1명과 자동 짐꾼2명이다. 중앙 공용 골목 폭1.4, 민가 대문/창고 마당 출입구 폭1.15/1.2, 인물 발밑 지름0.30이다. 창고 정면은 중앙 골목을 향하도록 방향을 바꾸고 카메라에는 새 뒷면 그림을 표시한다. 민가와 대문도 별도 마당을 확보하도록 옮겼다. 각 담장은 소속 마당의 경계를 잇고 출입구 이외에 끊김을 두지 않는다.
+12×12논리 바닥, 민가/창고, 민가 지붕 대문/창고 목제 문틀 대문, 담장 없는 목공 작업대, 두 건물의 독립 마당과43분할 담장, 나무/항아리, 도원1명과 자동 짐꾼2명이다. 중앙 공용 골목 폭1.4, 민가 대문/창고 마당 출입구 폭1.15/1.2, 인물 발밑 지름0.30이다. 창고 정면은 중앙 골목을 향하도록 방향을 바꾸고 카메라에는 새 뒷면 그림을 표시한다. 민가와 대문도 별도 마당을 확보하도록 옮겼다. 각 담장은 소속 마당의 경계를 잇고 출입구 이외에 끊김을 두지 않는다. 모든 건물에 담장을 요구하지 않으며 열린 작업 공간은 공용 마당에서 직접 접근한다.
 
 세 인물의 속도4.8논리 타일/초·원본/보행은 유지한다. 문길 짐꾼은 민가 마당 안팎, 뒷길 짐꾼은 외곽 길을 왕복하도록 경로를 새 구획에 맞췄다. 실내 미구현 건물도 방향/마당/문턱/접근 경로를 등록하며 시작/G키에서 검사한다.
 
@@ -60,15 +60,18 @@ Start-Process .\godot\prototypes\isometric\screenshots\orientation-preview.html
 - `iso_space.gd`: 논리↔화면 투영/기존 단위 어댑터. `layout.json`은 시험 배치와 문/마당/접근 경로다.
 - `iso_actor.gd`, `iso_walk_rig.gd`: 발밑 물리/고정 크기/4방향 보행과 정지 방향.
 - `iso_prop.gd`, `iso_wall.gd`, `iso_grounding.gd`: 분리된 그림/바닥 충돌/담장 재질/바닥 접지.
-- `iso_access_rules.gd`: 실내 유무와 무관한 문/접근 방향/마당·공용 길·충돌 검사.
+- `iso_access_rules.gd`: 입구/접근 방향, 선택적 담장/대문 미술·기둥 충돌·열린 통로, 담장 없는 작업 공간 검사.
 - `iso_patrol.gd`: 정해진 길의 왕복/양보. `iso_visibility_hint.gd`: 여러 인물의 가림 표시.
 - `iso_interaction.gd`: 대상 한 명의 거리/접근/가림 검사와 안내.
 - `iso_dialogue.gd`: 공용 UI의 시험용 호스트. `dialogues.json`: 지역 이름/기존 초상화 참조/각5줄.
 - `iso_world.gd`: 배치/깊이/카메라/시험 안내와 컴포넌트 연결. `assets/manifest.json`: 원본 영역/발밑/스케일.
 
-배치/경계의 최신 기준은 [건물 방향·마당 경계 정정](../../../docs/reviews/isometric-orientation.md)이다. 재사용 범위/보행 검증은 [보행·진입 동선 보고서](../../../docs/reviews/isometric-gait-access.md)와 [대화 연결 보고서](../../../docs/reviews/isometric-dialogue.md)를 따른다. 긴 대사의 자동 레이아웃/설정/선택지·진행/저장은 연결하지 않았다. 전체 도시와 많은 NPC는 별도 검증이 필요하다.
+배치/경계의 최신 기준은 [열린 공간·담장·대문](../../../docs/reviews/isometric-outdoor-spaces.md)이다. 재사용 범위/보행 검증은 [보행·진입 동선 보고서](../../../docs/reviews/isometric-gait-access.md)와 [대화 연결 보고서](../../../docs/reviews/isometric-dialogue.md)를 따른다. 긴 대사의 자동 레이아웃/설정/선택지·진행/저장은 연결하지 않았다. 전체 도시와 많은 NPC는 별도 검증이 필요하다.
 
 ## 실제 화면과 검사
+
+[최신 전후·대문 통과·열린 공간](screenshots/spaces-preview.html) · [5.2초 영상](screenshots/spaces-play.mp4)
+
 
 [최신 건물 방향·마당 비교](screenshots/orientation-preview.html) · [실제 이동 영상](screenshots/orientation-play.mp4)
 
@@ -88,9 +91,10 @@ godot --headless --path godot --script res://tests/isometric_harmony.gd
 godot --path godot --audio-driver Dummy --script res://tests/isometric_walk_render.gd
 godot --headless --fixed-fps 60 --path godot --script res://tests/isometric_dialogue.gd
 godot --headless --fixed-fps 60 --path godot --script res://tests/isometric_gait_access.gd
+godot --headless --fixed-fps 60 --path godot --script res://tests/isometric_outdoor_spaces.gd
 ```
 
-최신 `tests/capture_isometric_orientation.gd`는 전체/마당 경계/두 문 앞/자동 왕복 화면을 기록한다. `--fixed-fps 30 --write-movie /tmp/iso-orientation.avi`로 실제 입력 이동 영상을 기록한다. 이전 `tests/capture_gait_access.gd`는 변경 후 전체/접근 동선/창고 문/8자세/앞뒤/정지 화면을 촬영한다. `--fixed-fps 30 --write-movie /tmp/gait-access.avi`로 보행과 이동을 기록할 수 있다.
+최신 `tests/capture_isometric_spaces.gd`는 전체 전후/경계/목제 대문 통과 연속 화면/열린 작업 공간을 기록한다. `--fixed-fps 30 --write-movie /tmp/iso-spaces.avi`로 영상을 기록한다. 이전 `tests/capture_isometric_orientation.gd`는 전체/마당 경계/두 문 앞/자동 왕복 화면을 기록한다. `--fixed-fps 30 --write-movie /tmp/iso-orientation.avi`로 실제 입력 이동 영상을 기록한다. 이전 `tests/capture_gait_access.gd`는 변경 후 전체/접근 동선/창고 문/8자세/앞뒤/정지 화면을 촬영한다. `--fixed-fps 30 --write-movie /tmp/gait-access.avi`로 보행과 이동을 기록할 수 있다.
 
 이전 대화 기록은 실제로 렌더링 가능한 환경에서 `tests/capture_isometric_dialogue.gd`를 실행하면9장을 촬영한다. `--fixed-fps 30 --write-movie /tmp/iso-dialogue.avi`를 함께 지정하면 입력과 비교 배치를 기록한다. 사용자 저장과 분리한 XDG 폴더를 권장한다.
 

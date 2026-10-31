@@ -4,6 +4,8 @@ const RADIUS=.16
 ## Applies to every building, including those without an interior or interaction.
 static func validate(world) -> Array[String]:
 	var errors: Array[String]=validate_plots(world)
+	errors.append_array(validate_gates(world))
+	errors.append_array(validate_open_spaces(world))
 	for prop in world.props:
 		if prop.spec.kind!="building":continue
 		var id: String=prop.spec.id
@@ -63,7 +65,10 @@ static func validate_plots(world) -> Array[String]:
 		if not (is_equal_approx(r.position.x,bounds.position.x) or is_equal_approx(r.end.x,bounds.end.x) or is_equal_approx(r.position.y,bounds.position.y) or is_equal_approx(r.end.y,bounds.end.y)):errors.append(wall.id+": wall does not define a courtyard boundary")
 	for prop in world.data.props:
 		if prop.kind!="building":continue
-		if not plots.has(prop.get("plot","")):errors.append(prop.id+": building requires its own courtyard");continue
+		if prop.get("plot","")=="":
+			if prop.get("enclosure","open")=="walled":errors.append(prop.id+": walled building requires a courtyard owner")
+			continue
+		if not plots.has(prop.plot):errors.append(prop.id+": unknown courtyard owner");continue
 		var plot=plots[prop.plot];var bounds=rect(plot.rect)
 		if plot.building!=prop.id or not bounds.encloses(rect(prop.rect)):errors.append(prop.id+": building outside assigned courtyard")
 		if prop.has("entrance") and prop.entrance.has("apron") and not bounds.encloses(rect(prop.entrance.apron)):errors.append(prop.id+": entrance apron outside assigned courtyard")
@@ -85,6 +90,52 @@ static func validate_plots(world) -> Array[String]:
 				for r in solid:
 					if r.has_point(p):covered=true;break
 				if not covered:errors.append(id+": courtyard boundary has an undeclared gap");break
+	return errors
+static func validate_gates(world) -> Array[String]:
+	var errors: Array[String]=[]
+	for plot in world.data.get("plots",[]):
+		for opening in plot.openings:
+			var found=false
+			for gate in world.props:
+				if gate.spec.kind!="gate" or gate.spec.get("plot","")!=plot.id or not gate.spec.has("opening"):continue
+				if rect(gate.spec.opening)!=rect(opening):continue
+				found=true
+				if gate.sprite==null or gate.source_image==null:errors.append(gate.spec.id+": opening requires authored gate artwork")
+				if gate.physical_footprints.size()<2:errors.append(gate.spec.id+": gate requires solid posts")
+				var r=rect(opening)
+				for t in [.2,.5,.8]:
+					var p=r.get_center()
+					if r.size.x>r.size.y:p.x=lerpf(r.position.x,r.end.x,t)
+					else:p.y=lerpf(r.position.y,r.end.y,t)
+					if not clear(world,p):errors.append(gate.spec.id+": gate passage is physically blocked")
+				var art=world.art.buildings[gate.spec.get("art","gate")]
+				if art.has("post_pixels") and gate.physical_footprints.size()==2:
+					for i in range(2):
+						var pixel=vec(art.post_pixels[i]);var goal=Space.project(gate.physical_footprints[i].get_center())
+						if world.to_local(gate.sprite.to_global(pixel)).distance_to(goal)>4:errors.append(gate.spec.id+": painted posts disagree with collision bases")
+			if not found:errors.append(plot.id+": declared entrance has no gate artwork")
+	return errors
+static func validate_open_spaces(world) -> Array[String]:
+	var errors: Array[String]=[]
+	for space in world.data.get("outdoor_spaces",[]):
+		if space.mode!="open":continue
+		var bounds=rect(space.rect);var apron=rect(space.apron)
+		if not bounds.encloses(apron):errors.append(space.id+": work frontage leaves its open space")
+		for wall in world.data.walls:
+			if bounds.intersects(rect(wall.rect)):errors.append(space.id+": open workspace must not be enclosed by walls")
+		var owner=false
+		for prop in world.data.props:
+			if prop.id==space.owner:owner=true
+		if not owner:errors.append(space.id+": open workspace requires its workstation")
+		for x in range(3):
+			for y in range(3):
+				var inset=apron.grow(-RADIUS);var p=inset.position+inset.size*Vector2(x/2.0,y/2.0)
+				if not clear(world,p):errors.append(space.id+": open work frontage is blocked")
+		var points: Array=space.path
+		for i in range(points.size()-1):
+			var a=vec(points[i]);var b=vec(points[i+1]);var count=maxi(1,ceili(a.distance_to(b)/.1))
+			for step in range(count+1):
+				if not clear(world,a.lerp(b,step/float(count))):errors.append(space.id+": open work frontage route is blocked");break
 	return errors
 static func vec(value: Array) -> Vector2:return Vector2(value[0],value[1])
 static func rect(a: Array) -> Rect2:return Rect2(a[0],a[1],a[2],a[3])

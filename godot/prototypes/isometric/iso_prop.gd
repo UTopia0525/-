@@ -32,6 +32,13 @@ func setup(value: Dictionary,art: Dictionary) -> void:
 		if info.has("front"):art_front=Vector2(info.front[0],info.front[1])
 		art_view=info.get("view","front")
 		sprite.position=Space.project(footprint.end)-position-pivot*sprite.scale
+		# A differently oriented gate is anchored by both painted post bases.
+		# Uniform scale only; never rotate/shear a frontal image into a side view.
+		if info.has("post_pixels") and physical_footprints.size()==2:
+			var a=Vector2(info.post_pixels[0][0],info.post_pixels[0][1]);var b=Vector2(info.post_pixels[1][0],info.post_pixels[1][1])
+			var target_a=Space.project(physical_footprints[0].get_center());var target_b=Space.project(physical_footprints[1].get_center())
+			sprite.scale=Vector2.ONE*target_a.distance_to(target_b)/a.distance_to(b)
+			sprite.position=(target_a+target_b)/2-position-(a+b)/2*sprite.scale
 		add_child(sprite);source_image=atlas.get_image()
 		if source_image.is_compressed():source_image.decompress()
 func hit(point: Vector2) -> bool:

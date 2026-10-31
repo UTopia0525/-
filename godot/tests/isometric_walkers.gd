@@ -60,7 +60,7 @@ func run() -> void:
 	check(contacts>0,"paused NPC physically blocks keyboard actor")
 	check(scene.npcs[0].logical.distance_to(Vector2(8,10))<.001,"contact never pushes or teleports paused NPC")
 	# All NPCs move without the operator and visit both ends of the authored routes.
-	scene.actor.set_logical(Vector2(10.5,9.5));scene.reset_trial();scene.actor.set_logical(Vector2(10.5,9.5));scene.patrols_enabled=true
+	scene.actor.set_logical(Vector2(10.5,10.5));scene.reset_trial();scene.actor.set_logical(Vector2(10.5,10.5));scene.patrols_enabled=true
 	var ranges=[Rect2(scene.npcs[0].logical,Vector2.ZERO),Rect2(scene.npcs[1].logical,Vector2.ZERO)]
 	for i in range(1500):
 		await frames(1,true)
@@ -72,7 +72,7 @@ func run() -> void:
 	scene.patrols_enabled=false;scene.reset_trial();scene.actor.set_logical(Vector2(3.12,6.5));scene.npcs[1].set_logical(Vector2(10,10));scene.patrols_enabled=true
 	await frames(540,true)
 	check(scene.npcs[0].patrol.yields>0,"gate encounter invokes yielding")
-	scene.actor.set_logical(Vector2(10.5,9.5));var before=scene.npcs[0].patrol.arrivals
+	scene.actor.set_logical(Vector2(10.5,10.5));var before=scene.npcs[0].patrol.arrivals
 	await frames(600,true)
 	check(scene.npcs[0].patrol.arrivals>before+4,"NPC resumes route after gate obstruction is removed")
 	# Hold an oncoming input against the NPC in the alley, not only a stationary block.
@@ -81,7 +81,7 @@ func run() -> void:
 	await frames(70,true);Input.action_release("iso_left");Input.action_release("iso_down")
 	check(scene.actor.logical.y>8.1,"keyboard actor passes oncoming NPC without permanent gate lock")
 	# Two autonomous actors also meet; stable priority must let both eventually pass.
-	scene.patrols_enabled=false;scene.actor.set_logical(Vector2(10.5,9.5))
+	scene.patrols_enabled=false;scene.actor.set_logical(Vector2(10.5,10.5))
 	var a=scene.npcs[0];var b=scene.npcs[1]
 	a.patrol.setup(a,[[4.72,8.8],[4.72,3.35]]);b.patrol.setup(b,[[4.72,3.35],[4.72,8.8]])
 	scene.patrols_enabled=true;await frames(900,true)

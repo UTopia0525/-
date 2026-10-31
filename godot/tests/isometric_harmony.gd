@@ -32,7 +32,7 @@ func run() -> void:
 		var first: PackedVector2Array=scene.actor.rig.polygon.duplicate()
 		scene.actor.phase=PI*1.5;scene.actor.set_pose(key,false)
 		check((first[1]-first[0]).distance_to(scene.actor.rig.polygon[1]-scene.actor.rig.polygon[0])<.001,"head translates without resizing")
-	check(scene.data.props.size()==5 and scene.data.props.filter(func(p):return p.kind=="building").size()==2,"same original buildings and props")
+	check(scene.data.props.size()==7 and scene.data.props.filter(func(p):return p.kind=="building").size()==2,"same original buildings and props")
 	check(scene.ACCESS.validate(scene).is_empty(),"both entrances accessible even without interiors")
 	check(ProjectSettings.get_setting("application/run/main_scene")=="res://scenes/main.tscn","main game entry unchanged")
 	scene.queue_free();await process_frame;print("ISOMETRIC_HARMONY: "+("FAIL" if failed else "PASS"));quit(1 if failed else 0)

@@ -20,6 +20,9 @@ func _draw() -> void:
 		var rect=Rect2(a[0],a[1],a[2],a[3])
 		for width in [8,5,2]:draw_polyline(Space.diamond(rect)+PackedVector2Array([Space.project(rect.position)]),Color(.31,.26,.18,.035),width)
 		slab(rect,Color(.98,.97,.94))
+	# An open working frontage uses a warmer worn paving patch, not a fence.
+	for space in world.data.get("outdoor_spaces",[]):
+		var a=space.rect;slab(Rect2(a[0],a[1],a[2],a[3]),Color(1,.94,.81))
 	# Flat thresholds: no new collisions, and the open gateway remains unobstructed.
 	for plot in world.data.get("plots",[]):
 		for a in plot.openings:
@@ -43,6 +46,9 @@ func _draw() -> void:
 			var contact=Space.diamond(physical.grow(.02))
 			draw_polyline(contact+PackedVector2Array([contact[0]]),Color(.18,.18,.14,.22),3)
 	if world.debug_footprints:
+		for space in world.data.get("outdoor_spaces",[]):
+			var a=space.rect;var border=Space.diamond(Rect2(a[0],a[1],a[2],a[3]))
+			draw_polyline(border+PackedVector2Array([border[0]]),Color("9cd2d6"),2)
 		for plot in world.data.get("plots",[]):
 			var a=plot.rect;var border=Space.diamond(Rect2(a[0],a[1],a[2],a[3]))
 			draw_polyline(border+PackedVector2Array([border[0]]),Color("d3bb7f"),2)

@@ -104,6 +104,44 @@
         -1,
         0
       ]
+    },
+    "workbench": {
+      "texture": "res://prototypes/isometric/assets/open-workbench.png",
+      "region": [
+        235,
+        169,
+        1109,
+        775
+      ],
+      "pivot": [
+        770,
+        771
+      ],
+      "ground_width": 1109
+    },
+    "warehouse_gate": {
+      "texture": "res://prototypes/isometric/assets/warehouse-gate.png",
+      "region": [
+        102,
+        33,
+        826,
+        1450
+      ],
+      "pivot": [
+        116,
+        1384
+      ],
+      "ground_width": 826,
+      "post_pixels": [
+        [
+          116,
+          1384
+        ],
+        [
+          716,
+          1029
+        ]
+      ]
     }
   },
   "npc": {

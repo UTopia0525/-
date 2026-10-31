@@ -5,6 +5,7 @@ const Wall=preload("res://prototypes/isometric/iso_wall.gd")
 const Actor=preload("res://prototypes/isometric/iso_actor.gd")
 const ACCESS=preload("res://prototypes/isometric/iso_access_rules.gd")
 var data: Dictionary
+var art: Dictionary
 var actors: Node2D
 var actor
 var moving_actors: Array=[]
@@ -36,7 +37,7 @@ var access_errors: Array[String]=[]
 func _ready() -> void:
 	process_physics_priority=10
 	data=JSON.parse_string(FileAccess.get_file_as_string("res://prototypes/isometric/layout.json"))
-	var art=JSON.parse_string(FileAccess.get_file_as_string("res://prototypes/isometric/assets/manifest.json"))
+	art=JSON.parse_string(FileAccess.get_file_as_string("res://prototypes/isometric/assets/manifest.json"))
 	_register_inputs()
 	var material_texture=load("res://assets/maps/nanjing/market-slice/materials.png")
 	texture_stone=AtlasTexture.new();texture_stone.atlas=material_texture;texture_stone.region=Rect2(Vector2.ZERO,material_texture.get_size()/2)
@@ -182,7 +183,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		queue_redraw();get_viewport().set_input_as_handled()
 		grounding.queue_redraw()
 		if debug_footprints:
-			access_errors=ACCESS.validate(self);selection_message="발밑/진입 동선 · "+("두 건물 출입 검사 통과" if access_errors.is_empty() else str(access_errors))
+			access_errors=ACCESS.validate(self);selection_message="발밑/진입 동선 · "+("건물·대문·열린 공간 검사 통과" if access_errors.is_empty() else str(access_errors))
 	elif event.is_action_pressed("iso_hint") and not event.is_echo():show_occlusion_hint=not show_occlusion_hint
 	elif event.is_action_pressed("iso_reset") and not event.is_echo():reset_trial();snap_camera()
 	elif event.is_action_pressed("iso_patrol") and not event.is_echo():

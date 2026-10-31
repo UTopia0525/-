@@ -191,6 +191,52 @@
         0.4
       ],
       "plot": "house_plot"
+    },
+    {
+      "id": "warehouse_gate",
+      "name": "창고의 목제 대문",
+      "kind": "gate",
+      "art": "warehouse_gate",
+      "plot": "warehouse_plot",
+      "rect": [
+        5.65,
+        2.65,
+        0.2,
+        1.7
+      ],
+      "colliders": [
+        [
+          5.65,
+          4.1,
+          0.2,
+          0.25
+        ],
+        [
+          5.65,
+          2.65,
+          0.2,
+          0.25
+        ]
+      ],
+      "opening": [
+        5.65,
+        2.9,
+        0.2,
+        1.2
+      ]
+    },
+    {
+      "id": "workbench",
+      "name": "담장 없는 목공 작업대",
+      "kind": "workstation",
+      "art": "workbench",
+      "rect": [
+        9.6,
+        8.8,
+        1.4,
+        0.6
+      ],
+      "outdoor_space": "open_workshop"
     }
   ],
   "walls": [
@@ -343,6 +389,12 @@
       1,
       1.1,
       5.8
+    ],
+    [
+      9.3,
+      8.6,
+      2.1,
+      1.9
     ]
   ],
   "patrols": [
@@ -391,7 +443,7 @@
       ]
     }
   ],
-  "access_schema_version": 2,
+  "access_schema_version": 3,
   "public_paving": [
     0,
     1,
@@ -416,7 +468,8 @@
           1.15,
           0.4
         ]
-      ]
+      ],
+      "mode": "walled"
     },
     {
       "id": "warehouse_plot",
@@ -435,6 +488,40 @@
           0.2,
           1.2
         ]
+      ],
+      "mode": "walled"
+    }
+  ],
+  "outdoor_spaces": [
+    {
+      "id": "open_workshop",
+      "mode": "open",
+      "owner": "workbench",
+      "rect": [
+        9.3,
+        8.6,
+        2.1,
+        1.9
+      ],
+      "apron": [
+        9.6,
+        9.6,
+        1.1,
+        0.75
+      ],
+      "path": [
+        [
+          8,
+          10.3
+        ],
+        [
+          10.15,
+          10.0
+        ]
+      ],
+      "approach": [
+        10.15,
+        10.0
       ]
     }
   ]
