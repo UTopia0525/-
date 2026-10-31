@@ -12,6 +12,7 @@ uniform vec2 layout_origin=vec2(0.0);
 uniform bool countryside_enabled=false;
 uniform sampler2D countryside_mask:filter_linear;
 uniform sampler2D countryside_materials:source_color,filter_linear;
+uniform sampler2D countryside_verge:source_color,filter_linear;
 uniform bool market_enabled=false;
 uniform bool capital_materials=false;
 uniform vec4 market_bounds=vec4(738.0,286.0,292.0,240.0);
@@ -99,6 +100,11 @@ void fragment() {
 		vec3 crops=texture(countryside_materials,(rural_uv+vec2(1.0,0.0))*.5).rgb;
 		vec3 channel=texture(countryside_materials,(rural_uv+vec2(0.0,1.0))*.5).rgb;
 		vec3 landscape=mix(dirt,paddy,rural.r);landscape=mix(landscape,crops,rural.g);landscape=mix(landscape,channel,rural.b);
+		// Explicit land uses: magenta = navigable-looking canal, white = dry bank/meadow.
+		landscape=mix(landscape,swatch(5.0,point).rgb,rural.r*rural.b*(1.0-rural.g));
+		vec3 bank=texture(countryside_verge,(rural_uv+vec2(0.0,1.0))*.5).rgb;
+		landscape=mix(landscape,bank,rural.r*rural.g*rural.b);
+		landscape=mix(landscape,market_swatch(vec2(0.0,0.0),point,320.0),rural.g*rural.b*(1.0-rural.r));
 		final_ink=mix(final_ink,landscape,rural.a);
 	}
 	COLOR=vec4(final_ink,base.a);

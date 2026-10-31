@@ -22,7 +22,11 @@ func _ready() -> void:
 	ink.set_shader_parameter("expanded_layout",true);ink.set_shader_parameter("original_terrain",terrain);ink.set_shader_parameter("art_extent",Vector2(1856,1408));ink.set_shader_parameter("layout_origin",Vector2(160,300))
 	ink.set_shader_parameter("world_extent",Vector2(7424,5632));ink.set_shader_parameter("capital_materials",true);ink.set_shader_parameter("market_materials",load(data.market_slice.materials));material=ink
 	var rural=Image.create(1856,1408,false,Image.FORMAT_RGBA8);rural.fill(Color.TRANSPARENT)
-	for a in data.countryside.regions:rural.fill_rect(Rect2i(a[0],a[1],a[2],a[3]),Color(1,0,0,1))
+	# Dry bank/meadow is the default; flooded land exists only inside the eastern paddies.
+	for a in data.countryside.regions:rural.fill_rect(Rect2i(a[0],a[1],a[2],a[3]),Color.WHITE)
+	var canal=data.countryside.canal
+	for pair in [[canal.water_rect,Color(1,0,1,1)],[canal.bank_rect,Color.WHITE]]:
+		var a=pair[0];rural.fill_rect(Rect2i(a[0],a[1],a[2],a[3]),pair[1])
 	for parcel in data.countryside.fields:
 		var polygon=PackedVector2Array();var center=Vector2.ZERO
 		for point in parcel.points:polygon.append(Vector2(point[0],point[1]));center+=polygon[-1]
@@ -39,6 +43,11 @@ func _ready() -> void:
 		var plot=PackedVector2Array([Vector2(r[0]-5,r[1]),Vector2(r[0]+r[2]+18,r[1]),Vector2(r[0]+r[2]+18,r[1]+r[3]+25),Vector2(r[0]-6,r[1]+r[3]+25)])
 		paint_polygon(rural,rounded_parcel(plot,9),Color(0,0,0,1))
 	for road in data.countryside.paths:paint_path(rural,road,Color(0,0,0,1))
+	# The old west entry is a stone landing on a canal, not a rectangle of soil floating on water.
+	var landing=canal.landing_rect
+	var quay=PackedVector2Array([Vector2(landing[0],landing[1]+3),Vector2(210,landing[1]+3),Vector2(240,landing[1]-3),Vector2(240,landing[1]+landing[3]),Vector2(landing[0],landing[1]+landing[3])])
+	paint_polygon(rural,rounded_parcel(quay,5),Color(0,1,1,1))
+	ink.set_shader_parameter("countryside_verge",load("res://assets/maps/nanjing/capital/rural-materials.png"))
 	ink.set_shader_parameter("countryside_enabled",true);ink.set_shader_parameter("countryside_mask",ImageTexture.create_from_image(rural));ink.set_shader_parameter("countryside_materials",load("res://assets/maps/nanjing/capital/paddy-materials.png"))
 	texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR
 func _draw() -> void:
