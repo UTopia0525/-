@@ -20,7 +20,7 @@ func run() -> void:
 	root.size=Vector2i(1280,720);game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await process_frame
 	game.options.seen.append_array(["city","dialogue","trade"]);game.start_city()
 	game.exploration.load_area("nanjing");game.exploration.set_active(true)
-	for spot in [["north-farms",[1070,205]],["east-farms",[1708,650]],["west-farm",[120,825]],["north-wall",[900,330]]]:await shot("nanjing",spot[0],spot[1])
+	for spot in [["north-farms",[1070,205]],["east-farms",[1708,650]],["west-farm",[120,825]],["north-wall",[900,330]],["city-paving",[900,875]]]:await shot("nanjing",spot[0],spot[1])
 	var w=game.exploration
 	w.camera.exploration_zoom=.45;w.camera.set_focus_height(600);w.camera.set_map_bounds(w.map_bounds)
 	await shot("nanjing","north-wide",[1065,230])

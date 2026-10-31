@@ -97,8 +97,8 @@ void fragment() {
 		vec3 dirt=texture(countryside_materials,(rural_uv+vec2(1.0,1.0))*.5).rgb;
 		vec3 paddy=texture(countryside_materials,rural_uv*.5).rgb;
 		vec3 crops=texture(countryside_materials,(rural_uv+vec2(1.0,0.0))*.5).rgb;
-		vec3 verge=texture(countryside_materials,(rural_uv+vec2(0.0,1.0))*.5).rgb;
-		vec3 landscape=mix(dirt,paddy,rural.r);landscape=mix(landscape,crops,rural.g);landscape=mix(landscape,verge,rural.b);
+		vec3 channel=texture(countryside_materials,(rural_uv+vec2(0.0,1.0))*.5).rgb;
+		vec3 landscape=mix(dirt,paddy,rural.r);landscape=mix(landscape,crops,rural.g);landscape=mix(landscape,channel,rural.b);
 		final_ink=mix(final_ink,landscape,rural.a);
 	}
 	COLOR=vec4(final_ink,base.a);

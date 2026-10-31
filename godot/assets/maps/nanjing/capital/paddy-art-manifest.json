@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-31",
+  "source": "image_gen",
+  "asset": "res://assets/maps/nanjing/capital/paddy-materials.png",
+  "original": "generated_images/exec-fcb804a9-a8b9-4f67-9492-147677f414f9.png",
+  "sha256": "9b54ef690eedbdc0fc03c1319c5d3e03c14ada1c41f4618fd3c83a7dc8fca27a",
+  "references": [
+    "res://screenshots/changsha-fortified-full.png",
+    "res://screenshots/nanjing-country-full.png (f816eb8 before revision)",
+    "res://assets/maps/nanjing/market-slice/materials.png"
+  ],
+  "description": "Unmodified generated 1536x1024, equal 2x2 atlas: young seedlings in flooded paddy / vegetables in soil furrows / irrigation water / compacted earth. Changsha used for agricultural layout only; rendering matches current Nanjing buildings/pavement. Original old Changsha terrain not reused or modified."
+}
