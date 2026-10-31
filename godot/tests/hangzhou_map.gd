@@ -16,9 +16,9 @@ func run() -> void:
  var w=game.exploration
  check(not w.path_to(w.city_point([1270,930])).is_empty(),"canal end reachable")
  await travel("travel:hangzhou");check(w.area_name=="hangzhou","F enters Hangzhou")
- check(w.map_bounds.size==Vector2(5632,4096),"size between Nanjing and Suzhou")
+ check(w.map_bounds.size==Vector2(5888,5632),"expanded city and short exterior approach")
  check(w.ambient_nodes.size()==10 and w.city_data.services.size()==2,"two reused commercial NPCs; no instructor")
- check(not w.can_stand(w.city_point([200,650])),"lake not walkable")
+ check(not w.can_stand(w.city_point([200,1050])),"lake not walkable")
  for o in w.city_data.objects:
   if not str(o.prefab).begins_with("hz_"):continue
   var r=o.rect;var front=w.city_point([r[0]+r[2]/2,r[1]+r[3]+18]);var path=w.path_to(front)
@@ -40,7 +40,7 @@ func run() -> void:
   check(game.city_service.visible and game.state=="service","service opens through conversation")
   game.city_service.close_counter()
  game.toggle_city_map();check(game.city_overview.visible,"TAB map");game.toggle_city_map()
- w.player.position=w.safe_player_position(w.city_point([1080,460]));var pos=w.player.position
+ w.player.position=w.safe_player_position(w.city_point([1080,860]));var pos=w.player.position
  check(game.save_system.write_slot(8) and game.save_system.load_slot(8),"new city save/load")
  check(w.area_name=="hangzhou" and w.player.position.distance_to(pos)<1,"restore city position")
  game.quest_navigation.track("suzhou_silk","offer");check(game.quest_navigation.get_goal(w).goal_id=="travel:canal","quest points back north")

@@ -123,7 +123,7 @@ func refresh_world() -> void:
  if not eligible():return
  if w.area_name=="cuiyue_hall" and phase=="available":_spawn(_character("bg_supplier"))
  if w.area_name=="hangzhou" and phase=="proposal":
-  var n=_character("cy_tak");n.point=[550,390];_spawn(n)
+  var n=_character("cy_tak");n.point=[550,790];_spawn(n)
  if w.area_name=="blackguild_warehouse":
   var supplier=_character("bg_supplier");supplier.point=[720,740];_spawn(supplier)
   if phase in ["warehouse","battle"]:_spawn(_character("bg_officer"))

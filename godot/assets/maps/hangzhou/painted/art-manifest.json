@@ -2,7 +2,8 @@
   "date": "2026-10-30",
   "references": [
     "godot/assets/maps/nanjing/market-slice/shops.png",
-    "godot/screenshots/changsha-painted-workshops.png"
+    "godot/screenshots/changsha-painted-workshops.png",
+    "godot/assets/maps/changsha/layered/open-gate.png"
   ],
   "method": "Image generation with approved art references; generated PNG originals copied unchanged. Godot handles atlas selection, aspect fit, shadows, physics and Y sorting.",
   "assets": [
@@ -20,6 +21,17 @@
       "file": "godot/assets/maps/hangzhou/painted/markets.png",
       "source": "/workspace/generated_images/exec-a234779a-9274-454e-9cb6-67dfa8263282.png",
       "sha256": "c9cf247cd21ff6e786d60ca4a963a934cb0da8c3bf9cd45098189c014b7fe607"
+    },
+    {
+      "file": "godot/assets/maps/hangzhou/painted/city-gate.png",
+      "source": "/workspace/generated_images/exec-faba46d1-b3e1-4539-a3db-0cec59aaa98d.png",
+      "sha256": "15c48a2d3093277aad3227cc0a2353c1f776ec5471c6f28ab8da19bc8d7eed99"
+    },
+    {
+      "file": "godot/assets/maps/hangzhou/painted/city-walls.png",
+      "source": "/workspace/generated_images/exec-f9d230ba-a1e4-48e8-8a19-fd567f393c3e.png",
+      "sha256": "d80d5199cb7f22018a1c3c03d9ed604918e0481405fcf9d251598179183dad9d"
     }
-  ]
+  ],
+  "fortification_date": "2026-10-31"
 }

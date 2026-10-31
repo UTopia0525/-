@@ -9,7 +9,7 @@
       "post": "영약 상인",
       "point": [
         1190,
-        697
+        1097
       ],
       "frame": 5,
       "district": "market",
@@ -46,7 +46,7 @@
       "post": "무기 장인",
       "point": [
         760,
-        1060
+        1460
       ],
       "frame": 4,
       "district": "workshops",
@@ -83,7 +83,7 @@
       "post": "뱃사공",
       "point": [
         500,
-        300
+        700
       ],
       "frame": 6,
       "district": "lake",
@@ -120,7 +120,7 @@
       "post": "생선 장수",
       "point": [
         1495,
-        697
+        1097
       ],
       "frame": 5,
       "district": "market",
@@ -157,7 +157,7 @@
       "post": "포목상",
       "point": [
         1330,
-        697
+        1097
       ],
       "frame": 7,
       "district": "market",
@@ -194,7 +194,7 @@
       "post": "객잔 주인",
       "point": [
         650,
-        705
+        1105
       ],
       "frame": 5,
       "district": "inn",
@@ -238,7 +238,7 @@
       "post": "관아 아전",
       "point": [
         1415,
-        195
+        595
       ],
       "frame": 7,
       "district": "government",
@@ -275,7 +275,7 @@
       "post": "채소 장수",
       "point": [
         1200,
-        1130
+        1530
       ],
       "frame": 5,
       "district": "homes",
@@ -319,7 +319,7 @@
       "post": "서생",
       "point": [
         500,
-        490
+        890
       ],
       "frame": 7,
       "district": "lake",
@@ -356,7 +356,7 @@
       "post": "국수 장수",
       "point": [
         820,
-        635
+        1035
       ],
       "frame": 5,
       "district": "inn",
