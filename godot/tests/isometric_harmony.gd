@@ -16,7 +16,7 @@ func run() -> void:
 	for npc in scene.npcs:
 		check(is_equal_approx(npc.speed,4.8),"autonomous speed unchanged")
 		check(npc.images.front.atlas.resource_path==manifest.npc.front.texture,"commoners retain original art")
-		check(npc.rig.hip_start==.66 and npc.rig.stride==.090,"commoner gait unchanged")
+		check(is_equal_approx(npc.base_scale.y*npc.images.front.get_height(),96),"commoner display height unchanged")
 	check(scene.grounding.get_index()<scene.actors.get_index(),"all ground shadows render before characters")
 	check(scene.grounding.get_child_count()==0,"ground decoration adds no physics bodies")
 	check(scene.grounding.CAST_DIRECTION==Vector2(1,.65),"one consistent shadow direction")
@@ -31,12 +31,8 @@ func run() -> void:
 		scene.actor.moving=true;scene.actor.phase=PI/2;scene.actor.set_pose(key,false)
 		var first: PackedVector2Array=scene.actor.rig.polygon.duplicate()
 		scene.actor.phase=PI*1.5;scene.actor.set_pose(key,false)
-		var protected=0
-		for i in range(first.size()):
-			if scene.actor.rig.original[i].y/scene.actor.rig.tex_size.y<.80:
-				check(first[i]==scene.actor.rig.polygon[i],"head, upper robe and sash stay rigid")
-				protected+=1
-		check(protected>200,"substantial garment area protected from foot skinning")
-	check(scene.data.props.size()==5 and scene.data.walls.size()==4,"same authored buildings and wall lines")
+		check((first[1]-first[0]).distance_to(scene.actor.rig.polygon[1]-scene.actor.rig.polygon[0])<.001,"head translates without resizing")
+	check(scene.data.props.size()==5 and scene.data.props.filter(func(p):return p.kind=="building").size()==2,"same original buildings and props")
+	check(scene.ACCESS.validate(scene).is_empty(),"both entrances accessible even without interiors")
 	check(ProjectSettings.get_setting("application/run/main_scene")=="res://scenes/main.tscn","main game entry unchanged")
 	scene.queue_free();await process_frame;print("ISOMETRIC_HARMONY: "+("FAIL" if failed else "PASS"));quit(1 if failed else 0)

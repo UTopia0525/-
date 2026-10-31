@@ -21,8 +21,13 @@ func _draw() -> void:
 		for width in [8,5,2]:draw_polyline(Space.diamond(rect)+PackedVector2Array([Space.project(rect.position)]),Color(.31,.26,.18,.035),width)
 		slab(rect,Color(.98,.97,.94))
 	# Flat thresholds: no new collisions, and the open gateway remains unobstructed.
-	for r in [Rect2(4.15,6.25,1.15,.48),Rect2(4.22,3.8,.55,.65),Rect2(5.9,4.7,.65,.38)]:
+	for r in [Rect2(4.15,6.25,1.15,.48),Rect2(7.05,6.15,1.35,.5)]:
 		slab(r,Color(.87,.85,.79));draw_polyline(Space.diamond(r)+PackedVector2Array([Space.project(r.position)]),Color(.28,.27,.24,.3),1)
+	for prop in world.data.props:
+		if not prop.has("entrance"):continue
+		var e=prop.entrance;var a=e.apron;slab(Rect2(a[0],a[1],a[2],a[3]),Color(1,.99,.96))
+		var t=Vector2(e.threshold[0],e.threshold[1]);var step=Rect2(t-Vector2(0,.38),Vector2(.32,.76))
+		slab(step,Color(.86,.84,.78));draw_polyline(Space.diamond(step)+PackedVector2Array([Space.project(step.position)]),Color(.24,.25,.22,.45),1)
 	for prop in world.props:
 		var kind: String=prop.spec.kind
 		var length=29.0 if kind=="building" else 18.0 if kind in ["gate","tree"] else 11.0 if kind=="wall" else 7.0
@@ -35,3 +40,13 @@ func _draw() -> void:
 		for physical in prop.physical_footprints:
 			var contact=Space.diamond(physical.grow(.02))
 			draw_polyline(contact+PackedVector2Array([contact[0]]),Color(.18,.18,.14,.22),3)
+	if world.debug_footprints:
+		for prop in world.data.props:
+			if not prop.has("entrance"):continue
+			var e=prop.entrance;var points=PackedVector2Array()
+			for p in e.path:points.append(Space.project(Vector2(p[0],p[1])))
+			points.append(Space.project(Vector2(e.threshold[0],e.threshold[1])))
+			draw_polyline(points,Color("90ddbb"),3)
+			for p in points:draw_circle(p,4,Color("d9edb5"))
+			var a=e.apron;var apron=Space.diamond(Rect2(a[0],a[1],a[2],a[3]))
+			draw_polyline(apron+PackedVector2Array([apron[0]]),Color("90ddbb"),2)

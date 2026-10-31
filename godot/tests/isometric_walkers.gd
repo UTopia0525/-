@@ -39,16 +39,15 @@ func run() -> void:
 			check(scene.actor.sprite.scale==scene.actor.base_scale and scene.actor.sprite.rotation==0,"constant body transform in four directions")
 			var foot=scene.actor.sprite.position+scene.actor.sprite.texture.get_size()*Vector2(.5,1)*scene.actor.base_scale
 			check(foot.length()<.001,"common ground pivot in all poses")
-		Input.action_release(key);check(seen.size()==4,"full gait cycle in "+key);await frames(2)
+		Input.action_release(key);check(seen.size()==8,"full eight-phase gait cycle in "+key);await frames(2)
 		check(not scene.actor.moving and scene.actor.sprite.visible and not scene.actor.rig.visible,"idle restores stable atlas")
 	for key in ["front","back"]:
 		scene.actor.moving=true;scene.actor.phase=PI/2;scene.actor.set_pose(key,false)
-		var rig=scene.actor.rig;var first: PackedVector2Array=rig.polygon.duplicate()
+		var rig=scene.actor.rig;var first: PackedVector2Array=rig.polygon.duplicate();var first_feet=[rig.joints.legs[0].foot,rig.joints.legs[1].foot]
 		scene.actor.phase=PI*1.5;scene.actor.set_pose(key,false)
 		var swapped: PackedVector2Array=rig.polygon
-		check(first[0]==swapped[0],"upper body never scales or sways")
-		var left=first.size()-14;var right=first.size()-4
-		check((first[left]-swapped[left]).dot(first[right]-swapped[right])<0,"feet move in opposing phases "+key)
+		check((first[1]-first[0]).distance_to(swapped[1]-swapped[0])<.001,"head size remains constant while body bobs")
+		check((first_feet[0]-rig.joints.legs[0].foot).dot(first_feet[1]-rig.joints.legs[1].foot)<0,"feet lift in opposing phases "+key)
 		scene.actor.moving=false;scene.actor.set_pose(key,false)
 	# Force a real body contact with a paused NPC; avoidance alone must not hide a missing collider.
 	scene.actor.set_logical(Vector2(7,10));scene.npcs[0].set_logical(Vector2(8,10));var contacts=0

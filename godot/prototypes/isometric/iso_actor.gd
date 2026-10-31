@@ -97,7 +97,7 @@ func _physics_process(delta: float) -> void:
 	if moving:
 		# Distance-driven cycle stops on collision and does not run in place.
 		phase=fmod(phase+ground_travel*TAU/1.9,TAU)
-		walk_frame=int(phase/TAU*4)%4
+		walk_frame=int(phase/TAU*8)%8
 		_face_movement(direction,delta)
 	else:
 		phase=0;walk_frame=0;release_facing_time=0;steering_active=false;set_pose(facing,facing_flipped)

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>아이소메트릭 보행·진입 동선 보충</title>
+<style>
+body{margin:0;background:#101c19;color:#e4dfcc;font:16px/1.65 system-ui,sans-serif}main{max-width:1500px;margin:auto;padding:24px}h1,h2{color:#f1d899}p{max-width:900px}a{color:#a8d8c9}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}figure{margin:0;background:#182722;border:1px solid #4a5b50;border-radius:8px;overflow:hidden}img,video{display:block;width:100%;height:auto}figcaption{padding:10px 14px}code{background:#263830;padding:3px 8px}video{max-width:1280px;border:1px solid #4a5b50}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:800px){.grid,.steps{grid-template-columns:1fr}main{padding:14px}}
+</style>
+<main><h1>골목 시험 · 보행과 건물 진입 동선</h1>
+<p>원본 그림의 관절 보행과 창고 앞 하역 마당을 보충했습니다. 조작 인물과 자동 NPC의 속도는 4.8논리 타일/초로 유지했습니다. 실내가 없는 건물도 문 앞 공간과 공용 길에서의 접근을 갖추도록 앞으로의 배치 규칙에 기록했습니다.</p>
+<h2>같은 플레이 카메라의 배치 비교</h2><p>1280×720 · 배율75% · 카메라(0,290) · 같은 인물 위치. 창고 그림 자체는 그대로이며 오른쪽 앞 담장을 열고 연결 마당을 만들었습니다. 이미지를 누르면 원본 크기로 확인할 수 있습니다.</p>
+<div class="grid">
+<figure><a href="gait-access-before-overview.png"><img src="gait-access-before-overview.png" alt="작업 전 배치"></a><figcaption>변경 전: 창고 문 쪽 마당과 앞길이 담장으로 단절</figcaption></figure>
+<figure><a href="gait-access-after-overview.png"><img src="gait-access-after-overview.png" alt="작업 후 배치"></a><figcaption>변경 후: 하역 마당과 출입구를 통해 창고 문에 접근</figcaption></figure>
+</div>
+<h2>실제 이동과 보행 영상</h2><video controls preload="metadata" poster="gait-access-step-2.png"><source src="gait-access-play.mp4" type="video/mp4"></video>
+<p>11.8초. 앞부분은 실제 입력으로 공용 길→창고 앞을 이동합니다. 뒤쪽은 관절 동작을 살펴보는 느린 제자리 자세 재생입니다. 게임의 실제 이동 속도를 낮춘 것은 아닙니다. <a href="gait-access-play.mp4">영상 다운로드</a></p>
+<h2>문과 접근 동선</h2><div class="grid">
+<figure><a href="gait-access-routes.png"><img loading="lazy" src="gait-access-routes.png" alt="문 앞 접근 경로"></a><figcaption>G: 충돌 범위/문턱/문 앞 공간과 녹색 접근 경로</figcaption></figure>
+<figure><a href="gait-access-warehouse-door.png"><img loading="lazy" src="gait-access-warehouse-door.png" alt="창고 문 앞 실제 이동"></a><figcaption>실제 키보드 입력으로 창고 문 앞에 도착</figcaption></figure>
+</div>
+<h2>한 주기의8대표 자세</h2><p>같은125% 카메라 · 같은 바닥 깊이. 새8장 원화가 아니라 기존 앞/뒤 그림을 관절 메시로 움직인 실제 렌더 화면입니다. 발 교차, 무릎 굽힘, 반대 팔과 몸통의 약3~4픽셀 상하 이동을 비교합니다. 전체 그림/물리 기준점의 배율은 고정입니다.</p>
+<div class="grid steps"><figure><a href="gait-access-step-0.png"><img loading="lazy" src="gait-access-step-0.png" alt="보행 단계 1"></a><figcaption>주기 1/8</figcaption></figure>
+<figure><a href="gait-access-step-1.png"><img loading="lazy" src="gait-access-step-1.png" alt="보행 단계 2"></a><figcaption>주기 2/8</figcaption></figure>
+<figure><a href="gait-access-step-2.png"><img loading="lazy" src="gait-access-step-2.png" alt="보행 단계 3"></a><figcaption>주기 3/8</figcaption></figure>
+<figure><a href="gait-access-step-3.png"><img loading="lazy" src="gait-access-step-3.png" alt="보행 단계 4"></a><figcaption>주기 4/8</figcaption></figure>
+<figure><a href="gait-access-step-4.png"><img loading="lazy" src="gait-access-step-4.png" alt="보행 단계 5"></a><figcaption>주기 5/8</figcaption></figure>
+<figure><a href="gait-access-step-5.png"><img loading="lazy" src="gait-access-step-5.png" alt="보행 단계 6"></a><figcaption>주기 6/8</figcaption></figure>
+<figure><a href="gait-access-step-6.png"><img loading="lazy" src="gait-access-step-6.png" alt="보행 단계 7"></a><figcaption>주기 7/8</figcaption></figure>
+<figure><a href="gait-access-step-7.png"><img loading="lazy" src="gait-access-step-7.png" alt="보행 단계 8"></a><figcaption>주기 8/8</figcaption></figure></div>
+<h2>뒤쪽과 정지 자세</h2><div class="grid">
+<figure><a href="gait-access-back.png"><img loading="lazy" src="gait-access-back.png" alt="뒤쪽 보행"></a><figcaption>뒤쪽 보행: 같은 크기와 복식</figcaption></figure>
+<figure><a href="gait-access-idle.png"><img loading="lazy" src="gait-access-idle.png" alt="정지 자세"></a><figcaption>정지: 기존 대기 원화로 복귀</figcaption></figure>
+</div><h2>직접 확인</h2><p>Godot의 <code>res://prototypes/isometric/main.tscn</code>을 열고 F6. WASD/방향키 이동, F 대화, G 충돌/접근 경로, P 왕복 정지/재개. 기존 본게임은 F5입니다.</p>
+<p><a href="../../../../docs/reviews/isometric-gait-access.md">검증 결과/한계</a> · <a href="../../../../docs/cities/building-placement.md">앞으로의 건물 배치 규칙</a></p>
+</main></html>

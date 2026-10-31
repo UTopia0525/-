@@ -3,6 +3,7 @@ const Space=preload("res://prototypes/isometric/iso_space.gd")
 const Prop=preload("res://prototypes/isometric/iso_prop.gd")
 const Wall=preload("res://prototypes/isometric/iso_wall.gd")
 const Actor=preload("res://prototypes/isometric/iso_actor.gd")
+const ACCESS=preload("res://prototypes/isometric/iso_access_rules.gd")
 var data: Dictionary
 var actors: Node2D
 var actor
@@ -31,6 +32,7 @@ var grounding
 var interaction
 var dialogue
 var last_sorted_positions: Array=[]
+var access_errors: Array[String]=[]
 func _ready() -> void:
 	process_physics_priority=10
 	data=JSON.parse_string(FileAccess.get_file_as_string("res://prototypes/isometric/layout.json"))
@@ -63,6 +65,11 @@ func _ready() -> void:
 	var dialogue_layer=CanvasLayer.new();dialogue_layer.layer=20;add_child(dialogue_layer)
 	dialogue=preload("res://prototypes/isometric/iso_dialogue.gd").new();dialogue.setup(self);dialogue_layer.add_child(dialogue)
 	update_depth();queue_redraw()
+	_validate_entrances.call_deferred()
+func _validate_entrances() -> void:
+	await get_tree().physics_frame
+	access_errors=ACCESS.validate(self)
+	if not access_errors.is_empty():push_warning("Prototype entrance validation: "+str(access_errors))
 func _register_inputs() -> void:
 	var actions={"iso_left":[KEY_A,KEY_LEFT],"iso_right":[KEY_D,KEY_RIGHT],"iso_up":[KEY_W,KEY_UP],"iso_down":[KEY_S,KEY_DOWN],"iso_interact":[KEY_F],"iso_debug":[KEY_G],"iso_reset":[KEY_R],"iso_camera":[KEY_C],"iso_hint":[KEY_H],"iso_patrol":[KEY_P]}
 	for action in actions:
@@ -173,6 +180,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		debug_footprints=not debug_footprints
 		for prop in props:prop.debug_footprint=debug_footprints;prop.queue_redraw()
 		queue_redraw();get_viewport().set_input_as_handled()
+		grounding.queue_redraw()
+		if debug_footprints:
+			access_errors=ACCESS.validate(self);selection_message="발밑/진입 동선 · "+("두 건물 출입 검사 통과" if access_errors.is_empty() else str(access_errors))
 	elif event.is_action_pressed("iso_hint") and not event.is_echo():show_occlusion_hint=not show_occlusion_hint
 	elif event.is_action_pressed("iso_reset") and not event.is_echo():reset_trial();snap_camera()
 	elif event.is_action_pressed("iso_patrol") and not event.is_echo():
