@@ -26,6 +26,8 @@ func walk(direction: Vector2,frames: int) -> void:
 	await physics_frame
 func run() -> void:
 	root.size=Vector2i(1280,720);scene=load("res://prototypes/isometric/main.tscn").instantiate();root.add_child(scene);await process_frame;await physics_frame
+	scene.patrols_enabled=false
+	for i in range(scene.npcs.size()):scene.npcs[i].set_logical(Vector2(10,10+i))
 	gate=scene.props.filter(func(p):return p.spec.kind=="gate")[0]
 	check(gate.physical_footprints.size()==2,"two solid pillars, no solid opening")
 	check(is_equal_approx(scene.actor.speed,4.8),"speed doubled from2.4 to4.8")

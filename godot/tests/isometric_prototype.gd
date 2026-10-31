@@ -21,6 +21,8 @@ func run() -> void:
 	check(Space.from_legacy([128,256,256,128],128)==Rect2(1,2,2,1),"legacy coordinate adapter")
 	var initial_actions=InputMap.get_actions()
 	scene=load("res://prototypes/isometric/main.tscn").instantiate();root.add_child(scene);await process_frame;await physics_frame
+	scene.patrols_enabled=false
+	for i in range(scene.npcs.size()):scene.npcs[i].set_logical(Vector2(10,10+i))
 	check(scene.props.filter(func(p):return p.spec.kind=="building").size()==2,"two original buildings retained")
 	check(scene.actor.sprite.texture!=null,"NPC atlas loaded")
 	for prop in scene.props:

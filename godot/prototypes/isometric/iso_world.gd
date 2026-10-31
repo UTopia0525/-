@@ -6,6 +6,9 @@ const Actor=preload("res://prototypes/isometric/iso_actor.gd")
 var data: Dictionary
 var actors: Node2D
 var actor
+var moving_actors: Array=[]
+var npcs: Array=[]
+var patrols_enabled=true
 var props: Array=[]
 var camera: Camera2D
 var selected
@@ -24,7 +27,7 @@ var actor_occluded=false
 var occluded_samples=0
 var show_occlusion_hint=true
 var visibility_hint
-var last_sorted_position=Vector2(INF,INF)
+var last_sorted_positions: Array=[]
 func _ready() -> void:
 	process_physics_priority=10
 	data=JSON.parse_string(FileAccess.get_file_as_string("res://prototypes/isometric/layout.json"))
@@ -43,14 +46,18 @@ func _ready() -> void:
 			var rect=[r[0]+start,r[1],end-start,r[3]] if along_u else [r[0],r[1]+start,r[2],end-start]
 			var wall=Wall.new();wall.setup({"id":section.id+"_"+str(i),"name":"巷 · 골목 담장","kind":"wall","rect":rect},{})
 			actors.add_child(wall);props.append(wall)
-	actor=Actor.new();actor.setup(art.npc,self);actors.add_child(actor);reset_actor()
+	actor=Actor.new();actor.setup(art.npc,self);actors.add_child(actor);moving_actors.append(actor);reset_actor()
+	for entry in data.get("patrols",[]):
+		var npc=Actor.new();npc.setup(art.npc,self);npc.name=entry.id;npc.display_name=entry.name
+		npc.interactive=false;npc.traffic_rank=npcs.size()+1;actors.add_child(npc);moving_actors.append(npc);npcs.append(npc)
+		npc.patrol=preload("res://prototypes/isometric/iso_patrol.gd").new();npc.patrol.setup(npc,entry.route)
 	for r in [Rect2(-1,-1,14,1),Rect2(-1,12,14,1),Rect2(-1,0,1,12),Rect2(12,0,1,12)]:
 		var wall=StaticBody2D.new();wall.collision_layer=1
 		var shape=CollisionPolygon2D.new();shape.polygon=Space.diamond(r);wall.add_child(shape);add_child(wall)
 	camera=Camera2D.new();camera.zoom=Vector2.ONE*.85;camera.position_smoothing_enabled=false;add_child(camera);camera.make_current();snap_camera()
 	_build_hud();update_depth();queue_redraw()
 func _register_inputs() -> void:
-	var actions={"iso_left":[KEY_A,KEY_LEFT],"iso_right":[KEY_D,KEY_RIGHT],"iso_up":[KEY_W,KEY_UP],"iso_down":[KEY_S,KEY_DOWN],"iso_interact":[KEY_F],"iso_debug":[KEY_G],"iso_reset":[KEY_R],"iso_camera":[KEY_C],"iso_hint":[KEY_H]}
+	var actions={"iso_left":[KEY_A,KEY_LEFT],"iso_right":[KEY_D,KEY_RIGHT],"iso_up":[KEY_W,KEY_UP],"iso_down":[KEY_S,KEY_DOWN],"iso_interact":[KEY_F],"iso_debug":[KEY_G],"iso_reset":[KEY_R],"iso_camera":[KEY_C],"iso_hint":[KEY_H],"iso_patrol":[KEY_P]}
 	for action in actions:
 		if InputMap.has_action(action):continue
 		registered_actions.append(action);InputMap.add_action(action)
@@ -60,6 +67,9 @@ func _exit_tree() -> void:
 	for action in registered_actions:InputMap.erase_action(action)
 func reset_actor() -> void:
 	actor.set_logical(Vector2(data.spawn[0],data.spawn[1]))
+func reset_trial() -> void:
+	reset_actor()
+	for npc in npcs:npc.patrol.reset()
 func _draw() -> void:
 	var boundary=Space.diamond(Rect2(0,0,12,12));var low=boundary.duplicate()
 	for i in range(low.size()):low[i]+=Vector2(0,14)
@@ -90,14 +100,19 @@ func snap_camera() -> void:
 	camera.position=Vector2(clampf(target.x,minf(low.x,high.x),maxf(low.x,high.x)),clampf(target.y,minf(low.y,high.y),maxf(low.y,high.y)))
 	camera.force_update_scroll()
 func comes_before(a,b) -> bool:
-	var gate=b if a==actor else a if b==actor else null
-	if gate!=null and gate.spec.kind=="gate" and gate.footprint.has_point(actor.logical):
-		return a==actor
+	var a_actor=a in moving_actors;var b_actor=b in moving_actors
+	if a_actor and b_actor:
+		var gap=a.position.y-b.position.y
+		return gap<0 if absf(gap)>.01 else a.traffic_rank<b.traffic_rank
+	var gate=b if a_actor else a if b_actor else null
+	var person=a if a_actor else b if b_actor else null
+	if gate!=null and gate.spec.kind=="gate" and gate.footprint.has_point(person.logical):return a==person
 	return Space.before(a.footprint,b.footprint)
 func update_depth() -> void:
-	if actor.logical.is_equal_approx(last_sorted_position):return
-	last_sorted_position=actor.logical
-	var nodes=props.duplicate();nodes.append(actor)
+	var positions=moving_actors.map(func(n):return n.logical)
+	if positions==last_sorted_positions:return
+	last_sorted_positions=positions
+	var nodes=props.duplicate();nodes.append_array(moving_actors)
 	var edges={};var indegree={}
 	for node in nodes:edges[node]=[];indegree[node]=0
 	for i in range(nodes.size()):
@@ -116,13 +131,16 @@ func update_depth() -> void:
 		for other in edges[next]:indegree[other]-=1
 	for i in range(ordered.size()):actors.move_child(ordered[i],i)
 func update_occlusion() -> void:
-	occluded_samples=0
-	for y in [18,44,70,90]:
-		for x in [-10,0,10]:
-			var point=actor.position+Vector2(x,-y)
-			for prop in props:
-				if prop.get_index()>actor.get_index() and prop.hit(point):occluded_samples+=1;break
-	actor_occluded=occluded_samples>=3
+	var occluders=props.duplicate();occluders.append_array(moving_actors)
+	for person in moving_actors:
+		person.occluded_samples=0
+		for y in [18,44,70,90]:
+			for x in [-10,0,10]:
+				var point=person.position+Vector2(x,-y)
+				for prop in occluders:
+					if prop.get_index()>person.get_index() and prop.hit(point):person.occluded_samples+=1;break
+		person.occluded=person.occluded_samples>=3
+	occluded_samples=actor.occluded_samples;actor_occluded=actor.occluded
 func pick(world_point: Vector2):
 	var nodes=actors.get_children();nodes.reverse()
 	for node in nodes:
@@ -131,8 +149,8 @@ func pick(world_point: Vector2):
 func select_target(target) -> void:
 	selected=target
 	for prop in props:prop.picked=(prop==selected);prop.queue_redraw()
-	actor.picked=(actor==selected);actor.queue_redraw()
-	selection_message="선택: "+("마을 짐꾼" if selected==actor else str(selected.spec.name)) if selected!=null else "선택한 대상이 없습니다."
+	for person in moving_actors:person.picked=(person==selected);person.queue_redraw()
+	selection_message="선택: "+(selected.display_name if selected in moving_actors else str(selected.spec.name)) if selected!=null else "선택한 대상이 없습니다."
 func interact() -> void:
 	var nearest=null;var distance=INF
 	for prop in props:
@@ -147,7 +165,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		for prop in props:prop.debug_footprint=debug_footprints;prop.queue_redraw()
 		queue_redraw();get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("iso_hint") and not event.is_echo():show_occlusion_hint=not show_occlusion_hint
-	elif event.is_action_pressed("iso_reset") and not event.is_echo():reset_actor();snap_camera()
+	elif event.is_action_pressed("iso_reset") and not event.is_echo():reset_trial();snap_camera()
+	elif event.is_action_pressed("iso_patrol") and not event.is_echo():
+		patrols_enabled=not patrols_enabled;selection_message="자동 NPC "+("왕복 재개" if patrols_enabled else "정지 · 충돌은 유지")
 	elif event.is_action_pressed("iso_camera") and not event.is_echo():follow=not follow
 	elif event.is_action_pressed("iso_interact") and not event.is_echo():interact()
 	elif event is InputEventMouseButton:
@@ -164,7 +184,7 @@ func _build_hud() -> void:
 	var panel=PanelContainer.new();panel.position=Vector2(22,18);panel.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(panel)
 	var style=StyleBoxFlat.new();style.bg_color=Color("142923eb");style.border_color=Color("98845b");style.set_border_width_all(1);style.set_content_margin_all(12);panel.add_theme_stylebox_override("panel",style)
 	var list=VBoxContainer.new();list.mouse_filter=Control.MOUSE_FILTER_IGNORE;panel.add_child(list)
-	for text in ["공간 시험 · 마당에서 골목으로","WASD / 방향키 이동   ·   F 조사   ·   클릭 선택","휠 확대   ·   중간 버튼 드래그   ·   C 카메라 추적","G 충돌 범위   ·   H 가림 표시   ·   R 시작 위치"]:
+	for text in ["보행 시험 · 조작 짐꾼과 왕복 짐꾼 둘","WASD / 방향키 이동   ·   F 조사   ·   클릭 선택","휠 확대   ·   중간 버튼 드래그   ·   C 카메라 추적","G 충돌 범위 · H 가림 표시 · P 왕복 정지 · R 초기화"]:
 		var label=Label.new();label.text=text;label.add_theme_font_override("font",font);label.add_theme_font_size_override("font_size",15);label.mouse_filter=Control.MOUSE_FILTER_IGNORE;list.add_child(label)
 	details=Label.new();details.position=Vector2(24,650);details.add_theme_font_override("font",font);details.add_theme_font_size_override("font_size",17);details.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(details)
 	status=Label.new();status.position=Vector2(24,682);status.add_theme_font_override("font",font);status.add_theme_font_size_override("font_size",14);status.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(status)
