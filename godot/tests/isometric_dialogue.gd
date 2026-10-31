@@ -29,9 +29,9 @@ func run() -> void:
 	a.set_logical(Vector2(6.6,8.7));b.set_logical(Vector2(6.6,9.3));await frames(2);check(scene.interaction.target==a,"equal-distance target is deterministic")
 	scene.actor.set_logical(Vector2(6.8,6.95));a.set_logical(Vector2(6.8,5.95));b.set_logical(Vector2(10,10));await frames(2)
 	check(not scene.interaction.reachable(a) and scene.interaction.target==null,"wall prevents dialogue even at short distance")
-	scene.actor.set_logical(Vector2(7.15,2.8));a.set_logical(Vector2(6.5,1.95));await frames(2)
+	scene.actor.set_logical(Vector2(8.65,2.8));a.set_logical(Vector2(7.8,1.95));await frames(2)
 	check(not scene.interaction.reachable(a),"building corner blocks dialogue")
-	scene.actor.set_logical(Vector2(4.72,7.05));a.set_logical(Vector2(4.72,6.05));await frames(2)
+	scene.actor.set_logical(Vector2(3.12,7.05));a.set_logical(Vector2(3.12,6.05));await frames(2)
 	check(scene.interaction.reachable(a),"open gate permits dialogue through clear passage")
 	scene.visibility_hint.refresh();check(not scene.visibility_hint.captions[a].visible,"focused NPC shows one interaction name instead of a duplicate hidden label")
 	# Clicking retains selection-only behavior; it never begins or walks to dialogue.
@@ -53,7 +53,7 @@ func run() -> void:
 	await key(KEY_W,false);await frames(2)
 	var stopped=pose();scene.actor._face_movement(Vector2.ZERO,1.0/60);check(pose()==stopped,"zero-input collision correction cannot replace the last facing")
 	# Initiate with a real F key while patrols are enabled.
-	scene.reset_trial();scene.actor.set_logical(Vector2(5.5,9.7));scene.patrols_enabled=true;await frames(2)
+	scene.reset_trial();scene.actor.set_logical(Vector2(3.9,9.7));scene.patrols_enabled=true;await frames(2)
 	var first_source=ui.data.conversations.GatePorter.duplicate(true)
 	await key(KEY_F,true)
 	check(ui.active and ui.dialogue_index==0 and ui.target==a,"initial F opens exactly the first line")
@@ -98,7 +98,7 @@ func run() -> void:
 	check(scene.actor.position.distance_to(player_point)>10,"fresh movement works after neutral input")
 	await frames(30);check(a.position.distance_to(partner_point)>20,"partner resumes authored route")
 	# The other NPC has its own five-line conversation and a different existing portrait.
-	scene.patrols_enabled=false;scene.reset_trial();scene.actor.set_logical(Vector2(8.3,5.35));await frames(2);await tap(KEY_F)
+	scene.patrols_enabled=false;scene.reset_trial();scene.actor.set_logical(Vector2(10.35,5.35));await frames(2);await tap(KEY_F)
 	check(ui.active and ui.target==b and ui.dialogue_lines.size()==5,"second NPC conversation works")
 	check(ui.dialogue_cast.portrait_choices.iso_rear_porter=="res://assets/portraits/wuchang/wu_deshu.png","second common portrait reused")
 	await key(KEY_F,true);await tap(KEY_H);await key(KEY_F,false);await tap(KEY_H)

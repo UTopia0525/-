@@ -49,7 +49,7 @@ func _ready() -> void:
 		for i in range(count):
 			var start=length*i/count;var end=length*(i+1)/count
 			var rect=[r[0]+start,r[1],end-start,r[3]] if along_u else [r[0],r[1]+start,r[2],end-start]
-			var wall=Wall.new();wall.setup({"id":section.id+"_"+str(i),"name":"골목 담장","kind":"wall","rect":rect,"end_cap":i==count-1},art.wall_materials)
+			var wall=Wall.new();wall.setup({"id":section.id+"_"+str(i),"name":"마당 경계 담장","kind":"wall","rect":rect,"plot":section.get("plot",""),"end_cap":i==count-1},art.wall_materials)
 			actors.add_child(wall);props.append(wall)
 	actor=Actor.new();actor.setup(art.hero,self);actor.display_name="도원";actors.add_child(actor);moving_actors.append(actor);reset_actor()
 	for entry in data.get("patrols",[]):

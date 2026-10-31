@@ -1,0 +1,17 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>건물 방향과 마당 경계 정정</title>
+<style>body{margin:0;background:#111f1a;color:#e6deca;font:16px/1.7 system-ui,sans-serif}main{max-width:1500px;padding:26px;margin:auto}h1,h2{color:#efd49d}p{max-width:950px}a{color:#a5d8c8}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}figure{margin:0;border:1px solid #4b6156;border-radius:7px;overflow:hidden;background:#1a2b24}img,video{display:block;width:100%;height:auto}figcaption{padding:12px}video{max-width:1280px}code{background:#253b30;padding:2px 6px}@media(max-width:800px){.grid{grid-template-columns:1fr}main{padding:14px}}</style>
+<main><h1>건물 방향과 마당 경계 정정</h1>
+<p>창고는 입구가 중앙 골목을 향하도록 방향을 돌리고, 카메라에 보이는 뒷면을 새로 그렸습니다. 민가와 창고의 마당을 각각 담장으로 구분했습니다. 이전처럼 뒤편으로 돌아가는 새 통로를 만든 방식이 아닙니다.</p>
+<h2>같은 플레이 카메라로 비교</h2><p>1280×720 · 배율75% · 카메라(0,290) · 같은 인물 위치. 민가와 대문을 옮겨 두 마당을 확보했고 중앙 공용 골목은 열어 두었습니다. 이미지를 누르면 원본 크기로 확인합니다.</p>
+<div class="grid"><figure><a href="orientation-before.png"><img src="orientation-before.png" alt="수정 전"></a><figcaption>이전 해석: 길을 등진 창고에 뒤쪽 우회 출입구를 추가</figcaption></figure>
+<figure><a href="orientation-after.png"><img src="orientation-after.png" alt="수정 후"></a><figcaption>정정: 길을 향한 창고 정면·새 후면 그림·두 건물의 독립 마당</figcaption></figure></div>
+<h2>실제 입력으로 두 입구까지 이동</h2><video controls preload="metadata" poster="orientation-after.png"><source src="orientation-play.mp4" type="video/mp4"></video><p>중앙 골목→창고 앞마당→가려진 정면 문, 외부 앞마당→민가 대문→민가 문턱 순서입니다. 마지막은 자동 짐꾼의 왕복입니다. 도원과 짐꾼의 기존 보행·크기·속도4.8은 유지했습니다. <a href="orientation-play.mp4">영상 다운로드</a></p>
+<h2>마당과 담장의 기능</h2><div class="grid"><figure><a href="orientation-boundaries.png"><img loading="lazy" src="orientation-boundaries.png" alt="마당 외곽과 접근 경로"></a><figcaption>G키: 황토색 마당 외곽·담장/문기둥 충돌·녹색 접근 경로</figcaption></figure>
+<figure><a href="orientation-patrol.png"><img loading="lazy" src="orientation-patrol.png" alt="새 구획의 자동 왕복"></a><figcaption>민가 마당을 드나드는 짐꾼과 외부 뒷길을 왕복하는 짐꾼</figcaption></figure></div>
+<h2>실제 문 앞 도착</h2><div class="grid"><figure><a href="orientation-warehouse-entry.png"><img loading="lazy" src="orientation-warehouse-entry.png" alt="창고 앞"></a><figcaption>창고 정면은 골목 쪽으로 돌려져 건물에 가려집니다. 기존 가림 표시로 도원 위치를 확인합니다.</figcaption></figure>
+<figure><a href="orientation-house-entry.png"><img loading="lazy" src="orientation-house-entry.png" alt="민가 앞"></a><figcaption>민가의 앞마당과 정면 입구. 실내 입장 기능은 아직 없습니다.</figcaption></figure></div>
+<h2>앞으로의 기준</h2><p>입구가 접근 도로를 향하도록 건물 방향부터 정합니다. 필요한 방향의 그림을 새로 그리고, 담장은 소속 건물의 마당을 외부와 구분하는 경계로 연결합니다. 건물 입구와 길을 막지 않으며 실내가 없는 건물도 같은 기준을 따릅니다.</p>
+<p><a href="../../../../docs/reviews/isometric-orientation.md">검사 결과와 남은 한계</a> · <a href="../../../../docs/cities/building-placement.md">수정된 배치 규칙</a> · <a href="../assets/warehouse-back.png">새 창고 후면 원본</a></p>
+<p>Godot에서 <code>res://prototypes/isometric/main.tscn</code> 열기 → F6. WASD/방향키 이동, F 대화, G 경계/접근 경로, P 자동 왕복 정지/재개. F5는 기존 본게임입니다.</p>
+</main></html>

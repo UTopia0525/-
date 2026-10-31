@@ -34,11 +34,17 @@ func run() -> void:
 		check(scene.actor.logical.distance_to(scene.ACCESS.vec(e.threshold))<.11,"player stands at visible "+str(prop.name)+" doorway")
 	var warehouse=buildings[1];var original=warehouse.spec.entrance.duplicate(true)
 	warehouse.spec.erase("entrance");check(not scene.ACCESS.validate(scene).is_empty(),"missing entrance rejected for no-interior building");warehouse.spec.entrance=original.duplicate(true)
-	warehouse.spec.entrance.facing=[-1,0];check(scene.ACCESS.validate(scene).any(func(s):return s.contains("front of")),"backwards doorway approach rejected");warehouse.spec.entrance=original.duplicate(true)
-	warehouse.spec.entrance.threshold[0]+=1;check(scene.ACCESS.validate(scene).any(func(s):return s.contains("visual door")),"wrong painted door registration rejected");warehouse.spec.entrance=original.duplicate(true)
-	var body=StaticBody2D.new();body.collision_layer=1;var shape=CollisionPolygon2D.new();shape.polygon=Space.diamond(Rect2(7,6.3,1.4,.2));body.add_child(shape);scene.add_child(body);await frames(2)
+	warehouse.spec.entrance.facing=[1,0];check(scene.ACCESS.validate(scene).any(func(s):return s.contains("front of")),"backwards doorway approach rejected");warehouse.spec.entrance=original.duplicate(true)
+	var house=buildings[0];house.spec.entrance.threshold[0]+=.5;check(scene.ACCESS.validate(scene).any(func(s):return s.contains("visual door")),"wrong painted door registration rejected");house.spec.entrance.threshold[0]-=.5
+	var body=StaticBody2D.new();body.collision_layer=1;var shape=CollisionPolygon2D.new();shape.polygon=Space.diamond(Rect2(5.65,2.9,.2,1.2));body.add_child(shape);scene.add_child(body);await frames(2)
 	check(scene.ACCESS.validate(scene).any(func(s):return s.contains("blocked route")),"closing loading gate invalidates entrance access")
 	body.queue_free();await frames(2);check(scene.ACCESS.validate(scene).is_empty(),"opening loading gate restores access")
+	var saved_owner=scene.data.walls[0].plot
+	scene.data.walls[0].plot="missing_plot";check(scene.ACCESS.validate(scene).any(func(s):return s.contains("orphan wall")),"unowned freestanding wall rejected");scene.data.walls[0].plot=saved_owner
+	var saved_wall=scene.data.walls.pop_back();check(scene.ACCESS.validate(scene).any(func(s):return s.contains("undeclared gap")),"courtyard must be enclosed outside declared openings");scene.data.walls.append(saved_wall)
+	check(scene.ACCESS.validate(scene).is_empty(),"courtyard ownership and closure restored")
+	check(warehouse.art_view=="rear" and warehouse.art_front==Vector2(-1,0),"real rear art faces its entrance toward alley")
+	warehouse.spec.entrance.road_anchor=[11,11];check(scene.ACCESS.validate(scene).any(func(s):return s.contains("road anchor")),"inventing a road behind the building cannot validate its direction");warehouse.spec.entrance=original.duplicate(true)
 	for person in [scene.actor,scene.npcs[0]]:
 		check(person.speed==4.8,"movement speed remains unchanged")
 		for key in ["front","back"]:

@@ -16,6 +16,10 @@
       "door_pixel": [
         555,
         592
+      ],
+      "front": [
+        1,
+        0
       ]
     },
     "warehouse": {
@@ -34,6 +38,10 @@
       "door_pixel": [
         550,
         625
+      ],
+      "front": [
+        1,
+        0
       ]
     },
     "gate": {
@@ -77,6 +85,25 @@
         414
       ],
       "ground_width": 329
+    },
+    "warehouse_back": {
+      "texture": "res://prototypes/isometric/assets/warehouse-back.png",
+      "region": [
+        160,
+        21,
+        1230,
+        989
+      ],
+      "pivot": [
+        488,
+        989
+      ],
+      "ground_width": 980,
+      "view": "rear",
+      "front": [
+        -1,
+        0
+      ]
     }
   },
   "npc": {

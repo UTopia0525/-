@@ -8,6 +8,8 @@ var picked=false
 var debug_footprint=false
 var physical_footprints: Array[Rect2]=[]
 var door_pixel=Vector2(INF,INF)
+var art_front=Vector2.ZERO
+var art_view="front"
 func setup(value: Dictionary,art: Dictionary) -> void:
 	spec=value;name=value.id
 	var r=value.rect;footprint=Rect2(r[0],r[1],r[2],r[3]);position=Space.project(footprint.get_center())
@@ -27,6 +29,8 @@ func setup(value: Dictionary,art: Dictionary) -> void:
 		sprite.scale=Vector2.ONE*fit/float(info.get("ground_width",atlas.region.size.x))
 		var pivot=Vector2(info.pivot[0],info.pivot[1])
 		if info.has("door_pixel"):door_pixel=Vector2(info.door_pixel[0],info.door_pixel[1])
+		if info.has("front"):art_front=Vector2(info.front[0],info.front[1])
+		art_view=info.get("view","front")
 		sprite.position=Space.project(footprint.end)-position-pivot*sprite.scale
 		add_child(sprite);source_image=atlas.get_image()
 		if source_image.is_compressed():source_image.decompress()

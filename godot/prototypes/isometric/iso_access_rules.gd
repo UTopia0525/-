@@ -3,7 +3,7 @@ const Space=preload("res://prototypes/isometric/iso_space.gd")
 const RADIUS=.16
 ## Applies to every building, including those without an interior or interaction.
 static func validate(world) -> Array[String]:
-	var errors: Array[String]=[]
+	var errors: Array[String]=validate_plots(world)
 	for prop in world.props:
 		if prop.spec.kind!="building":continue
 		var id: String=prop.spec.id
@@ -14,9 +14,18 @@ static func validate(world) -> Array[String]:
 			if not entry.has(key):errors.append(id+": missing "+key)
 		if not errors.is_empty() and not entry.has_all(["threshold","facing","approach","apron","path","kind"]):continue
 		var threshold=vec(entry.threshold);var approach=vec(entry.approach);var facing=vec(entry.facing)
-		if not prop.door_pixel.is_finite():errors.append(id+": missing image-space doorway anchor")
-		elif world.to_local(prop.sprite.to_global(prop.door_pixel)).distance_to(Space.project(threshold))>5:
-			errors.append(id+": visual door and ground threshold disagree")
+		if prop.art_front.distance_to(facing)>.01:errors.append(id+": artwork front and entrance orientation disagree")
+		var road=vec(entry.get("road_anchor",[0,0]))
+		var road_valid=false
+		for index in world.data.public_paving:
+			if rect(world.data.paving[index]).has_point(road):road_valid=true
+		if not road_valid:errors.append(id+": road anchor is not on a public road")
+		if (road-threshold).dot(facing)<.4:errors.append(id+": entrance must face its public road")
+		if entry.get("visibility","visible")=="hidden_front":
+			if prop.art_view!="rear" or prop.door_pixel.is_finite():errors.append(id+": hidden front requires a genuine rear-view asset")
+			if (threshold-prop.footprint.get_center()).dot(facing)<prop.footprint.size.x/2+.15:errors.append(id+": hidden doorway must be on the road-facing side")
+		elif not prop.door_pixel.is_finite():errors.append(id+": missing image-space doorway anchor")
+		elif world.to_local(prop.sprite.to_global(prop.door_pixel)).distance_to(Space.project(threshold))>5:errors.append(id+": visual door and ground threshold disagree")
 		if facing.length()<.9 or (approach-threshold).dot(facing.normalized())<.25 or absf((approach-threshold).cross(facing.normalized()))>.10:
 			errors.append(id+": approach is not in front of the doorway")
 		var a=entry.apron;var apron=Rect2(a[0],a[1],a[2],a[3])
@@ -43,6 +52,39 @@ static func validate(world) -> Array[String]:
 				for paving in world.data.paving:
 					if rect(paving).has_point(p):paved=true;break
 				if not paved:errors.append(id+": visible route paving is disconnected");break
+	return errors
+static func validate_plots(world) -> Array[String]:
+	var errors: Array[String]=[];var plots={}
+	for plot in world.data.get("plots",[]):plots[plot.id]=plot
+	for wall in world.data.walls:
+		if not plots.has(wall.get("plot","")):errors.append(wall.id+": orphan wall has no courtyard owner");continue
+		var bounds=rect(plots[wall.plot].rect);var r=rect(wall.rect)
+		if not bounds.grow(.001).encloses(r):errors.append(wall.id+": wall extends beyond its courtyard")
+		if not (is_equal_approx(r.position.x,bounds.position.x) or is_equal_approx(r.end.x,bounds.end.x) or is_equal_approx(r.position.y,bounds.position.y) or is_equal_approx(r.end.y,bounds.end.y)):errors.append(wall.id+": wall does not define a courtyard boundary")
+	for prop in world.data.props:
+		if prop.kind!="building":continue
+		if not plots.has(prop.get("plot","")):errors.append(prop.id+": building requires its own courtyard");continue
+		var plot=plots[prop.plot];var bounds=rect(plot.rect)
+		if plot.building!=prop.id or not bounds.encloses(rect(prop.rect)):errors.append(prop.id+": building outside assigned courtyard")
+		if prop.has("entrance") and prop.entrance.has("apron") and not bounds.encloses(rect(prop.entrance.apron)):errors.append(prop.id+": entrance apron outside assigned courtyard")
+	for id in plots:
+		var plot=plots[id];var bounds=rect(plot.rect);var solid: Array=[]
+		for wall in world.data.walls:
+			if wall.get("plot","")==id:solid.append(rect(wall.rect).grow(.002))
+		for prop in world.data.props:
+			if prop.kind=="gate" and prop.get("plot","")==id:
+				for r in prop.colliders:solid.append(rect(r).grow(.002))
+		for opening in plot.openings:
+			var r=rect(opening);solid.append(r.grow(.002))
+			if maxf(r.size.x,r.size.y)<RADIUS*2+.2:errors.append(id+": courtyard opening too narrow")
+		var corners=[bounds.position,Vector2(bounds.end.x,bounds.position.y),bounds.end,Vector2(bounds.position.x,bounds.end.y)]
+		for edge in range(4):
+			var a=corners[edge];var b=corners[(edge+1)%4];var count=ceili(a.distance_to(b)/.1)
+			for step in range(count+1):
+				var p=a.lerp(b,step/float(count));var covered=false
+				for r in solid:
+					if r.has_point(p):covered=true;break
+				if not covered:errors.append(id+": courtyard boundary has an undeclared gap");break
 	return errors
 static func vec(value: Array) -> Vector2:return Vector2(value[0],value[1])
 static func rect(a: Array) -> Rect2:return Rect2(a[0],a[1],a[2],a[3])

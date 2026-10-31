@@ -21,8 +21,10 @@ func _draw() -> void:
 		for width in [8,5,2]:draw_polyline(Space.diamond(rect)+PackedVector2Array([Space.project(rect.position)]),Color(.31,.26,.18,.035),width)
 		slab(rect,Color(.98,.97,.94))
 	# Flat thresholds: no new collisions, and the open gateway remains unobstructed.
-	for r in [Rect2(4.15,6.25,1.15,.48),Rect2(7.05,6.15,1.35,.5)]:
-		slab(r,Color(.87,.85,.79));draw_polyline(Space.diamond(r)+PackedVector2Array([Space.project(r.position)]),Color(.28,.27,.24,.3),1)
+	for plot in world.data.get("plots",[]):
+		for a in plot.openings:
+			var r=Rect2(a[0],a[1],a[2],a[3])
+			slab(r,Color(.87,.85,.79));draw_polyline(Space.diamond(r)+PackedVector2Array([Space.project(r.position)]),Color(.28,.27,.24,.3),1)
 	for prop in world.data.props:
 		if not prop.has("entrance"):continue
 		var e=prop.entrance;var a=e.apron;slab(Rect2(a[0],a[1],a[2],a[3]),Color(1,.99,.96))
@@ -41,6 +43,9 @@ func _draw() -> void:
 			var contact=Space.diamond(physical.grow(.02))
 			draw_polyline(contact+PackedVector2Array([contact[0]]),Color(.18,.18,.14,.22),3)
 	if world.debug_footprints:
+		for plot in world.data.get("plots",[]):
+			var a=plot.rect;var border=Space.diamond(Rect2(a[0],a[1],a[2],a[3]))
+			draw_polyline(border+PackedVector2Array([border[0]]),Color("d3bb7f"),2)
 		for prop in world.data.props:
 			if not prop.has("entrance"):continue
 			var e=prop.entrance;var points=PackedVector2Array()

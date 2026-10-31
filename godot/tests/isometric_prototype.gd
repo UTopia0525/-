@@ -34,10 +34,10 @@ func run() -> void:
 			scene.actor.set_logical(entry[0]);scene.update_depth()
 			check((scene.actor.get_index()<prop.get_index())==entry[1],"front/back and side occlusion "+prop.name+str(entry[0]))
 	check(scene.depth_cycles==0,"no cyclic occlusion in test layout")
-	scene.actor.set_logical(Vector2(4.55,3.3));await physics_frame
+	scene.actor.set_logical(Vector2(3.5,3.3));await physics_frame
 	Input.action_press("iso_left");await press("iso_up",22);Input.action_release("iso_left")
-	check(scene.actor.logical.x>=4.12,"actual keyboard movement collides with house side")
-	check(scene.actor.logical.x<4.55,"actor moved before contacting wall")
+	check(scene.actor.logical.x>=2.92,"actual keyboard movement collides with house side")
+	check(scene.actor.logical.x<3.5,"actor moved before contacting wall")
 	scene.actor.set_logical(Vector2(.3,7));await physics_frame
 	Input.action_press("iso_left");await press("iso_up",70);Input.action_release("iso_left")
 	check(scene.actor.logical.x>=.13 and scene.actor.logical.y>=.13,"map edge is physically closed")
@@ -58,7 +58,7 @@ func run() -> void:
 	await click(scene.get_canvas_transform()*(Space.project(house.footprint.end)+Vector2(15,-110)))
 	check(scene.selected==house,"real mouse event selects visible house")
 	check(not house.hit(house.sprite.to_global(Vector2(1,1))),"transparent roof corners cannot be selected")
-	scene.actor.set_logical(Vector2(2.8,1.65));scene.update_depth()
+	scene.actor.set_logical(Vector2(1.6,1.65));scene.update_depth()
 	check(scene.pick(scene.actor.position+Vector2(0,-45))==house,"occluding roof intercepts selection of hidden actor")
 	var foot=scene.actor.sprite.position+(Vector2(scene.actor.sprite.texture.get_width()/2.0,scene.actor.sprite.texture.get_height())*scene.actor.sprite.scale).rotated(scene.actor.sprite.rotation)
 	check(foot.length()<.01,"animation remains anchored at feet")

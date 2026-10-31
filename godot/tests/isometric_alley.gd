@@ -39,28 +39,30 @@ func run() -> void:
 	check(scene.actor.logical.y<1.9 and absf(scene.actor.logical.x-4.72)<.06,"full gate and narrow alley traverse north")
 	await walk(Vector2(0,1),85)
 	check(scene.actor.logical.y>8.2 and absf(scene.actor.logical.x-4.72)<.06,"full alley and gate traverse south")
-	for x in [3.975,5.475]:
+	scene.actor.set_logical(Vector2(3.12,8.5));await physics_frame;await walk(Vector2(0,-1),40)
+	check(scene.actor.logical.y<5.4,"house gate and private courtyard traverse")
+	for x in [2.375,3.875]:
 		scene.actor.set_logical(Vector2(x,7.25));await physics_frame;watch_pillars=true;pillar_contacts=0
 		await walk(Vector2(0,-1),22);watch_pillars=false
 		check(pillar_contacts>0,"actual pillar contact blocks initial path "+str(x))
 		check(scene.actor.logical.y<7.25,"actor reaches pillar")
 	scene.actor.set_logical(Vector2(4.72,5.5));await physics_frame;await walk(Vector2(-1,0),20)
-	check(scene.actor.logical.x>=4.13,"left wall blocks")
+	check(scene.actor.logical.x>=4.38,"left wall blocks")
 	scene.actor.set_logical(Vector2(4.72,5.5));await physics_frame;await walk(Vector2(1,0),20)
-	check(scene.actor.logical.x<=5.32,"right wall blocks")
+	check(scene.actor.logical.x<=5.52,"right wall blocks")
 	# Also exercise digital keyboard's equal-strength diagonal through the opening.
-	scene.actor.set_logical(Vector2(4.95,7.2));await physics_frame
+	scene.actor.set_logical(Vector2(3.35,7.2));await physics_frame
 	Input.action_press("iso_right");Input.action_press("iso_up")
 	for i in range(20):await physics_frame
 	Input.action_release("iso_right");Input.action_release("iso_up");await physics_frame
 	check(scene.actor.logical.y<6.25,"digital W+D traverses gate")
 
-	scene.actor.set_logical(Vector2(4.72,6.5));scene.update_depth();scene.update_occlusion()
+	scene.actor.set_logical(Vector2(3.12,6.5));scene.update_depth();scene.update_occlusion()
 	check(scene.actor.get_index()<gate.get_index(),"under-gate canopy renders over actor")
-	scene.actor.set_logical(Vector2(4.72,7.15));scene.update_depth()
+	scene.actor.set_logical(Vector2(3.12,7.15));scene.update_depth()
 	check(scene.actor.get_index()>gate.get_index(),"actor in front of gate renders over it")
 
-	scene.actor.set_logical(Vector2(2.8,1.65));scene.update_depth();scene.update_occlusion();await process_frame
+	scene.actor.set_logical(Vector2(1.6,1.65));scene.update_depth();scene.update_occlusion();await process_frame
 	check(scene.actor_occluded and scene.visibility_hint.visible,"hidden actor locator visible")
 	check(scene.pick(scene.actor.position+Vector2(0,-45))!=scene.actor,"locator never enables selection through roof")
 	scene.show_occlusion_hint=false;await process_frame;await process_frame

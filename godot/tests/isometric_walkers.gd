@@ -69,14 +69,14 @@ func run() -> void:
 	check(ranges[1].position.x<1.6 and ranges[1].end.x>7.4 and ranges[1].position.y<1.65,"rear NPC visits building side and back path")
 	check(scene.npcs[0].patrol.arrivals>10 and scene.npcs[1].patrol.arrivals>6,"both patrols repeatedly progress")
 	# Deliberately block the gate, then release it. No collision is disabled to yield.
-	scene.patrols_enabled=false;scene.reset_trial();scene.actor.set_logical(Vector2(4.72,6.5));scene.npcs[1].set_logical(Vector2(10,10));scene.patrols_enabled=true
+	scene.patrols_enabled=false;scene.reset_trial();scene.actor.set_logical(Vector2(3.12,6.5));scene.npcs[1].set_logical(Vector2(10,10));scene.patrols_enabled=true
 	await frames(540,true)
 	check(scene.npcs[0].patrol.yields>0,"gate encounter invokes yielding")
 	scene.actor.set_logical(Vector2(10.5,9.5));var before=scene.npcs[0].patrol.arrivals
 	await frames(600,true)
 	check(scene.npcs[0].patrol.arrivals>before+4,"NPC resumes route after gate obstruction is removed")
 	# Hold an oncoming input against the NPC in the alley, not only a stationary block.
-	scene.patrols_enabled=false;scene.reset_trial();scene.actor.set_logical(Vector2(4.72,4.7));scene.npcs[1].set_logical(Vector2(10,10));scene.patrols_enabled=true
+	scene.patrols_enabled=false;scene.reset_trial();scene.actor.set_logical(Vector2(3.12,4.7));scene.npcs[1].set_logical(Vector2(10,10));scene.patrols_enabled=true
 	Input.action_press("iso_left",.894427);Input.action_press("iso_down",.447214)
 	await frames(70,true);Input.action_release("iso_left");Input.action_release("iso_down")
 	check(scene.actor.logical.y>8.1,"keyboard actor passes oncoming NPC without permanent gate lock")
@@ -88,7 +88,7 @@ func run() -> void:
 	check(a.patrol.arrivals>1 and b.patrol.arrivals>1,"two oncoming patrols both make progress")
 	# Three hidden labels stay tied to their owners and do not overlap at any zoom.
 	scene.patrols_enabled=false;scene.follow=false;scene.camera.position=Vector2(-85,290)
-	for i in range(3):scene.moving_actors[i].set_logical(Vector2(2.5+i*.35,1.5))
+	for i in range(3):scene.moving_actors[i].set_logical(Vector2(1.2+i*.35,1.5))
 	for zoom in [.65,.85,1.25]:
 		scene.camera.zoom=Vector2.ONE*zoom;scene.camera.force_update_scroll();scene.update_depth();scene.update_occlusion();scene.visibility_hint.refresh()
 		var hints=scene.visibility_hint
