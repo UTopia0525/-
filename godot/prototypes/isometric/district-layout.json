@@ -1,0 +1,827 @@
+{
+  "name": "작은 생활 구역",
+  "size": [
+    20,
+    16
+  ],
+  "spawn": [
+    4.72,
+    8.4
+  ],
+  "props": [
+    {
+      "id": "house",
+      "name": "작은 민가",
+      "kind": "building",
+      "rect": [
+        0.8,
+        2,
+        2,
+        3
+      ],
+      "art": "house",
+      "entrance": {
+        "kind": "courtyard",
+        "threshold": [
+          3.055814,
+          3.162791
+        ],
+        "facing": [
+          1,
+          0
+        ],
+        "approach": [
+          3.605814,
+          3.162791
+        ],
+        "apron": [
+          2.94,
+          2.55,
+          1.06,
+          1.3
+        ],
+        "path": [
+          [
+            3.12,
+            8
+          ],
+          [
+            3.12,
+            7.3
+          ],
+          [
+            3.12,
+            6.5
+          ],
+          [
+            3.12,
+            5.3
+          ],
+          [
+            3.605814,
+            3.162791
+          ]
+        ],
+        "interior": null,
+        "road_anchor": [
+          4.72,
+          3.162791
+        ],
+        "visibility": "visible"
+      },
+      "plot": "house_plot",
+      "front": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": "warehouse",
+      "name": "곡물 창고",
+      "kind": "building",
+      "rect": [
+        6.8,
+        2.2,
+        1.5,
+        2.5
+      ],
+      "art": "warehouse_back",
+      "entrance": {
+        "kind": "loading_yard",
+        "threshold": [
+          6.62,
+          3.45
+        ],
+        "facing": [
+          -1,
+          0
+        ],
+        "approach": [
+          6.12,
+          3.45
+        ],
+        "apron": [
+          5.93,
+          2.75,
+          0.8,
+          1.5
+        ],
+        "path": [
+          [
+            4.72,
+            8
+          ],
+          [
+            4.72,
+            5.2
+          ],
+          [
+            4.72,
+            3.45
+          ],
+          [
+            6.12,
+            3.45
+          ]
+        ],
+        "interior": null,
+        "road_anchor": [
+          4.72,
+          3.45
+        ],
+        "visibility": "hidden_front"
+      },
+      "plot": "warehouse_plot",
+      "front": [
+        -1,
+        0
+      ]
+    },
+    {
+      "id": "tree",
+      "name": "마당의 나무",
+      "kind": "tree",
+      "rect": [
+        2,
+        9,
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "urn",
+      "name": "물항아리",
+      "kind": "urn",
+      "rect": [
+        9,
+        8,
+        0.45,
+        0.45
+      ]
+    },
+    {
+      "id": "gate",
+      "name": "골목 대문",
+      "kind": "gate",
+      "rect": [
+        2.2,
+        6.3,
+        1.85,
+        0.4
+      ],
+      "art": "gate",
+      "colliders": [
+        [
+          2.2,
+          6.3,
+          0.35,
+          0.4
+        ],
+        [
+          3.7,
+          6.3,
+          0.35,
+          0.4
+        ]
+      ],
+      "opening": [
+        2.55,
+        6.3,
+        1.15,
+        0.4
+      ],
+      "plot": "house_plot"
+    },
+    {
+      "id": "warehouse_gate",
+      "name": "창고의 목제 대문",
+      "kind": "gate",
+      "art": "warehouse_gate",
+      "plot": "warehouse_plot",
+      "rect": [
+        5.65,
+        2.65,
+        0.2,
+        1.7
+      ],
+      "colliders": [
+        [
+          5.65,
+          4.1,
+          0.2,
+          0.25
+        ],
+        [
+          5.65,
+          2.65,
+          0.2,
+          0.25
+        ]
+      ],
+      "opening": [
+        5.65,
+        2.9,
+        0.2,
+        1.2
+      ]
+    },
+    {
+      "id": "workbench",
+      "name": "담장 없는 목공 작업대",
+      "kind": "workstation",
+      "art": "workbench",
+      "rect": [
+        6.3,
+        9.1,
+        1.4,
+        0.6
+      ],
+      "outdoor_space": "open_workshop"
+    },
+    {
+      "id": "street_store",
+      "name": "길가 물자 창고",
+      "kind": "building",
+      "art": "warehouse",
+      "rect": [
+        12,
+        3.4,
+        1.5,
+        2.5
+      ],
+      "front": [
+        1,
+        0
+      ],
+      "enclosure": "open",
+      "entrance": {
+        "kind": "open_frontage",
+        "visibility": "visible",
+        "threshold": [
+          13.907855,
+          4.718731
+        ],
+        "facing": [
+          1,
+          0
+        ],
+        "approach": [
+          14.457855,
+          4.718731
+        ],
+        "apron": [
+          13.7,
+          4.0,
+          1.55,
+          1.65
+        ],
+        "road_anchor": [
+          16.5,
+          4.718731
+        ],
+        "path": [
+          [
+            16.5,
+            7.7
+          ],
+          [
+            16.5,
+            4.718731
+          ],
+          [
+            14.457855,
+            4.718731
+          ]
+        ],
+        "interior": null
+      }
+    },
+    {
+      "id": "lane_house",
+      "name": "열린 앞자리가 있는 민가",
+      "kind": "building",
+      "art": "house",
+      "rect": [
+        11.8,
+        10.4,
+        2,
+        3
+      ],
+      "front": [
+        1,
+        0
+      ],
+      "enclosure": "open",
+      "entrance": {
+        "kind": "open_frontage",
+        "visibility": "visible",
+        "threshold": [
+          14.055814,
+          11.562791
+        ],
+        "facing": [
+          1,
+          0
+        ],
+        "approach": [
+          14.605814,
+          11.562791
+        ],
+        "apron": [
+          13.94,
+          10.95,
+          1.3,
+          1.35
+        ],
+        "road_anchor": [
+          16.5,
+          11.562791
+        ],
+        "path": [
+          [
+            16.5,
+            7.7
+          ],
+          [
+            16.5,
+            11.562791
+          ],
+          [
+            14.605814,
+            11.562791
+          ]
+        ],
+        "interior": null
+      }
+    },
+    {
+      "id": "yard_shade",
+      "name": "마당 그늘 나무",
+      "kind": "tree",
+      "rect": [
+        7.6,
+        13.1,
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "street_shade",
+      "name": "길 끝 그늘 나무",
+      "kind": "tree",
+      "rect": [
+        18.5,
+        10.7,
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "house_urn",
+      "name": "민가 물항아리",
+      "kind": "urn",
+      "rect": [
+        14.5,
+        12.85,
+        0.45,
+        0.45
+      ]
+    }
+  ],
+  "walls": [
+    {
+      "id": "house_north",
+      "rect": [
+        0.6,
+        1.8,
+        3.65,
+        0.2
+      ],
+      "plot": "house_plot"
+    },
+    {
+      "id": "house_west",
+      "rect": [
+        0.6,
+        2,
+        0.2,
+        4.3
+      ],
+      "plot": "house_plot"
+    },
+    {
+      "id": "house_east",
+      "rect": [
+        4.05,
+        2,
+        0.2,
+        4.3
+      ],
+      "plot": "house_plot"
+    },
+    {
+      "id": "house_south_left",
+      "rect": [
+        0.6,
+        6.3,
+        1.6,
+        0.4
+      ],
+      "plot": "house_plot"
+    },
+    {
+      "id": "house_south_right",
+      "rect": [
+        4.05,
+        6.3,
+        0.2,
+        0.4
+      ],
+      "plot": "house_plot"
+    },
+    {
+      "id": "warehouse_north",
+      "rect": [
+        5.65,
+        1.8,
+        3.35,
+        0.2
+      ],
+      "plot": "warehouse_plot"
+    },
+    {
+      "id": "warehouse_east",
+      "rect": [
+        8.8,
+        2,
+        0.2,
+        4.5
+      ],
+      "plot": "warehouse_plot"
+    },
+    {
+      "id": "warehouse_south",
+      "rect": [
+        5.65,
+        6.5,
+        3.35,
+        0.2
+      ],
+      "plot": "warehouse_plot"
+    },
+    {
+      "id": "warehouse_west_north",
+      "rect": [
+        5.65,
+        2,
+        0.2,
+        0.9
+      ],
+      "plot": "warehouse_plot"
+    },
+    {
+      "id": "warehouse_west_south",
+      "rect": [
+        5.65,
+        4.1,
+        0.2,
+        2.4
+      ],
+      "plot": "warehouse_plot"
+    }
+  ],
+  "paving": [
+    [
+      1,
+      7,
+      9.3,
+      4.2
+    ],
+    [
+      4.25,
+      1,
+      1.4,
+      6.3
+    ],
+    [
+      0.5,
+      1,
+      9.8,
+      0.65
+    ],
+    [
+      2.9,
+      2.55,
+      1.15,
+      3.8
+    ],
+    [
+      2.55,
+      6.15,
+      1.15,
+      1.2
+    ],
+    [
+      5.85,
+      2.5,
+      0.95,
+      3.8
+    ],
+    [
+      5.5,
+      2.9,
+      0.8,
+      1.2
+    ],
+    [
+      9.2,
+      1,
+      1.1,
+      5.8
+    ],
+    [
+      6.0,
+      8.9,
+      2.1,
+      1.9
+    ],
+    [
+      4.25,
+      7.1,
+      13.0,
+      1.8
+    ],
+    [
+      15.8,
+      1,
+      1.45,
+      13.9
+    ],
+    [
+      4.25,
+      14.0,
+      13.0,
+      1.0
+    ],
+    [
+      4.25,
+      7.1,
+      1.4,
+      7.9
+    ],
+    [
+      9.3,
+      1.0,
+      7.95,
+      1.0
+    ],
+    [
+      13.7,
+      4.0,
+      3.55,
+      1.65
+    ],
+    [
+      13.94,
+      10.95,
+      3.31,
+      1.35
+    ],
+    [
+      6.5,
+      9.65,
+      10.75,
+      0.7
+    ],
+    [
+      9.0,
+      9.65,
+      1,
+      4.85
+    ]
+  ],
+  "patrols": [
+    {
+      "id": "GatePorter",
+      "name": "문길 짐꾼",
+      "route": [
+        [
+          3.12,
+          9.7
+        ],
+        [
+          3.12,
+          7.3
+        ],
+        [
+          3.12,
+          5.3
+        ],
+        [
+          3.6,
+          3.35
+        ]
+      ]
+    },
+    {
+      "id": "RearPorter",
+      "name": "뒷길 짐꾼",
+      "route": [
+        [
+          16.5,
+          6.7
+        ],
+        [
+          16.5,
+          4.718731
+        ],
+        [
+          15.2,
+          4.718731
+        ],
+        [
+          15.2,
+          2.55
+        ],
+        [
+          11.1,
+          2.55
+        ],
+        [
+          11.1,
+          6.7
+        ]
+      ]
+    }
+  ],
+  "access_schema_version": 3,
+  "public_paving": [
+    0,
+    1,
+    2,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13,
+    16,
+    17
+  ],
+  "plots": [
+    {
+      "id": "house_plot",
+      "building": "house",
+      "name": "민가의 마당",
+      "rect": [
+        0.6,
+        1.8,
+        3.65,
+        4.9
+      ],
+      "openings": [
+        [
+          2.55,
+          6.3,
+          1.15,
+          0.4
+        ]
+      ],
+      "mode": "walled"
+    },
+    {
+      "id": "warehouse_plot",
+      "building": "warehouse",
+      "name": "창고의 작업 마당",
+      "rect": [
+        5.65,
+        1.8,
+        3.35,
+        4.9
+      ],
+      "openings": [
+        [
+          5.65,
+          2.9,
+          0.2,
+          1.2
+        ]
+      ],
+      "mode": "walled"
+    }
+  ],
+  "outdoor_spaces": [
+    {
+      "id": "open_workshop",
+      "mode": "open",
+      "owner": "workbench",
+      "rect": [
+        6.0,
+        8.9,
+        2.1,
+        1.9
+      ],
+      "apron": [
+        6.3,
+        10.0,
+        1.1,
+        0.75
+      ],
+      "path": [
+        [
+          4.72,
+          8.4
+        ],
+        [
+          4.72,
+          10.35
+        ],
+        [
+          6.85,
+          10.35
+        ]
+      ],
+      "approach": [
+        6.85,
+        10.35
+      ]
+    }
+  ],
+  "title": "생활 구역 시험 · 20×16 · 도원과 짐꾼 둘",
+  "review_loop": [
+    [
+      4.72,
+      8.4
+    ],
+    [
+      4.72,
+      7.7
+    ],
+    [
+      16.5,
+      7.7
+    ],
+    [
+      16.5,
+      14.5
+    ],
+    [
+      4.72,
+      14.5
+    ],
+    [
+      4.72,
+      8.4
+    ]
+  ],
+  "review_spots": [
+    {
+      "id": "gate",
+      "name": "담장 주거와 민가 대문",
+      "point": [
+        3.12,
+        6.5
+      ]
+    },
+    {
+      "id": "workshop",
+      "name": "담장 없는 목공 앞자리",
+      "point": [
+        6.85,
+        10.35
+      ]
+    },
+    {
+      "id": "junction",
+      "name": "큰길과 길가 창고",
+      "point": [
+        16.5,
+        7.7
+      ]
+    },
+    {
+      "id": "house_front",
+      "name": "담장 없는 민가의 정면",
+      "point": [
+        14.605814,
+        11.562791
+      ]
+    },
+    {
+      "id": "back_lane",
+      "name": "건물 뒤 좁은 골목",
+      "point": [
+        12.8,
+        9.95
+      ]
+    },
+    {
+      "id": "edge",
+      "name": "남동쪽 길 끝과 카메라 제한",
+      "point": [
+        17.5,
+        14.5
+      ]
+    }
+  ]
+}

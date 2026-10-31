@@ -1,5 +1,14 @@
 # 아이소메트릭 독립 시험 씬
 
+최신 시험은 [20×16 생활 구역·카메라](../../../docs/reviews/isometric-district.md)다. 기존12×12와 별도 씬으로 실행한다. 새 원화 없이 건물4동/기존 NPC2명/순환 동선을 구성했고 기존 씬의 배치·본게임은 유지했다.
+
+| 씬 | F6으로 실행할 경로 |
+| --- | --- |
+| 기존12×12 | `res://prototypes/isometric/main.tscn` |
+| 새20×16 | `res://prototypes/isometric/district.tscn` |
+
+[새 구역 전체/실제 플레이/영상](screenshots/district-preview.html) · [전체 배치도](screenshots/district-overview.png)
+
 본게임 변환 전 공간 표현과 대화 연결을 검증하는 작은 씬이다. 본게임 시작 씬은 실행하지 않고 도시·저장·전투·의뢰 진행과 분리한다. 공용 대화 UI만 재사용하며 중단한 농지/부두 작업도 유지한다.
 
 ## 실행과 업데이트
@@ -20,7 +29,7 @@ godot --path godot res://prototypes/isometric/main.tscn
 화면과 영상을 한 페이지에서 보려면:
 
 ```powershell
-Start-Process .\godot\prototypes\isometric\screenshots\spaces-preview.html
+Start-Process .\godot\prototypes\isometric\screenshots\district-preview.html
 ```
 
 | 조작 | 동작 |
@@ -92,9 +101,10 @@ godot --path godot --audio-driver Dummy --script res://tests/isometric_walk_rend
 godot --headless --fixed-fps 60 --path godot --script res://tests/isometric_dialogue.gd
 godot --headless --fixed-fps 60 --path godot --script res://tests/isometric_gait_access.gd
 godot --headless --fixed-fps 60 --path godot --script res://tests/isometric_outdoor_spaces.gd
+godot --headless --fixed-fps 60 --path godot --script res://tests/isometric_district.gd
 ```
 
-최신 `tests/capture_isometric_spaces.gd`는 전체 전후/경계/목제 대문 통과 연속 화면/열린 작업 공간을 기록한다. `--fixed-fps 30 --write-movie /tmp/iso-spaces.avi`로 영상을 기록한다. 이전 `tests/capture_isometric_orientation.gd`는 전체/마당 경계/두 문 앞/자동 왕복 화면을 기록한다. `--fixed-fps 30 --write-movie /tmp/iso-orientation.avi`로 실제 입력 이동 영상을 기록한다. 이전 `tests/capture_gait_access.gd`는 변경 후 전체/접근 동선/창고 문/8자세/앞뒤/정지 화면을 촬영한다. `--fixed-fps 30 --write-movie /tmp/gait-access.avi`로 보행과 이동을 기록할 수 있다.
+최신 `tests/capture_isometric_district.gd`는20×16 전체 지도/주요 지점/카메라 추적 순환/새 영역 대화를 기록한다. `--fixed-fps 30 --write-movie /tmp/iso-district.avi`로 영상을 촬영한다. 이전 `tests/capture_isometric_spaces.gd`는 전체 전후/경계/목제 대문 통과 연속 화면/열린 작업 공간을 기록한다. `--fixed-fps 30 --write-movie /tmp/iso-spaces.avi`로 영상을 기록한다. 이전 `tests/capture_isometric_orientation.gd`는 전체/마당 경계/두 문 앞/자동 왕복 화면을 기록한다. `--fixed-fps 30 --write-movie /tmp/iso-orientation.avi`로 실제 입력 이동 영상을 기록한다. 이전 `tests/capture_gait_access.gd`는 변경 후 전체/접근 동선/창고 문/8자세/앞뒤/정지 화면을 촬영한다. `--fixed-fps 30 --write-movie /tmp/gait-access.avi`로 보행과 이동을 기록할 수 있다.
 
 이전 대화 기록은 실제로 렌더링 가능한 환경에서 `tests/capture_isometric_dialogue.gd`를 실행하면9장을 촬영한다. `--fixed-fps 30 --write-movie /tmp/iso-dialogue.avi`를 함께 지정하면 입력과 비교 배치를 기록한다. 사용자 저장과 분리한 XDG 폴더를 권장한다.
 

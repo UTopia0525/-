@@ -54,7 +54,7 @@ func _yield(forward: Vector2) -> void:
 		var offset=side*sign_value*.46
 		if actor.test_move(actor.global_transform,Space.project(offset)):continue
 		var candidate=actor.logical+offset
-		if not Rect2(.2,.2,11.6,11.6).has_point(candidate):continue
+		if not Rect2(Vector2.ONE*.2,actor.owner_world.map_size-Vector2.ONE*.4).has_point(candidate):continue
 		detour=candidate;state="옆으로 양보";return
 	# No side room: wait briefly, then walk back to the preceding authored waypoint.
 	_retreat();pause=.3

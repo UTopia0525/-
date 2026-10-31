@@ -4,7 +4,9 @@ const Prop=preload("res://prototypes/isometric/iso_prop.gd")
 const Wall=preload("res://prototypes/isometric/iso_wall.gd")
 const Actor=preload("res://prototypes/isometric/iso_actor.gd")
 const ACCESS=preload("res://prototypes/isometric/iso_access_rules.gd")
+@export_file("*.json") var layout_path="res://prototypes/isometric/layout.json"
 var data: Dictionary
+var map_size=Vector2.ZERO
 var art: Dictionary
 var actors: Node2D
 var actor
@@ -36,7 +38,8 @@ var last_sorted_positions: Array=[]
 var access_errors: Array[String]=[]
 func _ready() -> void:
 	process_physics_priority=10
-	data=JSON.parse_string(FileAccess.get_file_as_string("res://prototypes/isometric/layout.json"))
+	data=JSON.parse_string(FileAccess.get_file_as_string(layout_path))
+	map_size=Vector2(data.size[0],data.size[1])
 	art=JSON.parse_string(FileAccess.get_file_as_string("res://prototypes/isometric/assets/manifest.json"))
 	_register_inputs()
 	var material_texture=load("res://assets/maps/nanjing/market-slice/materials.png")
@@ -57,7 +60,7 @@ func _ready() -> void:
 		var npc=Actor.new();npc.setup(art.npc,self);npc.name=entry.id;npc.display_name=entry.name
 		npc.interactive=false;npc.traffic_rank=npcs.size()+1;actors.add_child(npc);moving_actors.append(npc);npcs.append(npc)
 		npc.patrol=preload("res://prototypes/isometric/iso_patrol.gd").new();npc.patrol.setup(npc,entry.route)
-	for r in [Rect2(-1,-1,14,1),Rect2(-1,12,14,1),Rect2(-1,0,1,12),Rect2(12,0,1,12)]:
+	for r in [Rect2(-1,-1,map_size.x+2,1),Rect2(-1,map_size.y,map_size.x+2,1),Rect2(-1,0,1,map_size.y),Rect2(map_size.x,0,1,map_size.y)]:
 		var wall=StaticBody2D.new();wall.collision_layer=1
 		var shape=CollisionPolygon2D.new();shape.polygon=Space.diamond(r);wall.add_child(shape);add_child(wall)
 	grounding=preload("res://prototypes/isometric/iso_grounding.gd").new();grounding.setup(self);add_child(grounding);move_child(grounding,0)
@@ -86,11 +89,11 @@ func reset_trial() -> void:
 	reset_actor()
 	for npc in npcs:npc.patrol.reset()
 func _draw() -> void:
-	var boundary=Space.diamond(Rect2(0,0,12,12));var low=boundary.duplicate()
+	var boundary=Space.diamond(Rect2(Vector2.ZERO,map_size));var low=boundary.duplicate()
 	for i in range(low.size()):low[i]+=Vector2(0,14)
 	draw_colored_polygon(low,Color("263b35"))
-	for u in range(12):
-		for v in range(12):
+	for u in range(int(map_size.x)):
+		for v in range(int(map_size.y)):
 			var points=Space.diamond(Rect2(u,v,1,1));var road=false
 			for a in data.paving:
 				if Rect2(a[0],a[1],a[2],a[3]).has_point(Vector2(u+.5,v+.5)):road=true;break
@@ -110,9 +113,17 @@ func _physics_process(_delta: float) -> void:
 		status.text="논리 좌표 (%.2f, %.2f)   ·   %s   ·   %.0f%%" % [actor.logical.x,actor.logical.y,"카메라 추적" if follow else "카메라 고정",camera.zoom.x*100]
 func snap_camera() -> void:
 	var target=actor.position+Vector2(0,-96)
+	place_camera(target)
+func camera_bounds() -> Rect2:
+	# Ground diamond bounds plus the original artwork/roof margins.
+	# These margins preserve the 12x12 framing and are not map dimensions.
+	return Rect2(Vector2(-map_size.y*Space.TILE.x/2-82,-330),Vector2((map_size.x+map_size.y)*Space.TILE.x/2+164,(map_size.x+map_size.y)*Space.TILE.y/2+462))
+func constrained_camera(target: Vector2) -> Vector2:
 	var extent=get_viewport_rect().size/(camera.zoom*2)
-	var low=Vector2(-850,-330)+extent;var high=Vector2(850,900)-extent
-	camera.position=Vector2(clampf(target.x,minf(low.x,high.x),maxf(low.x,high.x)),clampf(target.y,minf(low.y,high.y),maxf(low.y,high.y)))
+	var bounds=camera_bounds();var low=bounds.position+extent;var high=bounds.end-extent;var center=bounds.get_center()
+	return Vector2(center.x if low.x>high.x else clampf(target.x,low.x,high.x),center.y if low.y>high.y else clampf(target.y,low.y,high.y))
+func place_camera(target: Vector2) -> void:
+	camera.position=constrained_camera(target)
 	camera.force_update_scroll()
 func comes_before(a,b) -> bool:
 	var a_actor=a in moving_actors;var b_actor=b in moving_actors
@@ -195,8 +206,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif event.pressed and event.button_index in [MOUSE_BUTTON_WHEEL_UP,MOUSE_BUTTON_WHEEL_DOWN]:
 			camera.zoom=Vector2.ONE*clampf(camera.zoom.x+(.1 if event.button_index==MOUSE_BUTTON_WHEEL_UP else -.1),.65,1.25)
 			if follow:snap_camera()
+			else:place_camera(camera.position)
 		elif event.pressed and event.button_index==MOUSE_BUTTON_LEFT:select_target(pick(get_canvas_transform().affine_inverse()*event.position))
-	elif event is InputEventMouseMotion and drag:camera.position-=event.relative/camera.zoom
+	elif event is InputEventMouseMotion and drag:place_camera(camera.position-event.relative/camera.zoom)
 func _build_hud() -> void:
 	var layer=CanvasLayer.new();add_child(layer)
 	visibility_hint=preload("res://prototypes/isometric/iso_visibility_hint.gd").new();visibility_hint.setup(self);layer.add_child(visibility_hint)
@@ -205,7 +217,7 @@ func _build_hud() -> void:
 	var panel=PanelContainer.new();panel.position=Vector2(22,18);panel.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(panel)
 	var style=StyleBoxFlat.new();style.bg_color=Color("142923eb");style.border_color=Color("98845b");style.set_border_width_all(1);style.set_content_margin_all(12);panel.add_theme_stylebox_override("panel",style)
 	var list=VBoxContainer.new();list.mouse_filter=Control.MOUSE_FILTER_IGNORE;panel.add_child(list)
-	for text in ["골목 시험 · 도원과 왕복 짐꾼 둘","WASD / 방향키 이동 · F 대화/조사 · 클릭 선택","휠 확대 · 중간 버튼 드래그 · C 카메라 추적","G 충돌 · H 가림 표시(대화 중 기록) · P 왕복 · R 초기화"]:
+	for text in [data.get("title","골목 시험 · 도원과 왕복 짐꾼 둘"),"WASD / 방향키 이동 · F 대화/조사 · 클릭 선택","휠 확대 · 중간 버튼 드래그 · C 카메라 추적","G 충돌 · H 가림 표시(대화 중 기록) · P 왕복 · R 초기화"]:
 		var label=Label.new();label.text=text;label.add_theme_font_override("font",font);label.add_theme_font_size_override("font_size",15);label.mouse_filter=Control.MOUSE_FILTER_IGNORE;list.add_child(label)
 	details=Label.new();details.position=Vector2(24,650);details.add_theme_font_override("font",font);details.add_theme_font_size_override("font_size",17);details.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(details)
 	status=Label.new();status.position=Vector2(24,682);status.add_theme_font_override("font",font);status.add_theme_font_size_override("font_size",14);status.mouse_filter=Control.MOUSE_FILTER_IGNORE;layer.add_child(status)
