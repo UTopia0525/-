@@ -3,9 +3,9 @@ extends "res://prototypes/isometric/iso_errand.gd"
 const QUESTS=preload("res://prototypes/isometric/iso_town_dialogue.gd")
 const Progress=preload("res://scripts/player_progress.gd")
 var definitions: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://prototypes/isometric/town-quests.json"))
-var phases={"iso_errand":"available","iso_cargo":"available"}
-var completions={"iso_errand":0,"iso_cargo":0}
-var selected_quest="iso_errand"
+var phases={}
+var completions={}
+var selected_quest=""
 var marker_nodes={}
 var quest_buttons={}
 var shop
@@ -13,7 +13,21 @@ var money=300
 var progress=Progress.new()
 var shop_prior_pause=false
 var shop_session_open=false
+func initialize_quests() -> bool:
+ # Validate IDs before writing anything; content/UI expansion is a separate task.
+ var valid_id=RegEx.create_from_string("\\A[A-Za-z][A-Za-z0-9_]*\\z")
+ for id in definitions:
+  if not id is String or valid_id.search(id)==null:return false
+ # Fill only missing entries. This is not a runtime definition migration/reset.
+ for id in definitions:
+  if not phases.has(id):phases[id]="available"
+  if not completions.has(id):completions[id]=0
+ if selected_quest=="" and not definitions.is_empty():selected_quest=definitions.keys()[0]
+ return true
 func _ready() -> void:
+ if not initialize_quests():
+  push_error("Town quest IDs must match [A-Za-z][A-Za-z0-9_]*.")
+  set_process(false);set_process_input(false);return
  super._ready()
  for id in definitions:
   navigation.definitions[id]={"title":definitions[id].title,"stages":{"inspect":{"goals":[]},"report":{"goals":[]},"completed":{"goals":[]}}}
