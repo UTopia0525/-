@@ -1,0 +1,160 @@
+{
+  "checks": 270831,
+  "events": [
+    {
+      "completions": {
+        "iso_cargo": 0,
+        "iso_errand": 0
+      },
+      "event": "both_accepted",
+      "money": 300,
+      "owned": 0,
+      "quests": {
+        "iso_cargo": "active",
+        "iso_errand": "active"
+      },
+      "tracked": "iso_errand"
+    },
+    {
+      "completions": {
+        "iso_cargo": 0,
+        "iso_errand": 0
+      },
+      "event": "untracked_cargo_investigated",
+      "money": 300,
+      "owned": 0,
+      "quests": {
+        "iso_cargo": "ready",
+        "iso_errand": "active"
+      },
+      "tracked": "iso_errand"
+    },
+    {
+      "completions": {
+        "iso_cargo": 0,
+        "iso_errand": 0
+      },
+      "event": "both_ready_after_room",
+      "money": 300,
+      "owned": 0,
+      "quests": {
+        "iso_cargo": "ready",
+        "iso_errand": "ready"
+      },
+      "tracked": "iso_errand"
+    },
+    {
+      "completions": {
+        "iso_cargo": 0,
+        "iso_errand": 1
+      },
+      "event": "tracked_report_clears_only_tracking",
+      "money": 300,
+      "owned": 0,
+      "quests": {
+        "iso_cargo": "ready",
+        "iso_errand": "completed"
+      },
+      "tracked": ""
+    },
+    {
+      "completions": {
+        "iso_cargo": 0,
+        "iso_errand": 1
+      },
+      "event": "first_purchase",
+      "money": 200,
+      "owned": 1,
+      "quests": {
+        "iso_cargo": "ready",
+        "iso_errand": "completed"
+      },
+      "tracked": ""
+    },
+    {
+      "completions": {
+        "iso_cargo": 0,
+        "iso_errand": 1
+      },
+      "event": "three_purchases_then_insufficient_funds",
+      "money": 0,
+      "owned": 3,
+      "quests": {
+        "iso_cargo": "ready",
+        "iso_errand": "completed"
+      },
+      "tracked": ""
+    },
+    {
+      "completions": {
+        "iso_cargo": 1,
+        "iso_errand": 1
+      },
+      "event": "both_completed_no_rewards",
+      "money": 0,
+      "owned": 3,
+      "quests": {
+        "iso_cargo": "completed",
+        "iso_errand": "completed"
+      },
+      "tracked": ""
+    },
+    {
+      "completions": {
+        "iso_cargo": 0,
+        "iso_errand": 0
+      },
+      "event": "new_session_reset",
+      "money": 300,
+      "owned": 0,
+      "quests": {
+        "iso_cargo": "available",
+        "iso_errand": "available"
+      },
+      "tracked": ""
+    },
+    {
+      "completions": {
+        "iso_cargo": 1,
+        "iso_errand": 0
+      },
+      "event": "reverse_order_cargo_completed",
+      "money": 300,
+      "owned": 0,
+      "quests": {
+        "iso_cargo": "completed",
+        "iso_errand": "active"
+      },
+      "tracked": ""
+    },
+    {
+      "completions": {
+        "iso_cargo": 1,
+        "iso_errand": 1
+      },
+      "event": "reverse_order_both_completed",
+      "money": 300,
+      "owned": 0,
+      "quests": {
+        "iso_cargo": "completed",
+        "iso_errand": "completed"
+      },
+      "tracked": ""
+    }
+  ],
+  "keyboard_frames": 1136,
+  "loop_frames": 659,
+  "loop_simulated_seconds": 10.9833333333333,
+  "npc_review": {
+    "GatePorter": {
+      "arrivals": 18,
+      "retreats": 0,
+      "yields": 0
+    },
+    "RearPorter": {
+      "arrivals": 12,
+      "retreats": 0,
+      "yields": 2
+    }
+  }
+}

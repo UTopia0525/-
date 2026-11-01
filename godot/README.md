@@ -2,7 +2,7 @@
 
 본게임 프로젝트입니다. **Godot 4.6 이상 Standard**에서 `project.godot`을 열고 F5로 실행합니다. Compatibility 렌더러·GDScript를 사용합니다.
 
-독립 아이소메트릭 시험은 `prototypes/isometric/district.tscn`을 열어 **F6**으로 실행합니다. 생활 구역/실내 도원·NPC4.8타일/초, F 대화·출입·조사, Q 일지이며 본게임 F5와 별개입니다. [성능·대각선 이동 안정화 결과와 PC 점검](../docs/reviews/isometric-stability.md)을 참고하세요.
+독립 아이소메트릭 장사 시험은 `prototypes/isometric/changsha.tscn`을 열어 **F6**으로 실행합니다.24×20 구역에서 두 의뢰·Q 추적·민가 출입·상품1종 구매를 시험하며 도원/NPC4.8타일/초입니다. [구역·거래·검증 결과](../docs/reviews/isometric-town.md). 기존 `district.tscn`은20×16 비교용으로 유지합니다.
 
 현재 구현 범위와 미구현 항목은 [CLI 인계](../docs/CLI_HANDOFF.md), 기능별 문서·검사는 [작업 색인](../docs/README.md), 콘텐츠 수정 규칙은 [AGENTS.md](AGENTS.md)를 참고하세요.
 

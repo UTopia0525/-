@@ -1,0 +1,33 @@
+[
+  {
+    "test": "isometric_town",
+    "exit": 0,
+    "pass": true,
+    "log_summary": "ISOMETRIC_TOWN: PASS | checks=270831 | keyboard_frames=1136"
+  },
+  {
+    "test": "isometric_prototype",
+    "exit": 0,
+    "pass": true
+  },
+  {
+    "test": "isometric_alley",
+    "exit": 0,
+    "pass": true
+  },
+  {
+    "test": "isometric_district",
+    "exit": 0,
+    "pass": true
+  },
+  {
+    "test": "isometric_passage",
+    "exit": 0,
+    "pass": true
+  },
+  {
+    "test": "isometric_errand",
+    "exit": 0,
+    "pass": true
+  }
+]
