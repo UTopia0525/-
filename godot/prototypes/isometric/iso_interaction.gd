@@ -41,8 +41,12 @@ func refresh() -> void:
 		if npc.interaction_target!=focused:npc.interaction_target=focused;npc.queue_redraw()
 	visible=target!=null
 	if not visible:return
+	_place_caption()
+func _process(_delta: float) -> void:
+	if visible and is_instance_valid(target):_place_caption()
+func _place_caption() -> void:
 	caption.text=target.display_name+" · F 대화"
-	var foot=world.get_canvas_transform()*target.position;var extent=caption.get_combined_minimum_size()
+	var foot=world.get_canvas_transform()*target.visual_position();var extent=caption.get_combined_minimum_size()
 	caption.position=foot-Vector2(extent.x/2,112*world.camera.zoom.y)
 func interact() -> bool:
 	if require_release:return true

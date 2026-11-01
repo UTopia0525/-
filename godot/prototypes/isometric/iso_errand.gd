@@ -79,14 +79,14 @@ func _process(_delta: float) -> void:
  marker.visible=not hide and not is_instance_valid(passage.room) and phase in ["available","ready"]
  if marker.visible:
   marker.text="!" if phase=="available" else "?"
-  var foot=world.get_canvas_transform()*world.npcs[0].position;marker.position=foot-Vector2(marker.get_combined_minimum_size().x/2,112*world.camera.zoom.y+50)
+  var foot=world.get_canvas_transform()*world.npcs[0].visual_position();marker.position=foot-Vector2(marker.get_combined_minimum_size().x/2,112*world.camera.zoom.y+50)
   marker_plate.position=Vector2(foot.x-20,marker.position.y-1)
  marker_plate.visible=marker.visible
  objective.visible=navigation.quest_id=="iso_errand" and not hide
  if objective.visible:objective.text="민가에 두고 온 연장\n"+target_label()+"\nQ 의뢰 일지"
  inspect_hint.visible=not hide and inspect_offer()
  if inspect_hint.visible:
-  var foot=host.get_canvas_transform()*host.actor.position;inspect_hint.text="F 탁자 위 대패 확인";inspect_hint.position=foot-Vector2(95,120*host.camera.zoom.y)
+  var foot=host.get_canvas_transform()*host.actor.visual_position();inspect_hint.text="F 탁자 위 대패 확인";inspect_hint.position=foot-Vector2(95,120*host.camera.zoom.y)
 func _input(event: InputEvent) -> void:
  if busy():
   if event is InputEventKey:

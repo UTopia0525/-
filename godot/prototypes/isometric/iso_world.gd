@@ -38,6 +38,10 @@ var interaction
 var dialogue
 var last_sorted_positions: Array=[]
 var access_errors: Array[String]=[]
+var static_depth_signature: Array=[]
+var static_depth_edges: Dictionary={}
+var static_depth_indegree: Dictionary={}
+var static_depth_builds=0
 func _ready() -> void:
 	process_physics_priority=10
 	data=JSON.parse_string(FileAccess.get_file_as_string(layout_path))
@@ -66,7 +70,7 @@ func _ready() -> void:
 		var wall=StaticBody2D.new();wall.collision_layer=1
 		var shape=CollisionPolygon2D.new();shape.polygon=Space.diamond(r);wall.add_child(shape);add_child(wall)
 	grounding=preload("res://prototypes/isometric/iso_grounding.gd").new();grounding.setup(self);add_child(grounding);move_child(grounding,0)
-	camera=Camera2D.new();camera.zoom=Vector2.ONE*.85;camera.position_smoothing_enabled=false;add_child(camera);camera.make_current();snap_camera()
+	camera=Camera2D.new();camera.process_callback=Camera2D.CAMERA2D_PROCESS_PHYSICS if get_tree().physics_interpolation else Camera2D.CAMERA2D_PROCESS_IDLE;camera.zoom=Vector2.ONE*.85;camera.position_smoothing_enabled=false;add_child(camera);camera.make_current();snap_camera()
 	_build_hud()
 	var dialogue_layer=CanvasLayer.new();dialogue_layer.layer=20;add_child(dialogue_layer)
 	dialogue=preload("res://prototypes/isometric/iso_dialogue.gd").new();dialogue.setup(self);dialogue_layer.add_child(dialogue)
@@ -116,6 +120,8 @@ func _physics_process(_delta: float) -> void:
 func snap_camera() -> void:
 	var target=actor.position+Vector2(0,-96)
 	place_camera(target)
+	if actor.camera_reset_pending:
+		actor.camera_reset_pending=false;camera.reset_physics_interpolation();camera.force_update_scroll()
 func camera_bounds() -> Rect2:
 	# Ground diamond bounds plus the original artwork/roof margins.
 	# These margins preserve the 12x12 framing and are not map dimensions.
@@ -136,37 +142,66 @@ func comes_before(a,b) -> bool:
 	var person=a if a_actor else b if b_actor else null
 	if gate!=null and gate.spec.kind=="gate" and gate.footprint.has_point(person.logical):return a==person
 	return Space.before(a.footprint,b.footprint)
+func _depth_less(a,b) -> bool:
+	var ay=Space.project(a.footprint.get_center()).y;var by=Space.project(b.footprint.get_center()).y
+	return ay<by if not is_equal_approx(ay,by) else str(a.name)<str(b.name)
 func update_depth() -> void:
+	# Only actor-to-object relationships change during walking. Keep the exact
+	# original footprint partial order and tie break, not a coarse Y-only sort.
+	var signature=props.map(func(p):return [p.get_instance_id(),p.footprint])
+	if signature!=static_depth_signature:
+		static_depth_signature=signature;static_depth_edges.clear();static_depth_indegree.clear();static_depth_builds+=1
+		for prop in props:static_depth_edges[prop]=[];static_depth_indegree[prop]=0
+		for i in range(props.size()):
+			for j in range(i+1,props.size()):
+				var a=props[i];var b=props[j]
+				if comes_before(a,b):static_depth_edges[a].append(b);static_depth_indegree[b]+=1
+				elif comes_before(b,a):static_depth_edges[b].append(a);static_depth_indegree[a]+=1
+		last_sorted_positions=[]
 	var positions=moving_actors.map(func(n):return n.logical)
 	if positions==last_sorted_positions:return
 	last_sorted_positions=positions
 	var nodes=props.duplicate();nodes.append_array(moving_actors)
 	var edges={};var indegree={}
-	for node in nodes:edges[node]=[];indegree[node]=0
-	for i in range(nodes.size()):
-		for j in range(i+1,nodes.size()):
-			var a=nodes[i];var b=nodes[j]
+	for prop in props:edges[prop]=static_depth_edges[prop].duplicate();indegree[prop]=static_depth_indegree[prop]
+	for person in moving_actors:edges[person]=[];indegree[person]=0
+	for person in moving_actors:
+		for prop in props:
+			if comes_before(prop,person):edges[prop].append(person);indegree[person]+=1
+			elif comes_before(person,prop):edges[person].append(prop);indegree[prop]+=1
+	for i in range(moving_actors.size()):
+		for j in range(i+1,moving_actors.size()):
+			var a=moving_actors[i];var b=moving_actors[j]
 			if comes_before(a,b):edges[a].append(b);indegree[b]+=1
 			elif comes_before(b,a):edges[b].append(a);indegree[a]+=1
 	var remaining=nodes.duplicate();var ordered=[]
+	var ready=remaining.filter(func(n):return indegree[n]==0);ready.sort_custom(_depth_less)
 	while not remaining.is_empty():
-		var ready=remaining.filter(func(n):return indegree[n]==0)
-		if ready.is_empty():depth_cycles+=1;ready=remaining.duplicate()
-		ready.sort_custom(func(a,b):
-			var ay=Space.project(a.footprint.get_center()).y;var by=Space.project(b.footprint.get_center()).y
-			return ay<by if not is_equal_approx(ay,by) else str(a.name)<str(b.name))
-		var next=ready[0];ordered.append(next);remaining.erase(next)
-		for other in edges[next]:indegree[other]-=1
-	for i in range(ordered.size()):actors.move_child(ordered[i],i)
+		if ready.is_empty():
+			# Preserve the previous deterministic fallback for an invalid cyclic map.
+			depth_cycles+=1;var fallback=remaining.duplicate();fallback.sort_custom(_depth_less);ready.append(fallback[0])
+		var next=ready.pop_front();ordered.append(next);remaining.erase(next)
+		for other in edges[next]:
+			indegree[other]-=1
+			if indegree[other]==0 and other in remaining:
+				var at=0
+				while at<ready.size() and not _depth_less(other,ready[at]):at+=1
+				ready.insert(at,other)
+	for i in range(ordered.size()):
+		if ordered[i].get_index()!=i:actors.move_child(ordered[i],i)
 func update_occlusion() -> void:
 	var occluders=props.duplicate();occluders.append_array(moving_actors)
+	var bounds={}
+	for item in occluders:bounds[item]=item.hit_bounds().grow(.01)
 	for person in moving_actors:
 		person.occluded_samples=0
+		var probe_bounds=Rect2(person.position+Vector2(-10,-90),Vector2(20,72)).grow(.01)
+		var candidates=occluders.filter(func(p):return p.get_index()>person.get_index() and bounds[p].intersects(probe_bounds))
 		for y in [18,44,70,90]:
 			for x in [-10,0,10]:
 				var point=person.position+Vector2(x,-y)
-				for prop in occluders:
-					if prop.get_index()>person.get_index() and prop.hit(point):person.occluded_samples+=1;break
+				for prop in candidates:
+					if prop.hit(point):person.occluded_samples+=1;break
 		person.occluded=person.occluded_samples>=3
 	occluded_samples=actor.occluded_samples;actor_occluded=actor.occluded
 func pick(world_point: Vector2):
@@ -198,7 +233,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if debug_footprints:
 			access_errors=ACCESS.validate(self);selection_message="발밑/진입 동선 · "+("건물·대문·열린 공간 검사 통과" if access_errors.is_empty() else str(access_errors))
 	elif event.is_action_pressed("iso_hint") and not event.is_echo():show_occlusion_hint=not show_occlusion_hint
-	elif event.is_action_pressed("iso_reset") and not event.is_echo():reset_trial();snap_camera()
+	elif event.is_action_pressed("iso_reset") and not event.is_echo():reset_trial();snap_camera();camera.reset_physics_interpolation()
 	elif event.is_action_pressed("iso_patrol") and not event.is_echo():
 		patrols_enabled=not patrols_enabled;selection_message="자동 NPC "+("왕복 재개" if patrols_enabled else "정지 · 충돌은 유지")
 	elif event.is_action_pressed("iso_camera") and not event.is_echo():follow=not follow

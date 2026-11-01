@@ -1,6 +1,8 @@
 extends CharacterBody2D
 const Space=preload("res://prototypes/isometric/iso_space.gd")
 var logical=Vector2.ZERO
+var previous_render_position=Vector2.ZERO
+var camera_reset_pending=true
 var speed=4.8
 var sprite: Sprite2D
 var frames: Dictionary
@@ -60,6 +62,8 @@ func set_pose(key: String,flip: bool) -> void:
 		rig.position=Vector2(0,-sprite.texture.get_height()*base_scale.y)
 func set_logical(p: Vector2) -> void:
 	logical=p;position=Space.project(p);velocity=Vector2.ZERO;moving=false;phase=0;walk_frame=0;steering_active=false
+	previous_render_position=position;camera_reset_pending=true
+	if is_inside_tree():reset_physics_interpolation()
 	if is_instance_valid(sprite):set_pose(facing,facing_flipped)
 func stop_motion() -> void:
 	velocity=Vector2.ZERO;moving=false;phase=0;walk_frame=0;steering_active=false;release_facing_time=0
@@ -78,6 +82,7 @@ func _face_movement(direction: Vector2,delta: float) -> void:
 	release_facing_time=0;last_direction=direction
 	set_pose("back" if direction.y<0 else "front",direction.x<0 if direction.y>=0 else direction.x>0)
 func _physics_process(delta: float) -> void:
+	previous_render_position=position
 	if motion_paused:stop_motion();return
 	var direction=Input.get_vector("iso_left","iso_right","iso_up","iso_down") if interactive else Vector2.ZERO
 	if interactive and input_neutral_required:
@@ -102,6 +107,19 @@ func _physics_process(delta: float) -> void:
 	else:
 		phase=0;walk_frame=0;release_facing_time=0;steering_active=false;set_pose(facing,facing_flipped)
 	queue_redraw()
+func visual_position() -> Vector2:
+	# HUD marks must use the same interpolated foot as the renderer, while
+	# collision, interaction reach and sort decisions keep the physical foot.
+	if is_inside_tree() and is_physics_interpolated_and_enabled():
+		return previous_render_position.lerp(position,Engine.get_physics_interpolation_fraction())
+	return position
+func hit_bounds() -> Rect2:
+	var bounds: Rect2
+	if moving:
+		var size: Vector2=rig.tex_size
+		bounds=rig.transform*Rect2(-size.x/2-size.y*.15,-size.y*.1,size.x+size.y*.3,size.y*1.25)
+	else:bounds=sprite.transform*sprite.get_rect()
+	bounds.position+=position;return bounds
 func hit(point: Vector2) -> bool:
 	if moving:return rig.hit(point)
 	var p=sprite.to_local(point);var size=sprite.texture.get_size()

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "after",
+    "pass": true,
+    "exit": 0
+  },
+  {
+    "name": "room-before",
+    "pass": true,
+    "exit": 0
+  },
+  {
+    "name": "room-after",
+    "pass": true,
+    "exit": 0
+  },
+  {
+    "name": "walk-render",
+    "pass": true,
+    "exit": 0
+  },
+  {
+    "name": "entry-before",
+    "pass": true,
+    "exit": 0
+  },
+  {
+    "name": "entry-after",
+    "pass": true,
+    "exit": 0
+  },
+  {
+    "name": "motion-cadence",
+    "pass": true,
+    "exit": 0
+  }
+]

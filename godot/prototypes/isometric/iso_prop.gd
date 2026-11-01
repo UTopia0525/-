@@ -41,6 +41,11 @@ func setup(value: Dictionary,art: Dictionary) -> void:
 			sprite.position=(target_a+target_b)/2-position-(a+b)/2*sprite.scale
 		add_child(sprite);source_image=atlas.get_image()
 		if source_image.is_compressed():source_image.decompress()
+func hit_bounds() -> Rect2:
+	# Conservative broad phase only; hit() remains the exact alpha test.
+	if is_instance_valid(sprite):
+		var bounds=sprite.transform*sprite.get_rect();bounds.position+=position;return bounds
+	return Rect2(position+Vector2(-60,-150),Vector2(120,180))
 func hit(point: Vector2) -> bool:
 	if is_instance_valid(sprite):
 		var p=sprite.to_local(point)

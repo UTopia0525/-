@@ -6,6 +6,8 @@ var original=PackedVector2Array()
 var triangles: Array[PackedInt32Array]=[]
 var bindings: Array=[]
 var hit_rows: Array=[]
+var hit_index_dirty=true
+var hit_index_builds=0
 var facing="front"
 var gait=0.0
 var tex_size=Vector2.ZERO
@@ -33,7 +35,7 @@ func pose(atlas: Texture2D,pixels: Image,key: String,phase: float) -> void:
 			var moved=(bones[0]*p).lerp(bones[1]*p,bind.lower)
 			result=result.lerp(moved,bind.weight)
 		vertices[i]=result
-	polygon=vertices;_index_hits()
+	polygon=vertices;hit_index_dirty=true
 func _build_grid() -> void:
 	original.clear();triangles.clear();bindings.clear();var coords=PackedVector2Array()
 	var cols=24;var rows=32
@@ -94,6 +96,7 @@ func _solve_joints() -> void:
 		joints.arms.append({"shoulder":at,"elbow":middle,"hand":end})
 		transforms["arm"+str(side)]=[bone_map(shoulder,elbow,at,middle),bone_map(elbow,hand,middle,end)]
 func _index_hits() -> void:
+	hit_index_dirty=false;hit_index_builds+=1
 	hit_rows.clear()
 	for i in range(36):hit_rows.append([])
 	for tri in triangles:
@@ -106,6 +109,9 @@ func hit(world_point: Vector2) -> bool:
 	if not Rect2(-tex_size.x/2-tex_size.y*.15,-tex_size.y*.1,tex_size.x+tex_size.y*.3,tex_size.y*1.25).has_point(p):return false
 	if p.y<tex_size.y*.27:sample=p-body_offset+Vector2(tex_size.x/2,0)
 	else:
+		# The exact inverse mesh is needed only for an actual body hit, not
+		# for every animated frame, distant miss or undeformed head probe.
+		if hit_index_dirty:_index_hits()
 		for tri in hit_rows[_hit_row(p.y)]:
 			var a=polygon[tri[0]];var ab=polygon[tri[1]]-a;var ac=polygon[tri[2]]-a;var ap=p-a;var den=ab.cross(ac)
 			if absf(den)<.0001:continue

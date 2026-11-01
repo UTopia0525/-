@@ -1,6 +1,11 @@
 extends "res://prototypes/isometric/iso_world.gd"
 var passage
 var errand
+const MotionScope=preload("res://prototypes/isometric/iso_interpolation_scope.gd")
+func _enter_tree() -> void:
+ MotionScope.acquire(get_tree());physics_interpolation_mode=Node.PHYSICS_INTERPOLATION_MODE_ON
+func _exit_tree() -> void:
+ MotionScope.release(get_tree());super._exit_tree()
 func _ready() -> void:
  super._ready()
  actor.speed=4.8

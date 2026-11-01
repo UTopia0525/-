@@ -5,6 +5,7 @@ var faces: Array[PackedVector2Array]=[]
 var ground=PackedVector2Array()
 var wall_height=78.0
 var along_u=false
+var local_hit_bounds=Rect2()
 func setup(value: Dictionary,art: Dictionary) -> void:
 	super.setup(value,{})
 	if palette.is_empty():
@@ -18,6 +19,10 @@ func setup(value: Dictionary,art: Dictionary) -> void:
 	for i in range(top.size()):top[i]-=Vector2(0,wall_height)
 	faces=[PackedVector2Array([top[1],top[2],ground[2],ground[1]]),PackedVector2Array([top[2],top[3],ground[3],ground[2]]),top]
 	along_u=footprint.size.x>footprint.size.y
+	local_hit_bounds=Rect2(top[0],Vector2.ZERO)
+	for point in ground:local_hit_bounds=local_hit_bounds.expand(point)
+	for point in top:local_hit_bounds=local_hit_bounds.expand(point)
+func hit_bounds() -> Rect2:return Rect2(local_hit_bounds.position+position,local_hit_bounds.size)
 func hit(point: Vector2) -> bool:
 	for face in faces:
 		if Geometry2D.is_point_in_polygon(point-position,face):return true

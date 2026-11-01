@@ -1,0 +1,274 @@
+{
+  "godot": "4.6.3-stable (official)",
+  "kernels": {
+    "camera": {
+      "count": 40,
+      "max_ms": 0.105,
+      "mean_ms": 0.005475,
+      "over_33_ms": 0,
+      "p95_ms": 0.008,
+      "p99_ms": 0.015
+    },
+    "depth_sort": {
+      "count": 40,
+      "max_ms": 7.29,
+      "mean_ms": 4.39805,
+      "over_33_ms": 0,
+      "p95_ms": 6.471,
+      "p99_ms": 6.598
+    },
+    "mesh_pose": {
+      "count": 40,
+      "max_ms": 7.851,
+      "mean_ms": 3.377825,
+      "over_33_ms": 0,
+      "p95_ms": 4.309,
+      "p99_ms": 4.527
+    },
+    "npc_selection": {
+      "count": 40,
+      "max_ms": 0.797,
+      "mean_ms": 0.2704,
+      "over_33_ms": 0,
+      "p95_ms": 0.684,
+      "p99_ms": 0.773
+    },
+    "occlusion": {
+      "count": 40,
+      "max_ms": 3.907,
+      "mean_ms": 1.8019,
+      "over_33_ms": 0,
+      "p95_ms": 2.512,
+      "p99_ms": 2.578
+    }
+  },
+  "physics_hz": 60,
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "resolution": "1280x720",
+  "results": [
+    {
+      "engine_physics": {
+        "count": 90,
+        "max_ms": 6.147,
+        "mean_ms": 3.87107777777778,
+        "over_33_ms": 0,
+        "p95_ms": 4.696,
+        "p99_ms": 4.696
+      },
+      "engine_process": {
+        "count": 90,
+        "max_ms": 110.051,
+        "mean_ms": 88.5571777777777,
+        "over_33_ms": 90,
+        "p95_ms": 110.051,
+        "p99_ms": 110.051
+      },
+      "frame": {
+        "count": 90,
+        "max_ms": 110.185,
+        "mean_ms": 73.3246777777778,
+        "over_33_ms": 90,
+        "p95_ms": 88.57,
+        "p99_ms": 105.738
+      },
+      "scenario": "idle"
+    },
+    {
+      "engine_physics": {
+        "count": 90,
+        "max_ms": 54.596,
+        "mean_ms": 18.2086888888889,
+        "over_33_ms": 5,
+        "p95_ms": 21.987,
+        "p99_ms": 54.596
+      },
+      "engine_process": {
+        "count": 90,
+        "max_ms": 233.059,
+        "mean_ms": 118.676033333333,
+        "over_33_ms": 90,
+        "p95_ms": 159.217,
+        "p99_ms": 233.059
+      },
+      "frame": {
+        "count": 90,
+        "max_ms": 359.034,
+        "mean_ms": 184.964722222222,
+        "over_33_ms": 90,
+        "p95_ms": 204.033,
+        "p99_ms": 232.156
+      },
+      "scenario": "player_horizontal"
+    },
+    {
+      "engine_physics": {
+        "count": 90,
+        "max_ms": 35.748,
+        "mean_ms": 18.9733666666667,
+        "over_33_ms": 7,
+        "p95_ms": 35.748,
+        "p99_ms": 35.748
+      },
+      "engine_process": {
+        "count": 90,
+        "max_ms": 214.664,
+        "mean_ms": 95.5452444444444,
+        "over_33_ms": 90,
+        "p95_ms": 214.664,
+        "p99_ms": 214.664
+      },
+      "frame": {
+        "count": 90,
+        "max_ms": 290.854,
+        "mean_ms": 159.227866666667,
+        "over_33_ms": 90,
+        "p95_ms": 193.101,
+        "p99_ms": 209.405
+      },
+      "scenario": "player_diagonal"
+    },
+    {
+      "engine_physics": {
+        "count": 90,
+        "max_ms": 40.865,
+        "mean_ms": 22.7365111111111,
+        "over_33_ms": 4,
+        "p95_ms": 27.764,
+        "p99_ms": 40.865
+      },
+      "engine_process": {
+        "count": 90,
+        "max_ms": 115.595,
+        "mean_ms": 79.2266666666667,
+        "over_33_ms": 90,
+        "p95_ms": 82.144,
+        "p99_ms": 115.595
+      },
+      "frame": {
+        "count": 90,
+        "max_ms": 290.689,
+        "mean_ms": 168.071988888889,
+        "over_33_ms": 90,
+        "p95_ms": 207.492,
+        "p99_ms": 289.052
+      },
+      "scenario": "npc_only"
+    },
+    {
+      "engine_physics": {
+        "count": 90,
+        "max_ms": 114.668,
+        "mean_ms": 36.7589111111111,
+        "over_33_ms": 32,
+        "p95_ms": 74.737,
+        "p99_ms": 114.668
+      },
+      "engine_process": {
+        "count": 90,
+        "max_ms": 222.077,
+        "mean_ms": 89.5073111111112,
+        "over_33_ms": 90,
+        "p95_ms": 136.835,
+        "p99_ms": 222.077
+      },
+      "frame": {
+        "count": 90,
+        "max_ms": 362.484,
+        "mean_ms": 211.760288888889,
+        "over_33_ms": 90,
+        "p95_ms": 259.424,
+        "p99_ms": 314.609
+      },
+      "scenario": "all_follow"
+    },
+    {
+      "engine_physics": {
+        "count": 90,
+        "max_ms": 55.923,
+        "mean_ms": 32.9719555555556,
+        "over_33_ms": 25,
+        "p95_ms": 50.477,
+        "p99_ms": 55.923
+      },
+      "engine_process": {
+        "count": 90,
+        "max_ms": 157.379,
+        "mean_ms": 81.9300777777778,
+        "over_33_ms": 90,
+        "p95_ms": 97.106,
+        "p99_ms": 157.379
+      },
+      "frame": {
+        "count": 90,
+        "max_ms": 352.91,
+        "mean_ms": 223.071466666667,
+        "over_33_ms": 90,
+        "p95_ms": 274.295,
+        "p99_ms": 319.437
+      },
+      "scenario": "all_fixed"
+    },
+    {
+      "frame": {
+        "count": 34,
+        "max_ms": 247.102,
+        "mean_ms": 65.9087941176471,
+        "over_33_ms": 20,
+        "p95_ms": 185.613,
+        "p99_ms": 211.219
+      },
+      "scenario": "entry_exit_3_roundtrips"
+    },
+    {
+      "frame": {
+        "count": 90,
+        "max_ms": 395.747,
+        "mean_ms": 108.400088888889,
+        "over_33_ms": 90,
+        "p95_ms": 146.316,
+        "p99_ms": 373.005
+      },
+      "scenario": "dialogue_history"
+    },
+    {
+      "frame": {
+        "count": 90,
+        "max_ms": 204.407,
+        "mean_ms": 81.8290666666667,
+        "over_33_ms": 90,
+        "p95_ms": 91.554,
+        "p99_ms": 111.542
+      },
+      "scenario": "journal"
+    },
+    {
+      "engine_physics": {
+        "count": 90,
+        "max_ms": 10.858,
+        "mean_ms": 9.50104444444443,
+        "over_33_ms": 0,
+        "p95_ms": 10.858,
+        "p99_ms": 10.858
+      },
+      "engine_process": {
+        "count": 90,
+        "max_ms": 38.719,
+        "mean_ms": 35.0396111111111,
+        "over_33_ms": 90,
+        "p95_ms": 38.719,
+        "p99_ms": 38.719
+      },
+      "frame": {
+        "count": 90,
+        "max_ms": 55.812,
+        "mean_ms": 33.8622444444444,
+        "over_33_ms": 45,
+        "p95_ms": 46.581,
+        "p99_ms": 51.609
+      },
+      "scenario": "room_walk"
+    }
+  ],
+  "sample_count": 90,
+  "zoom": 0.85
+}

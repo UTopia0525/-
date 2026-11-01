@@ -28,7 +28,11 @@ func offer() -> bool:
  var threshold=Vector2(4,5.8) if is_instance_valid(room) else Vector2(doorway.threshold[0],doorway.threshold[1])
  var facing=Vector2(0,-1) if is_instance_valid(room) else Vector2(doorway.facing[0],doorway.facing[1])
  var offset=world.actor.logical-threshold
- if offset.length()>.9 or offset.dot(facing)<.05 or absf(offset.cross(facing))>.45:return false
+ # Wider exterior approach, retaining the front-side test and all three rays.
+ # The small interior keeps its existing exit range.
+ var reach=.9 if is_instance_valid(room) else 1.4
+ var lateral=.45 if is_instance_valid(room) else .75
+ if offset.length()>reach or offset.dot(facing)<.05 or absf(offset.cross(facing))>lateral:return false
  var goal=Vector2(4,5.1) if is_instance_valid(room) else Vector2(doorway.approach[0],doorway.approach[1])
  var side=facing.orthogonal()*.10
  for delta in [Vector2.ZERO,side,-side]:
@@ -40,7 +44,7 @@ func _process(_delta: float) -> void:
  caption.visible=offer()
  if caption.visible:
   var world=active_world();caption.text="F 나가기" if is_instance_valid(room) else "F 들어가기"
-  var foot=world.get_canvas_transform()*world.actor.position
+  var foot=world.get_canvas_transform()*world.actor.visual_position()
   caption.position=foot-Vector2(caption.get_combined_minimum_size().x/2,(155 if world.actor.occluded else 115)*world.camera.zoom.y)
 func _input(event: InputEvent) -> void:
  if transitioning:
@@ -76,7 +80,8 @@ func transition() -> void:
   outside.patrols_enabled=state.patrols
   outside.actor.set_logical(Vector2(doorway.approach[0],doorway.approach[1]));outside.actor.set_pose("front",false)
   outside.camera.enabled=true;outside.camera.make_current();outside.camera.zoom=state.zoom;outside.follow=state.follow
-  outside.camera.position=state.camera;outside.camera.force_update_scroll()
+  outside.camera.position=state.camera;outside.camera.reset_physics_interpolation();outside.camera.force_update_scroll()
+  outside.reset_physics_interpolation()
   outside.actor.input_neutral_required=true;outside.interaction.require_release=true
  await fade(0)
  if not entering:outside.process_mode=state.process

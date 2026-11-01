@@ -19,7 +19,7 @@ func refresh() -> void:
 	for person in captions:
 		var caption: Label=captions[person];caption.visible=visible and person.occluded and not person.interaction_target
 		if not caption.visible:continue
-		var foot=world.get_canvas_transform()*person.position
+		var foot=world.get_canvas_transform()*person.visual_position()
 		var extent=caption.get_combined_minimum_size()+Vector2(8,4)
 		var desired=foot-Vector2(extent.x/2,108*world.camera.zoom.y)
 		var rect=_place_label(desired,extent)

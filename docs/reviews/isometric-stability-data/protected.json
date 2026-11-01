@@ -1,0 +1,18 @@
+{
+  "tracked_files_compared": 992,
+  "unchanged": 981,
+  "changed_prototype_scripts": [
+    "godot/prototypes/isometric/iso_actor.gd",
+    "godot/prototypes/isometric/iso_district_world.gd",
+    "godot/prototypes/isometric/iso_errand.gd",
+    "godot/prototypes/isometric/iso_interaction.gd",
+    "godot/prototypes/isometric/iso_passage.gd",
+    "godot/prototypes/isometric/iso_prop.gd",
+    "godot/prototypes/isometric/iso_room_world.gd",
+    "godot/prototypes/isometric/iso_visibility_hint.gd",
+    "godot/prototypes/isometric/iso_walk_rig.gd",
+    "godot/prototypes/isometric/iso_wall.gd",
+    "godot/prototypes/isometric/iso_world.gd"
+  ],
+  "main_game_or_asset_changes": []
+}

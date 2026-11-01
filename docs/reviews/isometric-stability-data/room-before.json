@@ -1,0 +1,96 @@
+{
+  "fixed_delta_used": false,
+  "godot": "4.6.3-stable (official)",
+  "kernels": {
+
+  },
+  "physics_hz": 60,
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "resolution": "1280x720",
+  "results": [
+    {
+      "engine_physics": {
+        "count": 90,
+        "max_ms": 13.872,
+        "mean_ms": 12.2909666666667,
+        "over_33_ms": 0,
+        "p95_ms": 13.872,
+        "p99_ms": 13.872
+      },
+      "engine_process": {
+        "count": 90,
+        "max_ms": 151.56,
+        "mean_ms": 70.8440777777779,
+        "over_33_ms": 32,
+        "p95_ms": 151.56,
+        "p99_ms": 151.56
+      },
+      "frame": {
+        "count": 90,
+        "max_ms": 197.983,
+        "mean_ms": 32.5205111111111,
+        "over_33_ms": 23,
+        "p95_ms": 43.855,
+        "p99_ms": 54.599
+      },
+      "scenario": "room_walk_repeat_1"
+    },
+    {
+      "engine_physics": {
+        "count": 90,
+        "max_ms": 15.454,
+        "mean_ms": 12.5011444444444,
+        "over_33_ms": 0,
+        "p95_ms": 15.454,
+        "p99_ms": 15.454
+      },
+      "engine_process": {
+        "count": 90,
+        "max_ms": 35.977,
+        "mean_ms": 29.6073333333333,
+        "over_33_ms": 35,
+        "p95_ms": 35.977,
+        "p99_ms": 35.977
+      },
+      "frame": {
+        "count": 90,
+        "max_ms": 46.969,
+        "mean_ms": 27.1492444444444,
+        "over_33_ms": 6,
+        "p95_ms": 33.526,
+        "p99_ms": 41.12
+      },
+      "scenario": "room_walk_repeat_2"
+    },
+    {
+      "engine_physics": {
+        "count": 90,
+        "max_ms": 15.465,
+        "mean_ms": 11.5793444444444,
+        "over_33_ms": 0,
+        "p95_ms": 15.465,
+        "p99_ms": 15.465
+      },
+      "engine_process": {
+        "count": 90,
+        "max_ms": 29.06,
+        "mean_ms": 28.1865555555555,
+        "over_33_ms": 0,
+        "p95_ms": 29.06,
+        "p99_ms": 29.06
+      },
+      "frame": {
+        "count": 90,
+        "max_ms": 45.268,
+        "mean_ms": 28.5048222222222,
+        "over_33_ms": 10,
+        "p95_ms": 36.049,
+        "p99_ms": 44.376
+      },
+      "scenario": "room_walk_repeat_3"
+    }
+  ],
+  "sample_count": 90,
+  "software_threads": "2",
+  "zoom": 0.85
+}
