@@ -123,7 +123,7 @@ def validate(d):
         key = str(key)
         if not isinstance(q, dict):
             error("missing_field", str(key)); continue
-        for field in ("title", "giver", "actor", "place", "point", "approach", "label", "lines", "target_id"):
+        for field in ("title", "giver", "actor", "place", "point", "approach", "label", "lines", "target_id", "objectives"):
             if field not in q:
                 error("missing_field", key + "." + field)
         if not isinstance(q.get("giver"), str) or q["giver"] not in npc_ids:
@@ -144,6 +144,12 @@ def validate(d):
             p, r = q["point"], target["rect"]
             if not all(r[i]-.01 <= p[i] <= r[i]+r[i+2]+.01 for i in range(2)):
                 error("target_position", key)
+        objectives = q.get("objectives", {})
+        if not isinstance(objectives, dict):
+            error("invalid_objectives", key); objectives = {}
+        for place in ("outside", "room"):
+            if not isinstance(objectives.get(place), str) or not objectives[place].strip():
+                error("invalid_objectives", key + "." + place)
         lines = q.get("lines", {})
         if not isinstance(lines, dict):
             error("missing_field", key+".lines"); lines={}
@@ -209,6 +215,11 @@ class TownDataAudit(unittest.TestCase):
         case("target_reference", lambda d: d["room"]["props"].pop(0))
         case("target_position", lambda d: d["quests"]["iso_errand"].update(point=[7, 5]))
         case("missing_field", lambda d: d["quests"]["iso_errand"].pop("title"))
+        case("missing_field", lambda d: d["quests"]["iso_errand"].pop("objectives"))
+        case("invalid_objectives", lambda d: d["quests"]["iso_errand"].update(objectives=None))
+        case("invalid_objectives", lambda d: d["quests"]["iso_errand"]["objectives"].pop("room"))
+        case("invalid_objectives", lambda d: d["quests"]["iso_errand"]["objectives"].update(outside=" "))
+        case("invalid_objectives", lambda d: d["quests"]["iso_errand"]["objectives"].update(room=17))
         case("missing_field", lambda d: d["quests"]["iso_errand"]["lines"].pop("ready"))
         case("giver_reference", lambda d: d["quests"]["iso_errand"].update(giver=[]))
         case("target_reference", lambda d: d["quests"]["iso_errand"].update(target_id=[]))

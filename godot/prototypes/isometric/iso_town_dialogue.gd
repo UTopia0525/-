@@ -49,7 +49,7 @@ func choose(accept: bool) -> void:
  pending="accept" if accept else "decline";dialogue_lines=errand.lines_for(quest_id,pending)
  dialogue_index=0;awaiting_release=Input.is_action_pressed("iso_interact");_show_line()
 func inspect_quest(id: String) -> bool:
- if active or errand.phases[id]!="active":return false
+ if active or not errand.has_quest(id) or errand.phases[id]!="active":return false
  quest_id=id;target=null;prior_player_pause=world.actor.motion_paused;world.actor.motion_paused=true;world.actor.stop_motion()
  dialogue_lines=errand.lines_for(id,"inspect");dialogue_index=0;pending="inspect";active=true;awaiting_release=true
  var hero: Dictionary=PORTRAITS.ACTORS.hero.duplicate(true);hero.id="hero";dialogue_cast.set_participants([hero]);show();_show_line();return true
