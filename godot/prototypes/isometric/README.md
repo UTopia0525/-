@@ -1,5 +1,7 @@
 # 아이소메트릭 독립 시험 씬
 
+최신 [민가 출입·8×6 실내 시험](../../../docs/reviews/isometric-passage.md): `district.tscn` F6에서 담장 없는 민가 문 앞(약14.61,11.56)에 접근해 F. 외부를 메모리에 보존하며 실내에서 F로 나가면 NPC와 카메라 상태를 복원한다. `room.tscn`은 단독 관찰용이고 왕복은 district에서 확인한다. [실내/왕복 영상 확인](screenshots/passage-preview.html).
+
 최신 속도 정정: 사용자의 마지막 요청에 따라 도원9.6타일/초, NPC4.8타일/초다. 두 시험 씬 모두 적용하며 NPC는 직전 공개 버전의 속도를 유지한다. 아래 기존 영상/캡처는 변경 전 기록이다.
 
 최신 시험은 [20×16 생활 구역·카메라](../../../docs/reviews/isometric-district.md)다. 기존12×12와 별도 씬으로 실행한다. 새 원화 없이 건물4동/기존 NPC2명/순환 동선을 구성했고 기존 씬의 배치·본게임은 유지했다.
@@ -31,7 +33,7 @@ godot --path godot res://prototypes/isometric/main.tscn
 화면과 영상을 한 페이지에서 보려면:
 
 ```powershell
-Start-Process .\godot\prototypes\isometric\screenshots\district-preview.html
+Start-Process .\godot\prototypes\isometric\screenshots\passage-preview.html
 ```
 
 | 조작 | 동작 |
@@ -104,6 +106,7 @@ godot --headless --fixed-fps 60 --path godot --script res://tests/isometric_dial
 godot --headless --fixed-fps 60 --path godot --script res://tests/isometric_gait_access.gd
 godot --headless --fixed-fps 60 --path godot --script res://tests/isometric_outdoor_spaces.gd
 godot --headless --fixed-fps 60 --path godot --script res://tests/isometric_district.gd
+godot --headless --fixed-fps 60 --path godot --script res://tests/isometric_passage.gd
 ```
 
 최신 `tests/capture_isometric_district.gd`는20×16 전체 지도/주요 지점/카메라 추적 순환/새 영역 대화를 기록한다. `--fixed-fps 30 --write-movie /tmp/iso-district.avi`로 영상을 촬영한다. 이전 `tests/capture_isometric_spaces.gd`는 전체 전후/경계/목제 대문 통과 연속 화면/열린 작업 공간을 기록한다. `--fixed-fps 30 --write-movie /tmp/iso-spaces.avi`로 영상을 기록한다. 이전 `tests/capture_isometric_orientation.gd`는 전체/마당 경계/두 문 앞/자동 왕복 화면을 기록한다. `--fixed-fps 30 --write-movie /tmp/iso-orientation.avi`로 실제 입력 이동 영상을 기록한다. 이전 `tests/capture_gait_access.gd`는 변경 후 전체/접근 동선/창고 문/8자세/앞뒤/정지 화면을 촬영한다. `--fixed-fps 30 --write-movie /tmp/gait-access.avi`로 보행과 이동을 기록할 수 있다.
