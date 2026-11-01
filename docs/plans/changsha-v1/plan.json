@@ -1,0 +1,1069 @@
+{
+  "status": "proposal_awaiting_user_review",
+  "size": [
+    100,
+    100
+  ],
+  "coordinates": "north-up; bottom-left origin; planning units, not final engine tiles",
+  "river": [
+    [
+      0,
+      0
+    ],
+    [
+      12,
+      0
+    ],
+    [
+      13,
+      22
+    ],
+    [
+      12,
+      43
+    ],
+    [
+      14,
+      62
+    ],
+    [
+      13,
+      82
+    ],
+    [
+      14,
+      100
+    ],
+    [
+      0,
+      100
+    ]
+  ],
+  "buildings": [
+    {
+      "id": "store1",
+      "name": "곡물창고1",
+      "kind": "warehouse",
+      "rect": [
+        27,
+        62,
+        6,
+        8
+      ],
+      "door": [
+        30,
+        62
+      ],
+      "facing": "S"
+    },
+    {
+      "id": "store2",
+      "name": "곡물창고2",
+      "kind": "warehouse",
+      "rect": [
+        36,
+        61,
+        7,
+        9
+      ],
+      "door": [
+        39.5,
+        61
+      ],
+      "facing": "S"
+    },
+    {
+      "id": "shop1",
+      "name": "잡화점",
+      "kind": "market",
+      "rect": [
+        56,
+        61,
+        7,
+        5
+      ],
+      "door": [
+        59.5,
+        61
+      ],
+      "facing": "S"
+    },
+    {
+      "id": "shop2",
+      "name": "곡물상",
+      "kind": "market",
+      "rect": [
+        66,
+        61,
+        8,
+        5
+      ],
+      "door": [
+        70,
+        61
+      ],
+      "facing": "S"
+    },
+    {
+      "id": "shop3",
+      "name": "약재점",
+      "kind": "market",
+      "rect": [
+        56,
+        53,
+        7,
+        4
+      ],
+      "door": [
+        59.5,
+        57
+      ],
+      "facing": "N"
+    },
+    {
+      "id": "shop4",
+      "name": "포목점",
+      "kind": "market",
+      "rect": [
+        67,
+        52,
+        7,
+        5
+      ],
+      "door": [
+        70.5,
+        57
+      ],
+      "facing": "N"
+    },
+    {
+      "id": "office",
+      "name": "관아",
+      "kind": "office",
+      "rect": [
+        80,
+        77,
+        8,
+        4
+      ],
+      "door": [
+        84,
+        77
+      ],
+      "facing": "S"
+    },
+    {
+      "id": "martial",
+      "name": "무관",
+      "kind": "martial",
+      "rect": [
+        56,
+        77,
+        6,
+        4
+      ],
+      "door": [
+        62,
+        79
+      ],
+      "facing": "E"
+    },
+    {
+      "id": "inn",
+      "name": "객잔",
+      "kind": "inn",
+      "rect": [
+        27,
+        18,
+        12,
+        7
+      ],
+      "door": [
+        39,
+        21.5
+      ],
+      "facing": "E"
+    },
+    {
+      "id": "forge",
+      "name": "철공방",
+      "kind": "workshop",
+      "rect": [
+        27,
+        29,
+        7,
+        6
+      ],
+      "door": [
+        34,
+        32
+      ],
+      "facing": "E"
+    },
+    {
+      "id": "carpenter",
+      "name": "목공방",
+      "kind": "workshop",
+      "rect": [
+        28,
+        37,
+        6,
+        5
+      ],
+      "door": [
+        34,
+        39.5
+      ],
+      "facing": "E"
+    },
+    {
+      "id": "house1",
+      "name": "민가1",
+      "kind": "house",
+      "rect": [
+        58,
+        34,
+        7,
+        5
+      ],
+      "door": [
+        61.5,
+        34
+      ],
+      "facing": "S"
+    },
+    {
+      "id": "house2",
+      "name": "민가2",
+      "kind": "house",
+      "rect": [
+        70,
+        37,
+        6,
+        4
+      ],
+      "door": [
+        73,
+        37
+      ],
+      "facing": "S"
+    },
+    {
+      "id": "house3",
+      "name": "민가3",
+      "kind": "house",
+      "rect": [
+        81,
+        34,
+        7,
+        5
+      ],
+      "door": [
+        84.5,
+        34
+      ],
+      "facing": "S"
+    },
+    {
+      "id": "house4",
+      "name": "민가4",
+      "kind": "house",
+      "rect": [
+        58,
+        22,
+        7,
+        5
+      ],
+      "door": [
+        61.5,
+        27
+      ],
+      "facing": "N"
+    },
+    {
+      "id": "house5",
+      "name": "민가5",
+      "kind": "house",
+      "rect": [
+        70,
+        21,
+        8,
+        6
+      ],
+      "door": [
+        74,
+        27
+      ],
+      "facing": "N"
+    },
+    {
+      "id": "house6",
+      "name": "민가6",
+      "kind": "house",
+      "rect": [
+        82,
+        22,
+        7,
+        5
+      ],
+      "door": [
+        85.5,
+        27
+      ],
+      "facing": "N"
+    },
+    {
+      "id": "farmhouse",
+      "name": "농가",
+      "kind": "house",
+      "rect": [
+        80,
+        90,
+        8,
+        6
+      ],
+      "door": [
+        80,
+        93
+      ],
+      "facing": "W"
+    }
+  ],
+  "roads": [
+    {
+      "id": "warehouse_entry",
+      "points": [
+        [
+          35,
+          49
+        ],
+        [
+          35,
+          55
+        ]
+      ],
+      "width": 3,
+      "kind": "stone"
+    },
+    {
+      "id": "market_lane",
+      "points": [
+        [
+          53,
+          59
+        ],
+        [
+          76,
+          59
+        ]
+      ],
+      "width": 2.6,
+      "kind": "stone"
+    },
+    {
+      "id": "public_office_lane",
+      "points": [
+        [
+          53,
+          68
+        ],
+        [
+          89,
+          68
+        ]
+      ],
+      "width": 3,
+      "kind": "stone"
+    },
+    {
+      "id": "office_approach",
+      "points": [
+        [
+          83.5,
+          68
+        ],
+        [
+          83.5,
+          74
+        ],
+        [
+          84,
+          74
+        ],
+        [
+          84,
+          77
+        ]
+      ],
+      "width": 2,
+      "kind": "stone"
+    },
+    {
+      "id": "martial_approach",
+      "points": [
+        [
+          62.8,
+          68
+        ],
+        [
+          62.8,
+          74
+        ],
+        [
+          63,
+          79
+        ],
+        [
+          62,
+          79
+        ]
+      ],
+      "width": 2,
+      "kind": "stone"
+    },
+    {
+      "id": "workshop_lane",
+      "points": [
+        [
+          43.5,
+          20
+        ],
+        [
+          43.5,
+          43
+        ]
+      ],
+      "width": 3,
+      "kind": "stone"
+    },
+    {
+      "id": "inn_approach",
+      "points": [
+        [
+          50,
+          20.5
+        ],
+        [
+          40,
+          20.5
+        ],
+        [
+          40,
+          21.5
+        ],
+        [
+          39,
+          21.5
+        ]
+      ],
+      "width": 2,
+      "kind": "stone"
+    },
+    {
+      "id": "housing_lane",
+      "points": [
+        [
+          53,
+          31
+        ],
+        [
+          90,
+          31
+        ]
+      ],
+      "width": 2.6,
+      "kind": "stone"
+    },
+    {
+      "id": "north_fields",
+      "points": [
+        [
+          22,
+          86.5
+        ],
+        [
+          78,
+          86.5
+        ],
+        [
+          78,
+          96
+        ]
+      ],
+      "width": 2,
+      "kind": "dirt"
+    },
+    {
+      "id": "farmhouse_entry",
+      "points": [
+        [
+          78,
+          93
+        ],
+        [
+          80,
+          93
+        ]
+      ],
+      "width": 1.6,
+      "kind": "dirt"
+    },
+    {
+      "id": "bank_path",
+      "points": [
+        [
+          17,
+          0
+        ],
+        [
+          17,
+          100
+        ]
+      ],
+      "width": 1.5,
+      "kind": "dirt"
+    },
+    {
+      "id": "dock_access",
+      "points": [
+        [
+          14,
+          46
+        ],
+        [
+          20,
+          46
+        ]
+      ],
+      "width": 6,
+      "kind": "wood"
+    },
+    {
+      "id": "west_gate_access",
+      "points": [
+        [
+          20,
+          46
+        ],
+        [
+          22,
+          46
+        ]
+      ],
+      "width": 6,
+      "kind": "dirt"
+    },
+    {
+      "id": "east_west",
+      "points": [
+        [
+          22,
+          46
+        ],
+        [
+          92,
+          46
+        ]
+      ],
+      "width": 6,
+      "kind": "stone"
+    },
+    {
+      "id": "east_exit",
+      "points": [
+        [
+          92,
+          46
+        ],
+        [
+          96,
+          46
+        ],
+        [
+          99,
+          56
+        ]
+      ],
+      "width": 4,
+      "kind": "dirt"
+    },
+    {
+      "id": "north_south",
+      "points": [
+        [
+          50,
+          16
+        ],
+        [
+          50,
+          84
+        ]
+      ],
+      "width": 6,
+      "kind": "stone"
+    },
+    {
+      "id": "north_exit",
+      "points": [
+        [
+          50,
+          84
+        ],
+        [
+          50,
+          100
+        ]
+      ],
+      "width": 6,
+      "kind": "dirt"
+    },
+    {
+      "id": "south_exit",
+      "points": [
+        [
+          50,
+          0
+        ],
+        [
+          50,
+          16
+        ]
+      ],
+      "width": 6,
+      "kind": "dirt"
+    },
+    {
+      "id": "waiting_yard_access",
+      "points": [
+        [
+          50,
+          78
+        ],
+        [
+          43,
+          78
+        ]
+      ],
+      "width": 2,
+      "kind": "stone"
+    },
+    {
+      "id": "store1_door",
+      "points": [
+        [
+          35,
+          55
+        ],
+        [
+          30,
+          55
+        ],
+        [
+          30,
+          62
+        ]
+      ],
+      "width": 1.6,
+      "kind": "stone"
+    },
+    {
+      "id": "store2_door",
+      "points": [
+        [
+          35,
+          55
+        ],
+        [
+          39.5,
+          55
+        ],
+        [
+          39.5,
+          61
+        ]
+      ],
+      "width": 1.6,
+      "kind": "stone"
+    },
+    {
+      "id": "shop1_door",
+      "points": [
+        [
+          59.5,
+          59
+        ],
+        [
+          59.5,
+          61
+        ]
+      ],
+      "width": 1.6,
+      "kind": "stone"
+    },
+    {
+      "id": "shop2_door",
+      "points": [
+        [
+          70,
+          59
+        ],
+        [
+          70,
+          61
+        ]
+      ],
+      "width": 1.6,
+      "kind": "stone"
+    },
+    {
+      "id": "shop3_door",
+      "points": [
+        [
+          59.5,
+          59
+        ],
+        [
+          59.5,
+          57
+        ]
+      ],
+      "width": 1.6,
+      "kind": "stone"
+    },
+    {
+      "id": "shop4_door",
+      "points": [
+        [
+          70.5,
+          59
+        ],
+        [
+          70.5,
+          57
+        ]
+      ],
+      "width": 1.6,
+      "kind": "stone"
+    },
+    {
+      "id": "forge_door",
+      "points": [
+        [
+          43.5,
+          32
+        ],
+        [
+          34,
+          32
+        ]
+      ],
+      "width": 1.6,
+      "kind": "stone"
+    },
+    {
+      "id": "carpenter_door",
+      "points": [
+        [
+          43.5,
+          39.5
+        ],
+        [
+          34,
+          39.5
+        ]
+      ],
+      "width": 1.6,
+      "kind": "stone"
+    },
+    {
+      "id": "house1_door",
+      "points": [
+        [
+          61.5,
+          31
+        ],
+        [
+          61.5,
+          34
+        ]
+      ],
+      "width": 1.6,
+      "kind": "stone"
+    },
+    {
+      "id": "house2_door",
+      "points": [
+        [
+          73,
+          31
+        ],
+        [
+          73,
+          37
+        ]
+      ],
+      "width": 1.6,
+      "kind": "stone"
+    },
+    {
+      "id": "house3_door",
+      "points": [
+        [
+          84.5,
+          31
+        ],
+        [
+          84.5,
+          34
+        ]
+      ],
+      "width": 1.6,
+      "kind": "stone"
+    },
+    {
+      "id": "house4_door",
+      "points": [
+        [
+          61.5,
+          31
+        ],
+        [
+          61.5,
+          27
+        ]
+      ],
+      "width": 1.6,
+      "kind": "stone"
+    },
+    {
+      "id": "house5_door",
+      "points": [
+        [
+          74,
+          31
+        ],
+        [
+          74,
+          27
+        ]
+      ],
+      "width": 1.6,
+      "kind": "stone"
+    },
+    {
+      "id": "house6_door",
+      "points": [
+        [
+          85.5,
+          31
+        ],
+        [
+          85.5,
+          27
+        ]
+      ],
+      "width": 1.6,
+      "kind": "stone"
+    }
+  ],
+  "plots": [
+    {
+      "id": "city",
+      "rect": [
+        22,
+        16,
+        70,
+        68
+      ],
+      "kind": "city",
+      "gates": [
+        {
+          "side": "W",
+          "at": 46,
+          "width": 6
+        },
+        {
+          "side": "E",
+          "at": 46,
+          "width": 6
+        },
+        {
+          "side": "S",
+          "at": 50,
+          "width": 6
+        },
+        {
+          "side": "N",
+          "at": 50,
+          "width": 6
+        }
+      ]
+    },
+    {
+      "id": "warehouse_yard",
+      "rect": [
+        25,
+        52,
+        19,
+        21
+      ],
+      "kind": "fence",
+      "gates": [
+        {
+          "side": "S",
+          "at": 35,
+          "width": 3
+        }
+      ]
+    },
+    {
+      "id": "office_yard",
+      "rect": [
+        76,
+        71,
+        13,
+        11
+      ],
+      "kind": "fence",
+      "gates": [
+        {
+          "side": "S",
+          "at": 83.5,
+          "width": 3
+        }
+      ]
+    },
+    {
+      "id": "martial_yard",
+      "rect": [
+        55,
+        71,
+        18,
+        11
+      ],
+      "kind": "fence",
+      "gates": [
+        {
+          "side": "S",
+          "at": 62.8,
+          "width": 3
+        }
+      ]
+    },
+    {
+      "id": "house_yard",
+      "rect": [
+        67,
+        33,
+        11,
+        9
+      ],
+      "kind": "fence",
+      "gates": [
+        {
+          "side": "S",
+          "at": 73,
+          "width": 2
+        }
+      ]
+    }
+  ],
+  "npcs": [
+    {
+      "id": "N01",
+      "position": [
+        64.5,
+        62
+      ],
+      "role": "상인"
+    },
+    {
+      "id": "N02",
+      "position": [
+        36.5,
+        36
+      ],
+      "role": "장인"
+    },
+    {
+      "id": "N03",
+      "position": [
+        70.8,
+        72.7
+      ],
+      "role": "교관"
+    },
+    {
+      "id": "N04",
+      "position": [
+        40.2,
+        23.2
+      ],
+      "role": "객잔지기"
+    },
+    {
+      "id": "N05",
+      "position": [
+        89,
+        40.5
+      ],
+      "role": "동문 문지기"
+    },
+    {
+      "id": "N06",
+      "position": [
+        18.5,
+        51.6
+      ],
+      "role": "짐꾼"
+    },
+    {
+      "id": "N07",
+      "position": [
+        42,
+        55.5
+      ],
+      "role": "창고지기"
+    },
+    {
+      "id": "N08",
+      "position": [
+        74.8,
+        62.5
+      ],
+      "role": "곡물상인"
+    },
+    {
+      "id": "N09",
+      "position": [
+        79.5,
+        89.2
+      ],
+      "role": "농부"
+    },
+    {
+      "id": "N10",
+      "position": [
+        66,
+        29
+      ],
+      "role": "주민"
+    },
+    {
+      "id": "N11",
+      "position": [
+        79.5,
+        34.5
+      ],
+      "role": "주민"
+    },
+    {
+      "id": "N12",
+      "position": [
+        78,
+        73
+      ],
+      "role": "관아 포졸"
+    }
+  ]
+}

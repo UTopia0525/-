@@ -1,0 +1,8 @@
+{
+  "building_count": 18,
+  "npc_points": 12,
+  "overlapping_footprints": 0,
+  "all_door_approaches_connected": true,
+  "all_npc_points_connected": true,
+  "scope": "schematic grid checks only; no engine collision, art or final scale validation"
+}
