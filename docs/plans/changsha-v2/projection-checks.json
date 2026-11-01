@@ -1,0 +1,73 @@
+{
+  "note": "existing texture alpha overlap and prototype depth rules in offline planning composite; not engine screenshots",
+  "cases": [
+    {
+      "case": "front",
+      "position": [
+        22.9,
+        13.162791
+      ],
+      "covered_actor_alpha_fraction": 0.0,
+      "depth_order": [
+        "warehouse_gate",
+        "npc6",
+        "W1",
+        "W2",
+        "H1",
+        "hero",
+        "npc11"
+      ]
+    },
+    {
+      "case": "rear",
+      "position": [
+        20.8,
+        11.55
+      ],
+      "covered_actor_alpha_fraction": 1.0,
+      "depth_order": [
+        "warehouse_gate",
+        "npc6",
+        "W1",
+        "hero",
+        "W2",
+        "H1",
+        "npc11"
+      ]
+    },
+    {
+      "case": "side",
+      "position": [
+        19.55,
+        13.5
+      ],
+      "covered_actor_alpha_fraction": 1.0,
+      "depth_order": [
+        "warehouse_gate",
+        "npc6",
+        "W1",
+        "hero",
+        "W2",
+        "H1",
+        "npc11"
+      ]
+    },
+    {
+      "case": "gate",
+      "position": [
+        13.1,
+        13.25
+      ],
+      "covered_actor_alpha_fraction": 0.0,
+      "depth_order": [
+        "hero",
+        "warehouse_gate",
+        "npc6",
+        "W1",
+        "W2",
+        "H1",
+        "npc11"
+      ]
+    }
+  ]
+}

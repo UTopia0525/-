@@ -1,0 +1,12 @@
+{
+  "size": [
+    48,
+    40
+  ],
+  "grid_step": 0.1,
+  "actor_radius": 0.15,
+  "buildings": 20,
+  "npc_points": 12,
+  "errors": [],
+  "scope": "proposed geometry only, not Godot physics or playtest"
+}
