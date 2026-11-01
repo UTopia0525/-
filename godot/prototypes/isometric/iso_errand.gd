@@ -100,6 +100,7 @@ func _input(event: InputEvent) -> void:
   active_world().dialogue.inspect();input_lock=true;get_viewport().set_input_as_handled()
 func open_journal() -> void:
  if busy():return
+ active_world().drag=false
  prior_pause=get_tree().paused;get_tree().paused=true;dim.show();journal.show();refresh_journal()
 func refresh_journal() -> void:
  body.text="민가에 두고 온 연장\n상태: "+{"available":"수락 가능","active":"진행 중","ready":"보고 가능","completed":"완료"}[phase]+"\n\n"+({"available":"문길 짐꾼에게 말을 걸어 부탁을 들어 보세요.","completed":"탁자 위 대패를 확인하고 문길 짐꾼에게 무사하다고 전했습니다."}.get(phase,target_label()))+"\n\n보수 없음 · 물건은 가져오지 않습니다."
@@ -107,7 +108,7 @@ func refresh_journal() -> void:
 func toggle_track() -> void:
  tracked=not tracked;sync_tracking();refresh_journal()
 func close_journal() -> void:
- if not busy():return
+ if not is_instance_valid(journal) or not journal.visible:return
  journal.hide();dim.hide();get_tree().paused=prior_pause;active_world().actor.input_neutral_required=true
 func _exit_tree() -> void:
  if busy() and get_tree()!=null:get_tree().paused=prior_pause

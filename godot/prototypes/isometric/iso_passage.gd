@@ -1,5 +1,6 @@
 extends Node
 signal completed
+signal transition_wake
 const Space=preload("res://prototypes/isometric/iso_space.gd")
 var outside
 var doorway: Dictionary
@@ -12,6 +13,8 @@ var caption: Label
 var shade: ColorRect
 var layer: CanvasLayer
 var transitions=0
+var closing=false
+var fade_tween: Tween
 func setup(world) -> void:
  outside=world;process_mode=Node.PROCESS_MODE_ALWAYS
  doorway=world.data.props.filter(func(p):return p.id=="lane_house")[0].entrance
@@ -52,29 +55,40 @@ func _input(event: InputEvent) -> void:
  if event.is_action_pressed("iso_interact") and not event.is_echo():
   if require_release:get_viewport().set_input_as_handled();return
   if offer():get_viewport().set_input_as_handled();transition()
+func _wake_transition() -> void:transition_wake.emit()
+func _wait_transition_step(event: Signal) -> void:
+ # An owned tween alone never emits finished when its scene is freed.
+ # Wake/disconnect pending waits explicitly on exit, including frame waits.
+ event.connect(_wake_transition,CONNECT_ONE_SHOT)
+ await transition_wake
+ if event.is_connected(_wake_transition):event.disconnect(_wake_transition)
 func fade(alpha: float) -> void:
- var tween=create_tween();tween.tween_property(shade,"color:a",alpha,.16);await tween.finished
+ fade_tween=create_tween();fade_tween.tween_property(shade,"color:a",alpha,.16)
+ await _wait_transition_step(fade_tween.finished)
 func transition() -> void:
  if transitioning:return
  transitioning=true;require_release=true;caption.hide();var entering=not is_instance_valid(room);var world=active_world()
- world.actor.motion_paused=true;world.actor.stop_motion()
+ world.drag=false;world.actor.motion_paused=true;world.actor.stop_motion()
  # Freeze all exterior progress for the full transition, not just the black frame.
  if entering:
   state={"zoom":outside.camera.zoom,"follow":outside.follow,"camera":outside.camera.position,"process":outside.process_mode,"patrols":outside.patrols_enabled}
   outside.process_mode=Node.PROCESS_MODE_DISABLED
  else:room.process_mode=Node.PROCESS_MODE_DISABLED
  await fade(1)
+ if closing:return
  if entering:
   ui_states.clear()
   for child in outside.get_children():
    if child is CanvasLayer:ui_states.append([child,child.visible]);child.hide()
   outside.hide();outside.camera.enabled=false
-  await get_tree().physics_frame
+  await _wait_transition_step(get_tree().physics_frame)
+  if closing:return
   room=load(doorway.interior).instantiate();get_tree().root.add_child(room)
   room.selection_message="소박한 민가 · 문 앞에서 F 나가기"
   room.actor.motion_paused=true;room.actor.input_neutral_required=true;room.actor.set_pose("back",false)
  else:
-  room.queue_free();room=null;await get_tree().process_frame
+  room.queue_free();room=null;await _wait_transition_step(get_tree().process_frame)
+  if closing:return
   outside.show()
   for entry in ui_states:entry[0].visible=entry[1]
   outside.patrols_enabled=state.patrols
@@ -84,9 +98,13 @@ func transition() -> void:
   outside.reset_physics_interpolation()
   outside.actor.input_neutral_required=true;outside.interaction.require_release=true
  await fade(0)
+ if closing:return
  if not entering:outside.process_mode=state.process
  world=active_world();world.actor.motion_paused=false;world.actor.input_neutral_required=true
  transitions+=1;transitioning=false
  completed.emit()
 func _exit_tree() -> void:
+ closing=true
+ if is_instance_valid(fade_tween):fade_tween.kill()
+ transition_wake.emit()
  if is_instance_valid(room):room.queue_free()

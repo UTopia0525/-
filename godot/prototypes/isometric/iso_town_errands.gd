@@ -12,6 +12,7 @@ var shop
 var money=300
 var progress=Progress.new()
 var shop_prior_pause=false
+var shop_session_open=false
 func _ready() -> void:
  super._ready()
  for id in definitions:
@@ -76,6 +77,8 @@ func inspect_id() -> String:
  for id in definitions:
   var q: Dictionary=definitions[id]
   if phases[id]!="active" or (q.place=="room")!=is_instance_valid(passage.room):continue
+  var target_id: String=str(q.get("target_id",""))
+  if target_id.is_empty() or not is_instance_valid(host.actors.get_node_or_null(NodePath(target_id))):continue
   var point=Vector2(q.point[0],q.point[1]);var approach=Vector2(q.approach[0],q.approach[1])
   if host.actor.logical.distance_to(point)>1.25 or (host.actor.logical-approach).dot(approach-point)<-.05:continue
   var clear=true;var side=(approach-point).orthogonal().normalized()*.1
@@ -128,9 +131,13 @@ func toggle_track() -> void:
  else:navigation.track(selected_quest,"inspect" if phases[selected_quest]=="active" else "report")
  refresh_objective();refresh_journal()
 func open_shop() -> void:
+ if shop_session_open or shop.visible or journal.visible or passage.transitioning or active_world().dialogue.active:return
+ shop_session_open=true
  shop_prior_pause=get_tree().paused;get_tree().paused=true;world.drag=false;shop.open_counter({})
 func _shop_closed() -> void:
+ if not shop_session_open:return
+ shop_session_open=false
  get_tree().paused=shop_prior_pause;active_world().actor.input_neutral_required=true;active_world().interaction.require_release=true;input_lock=true
 func _exit_tree() -> void:
- if is_instance_valid(shop) and shop.visible and get_tree()!=null:get_tree().paused=shop_prior_pause
+ if shop_session_open and get_tree()!=null:get_tree().paused=shop_prior_pause
  if is_instance_valid(journal) and journal.visible and get_tree()!=null:get_tree().paused=prior_pause

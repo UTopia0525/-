@@ -1,0 +1,321 @@
+{
+  "checks": [
+    {
+      "check": "instantiated object IDs remain unique",
+      "pass": true
+    },
+    {
+      "check": "runtime NPC IDs remain unique",
+      "pass": true
+    },
+    {
+      "check": "quest definitions and state keys agree",
+      "pass": true
+    },
+    {
+      "check": "runtime giver/portrait references exist iso_errand",
+      "pass": true
+    },
+    {
+      "check": "runtime giver/portrait references exist iso_cargo",
+      "pass": true
+    },
+    {
+      "check": "money/quantity are nonnegative integers at startup",
+      "pass": true
+    },
+    {
+      "check": "unaccepted inspection/report rejected without progress/rewards",
+      "pass": true
+    },
+    {
+      "check": "unknown quest report rejected",
+      "pass": true
+    },
+    {
+      "check": "duplicate acceptance is idempotent",
+      "pass": true
+    },
+    {
+      "check": "decline preserves other active quest/tracking",
+      "pass": true
+    },
+    {
+      "check": "repeated completion and invalid backward transition cannot reward",
+      "pass": true
+    },
+    {
+      "check": "repeated final dialogue processing does not mutate state",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "repeated shop open cannot overwrite original pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "late journal close cannot unpause shop",
+      "pass": true
+    },
+    {
+      "check": "late shop close cannot unpause journal",
+      "pass": true
+    },
+    {
+      "check": "duplicate closed signal cannot restore an unrelated modal",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "shop cannot stack over journal",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "fixture starts real camera drag",
+      "pass": true
+    },
+    {
+      "check": "journal clears camera drag even if middle release occurs inside modal",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "journal blocks F and neutralizes held movement on close",
+      "pass": true
+    },
+    {
+      "check": "fresh movement resumes after journal",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "shop blocks background F and neutralizes held movement",
+      "pass": true
+    },
+    {
+      "check": "fresh movement resumes after shop",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "invalid selected item cannot buy previous item",
+      "pass": true
+    },
+    {
+      "check": "unknown catalogue purchase rejected atomically",
+      "pass": true
+    },
+    {
+      "check": "one real click commits one purchase",
+      "pass": true
+    },
+    {
+      "check": "same-frame duplicated requests commit once",
+      "pass": true
+    },
+    {
+      "check": "insufficient funds preserves entire state",
+      "pass": true
+    },
+    {
+      "check": "closed shop cannot purchase",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "dialogue blocks movement/journal/portal",
+      "pass": true
+    },
+    {
+      "check": "history blocks progress and journal",
+      "pass": true
+    },
+    {
+      "check": "movement resumes after dialogue/history",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "dialogue restores previous actor pause flags",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "entry clears stale camera drag",
+      "pass": true
+    },
+    {
+      "check": "returned exterior does not keep camera drag",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "room sibling removed with district",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "missing investigation object cannot offer a ghost interaction",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "journal restores a pre-existing paused state",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    },
+    {
+      "check": "shop restores a pre-existing paused state",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores pause",
+      "pass": true
+    },
+    {
+      "check": "scene removal restores interpolation/input map",
+      "pass": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,12 @@
+{
+  "tracked_files_compared": 1078,
+  "changed": [
+    "godot/prototypes/isometric/iso_errand.gd",
+    "godot/prototypes/isometric/iso_passage.gd",
+    "godot/prototypes/isometric/iso_town_errands.gd",
+    "godot/prototypes/isometric/iso_town_shop.gd",
+    "godot/prototypes/isometric/town-quests.json"
+  ],
+  "main_sources_data_assets_project_unchanged": true,
+  "map_and_scene_files_unchanged": true
+}

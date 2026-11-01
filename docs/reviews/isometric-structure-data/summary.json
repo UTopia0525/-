@@ -1,0 +1,16 @@
+{
+  "static_suite_passed": true,
+  "memory_fault_cases": 31,
+  "before_reproduced_failures": [
+    "repeated shop open cannot overwrite original pause",
+    "scene removal restores pause",
+    "late journal close cannot unpause shop",
+    "late shop close cannot unpause journal",
+    "shop cannot stack over journal",
+    "journal clears camera drag even if middle release occurs inside modal"
+  ],
+  "missing_object_offer_before": "iso_cargo",
+  "fade_function_state_leak_before": true,
+  "fade_function_state_leak_after": false,
+  "art_or_capture_generated": false
+}

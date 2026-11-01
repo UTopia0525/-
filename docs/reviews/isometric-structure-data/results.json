@@ -1,0 +1,32 @@
+[
+  {
+    "test": "data",
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "test": "structure",
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "test": "town",
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "test": "passage",
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "test": "errand",
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "test": "fade-cleanup",
+    "exit": 0,
+    "passed": true
+  }
+]
