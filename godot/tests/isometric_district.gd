@@ -43,7 +43,7 @@ func run() -> void:
  var p0=scene.actor.logical;var n0=scene.npcs[0].logical
  steer(Vector2(1,0));await frames(20);steer(Vector2.ZERO);await physics_frame
  var pd=scene.actor.logical.distance_to(p0);var nd=scene.npcs[0].logical.distance_to(n0)
- check(absf(pd-3.2)<.2 and absf(nd-1.6)<.2,"measured player9.6 and unchanged NPC4.8")
+ check(absf(pd-1.6)<.2 and absf(nd-1.6)<.2,"measured player4.8 and unchanged NPC4.8")
  print("SPEED_MEASURE: player_distance=",pd," NPC_distance=",nd," over20physicsframes")
  scene.npcs[1].motion_paused=false;scene.npcs[0].patrol.setup(scene.npcs[0],scene.data.patrols[0].route);scene.reset_trial()
  scene.patrols_enabled=false
@@ -89,7 +89,7 @@ func run() -> void:
  check(not scene.drag,"middle button releases camera drag")
  scene.follow=true;scene.camera.zoom=Vector2.ONE*.85;scene.snap_camera()
  # Real F and H keys use the existing UI even far outside the original map.
- var a=scene.npcs[0];scene.actor.set_logical(Vector2(16.5,10.25));a.set_logical(Vector2(16.5,9.5));scene.npcs[1].set_logical(Vector2(19,15));await frames(2)
+ var a=scene.npcs[1];scene.actor.set_logical(Vector2(16.5,10.25));a.set_logical(Vector2(16.5,9.5));scene.npcs[0].set_logical(Vector2(19,15));await frames(2)
  await key(KEY_F);check(scene.dialogue.active and scene.dialogue.target==a,"F conversation works in expanded area")
  if scene.dialogue.active:
   await key(KEY_H);check(scene.dialogue.dialogue_history.visible and paused,"shared history works in expanded scene");await key(KEY_ESCAPE)
@@ -100,7 +100,7 @@ func run() -> void:
  scene.actor.set_logical(Vector2(19,15));var before=scene.npcs[1].patrol.arrivals;var bounds=Rect2(scene.npcs[1].logical,Vector2.ZERO)
  for i in range(720):await physics_frame;inspect_clearance();bounds=bounds.expand(scene.npcs[1].logical)
  check(scene.npcs[1].patrol.arrivals>before+6 and bounds.position.x<11.3 and bounds.end.x>16.2,"rear NPC repeatedly traverses new region")
- for person in scene.moving_actors:check(person.speed==(9.6 if person==scene.actor else 4.8) and is_equal_approx(person.base_scale.y*person.frames.get("canvas_height",person.images.front.get_height()),96),"speed and display height unchanged")
+ for person in scene.moving_actors:check(person.speed==4.8 and is_equal_approx(person.base_scale.y*person.frames.get("canvas_height",person.images.front.get_height()),96),"speed and display height unchanged")
  print("DISTRICT_METRICS: loop_tiles=",loop_distance," | loop_input_seconds=",loop_frames/60.0," | clearance_frames=",travel_frames," | rear_range=",bounds)
  scene.queue_free();await process_frame
  scene=load("res://prototypes/isometric/main.tscn").instantiate();root.add_child(scene);await frames(3)

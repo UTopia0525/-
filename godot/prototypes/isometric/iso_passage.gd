@@ -22,6 +22,7 @@ func _ready() -> void:
 func active_world():return room if is_instance_valid(room) else outside
 func offer() -> bool:
  if transitioning or require_release:return false
+ if is_instance_valid(outside.errand) and outside.errand.busy():return false
  var world=active_world()
  if world.dialogue.active or world.interaction.choose_target()!=null:return false
  var threshold=Vector2(4,5.8) if is_instance_valid(room) else Vector2(doorway.threshold[0],doorway.threshold[1])

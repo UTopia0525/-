@@ -20,8 +20,8 @@ func run() -> void:
  for point in [Vector2(13.5,11.56),Vector2(14.6,12.5),Vector2(14.6,10.5)]:
   world.actor.set_logical(point);check(not p.offer(),"no entry through wall/back/side")
  world.actor.set_logical(Vector2(14.605814,11.562791));await frames(2);check(p.offer(),"front approach offers entry")
- world.npcs[0].set_logical(Vector2(14.9,11.9));await frames(2)
- check(world.interaction.choose_target()==world.npcs[0] and not p.offer(),"NPC priority produces only one F target")
+ world.npcs[1].set_logical(Vector2(14.9,11.9));await frames(2)
+ check(world.interaction.choose_target()==world.npcs[1] and not p.offer(),"NPC priority produces only one F target")
  await key(KEY_F,true);await key(KEY_F,false);check(world.dialogue.active,"F still opens shared NPC dialogue")
  for i in range(5):await key(KEY_F,true);await key(KEY_F,false)
  check(not world.dialogue.active,"existing dialogue ends")
@@ -39,7 +39,7 @@ func run() -> void:
   check(p.room==room and p.transitions==cycle*2+1,"held F/echo cannot bounce out")
   check(room.actor.logical.distance_to(start)<.001,"held W does not move room actor")
   check(snapshot()==state,"exterior remains frozen inside")
-  check(room.actor.speed==9.6 and world.npcs.all(func(n):return n.speed==4.8),"speeds retained")
+  check(room.actor.speed==4.8 and world.npcs.all(func(n):return n.speed==4.8),"speeds retained")
   # Real room collision space must contain only room bodies, not exterior walls.
   check(room.ACCESS.clear(room,Vector2(4.15,3.5)),"exterior courtyard wall is absent from room physics")
   var table=room.props.filter(func(n):return n.spec.id=="table")[0]

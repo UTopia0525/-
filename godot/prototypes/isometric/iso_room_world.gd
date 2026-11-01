@@ -1,6 +1,7 @@
 extends "res://prototypes/isometric/iso_world.gd"
 func _ready() -> void:
  super._ready()
+ actor.speed=4.8
  # The near sides are cut away; solid floor bounds still prevent walking out.
  for rect in [Rect2(0,0,8,.16),Rect2(0,.16,.16,5.84)]:
   var along_u=rect.size.x>rect.size.y;var length=maxf(rect.size.x,rect.size.y);var count=ceili(length/.75)
