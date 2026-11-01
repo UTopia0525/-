@@ -1,5 +1,8 @@
 # 작업별 색인
 
+참고 분석: [Witchbrook · 맵 구조·밀도·실내외 전환](reviews/witchbrook-map-reference.md). 공식 자료 기반 예비 분석이며 영상 직접 분석·게임 적용은 미완료다. 기존 장사 시험과의 연결 및 후속 검토 항목을 분류했다.
+
+
 새 맵·도시: [시각/논리 두 대원칙·필드 구성14규칙](cities/field-layout-principles.md) · [단계별 작업 순서와 명령 프롬프트3종](cities/map-production-workflow.md). 새 맵과 실제 수정 구역에 적용한다.
 
 연결 안전성: [의뢰 제공자 대화 등록·초상화·일반 NPC/상점 분기](reviews/isometric-quest-links.md). 현재 콘텐츠 연결은 정상이며 확장 위험만 최소 수정했다.
