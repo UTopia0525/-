@@ -24,7 +24,7 @@ func begin(npc) -> bool:
  quest_id=errand.quest_for(npc)
  if not super.begin(npc):return false
  if quest_id!="":dialogue_lines=errand.lines_for(quest_id)
- pending="report" if quest_id!="" and errand.phases[quest_id]=="ready" else "trade" if quest_id=="" else ""
+ pending="report" if quest_id!="" and errand.phases[quest_id]=="ready" else "trade" if quest_id=="" and str(npc.name)=="TownMerchant" else ""
  dialogue_index=0;_show_line();return true
 func _show_line() -> void:
  if target==null:

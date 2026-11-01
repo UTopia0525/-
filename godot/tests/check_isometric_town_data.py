@@ -130,6 +130,18 @@ def validate(d):
             error("giver_reference", key)
         if not isinstance(q.get("actor"), str) or q["actor"] not in d["dialogue"]["actors"]:
             error("actor_reference", key)
+        conversations = d["dialogue"].get("conversations", {})
+        conversation = conversations.get(q.get("giver")) if isinstance(conversations, dict) and isinstance(q.get("giver"), str) else None
+        if not isinstance(conversation, list) or not conversation:
+            error("giver_dialogue", key)
+        else:
+            # super.begin() uses this registration and its first speaker before quest lines.
+            for line in conversation:
+                if not isinstance(line, list) or len(line) != 2 or not isinstance(line[0], str) or line[0] not in d["dialogue"]["actors"] or not isinstance(line[1], str) or not line[1].strip():
+                    error("dialogue_line", key)
+            first = conversation[0]
+            if isinstance(first, list) and first and first[0] != q.get("actor"):
+                error("giver_actor", key)
         place = q.get("place")
         target_id=q.get("target_id")
         target = objects.get(place, {}).get(target_id) if isinstance(place,str) and isinstance(target_id,str) else None
@@ -211,6 +223,13 @@ class TownDataAudit(unittest.TestCase):
         case("duplicate_id", lambda d: d["outside"]["props"][0].update(id="house_north_0"))
         case("giver_reference", lambda d: d["quests"]["iso_errand"].update(giver="Missing"))
         case("actor_reference", lambda d: d["quests"]["iso_errand"].update(actor="Missing"))
+        case("giver_dialogue", lambda d: d["dialogue"]["conversations"].pop("GatePorter"))
+        case("giver_dialogue", lambda d: d["dialogue"]["conversations"].update(GatePorter=[]))
+        case("giver_dialogue", lambda d: d["dialogue"]["conversations"].update(GatePorter=None))
+        case("dialogue_line", lambda d: d["dialogue"]["conversations"].update(GatePorter=[["Missing", "대사"]]))
+        case("dialogue_line", lambda d: d["dialogue"]["conversations"].update(GatePorter=[["iso_gate_porter", " "]]))
+        case("dialogue_line", lambda d: d["dialogue"]["conversations"].update(GatePorter=[[]]))
+        case("giver_actor", lambda d: d["quests"]["iso_errand"].update(actor="iso_rear_porter"))
         case("target_reference", lambda d: d["quests"]["iso_errand"].update(target_id="Missing"))
         case("target_reference", lambda d: d["room"]["props"].pop(0))
         case("target_position", lambda d: d["quests"]["iso_errand"].update(point=[7, 5]))
