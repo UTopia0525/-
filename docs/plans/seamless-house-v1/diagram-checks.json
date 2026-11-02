@@ -1,0 +1,34 @@
+[
+  {
+    "candidate": "A",
+    "footprint_area": 20,
+    "interior_area": 16.56,
+    "errors": [],
+    "reachable_approaches": [
+      "bed",
+      "table",
+      "chest",
+      "urn",
+      "chair",
+      "hero_dialogue",
+      "arrival"
+    ],
+    "scope": "0.05 logical-tile diagram check only; no engine execution"
+  },
+  {
+    "candidate": "B",
+    "footprint_area": 30,
+    "interior_area": 25.76,
+    "errors": [],
+    "reachable_approaches": [
+      "bed",
+      "table",
+      "chest",
+      "urn",
+      "chair",
+      "hero_dialogue",
+      "arrival"
+    ],
+    "scope": "0.05 logical-tile diagram check only; no engine execution"
+  }
+]
