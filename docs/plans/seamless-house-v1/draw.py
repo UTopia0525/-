@@ -132,7 +132,7 @@ for ax,after in zip(axs,[False,True]):
   box(ax,b['rect'],'#dccfae' if b['id'].startswith('W') else '#d7d7cd',ec='#8a8b7a',lw=.7,zorder=3)
   x,y,w,h=b['rect'];tx(ax,x+w/2,y+h/2,b['id'],8,zorder=4)
  # Existing warehouse yard boundary, purpose unchanged.
- 
+
  for edge in [[13,10.4,5.5,.2],[18.4,10.5,.2,8.3],[13,18.7,5.5,.2]]:box(ax,edge,'#8b7b65',zorder=4)
  if after:
   r=site['new_rect'];box(ax,r,'#bcd3b0',ec='#4f774e',lw=1.2,zorder=4);tx(ax,22.1,14,'H1 추천 B\n5×6',11,zorder=6)
